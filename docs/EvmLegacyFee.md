@@ -1,0 +1,12 @@
+# CoboWaas2Api.EvmLegacyFee
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**feeType** | [**FeeType**](FeeType.md) |  | 
+**slow** | [**EvmLegacyFeeSlow**](EvmLegacyFeeSlow.md) |  | [optional] 
+**standard** | [**EvmLegacyFeeSlow**](EvmLegacyFeeSlow.md) |  | 
+**fast** | [**EvmLegacyFeeSlow**](EvmLegacyFeeSlow.md) |  | [optional] 
+
+

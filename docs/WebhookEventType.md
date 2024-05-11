@@ -1,0 +1,150 @@
+# CoboWaas2Api.WebhookEventType
+
+## Enum
+
+
+* `asset_wallet.outbound.created` (value: `"asset_wallet.outbound.created"`)
+
+* `asset_wallet.outbound.pending_authorization` (value: `"asset_wallet.outbound.pending_authorization"`)
+
+* `asset_wallet.outbound.rejected` (value: `"asset_wallet.outbound.rejected"`)
+
+* `asset_wallet.outbound.queued` (value: `"asset_wallet.outbound.queued"`)
+
+* `asset_wallet.outbound.pending_confirm` (value: `"asset_wallet.outbound.pending_confirm"`)
+
+* `asset_wallet.outbound.confirmations.updated` (value: `"asset_wallet.outbound.confirmations.updated"`)
+
+* `asset_wallet.outbound.confirmed` (value: `"asset_wallet.outbound.confirmed"`)
+
+* `asset_wallet.outbound.failed` (value: `"asset_wallet.outbound.failed"`)
+
+* `asset_wallet.inbound.pending_confirm` (value: `"asset_wallet.inbound.pending_confirm"`)
+
+* `asset_wallet.inbound.confirmed` (value: `"asset_wallet.inbound.confirmed"`)
+
+* `asset_wallet.inbound.confirmations.updated` (value: `"asset_wallet.inbound.confirmations.updated"`)
+
+* `web3_wallet.outbound.created` (value: `"web3_wallet.outbound.created"`)
+
+* `web3_wallet.outbound.pending_authorization` (value: `"web3_wallet.outbound.pending_authorization"`)
+
+* `web3_wallet.outbound.rejected` (value: `"web3_wallet.outbound.rejected"`)
+
+* `web3_wallet.outbound.queued` (value: `"web3_wallet.outbound.queued"`)
+
+* `web3_wallet.outbound.pending_confirm` (value: `"web3_wallet.outbound.pending_confirm"`)
+
+* `web3_wallet.outbound.confirmations.updated` (value: `"web3_wallet.outbound.confirmations.updated"`)
+
+* `web3_wallet.outbound.confirmed` (value: `"web3_wallet.outbound.confirmed"`)
+
+* `web3_wallet.outbound.failed` (value: `"web3_wallet.outbound.failed"`)
+
+* `web3_wallet.inbound.pending_confirm` (value: `"web3_wallet.inbound.pending_confirm"`)
+
+* `web3_wallet.inbound.confirmed` (value: `"web3_wallet.inbound.confirmed"`)
+
+* `web3_wallet.inbound.confirmations.updated` (value: `"web3_wallet.inbound.confirmations.updated"`)
+
+* `safe_wallet.outbound.created` (value: `"safe_wallet.outbound.created"`)
+
+* `safe_wallet.outbound.pending_authorization` (value: `"safe_wallet.outbound.pending_authorization"`)
+
+* `safe_wallet.outbound.rejected` (value: `"safe_wallet.outbound.rejected"`)
+
+* `safe_wallet.outbound.queued` (value: `"safe_wallet.outbound.queued"`)
+
+* `safe_wallet.outbound.pending_signature` (value: `"safe_wallet.outbound.pending_signature"`)
+
+* `safe_wallet.outbound.pending_confirm` (value: `"safe_wallet.outbound.pending_confirm"`)
+
+* `safe_wallet.outbound.confirmations.updated` (value: `"safe_wallet.outbound.confirmations.updated"`)
+
+* `safe_wallet.outbound.confirmed` (value: `"safe_wallet.outbound.confirmed"`)
+
+* `safe_wallet.outbound.failed` (value: `"safe_wallet.outbound.failed"`)
+
+* `safe_wallet.inbound.pending_confirm` (value: `"safe_wallet.inbound.pending_confirm"`)
+
+* `safe_wallet.inbound.confirmed` (value: `"safe_wallet.inbound.confirmed"`)
+
+* `safe_wallet.inbound.confirmations.updated` (value: `"safe_wallet.inbound.confirmations.updated"`)
+
+* `exchange_wallet.inbound.pending_confirm` (value: `"exchange_wallet.inbound.pending_confirm"`)
+
+* `exchange_wallet.inbound.confirmed` (value: `"exchange_wallet.inbound.confirmed"`)
+
+* `exchange_wallet.outbound.created` (value: `"exchange_wallet.outbound.created"`)
+
+* `exchange_wallet.outbound.pending_authorization` (value: `"exchange_wallet.outbound.pending_authorization"`)
+
+* `exchange_wallet.outbound.rejected` (value: `"exchange_wallet.outbound.rejected"`)
+
+* `exchange_wallet.outbound.pending_confirm` (value: `"exchange_wallet.outbound.pending_confirm"`)
+
+* `exchange_wallet.outbound.confirmed` (value: `"exchange_wallet.outbound.confirmed"`)
+
+* `exchange_wallet.outbound.failed` (value: `"exchange_wallet.outbound.failed"`)
+
+* `exchange_wallet.sub_transfer.created` (value: `"exchange_wallet.sub_transfer.created"`)
+
+* `exchange_wallet.sub_transfer.pending_authorization` (value: `"exchange_wallet.sub_transfer.pending_authorization"`)
+
+* `exchange_wallet.sub_transfer.rejected` (value: `"exchange_wallet.sub_transfer.rejected"`)
+
+* `exchange_wallet.sub_transfer.pending_confirm` (value: `"exchange_wallet.sub_transfer.pending_confirm"`)
+
+* `exchange_wallet.sub_transfer.confirmed` (value: `"exchange_wallet.sub_transfer.confirmed"`)
+
+* `exchange_wallet.sub_transfer.failed` (value: `"exchange_wallet.sub_transfer.failed"`)
+
+* `organization_controlled_wallet.outbound.created` (value: `"organization_controlled_wallet.outbound.created"`)
+
+* `organization_controlled_wallet.outbound.pending_authorization` (value: `"organization_controlled_wallet.outbound.pending_authorization"`)
+
+* `organization_controlled_wallet.outbound.rejected` (value: `"organization_controlled_wallet.outbound.rejected"`)
+
+* `organization_controlled_wallet.outbound.queued` (value: `"organization_controlled_wallet.outbound.queued"`)
+
+* `organization_controlled_wallet.outbound.pending_signature` (value: `"organization_controlled_wallet.outbound.pending_signature"`)
+
+* `organization_controlled_wallet.outbound.pending_confirm` (value: `"organization_controlled_wallet.outbound.pending_confirm"`)
+
+* `organization_controlled_wallet.outbound.confirmations.updated` (value: `"organization_controlled_wallet.outbound.confirmations.updated"`)
+
+* `organization_controlled_wallet.outbound.confirmed` (value: `"organization_controlled_wallet.outbound.confirmed"`)
+
+* `organization_controlled_wallet.outbound.failed` (value: `"organization_controlled_wallet.outbound.failed"`)
+
+* `organization_controlled_wallet.inbound.pending_confirm` (value: `"organization_controlled_wallet.inbound.pending_confirm"`)
+
+* `organization_controlled_wallet.inbound.confirmed` (value: `"organization_controlled_wallet.inbound.confirmed"`)
+
+* `organization_controlled_wallet.inbound.confirmations.updated` (value: `"organization_controlled_wallet.inbound.confirmations.updated"`)
+
+* `user_controlled_wallet.outbound.created` (value: `"user_controlled_wallet.outbound.created"`)
+
+* `user_controlled_wallet.outbound.pending_authorization` (value: `"user_controlled_wallet.outbound.pending_authorization"`)
+
+* `user_controlled_wallet.outbound.rejected` (value: `"user_controlled_wallet.outbound.rejected"`)
+
+* `user_controlled_wallet.outbound.queued` (value: `"user_controlled_wallet.outbound.queued"`)
+
+* `user_controlled_wallet.outbound.pending_signature` (value: `"user_controlled_wallet.outbound.pending_signature"`)
+
+* `user_controlled_wallet.outbound.pending_confirm` (value: `"user_controlled_wallet.outbound.pending_confirm"`)
+
+* `user_controlled_wallet.outbound.confirmations.updated` (value: `"user_controlled_wallet.outbound.confirmations.updated"`)
+
+* `user_controlled_wallet.outbound.confirmed` (value: `"user_controlled_wallet.outbound.confirmed"`)
+
+* `user_controlled_wallet.outbound.failed` (value: `"user_controlled_wallet.outbound.failed"`)
+
+* `user_controlled_wallet.inbound.pending_confirm` (value: `"user_controlled_wallet.inbound.pending_confirm"`)
+
+* `user_controlled_wallet.inbound.confirmed` (value: `"user_controlled_wallet.inbound.confirmed"`)
+
+* `user_controlled_wallet.inbound.confirmations.updated` (value: `"user_controlled_wallet.inbound.confirmations.updated"`)
+
+
