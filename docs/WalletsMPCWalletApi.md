@@ -37,17 +37,15 @@ cancel tss request.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the tss request
-let tssRequestAction = "cancel"; // String | The action of tss request.
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the tss request
+const tssRequestAction = "cancel"; // String | The action of tss request.
 apiInstance.cancelTssRequest(vaultId, tssRequestId, tssRequestAction).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -91,16 +89,14 @@ create a mpc key group.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const opts = {
   'createKeyGroupRequest': new CoboWaas2JsApi.CreateKeyGroupRequest() // CreateKeyGroupRequest | The request body to create a mpc key group
 };
 apiInstance.createKeyGroup(vaultId, opts).then((data) => {
@@ -145,15 +141,13 @@ create a mpc project
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const opts = {
   'createMpcProjectRequest': new CoboWaas2JsApi.CreateMpcProjectRequest() // CreateMpcProjectRequest | The request body to create a mpc project
 };
 apiInstance.createMpcProject(opts).then((data) => {
@@ -197,15 +191,13 @@ create a mpc vault
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const opts = {
   'createMpcVaultRequest': new CoboWaas2JsApi.CreateMpcVaultRequest() // CreateMpcVaultRequest | The request body to create a mpc vault
 };
 apiInstance.createMpcVault(opts).then((data) => {
@@ -249,16 +241,14 @@ Create a tss request to generate key secrets for a tss group
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const opts = {
   'createTssRequestRequest': new CoboWaas2JsApi.CreateTssRequestRequest() // CreateTssRequestRequest | The request body to create a tss request
 };
 apiInstance.createTssRequest(vaultId, opts).then((data) => {
@@ -303,16 +293,14 @@ delete a mpc key group.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let keyGroupId = "880311524363903326"; // String | Unique id of the tss group
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const keyGroupId = "880311524363903326"; // String | Unique id of the tss group
 apiInstance.deleteKeyGroup(vaultId, keyGroupId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -355,16 +343,14 @@ get a mpc key group.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let keyGroupId = "880311524363903326"; // String | Unique id of the tss group
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const keyGroupId = "880311524363903326"; // String | Unique id of the tss group
 apiInstance.getKeyGroup(vaultId, keyGroupId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -407,15 +393,13 @@ get a mpc vault
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc project
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc project
 apiInstance.getMpcProject(projectId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -457,15 +441,13 @@ get a mpc vault
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
 apiInstance.getMpcVault(vaultId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -507,16 +489,14 @@ get a tss request.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the tss request
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the tss request
 apiInstance.getTssRequest(vaultId, tssRequestId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -559,14 +539,12 @@ Retrieve a list of key holders.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
 apiInstance.listCoboKeyHolder().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -605,16 +583,14 @@ Retrieve a list of mpc key groups.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const opts = {
   'keyGroupType': new CoboWaas2JsApi.KeyGroupType() // KeyGroupType | The type of key group.
 };
 apiInstance.listKeyGroup(vaultId, opts).then((data) => {
@@ -659,14 +635,12 @@ Retrieve a list of mpc project.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
 apiInstance.listMpcProject().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -705,15 +679,13 @@ Retrieve a list of mpc vault.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const opts = {
   'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479" // String | Unique id of the mpc project
 };
 apiInstance.listMpcVault(opts).then((data) => {
@@ -757,16 +729,14 @@ Detailed description on retrieving list of tss request information
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const opts = {
   'targetKeyGroupId': "880311524363903326" // String | The target key group id of tss request.
 };
 apiInstance.listTssRequest(vaultId, opts).then((data) => {
@@ -811,16 +781,14 @@ modify a mpc vault
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const opts = {
   'modifyMpcVaultRequest': new CoboWaas2JsApi.ModifyMpcVaultRequest() // ModifyMpcVaultRequest | The request body to update a mpc vault
 };
 apiInstance.modifyMpcVault(vaultId, opts).then((data) => {
@@ -865,17 +833,15 @@ update a mpc key group.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
-let keyGroupId = "880311524363903326"; // String | Unique id of the tss group
-let updateKeyGroupAction = "UpgradeToMainKeyGroup"; // String | The action of update key group
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc vault
+const keyGroupId = "880311524363903326"; // String | Unique id of the tss group
+const updateKeyGroupAction = "UpgradeToMainKeyGroup"; // String | The action of update key group
 apiInstance.updateKeyGroup(vaultId, keyGroupId, updateKeyGroupAction).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -919,16 +885,14 @@ update a mpc vault
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
-let projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc project
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
+const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the mpc project
+const opts = {
   'updateMpcProjectRequest': new CoboWaas2JsApi.UpdateMpcProjectRequest() // UpdateMpcProjectRequest | The request body to update a mpc project
 };
 apiInstance.updateMpcProject(projectId, opts).then((data) => {

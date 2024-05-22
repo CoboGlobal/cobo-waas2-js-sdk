@@ -23,15 +23,13 @@ This operation retrieves the information of a webhook event by the event ID.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.getWebhookEvent(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -73,15 +71,13 @@ This operation retrieves a list of webhook event logs by event ID. Each retry wi
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.getWebhookEventLogs(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -123,15 +119,13 @@ This operation retrieves a list of webhook events that have occurred within the 
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+const opts = {
   'status': new CoboWaas2JsApi.WebhookEventStatus(), // WebhookEventStatus | The event status. Possible values include: - `Success`: The event has been delivered, and the webhook endpoint has responded to the event. - `Retrying`: The event has been delivered, but the webhook endpoint has not responded. In this case, Cobo will retry delivering the event. - `Failed`: The event cannot be delivered and Cobo will stop retrying. This may occur if the number of retries reaches 10, or if the event has been delivered but the webhook endpoint responded with an error. 
   'type': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | The event type. 
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
@@ -183,15 +177,13 @@ This operation retries delivering a webhook event with the specified event ID. Y
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.retryWebhookEvent(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {

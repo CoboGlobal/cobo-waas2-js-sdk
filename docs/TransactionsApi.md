@@ -29,15 +29,13 @@ Create a transaction to call a smart contract.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
   'smartContractCall': new CoboWaas2JsApi.SmartContractCall() // SmartContractCall | The request body to create a smart contract transaction
 };
 apiInstance.createSmartContractCallTransaction(opts).then((data) => {
@@ -81,15 +79,13 @@ Create a transaction to transfer funds from one account to another.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
   'transfer': new CoboWaas2JsApi.Transfer() // Transfer | The request body to create a transfer transaction
 };
 apiInstance.createTransferTransaction(opts).then((data) => {
@@ -133,16 +129,14 @@ Drop a transaction.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const opts = {
   'transactionFee': new CoboWaas2JsApi.TransactionFee() // TransactionFee | The request body of fee to initiate transaction
 };
 apiInstance.dropTransactionById(transactionId, opts).then((data) => {
@@ -187,15 +181,13 @@ Estimate the transaction fee.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
   'estimateFee': new CoboWaas2JsApi.EstimateFee() // EstimateFee | The request body to estimate fee of transfer or call transaction
 };
 apiInstance.estimateFee(opts).then((data) => {
@@ -239,15 +231,13 @@ Retrieve the fee price data.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
   'chainId': "ETH", // String | Unique id of the chain
   'tokenId': "ETH_USDT" // String | Unique id of the token
 };
@@ -293,15 +283,13 @@ Detailed description on retrieving transaction information by id
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
 apiInstance.getTransactionById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -343,15 +331,13 @@ Retrieve a list of transactions.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
   'requestId': "web_send_by_user_327_1610444045047", // String | Request ID
   'coboId': "20231213122855000000000000000000", // String | Cobo ID
   'transactionId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the transaction
@@ -427,15 +413,13 @@ Resend a transaction.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
 apiInstance.resendTransactionById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -477,15 +461,13 @@ Retry a transaction double-check.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
 apiInstance.retryTransactionDoubleCheckById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -527,16 +509,14 @@ Speed up a transaction.
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.TransactionsApi();
-let transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const opts = {
   'transactionFee': new CoboWaas2JsApi.TransactionFee() // TransactionFee | The request body of fee to initiate transaction
 };
 apiInstance.speedupTransactionById(transactionId, opts).then((data) => {

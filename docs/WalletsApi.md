@@ -37,16 +37,14 @@ Add an address to a wallet.  Error codes this API may return: | Error Code | Des
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const opts = {
   'addWalletAddressRequest': new CoboWaas2JsApi.AddWalletAddressRequest() // AddWalletAddressRequest | The request body to add address for a wallet
 };
 apiInstance.addWalletAddress(walletId, opts).then((data) => {
@@ -91,15 +89,13 @@ Creates a new wallet with the provided information.  Error codes this API may re
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'createdWallet': new CoboWaas2JsApi.CreatedWallet() // CreatedWallet | The request body to create a wallet
 };
 apiInstance.createWallet(opts).then((data) => {
@@ -143,15 +139,13 @@ Deletes a specific wallet identified by its ID. This endpoint is supported by Ex
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 apiInstance.deleteWalletById(walletId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -193,16 +187,14 @@ Verifies if the given address is valid for the specified token. Error codes this
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let tokenId = "ETH_USDT"; // String | Unique id of the token
-let addressStr = "0x0000000000000000000000000000000000000000"; // String | The address string
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const tokenId = "ETH_USDT"; // String | Unique id of the token
+const addressStr = "0x0000000000000000000000000000000000000000"; // String | The address string
 apiInstance.getAddressValidity(tokenId, addressStr).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -245,15 +237,13 @@ This endpoint retrieves metadata for available blockchain chains. It provides de
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'chainId': "ETH", // String | Unique id of the chain
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
   'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
@@ -303,15 +293,13 @@ This endpoint allows users to query enabled chains based on wallet type and subt
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
   'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
@@ -363,15 +351,13 @@ This endpoint allows users to query enabled tokens based on wallet type, subtype
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
   'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'chainId': "ETH", // String | Unique id of the chain
@@ -425,17 +411,15 @@ Retrieves the maximum transferable value and the corresponding transaction fee f
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let toAddress = "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE"; // String | address
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const toAddress = "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE"; // String | address
+const opts = {
   'fromAddress': "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE" // String | address
 };
 apiInstance.getMaxTransferableValue(walletId, toAddress, opts).then((data) => {
@@ -481,17 +465,15 @@ Retrieves a list of spendable unspent transaction outputs (UTXOs) for a given wa
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let tokenId = "ETH_USDT"; // String | Unique id of the token
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const tokenId = "ETH_USDT"; // String | Unique id of the token
+const opts = {
   'addressStr': "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE" // String | address
 };
 apiInstance.getSpendableList(walletId, tokenId, opts).then((data) => {
@@ -537,15 +519,13 @@ This endpoint allows users to query supported chains based on wallet type and su
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
   'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
@@ -597,15 +577,13 @@ This endpoint allows users to query supported tokens based on wallet type, subty
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
   'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'chainId': "ETH", // String | Unique id of the chain
@@ -659,15 +637,13 @@ This endpoint retrieves metadata for tokens stored in the wallet system. It prov
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
   'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
@@ -717,17 +693,15 @@ Retrieves a list of token balances for a specific address within a wallet. This 
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let addressId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the address
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const addressId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the address
+const opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
   'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
@@ -779,15 +753,13 @@ Retrieves detailed information about a wallet identified by its unique ID.  Erro
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 apiInstance.getWalletById(walletId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -829,16 +801,14 @@ Retrieves a list of token balances within a wallet. This endpoint allows users t
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
   'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
@@ -889,16 +859,14 @@ Retrieve a list of addresses associated with a wallet.  Error codes this API may
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
   'addressStr': "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE", // String | address
   'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
@@ -951,15 +919,13 @@ Retrieves a list of all wallets.  This endpoint allows filtering by wallet type,
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const opts = {
   'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
   'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'vaultId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc vault
@@ -1013,16 +979,14 @@ Updates information for a specific wallet identified by its ID. This endpoint is
 
 ```javascript
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
-let defaultClient = CoboWaas2JsApi.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2JsApi.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let opts = {
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsApi();
+const walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
+const opts = {
   'updateWalletByIdRequest': new CoboWaas2JsApi.UpdateWalletByIdRequest() // UpdateWalletByIdRequest | The request body to update a wallet
 };
 apiInstance.updateWalletById(walletId, opts).then((data) => {
