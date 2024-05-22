@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionInitiatorType
+# CoboWaas2JsApi.TransactionInitiatorType
 
 ## Enum
 

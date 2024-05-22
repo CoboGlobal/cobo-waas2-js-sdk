@@ -1,4 +1,4 @@
-# CoboWaas2Api.ModifyMpcVaultRequest
+# CoboWaas2JsApi.ModifyMpcVaultRequest
 
 ## Properties
 

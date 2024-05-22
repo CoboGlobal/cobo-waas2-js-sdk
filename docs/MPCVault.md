@@ -1,4 +1,4 @@
-# CoboWaas2Api.MPCVault
+# CoboWaas2JsApi.MPCVault
 
 ## Properties
 

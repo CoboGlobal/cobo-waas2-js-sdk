@@ -1,12 +1,12 @@
-# CoboWaas2Api.ErrorResponse
+# CoboWaas2JsApi.ErrorResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **Boolean** | Indicates if the API operation was successful. Always false for errors. | [default to false]
-**errorCode** | **Number** | A machine-readable error code.&#x60; | 
-**errorDescription** | **String** | A human-readable error description for users. | 
-**errorId** | **String** | A unique ID for the error log, mainly used for debugging. | 
+**success** | **Boolean** | Whether the API operation was successful. This is always &#x60;false&#x60; for a failed request. | [default to false]
+**errorCode** | **Number** | The error code. | 
+**errorDescription** | **String** | The error description. | 
+**errorId** | **String** | A error log ID. You can use it for debugging purposes. | 
 
 

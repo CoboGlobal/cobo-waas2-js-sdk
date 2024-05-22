@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -12,8 +11,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import GetTokens200ResponseDataInner from './GetTokens200ResponseDataInner';
 import Pagination from './Pagination';
-import TokenInfo from './TokenInfo';
 
 /**
  * The GetTokens200Response model module.
@@ -50,7 +49,7 @@ class GetTokens200Response {
             obj = obj || new GetTokens200Response();
 
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], [TokenInfo]);
+                obj['data'] = ApiClient.convertToType(data['data'], [GetTokens200ResponseDataInner]);
             }
             if (data.hasOwnProperty('pagination')) {
                 obj['pagination'] = Pagination.constructFromObject(data['pagination']);
@@ -72,7 +71,7 @@ class GetTokens200Response {
             }
             // validate the optional field `data` (array)
             for (const item of data['data']) {
-                TokenInfo.validateJSON(item);
+                GetTokens200ResponseDataInner.validateJSON(item);
             };
         }
         // validate the optional field `pagination`
@@ -89,7 +88,7 @@ class GetTokens200Response {
 
 
 /**
- * @member {Array.<module:model/TokenInfo>} data
+ * @member {Array.<module:model/GetTokens200ResponseDataInner>} data
  */
 GetTokens200Response.prototype['data'] = undefined;
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.ExchangeWalletInfoAllOfSubAccounts
+# CoboWaas2JsApi.ExchangeWalletInfoAllOfSubAccounts
 
 ## Properties
 

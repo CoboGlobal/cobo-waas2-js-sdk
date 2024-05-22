@@ -1,4 +1,4 @@
-# CoboWaas2Api.MpcTransferSource
+# CoboWaas2JsApi.MpcTransferSource
 
 ## Properties
 

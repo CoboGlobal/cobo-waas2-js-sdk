@@ -1,4 +1,4 @@
-# CoboWaas2Api.ListWallets200Response
+# CoboWaas2JsApi.ListWallets200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateTssRequestRequestDetailParams
+# CoboWaas2JsApi.CreateTssRequestRequestDetailParams
 
 ## Properties
 

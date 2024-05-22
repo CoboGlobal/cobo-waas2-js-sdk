@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -18,13 +17,12 @@ import AddressInfo from '../model/AddressInfo';
 import CreatedWallet from '../model/CreatedWallet';
 import ErrorResponse from '../model/ErrorResponse';
 import GetAddressValidity200Response from '../model/GetAddressValidity200Response';
-import GetAssets200Response from '../model/GetAssets200Response';
 import GetChains200Response from '../model/GetChains200Response';
 import GetTokens200Response from '../model/GetTokens200Response';
 import GetWalletTokenBalances200Response from '../model/GetWalletTokenBalances200Response';
 import ListAddresses200Response from '../model/ListAddresses200Response';
 import ListWallets200Response from '../model/ListWallets200Response';
-import MaxSendValue from '../model/MaxSendValue';
+import MaxTransferableValue from '../model/MaxTransferableValue';
 import UTXO from '../model/UTXO';
 import UpdateWalletByIdRequest from '../model/UpdateWalletByIdRequest';
 import WalletInfo from '../model/WalletInfo';
@@ -52,8 +50,8 @@ export default class WalletsApi {
 
 
     /**
-     * Add address to a wallet
-     * Add address to a wallet.
+     * Add address to wallet
+     * Add an address to a wallet.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {module:model/AddWalletAddressRequest} [addWalletAddressRequest] The request body to add address for a wallet
@@ -89,8 +87,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Add address to a wallet
-     * Add address to a wallet.
+     * Add address to wallet
+     * Add an address to a wallet.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {module:model/AddWalletAddressRequest} opts.addWalletAddressRequest The request body to add address for a wallet
@@ -106,7 +104,7 @@ export default class WalletsApi {
 
     /**
      * Create new wallet
-     * ..More detailed explanation on creating a new wallet..  Error codes this API may return: | Error Code | Description | | -- | -- | | `2003` | 必选参数缺失 | | `2006` | 参数格式或者值非法 | 
+     * Creates a new wallet with the provided information.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2003` | 必选参数缺失 | | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreatedWallet} [createdWallet] The request body to create a wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WalletInfo} and HTTP response
@@ -137,7 +135,7 @@ export default class WalletsApi {
 
     /**
      * Create new wallet
-     * ..More detailed explanation on creating a new wallet..  Error codes this API may return: | Error Code | Description | | -- | -- | | `2003` | 必选参数缺失 | | `2006` | 参数格式或者值非法 | 
+     * Creates a new wallet with the provided information.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2003` | 必选参数缺失 | | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreatedWallet} opts.createdWallet The request body to create a wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WalletInfo}
@@ -151,8 +149,8 @@ export default class WalletsApi {
 
 
     /**
-     * Delete a wallet by ID
-     * Delete a specific wallet by ID
+     * Delete wallet by ID
+     * Deletes a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -185,8 +183,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Delete a wallet by ID
-     * Delete a specific wallet by ID
+     * Delete wallet by ID
+     * Deletes a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
@@ -199,8 +197,8 @@ export default class WalletsApi {
 
 
     /**
-     * Get the given address validity for token
-     * Check if the given address valid.
+     * Check address validity
+     * Verifies if the given address is valid for the specified token. Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} tokenId Unique id of the token
      * @param {String} addressStr The address string
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetAddressValidity200Response} and HTTP response
@@ -239,8 +237,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Get the given address validity for token
-     * Check if the given address valid.
+     * Check address validity
+     * Verifies if the given address is valid for the specified token. Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} tokenId Unique id of the token
      * @param {String} addressStr The address string
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetAddressValidity200Response}
@@ -254,69 +252,13 @@ export default class WalletsApi {
 
 
     /**
-     * List the metadata of assets
-     * Retrieve a list of asset metadata.
-     * @param {Object} opts Optional parameters
-     * @param {String} [assetId] Unique id of the asset
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetAssets200Response} and HTTP response
-     */
-    getAssetsWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'asset_id': opts['assetId'],
-        'limit': opts['limit'],
-        'before': opts['before'],
-        'after': opts['after']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = GetAssets200Response;
-      return this.apiClient.callApi(
-        '/wallets/assets', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * List the metadata of assets
-     * Retrieve a list of asset metadata.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.assetId Unique id of the asset
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetAssets200Response}
-     */
-    getAssets(opts) {
-      return this.getAssetsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * List the metadata of chain
-     * Retrieve a list of chain metadata.
+     * List chain metadata
+     * This endpoint retrieves metadata for available blockchain chains. It provides details such as chain_id, name, and other relevant information. Pagination parameters can be used to manage the size of the response. The chain list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {String} [chainId] Unique id of the chain
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
      */
     getChainsWithHttpInfo(opts) {
@@ -348,13 +290,13 @@ export default class WalletsApi {
     }
 
     /**
-     * List the metadata of chain
-     * Retrieve a list of chain metadata.
+     * List chain metadata
+     * This endpoint retrieves metadata for available blockchain chains. It provides details such as chain_id, name, and other relevant information. Pagination parameters can be used to manage the size of the response. The chain list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {String} opts.chainId Unique id of the chain
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
      */
     getChains(opts) {
@@ -366,24 +308,145 @@ export default class WalletsApi {
 
 
     /**
-     * Get max sendable Vaule
-     * Retrieve the maximum sendable vaule and the corresponding transaction fee for a given address.
+     * List enabled chains
+     * This endpoint allows users to query enabled chains based on wallet type and subtype  for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} [walletType] Wallet type to query
+     * @param {module:model/WalletSubtype} [walletSubtype] Wallet subtype to query
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
+     */
+    getEnabledChainsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'wallet_type': opts['walletType'],
+        'wallet_subtype': opts['walletSubtype'],
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetChains200Response;
+      return this.apiClient.callApi(
+        '/wallets/enabled_chains', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List enabled chains
+     * This endpoint allows users to query enabled chains based on wallet type and subtype  for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} opts.walletType Wallet type to query
+     * @param {module:model/WalletSubtype} opts.walletSubtype Wallet subtype to query
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
+     */
+    getEnabledChains(opts) {
+      return this.getEnabledChainsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List enabled tokens
+     * This endpoint allows users to query enabled tokens based on wallet type, subtype,  and chain ID if specified for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List enabled chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} [walletType] Wallet type to query
+     * @param {module:model/WalletSubtype} [walletSubtype] Wallet subtype to query
+     * @param {String} [chainId] Unique id of the chain
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
+     */
+    getEnabledTokensWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'wallet_type': opts['walletType'],
+        'wallet_subtype': opts['walletSubtype'],
+        'chain_id': opts['chainId'],
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetTokens200Response;
+      return this.apiClient.callApi(
+        '/wallets/enabled_tokens', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List enabled tokens
+     * This endpoint allows users to query enabled tokens based on wallet type, subtype,  and chain ID if specified for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List enabled chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} opts.walletType Wallet type to query
+     * @param {module:model/WalletSubtype} opts.walletSubtype Wallet subtype to query
+     * @param {String} opts.chainId Unique id of the chain
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
+     */
+    getEnabledTokens(opts) {
+      return this.getEnabledTokensWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get max transferable value
+     * Retrieves the maximum transferable value and the corresponding transaction fee for a given address. This endpoint allows users to determine the maximum amount that can be transferred from a wallet address, along with the associated transaction fee.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} toAddress address
      * @param {Object} opts Optional parameters
      * @param {String} [fromAddress] address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MaxSendValue} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MaxTransferableValue} and HTTP response
      */
-    getMaxSendValueWithHttpInfo(walletId, toAddress, opts) {
+    getMaxTransferableValueWithHttpInfo(walletId, toAddress, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
-        throw new Error("Missing the required parameter 'walletId' when calling getMaxSendValue");
+        throw new Error("Missing the required parameter 'walletId' when calling getMaxTransferableValue");
       }
       // verify the required parameter 'toAddress' is set
       if (toAddress === undefined || toAddress === null) {
-        throw new Error("Missing the required parameter 'toAddress' when calling getMaxSendValue");
+        throw new Error("Missing the required parameter 'toAddress' when calling getMaxTransferableValue");
       }
 
       let pathParams = {
@@ -401,25 +464,25 @@ export default class WalletsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = MaxSendValue;
+      let returnType = MaxTransferableValue;
       return this.apiClient.callApi(
-        '/wallets/{wallet_id}/max_sendable_value', 'GET',
+        '/wallets/{wallet_id}/max_transferable_value', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Get max sendable Vaule
-     * Retrieve the maximum sendable vaule and the corresponding transaction fee for a given address.
+     * Get max transferable value
+     * Retrieves the maximum transferable value and the corresponding transaction fee for a given address. This endpoint allows users to determine the maximum amount that can be transferred from a wallet address, along with the associated transaction fee.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} toAddress address
      * @param {Object} opts Optional parameters
      * @param {String} opts.fromAddress address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MaxSendValue}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MaxTransferableValue}
      */
-    getMaxSendValue(walletId, toAddress, opts) {
-      return this.getMaxSendValueWithHttpInfo(walletId, toAddress, opts)
+    getMaxTransferableValue(walletId, toAddress, opts) {
+      return this.getMaxTransferableValueWithHttpInfo(walletId, toAddress, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -427,8 +490,8 @@ export default class WalletsApi {
 
 
     /**
-     * List the spendable utxo
-     * Retrieve a list of spendable utxo.
+     * List spendable UTXOs
+     * Retrieves a list of spendable unspent transaction outputs (UTXOs) for a given wallet and token. This endpoint allows users to query UTXOs that can be spent in transactions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} tokenId Unique id of the token
      * @param {Object} opts Optional parameters
@@ -471,8 +534,8 @@ export default class WalletsApi {
     }
 
     /**
-     * List the spendable utxo
-     * Retrieve a list of spendable utxo.
+     * List spendable UTXOs
+     * Retrieves a list of spendable unspent transaction outputs (UTXOs) for a given wallet and token. This endpoint allows users to query UTXOs that can be spent in transactions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} tokenId Unique id of the token
      * @param {Object} opts Optional parameters
@@ -488,27 +551,25 @@ export default class WalletsApi {
 
 
     /**
-     * List the supported chains by wallet subtype
-     * Retrieve a list of supported chain.
-     * @param {module:model/WalletSubtype} walletSubtype Wallet subtype to query
+     * List supported chains
+     * This endpoint allows users to query supported chains based on wallet type and subtype.  Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {module:model/WalletType} [walletType] Wallet type to query
+     * @param {module:model/WalletSubtype} [walletSubtype] Wallet subtype to query
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
      */
-    getSupportedChainsWithHttpInfo(walletSubtype, opts) {
+    getSupportedChainsWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'walletSubtype' is set
-      if (walletSubtype === undefined || walletSubtype === null) {
-        throw new Error("Missing the required parameter 'walletSubtype' when calling getSupportedChains");
-      }
 
       let pathParams = {
       };
       let queryParams = {
-        'wallet_subtype': walletSubtype,
+        'wallet_type': opts['walletType'],
+        'wallet_subtype': opts['walletSubtype'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -530,17 +591,18 @@ export default class WalletsApi {
     }
 
     /**
-     * List the supported chains by wallet subtype
-     * Retrieve a list of supported chain.
-     * @param {module:model/WalletSubtype} walletSubtype Wallet subtype to query
+     * List supported chains
+     * This endpoint allows users to query supported chains based on wallet type and subtype.  Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {module:model/WalletType} opts.walletType Wallet type to query
+     * @param {module:model/WalletSubtype} opts.walletSubtype Wallet subtype to query
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
      */
-    getSupportedChains(walletSubtype, opts) {
-      return this.getSupportedChainsWithHttpInfo(walletSubtype, opts)
+    getSupportedChains(opts) {
+      return this.getSupportedChainsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -548,28 +610,26 @@ export default class WalletsApi {
 
 
     /**
-     * List the supported tokens by wallet subtype and chain id if specified
-     * Retrieve a list of supported token.
-     * @param {module:model/WalletSubtype} walletSubtype Wallet subtype to query
+     * List supported tokens
+     * This endpoint allows users to query supported tokens based on wallet type, subtype, and chain ID if specified. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List supported chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} [walletType] Wallet type to query
+     * @param {module:model/WalletSubtype} [walletSubtype] Wallet subtype to query
      * @param {String} [chainId] Unique id of the chain
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
      */
-    getSupportedTokensWithHttpInfo(walletSubtype, opts) {
+    getSupportedTokensWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'walletSubtype' is set
-      if (walletSubtype === undefined || walletSubtype === null) {
-        throw new Error("Missing the required parameter 'walletSubtype' when calling getSupportedTokens");
-      }
 
       let pathParams = {
       };
       let queryParams = {
-        'wallet_subtype': walletSubtype,
+        'wallet_type': opts['walletType'],
+        'wallet_subtype': opts['walletSubtype'],
         'chain_id': opts['chainId'],
         'limit': opts['limit'],
         'before': opts['before'],
@@ -592,18 +652,19 @@ export default class WalletsApi {
     }
 
     /**
-     * List the supported tokens by wallet subtype and chain id if specified
-     * Retrieve a list of supported token.
-     * @param {module:model/WalletSubtype} walletSubtype Wallet subtype to query
+     * List supported tokens
+     * This endpoint allows users to query supported tokens based on wallet type, subtype, and chain ID if specified. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List supported chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
+     * @param {module:model/WalletType} opts.walletType Wallet type to query
+     * @param {module:model/WalletSubtype} opts.walletSubtype Wallet subtype to query
      * @param {String} opts.chainId Unique id of the chain
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
      */
-    getSupportedTokens(walletSubtype, opts) {
-      return this.getSupportedTokensWithHttpInfo(walletSubtype, opts)
+    getSupportedTokens(opts) {
+      return this.getSupportedTokensWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -611,13 +672,13 @@ export default class WalletsApi {
 
 
     /**
-     * List the metadata of tokens
-     * Retrieve a list of token metadata.
+     * List token metadata
+     * This endpoint retrieves metadata for tokens stored in the wallet system. It provides details such as token_id, symbol, and other relevant information. Pagination parameters can be used to manage the size of the response. The token list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {String} [tokenId] Unique id of the token
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
      */
     getTokensWithHttpInfo(opts) {
@@ -649,13 +710,13 @@ export default class WalletsApi {
     }
 
     /**
-     * List the metadata of tokens
-     * Retrieve a list of token metadata.
+     * List token metadata
+     * This endpoint retrieves metadata for tokens stored in the wallet system. It provides details such as token_id, symbol, and other relevant information. Pagination parameters can be used to manage the size of the response. The token list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {String} opts.tokenId Unique id of the token
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
      */
     getTokens(opts) {
@@ -667,70 +728,15 @@ export default class WalletsApi {
 
 
     /**
-     * Get address information by ID
-     * Retrieve wallet information by ID
-     * @param {String} walletId Unique id of the wallet
-     * @param {String} addressId Unique id of the address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AddressInfo} and HTTP response
-     */
-    getWalletAddressByIdWithHttpInfo(walletId, addressId) {
-      let postBody = null;
-      // verify the required parameter 'walletId' is set
-      if (walletId === undefined || walletId === null) {
-        throw new Error("Missing the required parameter 'walletId' when calling getWalletAddressById");
-      }
-      // verify the required parameter 'addressId' is set
-      if (addressId === undefined || addressId === null) {
-        throw new Error("Missing the required parameter 'addressId' when calling getWalletAddressById");
-      }
-
-      let pathParams = {
-        'wallet_id': walletId,
-        'address_id': addressId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = AddressInfo;
-      return this.apiClient.callApi(
-        '/wallets/{wallet_id}/addresses/{address_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Get address information by ID
-     * Retrieve wallet information by ID
-     * @param {String} walletId Unique id of the wallet
-     * @param {String} addressId Unique id of the address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AddressInfo}
-     */
-    getWalletAddressById(walletId, addressId) {
-      return this.getWalletAddressByIdWithHttpInfo(walletId, addressId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * List the token balance by address in the wallets(to be specific)
-     * Retrieve a list of token balance by address in wallet.
+     * List Token Balances by Address in Wallet
+     * Retrieves a list of token balances for a specific address within a wallet. This endpoint allows users to query token balances based on the wallet ID, address ID, and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by MPC wallets.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} addressId Unique id of the address
      * @param {Object} opts Optional parameters
      * @param {String} [tokenId] Unique id of the token
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetWalletTokenBalances200Response} and HTTP response
      */
     getWalletAddressTokenBalancesWithHttpInfo(walletId, addressId, opts) {
@@ -772,15 +778,15 @@ export default class WalletsApi {
     }
 
     /**
-     * List the token balance by address in the wallets(to be specific)
-     * Retrieve a list of token balance by address in wallet.
+     * List Token Balances by Address in Wallet
+     * Retrieves a list of token balances for a specific address within a wallet. This endpoint allows users to query token balances based on the wallet ID, address ID, and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by MPC wallets.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {String} addressId Unique id of the address
      * @param {Object} opts Optional parameters
      * @param {String} opts.tokenId Unique id of the token
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetWalletTokenBalances200Response}
      */
     getWalletAddressTokenBalances(walletId, addressId, opts) {
@@ -792,8 +798,8 @@ export default class WalletsApi {
 
 
     /**
-     * Get wallet information by ID
      * Retrieve wallet information by ID
+     * Retrieves detailed information about a wallet identified by its unique ID.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WalletInfo} and HTTP response
      */
@@ -826,8 +832,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Get wallet information by ID
      * Retrieve wallet information by ID
+     * Retrieves detailed information about a wallet identified by its unique ID.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WalletInfo}
      */
@@ -840,14 +846,14 @@ export default class WalletsApi {
 
 
     /**
-     * List the token balance in the wallets(to be specific)
-     * Retrieve a list of token balance in wallet.
+     * List Token Balances in Wallet
+     * Retrieves a list of token balances within a wallet. This endpoint allows users to query token balances based on the wallet ID and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by Custodial/MPC wallets.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {String} [tokenId] Unique id of the token
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetWalletTokenBalances200Response} and HTTP response
      */
     getWalletTokenBalancesWithHttpInfo(walletId, opts) {
@@ -884,14 +890,14 @@ export default class WalletsApi {
     }
 
     /**
-     * List the token balance in the wallets(to be specific)
-     * Retrieve a list of token balance in wallet.
+     * List Token Balances in Wallet
+     * Retrieves a list of token balances within a wallet. This endpoint allows users to query token balances based on the wallet ID and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by Custodial/MPC wallets.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {String} opts.tokenId Unique id of the token
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetWalletTokenBalances200Response}
      */
     getWalletTokenBalances(walletId, opts) {
@@ -904,13 +910,14 @@ export default class WalletsApi {
 
     /**
      * List wallet addresses by wallet ID
-     * Retrieve a list of addresses.
+     * Retrieve a list of addresses associated with a wallet.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {String} [tokenId] Unique id of the token
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {String} [addressStr] address
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAddresses200Response} and HTTP response
      */
     listAddressesWithHttpInfo(walletId, opts) {
@@ -926,6 +933,7 @@ export default class WalletsApi {
       };
       let queryParams = {
         'token_id': opts['tokenId'],
+        'address_str': opts['addressStr'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -948,13 +956,14 @@ export default class WalletsApi {
 
     /**
      * List wallet addresses by wallet ID
-     * Retrieve a list of addresses.
+     * Retrieve a list of addresses associated with a wallet.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {String} opts.tokenId Unique id of the token
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {String} opts.addressStr address
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAddresses200Response}
      */
     listAddresses(walletId, opts) {
@@ -967,14 +976,14 @@ export default class WalletsApi {
 
     /**
      * List all wallets
-     * Retrieve a list of wallets.
+     * Retrieves a list of all wallets.  This endpoint allows filtering by wallet type, subtype, and MPC vault ID (if applicable).  Error codes this API may return:       | Error Code | Description |       | -- | -- |       | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {module:model/WalletType} [walletType] Wallet type to query
      * @param {module:model/WalletSubtype} [walletSubtype] Wallet subtype to query
      * @param {String} [vaultId] Unique id of the mpc vault
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWallets200Response} and HTTP response
      */
     listWalletsWithHttpInfo(opts) {
@@ -1009,14 +1018,14 @@ export default class WalletsApi {
 
     /**
      * List all wallets
-     * Retrieve a list of wallets.
+     * Retrieves a list of all wallets.  This endpoint allows filtering by wallet type, subtype, and MPC vault ID (if applicable).  Error codes this API may return:       | Error Code | Description |       | -- | -- |       | `2006` | 参数格式或者值非法 | 
      * @param {Object} opts Optional parameters
      * @param {module:model/WalletType} opts.walletType Wallet type to query
      * @param {module:model/WalletSubtype} opts.walletSubtype Wallet subtype to query
      * @param {String} opts.vaultId Unique id of the mpc vault
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWallets200Response}
      */
     listWallets(opts) {
@@ -1029,7 +1038,7 @@ export default class WalletsApi {
 
     /**
      * Update wallet by ID
-     * Update wallet info by ID
+     * Updates information for a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateWalletByIdRequest} [updateWalletByIdRequest] The request body to update a wallet
@@ -1066,7 +1075,7 @@ export default class WalletsApi {
 
     /**
      * Update wallet by ID
-     * Update wallet info by ID
+     * Updates information for a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | `2006` | 参数格式或者值非法 | 
      * @param {String} walletId Unique id of the wallet
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateWalletByIdRequest} opts.updateWalletByIdRequest The request body to update a wallet

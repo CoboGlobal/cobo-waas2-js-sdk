@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -29,8 +28,8 @@ class EvmEip1559TransactionFee {
      * @implements module:model/EvmEip1559FeeBasePrice
      * @implements module:model/FeeData
      * @param maxFee {String} The highest Gas price paid for the transfer, unit GWei.
-     * @param maxPriorityFee {Number} The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
-     * @param baseFee {Number} The Base Fee of chain.
+     * @param maxPriorityFee {String} The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
+     * @param baseFee {String} The Base Fee of chain.
      * @param feeType {module:model/FeeType} 
      */
     constructor(maxFee, maxPriorityFee, baseFee, feeType) { 
@@ -70,13 +69,13 @@ class EvmEip1559TransactionFee {
                 obj['max_fee'] = ApiClient.convertToType(data['max_fee'], 'String');
             }
             if (data.hasOwnProperty('max_priority_fee')) {
-                obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'Number');
+                obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'String');
             }
             if (data.hasOwnProperty('base_fee')) {
-                obj['base_fee'] = ApiClient.convertToType(data['base_fee'], 'Number');
+                obj['base_fee'] = ApiClient.convertToType(data['base_fee'], 'String');
             }
             if (data.hasOwnProperty('gas_limit')) {
-                obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'Number');
+                obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'String');
             }
             if (data.hasOwnProperty('fee_amount')) {
                 obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
@@ -109,6 +108,18 @@ class EvmEip1559TransactionFee {
             throw new Error("Expected the field `max_fee` to be a primitive type in the JSON string but got " + data['max_fee']);
         }
         // ensure the json data is a string
+        if (data['max_priority_fee'] && !(typeof data['max_priority_fee'] === 'string' || data['max_priority_fee'] instanceof String)) {
+            throw new Error("Expected the field `max_priority_fee` to be a primitive type in the JSON string but got " + data['max_priority_fee']);
+        }
+        // ensure the json data is a string
+        if (data['base_fee'] && !(typeof data['base_fee'] === 'string' || data['base_fee'] instanceof String)) {
+            throw new Error("Expected the field `base_fee` to be a primitive type in the JSON string but got " + data['base_fee']);
+        }
+        // ensure the json data is a string
+        if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
+            throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
+        }
+        // ensure the json data is a string
         if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
@@ -135,22 +146,22 @@ EvmEip1559TransactionFee.prototype['max_fee'] = undefined;
 
 /**
  * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
- * @member {Number} max_priority_fee
+ * @member {String} max_priority_fee
  */
 EvmEip1559TransactionFee.prototype['max_priority_fee'] = undefined;
 
 /**
  * The Base Fee of chain.
- * @member {Number} base_fee
+ * @member {String} base_fee
  */
 EvmEip1559TransactionFee.prototype['base_fee'] = undefined;
 
 /**
  * The Limit of gas.
- * @member {Number} gas_limit
- * @default 21000
+ * @member {String} gas_limit
+ * @default '21000'
  */
-EvmEip1559TransactionFee.prototype['gas_limit'] = 21000;
+EvmEip1559TransactionFee.prototype['gas_limit'] = '21000';
 
 /**
  * The estimated fee amount in fee_coin.
@@ -177,21 +188,21 @@ EvmEip1559FeeBasePrice.prototype['fee_token_id'] = undefined;
 EvmEip1559FeeBasePrice.prototype['max_fee'] = undefined;
 /**
  * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
- * @member {Number} max_priority_fee
+ * @member {String} max_priority_fee
  */
 EvmEip1559FeeBasePrice.prototype['max_priority_fee'] = undefined;
 /**
  * The Base Fee of chain.
- * @member {Number} base_fee
+ * @member {String} base_fee
  */
 EvmEip1559FeeBasePrice.prototype['base_fee'] = undefined;
 // Implement FeeData interface:
 /**
  * The Limit of gas.
- * @member {Number} gas_limit
- * @default 21000
+ * @member {String} gas_limit
+ * @default '21000'
  */
-FeeData.prototype['gas_limit'] = 21000;
+FeeData.prototype['gas_limit'] = '21000';
 /**
  * The estimated fee amount in fee_coin.
  * @member {String} fee_amount

@@ -1,4 +1,4 @@
-# CoboWaas2Api.AddWalletAddressRequest
+# CoboWaas2JsApi.AddWalletAddressRequest
 
 ## Properties
 

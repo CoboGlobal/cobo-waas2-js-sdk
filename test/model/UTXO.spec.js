@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -20,15 +19,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.CoboWaas2Api);
+    factory(root.expect, root.CoboWaas2JsApi);
   }
-}(this, function(expect, CoboWaas2Api) {
+}(this, function(expect, CoboWaas2JsApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2Api.UTXO();
+    instance = new CoboWaas2JsApi.UTXO();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +49,43 @@
   describe('UTXO', function() {
     it('should create an instance of UTXO', function() {
       // uncomment below and update the code to test UTXO
-      //var instance = new CoboWaas2Api.UTXO();
-      //expect(instance).to.be.a(CoboWaas2Api.UTXO);
+      //var instance = new CoboWaas2JsApi.UTXO();
+      //expect(instance).to.be.a(CoboWaas2JsApi.UTXO);
     });
 
     it('should have the property txHash (base name: "tx_hash")', function() {
       // uncomment below and update the code to test the property txHash
-      //var instance = new CoboWaas2Api.UTXO();
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
     it('should have the property voutN (base name: "vout_n")', function() {
       // uncomment below and update the code to test the property voutN
-      //var instance = new CoboWaas2Api.UTXO();
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
-      //var instance = new CoboWaas2Api.UTXO();
+    it('should have the property addressStr (base name: "address_str")', function() {
+      // uncomment below and update the code to test the property addressStr
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2Api.UTXO();
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
     it('should have the property isCoinbase (base name: "is_coinbase")', function() {
       // uncomment below and update the code to test the property isCoinbase
-      //var instance = new CoboWaas2Api.UTXO();
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
     it('should have the property confirmedNumber (base name: "confirmed_number")', function() {
       // uncomment below and update the code to test the property confirmedNumber
-      //var instance = new CoboWaas2Api.UTXO();
+      //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 

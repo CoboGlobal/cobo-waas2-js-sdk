@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionAddressType
+# CoboWaas2JsApi.TransactionAddressType
 
 ## Enum
 
@@ -11,13 +11,11 @@
 
 * `MPCUserControlledWallet` (value: `"MPCUserControlledWallet"`)
 
-* `SmartContractWallet` (value: `"SmartContractWallet"`)
+* `SafeContractWallet` (value: `"SafeContractWallet"`)
 
 * `ExchangeAccount` (value: `"ExchangeAccount"`)
 
 * `GasStation` (value: `"GasStation"`)
-
-* `CoboPortal` (value: `"CoboPortal"`)
 
 * `ExternalAddress` (value: `"ExternalAddress"`)
 

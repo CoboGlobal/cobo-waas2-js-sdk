@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransferDestinationType
+# CoboWaas2JsApi.TransferDestinationType
 
 ## Enum
 

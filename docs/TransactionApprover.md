@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionApprover
+# CoboWaas2JsApi.TransactionApprover
 
 ## Properties
 

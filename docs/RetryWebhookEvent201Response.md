@@ -1,9 +1,9 @@
-# CoboWaas2Api.RetryWebhookEvent201Response
+# CoboWaas2JsApi.RetryWebhookEvent201Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**retried** | **Boolean** |  | [optional] 
+**retried** | **Boolean** | Whether the retry request has been successfully sent. | [optional] 
 
 

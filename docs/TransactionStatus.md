@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionStatus
+# CoboWaas2JsApi.TransactionStatus
 
 ## Enum
 

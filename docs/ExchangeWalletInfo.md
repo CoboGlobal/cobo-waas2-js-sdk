@@ -1,4 +1,4 @@
-# CoboWaas2Api.ExchangeWalletInfo
+# CoboWaas2JsApi.ExchangeWalletInfo
 
 ## Properties
 

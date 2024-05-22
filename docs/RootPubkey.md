@@ -1,4 +1,4 @@
-# CoboWaas2Api.RootPubkey
+# CoboWaas2JsApi.RootPubkey
 
 ## Properties
 

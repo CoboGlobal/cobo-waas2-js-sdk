@@ -1,4 +1,4 @@
-# CoboWaas2Api.SignMessage
+# CoboWaas2JsApi.SignMessage
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.ListAddresses200Response
+# CoboWaas2JsApi.ListAddresses200Response
 
 ## Properties
 

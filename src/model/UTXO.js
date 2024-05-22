@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -54,8 +53,8 @@ class UTXO {
             if (data.hasOwnProperty('vout_n')) {
                 obj['vout_n'] = ApiClient.convertToType(data['vout_n'], 'Number');
             }
-            if (data.hasOwnProperty('address')) {
-                obj['address'] = ApiClient.convertToType(data['address'], 'String');
+            if (data.hasOwnProperty('address_str')) {
+                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
             }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
@@ -81,8 +80,8 @@ class UTXO {
             throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
-            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
+            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
         }
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
@@ -111,9 +110,9 @@ UTXO.prototype['vout_n'] = undefined;
 
 /**
  * Address of the UTXO.
- * @member {String} address
+ * @member {String} address_str
  */
-UTXO.prototype['address'] = undefined;
+UTXO.prototype['address_str'] = undefined;
 
 /**
  * UTXO amount in decimal places (e.g. one bitcoin is divisible to eight decimal places, and 100000000 represents 1 BTC).

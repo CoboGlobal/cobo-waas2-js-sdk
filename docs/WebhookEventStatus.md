@@ -1,4 +1,4 @@
-# CoboWaas2Api.WebhookEventStatus
+# CoboWaas2JsApi.WebhookEventStatus
 
 ## Enum
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateCustodialWallet
+# CoboWaas2JsApi.CreateCustodialWallet
 
 ## Properties
 

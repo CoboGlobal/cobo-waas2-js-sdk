@@ -1,4 +1,4 @@
-# CoboWaas2Api.MPCProject
+# CoboWaas2JsApi.MPCProject
 
 ## Properties
 

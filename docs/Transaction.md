@@ -1,29 +1,29 @@
-# CoboWaas2Api.Transaction
+# CoboWaas2JsApi.Transaction
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionId** | **String** | Unique transaction ID | [optional] 
-**walletId** | **String** | Wallet ID | [optional] 
+**transactionId** | **String** | Unique transaction ID | 
+**walletId** | **String** | Wallet ID | 
 **requestId** | **String** | Request ID | [optional] 
-**coboId** | **String** | Cobo ID | [optional] 
-**status** | [**TransactionStatus**](TransactionStatus.md) |  | [optional] 
+**coboId** | **String** | Cobo ID | 
+**initiator** | **String** | Transaction initiator | [optional] 
+**transactionHash** | **String** | Transaction hash. | [optional] 
+**status** | [**TransactionStatus**](TransactionStatus.md) |  | 
 **subStatus** | [**TransactionSubStatus**](TransactionSubStatus.md) |  | [optional] 
-**type** | [**TransactionType**](TransactionType.md) |  | [optional] 
-**fromType** | [**TransactionAddressType**](TransactionAddressType.md) |  | [optional] 
-**fromAddress** | [**[TransactionAddress]**](TransactionAddress.md) |  | [optional] 
-**fromInfo** | **String** | From wallet info | [optional] 
-**toType** | [**TransactionAddressType**](TransactionAddressType.md) |  | [optional] 
-**toAddress** | [**[TransactionAddress]**](TransactionAddress.md) |  | [optional] 
-**toInfo** | **String** | To wallet info | [optional] 
-**network** | [**Network**](Network.md) |  | [optional] 
-**txid** | **String** |  | [optional] 
+**type** | [**TransactionType**](TransactionType.md) |  | 
+**source** | [**TransactionSource**](TransactionSource.md) |  | 
+**destination** | [**TransactionDestination**](TransactionDestination.md) |  | 
+**chainId** | **String** | The blockchain on which the token operates. | [optional] 
+**exchangeId** | [**ExchangeId**](ExchangeId.md) |  | [optional] 
 **tokens** | [**[TransactionToken]**](TransactionToken.md) |  | [optional] 
+**fee** | [**TransactionFee**](TransactionFee.md) |  | [optional] 
 **category** | **[String]** |  | [optional] 
 **description** | **String** |  | [optional] 
-**createdTime** | **Number** | Transaction creation time | [optional] 
-**updatedTime** | **Number** | Transaction update time | [optional] 
-**delegate** | **String** | Transaction delegate address | [optional] 
+**confirmedNum** | **Number** | Transaction confirmed number | [optional] 
+**confirmingThreshold** | **Number** | Number of confirmations required for a transaction, such as 15 for ETH chain. | [optional] 
+**createdTime** | **Number** | Transaction creation time | 
+**updatedTime** | **Number** | Transaction update time | 
 
 

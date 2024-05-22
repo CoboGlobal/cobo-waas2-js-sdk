@@ -1,4 +1,4 @@
-# CoboWaas2Api.FixedFee
+# CoboWaas2JsApi.FixedFee
 
 ## Properties
 

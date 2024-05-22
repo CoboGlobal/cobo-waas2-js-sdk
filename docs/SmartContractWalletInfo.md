@@ -1,4 +1,4 @@
-# CoboWaas2Api.SmartContractWalletInfo
+# CoboWaas2JsApi.SmartContractWalletInfo
 
 ## Properties
 

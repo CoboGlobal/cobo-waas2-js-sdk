@@ -1,4 +1,4 @@
-# CoboWaas2Api.ChainInfo
+# CoboWaas2JsApi.ChainInfo
 
 ## Properties
 

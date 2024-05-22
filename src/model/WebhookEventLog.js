@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -22,13 +21,13 @@ import WebhookEvent from './WebhookEvent';
 class WebhookEventLog {
     /**
      * Constructs a new <code>WebhookEventLog</code>.
-     * The data for webhook event log.
+     * The webhook event log.
      * @alias module:model/WebhookEventLog
-     * @param id {String} The unique identifier of the log.
-     * @param createdTimestamp {Number} The timestamp at which the object was created, represented as an integer value, typically in milliseconds since the epoch.
+     * @param id {String} The event log ID.
+     * @param createdTimestamp {Number} The time when the log was created, in Unix timestamp format, measured in milliseconds.
      * @param requestHeaders {Object} The request headers of the webhook event.
      * @param requestBody {module:model/WebhookEvent} 
-     * @param success {Boolean} The success status of the webhook event.
+     * @param success {Boolean} Whether the webhook event has been successfully delivered.
      */
     constructor(id, createdTimestamp, requestHeaders, requestBody, success) { 
         
@@ -124,13 +123,13 @@ class WebhookEventLog {
 WebhookEventLog.RequiredProperties = ["id", "created_timestamp", "request_headers", "request_body", "success"];
 
 /**
- * The unique identifier of the log.
+ * The event log ID.
  * @member {String} id
  */
 WebhookEventLog.prototype['id'] = undefined;
 
 /**
- * The timestamp at which the object was created, represented as an integer value, typically in milliseconds since the epoch.
+ * The time when the log was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_timestamp
  */
 WebhookEventLog.prototype['created_timestamp'] = undefined;
@@ -159,19 +158,19 @@ WebhookEventLog.prototype['response_body'] = undefined;
 WebhookEventLog.prototype['response_status_code'] = undefined;
 
 /**
- * The response time of the webhook event in milliseconds.
+ * The response time of the webhook event, in milliseconds.
  * @member {Number} response_time
  */
 WebhookEventLog.prototype['response_time'] = undefined;
 
 /**
- * The success status of the webhook event.
+ * Whether the webhook event has been successfully delivered.
  * @member {Boolean} success
  */
 WebhookEventLog.prototype['success'] = undefined;
 
 /**
- * The reason of the webhook event failure.
+ * The reason why the webhook event fails to be delivered.
  * @member {String} failure_reason
  */
 WebhookEventLog.prototype['failure_reason'] = undefined;

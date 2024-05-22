@@ -1,4 +1,4 @@
-# CoboWaas2Api.ListEvents200Response
+# CoboWaas2JsApi.ListEvents200Response
 
 ## Properties
 

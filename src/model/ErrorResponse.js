@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -21,12 +20,12 @@ import ApiClient from '../ApiClient';
 class ErrorResponse {
     /**
      * Constructs a new <code>ErrorResponse</code>.
-     * The data for error response.
+     * The response of a failed request.
      * @alias module:model/ErrorResponse
-     * @param success {Boolean} Indicates if the API operation was successful. Always false for errors.
-     * @param errorCode {Number} A machine-readable error code.`
-     * @param errorDescription {String} A human-readable error description for users.
-     * @param errorId {String} A unique ID for the error log, mainly used for debugging.
+     * @param success {Boolean} Whether the API operation was successful. This is always `false` for a failed request.
+     * @param errorCode {Number} The error code.
+     * @param errorDescription {String} The error description.
+     * @param errorId {String} A error log ID. You can use it for debugging purposes.
      */
     constructor(success, errorCode, errorDescription, errorId) { 
         
@@ -102,26 +101,26 @@ class ErrorResponse {
 ErrorResponse.RequiredProperties = ["success", "error_code", "error_description", "error_id"];
 
 /**
- * Indicates if the API operation was successful. Always false for errors.
+ * Whether the API operation was successful. This is always `false` for a failed request.
  * @member {Boolean} success
  * @default false
  */
 ErrorResponse.prototype['success'] = false;
 
 /**
- * A machine-readable error code.`
+ * The error code.
  * @member {Number} error_code
  */
 ErrorResponse.prototype['error_code'] = undefined;
 
 /**
- * A human-readable error description for users.
+ * The error description.
  * @member {String} error_description
  */
 ErrorResponse.prototype['error_description'] = undefined;
 
 /**
- * A unique ID for the error log, mainly used for debugging.
+ * A error log ID. You can use it for debugging purposes.
  * @member {String} error_id
  */
 ErrorResponse.prototype['error_id'] = undefined;

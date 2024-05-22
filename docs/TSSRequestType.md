@@ -1,4 +1,4 @@
-# CoboWaas2Api.TSSRequestType
+# CoboWaas2JsApi.TSSRequestType
 
 ## Enum
 

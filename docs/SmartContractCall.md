@@ -1,4 +1,4 @@
-# CoboWaas2Api.SmartContractCall
+# CoboWaas2JsApi.SmartContractCall
 
 ## Properties
 

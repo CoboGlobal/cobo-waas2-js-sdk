@@ -1,4 +1,4 @@
-# CoboWaas2Api.MPCWalletInfo
+# CoboWaas2JsApi.MPCWalletInfo
 
 ## Properties
 

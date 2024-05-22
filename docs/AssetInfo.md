@@ -1,4 +1,4 @@
-# CoboWaas2Api.AssetInfo
+# CoboWaas2JsApi.AssetInfo
 
 ## Properties
 

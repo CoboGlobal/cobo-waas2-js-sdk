@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateExchangeWallet
+# CoboWaas2JsApi.CreateExchangeWallet
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.EvmLegacyFee
+# CoboWaas2JsApi.EvmLegacyFee
 
 ## Properties
 

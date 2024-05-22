@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -20,15 +19,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.CoboWaas2Api);
+    factory(root.expect, root.CoboWaas2JsApi);
   }
-}(this, function(expect, CoboWaas2Api) {
+}(this, function(expect, CoboWaas2JsApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2Api.WebhookEventLog();
+    instance = new CoboWaas2JsApi.WebhookEventLog();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,61 +49,61 @@
   describe('WebhookEventLog', function() {
     it('should create an instance of WebhookEventLog', function() {
       // uncomment below and update the code to test WebhookEventLog
-      //var instance = new CoboWaas2Api.WebhookEventLog();
-      //expect(instance).to.be.a(CoboWaas2Api.WebhookEventLog);
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
+      //expect(instance).to.be.a(CoboWaas2JsApi.WebhookEventLog);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property createdTimestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property createdTimestamp
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property requestHeaders (base name: "request_headers")', function() {
       // uncomment below and update the code to test the property requestHeaders
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property requestBody (base name: "request_body")', function() {
       // uncomment below and update the code to test the property requestBody
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property responseBody (base name: "response_body")', function() {
       // uncomment below and update the code to test the property responseBody
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property responseStatusCode (base name: "response_status_code")', function() {
       // uncomment below and update the code to test the property responseStatusCode
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property responseTime (base name: "response_time")', function() {
       // uncomment below and update the code to test the property responseTime
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
     it('should have the property failureReason (base name: "failure_reason")', function() {
       // uncomment below and update the code to test the property failureReason
-      //var instance = new CoboWaas2Api.WebhookEventLog();
+      //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 

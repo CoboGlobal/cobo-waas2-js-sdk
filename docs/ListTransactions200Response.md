@@ -1,4 +1,4 @@
-# CoboWaas2Api.ListTransactions200Response
+# CoboWaas2JsApi.ListTransactions200Response
 
 ## Properties
 

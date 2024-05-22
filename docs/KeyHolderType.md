@@ -1,4 +1,4 @@
-# CoboWaas2Api.KeyHolderType
+# CoboWaas2JsApi.KeyHolderType
 
 ## Enum
 

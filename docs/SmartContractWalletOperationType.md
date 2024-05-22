@@ -1,4 +1,4 @@
-# CoboWaas2Api.SmartContractWalletOperationType
+# CoboWaas2JsApi.SmartContractWalletOperationType
 
 ## Enum
 

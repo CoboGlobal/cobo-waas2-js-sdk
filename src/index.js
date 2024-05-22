@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -21,7 +20,9 @@ import AddressTransferSource from './model/AddressTransferSource';
 import AssetBalance from './model/AssetBalance';
 import AssetInfo from './model/AssetInfo';
 import BaseCreateWallet from './model/BaseCreateWallet';
+import BaseTransactionAddress from './model/BaseTransactionAddress';
 import BaseTransferSource from './model/BaseTransferSource';
+import BaseWalletTransactionAddress from './model/BaseWalletTransactionAddress';
 import ChainFeePrice from './model/ChainFeePrice';
 import ChainInfo from './model/ChainInfo';
 import CreateCustodialWallet from './model/CreateCustodialWallet';
@@ -57,15 +58,15 @@ import ExchangeTransferDestination from './model/ExchangeTransferDestination';
 import ExchangeTransferSource from './model/ExchangeTransferSource';
 import ExchangeWalletInfo from './model/ExchangeWalletInfo';
 import ExchangeWalletInfoAllOfSubAccounts from './model/ExchangeWalletInfoAllOfSubAccounts';
+import ExchangeWalletTransactionAddress from './model/ExchangeWalletTransactionAddress';
 import FeeAmount from './model/FeeAmount';
 import FeeData from './model/FeeData';
 import FeeType from './model/FeeType';
 import FixedFee from './model/FixedFee';
 import GetAddressValidity200Response from './model/GetAddressValidity200Response';
-import GetAssets200Response from './model/GetAssets200Response';
 import GetChains200Response from './model/GetChains200Response';
-import GetExchangeWalletAssetBalances200Response from './model/GetExchangeWalletAssetBalances200Response';
 import GetTokens200Response from './model/GetTokens200Response';
+import GetTokens200ResponseDataInner from './model/GetTokens200ResponseDataInner';
 import GetWalletTokenBalances200Response from './model/GetWalletTokenBalances200Response';
 import KeyGroup from './model/KeyGroup';
 import KeyGroupStatus from './model/KeyGroupStatus';
@@ -73,25 +74,24 @@ import KeyGroupType from './model/KeyGroupType';
 import KeyHolder from './model/KeyHolder';
 import KeyHolderStatus from './model/KeyHolderStatus';
 import KeyHolderType from './model/KeyHolderType';
-import LinkSubAccountsByWalletIdRequest from './model/LinkSubAccountsByWalletIdRequest';
 import ListAddresses200Response from './model/ListAddresses200Response';
 import ListEvents200Response from './model/ListEvents200Response';
-import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
 import ListTransactions200Response from './model/ListTransactions200Response';
 import ListWallets200Response from './model/ListWallets200Response';
-import ListWebhookEventDefinitions200ResponseInner from './model/ListWebhookEventDefinitions200ResponseInner';
 import MPCProject from './model/MPCProject';
 import MPCVault from './model/MPCVault';
 import MPCVaultType from './model/MPCVaultType';
 import MPCWalletInfo from './model/MPCWalletInfo';
-import MaxSendValue from './model/MaxSendValue';
+import MPCWalletTransactionAddress from './model/MPCWalletTransactionAddress';
+import MaxTransferableValue from './model/MaxTransferableValue';
 import ModifyMpcVaultRequest from './model/ModifyMpcVaultRequest';
 import MpcSigningGroup from './model/MpcSigningGroup';
 import MpcTransferSource from './model/MpcTransferSource';
-import Network from './model/Network';
 import Pagination from './model/Pagination';
 import RetryWebhookEvent201Response from './model/RetryWebhookEvent201Response';
 import RootPubkey from './model/RootPubkey';
+import SafeTransactionAddress from './model/SafeTransactionAddress';
+import SafeTransactionAddressAllOfDelegate from './model/SafeTransactionAddressAllOfDelegate';
 import SafeTransferSource from './model/SafeTransferSource';
 import SafeTransferSourceAllOfDelegate from './model/SafeTransferSourceAllOfDelegate';
 import SafeWallet from './model/SafeWallet';
@@ -109,13 +109,14 @@ import TokenBalance from './model/TokenBalance';
 import TokenBalanceBalance from './model/TokenBalanceBalance';
 import TokenInfo from './model/TokenInfo';
 import Transaction from './model/Transaction';
-import TransactionAddress from './model/TransactionAddress';
 import TransactionAddressType from './model/TransactionAddressType';
 import TransactionApprover from './model/TransactionApprover';
+import TransactionDestination from './model/TransactionDestination';
 import TransactionDetails from './model/TransactionDetails';
 import TransactionFee from './model/TransactionFee';
 import TransactionInitiatorType from './model/TransactionInitiatorType';
 import TransactionSigner from './model/TransactionSigner';
+import TransactionSource from './model/TransactionSource';
 import TransactionStatus from './model/TransactionStatus';
 import TransactionSubStatus from './model/TransactionSubStatus';
 import TransactionTimeline from './model/TransactionTimeline';
@@ -144,20 +145,19 @@ import WebhookEventType from './model/WebhookEventType';
 import DevelopersWebhooksApi from './api/DevelopersWebhooksApi';
 import TransactionsApi from './api/TransactionsApi';
 import WalletsApi from './api/WalletsApi';
-import WalletsExchangeWalletApi from './api/WalletsExchangeWalletApi';
 import WalletsMPCWalletApi from './api/WalletsMPCWalletApi';
 
 
 /**
 
-* Cobo WaaS 2.0 enables you to programmatically access Cobo&#39;s full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) .<br>
+* Cobo WaaS 2.0 enables you to programmatically access Cobo&#39;s full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}, to be supported later) - Exchange Wallet(To be supported later)  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- | | &#x60;2000&#x60; | Internal error | | &#x60;2002&#x60; | Unsupported HTTP method | | &#x60;2003&#x60; | Missing required parameters | | &#x60;2006&#x60; | Illegal parameter format or value | | &#x60;2010&#x60; | Exceeded frequency limit | | &#x60;2020&#x60; | Missing action | | &#x60;2021&#x60; | Missing handler | | &#x60;2022&#x60; | Missing required request header | | &#x60;2023&#x60; | Verification failed | | &#x60;2024&#x60; | Authentication failed | | &#x60;2025&#x60; | Forbidden | | &#x60;2026&#x60; | Too many requests | | &#x60;2027&#x60; | Exceed quota limit | | &#x60;2028&#x60; | Not found | | &#x60;2029&#x60; | Invalid status | | &#x60;2040&#x60; | Duplicated key |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v2/wallets.  # Rate and Usage Limiting  # Pagination # Support [Developer Hub](https://cobo.com/developers) .<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
 * <pre>
-* var CoboWaas2Api = require('index'); // See note below*.
-* var xxxSvc = new CoboWaas2Api.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new CoboWaas2Api.Yyy(); // Construct a model instance.
+* var CoboWaas2JsApi = require('index'); // See note below*.
+* var xxxSvc = new CoboWaas2JsApi.XxxApi(); // Allocate the API class we're going to use.
+* var yyyModel = new CoboWaas2JsApi.Yyy(); // Construct a model instance.
 * yyyModel.someProperty = 'someValue';
 * ...
 * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -169,8 +169,8 @@ import WalletsMPCWalletApi from './api/WalletsMPCWalletApi';
 * <p>
 * A non-AMD browser application (discouraged) might do something like this:
 * <pre>
-* var xxxSvc = new CoboWaas2Api.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new CoboWaas2Api.Yyy(); // Construct a model instance.
+* var xxxSvc = new CoboWaas2JsApi.XxxApi(); // Allocate the API class we're going to use.
+* var yyy = new CoboWaas2JsApi.Yyy(); // Construct a model instance.
 * yyyModel.someProperty = 'someValue';
 * ...
 * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -237,10 +237,22 @@ export {
     BaseCreateWallet,
 
     /**
+     * The BaseTransactionAddress model constructor.
+     * @property {module:model/BaseTransactionAddress}
+     */
+    BaseTransactionAddress,
+
+    /**
      * The BaseTransferSource model constructor.
      * @property {module:model/BaseTransferSource}
      */
     BaseTransferSource,
+
+    /**
+     * The BaseWalletTransactionAddress model constructor.
+     * @property {module:model/BaseWalletTransactionAddress}
+     */
+    BaseWalletTransactionAddress,
 
     /**
      * The ChainFeePrice model constructor.
@@ -453,6 +465,12 @@ export {
     ExchangeWalletInfoAllOfSubAccounts,
 
     /**
+     * The ExchangeWalletTransactionAddress model constructor.
+     * @property {module:model/ExchangeWalletTransactionAddress}
+     */
+    ExchangeWalletTransactionAddress,
+
+    /**
      * The FeeAmount model constructor.
      * @property {module:model/FeeAmount}
      */
@@ -483,28 +501,22 @@ export {
     GetAddressValidity200Response,
 
     /**
-     * The GetAssets200Response model constructor.
-     * @property {module:model/GetAssets200Response}
-     */
-    GetAssets200Response,
-
-    /**
      * The GetChains200Response model constructor.
      * @property {module:model/GetChains200Response}
      */
     GetChains200Response,
 
     /**
-     * The GetExchangeWalletAssetBalances200Response model constructor.
-     * @property {module:model/GetExchangeWalletAssetBalances200Response}
-     */
-    GetExchangeWalletAssetBalances200Response,
-
-    /**
      * The GetTokens200Response model constructor.
      * @property {module:model/GetTokens200Response}
      */
     GetTokens200Response,
+
+    /**
+     * The GetTokens200ResponseDataInner model constructor.
+     * @property {module:model/GetTokens200ResponseDataInner}
+     */
+    GetTokens200ResponseDataInner,
 
     /**
      * The GetWalletTokenBalances200Response model constructor.
@@ -549,12 +561,6 @@ export {
     KeyHolderType,
 
     /**
-     * The LinkSubAccountsByWalletIdRequest model constructor.
-     * @property {module:model/LinkSubAccountsByWalletIdRequest}
-     */
-    LinkSubAccountsByWalletIdRequest,
-
-    /**
      * The ListAddresses200Response model constructor.
      * @property {module:model/ListAddresses200Response}
      */
@@ -567,12 +573,6 @@ export {
     ListEvents200Response,
 
     /**
-     * The ListExchanges200ResponseInner model constructor.
-     * @property {module:model/ListExchanges200ResponseInner}
-     */
-    ListExchanges200ResponseInner,
-
-    /**
      * The ListTransactions200Response model constructor.
      * @property {module:model/ListTransactions200Response}
      */
@@ -583,12 +583,6 @@ export {
      * @property {module:model/ListWallets200Response}
      */
     ListWallets200Response,
-
-    /**
-     * The ListWebhookEventDefinitions200ResponseInner model constructor.
-     * @property {module:model/ListWebhookEventDefinitions200ResponseInner}
-     */
-    ListWebhookEventDefinitions200ResponseInner,
 
     /**
      * The MPCProject model constructor.
@@ -615,10 +609,16 @@ export {
     MPCWalletInfo,
 
     /**
-     * The MaxSendValue model constructor.
-     * @property {module:model/MaxSendValue}
+     * The MPCWalletTransactionAddress model constructor.
+     * @property {module:model/MPCWalletTransactionAddress}
      */
-    MaxSendValue,
+    MPCWalletTransactionAddress,
+
+    /**
+     * The MaxTransferableValue model constructor.
+     * @property {module:model/MaxTransferableValue}
+     */
+    MaxTransferableValue,
 
     /**
      * The ModifyMpcVaultRequest model constructor.
@@ -639,12 +639,6 @@ export {
     MpcTransferSource,
 
     /**
-     * The Network model constructor.
-     * @property {module:model/Network}
-     */
-    Network,
-
-    /**
      * The Pagination model constructor.
      * @property {module:model/Pagination}
      */
@@ -661,6 +655,18 @@ export {
      * @property {module:model/RootPubkey}
      */
     RootPubkey,
+
+    /**
+     * The SafeTransactionAddress model constructor.
+     * @property {module:model/SafeTransactionAddress}
+     */
+    SafeTransactionAddress,
+
+    /**
+     * The SafeTransactionAddressAllOfDelegate model constructor.
+     * @property {module:model/SafeTransactionAddressAllOfDelegate}
+     */
+    SafeTransactionAddressAllOfDelegate,
 
     /**
      * The SafeTransferSource model constructor.
@@ -765,12 +771,6 @@ export {
     Transaction,
 
     /**
-     * The TransactionAddress model constructor.
-     * @property {module:model/TransactionAddress}
-     */
-    TransactionAddress,
-
-    /**
      * The TransactionAddressType model constructor.
      * @property {module:model/TransactionAddressType}
      */
@@ -781,6 +781,12 @@ export {
      * @property {module:model/TransactionApprover}
      */
     TransactionApprover,
+
+    /**
+     * The TransactionDestination model constructor.
+     * @property {module:model/TransactionDestination}
+     */
+    TransactionDestination,
 
     /**
      * The TransactionDetails model constructor.
@@ -805,6 +811,12 @@ export {
      * @property {module:model/TransactionSigner}
      */
     TransactionSigner,
+
+    /**
+     * The TransactionSource model constructor.
+     * @property {module:model/TransactionSource}
+     */
+    TransactionSource,
 
     /**
      * The TransactionStatus model constructor.
@@ -973,12 +985,6 @@ export {
     * @property {module:api/WalletsApi}
     */
     WalletsApi,
-
-    /**
-    * The WalletsExchangeWalletApi service constructor.
-    * @property {module:api/WalletsExchangeWalletApi}
-    */
-    WalletsExchangeWalletApi,
 
     /**
     * The WalletsMPCWalletApi service constructor.

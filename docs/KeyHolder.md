@@ -1,4 +1,4 @@
-# CoboWaas2Api.KeyHolder
+# CoboWaas2JsApi.KeyHolder
 
 ## Properties
 

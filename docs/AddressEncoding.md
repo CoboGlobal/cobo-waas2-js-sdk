@@ -1,4 +1,4 @@
-# CoboWaas2Api.AddressEncoding
+# CoboWaas2JsApi.AddressEncoding
 
 ## Enum
 

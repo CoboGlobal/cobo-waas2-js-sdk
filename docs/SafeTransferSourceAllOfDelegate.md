@@ -1,4 +1,4 @@
-# CoboWaas2Api.SafeTransferSourceAllOfDelegate
+# CoboWaas2JsApi.SafeTransferSourceAllOfDelegate
 
 ## Properties
 

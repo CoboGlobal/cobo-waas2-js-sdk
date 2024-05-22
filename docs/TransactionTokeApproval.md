@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionTokeApproval
+# CoboWaas2JsApi.TransactionTokeApproval
 
 ## Properties
 

@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -21,7 +20,7 @@ import ApiClient from '../ApiClient';
 class Pagination {
     /**
      * Constructs a new <code>Pagination</code>.
-     * The meta data for pagination.
+     * The pagination information of the returned data.
      * @alias module:model/Pagination
      */
     constructor() { 
@@ -82,11 +81,13 @@ class Pagination {
 
 
 /**
+ * An object ID which serves as a cursor for pagination. For example, if the value of `before` is `foo`, the returned data ends before the object with the object ID `foo`.
  * @member {String} before
  */
 Pagination.prototype['before'] = undefined;
 
 /**
+ * An object ID which serves as a cursor for pagination. For example, if the value of `after` is `bar`, the returned data starts after the object with the object ID `bar`.
  * @member {String} after
  */
 Pagination.prototype['after'] = undefined;

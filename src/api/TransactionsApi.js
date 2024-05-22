@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -18,10 +17,11 @@ import CreateTransferTransaction201Response from '../model/CreateTransferTransac
 import ErrorResponse from '../model/ErrorResponse';
 import EstimateFee from '../model/EstimateFee';
 import ListTransactions200Response from '../model/ListTransactions200Response';
-import SignMessage from '../model/SignMessage';
 import SmartContractCall from '../model/SmartContractCall';
-import TransactionDetails from '../model/TransactionDetails';
+import Transaction from '../model/Transaction';
 import TransactionFee from '../model/TransactionFee';
+import TransactionStatus from '../model/TransactionStatus';
+import TransactionType from '../model/TransactionType';
 import Transfer from '../model/Transfer';
 
 /**
@@ -42,52 +42,6 @@ export default class TransactionsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
-
-
-    /**
-     * Create a sign message transaction
-     * Create a transaction to sign message.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/SignMessage} [signMessage] The request body to create a message sign transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
-     */
-    createSignMessageTransactionWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = opts['signMessage'];
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = CreateTransferTransaction201Response;
-      return this.apiClient.callApi(
-        '/transactions/sign', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Create a sign message transaction
-     * Create a transaction to sign message.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/SignMessage} opts.signMessage The request body to create a message sign transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
-     */
-    createSignMessageTransaction(opts) {
-      return this.createSignMessageTransactionWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
 
 
     /**
@@ -115,7 +69,7 @@ export default class TransactionsApi {
       let accepts = ['application/json'];
       let returnType = CreateTransferTransaction201Response;
       return this.apiClient.callApi(
-        '/transactions/call', 'POST',
+        '/transactions/contract_call', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -335,7 +289,7 @@ export default class TransactionsApi {
      * Get transaction information by ID
      * Detailed description on retrieving transaction information by id
      * @param {String} transactionId Unique id of the transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TransactionDetails} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Transaction} and HTTP response
      */
     getTransactionByIdWithHttpInfo(transactionId) {
       let postBody = null;
@@ -357,7 +311,7 @@ export default class TransactionsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = TransactionDetails;
+      let returnType = Transaction;
       return this.apiClient.callApi(
         '/transactions/{transaction_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -369,7 +323,7 @@ export default class TransactionsApi {
      * Get transaction information by ID
      * Detailed description on retrieving transaction information by id
      * @param {String} transactionId Unique id of the transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TransactionDetails}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Transaction}
      */
     getTransactionById(transactionId) {
       return this.getTransactionByIdWithHttpInfo(transactionId)
@@ -384,11 +338,22 @@ export default class TransactionsApi {
      * Retrieve a list of transactions.
      * @param {Object} opts Optional parameters
      * @param {String} [requestId] Request ID
+     * @param {String} [coboId] Cobo ID
+     * @param {String} [transactionId] Unique id of the transaction
+     * @param {String} [transactionHash] Transaction hash
+     * @param {module:model/TransactionType} [type] The type of a transaction
+     * @param {module:model/TransactionStatus} [status] The status of a transaction
+     * @param {String} [walletId] Unique id of the wallet
+     * @param {String} [chainId] Unique id of the chain
+     * @param {String} [tokenId] Unique id of the token
+     * @param {String} [assetId] Unique id of the asset
+     * @param {Number} [minCreatedTimestamp] The minimum transaction creation timestamp in Unix epoch seconds
+     * @param {Number} [maxCreatedTimestamp] The maximum transaction creation timestamp in Unix epoch seconds
      * @param {String} [sortBy = '')] Field of sort by
      * @param {module:model/String} [direction = '')] Direction to sort by
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListTransactions200Response} and HTTP response
      */
     listTransactionsWithHttpInfo(opts) {
@@ -399,6 +364,17 @@ export default class TransactionsApi {
       };
       let queryParams = {
         'request_id': opts['requestId'],
+        'cobo_id': opts['coboId'],
+        'transaction_id': opts['transactionId'],
+        'transaction_hash': opts['transactionHash'],
+        'type': opts['type'],
+        'status': opts['status'],
+        'wallet_id': opts['walletId'],
+        'chain_id': opts['chainId'],
+        'token_id': opts['tokenId'],
+        'asset_id': opts['assetId'],
+        'min_created_timestamp': opts['minCreatedTimestamp'],
+        'max_created_timestamp': opts['maxCreatedTimestamp'],
         'sort_by': opts['sortBy'],
         'direction': opts['direction'],
         'limit': opts['limit'],
@@ -426,11 +402,22 @@ export default class TransactionsApi {
      * Retrieve a list of transactions.
      * @param {Object} opts Optional parameters
      * @param {String} opts.requestId Request ID
+     * @param {String} opts.coboId Cobo ID
+     * @param {String} opts.transactionId Unique id of the transaction
+     * @param {String} opts.transactionHash Transaction hash
+     * @param {module:model/TransactionType} opts.type The type of a transaction
+     * @param {module:model/TransactionStatus} opts.status The status of a transaction
+     * @param {String} opts.walletId Unique id of the wallet
+     * @param {String} opts.chainId Unique id of the chain
+     * @param {String} opts.tokenId Unique id of the token
+     * @param {String} opts.assetId Unique id of the asset
+     * @param {Number} opts.minCreatedTimestamp The minimum transaction creation timestamp in Unix epoch seconds
+     * @param {Number} opts.maxCreatedTimestamp The maximum transaction creation timestamp in Unix epoch seconds
      * @param {String} opts.sortBy Field of sort by (default to '')
      * @param {module:model/String} opts.direction Direction to sort by (default to '')
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListTransactions200Response}
      */
     listTransactions(opts) {
@@ -517,7 +504,7 @@ export default class TransactionsApi {
       let accepts = ['application/json'];
       let returnType = CreateTransferTransaction201Response;
       return this.apiClient.callApi(
-        '/transactions/{transaction_id}/double_check/retry', 'POST',
+        '/transactions/{transaction_id}/callback_confirmation/retry', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -584,59 +571,6 @@ export default class TransactionsApi {
      */
     speedupTransactionById(transactionId, opts) {
       return this.speedupTransactionByIdWithHttpInfo(transactionId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Update transaction by ID
-     * Update information of a transaction.
-     * @param {String} transactionId Unique id of the transaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionDetails} [transactionDetails] The request body to update a address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TransactionDetails} and HTTP response
-     */
-    updateTransacitonByIdWithHttpInfo(transactionId, opts) {
-      opts = opts || {};
-      let postBody = opts['transactionDetails'];
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling updateTransacitonById");
-      }
-
-      let pathParams = {
-        'transaction_id': transactionId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = TransactionDetails;
-      return this.apiClient.callApi(
-        '/transactions/{transaction_id}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Update transaction by ID
-     * Update information of a transaction.
-     * @param {String} transactionId Unique id of the transaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionDetails} opts.transactionDetails The request body to update a address
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TransactionDetails}
-     */
-    updateTransacitonById(transactionId, opts) {
-      return this.updateTransacitonByIdWithHttpInfo(transactionId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

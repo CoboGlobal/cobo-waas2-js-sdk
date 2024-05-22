@@ -1,4 +1,4 @@
-# CoboWaas2Api.TokenInfo
+# CoboWaas2JsApi.TokenInfo
 
 ## Properties
 

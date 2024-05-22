@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionSigner
+# CoboWaas2JsApi.TransactionSigner
 
 ## Properties
 

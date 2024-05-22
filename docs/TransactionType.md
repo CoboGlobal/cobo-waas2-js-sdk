@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionType
+# CoboWaas2JsApi.TransactionType
 
 ## Enum
 
@@ -10,8 +10,6 @@
 * `TokenApproval` (value: `"TokenApproval"`)
 
 * `ContractCall` (value: `"ContractCall"`)
-
-* `ExchangeTransfer` (value: `"ExchangeTransfer"`)
 
 * `AutoFueling` (value: `"AutoFueling"`)
 

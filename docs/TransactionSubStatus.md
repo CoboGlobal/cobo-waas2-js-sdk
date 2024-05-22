@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionSubStatus
+# CoboWaas2JsApi.TransactionSubStatus
 
 ## Enum
 

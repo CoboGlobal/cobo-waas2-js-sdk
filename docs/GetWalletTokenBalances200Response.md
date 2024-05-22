@@ -1,4 +1,4 @@
-# CoboWaas2Api.GetWalletTokenBalances200Response
+# CoboWaas2JsApi.GetWalletTokenBalances200Response
 
 ## Properties
 

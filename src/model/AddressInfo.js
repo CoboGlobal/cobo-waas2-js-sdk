@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -12,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AddressEncoding from './AddressEncoding';
 
 /**
  * The AddressInfo model module.
@@ -66,8 +66,14 @@ class AddressInfo {
             if (data.hasOwnProperty('memo')) {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
-            if (data.hasOwnProperty('is_internal')) {
-                obj['is_internal'] = ApiClient.convertToType(data['is_internal'], 'Boolean');
+            if (data.hasOwnProperty('path')) {
+                obj['path'] = ApiClient.convertToType(data['path'], 'String');
+            }
+            if (data.hasOwnProperty('encoding')) {
+                obj['encoding'] = AddressEncoding.constructFromObject(data['encoding']);
+            }
+            if (data.hasOwnProperty('pubkey')) {
+                obj['pubkey'] = ApiClient.convertToType(data['pubkey'], 'String');
             }
         }
         return obj;
@@ -100,6 +106,14 @@ class AddressInfo {
         // ensure the json data is a string
         if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
             throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        }
+        // ensure the json data is a string
+        if (data['path'] && !(typeof data['path'] === 'string' || data['path'] instanceof String)) {
+            throw new Error("Expected the field `path` to be a primitive type in the JSON string but got " + data['path']);
+        }
+        // ensure the json data is a string
+        if (data['pubkey'] && !(typeof data['pubkey'] === 'string' || data['pubkey'] instanceof String)) {
+            throw new Error("Expected the field `pubkey` to be a primitive type in the JSON string but got " + data['pubkey']);
         }
 
         return true;
@@ -134,11 +148,21 @@ AddressInfo.prototype['token_id'] = undefined;
 AddressInfo.prototype['memo'] = undefined;
 
 /**
- * Ture if the address is in same fund pool, False otherwise
- * @member {Boolean} is_internal
- * @default false
+ * Derivation path of address pubkey，required for MPC wallet
+ * @member {String} path
  */
-AddressInfo.prototype['is_internal'] = false;
+AddressInfo.prototype['path'] = undefined;
+
+/**
+ * @member {module:model/AddressEncoding} encoding
+ */
+AddressInfo.prototype['encoding'] = undefined;
+
+/**
+ * Address pubkey，required for MPC wallet
+ * @member {String} pubkey
+ */
+AddressInfo.prototype['pubkey'] = undefined;
 
 
 

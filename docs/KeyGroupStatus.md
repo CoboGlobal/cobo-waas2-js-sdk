@@ -1,4 +1,4 @@
-# CoboWaas2Api.KeyGroupStatus
+# CoboWaas2JsApi.KeyGroupStatus
 
 ## Enum
 

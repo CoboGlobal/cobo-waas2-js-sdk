@@ -1,4 +1,4 @@
-# CoboWaas2Api.TSSRequest
+# CoboWaas2JsApi.TSSRequest
 
 ## Properties
 

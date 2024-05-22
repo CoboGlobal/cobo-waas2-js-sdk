@@ -1,4 +1,4 @@
-# CoboWaas2Api.TransactionTimeline
+# CoboWaas2JsApi.TransactionTimeline
 
 ## Properties
 

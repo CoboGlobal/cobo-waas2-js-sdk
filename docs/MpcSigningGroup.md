@@ -1,4 +1,4 @@
-# CoboWaas2Api.MpcSigningGroup
+# CoboWaas2JsApi.MpcSigningGroup
 
 ## Properties
 

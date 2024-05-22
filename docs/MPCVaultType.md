@@ -1,4 +1,4 @@
-# CoboWaas2Api.MPCVaultType
+# CoboWaas2JsApi.MPCVaultType
 
 ## Enum
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.CurveType
+# CoboWaas2JsApi.CurveType
 
 ## Enum
 

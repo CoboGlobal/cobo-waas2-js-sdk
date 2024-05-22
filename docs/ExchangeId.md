@@ -1,4 +1,4 @@
-# CoboWaas2Api.ExchangeId
+# CoboWaas2JsApi.ExchangeId
 
 ## Enum
 

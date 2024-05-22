@@ -1,24 +1,24 @@
-# CoboWaas2Api.WalletsApi
+# CoboWaas2JsApi.WalletsApi
 
-All URIs are relative to *https://api.cobo.com/v3*
+All URIs are relative to *https://api.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addWalletAddress**](WalletsApi.md#addWalletAddress) | **POST** /wallets/{wallet_id}/addresses | Add address to a wallet
+[**addWalletAddress**](WalletsApi.md#addWalletAddress) | **POST** /wallets/{wallet_id}/addresses | Add address to wallet
 [**createWallet**](WalletsApi.md#createWallet) | **POST** /wallets | Create new wallet
-[**deleteWalletById**](WalletsApi.md#deleteWalletById) | **DELETE** /wallets/{wallet_id} | Delete a wallet by ID
-[**getAddressValidity**](WalletsApi.md#getAddressValidity) | **GET** /wallets/address/validity | Get the given address validity for token
-[**getAssets**](WalletsApi.md#getAssets) | **GET** /wallets/assets | List the metadata of assets
-[**getChains**](WalletsApi.md#getChains) | **GET** /wallets/chains | List the metadata of chain
-[**getMaxSendValue**](WalletsApi.md#getMaxSendValue) | **GET** /wallets/{wallet_id}/max_sendable_value | Get max sendable Vaule
-[**getSpendableList**](WalletsApi.md#getSpendableList) | **GET** /wallets/{wallet_id}/spendables | List the spendable utxo
-[**getSupportedChains**](WalletsApi.md#getSupportedChains) | **GET** /wallets/supported_chains | List the supported chains by wallet subtype
-[**getSupportedTokens**](WalletsApi.md#getSupportedTokens) | **GET** /wallets/supported_tokens | List the supported tokens by wallet subtype and chain id if specified
-[**getTokens**](WalletsApi.md#getTokens) | **GET** /wallets/tokens | List the metadata of tokens
-[**getWalletAddressById**](WalletsApi.md#getWalletAddressById) | **GET** /wallets/{wallet_id}/addresses/{address_id} | Get address information by ID
-[**getWalletAddressTokenBalances**](WalletsApi.md#getWalletAddressTokenBalances) | **GET** /wallets/{wallet_id}/addresses/{address_id}/tokens | List the token balance by address in the wallets(to be specific)
-[**getWalletById**](WalletsApi.md#getWalletById) | **GET** /wallets/{wallet_id} | Get wallet information by ID
-[**getWalletTokenBalances**](WalletsApi.md#getWalletTokenBalances) | **GET** /wallets/{wallet_id}/tokens | List the token balance in the wallets(to be specific)
+[**deleteWalletById**](WalletsApi.md#deleteWalletById) | **DELETE** /wallets/{wallet_id} | Delete wallet by ID
+[**getAddressValidity**](WalletsApi.md#getAddressValidity) | **GET** /wallets/address/validity | Check address validity
+[**getChains**](WalletsApi.md#getChains) | **GET** /wallets/chains | List chain metadata
+[**getEnabledChains**](WalletsApi.md#getEnabledChains) | **GET** /wallets/enabled_chains | List enabled chains
+[**getEnabledTokens**](WalletsApi.md#getEnabledTokens) | **GET** /wallets/enabled_tokens | List enabled tokens
+[**getMaxTransferableValue**](WalletsApi.md#getMaxTransferableValue) | **GET** /wallets/{wallet_id}/max_transferable_value | Get max transferable value
+[**getSpendableList**](WalletsApi.md#getSpendableList) | **GET** /wallets/{wallet_id}/spendables | List spendable UTXOs
+[**getSupportedChains**](WalletsApi.md#getSupportedChains) | **GET** /wallets/supported_chains | List supported chains
+[**getSupportedTokens**](WalletsApi.md#getSupportedTokens) | **GET** /wallets/supported_tokens | List supported tokens
+[**getTokens**](WalletsApi.md#getTokens) | **GET** /wallets/tokens | List token metadata
+[**getWalletAddressTokenBalances**](WalletsApi.md#getWalletAddressTokenBalances) | **GET** /wallets/{wallet_id}/addresses/{address_id}/tokens | List Token Balances by Address in Wallet
+[**getWalletById**](WalletsApi.md#getWalletById) | **GET** /wallets/{wallet_id} | Retrieve wallet information by ID
+[**getWalletTokenBalances**](WalletsApi.md#getWalletTokenBalances) | **GET** /wallets/{wallet_id}/tokens | List Token Balances in Wallet
 [**listAddresses**](WalletsApi.md#listAddresses) | **GET** /wallets/{wallet_id}/addresses | List wallet addresses by wallet ID
 [**listWallets**](WalletsApi.md#listWallets) | **GET** /wallets | List all wallets
 [**updateWalletById**](WalletsApi.md#updateWalletById) | **PUT** /wallets/{wallet_id} | Update wallet by ID
@@ -29,25 +29,25 @@ Method | HTTP request | Description
 
 > [AddressInfo] addWalletAddress(walletId, opts)
 
-Add address to a wallet
+Add address to wallet
 
-Add address to a wallet.
+Add an address to a wallet.  Error codes this API may return: | Error Code | Description | | -- | -- | | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let opts = {
-  'addWalletAddressRequest': new CoboWaas2Api.AddWalletAddressRequest() // AddWalletAddressRequest | The request body to add address for a wallet
+  'addWalletAddressRequest': new CoboWaas2JsApi.AddWalletAddressRequest() // AddWalletAddressRequest | The request body to add address for a wallet
 };
 apiInstance.addWalletAddress(walletId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -85,22 +85,22 @@ Name | Type | Description  | Notes
 
 Create new wallet
 
-..More detailed explanation on creating a new wallet..  Error codes this API may return: | Error Code | Description | | -- | -- | | &#x60;2003&#x60; | 必选参数缺失 | | &#x60;2006&#x60; | 参数格式或者值非法 | 
+Creates a new wallet with the provided information.  Error codes this API may return: | Error Code | Description | | -- | -- | | &#x60;2003&#x60; | 必选参数缺失 | | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
-  'createdWallet': new CoboWaas2Api.CreatedWallet() // CreatedWallet | The request body to create a wallet
+  'createdWallet': new CoboWaas2JsApi.CreatedWallet() // CreatedWallet | The request body to create a wallet
 };
 apiInstance.createWallet(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -135,22 +135,22 @@ Name | Type | Description  | Notes
 
 > deleteWalletById(walletId)
 
-Delete a wallet by ID
+Delete wallet by ID
 
-Delete a specific wallet by ID
+Deletes a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 apiInstance.deleteWalletById(walletId).then(() => {
   console.log('API called successfully.');
@@ -185,22 +185,22 @@ null (empty response body)
 
 > GetAddressValidity200Response getAddressValidity(tokenId, addressStr)
 
-Get the given address validity for token
+Check address validity
 
-Check if the given address valid.
+Verifies if the given address is valid for the specified token. Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let tokenId = "ETH_USDT"; // String | Unique id of the token
 let addressStr = "0x0000000000000000000000000000000000000000"; // String | The address string
 apiInstance.getAddressValidity(tokenId, addressStr).then((data) => {
@@ -233,89 +233,31 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getAssets
-
-> GetAssets200Response getAssets(opts)
-
-List the metadata of assets
-
-Retrieve a list of asset metadata.
-
-### Example
-
-```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2Api.WalletsApi();
-let opts = {
-  'assetId': "USDT", // String | Unique id of the asset
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
-};
-apiInstance.getAssets(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **assetId** | **String**| Unique id of the asset | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
-
-### Return type
-
-[**GetAssets200Response**](GetAssets200Response.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## getChains
 
 > GetChains200Response getChains(opts)
 
-List the metadata of chain
+List chain metadata
 
-Retrieve a list of chain metadata.
+This endpoint retrieves metadata for available blockchain chains. It provides details such as chain_id, name, and other relevant information. Pagination parameters can be used to manage the size of the response. The chain list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
   'chainId': "ETH", // String | Unique id of the chain
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.getChains(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -331,9 +273,9 @@ apiInstance.getChains(opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chainId** | **String**| Unique id of the chain | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -349,32 +291,154 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getMaxSendValue
+## getEnabledChains
 
-> MaxSendValue getMaxSendValue(walletId, toAddress, opts)
+> GetChains200Response getEnabledChains(opts)
 
-Get max sendable Vaule
+List enabled chains
 
-Retrieve the maximum sendable vaule and the corresponding transaction fee for a given address.
+This endpoint allows users to query enabled chains based on wallet type and subtype  for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
+let opts = {
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
+  'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+};
+apiInstance.getEnabledChains(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletType** | [**WalletType**](.md)| Wallet type to query | [optional] 
+ **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+
+### Return type
+
+[**GetChains200Response**](GetChains200Response.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getEnabledTokens
+
+> GetTokens200Response getEnabledTokens(opts)
+
+List enabled tokens
+
+This endpoint allows users to query enabled tokens based on wallet type, subtype,  and chain ID if specified for the organization associated with the API key. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List enabled chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
+// Configure API key authorization: CoboAuth
+let CoboAuth = defaultClient.authentications['CoboAuth'];
+CoboAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//CoboAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
+let opts = {
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
+  'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
+  'chainId': "ETH", // String | Unique id of the chain
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+};
+apiInstance.getEnabledTokens(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletType** | [**WalletType**](.md)| Wallet type to query | [optional] 
+ **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | [optional] 
+ **chainId** | **String**| Unique id of the chain | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+
+### Return type
+
+[**GetTokens200Response**](GetTokens200Response.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getMaxTransferableValue
+
+> MaxTransferableValue getMaxTransferableValue(walletId, toAddress, opts)
+
+Get max transferable value
+
+Retrieves the maximum transferable value and the corresponding transaction fee for a given address. This endpoint allows users to determine the maximum amount that can be transferred from a wallet address, along with the associated transaction fee.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | &#x60;2006&#x60; | 参数格式或者值非法 | 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
+// Configure API key authorization: CoboAuth
+let CoboAuth = defaultClient.authentications['CoboAuth'];
+CoboAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//CoboAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let toAddress = "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE"; // String | address
 let opts = {
   'fromAddress': "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE" // String | address
 };
-apiInstance.getMaxSendValue(walletId, toAddress, opts).then((data) => {
+apiInstance.getMaxTransferableValue(walletId, toAddress, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -393,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MaxSendValue**](MaxSendValue.md)
+[**MaxTransferableValue**](MaxTransferableValue.md)
 
 ### Authorization
 
@@ -409,22 +473,22 @@ Name | Type | Description  | Notes
 
 > [UTXO] getSpendableList(walletId, tokenId, opts)
 
-List the spendable utxo
+List spendable UTXOs
 
-Retrieve a list of spendable utxo.
+Retrieves a list of spendable unspent transaction outputs (UTXOs) for a given wallet and token. This endpoint allows users to query UTXOs that can be spent in transactions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let tokenId = "ETH_USDT"; // String | Unique id of the token
 let opts = {
@@ -463,31 +527,32 @@ Name | Type | Description  | Notes
 
 ## getSupportedChains
 
-> GetChains200Response getSupportedChains(walletSubtype, opts)
+> GetChains200Response getSupportedChains(opts)
 
-List the supported chains by wallet subtype
+List supported chains
 
-Retrieve a list of supported chain.
+This endpoint allows users to query supported chains based on wallet type and subtype.  Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
-let walletSubtype = new CoboWaas2Api.WalletSubtype(); // WalletSubtype | Wallet subtype to query
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
+  'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
-apiInstance.getSupportedChains(walletSubtype, opts).then((data) => {
+apiInstance.getSupportedChains(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -500,10 +565,11 @@ apiInstance.getSupportedChains(walletSubtype, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **walletType** | [**WalletType**](.md)| Wallet type to query | [optional] 
+ **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -521,32 +587,33 @@ Name | Type | Description  | Notes
 
 ## getSupportedTokens
 
-> GetTokens200Response getSupportedTokens(walletSubtype, opts)
+> GetTokens200Response getSupportedTokens(opts)
 
-List the supported tokens by wallet subtype and chain id if specified
+List supported tokens
 
-Retrieve a list of supported token.
+This endpoint allows users to query supported tokens based on wallet type, subtype, and chain ID if specified. Pagination parameters can be used to manage the response size. Wallet type/subtype are enumerations as described in parameters. Chain_id can be get via List supported chains.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
-let walletSubtype = new CoboWaas2Api.WalletSubtype(); // WalletSubtype | Wallet subtype to query
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
+  'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'chainId': "ETH", // String | Unique id of the chain
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
-apiInstance.getSupportedTokens(walletSubtype, opts).then((data) => {
+apiInstance.getSupportedTokens(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -559,11 +626,12 @@ apiInstance.getSupportedTokens(walletSubtype, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | 
+ **walletType** | [**WalletType**](.md)| Wallet type to query | [optional] 
+ **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | [optional] 
  **chainId** | **String**| Unique id of the chain | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -583,27 +651,27 @@ Name | Type | Description  | Notes
 
 > GetTokens200Response getTokens(opts)
 
-List the metadata of tokens
+List token metadata
 
-Retrieve a list of token metadata.
+This endpoint retrieves metadata for tokens stored in the wallet system. It provides details such as token_id, symbol, and other relevant information. Pagination parameters can be used to manage the size of the response. The token list is publicly accessible without any permission restrictions.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.getTokens(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -619,9 +687,9 @@ apiInstance.getTokens(opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tokenId** | **String**| Unique id of the token | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -637,85 +705,33 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getWalletAddressById
-
-> AddressInfo getWalletAddressById(walletId, addressId)
-
-Get address information by ID
-
-Retrieve wallet information by ID
-
-### Example
-
-```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2Api.WalletsApi();
-let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
-let addressId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the address
-apiInstance.getWalletAddressById(walletId, addressId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Unique id of the wallet | 
- **addressId** | **String**| Unique id of the address | 
-
-### Return type
-
-[**AddressInfo**](AddressInfo.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## getWalletAddressTokenBalances
 
 > GetWalletTokenBalances200Response getWalletAddressTokenBalances(walletId, addressId, opts)
 
-List the token balance by address in the wallets(to be specific)
+List Token Balances by Address in Wallet
 
-Retrieve a list of token balance by address in wallet.
+Retrieves a list of token balances for a specific address within a wallet. This endpoint allows users to query token balances based on the wallet ID, address ID, and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by MPC wallets.  Error codes this API may return:     | Error Code | Description |     | -- | -- |     | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let addressId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the address
 let opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.getWalletAddressTokenBalances(walletId, addressId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -733,9 +749,9 @@ Name | Type | Description  | Notes
  **walletId** | **String**| Unique id of the wallet | 
  **addressId** | **String**| Unique id of the address | 
  **tokenId** | **String**| Unique id of the token | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -755,22 +771,22 @@ Name | Type | Description  | Notes
 
 > WalletInfo getWalletById(walletId)
 
-Get wallet information by ID
-
 Retrieve wallet information by ID
+
+Retrieves detailed information about a wallet identified by its unique ID.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 apiInstance.getWalletById(walletId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -805,28 +821,28 @@ Name | Type | Description  | Notes
 
 > GetWalletTokenBalances200Response getWalletTokenBalances(walletId, opts)
 
-List the token balance in the wallets(to be specific)
+List Token Balances in Wallet
 
-Retrieve a list of token balance in wallet.
+Retrieves a list of token balances within a wallet. This endpoint allows users to query token balances based on the wallet ID and optionally token ID. Pagination parameters can be used to manage the response size. This endpoint is supported by Custodial/MPC wallets.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.getWalletTokenBalances(walletId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -843,9 +859,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Unique id of the wallet | 
  **tokenId** | **String**| Unique id of the token | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -867,26 +883,27 @@ Name | Type | Description  | Notes
 
 List wallet addresses by wallet ID
 
-Retrieve a list of addresses.
+Retrieve a list of addresses associated with a wallet.  Error codes this API may return:   | Error Code | Description |   | -- | -- |   | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let opts = {
   'tokenId': "ETH_USDT", // String | Unique id of the token
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'addressStr': "2N2xFZtbCFB6Nb3Pj9Sxsx5mX2fxX3yEgkE", // String | address
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.listAddresses(walletId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -903,9 +920,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Unique id of the wallet | 
  **tokenId** | **String**| Unique id of the token | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **addressStr** | **String**| address | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -927,27 +945,27 @@ Name | Type | Description  | Notes
 
 List all wallets
 
-Retrieve a list of wallets.
+Retrieves a list of all wallets.  This endpoint allows filtering by wallet type, subtype, and MPC vault ID (if applicable).  Error codes this API may return:       | Error Code | Description |       | -- | -- |       | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let opts = {
-  'walletType': new CoboWaas2Api.WalletType(), // WalletType | Wallet type to query
-  'walletSubtype': new CoboWaas2Api.WalletSubtype(), // WalletSubtype | Wallet subtype to query
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | Wallet type to query
+  'walletSubtype': new CoboWaas2JsApi.WalletSubtype(), // WalletSubtype | Wallet subtype to query
   'vaultId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc vault
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.listWallets(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -965,9 +983,9 @@ Name | Type | Description  | Notes
  **walletType** | [**WalletType**](.md)| Wallet type to query | [optional] 
  **walletSubtype** | [**WalletSubtype**](.md)| Wallet subtype to query | [optional] 
  **vaultId** | **String**| Unique id of the mpc vault | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -989,23 +1007,23 @@ Name | Type | Description  | Notes
 
 Update wallet by ID
 
-Update wallet info by ID
+Updates information for a specific wallet identified by its ID. This endpoint is supported by Exchange wallets only.  Error codes this API may return: | Error Code | Description | | -- | -- | | &#x60;2006&#x60; | 参数格式或者值非法 | 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.WalletsApi();
+let apiInstance = new CoboWaas2JsApi.WalletsApi();
 let walletId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the wallet
 let opts = {
-  'updateWalletByIdRequest': new CoboWaas2Api.UpdateWalletByIdRequest() // UpdateWalletByIdRequest | The request body to update a wallet
+  'updateWalletByIdRequest': new CoboWaas2JsApi.UpdateWalletByIdRequest() // UpdateWalletByIdRequest | The request body to update a wallet
 };
 apiInstance.updateWalletById(walletId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);

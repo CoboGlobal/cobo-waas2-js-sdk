@@ -1,4 +1,4 @@
-# CoboWaas2Api.SafeWalletAllOfInitiator
+# CoboWaas2JsApi.SafeWalletAllOfInitiator
 
 ## Properties
 

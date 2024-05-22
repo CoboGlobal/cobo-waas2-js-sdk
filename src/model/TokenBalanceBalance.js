@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -61,12 +60,6 @@ class TokenBalanceBalance {
             if (data.hasOwnProperty('pending')) {
                 obj['pending'] = ApiClient.convertToType(data['pending'], 'String');
             }
-            if (data.hasOwnProperty('staked')) {
-                obj['staked'] = ApiClient.convertToType(data['staked'], 'String');
-            }
-            if (data.hasOwnProperty('frozen')) {
-                obj['frozen'] = ApiClient.convertToType(data['frozen'], 'String');
-            }
             if (data.hasOwnProperty('locked')) {
                 obj['locked'] = ApiClient.convertToType(data['locked'], 'String');
             }
@@ -99,14 +92,6 @@ class TokenBalanceBalance {
             throw new Error("Expected the field `pending` to be a primitive type in the JSON string but got " + data['pending']);
         }
         // ensure the json data is a string
-        if (data['staked'] && !(typeof data['staked'] === 'string' || data['staked'] instanceof String)) {
-            throw new Error("Expected the field `staked` to be a primitive type in the JSON string but got " + data['staked']);
-        }
-        // ensure the json data is a string
-        if (data['frozen'] && !(typeof data['frozen'] === 'string' || data['frozen'] instanceof String)) {
-            throw new Error("Expected the field `frozen` to be a primitive type in the JSON string but got " + data['frozen']);
-        }
-        // ensure the json data is a string
         if (data['locked'] && !(typeof data['locked'] === 'string' || data['locked'] instanceof String)) {
             throw new Error("Expected the field `locked` to be a primitive type in the JSON string but got " + data['locked']);
         }
@@ -137,20 +122,6 @@ TokenBalanceBalance.prototype['available'] = undefined;
  * @default '0'
  */
 TokenBalanceBalance.prototype['pending'] = '0';
-
-/**
- * The staked balance.
- * @member {String} staked
- * @default '0'
- */
-TokenBalanceBalance.prototype['staked'] = '0';
-
-/**
- * The frozen balance.
- * @member {String} frozen
- * @default '0'
- */
-TokenBalanceBalance.prototype['frozen'] = '0';
 
 /**
  * The locked balance.

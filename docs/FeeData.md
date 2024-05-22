@@ -1,10 +1,10 @@
-# CoboWaas2Api.FeeData
+# CoboWaas2JsApi.FeeData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**gasLimit** | **Number** | The Limit of gas. | [optional] [default to 21000]
+**gasLimit** | **String** | The Limit of gas. | [optional] [default to &#39;21000&#39;]
 **feeAmount** | **String** | The estimated fee amount in fee_coin. | [optional] 
 
 

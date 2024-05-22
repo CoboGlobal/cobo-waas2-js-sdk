@@ -1,4 +1,4 @@
-# CoboWaas2Api.Transfer
+# CoboWaas2JsApi.Transfer
 
 ## Properties
 

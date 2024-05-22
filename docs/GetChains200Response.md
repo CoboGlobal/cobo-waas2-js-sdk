@@ -1,4 +1,4 @@
-# CoboWaas2Api.GetChains200Response
+# CoboWaas2JsApi.GetChains200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.TSSRequestStatus
+# CoboWaas2JsApi.TSSRequestStatus
 
 ## Enum
 

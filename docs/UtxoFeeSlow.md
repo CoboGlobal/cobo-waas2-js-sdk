@@ -1,4 +1,4 @@
-# CoboWaas2Api.UtxoFeeSlow
+# CoboWaas2JsApi.UtxoFeeSlow
 
 ## Properties
 

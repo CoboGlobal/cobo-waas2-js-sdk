@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -15,7 +14,6 @@
 import ApiClient from "../ApiClient";
 import ErrorResponse from '../model/ErrorResponse';
 import ListEvents200Response from '../model/ListEvents200Response';
-import ListWebhookEventDefinitions200ResponseInner from '../model/ListWebhookEventDefinitions200ResponseInner';
 import RetryWebhookEvent201Response from '../model/RetryWebhookEvent201Response';
 import WebhookEvent from '../model/WebhookEvent';
 import WebhookEventLog from '../model/WebhookEventLog';
@@ -43,9 +41,9 @@ export default class DevelopersWebhooksApi {
 
 
     /**
-     * Retrieve webhook event information by event ID.
-     * This operation is used to retrieve a webhook event information by its ID. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * Retrieve event by ID
+     * This operation retrieves the information of a webhook event by the event ID. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WebhookEvent} and HTTP response
      */
     getWebhookEventWithHttpInfo(eventId) {
@@ -77,9 +75,9 @@ export default class DevelopersWebhooksApi {
     }
 
     /**
-     * Retrieve webhook event information by event ID.
-     * This operation is used to retrieve a webhook event information by its ID. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * Retrieve event by ID
+     * This operation retrieves the information of a webhook event by the event ID. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WebhookEvent}
      */
     getWebhookEvent(eventId) {
@@ -91,9 +89,9 @@ export default class DevelopersWebhooksApi {
 
 
     /**
-     * List webhook event logs by event ID.
-     * This operation is used to retrieve a list of webhook event logs by event ID. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * List event logs by ID
+     * This operation retrieves a list of webhook event logs by event ID. Each retry will generate a separate event log. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/WebhookEventLog>} and HTTP response
      */
     getWebhookEventLogsWithHttpInfo(eventId) {
@@ -125,9 +123,9 @@ export default class DevelopersWebhooksApi {
     }
 
     /**
-     * List webhook event logs by event ID.
-     * This operation is used to retrieve a list of webhook event logs by event ID. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * List event logs by ID
+     * This operation retrieves a list of webhook event logs by event ID. Each retry will generate a separate event log. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/WebhookEventLog>}
      */
     getWebhookEventLogs(eventId) {
@@ -139,14 +137,14 @@ export default class DevelopersWebhooksApi {
 
 
     /**
-     * List triggered events.
-     * This operation retrieves a list of events that have been triggered within the system.  The retrieved list of events can be useful for monitoring system activities, setting up event-driven workflows, and integrating with external systems to respond to specific events. 
+     * List all events
+     * This operation retrieves a list of webhook events that have occurred within the last 30 days.  Note: The request will only return webhook events that have occurred to the wallets associated with your current API key. For example, if the current API key is only associated with Asset Wallets, any webhook events that have occurred to an MPC Wallet will not be retrieved with the current API key. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WebhookEventStatus} [status] The status of event.
-     * @param {module:model/WebhookEventType} [type] The type of event. Get event types by calling `List all supported event definitions`. 
-     * @param {Number} [limit = 10)] size of page to return (pagination)
-     * @param {String} [before = '')] Cursor string received from previous request
-     * @param {String} [after = '')] Cursor string received from previous request
+     * @param {module:model/WebhookEventStatus} [status] The event status. Possible values include: - `Success`: The event has been delivered, and the webhook endpoint has responded to the event. - `Retrying`: The event has been delivered, but the webhook endpoint has not responded. In this case, Cobo will retry delivering the event. - `Failed`: The event cannot be delivered and Cobo will stop retrying. This may occur if the number of retries reaches 10, or if the event has been delivered but the webhook endpoint responded with an error. 
+     * @param {module:model/WebhookEventType} [type] The event type. 
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListEvents200Response} and HTTP response
      */
     listEventsWithHttpInfo(opts) {
@@ -179,14 +177,14 @@ export default class DevelopersWebhooksApi {
     }
 
     /**
-     * List triggered events.
-     * This operation retrieves a list of events that have been triggered within the system.  The retrieved list of events can be useful for monitoring system activities, setting up event-driven workflows, and integrating with external systems to respond to specific events. 
+     * List all events
+     * This operation retrieves a list of webhook events that have occurred within the last 30 days.  Note: The request will only return webhook events that have occurred to the wallets associated with your current API key. For example, if the current API key is only associated with Asset Wallets, any webhook events that have occurred to an MPC Wallet will not be retrieved with the current API key. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WebhookEventStatus} opts.status The status of event.
-     * @param {module:model/WebhookEventType} opts.type The type of event. Get event types by calling `List all supported event definitions`. 
-     * @param {Number} opts.limit size of page to return (pagination) (default to 10)
-     * @param {String} opts.before Cursor string received from previous request (default to '')
-     * @param {String} opts.after Cursor string received from previous request (default to '')
+     * @param {module:model/WebhookEventStatus} opts.status The event status. Possible values include: - `Success`: The event has been delivered, and the webhook endpoint has responded to the event. - `Retrying`: The event has been delivered, but the webhook endpoint has not responded. In this case, Cobo will retry delivering the event. - `Failed`: The event cannot be delivered and Cobo will stop retrying. This may occur if the number of retries reaches 10, or if the event has been delivered but the webhook endpoint responded with an error. 
+     * @param {module:model/WebhookEventType} opts.type The event type. 
+     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListEvents200Response}
      */
     listEvents(opts) {
@@ -198,50 +196,9 @@ export default class DevelopersWebhooksApi {
 
 
     /**
-     * List all supported event definitions.
-     * This operation is used to retrieve a list of all supported event definitions in the current system.  These event definitions include different event types that trigger webhooks, enabling custom notifications and integration features within the system. A successful call to this endpoint will return a detailed list of event definitions. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ListWebhookEventDefinitions200ResponseInner>} and HTTP response
-     */
-    listWebhookEventDefinitionsWithHttpInfo() {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [ListWebhookEventDefinitions200ResponseInner];
-      return this.apiClient.callApi(
-        '/webhooks/events/definitions', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * List all supported event definitions.
-     * This operation is used to retrieve a list of all supported event definitions in the current system.  These event definitions include different event types that trigger webhooks, enabling custom notifications and integration features within the system. A successful call to this endpoint will return a detailed list of event definitions. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ListWebhookEventDefinitions200ResponseInner>}
-     */
-    listWebhookEventDefinitions() {
-      return this.listWebhookEventDefinitionsWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Retry webhook event by event ID.
-     * This operation is used to retry a webhook event by its ID. Events in `Retrying` or `Failed` status can be retried. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * Retry event by ID
+     * This operation retries delivering a webhook event with the specified event ID. You can only retry delivering a webhook event in the `Retrying` or `Failed` status. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/RetryWebhookEvent201Response} and HTTP response
      */
     retryWebhookEventWithHttpInfo(eventId) {
@@ -273,9 +230,9 @@ export default class DevelopersWebhooksApi {
     }
 
     /**
-     * Retry webhook event by event ID.
-     * This operation is used to retry a webhook event by its ID. Events in `Retrying` or `Failed` status can be retried. Get event IDs by calling `List triggered events`. 
-     * @param {String} eventId Unique id of the webhook event, get event IDs by calling `List triggered events`.
+     * Retry event by ID
+     * This operation retries delivering a webhook event with the specified event ID. You can only retry delivering a webhook event in the `Retrying` or `Failed` status. 
+     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RetryWebhookEvent201Response}
      */
     retryWebhookEvent(eventId) {

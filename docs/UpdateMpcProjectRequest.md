@@ -1,4 +1,4 @@
-# CoboWaas2Api.UpdateMpcProjectRequest
+# CoboWaas2JsApi.UpdateMpcProjectRequest
 
 ## Properties
 

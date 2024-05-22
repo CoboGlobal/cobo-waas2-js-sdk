@@ -1,4 +1,4 @@
-# CoboWaas2Api.AssetBalance
+# CoboWaas2JsApi.AssetBalance
 
 ## Properties
 

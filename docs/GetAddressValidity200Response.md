@@ -1,4 +1,4 @@
-# CoboWaas2Api.GetAddressValidity200Response
+# CoboWaas2JsApi.GetAddressValidity200Response
 
 ## Properties
 

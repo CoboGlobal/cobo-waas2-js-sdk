@@ -1,4 +1,4 @@
-# CoboWaas2Api.AddressTransferDestination
+# CoboWaas2JsApi.AddressTransferDestination
 
 ## Properties
 

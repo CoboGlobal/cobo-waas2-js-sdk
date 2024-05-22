@@ -1,4 +1,4 @@
-# CoboWaas2Api.WalletType
+# CoboWaas2JsApi.WalletType
 
 ## Enum
 

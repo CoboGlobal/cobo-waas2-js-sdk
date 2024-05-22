@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -23,13 +22,13 @@ import WebhookEventType from './WebhookEventType';
 class WebhookEvent {
     /**
      * Constructs a new <code>WebhookEvent</code>.
-     * The data for webhook event.
+     * The webhook event payload.
      * @alias module:model/WebhookEvent
-     * @param id {String} The unique identifier of the event.
+     * @param id {String} The event ID.
      * @param url {String} The URL of the webhook endpoint.
-     * @param createdTimestamp {Number} The timestamp at which the object was created, represented as an integer value, typically in milliseconds since the epoch.
+     * @param createdTimestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
      * @param type {module:model/WebhookEventType} 
-     * @param data {Object} The data of the webhook event in json format.
+     * @param data {Object} The data of the webhook event, in JSON format.
      * @param status {module:model/WebhookEventStatus} 
      */
     constructor(id, url, createdTimestamp, type, data, status) { 
@@ -120,7 +119,7 @@ class WebhookEvent {
 WebhookEvent.RequiredProperties = ["id", "url", "created_timestamp", "type", "data", "status"];
 
 /**
- * The unique identifier of the event.
+ * The event ID.
  * @member {String} id
  */
 WebhookEvent.prototype['id'] = undefined;
@@ -132,7 +131,7 @@ WebhookEvent.prototype['id'] = undefined;
 WebhookEvent.prototype['url'] = undefined;
 
 /**
- * The timestamp at which the object was created, represented as an integer value, typically in milliseconds since the epoch.
+ * The time when the event occurred, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_timestamp
  */
 WebhookEvent.prototype['created_timestamp'] = undefined;
@@ -143,7 +142,7 @@ WebhookEvent.prototype['created_timestamp'] = undefined;
 WebhookEvent.prototype['type'] = undefined;
 
 /**
- * The data of the webhook event in json format.
+ * The data of the webhook event, in JSON format.
  * @member {Object} data
  */
 WebhookEvent.prototype['data'] = undefined;
@@ -154,13 +153,13 @@ WebhookEvent.prototype['data'] = undefined;
 WebhookEvent.prototype['status'] = undefined;
 
 /**
- * The timestamp indicating the next scheduled retry for this event. This field is only present when the event status is set to `Retrying`. The timestamp is represented as an integer value, typically in milliseconds since the epoch. 
+ * The timestamp indicating the next scheduled retry to deliver this event, in Unix timestamp format, measured in milliseconds. This field is only present if the event status is `Retrying`. 
  * @member {Number} next_retry_timestamp
  */
 WebhookEvent.prototype['next_retry_timestamp'] = undefined;
 
 /**
- * The number of retries left. This field is only present when the event status is `Retrying`.
+ * The number of retries left. This field is only present if the event status is `Retrying`.
  * @member {Number} retries_left
  */
 WebhookEvent.prototype['retries_left'] = undefined;

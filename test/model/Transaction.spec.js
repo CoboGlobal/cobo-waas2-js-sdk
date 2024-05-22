@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -20,15 +19,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.CoboWaas2Api);
+    factory(root.expect, root.CoboWaas2JsApi);
   }
-}(this, function(expect, CoboWaas2Api) {
+}(this, function(expect, CoboWaas2JsApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2Api.Transaction();
+    instance = new CoboWaas2JsApi.Transaction();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,133 +49,133 @@
   describe('Transaction', function() {
     it('should create an instance of Transaction', function() {
       // uncomment below and update the code to test Transaction
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be.a(CoboWaas2Api.Transaction);
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be.a(CoboWaas2JsApi.Transaction);
     });
 
     it('should have the property transactionId (base name: "transaction_id")', function() {
       // uncomment below and update the code to test the property transactionId
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property walletId (base name: "wallet_id")', function() {
       // uncomment below and update the code to test the property walletId
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property requestId (base name: "request_id")', function() {
       // uncomment below and update the code to test the property requestId
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property coboId (base name: "cobo_id")', function() {
       // uncomment below and update the code to test the property coboId
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property initiator (base name: "initiator")', function() {
+      // uncomment below and update the code to test the property initiator
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transactionHash (base name: "transaction_hash")', function() {
+      // uncomment below and update the code to test the property transactionHash
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property subStatus (base name: "sub_status")', function() {
       // uncomment below and update the code to test the property subStatus
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property fromType (base name: "from_type")', function() {
-      // uncomment below and update the code to test the property fromType
-      //var instance = new CoboWaas2Api.Transaction();
+    it('should have the property source (base name: "source")', function() {
+      // uncomment below and update the code to test the property source
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property fromAddress (base name: "from_address")', function() {
-      // uncomment below and update the code to test the property fromAddress
-      //var instance = new CoboWaas2Api.Transaction();
+    it('should have the property destination (base name: "destination")', function() {
+      // uncomment below and update the code to test the property destination
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property fromInfo (base name: "from_info")', function() {
-      // uncomment below and update the code to test the property fromInfo
-      //var instance = new CoboWaas2Api.Transaction();
+    it('should have the property chainId (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chainId
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property toType (base name: "to_type")', function() {
-      // uncomment below and update the code to test the property toType
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property toAddress (base name: "to_address")', function() {
-      // uncomment below and update the code to test the property toAddress
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property toInfo (base name: "to_info")', function() {
-      // uncomment below and update the code to test the property toInfo
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property network (base name: "network")', function() {
-      // uncomment below and update the code to test the property network
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property txid (base name: "txid")', function() {
-      // uncomment below and update the code to test the property txid
-      //var instance = new CoboWaas2Api.Transaction();
+    it('should have the property exchangeId (base name: "exchange_id")', function() {
+      // uncomment below and update the code to test the property exchangeId
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property tokens (base name: "tokens")', function() {
       // uncomment below and update the code to test the property tokens
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee (base name: "fee")', function() {
+      // uncomment below and update the code to test the property fee
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property category (base name: "category")', function() {
       // uncomment below and update the code to test the property category
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property confirmedNum (base name: "confirmed_num")', function() {
+      // uncomment below and update the code to test the property confirmedNum
+      //var instance = new CoboWaas2JsApi.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property confirmingThreshold (base name: "confirming_threshold")', function() {
+      // uncomment below and update the code to test the property confirmingThreshold
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property createdTime (base name: "created_time")', function() {
       // uncomment below and update the code to test the property createdTime
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedTime (base name: "updated_time")', function() {
       // uncomment below and update the code to test the property updatedTime
-      //var instance = new CoboWaas2Api.Transaction();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property delegate (base name: "delegate")', function() {
-      // uncomment below and update the code to test the property delegate
-      //var instance = new CoboWaas2Api.Transaction();
+      //var instance = new CoboWaas2JsApi.Transaction();
       //expect(instance).to.be();
     });
 

@@ -1,14 +1,13 @@
-# CoboWaas2Api.DevelopersWebhooksApi
+# CoboWaas2JsApi.DevelopersWebhooksApi
 
-All URIs are relative to *https://api.cobo.com/v3*
+All URIs are relative to *https://api.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getWebhookEvent**](DevelopersWebhooksApi.md#getWebhookEvent) | **GET** /webhooks/events/{event_id} | Retrieve webhook event information by event ID.
-[**getWebhookEventLogs**](DevelopersWebhooksApi.md#getWebhookEventLogs) | **GET** /webhooks/events/{event_id}/logs | List webhook event logs by event ID.
-[**listEvents**](DevelopersWebhooksApi.md#listEvents) | **GET** /webhooks/events | List triggered events.
-[**listWebhookEventDefinitions**](DevelopersWebhooksApi.md#listWebhookEventDefinitions) | **GET** /webhooks/events/definitions | List all supported event definitions.
-[**retryWebhookEvent**](DevelopersWebhooksApi.md#retryWebhookEvent) | **POST** /webhooks/events/{event_id}/retry | Retry webhook event by event ID.
+[**getWebhookEvent**](DevelopersWebhooksApi.md#getWebhookEvent) | **GET** /webhooks/events/{event_id} | Retrieve event by ID
+[**getWebhookEventLogs**](DevelopersWebhooksApi.md#getWebhookEventLogs) | **GET** /webhooks/events/{event_id}/logs | List event logs by ID
+[**listEvents**](DevelopersWebhooksApi.md#listEvents) | **GET** /webhooks/events | List all events
+[**retryWebhookEvent**](DevelopersWebhooksApi.md#retryWebhookEvent) | **POST** /webhooks/events/{event_id}/retry | Retry event by ID
 
 
 
@@ -16,23 +15,23 @@ Method | HTTP request | Description
 
 > WebhookEvent getWebhookEvent(eventId)
 
-Retrieve webhook event information by event ID.
+Retrieve event by ID
 
-This operation is used to retrieve a webhook event information by its ID. Get event IDs by calling &#x60;List triggered events&#x60;. 
+This operation retrieves the information of a webhook event by the event ID. 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the webhook event, get event IDs by calling `List triggered events`.
+let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.getWebhookEvent(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -46,7 +45,7 @@ apiInstance.getWebhookEvent(eventId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| Unique id of the webhook event, get event IDs by calling &#x60;List triggered events&#x60;. | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events). | 
 
 ### Return type
 
@@ -66,23 +65,23 @@ Name | Type | Description  | Notes
 
 > [WebhookEventLog] getWebhookEventLogs(eventId)
 
-List webhook event logs by event ID.
+List event logs by ID
 
-This operation is used to retrieve a list of webhook event logs by event ID. Get event IDs by calling &#x60;List triggered events&#x60;. 
+This operation retrieves a list of webhook event logs by event ID. Each retry will generate a separate event log. 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the webhook event, get event IDs by calling `List triggered events`.
+let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.getWebhookEventLogs(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -96,7 +95,7 @@ apiInstance.getWebhookEventLogs(eventId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| Unique id of the webhook event, get event IDs by calling &#x60;List triggered events&#x60;. | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events). | 
 
 ### Return type
 
@@ -116,28 +115,28 @@ Name | Type | Description  | Notes
 
 > ListEvents200Response listEvents(opts)
 
-List triggered events.
+List all events
 
-This operation retrieves a list of events that have been triggered within the system.  The retrieved list of events can be useful for monitoring system activities, setting up event-driven workflows, and integrating with external systems to respond to specific events. 
+This operation retrieves a list of webhook events that have occurred within the last 30 days.  Note: The request will only return webhook events that have occurred to the wallets associated with your current API key. For example, if the current API key is only associated with Asset Wallets, any webhook events that have occurred to an MPC Wallet will not be retrieved with the current API key. 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.DevelopersWebhooksApi();
+let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
 let opts = {
-  'status': new CoboWaas2Api.WebhookEventStatus(), // WebhookEventStatus | The status of event.
-  'type': new CoboWaas2Api.WebhookEventType(), // WebhookEventType | The type of event. Get event types by calling `List all supported event definitions`. 
-  'limit': 10, // Number | size of page to return (pagination)
-  'before': "123", // String | Cursor string received from previous request
-  'after': "123" // String | Cursor string received from previous request
+  'status': new CoboWaas2JsApi.WebhookEventStatus(), // WebhookEventStatus | The event status. Possible values include: - `Success`: The event has been delivered, and the webhook endpoint has responded to the event. - `Retrying`: The event has been delivered, but the webhook endpoint has not responded. In this case, Cobo will retry delivering the event. - `Failed`: The event cannot be delivered and Cobo will stop retrying. This may occur if the number of retries reaches 10, or if the event has been delivered but the webhook endpoint responded with an error. 
+  'type': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | The event type. 
+  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
+  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
 };
 apiInstance.listEvents(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -152,11 +151,11 @@ apiInstance.listEvents(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**WebhookEventStatus**](.md)| The status of event. | [optional] 
- **type** | [**WebhookEventType**](.md)| The type of event. Get event types by calling &#x60;List all supported event definitions&#x60;.  | [optional] 
- **limit** | **Number**| size of page to return (pagination) | [optional] [default to 10]
- **before** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
- **after** | **String**| Cursor string received from previous request | [optional] [default to &#39;&#39;]
+ **status** | [**WebhookEventStatus**](.md)| The event status. Possible values include: - &#x60;Success&#x60;: The event has been delivered, and the webhook endpoint has responded to the event. - &#x60;Retrying&#x60;: The event has been delivered, but the webhook endpoint has not responded. In this case, Cobo will retry delivering the event. - &#x60;Failed&#x60;: The event cannot be delivered and Cobo will stop retrying. This may occur if the number of retries reaches 10, or if the event has been delivered but the webhook endpoint responded with an error.  | [optional] 
+ **type** | [**WebhookEventType**](.md)| The event type.  | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
 
 ### Return type
 
@@ -172,73 +171,27 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listWebhookEventDefinitions
-
-> [ListWebhookEventDefinitions200ResponseInner] listWebhookEventDefinitions()
-
-List all supported event definitions.
-
-This operation is used to retrieve a list of all supported event definitions in the current system.  These event definitions include different event types that trigger webhooks, enabling custom notifications and integration features within the system. A successful call to this endpoint will return a detailed list of event definitions. 
-
-### Example
-
-```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
-// Configure API key authorization: CoboAuth
-let CoboAuth = defaultClient.authentications['CoboAuth'];
-CoboAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//CoboAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new CoboWaas2Api.DevelopersWebhooksApi();
-apiInstance.listWebhookEventDefinitions().then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[ListWebhookEventDefinitions200ResponseInner]**](ListWebhookEventDefinitions200ResponseInner.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## retryWebhookEvent
 
 > RetryWebhookEvent201Response retryWebhookEvent(eventId)
 
-Retry webhook event by event ID.
+Retry event by ID
 
-This operation is used to retry a webhook event by its ID. Events in &#x60;Retrying&#x60; or &#x60;Failed&#x60; status can be retried. Get event IDs by calling &#x60;List triggered events&#x60;. 
+This operation retries delivering a webhook event with the specified event ID. You can only retry delivering a webhook event in the &#x60;Retrying&#x60; or &#x60;Failed&#x60; status. 
 
 ### Example
 
 ```javascript
-import CoboWaas2Api from 'cobo-waas2-api';
-let defaultClient = CoboWaas2Api.ApiClient.instance;
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+let defaultClient = CoboWaas2JsApi.ApiClient.instance;
 // Configure API key authorization: CoboAuth
 let CoboAuth = defaultClient.authentications['CoboAuth'];
 CoboAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //CoboAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new CoboWaas2Api.DevelopersWebhooksApi();
-let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the webhook event, get event IDs by calling `List triggered events`.
+let apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
+let eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events).
 apiInstance.retryWebhookEvent(eventId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -252,7 +205,7 @@ apiInstance.retryWebhookEvent(eventId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| Unique id of the webhook event, get event IDs by calling &#x60;List triggered events&#x60;. | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/api-references/v2/developers--webhooks/list-all-events). | 
 
 ### Return type
 

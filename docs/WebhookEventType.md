@@ -1,4 +1,4 @@
-# CoboWaas2Api.WebhookEventType
+# CoboWaas2JsApi.WebhookEventType
 
 ## Enum
 

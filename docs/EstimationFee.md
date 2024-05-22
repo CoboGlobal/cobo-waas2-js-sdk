@@ -1,4 +1,4 @@
-# CoboWaas2Api.EstimationFee
+# CoboWaas2JsApi.EstimationFee
 
 ## Properties
 

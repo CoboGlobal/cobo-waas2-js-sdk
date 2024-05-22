@@ -1,4 +1,4 @@
-# CoboWaas2Api.KeyGroupType
+# CoboWaas2JsApi.KeyGroupType
 
 ## Enum
 

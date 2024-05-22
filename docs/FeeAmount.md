@@ -1,4 +1,4 @@
-# CoboWaas2Api.FeeAmount
+# CoboWaas2JsApi.FeeAmount
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateSmartContractWallet
+# CoboWaas2JsApi.CreateSmartContractWallet
 
 ## Properties
 

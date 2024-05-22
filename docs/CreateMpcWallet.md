@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateMpcWallet
+# CoboWaas2JsApi.CreateMpcWallet
 
 ## Properties
 

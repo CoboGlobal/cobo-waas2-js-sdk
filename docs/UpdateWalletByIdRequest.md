@@ -1,4 +1,4 @@
-# CoboWaas2Api.UpdateWalletByIdRequest
+# CoboWaas2JsApi.UpdateWalletByIdRequest
 
 ## Properties
 

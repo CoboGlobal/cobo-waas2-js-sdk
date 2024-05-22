@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateTransferTransaction201Response
+# CoboWaas2JsApi.CreateTransferTransaction201Response
 
 ## Properties
 

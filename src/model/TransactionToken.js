@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -12,7 +11,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TokenInfo from './TokenInfo';
 
 /**
  * The TransactionToken model module.
@@ -22,14 +20,14 @@ import TokenInfo from './TokenInfo';
 class TransactionToken {
     /**
      * Constructs a new <code>TransactionToken</code>.
+     * The data for transaction asset information.
      * @alias module:model/TransactionToken
-     * @implements module:model/TokenInfo
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
-     * @param chainId {String} The blockchain on which the token operates.
+     * @param assetId {String} ID of the asset. Used to group token balance when needed.
+     * @param amount {Number} Transaction value (Note that this is an absolute value. If you trade 1.5 BTC, then the value is 1.5) 
      */
-    constructor(tokenId, chainId) { 
-        TokenInfo.initialize(this, tokenId, chainId);
-        TransactionToken.initialize(this, tokenId, chainId);
+    constructor(assetId, amount) { 
+        
+        TransactionToken.initialize(this, assetId, amount);
     }
 
     /**
@@ -37,9 +35,9 @@ class TransactionToken {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, tokenId, chainId) { 
-        obj['token_id'] = tokenId;
-        obj['chain_id'] = chainId;
+    static initialize(obj, assetId, amount) { 
+        obj['asset_id'] = assetId;
+        obj['amount'] = amount;
     }
 
     /**
@@ -52,25 +50,9 @@ class TransactionToken {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TransactionToken();
-            TokenInfo.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
-            }
-            if (data.hasOwnProperty('chain_id')) {
-                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
-            }
-            if (data.hasOwnProperty('symbol')) {
-                obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('icon_url')) {
-                obj['icon_url'] = ApiClient.convertToType(data['icon_url'], 'String');
-            }
-            if (data.hasOwnProperty('token_address')) {
-                obj['token_address'] = ApiClient.convertToType(data['token_address'], 'String');
             }
             if (data.hasOwnProperty('asset_id')) {
                 obj['asset_id'] = ApiClient.convertToType(data['asset_id'], 'String');
@@ -99,26 +81,6 @@ class TransactionToken {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
-            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
-        }
-        // ensure the json data is a string
-        if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
-            throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
-        }
-        // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-        // ensure the json data is a string
-        if (data['icon_url'] && !(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
-            throw new Error("Expected the field `icon_url` to be a primitive type in the JSON string but got " + data['icon_url']);
-        }
-        // ensure the json data is a string
-        if (data['token_address'] && !(typeof data['token_address'] === 'string' || data['token_address'] instanceof String)) {
-            throw new Error("Expected the field `token_address` to be a primitive type in the JSON string but got " + data['token_address']);
-        }
-        // ensure the json data is a string
         if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
             throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
         }
@@ -133,43 +95,13 @@ class TransactionToken {
 
 }
 
-TransactionToken.RequiredProperties = ["token_id", "chain_id"];
+TransactionToken.RequiredProperties = ["asset_id", "amount"];
 
 /**
  * ID of the token. Unique in all chains scope.
  * @member {String} token_id
  */
 TransactionToken.prototype['token_id'] = undefined;
-
-/**
- * The blockchain on which the token operates.
- * @member {String} chain_id
- */
-TransactionToken.prototype['chain_id'] = undefined;
-
-/**
- * Symbol for the token.
- * @member {String} symbol
- */
-TransactionToken.prototype['symbol'] = undefined;
-
-/**
- * The description of the token.
- * @member {String} description
- */
-TransactionToken.prototype['description'] = undefined;
-
-/**
- * URL of the icon image.
- * @member {String} icon_url
- */
-TransactionToken.prototype['icon_url'] = undefined;
-
-/**
- * Address for token, if applicable.
- * @member {String} token_address
- */
-TransactionToken.prototype['token_address'] = undefined;
 
 /**
  * ID of the asset. Used to group token balance when needed.
@@ -184,42 +116,6 @@ TransactionToken.prototype['asset_id'] = undefined;
 TransactionToken.prototype['amount'] = undefined;
 
 
-// Implement TokenInfo interface:
-/**
- * ID of the token. Unique in all chains scope.
- * @member {String} token_id
- */
-TokenInfo.prototype['token_id'] = undefined;
-/**
- * The blockchain on which the token operates.
- * @member {String} chain_id
- */
-TokenInfo.prototype['chain_id'] = undefined;
-/**
- * Symbol for the token.
- * @member {String} symbol
- */
-TokenInfo.prototype['symbol'] = undefined;
-/**
- * The description of the token.
- * @member {String} description
- */
-TokenInfo.prototype['description'] = undefined;
-/**
- * URL of the icon image.
- * @member {String} icon_url
- */
-TokenInfo.prototype['icon_url'] = undefined;
-/**
- * Address for token, if applicable.
- * @member {String} token_address
- */
-TokenInfo.prototype['token_address'] = undefined;
-/**
- * ID of the asset. Used to group token balance when needed.
- * @member {String} asset_id
- */
-TokenInfo.prototype['asset_id'] = undefined;
 
 
 

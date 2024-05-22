@@ -1,4 +1,4 @@
-# CoboWaas2Api.BaseTransferSource
+# CoboWaas2JsApi.BaseTransferSource
 
 ## Properties
 

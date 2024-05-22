@@ -1,4 +1,4 @@
-# CoboWaas2Api.FeeType
+# CoboWaas2JsApi.FeeType
 
 ## Enum
 

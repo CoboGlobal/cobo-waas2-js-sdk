@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -55,22 +54,6 @@ class CreatedWallet {
         }
 
         try {
-            if (typeof instance === "CreateExchangeWallet") {
-                this.actualInstance = instance;
-            } else {
-                // plain JS object
-                // validate the object
-                CreateExchangeWallet.validateJSON(instance); // throw an exception if no match
-                // create CreateExchangeWallet from JS object
-                this.actualInstance = CreateExchangeWallet.constructFromObject(instance);
-            }
-            match++;
-        } catch(err) {
-            // json data failed to deserialize into CreateExchangeWallet
-            errorMessages.push("Failed to construct CreateExchangeWallet: " + err)
-        }
-
-        try {
             if (typeof instance === "CreateMpcWallet") {
                 this.actualInstance = instance;
             } else {
@@ -100,6 +83,22 @@ class CreatedWallet {
         } catch(err) {
             // json data failed to deserialize into CreateSmartContractWallet
             errorMessages.push("Failed to construct CreateSmartContractWallet: " + err)
+        }
+
+        try {
+            if (typeof instance === "CreateExchangeWallet") {
+                this.actualInstance = instance;
+            } else {
+                // plain JS object
+                // validate the object
+                CreateExchangeWallet.validateJSON(instance); // throw an exception if no match
+                // create CreateExchangeWallet from JS object
+                this.actualInstance = CreateExchangeWallet.constructFromObject(instance);
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into CreateExchangeWallet
+            errorMessages.push("Failed to construct CreateExchangeWallet: " + err)
         }
 
         if (match > 1) {
@@ -174,6 +173,12 @@ CreatedWallet.prototype['wallet_type'] = undefined;
 CreatedWallet.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The owning mpc vault id of the mpc wallet.
+ * @member {String} vault_id
+ */
+CreatedWallet.prototype['vault_id'] = undefined;
+
+/**
  * @member {module:model/ExchangeId} exchange_id
  */
 CreatedWallet.prototype['exchange_id'] = undefined;
@@ -207,12 +212,6 @@ CreatedWallet.prototype['ga_code'] = undefined;
  * @member {Array.<String>} sub_account_ids
  */
 CreatedWallet.prototype['sub_account_ids'] = undefined;
-
-/**
- * The owning mpc vault id of the mpc wallet.
- * @member {String} vault_id
- */
-CreatedWallet.prototype['vault_id'] = undefined;
 
 
 CreatedWallet.OneOf = ["CreateCustodialWallet", "CreateExchangeWallet", "CreateMpcWallet", "CreateSmartContractWallet"];

@@ -1,4 +1,4 @@
-# CoboWaas2Api.UtxoTransactionFee
+# CoboWaas2JsApi.UtxoTransactionFee
 
 ## Properties
 

@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -40,7 +39,7 @@ class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://api.cobo.com/v3
+         * @default https://api.cobo.com/v2
          */
         this.basePath = env.basePath
         this.privateKey = privateKey
@@ -59,7 +58,7 @@ class ApiClient {
          * @default {}
          */
         this.defaultHeaders = {
-            'User-Agent': 'OpenAPI-Generator/0.1.0/Javascript'
+            'User-Agent': 'cobo-waas2-js-api/0.1.0'
         };
 
         /**
@@ -612,11 +611,11 @@ class ApiClient {
     hostSettings() {
         return [
             {
-              'url': "https://api.cobo.com/v3",
+              'url': "https://api.cobo.com/v2",
               'description': "Production environment",
             },
             {
-              'url': "https://api.dev.cobo.com/v3",
+              'url': "https://api.dev.cobo.com/v2",
               'description': "Development environment",
             }
       ];

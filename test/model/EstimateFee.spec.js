@@ -1,6 +1,5 @@
 /**
  * Cobo Wallet as a Service 2.0
- * Cobo WaaS 2.0 enables you to programmatically access Cobo's full suite of crypto wallet technologies with powerful and flexible access controls.  # Wallet technologies - Custodial Wallet - MPC Wallet - Smart Contract Wallet (Based on Safe{Wallet}) - Exchange Wallet  # Risk Control technologies - Workflow - Access Control List (ACL)  # Risk Control targets - Wallet Management   - User/team and their permission management   - Risk control configurations, e.g. whitelist, blacklist, rate-limiting etc. - Blockchain Interaction   - Crypto transfer   - Smart Contract Invocation  # Important HTTPS only. RESTful, resource oriented  # Get Started Set up your APIs or get authorization  # Authentication and Authorization CoboAuth  # Request and Response application/json  # Error Handling  ### Common error codes | Error Code | Description | | -- | -- |  ### API-specific error codes For error codes that are dedicated to a specific API, see the Error codes section in each API specification, for example, /v3/wallets.  # Rate and Usage Limiting  # Idempotent Request  # Pagination # Support [Developer Hub](https://cobo.com/developers) 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@cobo.com
@@ -20,15 +19,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.CoboWaas2Api);
+    factory(root.expect, root.CoboWaas2JsApi);
   }
-}(this, function(expect, CoboWaas2Api) {
+}(this, function(expect, CoboWaas2JsApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2Api.EstimateFee();
+    instance = new CoboWaas2JsApi.EstimateFee();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,103 +49,103 @@
   describe('EstimateFee', function() {
     it('should create an instance of EstimateFee', function() {
       // uncomment below and update the code to test EstimateFee
-      //var instance = new CoboWaas2Api.EstimateFee();
-      //expect(instance).to.be.a(CoboWaas2Api.EstimateFee);
+      //var instance = new CoboWaas2JsApi.EstimateFee();
+      //expect(instance).to.be.a(CoboWaas2JsApi.EstimateFee);
     });
 
     it('should have the property requestId (base name: "request_id")', function() {
       // uncomment below and update the code to test the property requestId
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property requestType (base name: "request_type")', function() {
       // uncomment below and update the code to test the property requestType
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property source (base name: "source")', function() {
       // uncomment below and update the code to test the property source
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property tokenId (base name: "token_id")', function() {
       // uncomment below and update the code to test the property tokenId
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property destination (base name: "destination")', function() {
       // uncomment below and update the code to test the property destination
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property categoryNames (base name: "category_names")', function() {
       // uncomment below and update the code to test the property categoryNames
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property fee (base name: "fee")', function() {
       // uncomment below and update the code to test the property fee
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property fromWalletId (base name: "from_wallet_id")', function() {
       // uncomment below and update the code to test the property fromWalletId
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property fromAddressStr (base name: "from_address_str")', function() {
       // uncomment below and update the code to test the property fromAddressStr
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property chainId (base name: "chain_id")', function() {
       // uncomment below and update the code to test the property chainId
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property toAddressStr (base name: "to_address_str")', function() {
       // uncomment below and update the code to test the property toAddressStr
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property value (base name: "value")', function() {
       // uncomment below and update the code to test the property value
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property calldata (base name: "calldata")', function() {
       // uncomment below and update the code to test the property calldata
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 
     it('should have the property mpcUsedKeyGroup (base name: "mpc_used_key_group")', function() {
       // uncomment below and update the code to test the property mpcUsedKeyGroup
-      //var instance = new CoboWaas2Api.EstimateFee();
+      //var instance = new CoboWaas2JsApi.EstimateFee();
       //expect(instance).to.be();
     });
 

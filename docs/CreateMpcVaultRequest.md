@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateMpcVaultRequest
+# CoboWaas2JsApi.CreateMpcVaultRequest
 
 ## Properties
 

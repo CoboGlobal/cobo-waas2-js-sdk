@@ -1,4 +1,4 @@
-# CoboWaas2Api.EvmEip1559Fee
+# CoboWaas2JsApi.EvmEip1559Fee
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# CoboWaas2Api.TokenBalance
+# CoboWaas2JsApi.TokenBalance
 
 ## Properties
 

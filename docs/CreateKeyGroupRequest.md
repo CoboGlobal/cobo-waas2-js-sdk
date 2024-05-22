@@ -1,4 +1,4 @@
-# CoboWaas2Api.CreateKeyGroupRequest
+# CoboWaas2JsApi.CreateKeyGroupRequest
 
 ## Properties
 
