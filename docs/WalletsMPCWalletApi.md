@@ -39,7 +39,8 @@ cancel tss request.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -91,7 +92,8 @@ create a mpc key group.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -143,7 +145,8 @@ create a mpc project
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -193,7 +196,8 @@ create a mpc vault
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -243,7 +247,8 @@ Create a tss request to generate key secrets for a tss group
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -295,7 +300,8 @@ delete a mpc key group.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -345,7 +351,8 @@ get a mpc key group.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -395,7 +402,8 @@ get a mpc vault
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -443,7 +451,8 @@ get a mpc vault
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -491,7 +500,8 @@ get a tss request.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -541,7 +551,8 @@ Retrieve a list of key holders.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -585,7 +596,8 @@ Retrieve a list of mpc key groups.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -637,7 +649,8 @@ Retrieve a list of mpc project.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -681,7 +694,8 @@ Retrieve a list of mpc vault.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -731,7 +745,8 @@ Detailed description on retrieving list of tss request information
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -783,7 +798,8 @@ modify a mpc vault
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -835,7 +851,8 @@ update a mpc key group.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();
@@ -887,7 +904,8 @@ update a mpc vault
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletApi();

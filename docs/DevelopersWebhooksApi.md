@@ -25,7 +25,8 @@ This operation retrieves the information of a webhook event by the event ID.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
@@ -73,7 +74,8 @@ This operation retrieves a list of webhook event logs by event ID. Each retry wi
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
@@ -121,7 +123,8 @@ This operation retrieves a list of webhook events that have occurred within the 
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
@@ -179,7 +182,8 @@ This operation retries delivering a webhook event with the specified event ID. Y
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();

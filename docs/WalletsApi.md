@@ -39,7 +39,8 @@ Add an address to a wallet.  Error codes this API may return: | Error Code | Des
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -91,7 +92,8 @@ Creates a new wallet with the provided information.  Error codes this API may re
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -141,7 +143,8 @@ Deletes a specific wallet identified by its ID. This endpoint is supported by Ex
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -189,7 +192,8 @@ Verifies if the given address is valid for the specified token. Error codes this
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -239,7 +243,8 @@ This endpoint retrieves metadata for available blockchain chains. It provides de
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -295,7 +300,8 @@ This endpoint allows users to query enabled chains based on wallet type and subt
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -353,7 +359,8 @@ This endpoint allows users to query enabled tokens based on wallet type, subtype
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -413,7 +420,8 @@ Retrieves the maximum transferable value and the corresponding transaction fee f
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -467,7 +475,8 @@ Retrieves a list of spendable unspent transaction outputs (UTXOs) for a given wa
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -521,7 +530,8 @@ This endpoint allows users to query supported chains based on wallet type and su
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -579,7 +589,8 @@ This endpoint allows users to query supported tokens based on wallet type, subty
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -639,7 +650,8 @@ This endpoint retrieves metadata for tokens stored in the wallet system. It prov
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -695,7 +707,8 @@ Retrieves a list of token balances for a specific address within a wallet. This 
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -755,7 +768,8 @@ Retrieves detailed information about a wallet identified by its unique ID.  Erro
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -803,7 +817,8 @@ Retrieves a list of token balances within a wallet. This endpoint allows users t
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -861,7 +876,8 @@ Retrieve a list of addresses associated with a wallet.  Error codes this API may
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -921,7 +937,8 @@ Retrieves a list of all wallets.  This endpoint allows filtering by wallet type,
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();
@@ -981,7 +998,8 @@ Updates information for a specific wallet identified by its ID. This endpoint is
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsApi();

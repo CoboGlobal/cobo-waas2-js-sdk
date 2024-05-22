@@ -31,7 +31,8 @@ Create a transaction to call a smart contract.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -81,7 +82,8 @@ Create a transaction to transfer funds from one account to another.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -131,7 +133,8 @@ Drop a transaction.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -183,7 +186,8 @@ Estimate the transaction fee.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -233,7 +237,8 @@ Retrieve the fee price data.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -285,7 +290,8 @@ Detailed description on retrieving transaction information by id
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -333,7 +339,8 @@ Retrieve a list of transactions.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -415,7 +422,8 @@ Resend a transaction.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -463,7 +471,8 @@ Retry a transaction double-check.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
@@ -511,7 +520,8 @@ Speed up a transaction.
 import CoboWaas2JsApi from 'cobo-waas2-js-api';
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();

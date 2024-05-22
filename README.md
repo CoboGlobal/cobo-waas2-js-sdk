@@ -167,7 +167,8 @@ const CoboWaas2JsApi = require('cobo-waas2-js-api');
 
 // initial default api client
 const apiClient = CoboWaas2JsApi.ApiClient.instance
-apiClient.setEnv(new CoboWaas2JsApi.Env("https://api[.sandbox].cobo.com/v2"));
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const api = new CoboWaas2JsApi.DevelopersWebhooksApi()
