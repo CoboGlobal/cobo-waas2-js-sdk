@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class TokenBalanceBalance {
     /**
      * Constructs a new <code>TokenBalanceBalance</code>.
-     * The data for balance information.
+     * The balance details.
      * @alias module:model/TokenBalanceBalance
-     * @param total {String} The total balance, sum of the following fields.
+     * @param total {String} The total balance, which is the sum of the remaining fields.
      * @param available {String} The balance free to use.
      */
     constructor(total, available) { 
@@ -105,7 +105,7 @@ class TokenBalanceBalance {
 TokenBalanceBalance.RequiredProperties = ["total", "available"];
 
 /**
- * The total balance, sum of the following fields.
+ * The total balance, which is the sum of the remaining fields.
  * @member {String} total
  */
 TokenBalanceBalance.prototype['total'] = undefined;
@@ -117,7 +117,7 @@ TokenBalanceBalance.prototype['total'] = undefined;
 TokenBalanceBalance.prototype['available'] = undefined;
 
 /**
- * The pending balance not confirmed.
+ * The balance pending confirmation.
  * @member {String} pending
  * @default '0'
  */

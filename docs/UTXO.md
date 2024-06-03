@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**txHash** | **String** | Transaction hash of the UTXO. | [optional] 
-**voutN** | **Number** | Output index of the UTXO. | [optional] 
-**addressStr** | **String** | Address of the UTXO. | [optional] 
-**amount** | **String** | UTXO amount in decimal places (e.g. one bitcoin is divisible to eight decimal places, and 100000000 represents 1 BTC). | [optional] 
-**isCoinbase** | **Boolean** | Whether the UTXO is a coinbase transaction. | [optional] 
-**confirmedNumber** | **Number** | Number of confirmations for the UTXO. | [optional] 
+**txHash** | **String** | The transaction hash of the UTXO. | [optional] 
+**voutN** | **Number** | The output index of the UTXO. | [optional] 
+**addressStr** | **String** | The address of the UTXO. | [optional] 
+**tokenBalances** | [**[TokenBalance]**](TokenBalance.md) |  | [optional] 
+**isCoinbase** | **Boolean** | Whether the UTXO comes from a coinbase transaction. | [optional] 
+**isLocked** | **Boolean** | Whether the UTXO is locked. | [optional] 
+**confirmedNumber** | **Number** | The number of confirmations for the UTXO. | [optional] 
 
 

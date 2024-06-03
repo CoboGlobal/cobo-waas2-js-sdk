@@ -87,19 +87,19 @@ class SafeWalletAllOfInitiator {
 
 
 /**
- * The wallet id of the initiator. This is required when user want to create a new safe wallet.
+ * The initiator's wallet ID. This field is required when creating a new Safe{Wallet}. 
  * @member {String} wallet_id
  */
 SafeWalletAllOfInitiator.prototype['wallet_id'] = undefined;
 
 /**
- * The wallet type of the initiator. This is required when user want to create a new safe wallet.
+ * The initiator's wallet type. This field is required when creating a new Safe{Wallet}. 
  * @member {String} wallet_type
  */
 SafeWalletAllOfInitiator.prototype['wallet_type'] = undefined;
 
 /**
- * The wallet address of the initiator. This is required when user want to create a new safe wallet.
+ * The initiator's wallet address. This field is required when creating a new Safe{Wallet}. 
  * @member {String} wallet_address
  */
 SafeWalletAllOfInitiator.prototype['wallet_address'] = undefined;

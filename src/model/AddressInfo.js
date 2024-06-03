@@ -21,11 +21,11 @@ import AddressEncoding from './AddressEncoding';
 class AddressInfo {
     /**
      * Constructs a new <code>AddressInfo</code>.
-     * The data for address information.
+     * The address information.
      * @alias module:model/AddressInfo
-     * @param addressId {String} 
-     * @param addressStr {String} Then blockchain address
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
+     * @param addressId {String} The address ID.
+     * @param addressStr {String} The wallet address.
+     * @param tokenId {String} The token ID.
      */
     constructor(addressId, addressStr, tokenId) { 
         
@@ -125,30 +125,31 @@ class AddressInfo {
 AddressInfo.RequiredProperties = ["address_id", "address_str", "token_id"];
 
 /**
+ * The address ID.
  * @member {String} address_id
  */
 AddressInfo.prototype['address_id'] = undefined;
 
 /**
- * Then blockchain address
+ * The wallet address.
  * @member {String} address_str
  */
 AddressInfo.prototype['address_str'] = undefined;
 
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID.
  * @member {String} token_id
  */
 AddressInfo.prototype['token_id'] = undefined;
 
 /**
- * From address memo
+ * The memo code.
  * @member {String} memo
  */
 AddressInfo.prototype['memo'] = undefined;
 
 /**
- * Derivation path of address pubkey，required for MPC wallet
+ * The derivation path of the public key. This field is applicable to MPC Wallets.
  * @member {String} path
  */
 AddressInfo.prototype['path'] = undefined;
@@ -159,7 +160,7 @@ AddressInfo.prototype['path'] = undefined;
 AddressInfo.prototype['encoding'] = undefined;
 
 /**
- * Address pubkey，required for MPC wallet
+ * The public key. This field is applicable to MPC Wallets.
  * @member {String} pubkey
  */
 AddressInfo.prototype['pubkey'] = undefined;

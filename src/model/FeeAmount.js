@@ -20,7 +20,7 @@ import ApiClient from '../ApiClient';
 class FeeAmount {
     /**
      * Constructs a new <code>FeeAmount</code>.
-     * The estimated fee amount in fee_coin.
+     * The estimated transaction fee in fee_coin.
      * @alias module:model/FeeAmount
      */
     constructor() { 
@@ -47,8 +47,8 @@ class FeeAmount {
         if (data) {
             obj = obj || new FeeAmount();
 
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            if (data.hasOwnProperty('max_fee_amount')) {
+                obj['max_fee_amount'] = ApiClient.convertToType(data['max_fee_amount'], 'String');
             }
         }
         return obj;
@@ -61,8 +61,8 @@ class FeeAmount {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        if (data['max_fee_amount'] && !(typeof data['max_fee_amount'] === 'string' || data['max_fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
         }
 
         return true;
@@ -74,10 +74,10 @@ class FeeAmount {
 
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-FeeAmount.prototype['fee_amount'] = undefined;
+FeeAmount.prototype['max_fee_amount'] = undefined;
 
 
 

@@ -23,10 +23,10 @@ class CreateMpcWallet {
      * Constructs a new <code>CreateMpcWallet</code>.
      * @alias module:model/CreateMpcWallet
      * @implements module:model/BaseCreateWallet
-     * @param name {String} 
-     * @param walletType {module:model/CreateMpcWallet.WalletTypeEnum} 
+     * @param name {String} The wallet name.
+     * @param walletType {module:model/CreateMpcWallet.WalletTypeEnum} The wallet type.
      * @param walletSubtype {module:model/CreateMpcWallet.WalletSubtypeEnum} 
-     * @param vaultId {String} The owning mpc vault id of the mpc wallet.
+     * @param vaultId {String} The ID of the owning vault.
      */
     constructor(name, walletType, walletSubtype, vaultId) { 
         BaseCreateWallet.initialize(this, name);
@@ -111,11 +111,13 @@ class CreateMpcWallet {
 CreateMpcWallet.RequiredProperties = ["name", "wallet_type", "wallet_subtype", "vault_id"];
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CreateMpcWallet.prototype['name'] = undefined;
 
 /**
+ * The wallet type.
  * @member {module:model/CreateMpcWallet.WalletTypeEnum} wallet_type
  */
 CreateMpcWallet.prototype['wallet_type'] = undefined;
@@ -126,7 +128,7 @@ CreateMpcWallet.prototype['wallet_type'] = undefined;
 CreateMpcWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The owning mpc vault id of the mpc wallet.
+ * The ID of the owning vault.
  * @member {String} vault_id
  */
 CreateMpcWallet.prototype['vault_id'] = undefined;
@@ -134,6 +136,7 @@ CreateMpcWallet.prototype['vault_id'] = undefined;
 
 // Implement BaseCreateWallet interface:
 /**
+ * The wallet name.
  * @member {String} name
  */
 BaseCreateWallet.prototype['name'] = undefined;

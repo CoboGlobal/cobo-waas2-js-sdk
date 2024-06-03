@@ -22,7 +22,7 @@ import FeeType from './FeeType';
 class EvmLegacyFee {
     /**
      * Constructs a new <code>EvmLegacyFee</code>.
-     * The legacy fee data for estimate fees or transfer.
+     * The estimated transaction fee when using the legacy method.
      * @alias module:model/EvmLegacyFee
      * @param feeType {module:model/FeeType} 
      * @param standard {module:model/EvmLegacyFeeSlow} 

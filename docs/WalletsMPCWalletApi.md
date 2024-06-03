@@ -4,24 +4,24 @@ All URIs are relative to *https://api.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelTssRequest**](WalletsMPCWalletApi.md#cancelTssRequest) | **PUT** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | cancel tss request
-[**createKeyGroup**](WalletsMPCWalletApi.md#createKeyGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_groups | create a mpc key group
+[**cancelTssRequest**](WalletsMPCWalletApi.md#cancelTssRequest) | **PUT** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Cancel a tss request
+[**createKeyGroup**](WalletsMPCWalletApi.md#createKeyGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_groups | Create a mpc key group
 [**createMpcProject**](WalletsMPCWalletApi.md#createMpcProject) | **POST** /wallets/mpc/projects | Create a mpc project
 [**createMpcVault**](WalletsMPCWalletApi.md#createMpcVault) | **POST** /wallets/mpc/vaults | Create a mpc vault
 [**createTssRequest**](WalletsMPCWalletApi.md#createTssRequest) | **POST** /wallets/mpc/vaults/{vault_id}/tss_requests | Create a tss request to generate key secrets for a tss group
-[**deleteKeyGroup**](WalletsMPCWalletApi.md#deleteKeyGroup) | **DELETE** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | delete a mpc key group
-[**getKeyGroup**](WalletsMPCWalletApi.md#getKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | get a mpc key group
-[**getMpcProject**](WalletsMPCWalletApi.md#getMpcProject) | **GET** /wallets/mpc/projects/{project_id} | get a mpc project
-[**getMpcVault**](WalletsMPCWalletApi.md#getMpcVault) | **GET** /wallets/mpc/vaults/{vault_id} | get a mpc vault
-[**getTssRequest**](WalletsMPCWalletApi.md#getTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | get a tss request
+[**deleteKeyGroup**](WalletsMPCWalletApi.md#deleteKeyGroup) | **DELETE** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Delete a mpc key group
+[**getKeyGroup**](WalletsMPCWalletApi.md#getKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Get a mpc key group information by group id
+[**getMpcProject**](WalletsMPCWalletApi.md#getMpcProject) | **GET** /wallets/mpc/projects/{project_id} | Get a mpc project information
+[**getMpcVault**](WalletsMPCWalletApi.md#getMpcVault) | **GET** /wallets/mpc/vaults/{vault_id} | Get a mpc vault information
+[**getTssRequest**](WalletsMPCWalletApi.md#getTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Get a tss request information
 [**listCoboKeyHolder**](WalletsMPCWalletApi.md#listCoboKeyHolder) | **GET** /wallets/mpc/cobo_key_holders | List all cobo key holders
 [**listKeyGroup**](WalletsMPCWalletApi.md#listKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups | List all mpc key groups
 [**listMpcProject**](WalletsMPCWalletApi.md#listMpcProject) | **GET** /wallets/mpc/projects | List all mpc projects
 [**listMpcVault**](WalletsMPCWalletApi.md#listMpcVault) | **GET** /wallets/mpc/vaults | List all mpc vaults
-[**listTssRequest**](WalletsMPCWalletApi.md#listTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List tss request information of a vault
-[**modifyMpcVault**](WalletsMPCWalletApi.md#modifyMpcVault) | **PUT** /wallets/mpc/vaults/{vault_id} | Modify a mpc vault
-[**updateKeyGroup**](WalletsMPCWalletApi.md#updateKeyGroup) | **PUT** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | update a mpc key group
-[**updateMpcProject**](WalletsMPCWalletApi.md#updateMpcProject) | **PUT** /wallets/mpc/projects/{project_id} | update a mpc project
+[**listTssRequest**](WalletsMPCWalletApi.md#listTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List tss request information by vault ID
+[**modifyMpcVault**](WalletsMPCWalletApi.md#modifyMpcVault) | **PUT** /wallets/mpc/vaults/{vault_id} | Update a mpc vault information
+[**updateKeyGroup**](WalletsMPCWalletApi.md#updateKeyGroup) | **PUT** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Update a mpc key group information
+[**updateMpcProject**](WalletsMPCWalletApi.md#updateMpcProject) | **PUT** /wallets/mpc/projects/{project_id} | Update a mpc project
 
 
 
@@ -29,9 +29,9 @@ Method | HTTP request | Description
 
 > TSSRequest cancelTssRequest(vaultId, tssRequestId, tssRequestAction)
 
-cancel tss request
+Cancel a tss request
 
-cancel tss request.
+Cancel a mpc tss request by its ID. 
 
 ### Example
 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 
 > KeyGroup createKeyGroup(vaultId, opts)
 
-create a mpc key group
+Create a mpc key group
 
-create a mpc key group.
+Create a mpc key group for vault ID with the provided information. 
 
 ### Example
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 Create a mpc project
 
-create a mpc project
+Create a mpc project with the provided information. 
 
 ### Example
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 Create a mpc vault
 
-create a mpc vault
+Create a mpc vault with the provided information. 
 
 ### Example
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 Create a tss request to generate key secrets for a tss group
 
-Create a tss request to generate key secrets for a tss group
+Create a tss request to generate key secrets for a tss group. 
 
 ### Example
 
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 
 > KeyGroup deleteKeyGroup(vaultId, keyGroupId)
 
-delete a mpc key group
+Delete a mpc key group
 
-delete a mpc key group.
+Delete a key group by its unique ID. 
 
 ### Example
 
@@ -341,9 +341,9 @@ Name | Type | Description  | Notes
 
 > KeyGroup getKeyGroup(vaultId, keyGroupId)
 
-get a mpc key group
+Get a mpc key group information by group id
 
-get a mpc key group.
+Get detailed information about a key group identified by its unique ID. 
 
 ### Example
 
@@ -392,9 +392,9 @@ Name | Type | Description  | Notes
 
 > MPCProject getMpcProject(projectId)
 
-get a mpc project
+Get a mpc project information
 
-get a mpc vault
+Get detailed information about a mpc project identified by its unique ID.   Get project ids by calling list_mpc_project. 
 
 ### Example
 
@@ -441,9 +441,9 @@ Name | Type | Description  | Notes
 
 > MPCVault getMpcVault(vaultId)
 
-get a mpc vault
+Get a mpc vault information
 
-get a mpc vault
+Get detailed information about a mpc vault identified by its unique ID.  Get vault ids by calling list_mpc_vault. 
 
 ### Example
 
@@ -490,9 +490,9 @@ Name | Type | Description  | Notes
 
 > TSSRequest getTssRequest(vaultId, tssRequestId)
 
-get a tss request
+Get a tss request information
 
-get a tss request.
+Get detailed information about a tss request identified by its unique ID.  Get project ids by calling list_tss_request. 
 
 ### Example
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 List all cobo key holders
 
-Retrieve a list of key holders.
+This endpoint allows users to query cobo key holders information.
 
 ### Example
 
@@ -588,7 +588,7 @@ This endpoint does not need any parameter.
 
 List all mpc key groups
 
-Retrieve a list of mpc key groups.
+Retrieves a list of all key groups.  This endpoint allows filtering by vault ID and key group type. 
 
 ### Example
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 List all mpc projects
 
-Retrieve a list of mpc project.
+Retrieves a list of mpc projects. 
 
 ### Example
 
@@ -686,7 +686,7 @@ This endpoint does not need any parameter.
 
 List all mpc vaults
 
-Retrieve a list of mpc vault.
+Retrieves a list of mpc vaults.  This endpoint allows filtering by project ID. 
 
 ### Example
 
@@ -735,9 +735,9 @@ Name | Type | Description  | Notes
 
 > TSSRequest listTssRequest(vaultId, opts)
 
-List tss request information of a vault
+List tss request information by vault ID
 
-Detailed description on retrieving list of tss request information
+Retrieving list of tss request information by vault ID. This endpoint allows filtering by key group ID. 
 
 ### Example
 
@@ -788,9 +788,9 @@ Name | Type | Description  | Notes
 
 > MPCVault modifyMpcVault(vaultId, opts)
 
-Modify a mpc vault
+Update a mpc vault information
 
-modify a mpc vault
+Update a mpc vault name information by its ID. 
 
 ### Example
 
@@ -841,9 +841,9 @@ Name | Type | Description  | Notes
 
 > KeyGroup updateKeyGroup(vaultId, keyGroupId, updateKeyGroupAction)
 
-update a mpc key group
+Update a mpc key group information
 
-update a mpc key group.
+Update a mpc key group type information by its ID.   Action: - UpgradeToMainKeyGroup: change group type to main key group 
 
 ### Example
 
@@ -894,9 +894,9 @@ Name | Type | Description  | Notes
 
 > MPCProject updateMpcProject(projectId, opts)
 
-update a mpc project
+Update a mpc project
 
-update a mpc vault
+Update a mpc project name information by its ID. 
 
 ### Example
 

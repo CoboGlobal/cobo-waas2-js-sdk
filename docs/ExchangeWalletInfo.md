@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** |  | 
+**walletId** | **String** | The wallet ID. | 
 **walletType** | [**WalletType**](WalletType.md) |  | 
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**name** | **String** |  | 
-**orgId** | **String** | The owning custody organization id of the custodial wallet. | 
-**apikey** | **String** | The API Key for the exchange. | 
+**name** | **String** | The wallet name. | 
+**orgId** | **String** | The ID of the owning organization. | 
+**apikey** | **String** | The API key of your exchange account. | 
 **exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 
-**parentWalletId** | **String** | The parent wallet id for this wallet if presented. | [optional] 
+**parentWalletId** | **String** | The wallet ID of the Main Account, if applicable. | [optional] 
 **subAccounts** | [**[ExchangeWalletInfoAllOfSubAccounts]**](ExchangeWalletInfoAllOfSubAccounts.md) |  | [optional] 
 
 

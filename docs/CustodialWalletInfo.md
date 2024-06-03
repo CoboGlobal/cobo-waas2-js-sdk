@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** |  | 
+**walletId** | **String** | The wallet ID. | 
 **walletType** | [**WalletType**](WalletType.md) |  | 
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**name** | **String** |  | 
-**orgId** | **String** | The owning custody organization id of the custodial wallet. | 
+**name** | **String** | The wallet name. | 
+**orgId** | **String** | The ID of the owning organization. | 
 
 

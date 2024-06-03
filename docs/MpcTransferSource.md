@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sourceType** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **walletId** | **String** | Unique id of the wallet to transfer from. | 
-**addressStr** | **String** | From address | 
+**accountInput** | [**MpcTransferSourceAccountInput**](MpcTransferSourceAccountInput.md) |  | [optional] 
+**utxoInputs** | [**MpcTransferSourceUtxoInputs**](MpcTransferSourceUtxoInputs.md) |  | [optional] 
 **mpcUsedKeyGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
 
 

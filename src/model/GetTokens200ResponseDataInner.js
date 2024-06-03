@@ -23,7 +23,7 @@ class GetTokens200ResponseDataInner {
      * Constructs a new <code>GetTokens200ResponseDataInner</code>.
      * @alias module:model/GetTokens200ResponseDataInner
      * @implements module:model/TokenInfo
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
+     * @param tokenId {String} The token ID. Unique in all chains scope.
      * @param chainId {String} The blockchain on which the token operates.
      */
     constructor(tokenId, chainId) { 
@@ -134,7 +134,7 @@ class GetTokens200ResponseDataInner {
 GetTokens200ResponseDataInner.RequiredProperties = ["token_id", "chain_id"];
 
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID. Unique in all chains scope.
  * @member {String} token_id
  */
 GetTokens200ResponseDataInner.prototype['token_id'] = undefined;
@@ -146,44 +146,44 @@ GetTokens200ResponseDataInner.prototype['token_id'] = undefined;
 GetTokens200ResponseDataInner.prototype['chain_id'] = undefined;
 
 /**
- * Symbol for the token.
+ * The token symbol.
  * @member {String} symbol
  */
 GetTokens200ResponseDataInner.prototype['symbol'] = undefined;
 
 /**
- * The description of the token.
+ * The token description.
  * @member {String} description
  */
 GetTokens200ResponseDataInner.prototype['description'] = undefined;
 
 /**
- * URL of the icon image.
+ * The URL of the token icon.
  * @member {String} icon_url
  */
 GetTokens200ResponseDataInner.prototype['icon_url'] = undefined;
 
 /**
- * Address for token, if applicable.
+ * The token address, if applicable.
  * @member {String} token_address
  */
 GetTokens200ResponseDataInner.prototype['token_address'] = undefined;
 
 /**
- * ID of the asset. Used to group token balance when needed.
+ * The asset ID, which is used to group the balances of the correponding tokens. For example, if you have $1,000 worth of ETH_USDT and $2,000 worth of TRON_USDT, the balance of your USDT assets will be $3,000.
  * @member {String} asset_id
  */
 GetTokens200ResponseDataInner.prototype['asset_id'] = undefined;
 
 /**
- * Ture if the token can be deposited, False otherwise
+ * Whether the token can be deposited.  - `true`: The token can be deposited.  - `false`: The token cannot be deposited. 
  * @member {Boolean} can_deposit
  * @default false
  */
 GetTokens200ResponseDataInner.prototype['can_deposit'] = false;
 
 /**
- * Ture if the token can be withdrawn, False otherwise
+ * Whether the token can be withdrawn.  - `true`: The token can be withdrawn.  - `false`: The token cannot be withdrawn. 
  * @member {Boolean} can_withdraw
  * @default false
  */
@@ -192,7 +192,7 @@ GetTokens200ResponseDataInner.prototype['can_withdraw'] = false;
 
 // Implement TokenInfo interface:
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID. Unique in all chains scope.
  * @member {String} token_id
  */
 TokenInfo.prototype['token_id'] = undefined;
@@ -202,27 +202,27 @@ TokenInfo.prototype['token_id'] = undefined;
  */
 TokenInfo.prototype['chain_id'] = undefined;
 /**
- * Symbol for the token.
+ * The token symbol.
  * @member {String} symbol
  */
 TokenInfo.prototype['symbol'] = undefined;
 /**
- * The description of the token.
+ * The token description.
  * @member {String} description
  */
 TokenInfo.prototype['description'] = undefined;
 /**
- * URL of the icon image.
+ * The URL of the token icon.
  * @member {String} icon_url
  */
 TokenInfo.prototype['icon_url'] = undefined;
 /**
- * Address for token, if applicable.
+ * The token address, if applicable.
  * @member {String} token_address
  */
 TokenInfo.prototype['token_address'] = undefined;
 /**
- * ID of the asset. Used to group token balance when needed.
+ * The asset ID, which is used to group the balances of the correponding tokens. For example, if you have $1,000 worth of ETH_USDT and $2,000 worth of TRON_USDT, the balance of your USDT assets will be $3,000.
  * @member {String} asset_id
  */
 TokenInfo.prototype['asset_id'] = undefined;

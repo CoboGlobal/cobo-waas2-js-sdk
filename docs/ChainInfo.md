@@ -4,10 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chainId** | **String** | The blockchain on which the token operates. | 
-**symbol** | **String** | Symbol for the chain. | [optional] 
-**iconUrl** | **String** | URL of the icon image. | [optional] 
-**explorerTxUrl** | **String** | URL of the explorer transaction. | [optional] 
-**explorerAddressUrl** | **String** | URL of the explorer address. | [optional] 
+**chainId** | **String** | The chain on which the token operates. | 
+**symbol** | **String** | The chain symbol. | [optional] 
+**iconUrl** | **String** | The URL of the chain icon. | [optional] 
+**explorerTxUrl** | **String** | The transaction URL on the blockchain explorer. | [optional] 
 
 

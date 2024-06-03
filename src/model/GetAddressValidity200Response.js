@@ -69,7 +69,7 @@ class GetAddressValidity200Response {
 
 
 /**
- * The validity of the address.
+ * Whether the address is valid. - `true`: The address is valid. - `false`: the address is invalid. 
  * @member {Boolean} validity
  */
 GetAddressValidity200Response.prototype['validity'] = undefined;

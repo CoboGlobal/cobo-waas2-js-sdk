@@ -22,10 +22,10 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 class UtxoFeePrice {
     /**
      * Constructs a new <code>UtxoFeePrice</code>.
-     * The legacy fee data for estimate fees or transfer.
+     * The transaction fee for UTXO-based chains.
      * @alias module:model/UtxoFeePrice
      * @implements module:model/UtxoFeeBasePrice
-     * @param feeRate {String} The fee rate, unit sat/vB.
+     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      * @param feeType {module:model/FeeType} 
      */
     constructor(feeRate, feeType) { 
@@ -98,13 +98,13 @@ class UtxoFeePrice {
 UtxoFeePrice.RequiredProperties = ["fee_rate", "fee_type"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeePrice.prototype['fee_token_id'] = undefined;
 
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeePrice.prototype['fee_rate'] = undefined;
@@ -117,12 +117,12 @@ UtxoFeePrice.prototype['fee_type'] = undefined;
 
 // Implement UtxoFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;

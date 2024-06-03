@@ -21,7 +21,7 @@ import TransactionFee from './TransactionFee';
 class MaxTransferableValue {
     /**
      * Constructs a new <code>MaxTransferableValue</code>.
-     * max send value and fee.
+     * The maximum amount that you can transfer from the specified wallet address, along with the corresponding transaction fee.
      * @alias module:model/MaxTransferableValue
      */
     constructor() { 
@@ -51,8 +51,8 @@ class MaxTransferableValue {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
-            if (data.hasOwnProperty('max_send_value')) {
-                obj['max_send_value'] = ApiClient.convertToType(data['max_send_value'], 'String');
+            if (data.hasOwnProperty('max_transferable_value')) {
+                obj['max_transferable_value'] = ApiClient.convertToType(data['max_transferable_value'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionFee.constructFromObject(data['fee']);
@@ -72,8 +72,8 @@ class MaxTransferableValue {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['max_send_value'] && !(typeof data['max_send_value'] === 'string' || data['max_send_value'] instanceof String)) {
-            throw new Error("Expected the field `max_send_value` to be a primitive type in the JSON string but got " + data['max_send_value']);
+        if (data['max_transferable_value'] && !(typeof data['max_transferable_value'] === 'string' || data['max_transferable_value'] instanceof String)) {
+            throw new Error("Expected the field `max_transferable_value` to be a primitive type in the JSON string but got " + data['max_transferable_value']);
         }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
@@ -89,16 +89,16 @@ class MaxTransferableValue {
 
 
 /**
- * token name.
+ * The token name.
  * @member {String} token_id
  */
 MaxTransferableValue.prototype['token_id'] = undefined;
 
 /**
- * the maximum sendable value for the given address or current wallet.
- * @member {String} max_send_value
+ * the maximum transferable value for the given address or current wallet.
+ * @member {String} max_transferable_value
  */
-MaxTransferableValue.prototype['max_send_value'] = undefined;
+MaxTransferableValue.prototype['max_transferable_value'] = undefined;
 
 /**
  * @member {module:model/TransactionFee} fee

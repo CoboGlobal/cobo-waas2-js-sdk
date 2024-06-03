@@ -108,6 +108,7 @@ class SmartContractWalletInfo {
 }
 
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 SmartContractWalletInfo.prototype['wallet_id'] = undefined;
@@ -123,24 +124,25 @@ SmartContractWalletInfo.prototype['wallet_type'] = undefined;
 SmartContractWalletInfo.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 SmartContractWalletInfo.prototype['name'] = undefined;
 
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 SmartContractWalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The chain the wallet is on.
+ * The chain the wallet operates on.
  * @member {String} chain_id
  */
 SmartContractWalletInfo.prototype['chain_id'] = undefined;
 
 /**
- * The label of the wallet.
+ * The wallet label.
  * @member {String} label
  */
 SmartContractWalletInfo.prototype['label'] = undefined;
@@ -151,25 +153,25 @@ SmartContractWalletInfo.prototype['label'] = undefined;
 SmartContractWalletInfo.prototype['smart_contract_wallet_type'] = undefined;
 
 /**
- * The address of the smart contract wallet.
+ * The Smart Contract Wallet address.
  * @member {String} safe_address
  */
 SmartContractWalletInfo.prototype['safe_address'] = undefined;
 
 /**
- * The owners of the smart contract wallet. This MUST be provided when user want to create a new safe wallet.
+ * The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
  * @member {Array.<String>} owners
  */
 SmartContractWalletInfo.prototype['owners'] = undefined;
 
 /**
- * The threshold of required confirmations for the smart contract wallet. This MUST be provided when user want to create a new safe wallet.
+ * The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. 
  * @member {Number} threshold
  */
 SmartContractWalletInfo.prototype['threshold'] = undefined;
 
 /**
- * The address of the cobo safe module.
+ * The address of Cobo Safe.
  * @member {String} cobo_safe_address
  */
 SmartContractWalletInfo.prototype['cobo_safe_address'] = undefined;

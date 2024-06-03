@@ -15,6 +15,8 @@ import BaseTransferSource from './BaseTransferSource';
 import ExchangeTransferSource from './ExchangeTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
+import MpcTransferSourceAccountInput from './MpcTransferSourceAccountInput';
+import MpcTransferSourceUtxoInputs from './MpcTransferSourceUtxoInputs';
 import SafeTransferSource from './SafeTransferSource';
 import SafeTransferSourceAllOfDelegate from './SafeTransferSourceAllOfDelegate';
 import WalletSubtype from './WalletSubtype';
@@ -167,6 +169,16 @@ TransferSource.prototype['source_type'] = undefined;
  * @member {String} wallet_id
  */
 TransferSource.prototype['wallet_id'] = undefined;
+
+/**
+ * @member {module:model/MpcTransferSourceAccountInput} account_input
+ */
+TransferSource.prototype['account_input'] = undefined;
+
+/**
+ * @member {module:model/MpcTransferSourceUtxoInputs} utxo_inputs
+ */
+TransferSource.prototype['utxo_inputs'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_group

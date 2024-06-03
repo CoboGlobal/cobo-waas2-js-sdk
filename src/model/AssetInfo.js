@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class AssetInfo {
     /**
      * Constructs a new <code>AssetInfo</code>.
-     * The data for asset information.
+     * The asset information.
      * @alias module:model/AssetInfo
-     * @param assetId {String} ID of the asset. Unique in all assets scope.
+     * @param assetId {String} The asset ID.
      */
     constructor(assetId) { 
         
@@ -103,13 +103,13 @@ class AssetInfo {
 AssetInfo.RequiredProperties = ["asset_id"];
 
 /**
- * ID of the asset. Unique in all assets scope.
+ * The asset ID.
  * @member {String} asset_id
  */
 AssetInfo.prototype['asset_id'] = undefined;
 
 /**
- * Display code for the asset.
+ * The display code of the asset.
  * @member {String} display_code
  */
 AssetInfo.prototype['display_code'] = undefined;
@@ -121,7 +121,7 @@ AssetInfo.prototype['display_code'] = undefined;
 AssetInfo.prototype['description'] = undefined;
 
 /**
- * URL of the asset
+ * The URL of the asset.
  * @member {String} icon_url
  */
 AssetInfo.prototype['icon_url'] = undefined;

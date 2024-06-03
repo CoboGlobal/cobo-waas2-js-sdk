@@ -47,8 +47,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * cancel tss request
-     * cancel tss request.
+     * Cancel a tss request
+     * Cancel a mpc tss request by its ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} tssRequestId Unique id of the tss request
      * @param {module:model/String} tssRequestAction The action of tss request.
@@ -93,8 +93,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * cancel tss request
-     * cancel tss request.
+     * Cancel a tss request
+     * Cancel a mpc tss request by its ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} tssRequestId Unique id of the tss request
      * @param {module:model/String} tssRequestAction The action of tss request.
@@ -109,8 +109,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * create a mpc key group
-     * create a mpc key group.
+     * Create a mpc key group
+     * Create a mpc key group for vault ID with the provided information. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKeyGroupRequest} [createKeyGroupRequest] The request body to create a mpc key group
@@ -146,8 +146,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * create a mpc key group
-     * create a mpc key group.
+     * Create a mpc key group
+     * Create a mpc key group for vault ID with the provided information. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKeyGroupRequest} opts.createKeyGroupRequest The request body to create a mpc key group
@@ -163,7 +163,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a mpc project
-     * create a mpc project
+     * Create a mpc project with the provided information. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateMpcProjectRequest} [createMpcProjectRequest] The request body to create a mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCProject} and HTTP response
@@ -194,7 +194,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a mpc project
-     * create a mpc project
+     * Create a mpc project with the provided information. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateMpcProjectRequest} opts.createMpcProjectRequest The request body to create a mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCProject}
@@ -209,7 +209,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a mpc vault
-     * create a mpc vault
+     * Create a mpc vault with the provided information. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateMpcVaultRequest} [createMpcVaultRequest] The request body to create a mpc vault
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCVault} and HTTP response
@@ -240,7 +240,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a mpc vault
-     * create a mpc vault
+     * Create a mpc vault with the provided information. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateMpcVaultRequest} opts.createMpcVaultRequest The request body to create a mpc vault
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCVault}
@@ -255,7 +255,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a tss request to generate key secrets for a tss group
-     * Create a tss request to generate key secrets for a tss group
+     * Create a tss request to generate key secrets for a tss group. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateTssRequestRequest} [createTssRequestRequest] The request body to create a tss request
@@ -292,7 +292,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * Create a tss request to generate key secrets for a tss group
-     * Create a tss request to generate key secrets for a tss group
+     * Create a tss request to generate key secrets for a tss group. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateTssRequestRequest} opts.createTssRequestRequest The request body to create a tss request
@@ -307,8 +307,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * delete a mpc key group
-     * delete a mpc key group.
+     * Delete a mpc key group
+     * Delete a key group by its unique ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KeyGroup} and HTTP response
@@ -347,8 +347,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * delete a mpc key group
-     * delete a mpc key group.
+     * Delete a mpc key group
+     * Delete a key group by its unique ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KeyGroup}
@@ -362,8 +362,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * get a mpc key group
-     * get a mpc key group.
+     * Get a mpc key group information by group id
+     * Get detailed information about a key group identified by its unique ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KeyGroup} and HTTP response
@@ -402,8 +402,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * get a mpc key group
-     * get a mpc key group.
+     * Get a mpc key group information by group id
+     * Get detailed information about a key group identified by its unique ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KeyGroup}
@@ -417,8 +417,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * get a mpc project
-     * get a mpc vault
+     * Get a mpc project information
+     * Get detailed information about a mpc project identified by its unique ID.   Get project ids by calling list_mpc_project. 
      * @param {String} projectId Unique id of the mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCProject} and HTTP response
      */
@@ -451,8 +451,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * get a mpc project
-     * get a mpc vault
+     * Get a mpc project information
+     * Get detailed information about a mpc project identified by its unique ID.   Get project ids by calling list_mpc_project. 
      * @param {String} projectId Unique id of the mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCProject}
      */
@@ -465,8 +465,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * get a mpc vault
-     * get a mpc vault
+     * Get a mpc vault information
+     * Get detailed information about a mpc vault identified by its unique ID.  Get vault ids by calling list_mpc_vault. 
      * @param {String} vaultId Unique id of the mpc vault
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCVault} and HTTP response
      */
@@ -499,8 +499,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * get a mpc vault
-     * get a mpc vault
+     * Get a mpc vault information
+     * Get detailed information about a mpc vault identified by its unique ID.  Get vault ids by calling list_mpc_vault. 
      * @param {String} vaultId Unique id of the mpc vault
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCVault}
      */
@@ -513,8 +513,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * get a tss request
-     * get a tss request.
+     * Get a tss request information
+     * Get detailed information about a tss request identified by its unique ID.  Get project ids by calling list_tss_request. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} tssRequestId Unique id of the tss request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TSSRequest} and HTTP response
@@ -553,8 +553,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * get a tss request
-     * get a tss request.
+     * Get a tss request information
+     * Get detailed information about a tss request identified by its unique ID.  Get project ids by calling list_tss_request. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} tssRequestId Unique id of the tss request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TSSRequest}
@@ -569,7 +569,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all cobo key holders
-     * Retrieve a list of key holders.
+     * This endpoint allows users to query cobo key holders information.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/KeyHolder>} and HTTP response
      */
     listCoboKeyHolderWithHttpInfo() {
@@ -597,7 +597,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all cobo key holders
-     * Retrieve a list of key holders.
+     * This endpoint allows users to query cobo key holders information.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/KeyHolder>}
      */
     listCoboKeyHolder() {
@@ -610,7 +610,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc key groups
-     * Retrieve a list of mpc key groups.
+     * Retrieves a list of all key groups.  This endpoint allows filtering by vault ID and key group type. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/KeyGroupType} [keyGroupType] The type of key group.
@@ -648,7 +648,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc key groups
-     * Retrieve a list of mpc key groups.
+     * Retrieves a list of all key groups.  This endpoint allows filtering by vault ID and key group type. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/KeyGroupType} opts.keyGroupType The type of key group.
@@ -664,7 +664,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc projects
-     * Retrieve a list of mpc project.
+     * Retrieves a list of mpc projects. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/MPCProject>} and HTTP response
      */
     listMpcProjectWithHttpInfo() {
@@ -692,7 +692,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc projects
-     * Retrieve a list of mpc project.
+     * Retrieves a list of mpc projects. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/MPCProject>}
      */
     listMpcProject() {
@@ -705,7 +705,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc vaults
-     * Retrieve a list of mpc vault.
+     * Retrieves a list of mpc vaults.  This endpoint allows filtering by project ID. 
      * @param {Object} opts Optional parameters
      * @param {String} [projectId] Unique id of the mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/MPCVault>} and HTTP response
@@ -737,7 +737,7 @@ export default class WalletsMPCWalletApi {
 
     /**
      * List all mpc vaults
-     * Retrieve a list of mpc vault.
+     * Retrieves a list of mpc vaults.  This endpoint allows filtering by project ID. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.projectId Unique id of the mpc project
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/MPCVault>}
@@ -751,8 +751,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * List tss request information of a vault
-     * Detailed description on retrieving list of tss request information
+     * List tss request information by vault ID
+     * Retrieving list of tss request information by vault ID. This endpoint allows filtering by key group ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {String} [targetKeyGroupId] The target key group id of tss request.
@@ -789,8 +789,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * List tss request information of a vault
-     * Detailed description on retrieving list of tss request information
+     * List tss request information by vault ID
+     * Retrieving list of tss request information by vault ID. This endpoint allows filtering by key group ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {String} opts.targetKeyGroupId The target key group id of tss request.
@@ -805,8 +805,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * Modify a mpc vault
-     * modify a mpc vault
+     * Update a mpc vault information
+     * Update a mpc vault name information by its ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/ModifyMpcVaultRequest} [modifyMpcVaultRequest] The request body to update a mpc vault
@@ -842,8 +842,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * Modify a mpc vault
-     * modify a mpc vault
+     * Update a mpc vault information
+     * Update a mpc vault name information by its ID. 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {Object} opts Optional parameters
      * @param {module:model/ModifyMpcVaultRequest} opts.modifyMpcVaultRequest The request body to update a mpc vault
@@ -858,8 +858,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * update a mpc key group
-     * update a mpc key group.
+     * Update a mpc key group information
+     * Update a mpc key group type information by its ID.   Action: - UpgradeToMainKeyGroup: change group type to main key group 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @param {module:model/String} updateKeyGroupAction The action of update key group
@@ -904,8 +904,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * update a mpc key group
-     * update a mpc key group.
+     * Update a mpc key group information
+     * Update a mpc key group type information by its ID.   Action: - UpgradeToMainKeyGroup: change group type to main key group 
      * @param {String} vaultId Unique id of the mpc vault
      * @param {String} keyGroupId Unique id of the tss group
      * @param {module:model/String} updateKeyGroupAction The action of update key group
@@ -920,8 +920,8 @@ export default class WalletsMPCWalletApi {
 
 
     /**
-     * update a mpc project
-     * update a mpc vault
+     * Update a mpc project
+     * Update a mpc project name information by its ID. 
      * @param {String} projectId Unique id of the mpc project
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcProjectRequest} [updateMpcProjectRequest] The request body to update a mpc project
@@ -957,8 +957,8 @@ export default class WalletsMPCWalletApi {
     }
 
     /**
-     * update a mpc project
-     * update a mpc vault
+     * Update a mpc project
+     * Update a mpc project name information by its ID. 
      * @param {String} projectId Unique id of the mpc project
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcProjectRequest} opts.updateMpcProjectRequest The request body to update a mpc project

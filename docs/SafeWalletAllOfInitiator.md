@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | The wallet id of the initiator. This is required when user want to create a new safe wallet. | [optional] 
-**walletType** | **String** | The wallet type of the initiator. This is required when user want to create a new safe wallet. | [optional] 
-**walletAddress** | **String** | The wallet address of the initiator. This is required when user want to create a new safe wallet. | [optional] 
+**walletId** | **String** | The initiator&#39;s wallet ID. This field is required when creating a new Safe{Wallet}.  | [optional] 
+**walletType** | **String** | The initiator&#39;s wallet type. This field is required when creating a new Safe{Wallet}.  | [optional] 
+**walletAddress** | **String** | The initiator&#39;s wallet address. This field is required when creating a new Safe{Wallet}.  | [optional] 
 
 

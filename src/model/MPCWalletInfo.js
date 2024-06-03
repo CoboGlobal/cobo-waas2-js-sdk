@@ -25,12 +25,12 @@ class MPCWalletInfo {
      * Constructs a new <code>MPCWalletInfo</code>.
      * @alias module:model/MPCWalletInfo
      * @implements module:model/CustodialWalletInfo
-     * @param walletId {String} 
+     * @param walletId {String} The wallet ID.
      * @param walletType {module:model/WalletType} 
      * @param walletSubtype {module:model/WalletSubtype} 
-     * @param name {String} 
-     * @param orgId {String} The owning custody organization id of the custodial wallet.
-     * @param vaultId {String} The owning mpc vault id of the mpc wallet.
+     * @param name {String} The wallet name.
+     * @param orgId {String} The ID of the owning organization.
+     * @param vaultId {String} The ID of the owning Vault.
      */
     constructor(walletId, walletType, walletSubtype, name, orgId, vaultId) { 
         CustodialWalletInfo.initialize(this, walletId, walletType, walletSubtype, name, orgId);
@@ -123,6 +123,7 @@ class MPCWalletInfo {
 MPCWalletInfo.RequiredProperties = ["wallet_id", "wallet_type", "wallet_subtype", "name", "org_id", "vault_id"];
 
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 MPCWalletInfo.prototype['wallet_id'] = undefined;
@@ -138,18 +139,19 @@ MPCWalletInfo.prototype['wallet_type'] = undefined;
 MPCWalletInfo.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 MPCWalletInfo.prototype['name'] = undefined;
 
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 MPCWalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The owning mpc vault id of the mpc wallet.
+ * The ID of the owning Vault.
  * @member {String} vault_id
  */
 MPCWalletInfo.prototype['vault_id'] = undefined;
@@ -157,6 +159,7 @@ MPCWalletInfo.prototype['vault_id'] = undefined;
 
 // Implement CustodialWalletInfo interface:
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 CustodialWalletInfo.prototype['wallet_id'] = undefined;
@@ -169,11 +172,12 @@ CustodialWalletInfo.prototype['wallet_type'] = undefined;
  */
 CustodialWalletInfo.prototype['wallet_subtype'] = undefined;
 /**
+ * The wallet name.
  * @member {String} name
  */
 CustodialWalletInfo.prototype['name'] = undefined;
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 CustodialWalletInfo.prototype['org_id'] = undefined;

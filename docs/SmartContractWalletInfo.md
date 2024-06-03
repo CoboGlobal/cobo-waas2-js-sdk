@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** |  | 
+**walletId** | **String** | The wallet ID. | 
 **walletType** | [**WalletType**](WalletType.md) |  | 
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**name** | **String** |  | 
-**orgId** | **String** | The owning custody organization id of the custodial wallet. | 
-**chainId** | **String** | The chain the wallet is on. | [optional] 
-**label** | **String** | The label of the wallet. | [optional] 
+**name** | **String** | The wallet name. | 
+**orgId** | **String** | The ID of the owning organization. | 
+**chainId** | **String** | The chain the wallet operates on. | [optional] 
+**label** | **String** | The wallet label. | [optional] 
 **smartContractWalletType** | [**SmartContractWalletType**](SmartContractWalletType.md) |  | 
-**safeAddress** | **String** | The address of the smart contract wallet. | [optional] 
-**owners** | **[String]** | The owners of the smart contract wallet. This MUST be provided when user want to create a new safe wallet. | [optional] 
-**threshold** | **Number** | The threshold of required confirmations for the smart contract wallet. This MUST be provided when user want to create a new safe wallet. | [optional] 
-**coboSafeAddress** | **String** | The address of the cobo safe module. | [optional] 
+**safeAddress** | **String** | The Smart Contract Wallet address. | [optional] 
+**owners** | **[String]** | The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. | [optional] 
+**threshold** | **Number** | The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.  | [optional] 
+**coboSafeAddress** | **String** | The address of Cobo Safe. | [optional] 
 **initiator** | [**SafeWalletAllOfInitiator**](SafeWalletAllOfInitiator.md) |  | [optional] 
 
 

@@ -21,8 +21,8 @@ class ExchangeWalletInfoAllOfSubAccounts {
     /**
      * Constructs a new <code>ExchangeWalletInfoAllOfSubAccounts</code>.
      * @alias module:model/ExchangeWalletInfoAllOfSubAccounts
-     * @param walletId {String} 
-     * @param accountId {String} The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID.
+     * @param walletId {String} The wallet ID of the Sub Account.
+     * @param accountId {String} The unique identifier associated with the Sub Account. It can be an email address, a user name, or a custom account ID.
      */
     constructor(walletId, accountId) { 
         
@@ -90,12 +90,13 @@ class ExchangeWalletInfoAllOfSubAccounts {
 ExchangeWalletInfoAllOfSubAccounts.RequiredProperties = ["wallet_id", "account_id"];
 
 /**
+ * The wallet ID of the Sub Account.
  * @member {String} wallet_id
  */
 ExchangeWalletInfoAllOfSubAccounts.prototype['wallet_id'] = undefined;
 
 /**
- * The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID.
+ * The unique identifier associated with the Sub Account. It can be an email address, a user name, or a custom account ID.
  * @member {String} account_id
  */
 ExchangeWalletInfoAllOfSubAccounts.prototype['account_id'] = undefined;

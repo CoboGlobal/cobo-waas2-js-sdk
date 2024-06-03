@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
-**walletType** | **String** |  | 
-**walletSubtype** | **String** |  | 
-**label** | **String** | The label of the wallet. | [optional] 
-**chainId** | **String** | The chain id the wallet is on. | 
+**name** | **String** | The wallet name. | 
+**walletType** | **String** | The Smart Contract Wallet type. | 
+**walletSubtype** | **String** | The Smart Contract Wallet subtype. | 
+**label** | **String** | The wallet label. | [optional] 
+**chainId** | **String** | The ID of the chain that the wallet operates on. | 
 **smartContractWalletType** | [**SmartContractWalletType**](SmartContractWalletType.md) |  | 
-**safeAddress** | **String** | The address of the smart contract wallet. If this is not provided, WaaS 2.0 will create a new safe wallet and setup cobo safe module for user. In this case, threshold, owners is required. | [optional] 
-**owners** | **[String]** | The owners of the smart contract wallet. This MUST be provided when user want to create a new safe wallet. | [optional] 
-**threshold** | **Number** | The threshold of required confirmations for the smart contract wallet. This MUST be provided when user want to create a new safe wallet. | [optional] 
-**coboSafeAddress** | **String** | The address of the cobo safe module. Cobo safe module must has been created &amp; enabled when import a existing safe wallet. | [optional] 
+**safeAddress** | **String** | The address of the Smart Contract Wallet. If this is not provided, Cobo will create a new Safe{Wallet} and set up Cobo Safe for you. In that case, the &#x60;threshold&#x60; and &#x60;owners&#x60; fields are required. | [optional] 
+**owners** | **[String]** | The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. | [optional] 
+**threshold** | **Number** | The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.  | [optional] 
+**coboSafeAddress** | **String** | The address of Cobo Safe. If you are importing an existing Safe{Wallet}, Cobo Safe must has been created and enabled. | [optional] 
 **initiator** | [**SafeWalletAllOfInitiator**](SafeWalletAllOfInitiator.md) |  | [optional] 
 
 

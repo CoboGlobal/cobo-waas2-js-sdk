@@ -11,12 +11,11 @@
  */
 
 import ApiClient from '../ApiClient';
-import MpcSigningGroup from './MpcSigningGroup';
-import SmartContractCall from './SmartContractCall';
+import ContractCall from './ContractCall';
+import ContractCallDestination from './ContractCallDestination';
+import ContractCallSource from './ContractCallSource';
 import TransactionFee from './TransactionFee';
 import Transfer from './Transfer';
-import TransferDestination from './TransferDestination';
-import TransferSource from './TransferSource';
 
 /**
  * The EstimateFee model module.
@@ -27,7 +26,7 @@ class EstimateFee {
     /**
      * Constructs a new <code>EstimateFee</code>.
      * @alias module:model/EstimateFee
-     * @param {(module:model/SmartContractCall|module:model/Transfer)} instance The actual instance to initialize EstimateFee.
+     * @param {(module:model/ContractCall|module:model/Transfer)} instance The actual instance to initialize EstimateFee.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -53,26 +52,26 @@ class EstimateFee {
         }
 
         try {
-            if (typeof instance === "SmartContractCall") {
+            if (typeof instance === "ContractCall") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                SmartContractCall.validateJSON(instance); // throw an exception if no match
-                // create SmartContractCall from JS object
-                this.actualInstance = SmartContractCall.constructFromObject(instance);
+                ContractCall.validateJSON(instance); // throw an exception if no match
+                // create ContractCall from JS object
+                this.actualInstance = ContractCall.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into SmartContractCall
-            errorMessages.push("Failed to construct SmartContractCall: " + err)
+            // json data failed to deserialize into ContractCall
+            errorMessages.push("Failed to construct ContractCall: " + err)
         }
 
         if (match > 1) {
-            throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas SmartContractCall, Transfer. Input: " + JSON.stringify(instance));
+            throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas ContractCall, Transfer. Input: " + JSON.stringify(instance));
         } else if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
-            throw new Error("No match found constructing `EstimateFee` with oneOf schemas SmartContractCall, Transfer. Details: " +
+            throw new Error("No match found constructing `EstimateFee` with oneOf schemas ContractCall, Transfer. Details: " +
                             errorMessages.join(", "));
         } else { // only 1 match
             // the input is valid
@@ -91,16 +90,16 @@ class EstimateFee {
     }
 
     /**
-     * Gets the actual instance, which can be <code>SmartContractCall</code>, <code>Transfer</code>.
-     * @return {(module:model/SmartContractCall|module:model/Transfer)} The actual instance.
+     * Gets the actual instance, which can be <code>ContractCall</code>, <code>Transfer</code>.
+     * @return {(module:model/ContractCall|module:model/Transfer)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>SmartContractCall</code>, <code>Transfer</code>.
-     * @param {(module:model/SmartContractCall|module:model/Transfer)} obj The actual instance.
+     * Sets the actual instance, which can be <code>ContractCall</code>, <code>Transfer</code>.
+     * @param {(module:model/ContractCall|module:model/Transfer)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = EstimateFee.constructFromObject(obj).getActualInstance();
@@ -136,7 +135,7 @@ EstimateFee.prototype['request_id'] = undefined;
 EstimateFee.prototype['request_type'] = undefined;
 
 /**
- * @member {module:model/TransferSource} source
+ * @member {module:model/ContractCallSource} source
  */
 EstimateFee.prototype['source'] = undefined;
 
@@ -147,13 +146,7 @@ EstimateFee.prototype['source'] = undefined;
 EstimateFee.prototype['token_id'] = undefined;
 
 /**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
- * @member {String} amount
- */
-EstimateFee.prototype['amount'] = undefined;
-
-/**
- * @member {module:model/TransferDestination} destination
+ * @member {module:model/ContractCallDestination} destination
  */
 EstimateFee.prototype['destination'] = undefined;
 
@@ -175,48 +168,13 @@ EstimateFee.prototype['description'] = undefined;
 EstimateFee.prototype['fee'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
- * @member {String} from_wallet_id
- */
-EstimateFee.prototype['from_wallet_id'] = undefined;
-
-/**
- * From address
- * @member {String} from_address_str
- */
-EstimateFee.prototype['from_address_str'] = undefined;
-
-/**
  * The blockchain on which the token operates.
  * @member {String} chain_id
  */
 EstimateFee.prototype['chain_id'] = undefined;
 
-/**
- * To address
- * @member {String} to_address_str
- */
-EstimateFee.prototype['to_address_str'] = undefined;
 
-/**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
- * @member {String} value
- */
-EstimateFee.prototype['value'] = undefined;
-
-/**
- * calldata for this transaction. Commonly used as part of contract interaction. 
- * @member {Blob} calldata
- */
-EstimateFee.prototype['calldata'] = undefined;
-
-/**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
- */
-EstimateFee.prototype['mpc_used_key_group'] = undefined;
-
-
-EstimateFee.OneOf = ["SmartContractCall", "Transfer"];
+EstimateFee.OneOf = ["ContractCall", "Transfer"];
 
 export default EstimateFee;
 

@@ -158,22 +158,25 @@ class CreatedWallet {
 }
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CreatedWallet.prototype['name'] = undefined;
 
 /**
+ * The wallet type.
  * @member {module:model/CreatedWallet.WalletTypeEnum} wallet_type
  */
 CreatedWallet.prototype['wallet_type'] = undefined;
 
 /**
+ * The wallet subtype.
  * @member {module:model/CreatedWallet.WalletSubtypeEnum} wallet_subtype
  */
 CreatedWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The owning mpc vault id of the mpc wallet.
+ * The ID of the owning vault.
  * @member {String} vault_id
  */
 CreatedWallet.prototype['vault_id'] = undefined;
@@ -184,19 +187,19 @@ CreatedWallet.prototype['vault_id'] = undefined;
 CreatedWallet.prototype['exchange_id'] = undefined;
 
 /**
- * The API Key for the exchange.
+ * The API key of your exchange account.
  * @member {String} apikey
  */
 CreatedWallet.prototype['apikey'] = undefined;
 
 /**
- * The API Secret for the exchange.
+ * The API secret of your exchange account.
  * @member {String} secret
  */
 CreatedWallet.prototype['secret'] = undefined;
 
 /**
- * The passphrase for the exchange.
+ * The passphrase of your exchange account.
  * @member {String} passphrase
  */
 CreatedWallet.prototype['passphrase'] = undefined;
@@ -208,7 +211,7 @@ CreatedWallet.prototype['passphrase'] = undefined;
 CreatedWallet.prototype['ga_code'] = undefined;
 
 /**
- * The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID.
+ * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
  * @member {Array.<String>} sub_account_ids
  */
 CreatedWallet.prototype['sub_account_ids'] = undefined;

@@ -23,10 +23,10 @@ class CreateSafeWallet {
     /**
      * Constructs a new <code>CreateSafeWallet</code>.
      * @alias module:model/CreateSafeWallet
-     * @param name {String} 
-     * @param walletType {module:model/CreateSafeWallet.WalletTypeEnum} 
-     * @param walletSubtype {module:model/CreateSafeWallet.WalletSubtypeEnum} 
-     * @param chainId {String} The chain id the wallet is on.
+     * @param name {String} The wallet name.
+     * @param walletType {module:model/CreateSafeWallet.WalletTypeEnum} The Smart Contract Wallet type.
+     * @param walletSubtype {module:model/CreateSafeWallet.WalletSubtypeEnum} The Smart Contract Wallet subtype.
+     * @param chainId {String} The ID of the chain that the wallet operates on.
      * @param smartContractWalletType {module:model/SmartContractWalletType} 
      */
     constructor(name, walletType, walletSubtype, chainId, smartContractWalletType) { 
@@ -153,28 +153,31 @@ class CreateSafeWallet {
 CreateSafeWallet.RequiredProperties = ["name", "wallet_type", "wallet_subtype", "chain_id", "smart_contract_wallet_type"];
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CreateSafeWallet.prototype['name'] = undefined;
 
 /**
+ * The Smart Contract Wallet type.
  * @member {module:model/CreateSafeWallet.WalletTypeEnum} wallet_type
  */
 CreateSafeWallet.prototype['wallet_type'] = undefined;
 
 /**
+ * The Smart Contract Wallet subtype.
  * @member {module:model/CreateSafeWallet.WalletSubtypeEnum} wallet_subtype
  */
 CreateSafeWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The label of the wallet.
+ * The wallet label.
  * @member {String} label
  */
 CreateSafeWallet.prototype['label'] = undefined;
 
 /**
- * The chain id the wallet is on.
+ * The ID of the chain that the wallet operates on.
  * @member {String} chain_id
  */
 CreateSafeWallet.prototype['chain_id'] = undefined;
@@ -185,25 +188,25 @@ CreateSafeWallet.prototype['chain_id'] = undefined;
 CreateSafeWallet.prototype['smart_contract_wallet_type'] = undefined;
 
 /**
- * The address of the smart contract wallet. If this is not provided, WaaS 2.0 will create a new safe wallet and setup cobo safe module for user. In this case, threshold, owners is required.
+ * The address of the Smart Contract Wallet. If this is not provided, Cobo will create a new Safe{Wallet} and set up Cobo Safe for you. In that case, the `threshold` and `owners` fields are required.
  * @member {String} safe_address
  */
 CreateSafeWallet.prototype['safe_address'] = undefined;
 
 /**
- * The owners of the smart contract wallet. This MUST be provided when user want to create a new safe wallet.
+ * The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
  * @member {Array.<String>} owners
  */
 CreateSafeWallet.prototype['owners'] = undefined;
 
 /**
- * The threshold of required confirmations for the smart contract wallet. This MUST be provided when user want to create a new safe wallet.
+ * The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. 
  * @member {Number} threshold
  */
 CreateSafeWallet.prototype['threshold'] = undefined;
 
 /**
- * The address of the cobo safe module. Cobo safe module must has been created & enabled when import a existing safe wallet.
+ * The address of Cobo Safe. If you are importing an existing Safe{Wallet}, Cobo Safe must has been created and enabled.
  * @member {String} cobo_safe_address
  */
 CreateSafeWallet.prototype['cobo_safe_address'] = undefined;

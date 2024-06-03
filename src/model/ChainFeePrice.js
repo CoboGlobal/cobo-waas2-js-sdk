@@ -161,46 +161,40 @@ class ChainFeePrice {
 ChainFeePrice.prototype['fee_type'] = undefined;
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 ChainFeePrice.prototype['fee_token_id'] = undefined;
 
 /**
- * The highest Gas price paid for the transfer, unit GWei.
- * @member {String} max_fee
- */
-ChainFeePrice.prototype['max_fee'] = undefined;
-
-/**
- * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
+ * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 ChainFeePrice.prototype['max_priority_fee'] = undefined;
 
 /**
- * The Base Fee of chain.
+ * The base fee of chain.
  * @member {String} base_fee
  */
 ChainFeePrice.prototype['base_fee'] = undefined;
 
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 ChainFeePrice.prototype['gas_price'] = undefined;
 
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 ChainFeePrice.prototype['fee_rate'] = undefined;
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-ChainFeePrice.prototype['fee_amount'] = undefined;
+ChainFeePrice.prototype['max_fee_amount'] = undefined;
 
 
 ChainFeePrice.OneOf = ["EvmEip1559FeePrice", "EvmLegacyFeePrice", "FixedFee", "UtxoFeePrice"];

@@ -23,18 +23,17 @@ import FeeType from './FeeType';
 class EvmEip1559TransactionFee {
     /**
      * Constructs a new <code>EvmEip1559TransactionFee</code>.
-     * The fee data for transaction.
+     * The transaction fee when using the EIP 1559 method. The estimated fee is calculated by multiplying the max fee by the gas limit: (max fee * gas limit). 
      * @alias module:model/EvmEip1559TransactionFee
      * @implements module:model/EvmEip1559FeeBasePrice
      * @implements module:model/FeeData
-     * @param maxFee {String} The highest Gas price paid for the transfer, unit GWei.
-     * @param maxPriorityFee {String} The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
-     * @param baseFee {String} The Base Fee of chain.
+     * @param maxPriorityFee {String} The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
+     * @param baseFee {String} The base fee of chain.
      * @param feeType {module:model/FeeType} 
      */
-    constructor(maxFee, maxPriorityFee, baseFee, feeType) { 
-        EvmEip1559FeeBasePrice.initialize(this, maxFee, maxPriorityFee, baseFee);FeeData.initialize(this);
-        EvmEip1559TransactionFee.initialize(this, maxFee, maxPriorityFee, baseFee, feeType);
+    constructor(maxPriorityFee, baseFee, feeType) { 
+        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);FeeData.initialize(this);
+        EvmEip1559TransactionFee.initialize(this, maxPriorityFee, baseFee, feeType);
     }
 
     /**
@@ -42,8 +41,7 @@ class EvmEip1559TransactionFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxFee, maxPriorityFee, baseFee, feeType) { 
-        obj['max_fee'] = maxFee;
+    static initialize(obj, maxPriorityFee, baseFee, feeType) { 
         obj['max_priority_fee'] = maxPriorityFee;
         obj['base_fee'] = baseFee;
         obj['fee_type'] = feeType;
@@ -65,9 +63,6 @@ class EvmEip1559TransactionFee {
             if (data.hasOwnProperty('fee_token_id')) {
                 obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
             }
-            if (data.hasOwnProperty('max_fee')) {
-                obj['max_fee'] = ApiClient.convertToType(data['max_fee'], 'String');
-            }
             if (data.hasOwnProperty('max_priority_fee')) {
                 obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'String');
             }
@@ -76,9 +71,6 @@ class EvmEip1559TransactionFee {
             }
             if (data.hasOwnProperty('gas_limit')) {
                 obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'String');
-            }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
             }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
@@ -104,10 +96,6 @@ class EvmEip1559TransactionFee {
             throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
         }
         // ensure the json data is a string
-        if (data['max_fee'] && !(typeof data['max_fee'] === 'string' || data['max_fee'] instanceof String)) {
-            throw new Error("Expected the field `max_fee` to be a primitive type in the JSON string but got " + data['max_fee']);
-        }
-        // ensure the json data is a string
         if (data['max_priority_fee'] && !(typeof data['max_priority_fee'] === 'string' || data['max_priority_fee'] instanceof String)) {
             throw new Error("Expected the field `max_priority_fee` to be a primitive type in the JSON string but got " + data['max_priority_fee']);
         }
@@ -119,10 +107,6 @@ class EvmEip1559TransactionFee {
         if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
-        // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
 
         return true;
     }
@@ -130,44 +114,32 @@ class EvmEip1559TransactionFee {
 
 }
 
-EvmEip1559TransactionFee.RequiredProperties = ["max_fee", "max_priority_fee", "base_fee", "fee_type"];
+EvmEip1559TransactionFee.RequiredProperties = ["max_priority_fee", "base_fee", "fee_type"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmEip1559TransactionFee.prototype['fee_token_id'] = undefined;
 
 /**
- * The highest Gas price paid for the transfer, unit GWei.
- * @member {String} max_fee
- */
-EvmEip1559TransactionFee.prototype['max_fee'] = undefined;
-
-/**
- * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
+ * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 EvmEip1559TransactionFee.prototype['max_priority_fee'] = undefined;
 
 /**
- * The Base Fee of chain.
+ * The base fee of chain.
  * @member {String} base_fee
  */
 EvmEip1559TransactionFee.prototype['base_fee'] = undefined;
 
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 EvmEip1559TransactionFee.prototype['gas_limit'] = '21000';
-
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-EvmEip1559TransactionFee.prototype['fee_amount'] = undefined;
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -177,37 +149,27 @@ EvmEip1559TransactionFee.prototype['fee_type'] = undefined;
 
 // Implement EvmEip1559FeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmEip1559FeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The highest Gas price paid for the transfer, unit GWei.
- * @member {String} max_fee
- */
-EvmEip1559FeeBasePrice.prototype['max_fee'] = undefined;
-/**
- * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
+ * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 EvmEip1559FeeBasePrice.prototype['max_priority_fee'] = undefined;
 /**
- * The Base Fee of chain.
+ * The base fee of chain.
  * @member {String} base_fee
  */
 EvmEip1559FeeBasePrice.prototype['base_fee'] = undefined;
 // Implement FeeData interface:
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 FeeData.prototype['gas_limit'] = '21000';
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-FeeData.prototype['fee_amount'] = undefined;
 
 
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinationType** | [**TransferDestinationType**](TransferDestinationType.md) |  | 
-**addressStr** | **String** | Destination address | 
-**memo** | **String** | Destination address memo | [optional] 
+**accountOutput** | [**AddressTransferDestinationAccountOutput**](AddressTransferDestinationAccountOutput.md) |  | [optional] 
+**utxoOutputs** | [**AddressTransferDestinationUtxoOutputs**](AddressTransferDestinationUtxoOutputs.md) |  | [optional] 
 
 

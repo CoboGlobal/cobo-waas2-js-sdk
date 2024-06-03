@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class ChainInfo {
     /**
      * Constructs a new <code>ChainInfo</code>.
-     * The data for chain information.
+     * The chain information.
      * @alias module:model/ChainInfo
-     * @param chainId {String} The blockchain on which the token operates.
+     * @param chainId {String} The chain on which the token operates.
      */
     constructor(chainId) { 
         
@@ -61,9 +61,6 @@ class ChainInfo {
             if (data.hasOwnProperty('explorer_tx_url')) {
                 obj['explorer_tx_url'] = ApiClient.convertToType(data['explorer_tx_url'], 'String');
             }
-            if (data.hasOwnProperty('explorer_address_url')) {
-                obj['explorer_address_url'] = ApiClient.convertToType(data['explorer_address_url'], 'String');
-            }
         }
         return obj;
     }
@@ -96,10 +93,6 @@ class ChainInfo {
         if (data['explorer_tx_url'] && !(typeof data['explorer_tx_url'] === 'string' || data['explorer_tx_url'] instanceof String)) {
             throw new Error("Expected the field `explorer_tx_url` to be a primitive type in the JSON string but got " + data['explorer_tx_url']);
         }
-        // ensure the json data is a string
-        if (data['explorer_address_url'] && !(typeof data['explorer_address_url'] === 'string' || data['explorer_address_url'] instanceof String)) {
-            throw new Error("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got " + data['explorer_address_url']);
-        }
 
         return true;
     }
@@ -110,34 +103,28 @@ class ChainInfo {
 ChainInfo.RequiredProperties = ["chain_id"];
 
 /**
- * The blockchain on which the token operates.
+ * The chain on which the token operates.
  * @member {String} chain_id
  */
 ChainInfo.prototype['chain_id'] = undefined;
 
 /**
- * Symbol for the chain.
+ * The chain symbol.
  * @member {String} symbol
  */
 ChainInfo.prototype['symbol'] = undefined;
 
 /**
- * URL of the icon image.
+ * The URL of the chain icon.
  * @member {String} icon_url
  */
 ChainInfo.prototype['icon_url'] = undefined;
 
 /**
- * URL of the explorer transaction.
+ * The transaction URL on the blockchain explorer.
  * @member {String} explorer_tx_url
  */
 ChainInfo.prototype['explorer_tx_url'] = undefined;
-
-/**
- * URL of the explorer address.
- * @member {String} explorer_address_url
- */
-ChainInfo.prototype['explorer_address_url'] = undefined;
 
 
 

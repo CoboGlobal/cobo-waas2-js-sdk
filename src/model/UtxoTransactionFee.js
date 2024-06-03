@@ -23,11 +23,11 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 class UtxoTransactionFee {
     /**
      * Constructs a new <code>UtxoTransactionFee</code>.
-     * The fee data for transaction.
+     * The transaction fee for UTXO-based chains. The estimated fee is calculated by multiplying the fee rate by the transaction size: (fee rate * transaction size). 
      * @alias module:model/UtxoTransactionFee
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate, unit sat/vB.
+     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      * @param feeType {module:model/FeeType} 
      */
     constructor(feeRate, feeType) { 
@@ -64,8 +64,8 @@ class UtxoTransactionFee {
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            if (data.hasOwnProperty('max_fee_amount')) {
+                obj['max_fee_amount'] = ApiClient.convertToType(data['max_fee_amount'], 'String');
             }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
@@ -95,8 +95,8 @@ class UtxoTransactionFee {
             throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        if (data['max_fee_amount'] && !(typeof data['max_fee_amount'] === 'string' || data['max_fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
         }
 
         return true;
@@ -108,22 +108,22 @@ class UtxoTransactionFee {
 UtxoTransactionFee.RequiredProperties = ["fee_rate", "fee_type"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoTransactionFee.prototype['fee_token_id'] = undefined;
 
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoTransactionFee.prototype['fee_rate'] = undefined;
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-UtxoTransactionFee.prototype['fee_amount'] = undefined;
+UtxoTransactionFee.prototype['max_fee_amount'] = undefined;
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -133,21 +133,21 @@ UtxoTransactionFee.prototype['fee_type'] = undefined;
 
 // Implement UtxoFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
 // Implement FeeAmount interface:
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-FeeAmount.prototype['fee_amount'] = undefined;
+FeeAmount.prototype['max_fee_amount'] = undefined;
 
 
 

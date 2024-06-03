@@ -21,7 +21,7 @@ class BaseCreateWallet {
     /**
      * Constructs a new <code>BaseCreateWallet</code>.
      * @alias module:model/BaseCreateWallet
-     * @param name {String} 
+     * @param name {String} The wallet name.
      */
     constructor(name) { 
         
@@ -81,6 +81,7 @@ class BaseCreateWallet {
 BaseCreateWallet.RequiredProperties = ["name"];
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 BaseCreateWallet.prototype['name'] = undefined;

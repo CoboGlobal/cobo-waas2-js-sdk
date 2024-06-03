@@ -23,11 +23,11 @@ import FeeType from './FeeType';
 class EvmLegacyTransactionFee {
     /**
      * Constructs a new <code>EvmLegacyTransactionFee</code>.
-     * The fee data for transaction.
+     * The transaction fee when using the legacy method. The estimated fee is calculated by multiplying the gas price by the gas limit: (gas price * gas limit). 
      * @alias module:model/EvmLegacyTransactionFee
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData
-     * @param gasPrice {String} The Price of Gas, unit GWei.
+     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      * @param feeType {module:model/FeeType} 
      */
     constructor(gasPrice, feeType) { 
@@ -67,9 +67,6 @@ class EvmLegacyTransactionFee {
             if (data.hasOwnProperty('gas_limit')) {
                 obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
-            }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
@@ -101,10 +98,6 @@ class EvmLegacyTransactionFee {
         if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
-        // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
 
         return true;
     }
@@ -115,29 +108,23 @@ class EvmLegacyTransactionFee {
 EvmLegacyTransactionFee.RequiredProperties = ["gas_price", "fee_type"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyTransactionFee.prototype['fee_token_id'] = undefined;
 
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyTransactionFee.prototype['gas_price'] = undefined;
 
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 EvmLegacyTransactionFee.prototype['gas_limit'] = '21000';
-
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-EvmLegacyTransactionFee.prototype['fee_amount'] = undefined;
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -147,27 +134,22 @@ EvmLegacyTransactionFee.prototype['fee_type'] = undefined;
 
 // Implement EvmLegacyFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;
 // Implement FeeData interface:
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 FeeData.prototype['gas_limit'] = '21000';
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-FeeData.prototype['fee_amount'] = undefined;
 
 
 

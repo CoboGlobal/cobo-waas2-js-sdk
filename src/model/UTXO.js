@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import TokenBalance from './TokenBalance';
 
 /**
  * The UTXO model module.
@@ -20,7 +21,7 @@ import ApiClient from '../ApiClient';
 class UTXO {
     /**
      * Constructs a new <code>UTXO</code>.
-     * utxo information.
+     * The UTXO information.
      * @alias module:model/UTXO
      */
     constructor() { 
@@ -56,11 +57,14 @@ class UTXO {
             if (data.hasOwnProperty('address_str')) {
                 obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
             }
-            if (data.hasOwnProperty('amount')) {
-                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
+            if (data.hasOwnProperty('token_balances')) {
+                obj['token_balances'] = ApiClient.convertToType(data['token_balances'], [TokenBalance]);
             }
             if (data.hasOwnProperty('is_coinbase')) {
                 obj['is_coinbase'] = ApiClient.convertToType(data['is_coinbase'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_locked')) {
+                obj['is_locked'] = ApiClient.convertToType(data['is_locked'], 'Boolean');
             }
             if (data.hasOwnProperty('confirmed_number')) {
                 obj['confirmed_number'] = ApiClient.convertToType(data['confirmed_number'], 'Number');
@@ -83,9 +87,15 @@ class UTXO {
         if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
             throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
         }
-        // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
-            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        if (data['token_balances']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['token_balances'])) {
+                throw new Error("Expected the field `token_balances` to be an array in the JSON data but got " + data['token_balances']);
+            }
+            // validate the optional field `token_balances` (array)
+            for (const item of data['token_balances']) {
+                TokenBalance.validateJSON(item);
+            };
         }
 
         return true;
@@ -97,37 +107,42 @@ class UTXO {
 
 
 /**
- * Transaction hash of the UTXO.
+ * The transaction hash of the UTXO.
  * @member {String} tx_hash
  */
 UTXO.prototype['tx_hash'] = undefined;
 
 /**
- * Output index of the UTXO.
+ * The output index of the UTXO.
  * @member {Number} vout_n
  */
 UTXO.prototype['vout_n'] = undefined;
 
 /**
- * Address of the UTXO.
+ * The address of the UTXO.
  * @member {String} address_str
  */
 UTXO.prototype['address_str'] = undefined;
 
 /**
- * UTXO amount in decimal places (e.g. one bitcoin is divisible to eight decimal places, and 100000000 represents 1 BTC).
- * @member {String} amount
+ * @member {Array.<module:model/TokenBalance>} token_balances
  */
-UTXO.prototype['amount'] = undefined;
+UTXO.prototype['token_balances'] = undefined;
 
 /**
- * Whether the UTXO is a coinbase transaction.
+ * Whether the UTXO comes from a coinbase transaction.
  * @member {Boolean} is_coinbase
  */
 UTXO.prototype['is_coinbase'] = undefined;
 
 /**
- * Number of confirmations for the UTXO.
+ * Whether the UTXO is locked.
+ * @member {Boolean} is_locked
+ */
+UTXO.prototype['is_locked'] = undefined;
+
+/**
+ * The number of confirmations for the UTXO.
  * @member {Number} confirmed_number
  */
 UTXO.prototype['confirmed_number'] = undefined;

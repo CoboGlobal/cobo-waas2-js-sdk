@@ -192,6 +192,7 @@ Class | Method | HTTP request | Description
 *CoboWaas2JsApi.DevelopersWebhooksApi* | [**getWebhookEventLogs**](docs/DevelopersWebhooksApi.md#getWebhookEventLogs) | **GET** /webhooks/events/{event_id}/logs | List event logs by ID
 *CoboWaas2JsApi.DevelopersWebhooksApi* | [**listEvents**](docs/DevelopersWebhooksApi.md#listEvents) | **GET** /webhooks/events | List all events
 *CoboWaas2JsApi.DevelopersWebhooksApi* | [**retryWebhookEvent**](docs/DevelopersWebhooksApi.md#retryWebhookEvent) | **POST** /webhooks/events/{event_id}/retry | Retry event by ID
+*CoboWaas2JsApi.TransactionsApi* | [**cancelTransactionById**](docs/TransactionsApi.md#cancelTransactionById) | **POST** /transactions/{transaction_id}/cancel | Cancel a transaction by ID
 *CoboWaas2JsApi.TransactionsApi* | [**createSmartContractCallTransaction**](docs/TransactionsApi.md#createSmartContractCallTransaction) | **POST** /transactions/contract_call | Create a smart contract call transaction
 *CoboWaas2JsApi.TransactionsApi* | [**createTransferTransaction**](docs/TransactionsApi.md#createTransferTransaction) | **POST** /transactions/transfer | Create a transfer transaction
 *CoboWaas2JsApi.TransactionsApi* | [**dropTransactionById**](docs/TransactionsApi.md#dropTransactionById) | **POST** /transactions/{transaction_id}/drop | Drop a transaction by ID
@@ -200,10 +201,9 @@ Class | Method | HTTP request | Description
 *CoboWaas2JsApi.TransactionsApi* | [**getTransactionById**](docs/TransactionsApi.md#getTransactionById) | **GET** /transactions/{transaction_id} | Get transaction information by ID
 *CoboWaas2JsApi.TransactionsApi* | [**listTransactions**](docs/TransactionsApi.md#listTransactions) | **GET** /transactions | List all transactions
 *CoboWaas2JsApi.TransactionsApi* | [**resendTransactionById**](docs/TransactionsApi.md#resendTransactionById) | **POST** /transactions/{transaction_id}/resend | Resend a transaction by ID
-*CoboWaas2JsApi.TransactionsApi* | [**retryTransactionDoubleCheckById**](docs/TransactionsApi.md#retryTransactionDoubleCheckById) | **POST** /transactions/{transaction_id}/callback_confirmation/retry | Retry up a transaction double-check by ID
 *CoboWaas2JsApi.TransactionsApi* | [**speedupTransactionById**](docs/TransactionsApi.md#speedupTransactionById) | **POST** /transactions/{transaction_id}/speedup | Speed up a transaction by ID
 *CoboWaas2JsApi.WalletsApi* | [**addWalletAddress**](docs/WalletsApi.md#addWalletAddress) | **POST** /wallets/{wallet_id}/addresses | Add address to wallet
-*CoboWaas2JsApi.WalletsApi* | [**createWallet**](docs/WalletsApi.md#createWallet) | **POST** /wallets | Create new wallet
+*CoboWaas2JsApi.WalletsApi* | [**createWallet**](docs/WalletsApi.md#createWallet) | **POST** /wallets | Create wallet
 *CoboWaas2JsApi.WalletsApi* | [**deleteWalletById**](docs/WalletsApi.md#deleteWalletById) | **DELETE** /wallets/{wallet_id} | Delete wallet by ID
 *CoboWaas2JsApi.WalletsApi* | [**getAddressValidity**](docs/WalletsApi.md#getAddressValidity) | **GET** /wallets/address/validity | Check address validity
 *CoboWaas2JsApi.WalletsApi* | [**getChains**](docs/WalletsApi.md#getChains) | **GET** /wallets/chains | List chain metadata
@@ -214,30 +214,31 @@ Class | Method | HTTP request | Description
 *CoboWaas2JsApi.WalletsApi* | [**getSupportedChains**](docs/WalletsApi.md#getSupportedChains) | **GET** /wallets/supported_chains | List supported chains
 *CoboWaas2JsApi.WalletsApi* | [**getSupportedTokens**](docs/WalletsApi.md#getSupportedTokens) | **GET** /wallets/supported_tokens | List supported tokens
 *CoboWaas2JsApi.WalletsApi* | [**getTokens**](docs/WalletsApi.md#getTokens) | **GET** /wallets/tokens | List token metadata
-*CoboWaas2JsApi.WalletsApi* | [**getWalletAddressTokenBalances**](docs/WalletsApi.md#getWalletAddressTokenBalances) | **GET** /wallets/{wallet_id}/addresses/{address_id}/tokens | List Token Balances by Address in Wallet
+*CoboWaas2JsApi.WalletsApi* | [**getWalletAddressTokenBalances**](docs/WalletsApi.md#getWalletAddressTokenBalances) | **GET** /wallets/{wallet_id}/addresses/{address_id}/tokens | List token balances by address
 *CoboWaas2JsApi.WalletsApi* | [**getWalletById**](docs/WalletsApi.md#getWalletById) | **GET** /wallets/{wallet_id} | Retrieve wallet information by ID
-*CoboWaas2JsApi.WalletsApi* | [**getWalletTokenBalances**](docs/WalletsApi.md#getWalletTokenBalances) | **GET** /wallets/{wallet_id}/tokens | List Token Balances in Wallet
+*CoboWaas2JsApi.WalletsApi* | [**getWalletTokenBalances**](docs/WalletsApi.md#getWalletTokenBalances) | **GET** /wallets/{wallet_id}/tokens | List token balances by wallet
 *CoboWaas2JsApi.WalletsApi* | [**listAddresses**](docs/WalletsApi.md#listAddresses) | **GET** /wallets/{wallet_id}/addresses | List wallet addresses by wallet ID
 *CoboWaas2JsApi.WalletsApi* | [**listWallets**](docs/WalletsApi.md#listWallets) | **GET** /wallets | List all wallets
+*CoboWaas2JsApi.WalletsApi* | [**lockSpendableList**](docs/WalletsApi.md#lockSpendableList) | **POST** /wallets/{wallet_id}/spendables/lock | Lock/Unlock the UTXOs in tx hash list
 *CoboWaas2JsApi.WalletsApi* | [**updateWalletById**](docs/WalletsApi.md#updateWalletById) | **PUT** /wallets/{wallet_id} | Update wallet by ID
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**cancelTssRequest**](docs/WalletsMPCWalletApi.md#cancelTssRequest) | **PUT** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | cancel tss request
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**createKeyGroup**](docs/WalletsMPCWalletApi.md#createKeyGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_groups | create a mpc key group
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**cancelTssRequest**](docs/WalletsMPCWalletApi.md#cancelTssRequest) | **PUT** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Cancel a tss request
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**createKeyGroup**](docs/WalletsMPCWalletApi.md#createKeyGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_groups | Create a mpc key group
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**createMpcProject**](docs/WalletsMPCWalletApi.md#createMpcProject) | **POST** /wallets/mpc/projects | Create a mpc project
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**createMpcVault**](docs/WalletsMPCWalletApi.md#createMpcVault) | **POST** /wallets/mpc/vaults | Create a mpc vault
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**createTssRequest**](docs/WalletsMPCWalletApi.md#createTssRequest) | **POST** /wallets/mpc/vaults/{vault_id}/tss_requests | Create a tss request to generate key secrets for a tss group
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**deleteKeyGroup**](docs/WalletsMPCWalletApi.md#deleteKeyGroup) | **DELETE** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | delete a mpc key group
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getKeyGroup**](docs/WalletsMPCWalletApi.md#getKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | get a mpc key group
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getMpcProject**](docs/WalletsMPCWalletApi.md#getMpcProject) | **GET** /wallets/mpc/projects/{project_id} | get a mpc project
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getMpcVault**](docs/WalletsMPCWalletApi.md#getMpcVault) | **GET** /wallets/mpc/vaults/{vault_id} | get a mpc vault
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getTssRequest**](docs/WalletsMPCWalletApi.md#getTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | get a tss request
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**deleteKeyGroup**](docs/WalletsMPCWalletApi.md#deleteKeyGroup) | **DELETE** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Delete a mpc key group
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getKeyGroup**](docs/WalletsMPCWalletApi.md#getKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Get a mpc key group information by group id
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getMpcProject**](docs/WalletsMPCWalletApi.md#getMpcProject) | **GET** /wallets/mpc/projects/{project_id} | Get a mpc project information
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getMpcVault**](docs/WalletsMPCWalletApi.md#getMpcVault) | **GET** /wallets/mpc/vaults/{vault_id} | Get a mpc vault information
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**getTssRequest**](docs/WalletsMPCWalletApi.md#getTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Get a tss request information
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**listCoboKeyHolder**](docs/WalletsMPCWalletApi.md#listCoboKeyHolder) | **GET** /wallets/mpc/cobo_key_holders | List all cobo key holders
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**listKeyGroup**](docs/WalletsMPCWalletApi.md#listKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups | List all mpc key groups
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**listMpcProject**](docs/WalletsMPCWalletApi.md#listMpcProject) | **GET** /wallets/mpc/projects | List all mpc projects
 *CoboWaas2JsApi.WalletsMPCWalletApi* | [**listMpcVault**](docs/WalletsMPCWalletApi.md#listMpcVault) | **GET** /wallets/mpc/vaults | List all mpc vaults
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**listTssRequest**](docs/WalletsMPCWalletApi.md#listTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List tss request information of a vault
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**modifyMpcVault**](docs/WalletsMPCWalletApi.md#modifyMpcVault) | **PUT** /wallets/mpc/vaults/{vault_id} | Modify a mpc vault
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**updateKeyGroup**](docs/WalletsMPCWalletApi.md#updateKeyGroup) | **PUT** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | update a mpc key group
-*CoboWaas2JsApi.WalletsMPCWalletApi* | [**updateMpcProject**](docs/WalletsMPCWalletApi.md#updateMpcProject) | **PUT** /wallets/mpc/projects/{project_id} | update a mpc project
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**listTssRequest**](docs/WalletsMPCWalletApi.md#listTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List tss request information by vault ID
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**modifyMpcVault**](docs/WalletsMPCWalletApi.md#modifyMpcVault) | **PUT** /wallets/mpc/vaults/{vault_id} | Update a mpc vault information
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**updateKeyGroup**](docs/WalletsMPCWalletApi.md#updateKeyGroup) | **PUT** /wallets/mpc/vaults/{vault_id}/key_groups/{key_group_id} | Update a mpc key group information
+*CoboWaas2JsApi.WalletsMPCWalletApi* | [**updateMpcProject**](docs/WalletsMPCWalletApi.md#updateMpcProject) | **PUT** /wallets/mpc/projects/{project_id} | Update a mpc project
 
 
 ## Documentation for Models
@@ -246,15 +247,22 @@ Class | Method | HTTP request | Description
  - [CoboWaas2JsApi.AddressEncoding](docs/AddressEncoding.md)
  - [CoboWaas2JsApi.AddressInfo](docs/AddressInfo.md)
  - [CoboWaas2JsApi.AddressTransferDestination](docs/AddressTransferDestination.md)
+ - [CoboWaas2JsApi.AddressTransferDestinationAccountOutput](docs/AddressTransferDestinationAccountOutput.md)
+ - [CoboWaas2JsApi.AddressTransferDestinationUtxoOutputs](docs/AddressTransferDestinationUtxoOutputs.md)
+ - [CoboWaas2JsApi.AddressTransferDestinationUtxoOutputsOutputsInner](docs/AddressTransferDestinationUtxoOutputsOutputsInner.md)
  - [CoboWaas2JsApi.AddressTransferSource](docs/AddressTransferSource.md)
  - [CoboWaas2JsApi.AssetBalance](docs/AssetBalance.md)
  - [CoboWaas2JsApi.AssetInfo](docs/AssetInfo.md)
+ - [CoboWaas2JsApi.BaseContractCallSource](docs/BaseContractCallSource.md)
  - [CoboWaas2JsApi.BaseCreateWallet](docs/BaseCreateWallet.md)
  - [CoboWaas2JsApi.BaseTransactionAddress](docs/BaseTransactionAddress.md)
  - [CoboWaas2JsApi.BaseTransferSource](docs/BaseTransferSource.md)
  - [CoboWaas2JsApi.BaseWalletTransactionAddress](docs/BaseWalletTransactionAddress.md)
  - [CoboWaas2JsApi.ChainFeePrice](docs/ChainFeePrice.md)
  - [CoboWaas2JsApi.ChainInfo](docs/ChainInfo.md)
+ - [CoboWaas2JsApi.ContractCall](docs/ContractCall.md)
+ - [CoboWaas2JsApi.ContractCallDestination](docs/ContractCallDestination.md)
+ - [CoboWaas2JsApi.ContractCallSource](docs/ContractCallSource.md)
  - [CoboWaas2JsApi.CreateCustodialWallet](docs/CreateCustodialWallet.md)
  - [CoboWaas2JsApi.CreateExchangeWallet](docs/CreateExchangeWallet.md)
  - [CoboWaas2JsApi.CreateKeyGroupRequest](docs/CreateKeyGroupRequest.md)
@@ -308,6 +316,8 @@ Class | Method | HTTP request | Description
  - [CoboWaas2JsApi.ListEvents200Response](docs/ListEvents200Response.md)
  - [CoboWaas2JsApi.ListTransactions200Response](docs/ListTransactions200Response.md)
  - [CoboWaas2JsApi.ListWallets200Response](docs/ListWallets200Response.md)
+ - [CoboWaas2JsApi.LockSpendableList200Response](docs/LockSpendableList200Response.md)
+ - [CoboWaas2JsApi.LockSpendableListRequest](docs/LockSpendableListRequest.md)
  - [CoboWaas2JsApi.MPCProject](docs/MPCProject.md)
  - [CoboWaas2JsApi.MPCVault](docs/MPCVault.md)
  - [CoboWaas2JsApi.MPCVaultType](docs/MPCVaultType.md)
@@ -315,11 +325,18 @@ Class | Method | HTTP request | Description
  - [CoboWaas2JsApi.MPCWalletTransactionAddress](docs/MPCWalletTransactionAddress.md)
  - [CoboWaas2JsApi.MaxTransferableValue](docs/MaxTransferableValue.md)
  - [CoboWaas2JsApi.ModifyMpcVaultRequest](docs/ModifyMpcVaultRequest.md)
+ - [CoboWaas2JsApi.MpcContractCallSource](docs/MpcContractCallSource.md)
  - [CoboWaas2JsApi.MpcSigningGroup](docs/MpcSigningGroup.md)
  - [CoboWaas2JsApi.MpcTransferSource](docs/MpcTransferSource.md)
+ - [CoboWaas2JsApi.MpcTransferSourceAccountInput](docs/MpcTransferSourceAccountInput.md)
+ - [CoboWaas2JsApi.MpcTransferSourceUtxoInputs](docs/MpcTransferSourceUtxoInputs.md)
+ - [CoboWaas2JsApi.MpcTransferSourceUtxoInputsExcludedInputsInner](docs/MpcTransferSourceUtxoInputsExcludedInputsInner.md)
+ - [CoboWaas2JsApi.MpcTransferSourceUtxoInputsIncludedInputsInner](docs/MpcTransferSourceUtxoInputsIncludedInputsInner.md)
  - [CoboWaas2JsApi.Pagination](docs/Pagination.md)
  - [CoboWaas2JsApi.RetryWebhookEvent201Response](docs/RetryWebhookEvent201Response.md)
  - [CoboWaas2JsApi.RootPubkey](docs/RootPubkey.md)
+ - [CoboWaas2JsApi.SafeContractCallSource](docs/SafeContractCallSource.md)
+ - [CoboWaas2JsApi.SafeContractCallSourceAllOfDelegate](docs/SafeContractCallSourceAllOfDelegate.md)
  - [CoboWaas2JsApi.SafeTransactionAddress](docs/SafeTransactionAddress.md)
  - [CoboWaas2JsApi.SafeTransactionAddressAllOfDelegate](docs/SafeTransactionAddressAllOfDelegate.md)
  - [CoboWaas2JsApi.SafeTransferSource](docs/SafeTransferSource.md)
@@ -327,7 +344,8 @@ Class | Method | HTTP request | Description
  - [CoboWaas2JsApi.SafeWallet](docs/SafeWallet.md)
  - [CoboWaas2JsApi.SafeWalletAllOfInitiator](docs/SafeWalletAllOfInitiator.md)
  - [CoboWaas2JsApi.SignMessage](docs/SignMessage.md)
- - [CoboWaas2JsApi.SmartContractCall](docs/SmartContractCall.md)
+ - [CoboWaas2JsApi.SignMessageDestination](docs/SignMessageDestination.md)
+ - [CoboWaas2JsApi.SignMessageSource](docs/SignMessageSource.md)
  - [CoboWaas2JsApi.SmartContractWalletInfo](docs/SmartContractWalletInfo.md)
  - [CoboWaas2JsApi.SmartContractWalletOperationType](docs/SmartContractWalletOperationType.md)
  - [CoboWaas2JsApi.SmartContractWalletType](docs/SmartContractWalletType.md)

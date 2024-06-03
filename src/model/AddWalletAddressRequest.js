@@ -22,8 +22,8 @@ class AddWalletAddressRequest {
     /**
      * Constructs a new <code>AddWalletAddressRequest</code>.
      * @alias module:model/AddWalletAddressRequest
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
-     * @param count {Number} The number of addresses that need to be created
+     * @param tokenId {String} The token ID.
+     * @param count {Number} The number of addresses to create.
      */
     constructor(tokenId, count) { 
         
@@ -90,13 +90,13 @@ class AddWalletAddressRequest {
 AddWalletAddressRequest.RequiredProperties = ["token_id", "count"];
 
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID.
  * @member {String} token_id
  */
 AddWalletAddressRequest.prototype['token_id'] = undefined;
 
 /**
- * The number of addresses that need to be created
+ * The number of addresses to create.
  * @member {Number} count
  * @default 1
  */

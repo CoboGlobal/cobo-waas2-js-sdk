@@ -4,6 +4,7 @@ All URIs are relative to *https://api.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelTransactionById**](TransactionsApi.md#cancelTransactionById) | **POST** /transactions/{transaction_id}/cancel | Cancel a transaction by ID
 [**createSmartContractCallTransaction**](TransactionsApi.md#createSmartContractCallTransaction) | **POST** /transactions/contract_call | Create a smart contract call transaction
 [**createTransferTransaction**](TransactionsApi.md#createTransferTransaction) | **POST** /transactions/transfer | Create a transfer transaction
 [**dropTransactionById**](TransactionsApi.md#dropTransactionById) | **POST** /transactions/{transaction_id}/drop | Drop a transaction by ID
@@ -12,9 +13,57 @@ Method | HTTP request | Description
 [**getTransactionById**](TransactionsApi.md#getTransactionById) | **GET** /transactions/{transaction_id} | Get transaction information by ID
 [**listTransactions**](TransactionsApi.md#listTransactions) | **GET** /transactions | List all transactions
 [**resendTransactionById**](TransactionsApi.md#resendTransactionById) | **POST** /transactions/{transaction_id}/resend | Resend a transaction by ID
-[**retryTransactionDoubleCheckById**](TransactionsApi.md#retryTransactionDoubleCheckById) | **POST** /transactions/{transaction_id}/callback_confirmation/retry | Retry up a transaction double-check by ID
 [**speedupTransactionById**](TransactionsApi.md#speedupTransactionById) | **POST** /transactions/{transaction_id}/speedup | Speed up a transaction by ID
 
+
+
+## cancelTransactionById
+
+> CreateTransferTransaction201Response cancelTransactionById(transactionId)
+
+Cancel a transaction by ID
+
+Cancel a transaction.
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+apiInstance.cancelTransactionById(transactionId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionId** | **String**| Unique id of the transaction | 
+
+### Return type
+
+[**CreateTransferTransaction201Response**](CreateTransferTransaction201Response.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## createSmartContractCallTransaction
@@ -37,7 +86,7 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const opts = {
-  'smartContractCall': new CoboWaas2JsApi.SmartContractCall() // SmartContractCall | The request body to create a smart contract transaction
+  'contractCall': new CoboWaas2JsApi.ContractCall() // ContractCall | The request body to create a smart contract transaction
 };
 apiInstance.createSmartContractCallTransaction(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -52,7 +101,7 @@ apiInstance.createSmartContractCallTransaction(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **smartContractCall** | [**SmartContractCall**](SmartContractCall.md)| The request body to create a smart contract transaction | [optional] 
+ **contractCall** | [**ContractCall**](ContractCall.md)| The request body to create a smart contract transaction | [optional] 
 
 ### Return type
 
@@ -174,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## estimateFee
 
-> TransactionFee estimateFee(opts)
+> EstimationFee estimateFee(opts)
 
 Estimate the fee for transaction
 
@@ -211,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionFee**](TransactionFee.md)
+[**EstimationFee**](EstimationFee.md)
 
 ### Authorization
 
@@ -243,8 +292,8 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const opts = {
-  'chainId': "ETH", // String | Unique id of the chain
-  'tokenId': "ETH_USDT" // String | Unique id of the token
+  'chainId': "ETH", // String | The chain ID.
+  'tokenId': "ETH_USDT" // String | The token ID.
 };
 apiInstance.getChainFeePrice(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -259,8 +308,8 @@ apiInstance.getChainFeePrice(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chainId** | **String**| Unique id of the chain | [optional] 
- **tokenId** | **String**| Unique id of the token | [optional] 
+ **chainId** | **String**| The chain ID. | [optional] 
+ **tokenId** | **String**| The token ID. | [optional] 
 
 ### Return type
 
@@ -349,12 +398,15 @@ const opts = {
   'coboId': "20231213122855000000000000000000", // String | Cobo ID
   'transactionId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the transaction
   'transactionHash': "239861be9a4afe080c359b7fe4a1d035945ec46256b1a0f44d1267c71de8ec28", // String | Transaction hash
-  'type': new CoboWaas2JsApi.TransactionType(), // TransactionType | The type of a transaction
-  'status': new CoboWaas2JsApi.TransactionStatus(), // TransactionStatus | The status of a transaction
-  'walletId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the wallet
-  'chainId': "ETH", // String | Unique id of the chain
-  'tokenId': "ETH_USDT", // String | Unique id of the token
-  'assetId': "USDT", // String | Unique id of the asset
+  'type': [new CoboWaas2JsApi.TransactionType()], // [TransactionType] | The type of a transaction
+  'status': [new CoboWaas2JsApi.TransactionStatus()], // [TransactionStatus] | The status of a transaction
+  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+  'walletId': ["null"], // [String] | Unique id of the wallet
+  'chainId': ["null"], // [String] | Unique id of the chain
+  'tokenId': ["null"], // [String] | Unique id of the token
+  'assetId': ["null"], // [String] | Unique id of the asset
+  'vaultId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc vault
+  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc project
   'minCreatedTimestamp': 1635744000, // Number | The minimum transaction creation timestamp in Unix epoch seconds
   'maxCreatedTimestamp': 1635744000, // Number | The maximum transaction creation timestamp in Unix epoch seconds
   'sortBy': "timestamp", // String | Field of sort by
@@ -380,12 +432,15 @@ Name | Type | Description  | Notes
  **coboId** | **String**| Cobo ID | [optional] 
  **transactionId** | **String**| Unique id of the transaction | [optional] 
  **transactionHash** | **String**| Transaction hash | [optional] 
- **type** | [**TransactionType**](.md)| The type of a transaction | [optional] 
- **status** | [**TransactionStatus**](.md)| The status of a transaction | [optional] 
- **walletId** | **String**| Unique id of the wallet | [optional] 
- **chainId** | **String**| Unique id of the chain | [optional] 
- **tokenId** | **String**| Unique id of the token | [optional] 
- **assetId** | **String**| Unique id of the asset | [optional] 
+ **type** | [**[TransactionType]**](TransactionType.md)| The type of a transaction | [optional] 
+ **status** | [**[TransactionStatus]**](TransactionStatus.md)| The status of a transaction | [optional] 
+ **walletType** | [**WalletType**](.md)| The wallet type.  - &#x60;Custodial&#x60;: Custodial Wallets  - &#x60;MPC&#x60;: MPC Wallets  - &#x60;SmartContract&#x60;: Smart Contract Wallets  - &#x60;Exchange&#x60;: Exchange Wallets  | [optional] 
+ **walletId** | [**[String]**](String.md)| Unique id of the wallet | [optional] 
+ **chainId** | [**[String]**](String.md)| Unique id of the chain | [optional] 
+ **tokenId** | [**[String]**](String.md)| Unique id of the token | [optional] 
+ **assetId** | [**[String]**](String.md)| Unique id of the asset | [optional] 
+ **vaultId** | **String**| Unique id of the mpc vault | [optional] 
+ **projectId** | **String**| Unique id of the mpc project | [optional] 
  **minCreatedTimestamp** | **Number**| The minimum transaction creation timestamp in Unix epoch seconds | [optional] 
  **maxCreatedTimestamp** | **Number**| The maximum transaction creation timestamp in Unix epoch seconds | [optional] 
  **sortBy** | **String**| Field of sort by | [optional] [default to &#39;&#39;]
@@ -429,55 +484,6 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
 apiInstance.resendTransactionById(transactionId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
-
-### Return type
-
-[**CreateTransferTransaction201Response**](CreateTransferTransaction201Response.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## retryTransactionDoubleCheckById
-
-> CreateTransferTransaction201Response retryTransactionDoubleCheckById(transactionId)
-
-Retry up a transaction double-check by ID
-
-Retry a transaction double-check.
-
-### Example
-
-```javascript
-import CoboWaas2JsApi from 'cobo-waas2-js-api';
-// initial default api client
-const apiClient = CoboWaas2JsApi.ApiClient.instance
-// for dev env
-//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
-apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
-// call api
-const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
-apiInstance.retryTransactionDoubleCheckById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

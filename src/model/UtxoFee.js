@@ -22,7 +22,7 @@ import UtxoFeeSlow from './UtxoFeeSlow';
 class UtxoFee {
     /**
      * Constructs a new <code>UtxoFee</code>.
-     * The UTXO fee for transfer.
+     * The estimated transaction fee for UTXO-based chains.
      * @alias module:model/UtxoFee
      * @param feeType {module:model/FeeType} 
      * @param standard {module:model/UtxoFeeSlow} 

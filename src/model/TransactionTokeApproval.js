@@ -23,7 +23,7 @@ class TransactionTokeApproval {
      * Constructs a new <code>TransactionTokeApproval</code>.
      * @alias module:model/TransactionTokeApproval
      * @implements module:model/TokenInfo
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
+     * @param tokenId {String} The token ID. Unique in all chains scope.
      * @param chainId {String} The blockchain on which the token operates.
      */
     constructor(tokenId, chainId) { 
@@ -138,7 +138,7 @@ class TransactionTokeApproval {
 TransactionTokeApproval.RequiredProperties = ["token_id", "chain_id"];
 
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID. Unique in all chains scope.
  * @member {String} token_id
  */
 TransactionTokeApproval.prototype['token_id'] = undefined;
@@ -150,31 +150,31 @@ TransactionTokeApproval.prototype['token_id'] = undefined;
 TransactionTokeApproval.prototype['chain_id'] = undefined;
 
 /**
- * Symbol for the token.
+ * The token symbol.
  * @member {String} symbol
  */
 TransactionTokeApproval.prototype['symbol'] = undefined;
 
 /**
- * The description of the token.
+ * The token description.
  * @member {String} description
  */
 TransactionTokeApproval.prototype['description'] = undefined;
 
 /**
- * URL of the icon image.
+ * The URL of the token icon.
  * @member {String} icon_url
  */
 TransactionTokeApproval.prototype['icon_url'] = undefined;
 
 /**
- * Address for token, if applicable.
+ * The token address, if applicable.
  * @member {String} token_address
  */
 TransactionTokeApproval.prototype['token_address'] = undefined;
 
 /**
- * ID of the asset. Used to group token balance when needed.
+ * The asset ID, which is used to group the balances of the correponding tokens. For example, if you have $1,000 worth of ETH_USDT and $2,000 worth of TRON_USDT, the balance of your USDT assets will be $3,000.
  * @member {String} asset_id
  */
 TransactionTokeApproval.prototype['asset_id'] = undefined;
@@ -194,7 +194,7 @@ TransactionTokeApproval.prototype['spender'] = undefined;
 
 // Implement TokenInfo interface:
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID. Unique in all chains scope.
  * @member {String} token_id
  */
 TokenInfo.prototype['token_id'] = undefined;
@@ -204,27 +204,27 @@ TokenInfo.prototype['token_id'] = undefined;
  */
 TokenInfo.prototype['chain_id'] = undefined;
 /**
- * Symbol for the token.
+ * The token symbol.
  * @member {String} symbol
  */
 TokenInfo.prototype['symbol'] = undefined;
 /**
- * The description of the token.
+ * The token description.
  * @member {String} description
  */
 TokenInfo.prototype['description'] = undefined;
 /**
- * URL of the icon image.
+ * The URL of the token icon.
  * @member {String} icon_url
  */
 TokenInfo.prototype['icon_url'] = undefined;
 /**
- * Address for token, if applicable.
+ * The token address, if applicable.
  * @member {String} token_address
  */
 TokenInfo.prototype['token_address'] = undefined;
 /**
- * ID of the asset. Used to group token balance when needed.
+ * The asset ID, which is used to group the balances of the correponding tokens. For example, if you have $1,000 worth of ETH_USDT and $2,000 worth of TRON_USDT, the balance of your USDT assets will be $3,000.
  * @member {String} asset_id
  */
 TokenInfo.prototype['asset_id'] = undefined;

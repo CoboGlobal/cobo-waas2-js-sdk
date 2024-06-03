@@ -27,12 +27,12 @@ class ExchangeWalletInfo {
      * Constructs a new <code>ExchangeWalletInfo</code>.
      * @alias module:model/ExchangeWalletInfo
      * @implements module:model/CustodialWalletInfo
-     * @param walletId {String} 
+     * @param walletId {String} The wallet ID.
      * @param walletType {module:model/WalletType} 
      * @param walletSubtype {module:model/WalletSubtype} 
-     * @param name {String} 
-     * @param orgId {String} The owning custody organization id of the custodial wallet.
-     * @param apikey {String} The API Key for the exchange.
+     * @param name {String} The wallet name.
+     * @param orgId {String} The ID of the owning organization.
+     * @param apikey {String} The API key of your exchange account.
      * @param exchangeId {module:model/ExchangeId} 
      */
     constructor(walletId, walletType, walletSubtype, name, orgId, apikey, exchangeId) { 
@@ -150,6 +150,7 @@ class ExchangeWalletInfo {
 ExchangeWalletInfo.RequiredProperties = ["wallet_id", "wallet_type", "wallet_subtype", "name", "org_id", "apikey", "exchange_id"];
 
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 ExchangeWalletInfo.prototype['wallet_id'] = undefined;
@@ -165,18 +166,19 @@ ExchangeWalletInfo.prototype['wallet_type'] = undefined;
 ExchangeWalletInfo.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 ExchangeWalletInfo.prototype['name'] = undefined;
 
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 ExchangeWalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The API Key for the exchange.
+ * The API key of your exchange account.
  * @member {String} apikey
  */
 ExchangeWalletInfo.prototype['apikey'] = undefined;
@@ -187,7 +189,7 @@ ExchangeWalletInfo.prototype['apikey'] = undefined;
 ExchangeWalletInfo.prototype['exchange_id'] = undefined;
 
 /**
- * The parent wallet id for this wallet if presented.
+ * The wallet ID of the Main Account, if applicable.
  * @member {String} parent_wallet_id
  */
 ExchangeWalletInfo.prototype['parent_wallet_id'] = undefined;
@@ -200,6 +202,7 @@ ExchangeWalletInfo.prototype['sub_accounts'] = undefined;
 
 // Implement CustodialWalletInfo interface:
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 CustodialWalletInfo.prototype['wallet_id'] = undefined;
@@ -212,11 +215,12 @@ CustodialWalletInfo.prototype['wallet_type'] = undefined;
  */
 CustodialWalletInfo.prototype['wallet_subtype'] = undefined;
 /**
+ * The wallet name.
  * @member {String} name
  */
 CustodialWalletInfo.prototype['name'] = undefined;
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 CustodialWalletInfo.prototype['org_id'] = undefined;

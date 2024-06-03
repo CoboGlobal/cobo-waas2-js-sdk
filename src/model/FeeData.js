@@ -20,7 +20,7 @@ import ApiClient from '../ApiClient';
 class FeeData {
     /**
      * Constructs a new <code>FeeData</code>.
-     * The estimated fee amount in fee_coin.
+     * The estimated fee in fee_coin.
      * @alias module:model/FeeData
      */
     constructor() { 
@@ -50,9 +50,6 @@ class FeeData {
             if (data.hasOwnProperty('gas_limit')) {
                 obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
-            }
         }
         return obj;
     }
@@ -67,10 +64,6 @@ class FeeData {
         if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
-        // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
 
         return true;
     }
@@ -81,17 +74,11 @@ class FeeData {
 
 
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 FeeData.prototype['gas_limit'] = '21000';
-
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-FeeData.prototype['fee_amount'] = undefined;
 
 
 

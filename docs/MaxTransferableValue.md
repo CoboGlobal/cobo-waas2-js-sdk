@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tokenId** | **String** | token name. | [optional] 
-**maxSendValue** | **String** | the maximum sendable value for the given address or current wallet. | [optional] 
+**tokenId** | **String** | The token name. | [optional] 
+**maxTransferableValue** | **String** | the maximum transferable value for the given address or current wallet. | [optional] 
 **fee** | [**TransactionFee**](TransactionFee.md) |  | [optional] 
 
 

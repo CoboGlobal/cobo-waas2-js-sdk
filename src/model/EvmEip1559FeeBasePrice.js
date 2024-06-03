@@ -20,15 +20,14 @@ import ApiClient from '../ApiClient';
 class EvmEip1559FeeBasePrice {
     /**
      * Constructs a new <code>EvmEip1559FeeBasePrice</code>.
-     * The base eip1559 fee price for estimate fees or transfer.
+     * The base transaction fee when using the EIP 1559 method.
      * @alias module:model/EvmEip1559FeeBasePrice
-     * @param maxFee {String} The highest Gas price paid for the transfer, unit GWei.
-     * @param maxPriorityFee {String} The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
-     * @param baseFee {String} The Base Fee of chain.
+     * @param maxPriorityFee {String} The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
+     * @param baseFee {String} The base fee of chain.
      */
-    constructor(maxFee, maxPriorityFee, baseFee) { 
+    constructor(maxPriorityFee, baseFee) { 
         
-        EvmEip1559FeeBasePrice.initialize(this, maxFee, maxPriorityFee, baseFee);
+        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);
     }
 
     /**
@@ -36,8 +35,7 @@ class EvmEip1559FeeBasePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxFee, maxPriorityFee, baseFee) { 
-        obj['max_fee'] = maxFee;
+    static initialize(obj, maxPriorityFee, baseFee) { 
         obj['max_priority_fee'] = maxPriorityFee;
         obj['base_fee'] = baseFee;
     }
@@ -55,9 +53,6 @@ class EvmEip1559FeeBasePrice {
 
             if (data.hasOwnProperty('fee_token_id')) {
                 obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
-            if (data.hasOwnProperty('max_fee')) {
-                obj['max_fee'] = ApiClient.convertToType(data['max_fee'], 'String');
             }
             if (data.hasOwnProperty('max_priority_fee')) {
                 obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'String');
@@ -86,10 +81,6 @@ class EvmEip1559FeeBasePrice {
             throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
         }
         // ensure the json data is a string
-        if (data['max_fee'] && !(typeof data['max_fee'] === 'string' || data['max_fee'] instanceof String)) {
-            throw new Error("Expected the field `max_fee` to be a primitive type in the JSON string but got " + data['max_fee']);
-        }
-        // ensure the json data is a string
         if (data['max_priority_fee'] && !(typeof data['max_priority_fee'] === 'string' || data['max_priority_fee'] instanceof String)) {
             throw new Error("Expected the field `max_priority_fee` to be a primitive type in the JSON string but got " + data['max_priority_fee']);
         }
@@ -104,28 +95,22 @@ class EvmEip1559FeeBasePrice {
 
 }
 
-EvmEip1559FeeBasePrice.RequiredProperties = ["max_fee", "max_priority_fee", "base_fee"];
+EvmEip1559FeeBasePrice.RequiredProperties = ["max_priority_fee", "base_fee"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmEip1559FeeBasePrice.prototype['fee_token_id'] = undefined;
 
 /**
- * The highest Gas price paid for the transfer, unit GWei.
- * @member {String} max_fee
- */
-EvmEip1559FeeBasePrice.prototype['max_fee'] = undefined;
-
-/**
- * The maximum Gas price paid to miners, the higher it is, the faster it is likely to be packaged into the block, unit GWei.
+ * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 EvmEip1559FeeBasePrice.prototype['max_priority_fee'] = undefined;
 
 /**
- * The Base Fee of chain.
+ * The base fee of chain.
  * @member {String} base_fee
  */
 EvmEip1559FeeBasePrice.prototype['base_fee'] = undefined;

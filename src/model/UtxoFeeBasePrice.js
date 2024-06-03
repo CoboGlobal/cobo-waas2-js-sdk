@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class UtxoFeeBasePrice {
     /**
      * Constructs a new <code>UtxoFeeBasePrice</code>.
-     * The legacy fee price for estimate fees or transfer.
+     * The base transaction fee for UTXO-based chains.
      * @alias module:model/UtxoFeeBasePrice
-     * @param feeRate {String} The fee rate, unit sat/vB.
+     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      */
     constructor(feeRate) { 
         
@@ -89,13 +89,13 @@ class UtxoFeeBasePrice {
 UtxoFeeBasePrice.RequiredProperties = ["fee_rate"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
 
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;

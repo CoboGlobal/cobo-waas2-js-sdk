@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assetId** | **String** | ID of the asset. Unique in all assets scope. | 
-**displayCode** | **String** | Display code for the asset. | [optional] 
+**assetId** | **String** | The asset ID. | 
+**displayCode** | **String** | The display code of the asset. | [optional] 
 **description** | **String** | The description of the asset. | [optional] 
-**iconUrl** | **String** | URL of the asset | [optional] 
+**iconUrl** | **String** | The URL of the asset. | [optional] 
 
 

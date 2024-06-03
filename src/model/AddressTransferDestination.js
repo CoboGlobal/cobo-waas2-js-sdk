@@ -11,6 +11,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import AddressTransferDestinationAccountOutput from './AddressTransferDestinationAccountOutput';
+import AddressTransferDestinationUtxoOutputs from './AddressTransferDestinationUtxoOutputs';
 import TransferDestinationType from './TransferDestinationType';
 
 /**
@@ -21,14 +23,13 @@ import TransferDestinationType from './TransferDestinationType';
 class AddressTransferDestination {
     /**
      * Constructs a new <code>AddressTransferDestination</code>.
-     * The data for address destination.
+     * The data for address destination. Only one of account_output or utxo_outputs needed.
      * @alias module:model/AddressTransferDestination
      * @param destinationType {module:model/TransferDestinationType} 
-     * @param addressStr {String} Destination address
      */
-    constructor(destinationType, addressStr) { 
+    constructor(destinationType) { 
         
-        AddressTransferDestination.initialize(this, destinationType, addressStr);
+        AddressTransferDestination.initialize(this, destinationType);
     }
 
     /**
@@ -36,9 +37,8 @@ class AddressTransferDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, addressStr) { 
+    static initialize(obj, destinationType) { 
         obj['destination_type'] = destinationType;
-        obj['address_str'] = addressStr;
     }
 
     /**
@@ -55,11 +55,11 @@ class AddressTransferDestination {
             if (data.hasOwnProperty('destination_type')) {
                 obj['destination_type'] = TransferDestinationType.constructFromObject(data['destination_type']);
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('account_output')) {
+                obj['account_output'] = AddressTransferDestinationAccountOutput.constructFromObject(data['account_output']);
             }
-            if (data.hasOwnProperty('memo')) {
-                obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
+            if (data.hasOwnProperty('utxo_outputs')) {
+                obj['utxo_outputs'] = AddressTransferDestinationUtxoOutputs.constructFromObject(data['utxo_outputs']);
             }
         }
         return obj;
@@ -77,13 +77,13 @@ class AddressTransferDestination {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        // validate the optional field `account_output`
+        if (data['account_output']) { // data not null
+          AddressTransferDestinationAccountOutput.validateJSON(data['account_output']);
         }
-        // ensure the json data is a string
-        if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
-            throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        // validate the optional field `utxo_outputs`
+        if (data['utxo_outputs']) { // data not null
+          AddressTransferDestinationUtxoOutputs.validateJSON(data['utxo_outputs']);
         }
 
         return true;
@@ -92,7 +92,7 @@ class AddressTransferDestination {
 
 }
 
-AddressTransferDestination.RequiredProperties = ["destination_type", "address_str"];
+AddressTransferDestination.RequiredProperties = ["destination_type"];
 
 /**
  * @member {module:model/TransferDestinationType} destination_type
@@ -100,16 +100,14 @@ AddressTransferDestination.RequiredProperties = ["destination_type", "address_st
 AddressTransferDestination.prototype['destination_type'] = undefined;
 
 /**
- * Destination address
- * @member {String} address_str
+ * @member {module:model/AddressTransferDestinationAccountOutput} account_output
  */
-AddressTransferDestination.prototype['address_str'] = undefined;
+AddressTransferDestination.prototype['account_output'] = undefined;
 
 /**
- * Destination address memo
- * @member {String} memo
+ * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
  */
-AddressTransferDestination.prototype['memo'] = undefined;
+AddressTransferDestination.prototype['utxo_outputs'] = undefined;
 
 
 

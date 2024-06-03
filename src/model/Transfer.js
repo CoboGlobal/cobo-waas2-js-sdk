@@ -29,12 +29,11 @@ class Transfer {
      * @param requestType {module:model/Transfer.RequestTypeEnum} 
      * @param source {module:model/TransferSource} 
      * @param tokenId {String} ID of the token. Unique in all chains scope.
-     * @param amount {String} Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
      * @param destination {module:model/TransferDestination} 
      */
-    constructor(requestId, requestType, source, tokenId, amount, destination) { 
+    constructor(requestId, requestType, source, tokenId, destination) { 
         
-        Transfer.initialize(this, requestId, requestType, source, tokenId, amount, destination);
+        Transfer.initialize(this, requestId, requestType, source, tokenId, destination);
     }
 
     /**
@@ -42,12 +41,11 @@ class Transfer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, requestType, source, tokenId, amount, destination) { 
+    static initialize(obj, requestId, requestType, source, tokenId, destination) { 
         obj['request_id'] = requestId;
         obj['request_type'] = requestType;
         obj['source'] = source;
         obj['token_id'] = tokenId;
-        obj['amount'] = amount;
         obj['destination'] = destination;
     }
 
@@ -73,9 +71,6 @@ class Transfer {
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
-            }
-            if (data.hasOwnProperty('amount')) {
-                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = TransferDestination.constructFromObject(data['destination']);
@@ -121,10 +116,6 @@ class Transfer {
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
-            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
-        }
         // validate the optional field `destination`
         if (data['destination']) { // data not null
           TransferDestination.validateJSON(data['destination']);
@@ -148,7 +139,7 @@ class Transfer {
 
 }
 
-Transfer.RequiredProperties = ["request_id", "request_type", "source", "token_id", "amount", "destination"];
+Transfer.RequiredProperties = ["request_id", "request_type", "source", "token_id", "destination"];
 
 /**
  * Unique id of the request.
@@ -171,12 +162,6 @@ Transfer.prototype['source'] = undefined;
  * @member {String} token_id
  */
 Transfer.prototype['token_id'] = undefined;
-
-/**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
- * @member {String} amount
- */
-Transfer.prototype['amount'] = undefined;
 
 /**
  * @member {module:model/TransferDestination} destination

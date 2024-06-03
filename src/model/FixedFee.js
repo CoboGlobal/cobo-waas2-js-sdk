@@ -22,7 +22,7 @@ import FeeType from './FeeType';
 class FixedFee {
     /**
      * Constructs a new <code>FixedFee</code>.
-     * The estimated fee amount in fee_coin.
+     * The estimated transaction fee in fee_coin.
      * @alias module:model/FixedFee
      * @implements module:model/FeeAmount
      * @param feeType {module:model/FeeType} 
@@ -53,8 +53,8 @@ class FixedFee {
             obj = obj || new FixedFee();
             FeeAmount.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            if (data.hasOwnProperty('max_fee_amount')) {
+                obj['max_fee_amount'] = ApiClient.convertToType(data['max_fee_amount'], 'String');
             }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
@@ -79,8 +79,8 @@ class FixedFee {
             }
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        if (data['max_fee_amount'] && !(typeof data['max_fee_amount'] === 'string' || data['max_fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
         }
         // ensure the json data is a string
         if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
@@ -96,10 +96,10 @@ class FixedFee {
 FixedFee.RequiredProperties = ["fee_type"];
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-FixedFee.prototype['fee_amount'] = undefined;
+FixedFee.prototype['max_fee_amount'] = undefined;
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -107,7 +107,7 @@ FixedFee.prototype['fee_amount'] = undefined;
 FixedFee.prototype['fee_type'] = undefined;
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 FixedFee.prototype['fee_token_id'] = undefined;
@@ -115,10 +115,10 @@ FixedFee.prototype['fee_token_id'] = undefined;
 
 // Implement FeeAmount interface:
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-FeeAmount.prototype['fee_amount'] = undefined;
+FeeAmount.prototype['max_fee_amount'] = undefined;
 
 
 

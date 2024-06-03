@@ -177,16 +177,16 @@ EstimationFee.prototype['standard'] = undefined;
 EstimationFee.prototype['fast'] = undefined;
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EstimationFee.prototype['fee_token_id'] = undefined;
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-EstimationFee.prototype['fee_amount'] = undefined;
+EstimationFee.prototype['max_fee_amount'] = undefined;
 
 
 EstimationFee.OneOf = ["EvmEip1559Fee", "EvmLegacyFee", "FixedFee", "UtxoFee"];

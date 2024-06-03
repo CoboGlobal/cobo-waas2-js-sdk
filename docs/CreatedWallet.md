@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
-**walletType** | **String** |  | 
-**walletSubtype** | **String** |  | 
-**vaultId** | **String** | The owning mpc vault id of the mpc wallet. | 
+**name** | **String** | The wallet name. | 
+**walletType** | **String** | The wallet type. | 
+**walletSubtype** | **String** | The wallet subtype. | 
+**vaultId** | **String** | The ID of the owning vault. | 
 **exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 
-**apikey** | **String** | The API Key for the exchange. | 
-**secret** | **String** | The API Secret for the exchange. | 
-**passphrase** | **String** | The passphrase for the exchange. | [optional] 
+**apikey** | **String** | The API key of your exchange account. | 
+**secret** | **String** | The API secret of your exchange account. | 
+**passphrase** | **String** | The passphrase of your exchange account. | [optional] 
 **gaCode** | **String** | The ga_code for the exchange. | [optional] 
-**subAccountIds** | **[String]** | The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID. | [optional] 
+**subAccountIds** | **[String]** | The Sub Account ID. It can be an email address, a user name, or a custom account ID. | [optional] 
 
 
 

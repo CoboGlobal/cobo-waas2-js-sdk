@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**validity** | **Boolean** | The validity of the address. | [optional] 
+**validity** | **Boolean** | Whether the address is valid. - &#x60;true&#x60;: The address is valid. - &#x60;false&#x60;: the address is invalid.  | [optional] 
 
 

@@ -22,10 +22,10 @@ import FeeType from './FeeType';
 class EvmLegacyFeePrice {
     /**
      * Constructs a new <code>EvmLegacyFeePrice</code>.
-     * The legacy fee data for estimate fees or transfer.
+     * The transaction fee when using the legacy method.
      * @alias module:model/EvmLegacyFeePrice
      * @implements module:model/EvmLegacyFeeBasePrice
-     * @param gasPrice {String} The Price of Gas, unit GWei.
+     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      * @param feeType {module:model/FeeType} 
      */
     constructor(gasPrice, feeType) { 
@@ -98,13 +98,13 @@ class EvmLegacyFeePrice {
 EvmLegacyFeePrice.RequiredProperties = ["gas_price", "fee_type"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyFeePrice.prototype['fee_token_id'] = undefined;
 
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeePrice.prototype['gas_price'] = undefined;
@@ -117,12 +117,12 @@ EvmLegacyFeePrice.prototype['fee_type'] = undefined;
 
 // Implement EvmLegacyFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;

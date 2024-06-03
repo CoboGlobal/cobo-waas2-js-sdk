@@ -21,9 +21,9 @@ import TokenBalanceBalance from './TokenBalanceBalance';
 class TokenBalance {
     /**
      * Constructs a new <code>TokenBalance</code>.
-     * The data for token balance information.
+     * The balance information.
      * @alias module:model/TokenBalance
-     * @param tokenId {String} ID of the token. Unique in all chains scope.
+     * @param tokenId {String} The token ID.
      * @param balance {module:model/TokenBalanceBalance} 
      */
     constructor(tokenId, balance) { 
@@ -92,7 +92,7 @@ class TokenBalance {
 TokenBalance.RequiredProperties = ["token_id", "balance"];
 
 /**
- * ID of the token. Unique in all chains scope.
+ * The token ID.
  * @member {String} token_id
  */
 TokenBalance.prototype['token_id'] = undefined;

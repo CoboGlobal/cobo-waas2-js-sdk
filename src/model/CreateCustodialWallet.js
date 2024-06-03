@@ -23,8 +23,8 @@ class CreateCustodialWallet {
      * Constructs a new <code>CreateCustodialWallet</code>.
      * @alias module:model/CreateCustodialWallet
      * @implements module:model/BaseCreateWallet
-     * @param name {String} 
-     * @param walletType {module:model/CreateCustodialWallet.WalletTypeEnum} 
+     * @param name {String} The wallet name.
+     * @param walletType {module:model/CreateCustodialWallet.WalletTypeEnum} The wallet type.
      * @param walletSubtype {module:model/CreateCustodialWallet.WalletSubtypeEnum} 
      */
     constructor(name, walletType, walletSubtype) { 
@@ -102,11 +102,13 @@ class CreateCustodialWallet {
 CreateCustodialWallet.RequiredProperties = ["name", "wallet_type", "wallet_subtype"];
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CreateCustodialWallet.prototype['name'] = undefined;
 
 /**
+ * The wallet type.
  * @member {module:model/CreateCustodialWallet.WalletTypeEnum} wallet_type
  */
 CreateCustodialWallet.prototype['wallet_type'] = undefined;
@@ -119,6 +121,7 @@ CreateCustodialWallet.prototype['wallet_subtype'] = undefined;
 
 // Implement BaseCreateWallet interface:
 /**
+ * The wallet name.
  * @member {String} name
  */
 BaseCreateWallet.prototype['name'] = undefined;

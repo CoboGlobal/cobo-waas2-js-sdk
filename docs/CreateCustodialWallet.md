@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
-**walletType** | **String** |  | 
+**name** | **String** | The wallet name. | 
+**walletType** | **String** | The wallet type. | 
 **walletSubtype** | **String** |  | 
 
 

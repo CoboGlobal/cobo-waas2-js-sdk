@@ -108,24 +108,25 @@ class UpdateWalletByIdRequest {
 
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 UpdateWalletByIdRequest.prototype['name'] = undefined;
 
 /**
- * The API Key for the exchange.
+ * The API key of your exchange account.
  * @member {String} apikey
  */
 UpdateWalletByIdRequest.prototype['apikey'] = undefined;
 
 /**
- * The API Secret for the exchange.
+ * The API secret of your exchange account.
  * @member {String} secret
  */
 UpdateWalletByIdRequest.prototype['secret'] = undefined;
 
 /**
- * The passphrase for the exchange.
+ * The passphrase of your exchange account.
  * @member {String} passphrase
  */
 UpdateWalletByIdRequest.prototype['passphrase'] = undefined;
@@ -137,7 +138,7 @@ UpdateWalletByIdRequest.prototype['passphrase'] = undefined;
 UpdateWalletByIdRequest.prototype['ga_code'] = undefined;
 
 /**
- * The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID.
+ * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
  * @member {Array.<String>} sub_account_ids
  */
 UpdateWalletByIdRequest.prototype['sub_account_ids'] = undefined;

@@ -22,13 +22,13 @@ import WalletType from './WalletType';
 class CustodialWalletInfo {
     /**
      * Constructs a new <code>CustodialWalletInfo</code>.
-     * The data for wallet information.
+     * The basic information of a wallet.
      * @alias module:model/CustodialWalletInfo
-     * @param walletId {String} 
+     * @param walletId {String} The wallet ID.
      * @param walletType {module:model/WalletType} 
      * @param walletSubtype {module:model/WalletSubtype} 
-     * @param name {String} 
-     * @param orgId {String} The owning custody organization id of the custodial wallet.
+     * @param name {String} The wallet name.
+     * @param orgId {String} The ID of the owning organization.
      */
     constructor(walletId, walletType, walletSubtype, name, orgId) { 
         
@@ -112,6 +112,7 @@ class CustodialWalletInfo {
 CustodialWalletInfo.RequiredProperties = ["wallet_id", "wallet_type", "wallet_subtype", "name", "org_id"];
 
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 CustodialWalletInfo.prototype['wallet_id'] = undefined;
@@ -127,12 +128,13 @@ CustodialWalletInfo.prototype['wallet_type'] = undefined;
 CustodialWalletInfo.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CustodialWalletInfo.prototype['name'] = undefined;
 
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 CustodialWalletInfo.prototype['org_id'] = undefined;

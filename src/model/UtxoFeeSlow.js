@@ -25,7 +25,7 @@ class UtxoFeeSlow {
      * @alias module:model/UtxoFeeSlow
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate, unit sat/vB.
+     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      */
     constructor(feeRate) { 
         UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this);
@@ -60,8 +60,8 @@ class UtxoFeeSlow {
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            if (data.hasOwnProperty('max_fee_amount')) {
+                obj['max_fee_amount'] = ApiClient.convertToType(data['max_fee_amount'], 'String');
             }
         }
         return obj;
@@ -88,8 +88,8 @@ class UtxoFeeSlow {
             throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        if (data['max_fee_amount'] && !(typeof data['max_fee_amount'] === 'string' || data['max_fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
         }
 
         return true;
@@ -101,41 +101,41 @@ class UtxoFeeSlow {
 UtxoFeeSlow.RequiredProperties = ["fee_rate"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeeSlow.prototype['fee_token_id'] = undefined;
 
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeSlow.prototype['fee_rate'] = undefined;
 
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-UtxoFeeSlow.prototype['fee_amount'] = undefined;
+UtxoFeeSlow.prototype['max_fee_amount'] = undefined;
 
 
 // Implement UtxoFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The fee rate, unit sat/vB.
+ * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
 // Implement FeeAmount interface:
 /**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
+ * The max fee amount in fee_coin.
+ * @member {String} max_fee_amount
  */
-FeeAmount.prototype['fee_amount'] = undefined;
+FeeAmount.prototype['max_fee_amount'] = undefined;
 
 
 

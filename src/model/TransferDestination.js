@@ -12,6 +12,8 @@
 
 import ApiClient from '../ApiClient';
 import AddressTransferDestination from './AddressTransferDestination';
+import AddressTransferDestinationAccountOutput from './AddressTransferDestinationAccountOutput';
+import AddressTransferDestinationUtxoOutputs from './AddressTransferDestinationUtxoOutputs';
 import ExchangeTransferDestination from './ExchangeTransferDestination';
 import TransferDestinationType from './TransferDestinationType';
 
@@ -127,16 +129,14 @@ class TransferDestination {
 TransferDestination.prototype['destination_type'] = undefined;
 
 /**
- * Destination address
- * @member {String} address_str
+ * @member {module:model/AddressTransferDestinationAccountOutput} account_output
  */
-TransferDestination.prototype['address_str'] = undefined;
+TransferDestination.prototype['account_output'] = undefined;
 
 /**
- * Destination address memo
- * @member {String} memo
+ * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
  */
-TransferDestination.prototype['memo'] = undefined;
+TransferDestination.prototype['utxo_outputs'] = undefined;
 
 /**
  * Unique id of the wallet to transfer to.
@@ -149,6 +149,12 @@ TransferDestination.prototype['wallet_id'] = undefined;
  * @member {String} sub_wallet_id
  */
 TransferDestination.prototype['sub_wallet_id'] = undefined;
+
+/**
+ * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * @member {String} amount
+ */
+TransferDestination.prototype['amount'] = undefined;
 
 
 TransferDestination.OneOf = ["AddressTransferDestination", "ExchangeTransferDestination"];

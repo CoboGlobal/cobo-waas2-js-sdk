@@ -161,6 +161,7 @@ class WalletInfo {
 }
 
 /**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 WalletInfo.prototype['wallet_id'] = undefined;
@@ -176,24 +177,25 @@ WalletInfo.prototype['wallet_type'] = undefined;
 WalletInfo.prototype['wallet_subtype'] = undefined;
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 WalletInfo.prototype['name'] = undefined;
 
 /**
- * The owning custody organization id of the custodial wallet.
+ * The ID of the owning organization.
  * @member {String} org_id
  */
 WalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The owning mpc vault id of the mpc wallet.
+ * The ID of the owning Vault.
  * @member {String} vault_id
  */
 WalletInfo.prototype['vault_id'] = undefined;
 
 /**
- * The API Key for the exchange.
+ * The API key of your exchange account.
  * @member {String} apikey
  */
 WalletInfo.prototype['apikey'] = undefined;
@@ -204,7 +206,7 @@ WalletInfo.prototype['apikey'] = undefined;
 WalletInfo.prototype['exchange_id'] = undefined;
 
 /**
- * The parent wallet id for this wallet if presented.
+ * The wallet ID of the Main Account, if applicable.
  * @member {String} parent_wallet_id
  */
 WalletInfo.prototype['parent_wallet_id'] = undefined;

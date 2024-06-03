@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feeAmount** | **String** | The estimated fee amount in fee_coin. | [optional] 
+**maxFeeAmount** | **String** | The max fee amount in fee_coin. | [optional] 
 **feeType** | [**FeeType**](FeeType.md) |  | 
-**feeTokenId** | **String** | ID of the fee token. Unique in all chains scope. | [optional] 
+**feeTokenId** | **String** | The token ID of the transaction fee. Unique in all chains scope. | [optional] 
 
 

@@ -11,7 +11,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import MpcSigningGroup from './MpcSigningGroup';
+import SignMessageDestination from './SignMessageDestination';
+import SignMessageSource from './SignMessageSource';
 
 /**
  * The SignMessage model module.
@@ -60,23 +61,14 @@ class SignMessage {
             if (data.hasOwnProperty('request_type')) {
                 obj['request_type'] = ApiClient.convertToType(data['request_type'], 'String');
             }
-            if (data.hasOwnProperty('from_wallet_id')) {
-                obj['from_wallet_id'] = ApiClient.convertToType(data['from_wallet_id'], 'String');
-            }
-            if (data.hasOwnProperty('from_address_str')) {
-                obj['from_address_str'] = ApiClient.convertToType(data['from_address_str'], 'String');
-            }
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = SignMessageSource.constructFromObject(data['source']);
             }
-            if (data.hasOwnProperty('structured_data')) {
-                obj['structured_data'] = ApiClient.convertToType(data['structured_data'], 'String');
-            }
-            if (data.hasOwnProperty('mpc_used_key_group')) {
-                obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
+            if (data.hasOwnProperty('destination')) {
+                obj['destination'] = SignMessageDestination.constructFromObject(data['destination']);
             }
         }
         return obj;
@@ -103,28 +95,16 @@ class SignMessage {
             throw new Error("Expected the field `request_type` to be a primitive type in the JSON string but got " + data['request_type']);
         }
         // ensure the json data is a string
-        if (data['from_wallet_id'] && !(typeof data['from_wallet_id'] === 'string' || data['from_wallet_id'] instanceof String)) {
-            throw new Error("Expected the field `from_wallet_id` to be a primitive type in the JSON string but got " + data['from_wallet_id']);
-        }
-        // ensure the json data is a string
-        if (data['from_address_str'] && !(typeof data['from_address_str'] === 'string' || data['from_address_str'] instanceof String)) {
-            throw new Error("Expected the field `from_address_str` to be a primitive type in the JSON string but got " + data['from_address_str']);
-        }
-        // ensure the json data is a string
         if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
-        // ensure the json data is a string
-        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
-            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          SignMessageSource.validateJSON(data['source']);
         }
-        // ensure the json data is a string
-        if (data['structured_data'] && !(typeof data['structured_data'] === 'string' || data['structured_data'] instanceof String)) {
-            throw new Error("Expected the field `structured_data` to be a primitive type in the JSON string but got " + data['structured_data']);
-        }
-        // validate the optional field `mpc_used_key_group`
-        if (data['mpc_used_key_group']) { // data not null
-          MpcSigningGroup.validateJSON(data['mpc_used_key_group']);
+        // validate the optional field `destination`
+        if (data['destination']) { // data not null
+          SignMessageDestination.validateJSON(data['destination']);
         }
 
         return true;
@@ -147,39 +127,20 @@ SignMessage.prototype['request_id'] = undefined;
 SignMessage.prototype['request_type'] = undefined;
 
 /**
- * Unique id of the wallet to sign message.
- * @member {String} from_wallet_id
- */
-SignMessage.prototype['from_wallet_id'] = undefined;
-
-/**
- * signing address
- * @member {String} from_address_str
- */
-SignMessage.prototype['from_address_str'] = undefined;
-
-/**
  * The blockchain on which the token operates.
  * @member {String} chain_id
  */
 SignMessage.prototype['chain_id'] = undefined;
 
 /**
- * Raw data to be signed, Base 64 encoded
- * @member {String} message
+ * @member {module:model/SignMessageSource} source
  */
-SignMessage.prototype['message'] = undefined;
+SignMessage.prototype['source'] = undefined;
 
 /**
- * Structured data to be signed, JSON encoded
- * @member {String} structured_data
+ * @member {module:model/SignMessageDestination} destination
  */
-SignMessage.prototype['structured_data'] = undefined;
-
-/**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
- */
-SignMessage.prototype['mpc_used_key_group'] = undefined;
+SignMessage.prototype['destination'] = undefined;
 
 
 

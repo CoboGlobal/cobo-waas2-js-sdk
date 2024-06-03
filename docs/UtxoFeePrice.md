@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feeTokenId** | **String** | ID of the fee token. Unique in all chains scope. | [optional] 
-**feeRate** | **String** | The fee rate, unit sat/vB. | 
+**feeTokenId** | **String** | The token ID of the transaction fee. Unique in all chains scope. | [optional] 
+**feeRate** | **String** | The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain. | 
 **feeType** | [**FeeType**](FeeType.md) |  | 
 
 

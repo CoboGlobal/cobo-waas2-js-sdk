@@ -63,6 +63,9 @@ class ExchangeTransferDestination {
             if (data.hasOwnProperty('sub_wallet_id')) {
                 obj['sub_wallet_id'] = ApiClient.convertToType(data['sub_wallet_id'], 'String');
             }
+            if (data.hasOwnProperty('amount')) {
+                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
+            }
         }
         return obj;
     }
@@ -86,6 +89,10 @@ class ExchangeTransferDestination {
         // ensure the json data is a string
         if (data['sub_wallet_id'] && !(typeof data['sub_wallet_id'] === 'string' || data['sub_wallet_id'] instanceof String)) {
             throw new Error("Expected the field `sub_wallet_id` to be a primitive type in the JSON string but got " + data['sub_wallet_id']);
+        }
+        // ensure the json data is a string
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
 
         return true;
@@ -112,6 +119,12 @@ ExchangeTransferDestination.prototype['wallet_id'] = undefined;
  * @member {String} sub_wallet_id
  */
 ExchangeTransferDestination.prototype['sub_wallet_id'] = undefined;
+
+/**
+ * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * @member {String} amount
+ */
+ExchangeTransferDestination.prototype['amount'] = undefined;
 
 
 

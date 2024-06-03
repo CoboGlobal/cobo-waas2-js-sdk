@@ -22,7 +22,7 @@ import FeeType from './FeeType';
 class EvmEip1559Fee {
     /**
      * Constructs a new <code>EvmEip1559Fee</code>.
-     * The eip1559 fee data for estimate fees or transfer.
+     * The estimated transaction fee when using the EIP 1559 method.
      * @alias module:model/EvmEip1559Fee
      * @param feeType {module:model/FeeType} 
      * @param standard {module:model/EvmEip1559FeeSlow} 

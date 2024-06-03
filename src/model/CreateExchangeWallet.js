@@ -24,12 +24,12 @@ class CreateExchangeWallet {
      * Constructs a new <code>CreateExchangeWallet</code>.
      * @alias module:model/CreateExchangeWallet
      * @implements module:model/BaseCreateWallet
-     * @param name {String} 
-     * @param walletType {module:model/CreateExchangeWallet.WalletTypeEnum} 
-     * @param walletSubtype {module:model/CreateExchangeWallet.WalletSubtypeEnum} 
+     * @param name {String} The wallet name.
+     * @param walletType {module:model/CreateExchangeWallet.WalletTypeEnum} The wallet type.
+     * @param walletSubtype {module:model/CreateExchangeWallet.WalletSubtypeEnum} The wallet subtype.
      * @param exchangeId {module:model/ExchangeId} 
-     * @param apikey {String} The API Key for the exchange.
-     * @param secret {String} The API Secret for the exchange.
+     * @param apikey {String} The API key of your exchange account.
+     * @param secret {String} The API secret of your exchange account.
      */
     constructor(name, walletType, walletSubtype, exchangeId, apikey, secret) { 
         BaseCreateWallet.initialize(this, name);
@@ -147,16 +147,19 @@ class CreateExchangeWallet {
 CreateExchangeWallet.RequiredProperties = ["name", "wallet_type", "wallet_subtype", "exchange_id", "apikey", "secret"];
 
 /**
+ * The wallet name.
  * @member {String} name
  */
 CreateExchangeWallet.prototype['name'] = undefined;
 
 /**
+ * The wallet type.
  * @member {module:model/CreateExchangeWallet.WalletTypeEnum} wallet_type
  */
 CreateExchangeWallet.prototype['wallet_type'] = undefined;
 
 /**
+ * The wallet subtype.
  * @member {module:model/CreateExchangeWallet.WalletSubtypeEnum} wallet_subtype
  */
 CreateExchangeWallet.prototype['wallet_subtype'] = undefined;
@@ -167,19 +170,19 @@ CreateExchangeWallet.prototype['wallet_subtype'] = undefined;
 CreateExchangeWallet.prototype['exchange_id'] = undefined;
 
 /**
- * The API Key for the exchange.
+ * The API key of your exchange account.
  * @member {String} apikey
  */
 CreateExchangeWallet.prototype['apikey'] = undefined;
 
 /**
- * The API Secret for the exchange.
+ * The API secret of your exchange account.
  * @member {String} secret
  */
 CreateExchangeWallet.prototype['secret'] = undefined;
 
 /**
- * The passphrase for the exchange.
+ * The passphrase of your exchange account.
  * @member {String} passphrase
  */
 CreateExchangeWallet.prototype['passphrase'] = undefined;
@@ -191,7 +194,7 @@ CreateExchangeWallet.prototype['passphrase'] = undefined;
 CreateExchangeWallet.prototype['ga_code'] = undefined;
 
 /**
- * The unique identifier associated with the exchange sub-account. It can be an email address, username, or a custom account ID.
+ * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
  * @member {Array.<String>} sub_account_ids
  */
 CreateExchangeWallet.prototype['sub_account_ids'] = undefined;
@@ -199,6 +202,7 @@ CreateExchangeWallet.prototype['sub_account_ids'] = undefined;
 
 // Implement BaseCreateWallet interface:
 /**
+ * The wallet name.
  * @member {String} name
  */
 BaseCreateWallet.prototype['name'] = undefined;

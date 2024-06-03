@@ -13,16 +13,18 @@
 
 import ApiClient from "../ApiClient";
 import ChainFeePrice from '../model/ChainFeePrice';
+import ContractCall from '../model/ContractCall';
 import CreateTransferTransaction201Response from '../model/CreateTransferTransaction201Response';
 import ErrorResponse from '../model/ErrorResponse';
 import EstimateFee from '../model/EstimateFee';
+import EstimationFee from '../model/EstimationFee';
 import ListTransactions200Response from '../model/ListTransactions200Response';
-import SmartContractCall from '../model/SmartContractCall';
 import Transaction from '../model/Transaction';
 import TransactionFee from '../model/TransactionFee';
 import TransactionStatus from '../model/TransactionStatus';
 import TransactionType from '../model/TransactionType';
 import Transfer from '../model/Transfer';
+import WalletType from '../model/WalletType';
 
 /**
 * Transactions service.
@@ -45,15 +47,63 @@ export default class TransactionsApi {
 
 
     /**
+     * Cancel a transaction by ID
+     * Cancel a transaction.
+     * @param {String} transactionId Unique id of the transaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
+     */
+    cancelTransactionByIdWithHttpInfo(transactionId) {
+      let postBody = null;
+      // verify the required parameter 'transactionId' is set
+      if (transactionId === undefined || transactionId === null) {
+        throw new Error("Missing the required parameter 'transactionId' when calling cancelTransactionById");
+      }
+
+      let pathParams = {
+        'transaction_id': transactionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CreateTransferTransaction201Response;
+      return this.apiClient.callApi(
+        '/transactions/{transaction_id}/cancel', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Cancel a transaction by ID
+     * Cancel a transaction.
+     * @param {String} transactionId Unique id of the transaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
+     */
+    cancelTransactionById(transactionId) {
+      return this.cancelTransactionByIdWithHttpInfo(transactionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create a smart contract call transaction
      * Create a transaction to call a smart contract.
      * @param {Object} opts Optional parameters
-     * @param {module:model/SmartContractCall} [smartContractCall] The request body to create a smart contract transaction
+     * @param {module:model/ContractCall} [contractCall] The request body to create a smart contract transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
     createSmartContractCallTransactionWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['smartContractCall'];
+      let postBody = opts['contractCall'];
 
       let pathParams = {
       };
@@ -79,7 +129,7 @@ export default class TransactionsApi {
      * Create a smart contract call transaction
      * Create a transaction to call a smart contract.
      * @param {Object} opts Optional parameters
-     * @param {module:model/SmartContractCall} opts.smartContractCall The request body to create a smart contract transaction
+     * @param {module:model/ContractCall} opts.contractCall The request body to create a smart contract transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
     createSmartContractCallTransaction(opts) {
@@ -194,7 +244,7 @@ export default class TransactionsApi {
      * Estimate the transaction fee.
      * @param {Object} opts Optional parameters
      * @param {module:model/EstimateFee} [estimateFee] The request body to estimate fee of transfer or call transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TransactionFee} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EstimationFee} and HTTP response
      */
     estimateFeeWithHttpInfo(opts) {
       opts = opts || {};
@@ -212,7 +262,7 @@ export default class TransactionsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = TransactionFee;
+      let returnType = EstimationFee;
       return this.apiClient.callApi(
         '/transactions/estimate_fee', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -225,7 +275,7 @@ export default class TransactionsApi {
      * Estimate the transaction fee.
      * @param {Object} opts Optional parameters
      * @param {module:model/EstimateFee} opts.estimateFee The request body to estimate fee of transfer or call transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TransactionFee}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EstimationFee}
      */
     estimateFee(opts) {
       return this.estimateFeeWithHttpInfo(opts)
@@ -239,8 +289,8 @@ export default class TransactionsApi {
      * Get the fee price data for chain and/or token(Hold, TBD after normalize fee settings)
      * Retrieve the fee price data.
      * @param {Object} opts Optional parameters
-     * @param {String} [chainId] Unique id of the chain
-     * @param {String} [tokenId] Unique id of the token
+     * @param {String} [chainId] The chain ID.
+     * @param {String} [tokenId] The token ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChainFeePrice} and HTTP response
      */
     getChainFeePriceWithHttpInfo(opts) {
@@ -273,8 +323,8 @@ export default class TransactionsApi {
      * Get the fee price data for chain and/or token(Hold, TBD after normalize fee settings)
      * Retrieve the fee price data.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.chainId Unique id of the chain
-     * @param {String} opts.tokenId Unique id of the token
+     * @param {String} opts.chainId The chain ID.
+     * @param {String} opts.tokenId The token ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChainFeePrice}
      */
     getChainFeePrice(opts) {
@@ -341,12 +391,15 @@ export default class TransactionsApi {
      * @param {String} [coboId] Cobo ID
      * @param {String} [transactionId] Unique id of the transaction
      * @param {String} [transactionHash] Transaction hash
-     * @param {module:model/TransactionType} [type] The type of a transaction
-     * @param {module:model/TransactionStatus} [status] The status of a transaction
-     * @param {String} [walletId] Unique id of the wallet
-     * @param {String} [chainId] Unique id of the chain
-     * @param {String} [tokenId] Unique id of the token
-     * @param {String} [assetId] Unique id of the asset
+     * @param {Array.<module:model/TransactionType>} [type] The type of a transaction
+     * @param {Array.<module:model/TransactionStatus>} [status] The status of a transaction
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {Array.<String>} [walletId] Unique id of the wallet
+     * @param {Array.<String>} [chainId] Unique id of the chain
+     * @param {Array.<String>} [tokenId] Unique id of the token
+     * @param {Array.<String>} [assetId] Unique id of the asset
+     * @param {String} [vaultId] Unique id of the mpc vault
+     * @param {String} [projectId] Unique id of the mpc project
      * @param {Number} [minCreatedTimestamp] The minimum transaction creation timestamp in Unix epoch seconds
      * @param {Number} [maxCreatedTimestamp] The maximum transaction creation timestamp in Unix epoch seconds
      * @param {String} [sortBy = '')] Field of sort by
@@ -367,12 +420,15 @@ export default class TransactionsApi {
         'cobo_id': opts['coboId'],
         'transaction_id': opts['transactionId'],
         'transaction_hash': opts['transactionHash'],
-        'type': opts['type'],
-        'status': opts['status'],
-        'wallet_id': opts['walletId'],
-        'chain_id': opts['chainId'],
-        'token_id': opts['tokenId'],
-        'asset_id': opts['assetId'],
+        'type': this.apiClient.buildCollectionParam(opts['type'], 'multi'),
+        'status': this.apiClient.buildCollectionParam(opts['status'], 'multi'),
+        'wallet_type': opts['walletType'],
+        'wallet_id': this.apiClient.buildCollectionParam(opts['walletId'], 'multi'),
+        'chain_id': this.apiClient.buildCollectionParam(opts['chainId'], 'multi'),
+        'token_id': this.apiClient.buildCollectionParam(opts['tokenId'], 'multi'),
+        'asset_id': this.apiClient.buildCollectionParam(opts['assetId'], 'multi'),
+        'vault_id': opts['vaultId'],
+        'project_id': opts['projectId'],
         'min_created_timestamp': opts['minCreatedTimestamp'],
         'max_created_timestamp': opts['maxCreatedTimestamp'],
         'sort_by': opts['sortBy'],
@@ -405,12 +461,15 @@ export default class TransactionsApi {
      * @param {String} opts.coboId Cobo ID
      * @param {String} opts.transactionId Unique id of the transaction
      * @param {String} opts.transactionHash Transaction hash
-     * @param {module:model/TransactionType} opts.type The type of a transaction
-     * @param {module:model/TransactionStatus} opts.status The status of a transaction
-     * @param {String} opts.walletId Unique id of the wallet
-     * @param {String} opts.chainId Unique id of the chain
-     * @param {String} opts.tokenId Unique id of the token
-     * @param {String} opts.assetId Unique id of the asset
+     * @param {Array.<module:model/TransactionType>} opts.type The type of a transaction
+     * @param {Array.<module:model/TransactionStatus>} opts.status The status of a transaction
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {Array.<String>} opts.walletId Unique id of the wallet
+     * @param {Array.<String>} opts.chainId Unique id of the chain
+     * @param {Array.<String>} opts.tokenId Unique id of the token
+     * @param {Array.<String>} opts.assetId Unique id of the asset
+     * @param {String} opts.vaultId Unique id of the mpc vault
+     * @param {String} opts.projectId Unique id of the mpc project
      * @param {Number} opts.minCreatedTimestamp The minimum transaction creation timestamp in Unix epoch seconds
      * @param {Number} opts.maxCreatedTimestamp The maximum transaction creation timestamp in Unix epoch seconds
      * @param {String} opts.sortBy Field of sort by (default to '')
@@ -470,54 +529,6 @@ export default class TransactionsApi {
      */
     resendTransactionById(transactionId) {
       return this.resendTransactionByIdWithHttpInfo(transactionId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Retry up a transaction double-check by ID
-     * Retry a transaction double-check.
-     * @param {String} transactionId Unique id of the transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
-     */
-    retryTransactionDoubleCheckByIdWithHttpInfo(transactionId) {
-      let postBody = null;
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling retryTransactionDoubleCheckById");
-      }
-
-      let pathParams = {
-        'transaction_id': transactionId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = CreateTransferTransaction201Response;
-      return this.apiClient.callApi(
-        '/transactions/{transaction_id}/callback_confirmation/retry', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Retry up a transaction double-check by ID
-     * Retry a transaction double-check.
-     * @param {String} transactionId Unique id of the transaction
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
-     */
-    retryTransactionDoubleCheckById(transactionId) {
-      return this.retryTransactionDoubleCheckByIdWithHttpInfo(transactionId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

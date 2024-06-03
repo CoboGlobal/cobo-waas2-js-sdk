@@ -11,8 +11,9 @@
  */
 
 import ApiClient from '../ApiClient';
-import AddressTransferSource from './AddressTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
+import MpcTransferSourceAccountInput from './MpcTransferSourceAccountInput';
+import MpcTransferSourceUtxoInputs from './MpcTransferSourceUtxoInputs';
 import WalletSubtype from './WalletSubtype';
 
 /**
@@ -23,15 +24,14 @@ import WalletSubtype from './WalletSubtype';
 class MpcTransferSource {
     /**
      * Constructs a new <code>MpcTransferSource</code>.
+     * The base data for transfer source.
      * @alias module:model/MpcTransferSource
-     * @implements module:model/AddressTransferSource
      * @param sourceType {module:model/WalletSubtype} 
      * @param walletId {String} Unique id of the wallet to transfer from.
-     * @param addressStr {String} From address
      */
-    constructor(sourceType, walletId, addressStr) { 
-        AddressTransferSource.initialize(this, sourceType, walletId, addressStr);
-        MpcTransferSource.initialize(this, sourceType, walletId, addressStr);
+    constructor(sourceType, walletId) { 
+        
+        MpcTransferSource.initialize(this, sourceType, walletId);
     }
 
     /**
@@ -39,10 +39,9 @@ class MpcTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr) { 
+    static initialize(obj, sourceType, walletId) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
     }
 
     /**
@@ -55,7 +54,6 @@ class MpcTransferSource {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new MpcTransferSource();
-            AddressTransferSource.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('source_type')) {
                 obj['source_type'] = WalletSubtype.constructFromObject(data['source_type']);
@@ -63,8 +61,11 @@ class MpcTransferSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('account_input')) {
+                obj['account_input'] = MpcTransferSourceAccountInput.constructFromObject(data['account_input']);
+            }
+            if (data.hasOwnProperty('utxo_inputs')) {
+                obj['utxo_inputs'] = MpcTransferSourceUtxoInputs.constructFromObject(data['utxo_inputs']);
             }
             if (data.hasOwnProperty('mpc_used_key_group')) {
                 obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
@@ -89,9 +90,13 @@ class MpcTransferSource {
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
-        // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        // validate the optional field `account_input`
+        if (data['account_input']) { // data not null
+          MpcTransferSourceAccountInput.validateJSON(data['account_input']);
+        }
+        // validate the optional field `utxo_inputs`
+        if (data['utxo_inputs']) { // data not null
+          MpcTransferSourceUtxoInputs.validateJSON(data['utxo_inputs']);
         }
         // validate the optional field `mpc_used_key_group`
         if (data['mpc_used_key_group']) { // data not null
@@ -104,7 +109,7 @@ class MpcTransferSource {
 
 }
 
-MpcTransferSource.RequiredProperties = ["source_type", "wallet_id", "address_str"];
+MpcTransferSource.RequiredProperties = ["source_type", "wallet_id"];
 
 /**
  * @member {module:model/WalletSubtype} source_type
@@ -118,10 +123,14 @@ MpcTransferSource.prototype['source_type'] = undefined;
 MpcTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * @member {module:model/MpcTransferSourceAccountInput} account_input
  */
-MpcTransferSource.prototype['address_str'] = undefined;
+MpcTransferSource.prototype['account_input'] = undefined;
+
+/**
+ * @member {module:model/MpcTransferSourceUtxoInputs} utxo_inputs
+ */
+MpcTransferSource.prototype['utxo_inputs'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_group
@@ -129,21 +138,6 @@ MpcTransferSource.prototype['address_str'] = undefined;
 MpcTransferSource.prototype['mpc_used_key_group'] = undefined;
 
 
-// Implement AddressTransferSource interface:
-/**
- * @member {module:model/WalletSubtype} source_type
- */
-AddressTransferSource.prototype['source_type'] = undefined;
-/**
- * Unique id of the wallet to transfer from.
- * @member {String} wallet_id
- */
-AddressTransferSource.prototype['wallet_id'] = undefined;
-/**
- * From address
- * @member {String} address_str
- */
-AddressTransferSource.prototype['address_str'] = undefined;
 
 
 

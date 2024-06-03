@@ -25,7 +25,7 @@ class EvmLegacyFeeSlow {
      * @alias module:model/EvmLegacyFeeSlow
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData
-     * @param gasPrice {String} The Price of Gas, unit GWei.
+     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      */
     constructor(gasPrice) { 
         EvmLegacyFeeBasePrice.initialize(this, gasPrice);FeeData.initialize(this);
@@ -63,9 +63,6 @@ class EvmLegacyFeeSlow {
             if (data.hasOwnProperty('gas_limit')) {
                 obj['gas_limit'] = ApiClient.convertToType(data['gas_limit'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
-            }
         }
         return obj;
     }
@@ -94,10 +91,6 @@ class EvmLegacyFeeSlow {
         if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
-        // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
 
         return true;
     }
@@ -108,54 +101,43 @@ class EvmLegacyFeeSlow {
 EvmLegacyFeeSlow.RequiredProperties = ["gas_price"];
 
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyFeeSlow.prototype['fee_token_id'] = undefined;
 
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeSlow.prototype['gas_price'] = undefined;
 
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 EvmLegacyFeeSlow.prototype['gas_limit'] = '21000';
 
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-EvmLegacyFeeSlow.prototype['fee_amount'] = undefined;
-
 
 // Implement EvmLegacyFeeBasePrice interface:
 /**
- * ID of the fee token. Unique in all chains scope.
+ * The token ID of the transaction fee. Unique in all chains scope.
  * @member {String} fee_token_id
  */
 EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
 /**
- * The Price of Gas, unit GWei.
+ * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;
 // Implement FeeData interface:
 /**
- * The Limit of gas.
+ * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
  * @member {String} gas_limit
  * @default '21000'
  */
 FeeData.prototype['gas_limit'] = '21000';
-/**
- * The estimated fee amount in fee_coin.
- * @member {String} fee_amount
- */
-FeeData.prototype['fee_amount'] = undefined;
 
 
 
