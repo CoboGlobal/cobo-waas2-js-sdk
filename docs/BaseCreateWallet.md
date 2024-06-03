@@ -1,9 +1,0 @@
-# CoboWaas2JsApi.BaseCreateWallet
-
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** | The wallet name. | 
-
-
