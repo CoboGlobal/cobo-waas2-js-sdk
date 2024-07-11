@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feeTokenId** | **String** | The token ID of the transaction fee. | [optional] 
-**maxPriorityFee** | **String** | The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction. | 
-**baseFee** | **String** | The base fee of chain. | 
 **feeType** | [**FeeType**](FeeType.md) |  | 
+**tokenId** | **String** | The token ID of the transaction fee. | [optional] 
+**slow** | [**EvmEip1559FeeBasePrice**](EvmEip1559FeeBasePrice.md) |  | [optional] 
+**recommended** | [**EvmEip1559FeeBasePrice**](EvmEip1559FeeBasePrice.md) |  | 
+**fast** | [**EvmEip1559FeeBasePrice**](EvmEip1559FeeBasePrice.md) |  | [optional] 
 
 

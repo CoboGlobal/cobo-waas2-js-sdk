@@ -95,19 +95,19 @@ class SafeContractCallSourceAllOfDelegate {
 
 
 /**
- * The wallet id of the delegate. This is required when user initiate a transfer.
+ * The wallet ID of the Delegate. This is required for initiating a transfer from a Smart Contract Wallet (Safe{Wallet}).
  * @member {String} wallet_id
  */
 SafeContractCallSourceAllOfDelegate.prototype['wallet_id'] = undefined;
 
 /**
- * The wallet type of the delegate. This is required when user initiate a transfer.
+ * The wallet type of the Delegate. This is required for initiating a transfer from a Smart Contract Wallet (Safe{Wallet}).
  * @member {String} wallet_type
  */
 SafeContractCallSourceAllOfDelegate.prototype['wallet_type'] = undefined;
 
 /**
- * The wallet address of the delegate. This is required when user initiate a transfer.
+ * The wallet address of the Delegate. This is required for initiating a transfer from a Smart Contract Wallet (Safe{Wallet}).
  * @member {String} wallet_address
  */
 SafeContractCallSourceAllOfDelegate.prototype['wallet_address'] = undefined;

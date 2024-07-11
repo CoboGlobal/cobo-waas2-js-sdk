@@ -61,10 +61,10 @@ export default class TransactionAddressType {
 
     
         /**
-         * value: "GasStation"
+         * value: "FeeStation"
          * @const
          */
-        "GasStation" = "GasStation";
+        "FeeStation" = "FeeStation";
 
     
         /**

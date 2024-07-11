@@ -24,7 +24,7 @@ class CreateTssRequestRequest {
      * Constructs a new <code>CreateTssRequestRequest</code>.
      * @alias module:model/CreateTssRequestRequest
      * @param type {module:model/TSSRequestType} 
-     * @param targetKeyGroupId {String} 
+     * @param targetKeyGroupId {String} The target key share group ID.
      */
     constructor(type, targetKeyGroupId) { 
         
@@ -58,8 +58,8 @@ class CreateTssRequestRequest {
             if (data.hasOwnProperty('target_key_group_id')) {
                 obj['target_key_group_id'] = ApiClient.convertToType(data['target_key_group_id'], 'String');
             }
-            if (data.hasOwnProperty('used_key_group_id')) {
-                obj['used_key_group_id'] = ApiClient.convertToType(data['used_key_group_id'], 'String');
+            if (data.hasOwnProperty('source_key_group_id')) {
+                obj['source_key_group_id'] = ApiClient.convertToType(data['source_key_group_id'], 'String');
             }
             if (data.hasOwnProperty('detail_params')) {
                 obj['detail_params'] = CreateTssRequestRequestDetailParams.constructFromObject(data['detail_params']);
@@ -85,8 +85,8 @@ class CreateTssRequestRequest {
             throw new Error("Expected the field `target_key_group_id` to be a primitive type in the JSON string but got " + data['target_key_group_id']);
         }
         // ensure the json data is a string
-        if (data['used_key_group_id'] && !(typeof data['used_key_group_id'] === 'string' || data['used_key_group_id'] instanceof String)) {
-            throw new Error("Expected the field `used_key_group_id` to be a primitive type in the JSON string but got " + data['used_key_group_id']);
+        if (data['source_key_group_id'] && !(typeof data['source_key_group_id'] === 'string' || data['source_key_group_id'] instanceof String)) {
+            throw new Error("Expected the field `source_key_group_id` to be a primitive type in the JSON string but got " + data['source_key_group_id']);
         }
         // validate the optional field `detail_params`
         if (data['detail_params']) { // data not null
@@ -107,14 +107,16 @@ CreateTssRequestRequest.RequiredProperties = ["type", "target_key_group_id"];
 CreateTssRequestRequest.prototype['type'] = undefined;
 
 /**
+ * The target key share group ID.
  * @member {String} target_key_group_id
  */
 CreateTssRequestRequest.prototype['target_key_group_id'] = undefined;
 
 /**
- * @member {String} used_key_group_id
+ * The source key share group ID.  **Note:** `source_key_share_group_id` is used only when `type` is set to either `KeyGenfromKeyGroup` or `Recovery`. This is to specify the key share group to be used as the source key share group to create key shares for the `target_key_share_group`. 
+ * @member {String} source_key_group_id
  */
-CreateTssRequestRequest.prototype['used_key_group_id'] = undefined;
+CreateTssRequestRequest.prototype['source_key_group_id'] = undefined;
 
 /**
  * @member {module:model/CreateTssRequestRequestDetailParams} detail_params

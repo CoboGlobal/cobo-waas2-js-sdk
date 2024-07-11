@@ -53,14 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.LockSpendableListRequest);
     });
 
-    it('should have the property txHashes (base name: "tx_hashes")', function() {
-      // uncomment below and update the code to test the property txHashes
-      //var instance = new CoboWaas2JsApi.LockSpendableListRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property isLocked (base name: "is_locked")', function() {
-      // uncomment below and update the code to test the property isLocked
+    it('should have the property spendables (base name: "spendables")', function() {
+      // uncomment below and update the code to test the property spendables
       //var instance = new CoboWaas2JsApi.LockSpendableListRequest();
       //expect(instance).to.be();
     });

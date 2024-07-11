@@ -22,7 +22,7 @@ class TokenBalanceBalance {
      * Constructs a new <code>TokenBalanceBalance</code>.
      * The balance details.
      * @alias module:model/TokenBalanceBalance
-     * @param total {String} The total balance, which is the sum of the remaining fields.
+     * @param total {String} The total balance, which is the sum of the available, pending, and locked balances.
      * @param available {String} The balance free to use.
      */
     constructor(total, available) { 
@@ -105,7 +105,7 @@ class TokenBalanceBalance {
 TokenBalanceBalance.RequiredProperties = ["total", "available"];
 
 /**
- * The total balance, which is the sum of the remaining fields.
+ * The total balance, which is the sum of the available, pending, and locked balances.
  * @member {String} total
  */
 TokenBalanceBalance.prototype['total'] = undefined;

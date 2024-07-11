@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Transaction from './Transaction';
 import WebhookEventStatus from './WebhookEventStatus';
 import WebhookEventType from './WebhookEventType';
 
@@ -25,15 +26,14 @@ class WebhookEvent {
      * The webhook event payload.
      * @alias module:model/WebhookEvent
      * @param id {String} The event ID.
-     * @param url {String} The URL of the webhook endpoint.
+     * @param url {String} The webhook endpoint URL.
      * @param createdTimestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
      * @param type {module:model/WebhookEventType} 
-     * @param data {Object} The data of the webhook event, in JSON format.
-     * @param status {module:model/WebhookEventStatus} 
+     * @param data {module:model/Transaction} 
      */
-    constructor(id, url, createdTimestamp, type, data, status) { 
+    constructor(id, url, createdTimestamp, type, data) { 
         
-        WebhookEvent.initialize(this, id, url, createdTimestamp, type, data, status);
+        WebhookEvent.initialize(this, id, url, createdTimestamp, type, data);
     }
 
     /**
@@ -41,13 +41,12 @@ class WebhookEvent {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, url, createdTimestamp, type, data, status) { 
+    static initialize(obj, id, url, createdTimestamp, type, data) { 
         obj['id'] = id;
         obj['url'] = url;
         obj['created_timestamp'] = createdTimestamp;
         obj['type'] = type;
         obj['data'] = data;
-        obj['status'] = status;
     }
 
     /**
@@ -74,7 +73,7 @@ class WebhookEvent {
                 obj['type'] = WebhookEventType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], Object);
+                obj['data'] = Transaction.constructFromObject(data['data']);
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = WebhookEventStatus.constructFromObject(data['status']);
@@ -109,6 +108,10 @@ class WebhookEvent {
         if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
         }
+        // validate the optional field `data`
+        if (data['data']) { // data not null
+          Transaction.validateJSON(data['data']);
+        }
 
         return true;
     }
@@ -116,7 +119,7 @@ class WebhookEvent {
 
 }
 
-WebhookEvent.RequiredProperties = ["id", "url", "created_timestamp", "type", "data", "status"];
+WebhookEvent.RequiredProperties = ["id", "url", "created_timestamp", "type", "data"];
 
 /**
  * The event ID.
@@ -125,7 +128,7 @@ WebhookEvent.RequiredProperties = ["id", "url", "created_timestamp", "type", "da
 WebhookEvent.prototype['id'] = undefined;
 
 /**
- * The URL of the webhook endpoint.
+ * The webhook endpoint URL.
  * @member {String} url
  */
 WebhookEvent.prototype['url'] = undefined;
@@ -142,8 +145,7 @@ WebhookEvent.prototype['created_timestamp'] = undefined;
 WebhookEvent.prototype['type'] = undefined;
 
 /**
- * The data of the webhook event, in JSON format.
- * @member {Object} data
+ * @member {module:model/Transaction} data
  */
 WebhookEvent.prototype['data'] = undefined;
 

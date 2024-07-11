@@ -24,7 +24,7 @@ import TSSGroupId from './TSSGroupId';
 class KeyGroup {
     /**
      * Constructs a new <code>KeyGroup</code>.
-     * The data for mpc key group information.
+     * The data for key share group information.
      * @alias module:model/KeyGroup
      */
     constructor() { 
@@ -72,6 +72,9 @@ class KeyGroup {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = KeyGroupStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('create_timestamp')) {
+                obj['create_timestamp'] = ApiClient.convertToType(data['create_timestamp'], 'Number');
+            }
         }
         return obj;
     }
@@ -116,7 +119,7 @@ class KeyGroup {
 
 
 /**
- * Unique id of the key group
+ * The key share group ID.
  * @member {String} id
  */
 KeyGroup.prototype['id'] = undefined;
@@ -137,11 +140,13 @@ KeyGroup.prototype['tss_group_ids'] = undefined;
 KeyGroup.prototype['key_holders'] = undefined;
 
 /**
+ * The number of key share holders in this key share group.
  * @member {Number} node_count
  */
 KeyGroup.prototype['node_count'] = undefined;
 
 /**
+ * The number of key share holders required to approve each operation in this key share group.
  * @member {Number} threshold
  */
 KeyGroup.prototype['threshold'] = undefined;
@@ -150,6 +155,12 @@ KeyGroup.prototype['threshold'] = undefined;
  * @member {module:model/KeyGroupStatus} status
  */
 KeyGroup.prototype['status'] = undefined;
+
+/**
+ * The key share group's creation time in Unix timestamp format, measured in milliseconds.
+ * @member {Number} create_timestamp
+ */
+KeyGroup.prototype['create_timestamp'] = undefined;
 
 
 

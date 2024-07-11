@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionSource);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property sourceType (base name: "source_type")', function() {
+      // uncomment below and update the code to test the property sourceType
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
+    it('should have the property accountInput (base name: "account_input")', function() {
+      // uncomment below and update the code to test the property accountInput
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property memo (base name: "memo")', function() {
-      // uncomment below and update the code to test the property memo
+    it('should have the property utxoInputs (base name: "utxo_inputs")', function() {
+      // uncomment below and update the code to test the property utxoInputs
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });

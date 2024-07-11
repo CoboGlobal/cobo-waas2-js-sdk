@@ -11,7 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TransactionFee from './TransactionFee';
+import TransactionTransferFee from './TransactionTransferFee';
 
 /**
  * The MaxTransferableValue model module.
@@ -55,7 +55,7 @@ class MaxTransferableValue {
                 obj['max_transferable_value'] = ApiClient.convertToType(data['max_transferable_value'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = TransactionFee.constructFromObject(data['fee']);
+                obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
         }
         return obj;
@@ -77,7 +77,7 @@ class MaxTransferableValue {
         }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
-          TransactionFee.validateJSON(data['fee']);
+          TransactionTransferFee.validateJSON(data['fee']);
         }
 
         return true;
@@ -89,7 +89,7 @@ class MaxTransferableValue {
 
 
 /**
- * The token name.
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
  * @member {String} token_id
  */
 MaxTransferableValue.prototype['token_id'] = undefined;
@@ -101,7 +101,7 @@ MaxTransferableValue.prototype['token_id'] = undefined;
 MaxTransferableValue.prototype['max_transferable_value'] = undefined;
 
 /**
- * @member {module:model/TransactionFee} fee
+ * @member {module:model/TransactionTransferFee} fee
  */
 MaxTransferableValue.prototype['fee'] = undefined;
 

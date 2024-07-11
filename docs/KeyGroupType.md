@@ -3,10 +3,10 @@
 ## Enum
 
 
-* `MainKeyGroup` (value: `"MainKeyGroup"`)
+* `MainGroup` (value: `"MainGroup"`)
 
-* `SigningKeyGroup` (value: `"SigningKeyGroup"`)
+* `SigningGroup` (value: `"SigningGroup"`)
 
-* `RecoveryKeyGroup` (value: `"RecoveryKeyGroup"`)
+* `RecoveryGroup` (value: `"RecoveryGroup"`)
 
 

@@ -3,9 +3,9 @@
 ## Enum
 
 
-* `COBO` (value: `"COBO"`)
+* `Cobo` (value: `"Cobo"`)
 
-* `MOBILE` (value: `"MOBILE"`)
+* `Mobile` (value: `"Mobile"`)
 
 * `API` (value: `"API"`)
 

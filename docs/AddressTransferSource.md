@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sourceType** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**walletId** | **String** | Unique id of the wallet to transfer from. | 
-**addressStr** | **String** | From address | 
+**walletId** | **String** | The wallet ID. | 
+**address** | **String** | The wallet address. | 
 
 

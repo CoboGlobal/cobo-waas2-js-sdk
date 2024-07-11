@@ -20,7 +20,6 @@ import ApiClient from '../ApiClient';
 class CreateTssRequestRequestDetailParams {
     /**
      * Constructs a new <code>CreateTssRequestRequestDetailParams</code>.
-     * for KeyGen request, this parameters can be null
      * @alias module:model/CreateTssRequestRequestDetailParams
      */
     constructor() { 
@@ -47,8 +46,8 @@ class CreateTssRequestRequestDetailParams {
         if (data) {
             obj = obj || new CreateTssRequestRequestDetailParams();
 
-            if (data.hasOwnProperty('used_node_ids')) {
-                obj['used_node_ids'] = ApiClient.convertToType(data['used_node_ids'], ['String']);
+            if (data.hasOwnProperty('node_ids')) {
+                obj['node_ids'] = ApiClient.convertToType(data['node_ids'], ['String']);
             }
         }
         return obj;
@@ -61,8 +60,8 @@ class CreateTssRequestRequestDetailParams {
      */
     static validateJSON(data) {
         // ensure the json data is an array
-        if (!Array.isArray(data['used_node_ids'])) {
-            throw new Error("Expected the field `used_node_ids` to be an array in the JSON data but got " + data['used_node_ids']);
+        if (!Array.isArray(data['node_ids'])) {
+            throw new Error("Expected the field `node_ids` to be an array in the JSON data but got " + data['node_ids']);
         }
 
         return true;
@@ -74,9 +73,10 @@ class CreateTssRequestRequestDetailParams {
 
 
 /**
- * @member {Array.<String>} used_node_ids
+ * The TSS Node IDs participating in creating a new key share group when `type` is set to either `KeyGenFromKeyGroup` or `Recovery`.   **Note:** In any [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) such as the 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), for `node_ids`, you only need to fill in 1 Cobo TSS Node ID and enough non-Cobo TSS Node IDs to satisfy the number of approvers specified in `threshold`. To obtain the Cobo TSS Node ID, run [List all Cobo key share holders](/v2/api-references/wallets--mpc-wallets/list-all-cobo-key-share-holders). 
+ * @member {Array.<String>} node_ids
  */
-CreateTssRequestRequestDetailParams.prototype['used_node_ids'] = undefined;
+CreateTssRequestRequestDetailParams.prototype['node_ids'] = undefined;
 
 
 

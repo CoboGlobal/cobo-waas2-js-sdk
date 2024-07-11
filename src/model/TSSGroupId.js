@@ -21,7 +21,7 @@ import CurveType from './CurveType';
 class TSSGroupId {
     /**
      * Constructs a new <code>TSSGroupId</code>.
-     * The data for tss group id information.
+     * The data for the TSS group ID.
      * @alias module:model/TSSGroupId
      */
     constructor() { 
@@ -78,7 +78,7 @@ class TSSGroupId {
 
 
 /**
- * the group id of the tss group.
+ * The TSS group ID.
  * @member {String} group_id
  */
 TSSGroupId.prototype['group_id'] = undefined;

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
+**name** | **String** | Key share holder&#39;s name. | [optional] 
 **type** | [**KeyHolderType**](KeyHolderType.md) |  | [optional] 
-**tssNodeId** | **String** | The ID of the tss node. | [optional] 
+**tssNodeId** | **String** | The TSS Node ID. | [optional] 
 
 

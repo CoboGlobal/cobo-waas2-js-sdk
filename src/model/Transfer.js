@@ -11,7 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TransactionFee from './TransactionFee';
+import TransactionTransferFee from './TransactionTransferFee';
 import TransferDestination from './TransferDestination';
 import TransferSource from './TransferSource';
 
@@ -23,17 +23,16 @@ import TransferSource from './TransferSource';
 class Transfer {
     /**
      * Constructs a new <code>Transfer</code>.
-     * The base data for transfer transaction.
+     * The information about a token transfer.
      * @alias module:model/Transfer
-     * @param requestId {String} Unique id of the request.
-     * @param requestType {module:model/Transfer.RequestTypeEnum} 
+     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      * @param source {module:model/TransferSource} 
-     * @param tokenId {String} The token ID.
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
      * @param destination {module:model/TransferDestination} 
      */
-    constructor(requestId, requestType, source, tokenId, destination) { 
+    constructor(requestId, source, tokenId, destination) { 
         
-        Transfer.initialize(this, requestId, requestType, source, tokenId, destination);
+        Transfer.initialize(this, requestId, source, tokenId, destination);
     }
 
     /**
@@ -41,9 +40,8 @@ class Transfer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, requestType, source, tokenId, destination) { 
+    static initialize(obj, requestId, source, tokenId, destination) { 
         obj['request_id'] = requestId;
-        obj['request_type'] = requestType;
         obj['source'] = source;
         obj['token_id'] = tokenId;
         obj['destination'] = destination;
@@ -63,9 +61,6 @@ class Transfer {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
-            if (data.hasOwnProperty('request_type')) {
-                obj['request_type'] = ApiClient.convertToType(data['request_type'], 'String');
-            }
             if (data.hasOwnProperty('source')) {
                 obj['source'] = TransferSource.constructFromObject(data['source']);
             }
@@ -82,7 +77,7 @@ class Transfer {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = TransactionFee.constructFromObject(data['fee']);
+                obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
         }
         return obj;
@@ -103,10 +98,6 @@ class Transfer {
         // ensure the json data is a string
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
-        }
-        // ensure the json data is a string
-        if (data['request_type'] && !(typeof data['request_type'] === 'string' || data['request_type'] instanceof String)) {
-            throw new Error("Expected the field `request_type` to be a primitive type in the JSON string but got " + data['request_type']);
         }
         // validate the optional field `source`
         if (data['source']) { // data not null
@@ -130,7 +121,7 @@ class Transfer {
         }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
-          TransactionFee.validateJSON(data['fee']);
+          TransactionTransferFee.validateJSON(data['fee']);
         }
 
         return true;
@@ -139,18 +130,13 @@ class Transfer {
 
 }
 
-Transfer.RequiredProperties = ["request_id", "request_type", "source", "token_id", "destination"];
+Transfer.RequiredProperties = ["request_id", "source", "token_id", "destination"];
 
 /**
- * Unique id of the request.
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
 Transfer.prototype['request_id'] = undefined;
-
-/**
- * @member {module:model/Transfer.RequestTypeEnum} request_type
- */
-Transfer.prototype['request_type'] = undefined;
 
 /**
  * @member {module:model/TransferSource} source
@@ -158,7 +144,7 @@ Transfer.prototype['request_type'] = undefined;
 Transfer.prototype['source'] = undefined;
 
 /**
- * The token ID.
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
  * @member {String} token_id
  */
 Transfer.prototype['token_id'] = undefined;
@@ -169,51 +155,24 @@ Transfer.prototype['token_id'] = undefined;
 Transfer.prototype['destination'] = undefined;
 
 /**
- * The category names for transfer.
+ * The custom category for you to identify your transactions.
  * @member {Array.<String>} category_names
  */
 Transfer.prototype['category_names'] = undefined;
 
 /**
- * The description for transfer.
+ * The description of the transfer.
  * @member {String} description
  */
 Transfer.prototype['description'] = undefined;
 
 /**
- * @member {module:model/TransactionFee} fee
+ * @member {module:model/TransactionTransferFee} fee
  */
 Transfer.prototype['fee'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>request_type</code> property.
- * @enum {String}
- * @readonly
- */
-Transfer['RequestTypeEnum'] = {
-
-    /**
-     * value: "Transfer"
-     * @const
-     */
-    "Transfer": "Transfer",
-
-    /**
-     * value: "Call"
-     * @const
-     */
-    "Call": "Call",
-
-    /**
-     * value: "Sign"
-     * @const
-     */
-    "Sign": "Sign"
-};
 
 
 

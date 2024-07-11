@@ -46,8 +46,8 @@ class AddressTransferDestinationAccountOutput {
         if (data) {
             obj = obj || new AddressTransferDestinationAccountOutput();
 
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('memo')) {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
@@ -66,8 +66,8 @@ class AddressTransferDestinationAccountOutput {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
         if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
@@ -87,19 +87,19 @@ class AddressTransferDestinationAccountOutput {
 
 
 /**
- * Destination address
- * @member {String} address_str
+ * The destination address.
+ * @member {String} address
  */
-AddressTransferDestinationAccountOutput.prototype['address_str'] = undefined;
+AddressTransferDestinationAccountOutput.prototype['address'] = undefined;
 
 /**
- * Destination address memo
+ * The memo that identifies a transaction in order to credit the correct account. For transfers out of Cobo Portal, it is highly recommended to include a memo for the chains such as XRP, EOS, XLM, IOST, BNB_BNB, ATOM, LUNA, and TON.
  * @member {String} memo
  */
 AddressTransferDestinationAccountOutput.prototype['memo'] = undefined;
 
 /**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
  * @member {String} amount
  */
 AddressTransferDestinationAccountOutput.prototype['amount'] = undefined;

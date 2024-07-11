@@ -24,12 +24,12 @@ class AddressInfo {
      * The address information.
      * @alias module:model/AddressInfo
      * @param addressId {String} The address ID.
-     * @param addressStr {String} The wallet address.
-     * @param tokenId {String} The token ID.
+     * @param address {String} The wallet address.
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
      */
-    constructor(addressId, addressStr, tokenId) { 
+    constructor(addressId, address, tokenId) { 
         
-        AddressInfo.initialize(this, addressId, addressStr, tokenId);
+        AddressInfo.initialize(this, addressId, address, tokenId);
     }
 
     /**
@@ -37,9 +37,9 @@ class AddressInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, addressId, addressStr, tokenId) { 
+    static initialize(obj, addressId, address, tokenId) { 
         obj['address_id'] = addressId;
-        obj['address_str'] = addressStr;
+        obj['address'] = address;
         obj['token_id'] = tokenId;
     }
 
@@ -57,8 +57,8 @@ class AddressInfo {
             if (data.hasOwnProperty('address_id')) {
                 obj['address_id'] = ApiClient.convertToType(data['address_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -96,8 +96,8 @@ class AddressInfo {
             throw new Error("Expected the field `address_id` to be a primitive type in the JSON string but got " + data['address_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
@@ -122,7 +122,7 @@ class AddressInfo {
 
 }
 
-AddressInfo.RequiredProperties = ["address_id", "address_str", "token_id"];
+AddressInfo.RequiredProperties = ["address_id", "address", "token_id"];
 
 /**
  * The address ID.
@@ -132,12 +132,12 @@ AddressInfo.prototype['address_id'] = undefined;
 
 /**
  * The wallet address.
- * @member {String} address_str
+ * @member {String} address
  */
-AddressInfo.prototype['address_str'] = undefined;
+AddressInfo.prototype['address'] = undefined;
 
 /**
- * The token ID.
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
  * @member {String} token_id
  */
 AddressInfo.prototype['token_id'] = undefined;
@@ -149,7 +149,7 @@ AddressInfo.prototype['token_id'] = undefined;
 AddressInfo.prototype['memo'] = undefined;
 
 /**
- * The derivation path of the address. This field is applicable to MPC Wallets.
+ * The derivation path of the address.
  * @member {String} path
  */
 AddressInfo.prototype['path'] = undefined;
@@ -160,7 +160,7 @@ AddressInfo.prototype['path'] = undefined;
 AddressInfo.prototype['encoding'] = undefined;
 
 /**
- * The public key of the address. This field is applicable to MPC Wallets.
+ * The public key of the address.
  * @member {String} pubkey
  */
 AddressInfo.prototype['pubkey'] = undefined;

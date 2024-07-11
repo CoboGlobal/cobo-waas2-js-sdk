@@ -22,14 +22,14 @@ import FeeType from './FeeType';
 class EvmEip1559Fee {
     /**
      * Constructs a new <code>EvmEip1559Fee</code>.
-     * The estimated transaction fee when using the EIP 1559 method.
+     * The estimated transaction fee based on the EIP-1559 fee model.
      * @alias module:model/EvmEip1559Fee
      * @param feeType {module:model/FeeType} 
-     * @param standard {module:model/EvmEip1559FeeSlow} 
+     * @param recommended {module:model/EvmEip1559FeeSlow} 
      */
-    constructor(feeType, standard) { 
+    constructor(feeType, recommended) { 
         
-        EvmEip1559Fee.initialize(this, feeType, standard);
+        EvmEip1559Fee.initialize(this, feeType, recommended);
     }
 
     /**
@@ -37,9 +37,9 @@ class EvmEip1559Fee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, standard) { 
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
-        obj['standard'] = standard;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -56,11 +56,14 @@ class EvmEip1559Fee {
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
             if (data.hasOwnProperty('slow')) {
                 obj['slow'] = EvmEip1559FeeSlow.constructFromObject(data['slow']);
             }
-            if (data.hasOwnProperty('standard')) {
-                obj['standard'] = EvmEip1559FeeSlow.constructFromObject(data['standard']);
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = EvmEip1559FeeSlow.constructFromObject(data['recommended']);
             }
             if (data.hasOwnProperty('fast')) {
                 obj['fast'] = EvmEip1559FeeSlow.constructFromObject(data['fast']);
@@ -81,13 +84,17 @@ class EvmEip1559Fee {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
         // validate the optional field `slow`
         if (data['slow']) { // data not null
           EvmEip1559FeeSlow.validateJSON(data['slow']);
         }
-        // validate the optional field `standard`
-        if (data['standard']) { // data not null
-          EvmEip1559FeeSlow.validateJSON(data['standard']);
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          EvmEip1559FeeSlow.validateJSON(data['recommended']);
         }
         // validate the optional field `fast`
         if (data['fast']) { // data not null
@@ -100,7 +107,7 @@ class EvmEip1559Fee {
 
 }
 
-EvmEip1559Fee.RequiredProperties = ["fee_type", "standard"];
+EvmEip1559Fee.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -108,14 +115,20 @@ EvmEip1559Fee.RequiredProperties = ["fee_type", "standard"];
 EvmEip1559Fee.prototype['fee_type'] = undefined;
 
 /**
+ * The token ID of the transaction fee.
+ * @member {String} token_id
+ */
+EvmEip1559Fee.prototype['token_id'] = undefined;
+
+/**
  * @member {module:model/EvmEip1559FeeSlow} slow
  */
 EvmEip1559Fee.prototype['slow'] = undefined;
 
 /**
- * @member {module:model/EvmEip1559FeeSlow} standard
+ * @member {module:model/EvmEip1559FeeSlow} recommended
  */
-EvmEip1559Fee.prototype['standard'] = undefined;
+EvmEip1559Fee.prototype['recommended'] = undefined;
 
 /**
  * @member {module:model/EvmEip1559FeeSlow} fast

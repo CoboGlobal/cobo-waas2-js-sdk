@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property requireMemo (base name: "require_memo")', function() {
+      // uncomment below and update the code to test the property requireMemo
+      //var instance = new CoboWaas2JsApi.ChainInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -23,7 +23,7 @@ import TransferDestinationType from './TransferDestinationType';
 class AddressTransferDestination {
     /**
      * Constructs a new <code>AddressTransferDestination</code>.
-     * The data for address destination. Only one of account_output or utxo_outputs needed.
+     * The information about the transaction destination. Specify either the &#x60;account_output&#x60; property or the &#x60;utxo_outputs&#x60; property. 
      * @alias module:model/AddressTransferDestination
      * @param destinationType {module:model/TransferDestinationType} 
      */
@@ -60,6 +60,12 @@ class AddressTransferDestination {
             }
             if (data.hasOwnProperty('utxo_outputs')) {
                 obj['utxo_outputs'] = AddressTransferDestinationUtxoOutputs.constructFromObject(data['utxo_outputs']);
+            }
+            if (data.hasOwnProperty('force_internal')) {
+                obj['force_internal'] = ApiClient.convertToType(data['force_internal'], 'Boolean');
+            }
+            if (data.hasOwnProperty('force_external')) {
+                obj['force_external'] = ApiClient.convertToType(data['force_external'], 'Boolean');
             }
         }
         return obj;
@@ -108,6 +114,18 @@ AddressTransferDestination.prototype['account_output'] = undefined;
  * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
  */
 AddressTransferDestination.prototype['utxo_outputs'] = undefined;
+
+/**
+ * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
+ * @member {Boolean} force_internal
+ */
+AddressTransferDestination.prototype['force_internal'] = undefined;
+
+/**
+ * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
+ * @member {Boolean} force_external
+ */
+AddressTransferDestination.prototype['force_external'] = undefined;
 
 
 

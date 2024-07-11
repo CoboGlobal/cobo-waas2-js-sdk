@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **name** | **String** | The wallet name. | 
 **orgId** | **String** | The ID of the owning organization. | 
-**vaultId** | **String** | The ID of the owning Vault. | 
+**vaultId** | **String** | The ID of the owning vault. | 
 
 

@@ -25,8 +25,8 @@ class ExchangeTransferSource {
      * @alias module:model/ExchangeTransferSource
      * @implements module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} Unique id of the wallet to transfer from.
-     * @param subWalletId {String} Exchange trading account or any sub wallet info for transfer.
+     * @param walletId {String} The wallet ID.
+     * @param subWalletId {String} The exchange trading account or the sub-wallet ID.
      */
     constructor(sourceType, walletId, subWalletId) { 
         BaseTransferSource.initialize(this, sourceType, walletId);
@@ -104,13 +104,13 @@ ExchangeTransferSource.RequiredProperties = ["source_type", "wallet_id", "sub_wa
 ExchangeTransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 ExchangeTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * Exchange trading account or any sub wallet info for transfer.
+ * The exchange trading account or the sub-wallet ID.
  * @member {String} sub_wallet_id
  */
 ExchangeTransferSource.prototype['sub_wallet_id'] = undefined;
@@ -122,7 +122,7 @@ ExchangeTransferSource.prototype['sub_wallet_id'] = undefined;
  */
 BaseTransferSource.prototype['source_type'] = undefined;
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseTransferSource.prototype['wallet_id'] = undefined;

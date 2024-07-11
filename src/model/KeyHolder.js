@@ -22,7 +22,7 @@ import KeyHolderType from './KeyHolderType';
 class KeyHolder {
     /**
      * Constructs a new <code>KeyHolder</code>.
-     * The data for mpc wallet key holder information.
+     * The data for MPC Wallets&#39; key share holder information.
      * @alias module:model/KeyHolder
      */
     constructor() { 
@@ -92,6 +92,7 @@ class KeyHolder {
 
 
 /**
+ * The key share holder name.
  * @member {String} name
  */
 KeyHolder.prototype['name'] = undefined;
@@ -102,13 +103,13 @@ KeyHolder.prototype['name'] = undefined;
 KeyHolder.prototype['type'] = undefined;
 
 /**
- * The IDs of the tss node.
+ * Key share holder's TSS Node ID.
  * @member {String} tss_node_id
  */
 KeyHolder.prototype['tss_node_id'] = undefined;
 
 /**
- * Indicates if the tss node online
+ * Whether the key share holder's TSS Node is online. - `true`: The TSS Node is online.  - `false`: The TSS Node is offline. 
  * @member {Boolean} online
  */
 KeyHolder.prototype['online'] = undefined;

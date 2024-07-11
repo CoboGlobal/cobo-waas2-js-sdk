@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** | Raw data to be signed, Base 64 encoded | [optional] 
-**structuredData** | **String** | Structured data to be signed, JSON encoded | [optional] 
+**message** | **String** | The raw data of the message to be signed, encoded in Base64 format. | [optional] 
+**structuredData** | **{String: Object}** | The structured data of the message to be signed, encoded in JSON format. | [optional] 
 
 

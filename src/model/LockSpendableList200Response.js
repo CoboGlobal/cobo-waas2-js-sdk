@@ -69,7 +69,7 @@ class LockSpendableList200Response {
 
 
 /**
- * Whether the spendable lock/unlock has been successfully executed.
+ * Whether the locking or unlocking operation has been successfully executed. - `true`: The operation has been successfully executed. - `false`: The operation has not been executed. 
  * @member {Boolean} executed
  */
 LockSpendableList200Response.prototype['executed'] = undefined;

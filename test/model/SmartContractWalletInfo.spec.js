@@ -107,8 +107,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property owners (base name: "owners")', function() {
-      // uncomment below and update the code to test the property owners
+    it('should have the property signers (base name: "signers")', function() {
+      // uncomment below and update the code to test the property signers
       //var instance = new CoboWaas2JsApi.SmartContractWalletInfo();
       //expect(instance).to.be();
     });

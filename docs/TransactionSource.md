@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**TransactionAddressType**](TransactionAddressType.md) |  | 
-**address** | **String** | Address | [optional] 
-**memo** | **String** | Address memo | [optional] 
-**walletId** | **String** | Unique id of the wallet. | 
-**mpcUsedKeyGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
-**delegate** | [**SafeTransactionAddressAllOfDelegate**](SafeTransactionAddressAllOfDelegate.md) |  | 
+**sourceType** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
+**accountInput** | [**TransactionMPCWalletSourceAccountInput**](TransactionMPCWalletSourceAccountInput.md) |  | [optional] 
+**utxoInputs** | [**[TransactionMPCWalletSourceUtxoInputsInner]**](TransactionMPCWalletSourceUtxoInputsInner.md) |  | [optional] 
+**walletId** | **String** | The Wallet ID. | 
+**mpcUsedKeyGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | 
+**delegate** | [**TransactionSafeWalletSourceDelegate**](TransactionSafeWalletSourceDelegate.md) |  | 
 **exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 
-**subWalletId** | **String** | Exchange trading account or any sub wallet info for transfer. | [optional] 
+**subWalletId** | **String** | The exchange trading account or a sub-wallet ID. | [optional] 
 
 

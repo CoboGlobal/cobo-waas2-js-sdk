@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The name of the mpc project. | 
+**name** | **String** | The project&#39;s new name. | 
 
 

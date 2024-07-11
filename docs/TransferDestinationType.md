@@ -5,6 +5,6 @@
 
 * `Address` (value: `"Address"`)
 
-* `Exchange` (value: `"Exchange"`)
+* `ExchangeWallet` (value: `"ExchangeWallet"`)
 
 

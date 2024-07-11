@@ -4,26 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requestId** | **String** | Unique id of the request. | 
-**requestType** | **String** |  | 
+**requestId** | **String** | The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization. | 
 **source** | [**TransferSource**](TransferSource.md) |  | 
-**tokenId** | **String** | The token ID. | 
+**tokenId** | **String** | The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens). | 
 **destination** | [**TransferDestination**](TransferDestination.md) |  | 
-**categoryNames** | **[String]** | The category names for transfer. | [optional] 
-**description** | **String** | The description for transfer. | [optional] 
-**fee** | [**TransactionFee**](TransactionFee.md) |  | [optional] 
-
-
-
-## Enum: RequestTypeEnum
-
-
-* `Transfer` (value: `"Transfer"`)
-
-* `Call` (value: `"Call"`)
-
-* `Sign` (value: `"Sign"`)
-
-
+**categoryNames** | **[String]** | The custom category for you to identify your transactions. | [optional] 
+**description** | **String** | The description of the transfer. | [optional] 
+**fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | [optional] 
 
 

@@ -22,14 +22,14 @@ import FeeType from './FeeType';
 class EvmLegacyFee {
     /**
      * Constructs a new <code>EvmLegacyFee</code>.
-     * The estimated transaction fee when using the legacy method.
+     * The estimated transaction fee based on the legacy fee model.
      * @alias module:model/EvmLegacyFee
      * @param feeType {module:model/FeeType} 
-     * @param standard {module:model/EvmLegacyFeeSlow} 
+     * @param recommended {module:model/EvmLegacyFeeSlow} 
      */
-    constructor(feeType, standard) { 
+    constructor(feeType, recommended) { 
         
-        EvmLegacyFee.initialize(this, feeType, standard);
+        EvmLegacyFee.initialize(this, feeType, recommended);
     }
 
     /**
@@ -37,9 +37,9 @@ class EvmLegacyFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, standard) { 
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
-        obj['standard'] = standard;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -56,11 +56,14 @@ class EvmLegacyFee {
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
             if (data.hasOwnProperty('slow')) {
                 obj['slow'] = EvmLegacyFeeSlow.constructFromObject(data['slow']);
             }
-            if (data.hasOwnProperty('standard')) {
-                obj['standard'] = EvmLegacyFeeSlow.constructFromObject(data['standard']);
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = EvmLegacyFeeSlow.constructFromObject(data['recommended']);
             }
             if (data.hasOwnProperty('fast')) {
                 obj['fast'] = EvmLegacyFeeSlow.constructFromObject(data['fast']);
@@ -81,13 +84,17 @@ class EvmLegacyFee {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
         // validate the optional field `slow`
         if (data['slow']) { // data not null
           EvmLegacyFeeSlow.validateJSON(data['slow']);
         }
-        // validate the optional field `standard`
-        if (data['standard']) { // data not null
-          EvmLegacyFeeSlow.validateJSON(data['standard']);
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          EvmLegacyFeeSlow.validateJSON(data['recommended']);
         }
         // validate the optional field `fast`
         if (data['fast']) { // data not null
@@ -100,7 +107,7 @@ class EvmLegacyFee {
 
 }
 
-EvmLegacyFee.RequiredProperties = ["fee_type", "standard"];
+EvmLegacyFee.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -108,14 +115,20 @@ EvmLegacyFee.RequiredProperties = ["fee_type", "standard"];
 EvmLegacyFee.prototype['fee_type'] = undefined;
 
 /**
+ * The token ID of the transaction fee.
+ * @member {String} token_id
+ */
+EvmLegacyFee.prototype['token_id'] = undefined;
+
+/**
  * @member {module:model/EvmLegacyFeeSlow} slow
  */
 EvmLegacyFee.prototype['slow'] = undefined;
 
 /**
- * @member {module:model/EvmLegacyFeeSlow} standard
+ * @member {module:model/EvmLegacyFeeSlow} recommended
  */
-EvmLegacyFee.prototype['standard'] = undefined;
+EvmLegacyFee.prototype['recommended'] = undefined;
 
 /**
  * @member {module:model/EvmLegacyFeeSlow} fast

@@ -22,10 +22,13 @@ class Pagination {
      * Constructs a new <code>Pagination</code>.
      * The pagination information of the returned data.
      * @alias module:model/Pagination
+     * @param before {String} An object ID which serves as a cursor for pagination. For example, if the value of `before` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data ends before the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
+     * @param after {String} An object ID which serves as a cursor for pagination. For example, if the value of `after` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data starts after the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
+     * @param totalCount {Number} The total count of the result set
      */
-    constructor() { 
+    constructor(before, after, totalCount) { 
         
-        Pagination.initialize(this);
+        Pagination.initialize(this, before, after, totalCount);
     }
 
     /**
@@ -33,7 +36,10 @@ class Pagination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, before, after, totalCount) { 
+        obj['before'] = before;
+        obj['after'] = after;
+        obj['total_count'] = totalCount;
     }
 
     /**
@@ -53,6 +59,9 @@ class Pagination {
             if (data.hasOwnProperty('after')) {
                 obj['after'] = ApiClient.convertToType(data['after'], 'String');
             }
+            if (data.hasOwnProperty('total_count')) {
+                obj['total_count'] = ApiClient.convertToType(data['total_count'], 'Number');
+            }
         }
         return obj;
     }
@@ -63,6 +72,12 @@ class Pagination {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Pagination</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Pagination.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['before'] && !(typeof data['before'] === 'string' || data['before'] instanceof String)) {
             throw new Error("Expected the field `before` to be a primitive type in the JSON string but got " + data['before']);
@@ -78,19 +93,25 @@ class Pagination {
 
 }
 
-
+Pagination.RequiredProperties = ["before", "after", "total_count"];
 
 /**
- * An object ID which serves as a cursor for pagination. For example, if the value of `before` is `foo`, the returned data ends before the object with the object ID `foo`.
+ * An object ID which serves as a cursor for pagination. For example, if the value of `before` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data ends before the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
  * @member {String} before
  */
 Pagination.prototype['before'] = undefined;
 
 /**
- * An object ID which serves as a cursor for pagination. For example, if the value of `after` is `bar`, the returned data starts after the object with the object ID `bar`.
+ * An object ID which serves as a cursor for pagination. For example, if the value of `after` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data starts after the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
  * @member {String} after
  */
 Pagination.prototype['after'] = undefined;
+
+/**
+ * The total count of the result set
+ * @member {Number} total_count
+ */
+Pagination.prototype['total_count'] = undefined;
 
 
 

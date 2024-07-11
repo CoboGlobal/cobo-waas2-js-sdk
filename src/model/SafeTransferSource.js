@@ -26,13 +26,13 @@ class SafeTransferSource {
      * @alias module:model/SafeTransferSource
      * @implements module:model/AddressTransferSource
      * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} Unique id of the wallet to transfer from.
-     * @param addressStr {String} From address
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      * @param delegate {module:model/SafeTransferSourceAllOfDelegate} 
      */
-    constructor(sourceType, walletId, addressStr, delegate) { 
-        AddressTransferSource.initialize(this, sourceType, walletId, addressStr);
-        SafeTransferSource.initialize(this, sourceType, walletId, addressStr, delegate);
+    constructor(sourceType, walletId, address, delegate) { 
+        AddressTransferSource.initialize(this, sourceType, walletId, address);
+        SafeTransferSource.initialize(this, sourceType, walletId, address, delegate);
     }
 
     /**
@@ -40,10 +40,10 @@ class SafeTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr, delegate) { 
+    static initialize(obj, sourceType, walletId, address, delegate) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
+        obj['address'] = address;
         obj['delegate'] = delegate;
     }
 
@@ -65,8 +65,8 @@ class SafeTransferSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('delegate')) {
                 obj['delegate'] = SafeTransferSourceAllOfDelegate.constructFromObject(data['delegate']);
@@ -92,8 +92,8 @@ class SafeTransferSource {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // validate the optional field `delegate`
         if (data['delegate']) { // data not null
@@ -106,7 +106,7 @@ class SafeTransferSource {
 
 }
 
-SafeTransferSource.RequiredProperties = ["source_type", "wallet_id", "address_str", "delegate"];
+SafeTransferSource.RequiredProperties = ["source_type", "wallet_id", "address", "delegate"];
 
 /**
  * @member {module:model/WalletSubtype} source_type
@@ -114,16 +114,16 @@ SafeTransferSource.RequiredProperties = ["source_type", "wallet_id", "address_st
 SafeTransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 SafeTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-SafeTransferSource.prototype['address_str'] = undefined;
+SafeTransferSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/SafeTransferSourceAllOfDelegate} delegate
@@ -137,15 +137,15 @@ SafeTransferSource.prototype['delegate'] = undefined;
  */
 AddressTransferSource.prototype['source_type'] = undefined;
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 AddressTransferSource.prototype['wallet_id'] = undefined;
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-AddressTransferSource.prototype['address_str'] = undefined;
+AddressTransferSource.prototype['address'] = undefined;
 
 
 

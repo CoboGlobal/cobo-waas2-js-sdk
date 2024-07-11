@@ -21,10 +21,10 @@ import WalletSubtype from './WalletSubtype';
 class BaseTransferSource {
     /**
      * Constructs a new <code>BaseTransferSource</code>.
-     * The base data for transfer source.
+     * The information about the transaction source.
      * @alias module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} Unique id of the wallet to transfer from.
+     * @param walletId {String} The wallet ID.
      */
     constructor(sourceType, walletId) { 
         
@@ -93,7 +93,7 @@ BaseTransferSource.RequiredProperties = ["source_type", "wallet_id"];
 BaseTransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseTransferSource.prototype['wallet_id'] = undefined;

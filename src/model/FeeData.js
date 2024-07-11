@@ -20,12 +20,12 @@ import ApiClient from '../ApiClient';
 class FeeData {
     /**
      * Constructs a new <code>FeeData</code>.
-     * The estimated fee in fee_coin.
      * @alias module:model/FeeData
+     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
      */
-    constructor() { 
+    constructor(gasLimit) { 
         
-        FeeData.initialize(this);
+        FeeData.initialize(this, gasLimit);
     }
 
     /**
@@ -33,7 +33,8 @@ class FeeData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, gasLimit) { 
+        obj['gas_limit'] = gasLimit || '21000';
     }
 
     /**
@@ -60,6 +61,12 @@ class FeeData {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FeeData</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FeeData.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
@@ -71,10 +78,10 @@ class FeeData {
 
 }
 
-
+FeeData.RequiredProperties = ["gas_limit"];
 
 /**
- * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
+ * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
  * @member {String} gas_limit
  * @default '21000'
  */

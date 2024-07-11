@@ -89,8 +89,8 @@ class SafeWallet {
             if (data.hasOwnProperty('safe_address')) {
                 obj['safe_address'] = ApiClient.convertToType(data['safe_address'], 'String');
             }
-            if (data.hasOwnProperty('owners')) {
-                obj['owners'] = ApiClient.convertToType(data['owners'], ['String']);
+            if (data.hasOwnProperty('signers')) {
+                obj['signers'] = ApiClient.convertToType(data['signers'], ['String']);
             }
             if (data.hasOwnProperty('threshold')) {
                 obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
@@ -142,8 +142,8 @@ class SafeWallet {
             throw new Error("Expected the field `safe_address` to be a primitive type in the JSON string but got " + data['safe_address']);
         }
         // ensure the json data is an array
-        if (!Array.isArray(data['owners'])) {
-            throw new Error("Expected the field `owners` to be an array in the JSON data but got " + data['owners']);
+        if (!Array.isArray(data['signers'])) {
+            throw new Error("Expected the field `signers` to be an array in the JSON data but got " + data['signers']);
         }
         // ensure the json data is a string
         if (data['cobo_safe_address'] && !(typeof data['cobo_safe_address'] === 'string' || data['cobo_safe_address'] instanceof String)) {
@@ -191,7 +191,7 @@ SafeWallet.prototype['name'] = undefined;
 SafeWallet.prototype['org_id'] = undefined;
 
 /**
- * The chain the wallet operates on.
+ * The ID of the chain on which the wallet operates.
  * @member {String} chain_id
  */
 SafeWallet.prototype['chain_id'] = undefined;
@@ -214,13 +214,13 @@ SafeWallet.prototype['smart_contract_wallet_type'] = undefined;
 SafeWallet.prototype['safe_address'] = undefined;
 
 /**
- * The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
- * @member {Array.<String>} owners
+ * The signers of the Smart Contract Wallet.
+ * @member {Array.<String>} signers
  */
-SafeWallet.prototype['owners'] = undefined;
+SafeWallet.prototype['signers'] = undefined;
 
 /**
- * The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. 
+ * The minimum number of confirmations required for the Smart Contract Wallet. 
  * @member {Number} threshold
  */
 SafeWallet.prototype['threshold'] = undefined;

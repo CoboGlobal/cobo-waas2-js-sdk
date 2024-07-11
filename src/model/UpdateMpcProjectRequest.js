@@ -21,7 +21,7 @@ class UpdateMpcProjectRequest {
     /**
      * Constructs a new <code>UpdateMpcProjectRequest</code>.
      * @alias module:model/UpdateMpcProjectRequest
-     * @param name {String} The name of the mpc project.
+     * @param name {String} The project's new name.
      */
     constructor(name) { 
         
@@ -81,7 +81,7 @@ class UpdateMpcProjectRequest {
 UpdateMpcProjectRequest.RequiredProperties = ["name"];
 
 /**
- * The name of the mpc project.
+ * The project's new name.
  * @member {String} name
  */
 UpdateMpcProjectRequest.prototype['name'] = undefined;

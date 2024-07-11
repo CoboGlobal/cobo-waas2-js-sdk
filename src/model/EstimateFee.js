@@ -11,11 +11,10 @@
  */
 
 import ApiClient from '../ApiClient';
-import ContractCall from './ContractCall';
-import ContractCallDestination from './ContractCallDestination';
 import ContractCallSource from './ContractCallSource';
-import TransactionFee from './TransactionFee';
-import Transfer from './Transfer';
+import EstimateFeeContractCall from './EstimateFeeContractCall';
+import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
+import EstimateFeeTransfer from './EstimateFeeTransfer';
 
 /**
  * The EstimateFee model module.
@@ -26,7 +25,7 @@ class EstimateFee {
     /**
      * Constructs a new <code>EstimateFee</code>.
      * @alias module:model/EstimateFee
-     * @param {(module:model/ContractCall|module:model/Transfer)} instance The actual instance to initialize EstimateFee.
+     * @param {(module:model/EstimateFeeContractCall|module:model/EstimateFeeTransfer)} instance The actual instance to initialize EstimateFee.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -36,42 +35,42 @@ class EstimateFee {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "Transfer") {
+            if (typeof instance === "EstimateFeeTransfer") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                Transfer.validateJSON(instance); // throw an exception if no match
-                // create Transfer from JS object
-                this.actualInstance = Transfer.constructFromObject(instance);
+                EstimateFeeTransfer.validateJSON(instance); // throw an exception if no match
+                // create EstimateFeeTransfer from JS object
+                this.actualInstance = EstimateFeeTransfer.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into Transfer
-            errorMessages.push("Failed to construct Transfer: " + err)
+            // json data failed to deserialize into EstimateFeeTransfer
+            errorMessages.push("Failed to construct EstimateFeeTransfer: " + err)
         }
 
         try {
-            if (typeof instance === "ContractCall") {
+            if (typeof instance === "EstimateFeeContractCall") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                ContractCall.validateJSON(instance); // throw an exception if no match
-                // create ContractCall from JS object
-                this.actualInstance = ContractCall.constructFromObject(instance);
+                EstimateFeeContractCall.validateJSON(instance); // throw an exception if no match
+                // create EstimateFeeContractCall from JS object
+                this.actualInstance = EstimateFeeContractCall.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into ContractCall
-            errorMessages.push("Failed to construct ContractCall: " + err)
+            // json data failed to deserialize into EstimateFeeContractCall
+            errorMessages.push("Failed to construct EstimateFeeContractCall: " + err)
         }
 
         if (match > 1) {
-            throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas ContractCall, Transfer. Input: " + JSON.stringify(instance));
+            throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas EstimateFeeContractCall, EstimateFeeTransfer. Input: " + JSON.stringify(instance));
         } else if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
-            throw new Error("No match found constructing `EstimateFee` with oneOf schemas ContractCall, Transfer. Details: " +
+            throw new Error("No match found constructing `EstimateFee` with oneOf schemas EstimateFeeContractCall, EstimateFeeTransfer. Details: " +
                             errorMessages.join(", "));
         } else { // only 1 match
             // the input is valid
@@ -90,16 +89,16 @@ class EstimateFee {
     }
 
     /**
-     * Gets the actual instance, which can be <code>ContractCall</code>, <code>Transfer</code>.
-     * @return {(module:model/ContractCall|module:model/Transfer)} The actual instance.
+     * Gets the actual instance, which can be <code>EstimateFeeContractCall</code>, <code>EstimateFeeTransfer</code>.
+     * @return {(module:model/EstimateFeeContractCall|module:model/EstimateFeeTransfer)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>ContractCall</code>, <code>Transfer</code>.
-     * @param {(module:model/ContractCall|module:model/Transfer)} obj The actual instance.
+     * Sets the actual instance, which can be <code>EstimateFeeContractCall</code>, <code>EstimateFeeTransfer</code>.
+     * @param {(module:model/EstimateFeeContractCall|module:model/EstimateFeeTransfer)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = EstimateFee.constructFromObject(obj).getActualInstance();
@@ -124,12 +123,13 @@ class EstimateFee {
 }
 
 /**
- * Unique id of the request.
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
 EstimateFee.prototype['request_id'] = undefined;
 
 /**
+ * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
  * @member {module:model/EstimateFee.RequestTypeEnum} request_type
  */
 EstimateFee.prototype['request_type'] = undefined;
@@ -140,41 +140,24 @@ EstimateFee.prototype['request_type'] = undefined;
 EstimateFee.prototype['source'] = undefined;
 
 /**
- * The token ID.
+ * The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation.
  * @member {String} token_id
  */
 EstimateFee.prototype['token_id'] = undefined;
 
 /**
- * @member {module:model/ContractCallDestination} destination
+ * @member {module:model/EstimateFeeContractCallDestination} destination
  */
 EstimateFee.prototype['destination'] = undefined;
 
 /**
- * The category names for transfer.
- * @member {Array.<String>} category_names
- */
-EstimateFee.prototype['category_names'] = undefined;
-
-/**
- * The description for transfer.
- * @member {String} description
- */
-EstimateFee.prototype['description'] = undefined;
-
-/**
- * @member {module:model/TransactionFee} fee
- */
-EstimateFee.prototype['fee'] = undefined;
-
-/**
- * The blockchain on which the token operates.
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFee.prototype['chain_id'] = undefined;
 
 
-EstimateFee.OneOf = ["ContractCall", "Transfer"];
+EstimateFee.OneOf = ["EstimateFeeContractCall", "EstimateFeeTransfer"];
 
 export default EstimateFee;
 

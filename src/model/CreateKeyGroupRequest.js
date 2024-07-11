@@ -24,8 +24,8 @@ class CreateKeyGroupRequest {
      * Constructs a new <code>CreateKeyGroupRequest</code>.
      * @alias module:model/CreateKeyGroupRequest
      * @param groupType {module:model/KeyGroupType} 
-     * @param nodeCount {Number} The count of tss node of the key group
-     * @param threshold {Number} The threshold number of tss node required for signature
+     * @param nodeCount {Number} The number of key share holders in this key share group.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
+     * @param threshold {Number} The number of key share holders required to sign an operation.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
      * @param keyHolders {Array.<module:model/CreateKeyGroupRequestKeyHoldersInner>} 
      */
     constructor(groupType, nodeCount, threshold, keyHolders) { 
@@ -109,13 +109,13 @@ CreateKeyGroupRequest.RequiredProperties = ["group_type", "node_count", "thresho
 CreateKeyGroupRequest.prototype['group_type'] = undefined;
 
 /**
- * The count of tss node of the key group
+ * The number of key share holders in this key share group.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
  * @member {Number} node_count
  */
 CreateKeyGroupRequest.prototype['node_count'] = undefined;
 
 /**
- * The threshold number of tss node required for signature
+ * The number of key share holders required to sign an operation.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
  * @member {Number} threshold
  */
 CreateKeyGroupRequest.prototype['threshold'] = undefined;

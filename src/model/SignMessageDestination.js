@@ -20,6 +20,7 @@ import ApiClient from '../ApiClient';
 class SignMessageDestination {
     /**
      * Constructs a new <code>SignMessageDestination</code>.
+     * The information about the transaction destination.
      * @alias module:model/SignMessageDestination
      */
     constructor() { 
@@ -50,7 +51,7 @@ class SignMessageDestination {
                 obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
             if (data.hasOwnProperty('structured_data')) {
-                obj['structured_data'] = ApiClient.convertToType(data['structured_data'], 'String');
+                obj['structured_data'] = ApiClient.convertToType(data['structured_data'], {'String': Object});
             }
         }
         return obj;
@@ -66,10 +67,6 @@ class SignMessageDestination {
         if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
             throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
         }
-        // ensure the json data is a string
-        if (data['structured_data'] && !(typeof data['structured_data'] === 'string' || data['structured_data'] instanceof String)) {
-            throw new Error("Expected the field `structured_data` to be a primitive type in the JSON string but got " + data['structured_data']);
-        }
 
         return true;
     }
@@ -80,14 +77,14 @@ class SignMessageDestination {
 
 
 /**
- * Raw data to be signed, Base 64 encoded
+ * The raw data of the message to be signed, encoded in Base64 format.
  * @member {String} message
  */
 SignMessageDestination.prototype['message'] = undefined;
 
 /**
- * Structured data to be signed, JSON encoded
- * @member {String} structured_data
+ * The structured data of the message to be signed, encoded in JSON format.
+ * @member {Object.<String, Object>} structured_data
  */
 SignMessageDestination.prototype['structured_data'] = undefined;
 

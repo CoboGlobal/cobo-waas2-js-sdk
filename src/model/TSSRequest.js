@@ -22,7 +22,7 @@ import TSSRequestType from './TSSRequestType';
 class TSSRequest {
     /**
      * Constructs a new <code>TSSRequest</code>.
-     * The data for mpc tss request information.
+     * The data for the TSS request information.
      * @alias module:model/TSSRequest
      */
     constructor() { 
@@ -82,7 +82,7 @@ class TSSRequest {
 
 
 /**
- * Unique id of the tss request.
+ * The TSS request ID.
  * @member {String} id
  */
 TSSRequest.prototype['id'] = undefined;

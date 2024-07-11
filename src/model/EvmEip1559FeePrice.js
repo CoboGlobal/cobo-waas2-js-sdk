@@ -22,16 +22,14 @@ import FeeType from './FeeType';
 class EvmEip1559FeePrice {
     /**
      * Constructs a new <code>EvmEip1559FeePrice</code>.
-     * The transaction fee when using the EIP 1669 method.
+     * The transaction fee price based on the EIP-1559 fee model.
      * @alias module:model/EvmEip1559FeePrice
-     * @implements module:model/EvmEip1559FeeBasePrice
-     * @param maxPriorityFee {String} The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
-     * @param baseFee {String} The base fee of chain.
      * @param feeType {module:model/FeeType} 
+     * @param recommended {module:model/EvmEip1559FeeBasePrice} 
      */
-    constructor(maxPriorityFee, baseFee, feeType) { 
-        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);
-        EvmEip1559FeePrice.initialize(this, maxPriorityFee, baseFee, feeType);
+    constructor(feeType, recommended) { 
+        
+        EvmEip1559FeePrice.initialize(this, feeType, recommended);
     }
 
     /**
@@ -39,10 +37,9 @@ class EvmEip1559FeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxPriorityFee, baseFee, feeType) { 
-        obj['max_priority_fee'] = maxPriorityFee;
-        obj['base_fee'] = baseFee;
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -55,19 +52,21 @@ class EvmEip1559FeePrice {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new EvmEip1559FeePrice();
-            EvmEip1559FeeBasePrice.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
-            if (data.hasOwnProperty('max_priority_fee')) {
-                obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'String');
-            }
-            if (data.hasOwnProperty('base_fee')) {
-                obj['base_fee'] = ApiClient.convertToType(data['base_fee'], 'String');
-            }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
+            }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
+            if (data.hasOwnProperty('slow')) {
+                obj['slow'] = EvmEip1559FeeBasePrice.constructFromObject(data['slow']);
+            }
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = EvmEip1559FeeBasePrice.constructFromObject(data['recommended']);
+            }
+            if (data.hasOwnProperty('fast')) {
+                obj['fast'] = EvmEip1559FeeBasePrice.constructFromObject(data['fast']);
             }
         }
         return obj;
@@ -86,16 +85,20 @@ class EvmEip1559FeePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // ensure the json data is a string
-        if (data['max_priority_fee'] && !(typeof data['max_priority_fee'] === 'string' || data['max_priority_fee'] instanceof String)) {
-            throw new Error("Expected the field `max_priority_fee` to be a primitive type in the JSON string but got " + data['max_priority_fee']);
+        // validate the optional field `slow`
+        if (data['slow']) { // data not null
+          EvmEip1559FeeBasePrice.validateJSON(data['slow']);
         }
-        // ensure the json data is a string
-        if (data['base_fee'] && !(typeof data['base_fee'] === 'string' || data['base_fee'] instanceof String)) {
-            throw new Error("Expected the field `base_fee` to be a primitive type in the JSON string but got " + data['base_fee']);
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          EvmEip1559FeeBasePrice.validateJSON(data['recommended']);
+        }
+        // validate the optional field `fast`
+        if (data['fast']) { // data not null
+          EvmEip1559FeeBasePrice.validateJSON(data['fast']);
         }
 
         return true;
@@ -104,48 +107,35 @@ class EvmEip1559FeePrice {
 
 }
 
-EvmEip1559FeePrice.RequiredProperties = ["max_priority_fee", "base_fee", "fee_type"];
-
-/**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmEip1559FeePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
- * @member {String} max_priority_fee
- */
-EvmEip1559FeePrice.prototype['max_priority_fee'] = undefined;
-
-/**
- * The base fee of chain.
- * @member {String} base_fee
- */
-EvmEip1559FeePrice.prototype['base_fee'] = undefined;
+EvmEip1559FeePrice.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
  */
 EvmEip1559FeePrice.prototype['fee_type'] = undefined;
 
-
-// Implement EvmEip1559FeeBasePrice interface:
 /**
  * The token ID of the transaction fee.
- * @member {String} fee_token_id
+ * @member {String} token_id
  */
-EvmEip1559FeeBasePrice.prototype['fee_token_id'] = undefined;
+EvmEip1559FeePrice.prototype['token_id'] = undefined;
+
 /**
- * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
- * @member {String} max_priority_fee
+ * @member {module:model/EvmEip1559FeeBasePrice} slow
  */
-EvmEip1559FeeBasePrice.prototype['max_priority_fee'] = undefined;
+EvmEip1559FeePrice.prototype['slow'] = undefined;
+
 /**
- * The base fee of chain.
- * @member {String} base_fee
+ * @member {module:model/EvmEip1559FeeBasePrice} recommended
  */
-EvmEip1559FeeBasePrice.prototype['base_fee'] = undefined;
+EvmEip1559FeePrice.prototype['recommended'] = undefined;
+
+/**
+ * @member {module:model/EvmEip1559FeeBasePrice} fast
+ */
+EvmEip1559FeePrice.prototype['fast'] = undefined;
+
+
 
 
 

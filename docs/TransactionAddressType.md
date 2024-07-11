@@ -15,7 +15,7 @@
 
 * `ExchangeAccount` (value: `"ExchangeAccount"`)
 
-* `GasStation` (value: `"GasStation"`)
+* `FeeStation` (value: `"FeeStation"`)
 
 * `ExternalAddress` (value: `"ExternalAddress"`)
 

@@ -20,15 +20,15 @@ import ApiClient from '../ApiClient';
 class BaseContractCallSource {
     /**
      * Constructs a new <code>BaseContractCallSource</code>.
-     * The base data for contract call source.
+     * The information about the transaction source.
      * @alias module:model/BaseContractCallSource
-     * @param sourceType {module:model/BaseContractCallSource.SourceTypeEnum} 
-     * @param walletId {String} Unique id of the wallet to initiate contract call from.
-     * @param addressStr {String} From address
+     * @param sourceType {module:model/BaseContractCallSource.SourceTypeEnum} The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      */
-    constructor(sourceType, walletId, addressStr) { 
+    constructor(sourceType, walletId, address) { 
         
-        BaseContractCallSource.initialize(this, sourceType, walletId, addressStr);
+        BaseContractCallSource.initialize(this, sourceType, walletId, address);
     }
 
     /**
@@ -36,10 +36,10 @@ class BaseContractCallSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr) { 
+    static initialize(obj, sourceType, walletId, address) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
+        obj['address'] = address;
     }
 
     /**
@@ -59,8 +59,8 @@ class BaseContractCallSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
         }
         return obj;
@@ -87,8 +87,8 @@ class BaseContractCallSource {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
 
         return true;
@@ -97,24 +97,25 @@ class BaseContractCallSource {
 
 }
 
-BaseContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address_str"];
+BaseContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/BaseContractCallSource.SourceTypeEnum} source_type
  */
 BaseContractCallSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseContractCallSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-BaseContractCallSource.prototype['address_str'] = undefined;
+BaseContractCallSource.prototype['address'] = undefined;
 
 
 

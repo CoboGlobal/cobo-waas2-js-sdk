@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique id of the project | [optional] 
-**orgId** | **String** | Unique id of org | [optional] 
-**name** | **String** |  | [optional] 
-**nodeCount** | **Number** | The count of tss node of the project | [optional] 
-**threshold** | **Number** | The threshold number of project required for signature | [optional] 
-**createTimestamp** | **Number** | The create time the vault. | [optional] 
+**id** | **String** | The project ID. | [optional] 
+**orgId** | **String** | The [Organization](https://manuals.cobo.com/en/portal/organization/introduction) ID. | [optional] 
+**name** | **String** | The project name. | [optional] 
+**nodeCount** | **Number** | The number of key share holders in the project. | [optional] 
+**threshold** | **Number** | The number of key share holders required to sign an operation in the project. | [optional] 
+**createTimestamp** | **Number** | The project&#39;s creation time in Unix timestamp format, measured in milliseconds. | [optional] 
 
 

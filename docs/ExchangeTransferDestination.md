@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinationType** | [**TransferDestinationType**](TransferDestinationType.md) |  | 
-**walletId** | **String** | Unique id of the wallet to transfer to. | 
-**subWalletId** | **String** | Exchange trading account or any sub wallet info for transfer. | 
-**amount** | **String** | Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5)  | [optional] 
+**walletId** | **String** | The wallet ID. | 
+**subWalletId** | **String** | The exchange trading account or the sub-wallet ID. | 
+**amount** | **String** | The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is &#x60;1.5&#x60;.  | [optional] 
 
 

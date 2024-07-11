@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateTssRequestRequestDetailParams);
     });
 
-    it('should have the property usedNodeIds (base name: "used_node_ids")', function() {
-      // uncomment below and update the code to test the property usedNodeIds
+    it('should have the property nodeIds (base name: "node_ids")', function() {
+      // uncomment below and update the code to test the property nodeIds
       //var instance = new CoboWaas2JsApi.CreateTssRequestRequestDetailParams();
       //expect(instance).to.be();
     });

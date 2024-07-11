@@ -59,12 +59,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property requestType (base name: "request_type")', function() {
-      // uncomment below and update the code to test the property requestType
-      //var instance = new CoboWaas2JsApi.Transfer();
-      //expect(instance).to.be();
-    });
-
     it('should have the property source (base name: "source")', function() {
       // uncomment below and update the code to test the property source
       //var instance = new CoboWaas2JsApi.Transfer();

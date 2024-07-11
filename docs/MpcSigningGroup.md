@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usedKeyGroupId** | **String** | Unique id of the using key group. | [optional] 
-**usedNodeIds** | **[String]** |  | [optional] 
+**usedKeyGroupId** | **String** | The ID of the Signing Group. | [optional] 
+**usedNodeIds** | **[String]** | The ID of the TSS Nodes that are required to participate in the signature. | [optional] 
 
 

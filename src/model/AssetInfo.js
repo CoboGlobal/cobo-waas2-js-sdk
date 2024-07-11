@@ -22,7 +22,7 @@ class AssetInfo {
      * Constructs a new <code>AssetInfo</code>.
      * The asset information.
      * @alias module:model/AssetInfo
-     * @param assetId {String} The asset ID.
+     * @param assetId {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
      */
     constructor(assetId) { 
         
@@ -103,7 +103,7 @@ class AssetInfo {
 AssetInfo.RequiredProperties = ["asset_id"];
 
 /**
- * The asset ID.
+ * (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
  * @member {String} asset_id
  */
 AssetInfo.prototype['asset_id'] = undefined;

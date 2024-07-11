@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requestId** | **String** | Unique id of the request. | [optional] 
-**transactionId** | **String** | The transaction id of of the request. | [optional] 
-**status** | [**TransactionStatus**](TransactionStatus.md) |  | [optional] 
+**requestId** | **String** | The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization. | 
+**transactionId** | **String** | The transaction ID. | 
+**status** | [**TransactionStatus**](TransactionStatus.md) |  | 
 
 

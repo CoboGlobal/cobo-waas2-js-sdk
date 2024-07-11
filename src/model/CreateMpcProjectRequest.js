@@ -21,12 +21,13 @@ class CreateMpcProjectRequest {
     /**
      * Constructs a new <code>CreateMpcProjectRequest</code>.
      * @alias module:model/CreateMpcProjectRequest
-     * @param nodeCount {Number} Number of tss nodes in the key group
-     * @param threshold {Number} The threshold number of tss node required for signature
+     * @param name {String} The project name.
+     * @param nodeCount {Number} The number of key share holders in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
+     * @param threshold {Number} The number of key share holders required to sign an operation in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
      */
-    constructor(nodeCount, threshold) { 
+    constructor(name, nodeCount, threshold) { 
         
-        CreateMpcProjectRequest.initialize(this, nodeCount, threshold);
+        CreateMpcProjectRequest.initialize(this, name, nodeCount, threshold);
     }
 
     /**
@@ -34,7 +35,8 @@ class CreateMpcProjectRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, nodeCount, threshold) { 
+    static initialize(obj, name, nodeCount, threshold) { 
+        obj['name'] = name;
         obj['node_count'] = nodeCount;
         obj['threshold'] = threshold;
     }
@@ -86,22 +88,22 @@ class CreateMpcProjectRequest {
 
 }
 
-CreateMpcProjectRequest.RequiredProperties = ["node_count", "threshold"];
+CreateMpcProjectRequest.RequiredProperties = ["name", "node_count", "threshold"];
 
 /**
- * The name of the mpc project.
+ * The project name.
  * @member {String} name
  */
 CreateMpcProjectRequest.prototype['name'] = undefined;
 
 /**
- * Number of tss nodes in the key group
+ * The number of key share holders in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
  * @member {Number} node_count
  */
 CreateMpcProjectRequest.prototype['node_count'] = undefined;
 
 /**
- * The threshold number of tss node required for signature
+ * The number of key share holders required to sign an operation in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
  * @member {Number} threshold
  */
 CreateMpcProjectRequest.prototype['threshold'] = undefined;

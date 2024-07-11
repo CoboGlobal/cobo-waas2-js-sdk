@@ -53,12 +53,6 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EvmLegacyTransactionFee);
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
-      //var instance = new CoboWaas2JsApi.EvmLegacyTransactionFee();
-      //expect(instance).to.be();
-    });
-
     it('should have the property gasPrice (base name: "gas_price")', function() {
       // uncomment below and update the code to test the property gasPrice
       //var instance = new CoboWaas2JsApi.EvmLegacyTransactionFee();
@@ -73,6 +67,12 @@
 
     it('should have the property feeType (base name: "fee_type")', function() {
       // uncomment below and update the code to test the property feeType
+      //var instance = new CoboWaas2JsApi.EvmLegacyTransactionFee();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
       //var instance = new CoboWaas2JsApi.EvmLegacyTransactionFee();
       //expect(instance).to.be();
     });

@@ -39,7 +39,7 @@ class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://api.cobo.com/v2
+         * @default https://api.dev.cobo.com/v2
          */
         this.basePath = env.basePath
         this.privateKey = privateKey
@@ -49,7 +49,8 @@ class ApiClient {
          * @type {Array.<String>}
          */
         this.authentications = {
-            'CoboAuth': {type: 'apiKey', 'in': 'header', name: 'BIZ-API-KEY'}
+            'CoboAuth': {type: 'apiKey', 'in': 'header', name: 'BIZ-API-KEY'},
+            'OAuth2': {type: 'oauth2'}
         }
 
         /**
@@ -611,12 +612,12 @@ class ApiClient {
     hostSettings() {
         return [
             {
-              'url': "https://api.cobo.com/v2",
-              'description': "Production environment",
-            },
-            {
               'url': "https://api.dev.cobo.com/v2",
               'description': "Development environment",
+            },
+            {
+              'url': "https://api.cobo.com/v2",
+              'description': "Production environment",
             }
       ];
     }

@@ -21,7 +21,7 @@ class ModifyMpcVaultRequest {
     /**
      * Constructs a new <code>ModifyMpcVaultRequest</code>.
      * @alias module:model/ModifyMpcVaultRequest
-     * @param name {String} The new name of vault
+     * @param name {String} The new name of the vault.
      */
     constructor(name) { 
         
@@ -81,7 +81,7 @@ class ModifyMpcVaultRequest {
 ModifyMpcVaultRequest.RequiredProperties = ["name"];
 
 /**
- * The new name of vault
+ * The new name of the vault.
  * @member {String} name
  */
 ModifyMpcVaultRequest.prototype['name'] = undefined;

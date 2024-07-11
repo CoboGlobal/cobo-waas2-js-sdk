@@ -11,11 +11,11 @@
  */
 
 import ApiClient from '../ApiClient';
-import EvmEip1559TransactionFee from './EvmEip1559TransactionFee';
-import EvmLegacyTransactionFee from './EvmLegacyTransactionFee';
 import FeeType from './FeeType';
-import FixedFee from './FixedFee';
-import UtxoTransactionFee from './UtxoTransactionFee';
+import TransactionEvmEip1559Fee from './TransactionEvmEip1559Fee';
+import TransactionEvmLegacyFee from './TransactionEvmLegacyFee';
+import TransactionFixedFee from './TransactionFixedFee';
+import TransactionUtxoFee from './TransactionUtxoFee';
 
 /**
  * The TransactionFee model module.
@@ -26,7 +26,7 @@ class TransactionFee {
     /**
      * Constructs a new <code>TransactionFee</code>.
      * @alias module:model/TransactionFee
-     * @param {(module:model/EvmEip1559TransactionFee|module:model/EvmLegacyTransactionFee|module:model/FixedFee|module:model/UtxoTransactionFee)} instance The actual instance to initialize TransactionFee.
+     * @param {(module:model/TransactionEvmEip1559Fee|module:model/TransactionEvmLegacyFee|module:model/TransactionFixedFee|module:model/TransactionUtxoFee)} instance The actual instance to initialize TransactionFee.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -36,74 +36,74 @@ class TransactionFee {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EvmEip1559TransactionFee") {
+            if (typeof instance === "TransactionEvmEip1559Fee") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                EvmEip1559TransactionFee.validateJSON(instance); // throw an exception if no match
-                // create EvmEip1559TransactionFee from JS object
-                this.actualInstance = EvmEip1559TransactionFee.constructFromObject(instance);
+                TransactionEvmEip1559Fee.validateJSON(instance); // throw an exception if no match
+                // create TransactionEvmEip1559Fee from JS object
+                this.actualInstance = TransactionEvmEip1559Fee.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into EvmEip1559TransactionFee
-            errorMessages.push("Failed to construct EvmEip1559TransactionFee: " + err)
+            // json data failed to deserialize into TransactionEvmEip1559Fee
+            errorMessages.push("Failed to construct TransactionEvmEip1559Fee: " + err)
         }
 
         try {
-            if (typeof instance === "EvmLegacyTransactionFee") {
+            if (typeof instance === "TransactionEvmLegacyFee") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                EvmLegacyTransactionFee.validateJSON(instance); // throw an exception if no match
-                // create EvmLegacyTransactionFee from JS object
-                this.actualInstance = EvmLegacyTransactionFee.constructFromObject(instance);
+                TransactionEvmLegacyFee.validateJSON(instance); // throw an exception if no match
+                // create TransactionEvmLegacyFee from JS object
+                this.actualInstance = TransactionEvmLegacyFee.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into EvmLegacyTransactionFee
-            errorMessages.push("Failed to construct EvmLegacyTransactionFee: " + err)
+            // json data failed to deserialize into TransactionEvmLegacyFee
+            errorMessages.push("Failed to construct TransactionEvmLegacyFee: " + err)
         }
 
         try {
-            if (typeof instance === "UtxoTransactionFee") {
+            if (typeof instance === "TransactionUtxoFee") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                UtxoTransactionFee.validateJSON(instance); // throw an exception if no match
-                // create UtxoTransactionFee from JS object
-                this.actualInstance = UtxoTransactionFee.constructFromObject(instance);
+                TransactionUtxoFee.validateJSON(instance); // throw an exception if no match
+                // create TransactionUtxoFee from JS object
+                this.actualInstance = TransactionUtxoFee.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into UtxoTransactionFee
-            errorMessages.push("Failed to construct UtxoTransactionFee: " + err)
+            // json data failed to deserialize into TransactionUtxoFee
+            errorMessages.push("Failed to construct TransactionUtxoFee: " + err)
         }
 
         try {
-            if (typeof instance === "FixedFee") {
+            if (typeof instance === "TransactionFixedFee") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                FixedFee.validateJSON(instance); // throw an exception if no match
-                // create FixedFee from JS object
-                this.actualInstance = FixedFee.constructFromObject(instance);
+                TransactionFixedFee.validateJSON(instance); // throw an exception if no match
+                // create TransactionFixedFee from JS object
+                this.actualInstance = TransactionFixedFee.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into FixedFee
-            errorMessages.push("Failed to construct FixedFee: " + err)
+            // json data failed to deserialize into TransactionFixedFee
+            errorMessages.push("Failed to construct TransactionFixedFee: " + err)
         }
 
         if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransactionFee` with oneOf schemas EvmEip1559TransactionFee, EvmLegacyTransactionFee, FixedFee, UtxoTransactionFee. Input: " + JSON.stringify(instance));
+            throw new Error("Multiple matches found constructing `TransactionFee` with oneOf schemas TransactionEvmEip1559Fee, TransactionEvmLegacyFee, TransactionFixedFee, TransactionUtxoFee. Input: " + JSON.stringify(instance));
         } else if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
-            throw new Error("No match found constructing `TransactionFee` with oneOf schemas EvmEip1559TransactionFee, EvmLegacyTransactionFee, FixedFee, UtxoTransactionFee. Details: " +
+            throw new Error("No match found constructing `TransactionFee` with oneOf schemas TransactionEvmEip1559Fee, TransactionEvmLegacyFee, TransactionFixedFee, TransactionUtxoFee. Details: " +
                             errorMessages.join(", "));
         } else { // only 1 match
             // the input is valid
@@ -122,16 +122,16 @@ class TransactionFee {
     }
 
     /**
-     * Gets the actual instance, which can be <code>EvmEip1559TransactionFee</code>, <code>EvmLegacyTransactionFee</code>, <code>FixedFee</code>, <code>UtxoTransactionFee</code>.
-     * @return {(module:model/EvmEip1559TransactionFee|module:model/EvmLegacyTransactionFee|module:model/FixedFee|module:model/UtxoTransactionFee)} The actual instance.
+     * Gets the actual instance, which can be <code>TransactionEvmEip1559Fee</code>, <code>TransactionEvmLegacyFee</code>, <code>TransactionFixedFee</code>, <code>TransactionUtxoFee</code>.
+     * @return {(module:model/TransactionEvmEip1559Fee|module:model/TransactionEvmLegacyFee|module:model/TransactionFixedFee|module:model/TransactionUtxoFee)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>EvmEip1559TransactionFee</code>, <code>EvmLegacyTransactionFee</code>, <code>FixedFee</code>, <code>UtxoTransactionFee</code>.
-     * @param {(module:model/EvmEip1559TransactionFee|module:model/EvmLegacyTransactionFee|module:model/FixedFee|module:model/UtxoTransactionFee)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TransactionEvmEip1559Fee</code>, <code>TransactionEvmLegacyFee</code>, <code>TransactionFixedFee</code>, <code>TransactionUtxoFee</code>.
+     * @param {(module:model/TransactionEvmEip1559Fee|module:model/TransactionEvmLegacyFee|module:model/TransactionFixedFee|module:model/TransactionUtxoFee)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TransactionFee.constructFromObject(obj).getActualInstance();
@@ -161,50 +161,62 @@ class TransactionFee {
 TransactionFee.prototype['fee_type'] = undefined;
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
+ * The transaction fee.
+ * @member {String} fee_used
  */
-TransactionFee.prototype['fee_token_id'] = undefined;
+TransactionFee.prototype['fee_used'] = undefined;
 
 /**
- * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
+ * The gas units used in the transaction.
+ * @member {String} gas_used
+ */
+TransactionFee.prototype['gas_used'] = undefined;
+
+/**
+ * The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 TransactionFee.prototype['max_priority_fee'] = undefined;
 
 /**
- * The base fee of chain.
+ * The base fee price of the chain, in wei.
  * @member {String} base_fee
  */
 TransactionFee.prototype['base_fee'] = undefined;
 
 /**
- * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
+ * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
  * @member {String} gas_limit
  * @default '21000'
  */
 TransactionFee.prototype['gas_limit'] = '21000';
 
 /**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+ * The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 TransactionFee.prototype['gas_price'] = undefined;
 
 /**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+ * The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 TransactionFee.prototype['fee_rate'] = undefined;
 
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 TransactionFee.prototype['max_fee_amount'] = undefined;
 
+/**
+ * The token ID of the transaction fee.
+ * @member {String} token_id
+ */
+TransactionFee.prototype['token_id'] = undefined;
 
-TransactionFee.OneOf = ["EvmEip1559TransactionFee", "EvmLegacyTransactionFee", "FixedFee", "UtxoTransactionFee"];
+
+TransactionFee.OneOf = ["TransactionEvmEip1559Fee", "TransactionEvmLegacyFee", "TransactionFixedFee", "TransactionUtxoFee"];
 
 export default TransactionFee;
 

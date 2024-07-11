@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | Unique id of the wallet to sign message. | [optional] 
-**addressStr** | **String** | From address | [optional] 
+**walletId** | **String** | The wallet ID. | 
+**address** | **String** | The wallet address. | 
 **mpcUsedKeyGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
 
 

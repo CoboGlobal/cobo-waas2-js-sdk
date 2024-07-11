@@ -85,11 +85,17 @@ class CreateExchangeWallet {
             if (data.hasOwnProperty('passphrase')) {
                 obj['passphrase'] = ApiClient.convertToType(data['passphrase'], 'String');
             }
+            if (data.hasOwnProperty('memo')) {
+                obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
+            }
+            if (data.hasOwnProperty('account_identify')) {
+                obj['account_identify'] = ApiClient.convertToType(data['account_identify'], 'String');
+            }
             if (data.hasOwnProperty('ga_code')) {
                 obj['ga_code'] = ApiClient.convertToType(data['ga_code'], 'String');
             }
-            if (data.hasOwnProperty('sub_account_ids')) {
-                obj['sub_account_ids'] = ApiClient.convertToType(data['sub_account_ids'], ['String']);
+            if (data.hasOwnProperty('main_wallet_id')) {
+                obj['main_wallet_id'] = ApiClient.convertToType(data['main_wallet_id'], 'String');
             }
         }
         return obj;
@@ -124,12 +130,20 @@ class CreateExchangeWallet {
             throw new Error("Expected the field `passphrase` to be a primitive type in the JSON string but got " + data['passphrase']);
         }
         // ensure the json data is a string
+        if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
+            throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        }
+        // ensure the json data is a string
+        if (data['account_identify'] && !(typeof data['account_identify'] === 'string' || data['account_identify'] instanceof String)) {
+            throw new Error("Expected the field `account_identify` to be a primitive type in the JSON string but got " + data['account_identify']);
+        }
+        // ensure the json data is a string
         if (data['ga_code'] && !(typeof data['ga_code'] === 'string' || data['ga_code'] instanceof String)) {
             throw new Error("Expected the field `ga_code` to be a primitive type in the JSON string but got " + data['ga_code']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['sub_account_ids'])) {
-            throw new Error("Expected the field `sub_account_ids` to be an array in the JSON data but got " + data['sub_account_ids']);
+        // ensure the json data is a string
+        if (data['main_wallet_id'] && !(typeof data['main_wallet_id'] === 'string' || data['main_wallet_id'] instanceof String)) {
+            throw new Error("Expected the field `main_wallet_id` to be a primitive type in the JSON string but got " + data['main_wallet_id']);
         }
 
         return true;
@@ -180,16 +194,28 @@ CreateExchangeWallet.prototype['secret'] = undefined;
 CreateExchangeWallet.prototype['passphrase'] = undefined;
 
 /**
+ * The API memo of your exchange account.
+ * @member {String} memo
+ */
+CreateExchangeWallet.prototype['memo'] = undefined;
+
+/**
+ * The account identifier of your exchange account. - For Binance, this is the user's email address (e.g., 'xxx@cobo.com'). - For OKX, this is the user's account username. 
+ * @member {String} account_identify
+ */
+CreateExchangeWallet.prototype['account_identify'] = undefined;
+
+/**
  * The GA code for the exchange.
  * @member {String} ga_code
  */
 CreateExchangeWallet.prototype['ga_code'] = undefined;
 
 /**
- * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
- * @member {Array.<String>} sub_account_ids
+ * The ID of the Exchange Wallet (Main Account).
+ * @member {String} main_wallet_id
  */
-CreateExchangeWallet.prototype['sub_account_ids'] = undefined;
+CreateExchangeWallet.prototype['main_wallet_id'] = undefined;
 
 
 // Implement CreateCustodialWallet interface:

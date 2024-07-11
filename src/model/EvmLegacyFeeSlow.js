@@ -25,11 +25,12 @@ class EvmLegacyFeeSlow {
      * @alias module:model/EvmLegacyFeeSlow
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData
-     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gasPrice {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
      */
-    constructor(gasPrice) { 
-        EvmLegacyFeeBasePrice.initialize(this, gasPrice);FeeData.initialize(this);
-        EvmLegacyFeeSlow.initialize(this, gasPrice);
+    constructor(gasPrice, gasLimit) { 
+        EvmLegacyFeeBasePrice.initialize(this, gasPrice);FeeData.initialize(this, gasLimit);
+        EvmLegacyFeeSlow.initialize(this, gasPrice, gasLimit);
     }
 
     /**
@@ -37,8 +38,9 @@ class EvmLegacyFeeSlow {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasPrice) { 
+    static initialize(obj, gasPrice, gasLimit) { 
         obj['gas_price'] = gasPrice;
+        obj['gas_limit'] = gasLimit || '21000';
     }
 
     /**
@@ -54,9 +56,6 @@ class EvmLegacyFeeSlow {
             EvmLegacyFeeBasePrice.constructFromObject(data, obj);
             FeeData.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
             if (data.hasOwnProperty('gas_price')) {
                 obj['gas_price'] = ApiClient.convertToType(data['gas_price'], 'String');
             }
@@ -80,10 +79,6 @@ class EvmLegacyFeeSlow {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
-        }
-        // ensure the json data is a string
         if (data['gas_price'] && !(typeof data['gas_price'] === 'string' || data['gas_price'] instanceof String)) {
             throw new Error("Expected the field `gas_price` to be a primitive type in the JSON string but got " + data['gas_price']);
         }
@@ -98,22 +93,16 @@ class EvmLegacyFeeSlow {
 
 }
 
-EvmLegacyFeeSlow.RequiredProperties = ["gas_price"];
+EvmLegacyFeeSlow.RequiredProperties = ["gas_price", "gas_limit"];
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmLegacyFeeSlow.prototype['fee_token_id'] = undefined;
-
-/**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+ * The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeSlow.prototype['gas_price'] = undefined;
 
 /**
- * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
+ * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
  * @member {String} gas_limit
  * @default '21000'
  */
@@ -122,18 +111,13 @@ EvmLegacyFeeSlow.prototype['gas_limit'] = '21000';
 
 // Implement EvmLegacyFeeBasePrice interface:
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
-/**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+ * The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;
 // Implement FeeData interface:
 /**
- * The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units.
+ * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
  * @member {String} gas_limit
  * @default '21000'
  */

@@ -22,7 +22,7 @@ import RootPubkey from './RootPubkey';
 class MPCVault {
     /**
      * Constructs a new <code>MPCVault</code>.
-     * The data for mpc vault information.
+     * The data for vault information.
      * @alias module:model/MPCVault
      */
     constructor() { 
@@ -102,12 +102,13 @@ class MPCVault {
 
 
 /**
- * Unique id of the vault
+ * The vault ID.
  * @member {String} id
  */
 MPCVault.prototype['id'] = undefined;
 
 /**
+ * The vault name.
  * @member {String} name
  */
 MPCVault.prototype['name'] = undefined;
@@ -123,7 +124,7 @@ MPCVault.prototype['type'] = undefined;
 MPCVault.prototype['root_pubkeys'] = undefined;
 
 /**
- * The create time the vault.
+ * The vault's creation time in Unix timestamp format, measured in milliseconds.
  * @member {Number} create_timestamp
  */
 MPCVault.prototype['create_timestamp'] = undefined;

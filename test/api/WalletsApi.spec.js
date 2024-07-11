@@ -37,10 +37,10 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('WalletsApi', function() {
-    describe('addWalletAddress', function() {
-      it('should call addWalletAddress successfully', function() {
-        //uncomment below and update the code to test addWalletAddress
-        //instance.addWalletAddress().then(function(data) {
+    describe('checkAddressValidity', function() {
+      it('should call checkAddressValidity successfully', function() {
+        //uncomment below and update the code to test checkAddressValidity
+        //instance.checkAddressValidity().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -67,10 +67,30 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getAddressValidity', function() {
-      it('should call getAddressValidity successfully', function() {
-        //uncomment below and update the code to test getAddressValidity
-        //instance.getAddressValidity().then(function(data) {
+    describe('generateWalletAddress', function() {
+      it('should call generateWalletAddress successfully', function() {
+        //uncomment below and update the code to test generateWalletAddress
+        //instance.generateWalletAddress().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getAddressById', function() {
+      it('should call getAddressById successfully', function() {
+        //uncomment below and update the code to test getAddressById
+        //instance.getAddressById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getChainById', function() {
+      it('should call getChainById successfully', function() {
+        //uncomment below and update the code to test getChainById
+        //instance.getChainById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -147,6 +167,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('getTokenById', function() {
+      it('should call getTokenById successfully', function() {
+        //uncomment below and update the code to test getTokenById
+        //instance.getTokenById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getTokens', function() {
       it('should call getTokens successfully', function() {
         //uncomment below and update the code to test getTokens
@@ -211,6 +241,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call lockSpendableList successfully', function() {
         //uncomment below and update the code to test lockSpendableList
         //instance.lockSpendableList().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('unlockSpendableList', function() {
+      it('should call unlockSpendableList successfully', function() {
+        //uncomment below and update the code to test unlockSpendableList
+        //instance.unlockSpendableList().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

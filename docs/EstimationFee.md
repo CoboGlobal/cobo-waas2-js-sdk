@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feeType** | [**FeeType**](FeeType.md) |  | 
+**tokenId** | **String** | The token ID of the transaction fee. | 
 **slow** | [**UtxoFeeSlow**](UtxoFeeSlow.md) |  | [optional] 
-**standard** | [**UtxoFeeSlow**](UtxoFeeSlow.md) |  | 
+**recommended** | [**UtxoFeeSlow**](UtxoFeeSlow.md) |  | 
 **fast** | [**UtxoFeeSlow**](UtxoFeeSlow.md) |  | [optional] 
-**feeTokenId** | **String** | The token ID of the transaction fee. | [optional] 
-**maxFeeAmount** | **String** | The maximum fee amount in fee_coin. | [optional] 
+**maxFeeAmount** | **String** | The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee. | 
 
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | The wallet id of the delegate. This is required when user initiate a transfer. | [optional] 
-**walletType** | **String** | The wallet type of the delegate. This is required when user initiate a transfer. | [optional] 
-**walletAddress** | **String** | The wallet address of the delegate. This is required when user initiate a transfer. | [optional] 
+**walletId** | **String** | The wallet ID of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}).  | [optional] 
+**walletType** | **String** | The wallet type of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}). | [optional] 
+**walletAddress** | **String** | The wallet address of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}). | [optional] 
 
 

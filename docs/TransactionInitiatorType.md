@@ -7,6 +7,8 @@
 
 * `Web` (value: `"Web"`)
 
+* `App` (value: `"App"`)
+
 * `External` (value: `"External"`)
 
 

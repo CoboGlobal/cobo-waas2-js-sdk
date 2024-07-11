@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addressStr** | **String** | Destination address | [optional] 
-**amount** | **String** | Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5)  | [optional] 
-**script** | **String** | Script of the output | [optional] 
+**address** | **String** | The destination address. | [optional] 
+**amount** | **String** | The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is &#x60;1.5&#x60;.  | [optional] 
+**script** | **String** | The script of the output. It is a programmable code fragment that defines the conditions under which the UTXO can be spent. | [optional] 
 
 

@@ -22,15 +22,14 @@ import FeeType from './FeeType';
 class EvmLegacyFeePrice {
     /**
      * Constructs a new <code>EvmLegacyFeePrice</code>.
-     * The transaction fee when using the legacy method.
+     * The transaction fee price based on the legacy fee model.
      * @alias module:model/EvmLegacyFeePrice
-     * @implements module:model/EvmLegacyFeeBasePrice
-     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      * @param feeType {module:model/FeeType} 
+     * @param recommended {module:model/EvmLegacyFeeBasePrice} 
      */
-    constructor(gasPrice, feeType) { 
-        EvmLegacyFeeBasePrice.initialize(this, gasPrice);
-        EvmLegacyFeePrice.initialize(this, gasPrice, feeType);
+    constructor(feeType, recommended) { 
+        
+        EvmLegacyFeePrice.initialize(this, feeType, recommended);
     }
 
     /**
@@ -38,9 +37,9 @@ class EvmLegacyFeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasPrice, feeType) { 
-        obj['gas_price'] = gasPrice;
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -53,16 +52,21 @@ class EvmLegacyFeePrice {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new EvmLegacyFeePrice();
-            EvmLegacyFeeBasePrice.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
-            if (data.hasOwnProperty('gas_price')) {
-                obj['gas_price'] = ApiClient.convertToType(data['gas_price'], 'String');
-            }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
+            }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
+            if (data.hasOwnProperty('slow')) {
+                obj['slow'] = EvmLegacyFeeBasePrice.constructFromObject(data['slow']);
+            }
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = EvmLegacyFeeBasePrice.constructFromObject(data['recommended']);
+            }
+            if (data.hasOwnProperty('fast')) {
+                obj['fast'] = EvmLegacyFeeBasePrice.constructFromObject(data['fast']);
             }
         }
         return obj;
@@ -81,12 +85,20 @@ class EvmLegacyFeePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // ensure the json data is a string
-        if (data['gas_price'] && !(typeof data['gas_price'] === 'string' || data['gas_price'] instanceof String)) {
-            throw new Error("Expected the field `gas_price` to be a primitive type in the JSON string but got " + data['gas_price']);
+        // validate the optional field `slow`
+        if (data['slow']) { // data not null
+          EvmLegacyFeeBasePrice.validateJSON(data['slow']);
+        }
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          EvmLegacyFeeBasePrice.validateJSON(data['recommended']);
+        }
+        // validate the optional field `fast`
+        if (data['fast']) { // data not null
+          EvmLegacyFeeBasePrice.validateJSON(data['fast']);
         }
 
         return true;
@@ -95,37 +107,35 @@ class EvmLegacyFeePrice {
 
 }
 
-EvmLegacyFeePrice.RequiredProperties = ["gas_price", "fee_type"];
-
-/**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmLegacyFeePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
- * @member {String} gas_price
- */
-EvmLegacyFeePrice.prototype['gas_price'] = undefined;
+EvmLegacyFeePrice.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
  */
 EvmLegacyFeePrice.prototype['fee_type'] = undefined;
 
-
-// Implement EvmLegacyFeeBasePrice interface:
 /**
  * The token ID of the transaction fee.
- * @member {String} fee_token_id
+ * @member {String} token_id
  */
-EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
+EvmLegacyFeePrice.prototype['token_id'] = undefined;
+
 /**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
- * @member {String} gas_price
+ * @member {module:model/EvmLegacyFeeBasePrice} slow
  */
-EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;
+EvmLegacyFeePrice.prototype['slow'] = undefined;
+
+/**
+ * @member {module:model/EvmLegacyFeeBasePrice} recommended
+ */
+EvmLegacyFeePrice.prototype['recommended'] = undefined;
+
+/**
+ * @member {module:model/EvmLegacyFeeBasePrice} fast
+ */
+EvmLegacyFeePrice.prototype['fast'] = undefined;
+
+
 
 
 

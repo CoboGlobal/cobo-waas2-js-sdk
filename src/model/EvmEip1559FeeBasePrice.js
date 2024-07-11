@@ -20,10 +20,10 @@ import ApiClient from '../ApiClient';
 class EvmEip1559FeeBasePrice {
     /**
      * Constructs a new <code>EvmEip1559FeeBasePrice</code>.
-     * The base transaction fee when using the EIP 1559 method.
+     * The transaction fee price based on the EIP-1559 fee model, which equals the base fee price plus the maximum priority fee.
      * @alias module:model/EvmEip1559FeeBasePrice
-     * @param maxPriorityFee {String} The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
-     * @param baseFee {String} The base fee of chain.
+     * @param maxPriorityFee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
+     * @param baseFee {String} The base fee price of the chain, in wei.
      */
     constructor(maxPriorityFee, baseFee) { 
         
@@ -51,9 +51,6 @@ class EvmEip1559FeeBasePrice {
         if (data) {
             obj = obj || new EvmEip1559FeeBasePrice();
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
             if (data.hasOwnProperty('max_priority_fee')) {
                 obj['max_priority_fee'] = ApiClient.convertToType(data['max_priority_fee'], 'String');
             }
@@ -77,10 +74,6 @@ class EvmEip1559FeeBasePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
-        }
-        // ensure the json data is a string
         if (data['max_priority_fee'] && !(typeof data['max_priority_fee'] === 'string' || data['max_priority_fee'] instanceof String)) {
             throw new Error("Expected the field `max_priority_fee` to be a primitive type in the JSON string but got " + data['max_priority_fee']);
         }
@@ -98,19 +91,13 @@ class EvmEip1559FeeBasePrice {
 EvmEip1559FeeBasePrice.RequiredProperties = ["max_priority_fee", "base_fee"];
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmEip1559FeeBasePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The max priority fee, in gwei. The max priority fee represents the highest amount of miner tips you are willing to pay for your transaction.
+ * The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
  * @member {String} max_priority_fee
  */
 EvmEip1559FeeBasePrice.prototype['max_priority_fee'] = undefined;
 
 /**
- * The base fee of chain.
+ * The base fee price of the chain, in wei.
  * @member {String} base_fee
  */
 EvmEip1559FeeBasePrice.prototype['base_fee'] = undefined;

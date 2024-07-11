@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[GetTokens200ResponseDataInner]**](GetTokens200ResponseDataInner.md) |  | [optional] 
+**data** | [**[ExtendedTokenInfo]**](ExtendedTokenInfo.md) |  | [optional] 
 **pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

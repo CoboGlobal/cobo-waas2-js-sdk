@@ -22,14 +22,16 @@ import FeeType from './FeeType';
 class FixedFee {
     /**
      * Constructs a new <code>FixedFee</code>.
-     * The estimated transaction fee in fee_coin.
+     * The transaction fee that you are willing to pay based on the fixed fee model for come blockchains. The fee can vary between different chains.
      * @alias module:model/FixedFee
      * @implements module:model/FeeAmount
+     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
      * @param feeType {module:model/FeeType} 
+     * @param tokenId {String} The token ID of the transaction fee.
      */
-    constructor(feeType) { 
-        FeeAmount.initialize(this);
-        FixedFee.initialize(this, feeType);
+    constructor(maxFeeAmount, feeType, tokenId) { 
+        FeeAmount.initialize(this, maxFeeAmount);
+        FixedFee.initialize(this, maxFeeAmount, feeType, tokenId);
     }
 
     /**
@@ -37,8 +39,10 @@ class FixedFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType) { 
+    static initialize(obj, maxFeeAmount, feeType, tokenId) { 
+        obj['max_fee_amount'] = maxFeeAmount;
         obj['fee_type'] = feeType;
+        obj['token_id'] = tokenId;
     }
 
     /**
@@ -59,8 +63,8 @@ class FixedFee {
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
         }
         return obj;
@@ -83,8 +87,8 @@ class FixedFee {
             throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
 
         return true;
@@ -93,10 +97,10 @@ class FixedFee {
 
 }
 
-FixedFee.RequiredProperties = ["fee_type"];
+FixedFee.RequiredProperties = ["max_fee_amount", "fee_type", "token_id"];
 
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 FixedFee.prototype['max_fee_amount'] = undefined;
@@ -108,14 +112,14 @@ FixedFee.prototype['fee_type'] = undefined;
 
 /**
  * The token ID of the transaction fee.
- * @member {String} fee_token_id
+ * @member {String} token_id
  */
-FixedFee.prototype['fee_token_id'] = undefined;
+FixedFee.prototype['token_id'] = undefined;
 
 
 // Implement FeeAmount interface:
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 FeeAmount.prototype['max_fee_amount'] = undefined;

@@ -22,8 +22,8 @@ class TokenInfo {
      * Constructs a new <code>TokenInfo</code>.
      * The token information.
      * @alias module:model/TokenInfo
-     * @param tokenId {String} The token ID.
-     * @param chainId {String} The blockchain on which the token operates.
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param chainId {String} The ID of the chain on which the token operates.
      */
     constructor(tokenId, chainId) { 
         
@@ -57,11 +57,17 @@ class TokenInfo {
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
+            if (data.hasOwnProperty('asset_id')) {
+                obj['asset_id'] = ApiClient.convertToType(data['asset_id'], 'String');
+            }
             if (data.hasOwnProperty('symbol')) {
                 obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('decimal')) {
+                obj['decimal'] = ApiClient.convertToType(data['decimal'], 'Number');
             }
             if (data.hasOwnProperty('icon_url')) {
                 obj['icon_url'] = ApiClient.convertToType(data['icon_url'], 'String');
@@ -69,8 +75,14 @@ class TokenInfo {
             if (data.hasOwnProperty('token_address')) {
                 obj['token_address'] = ApiClient.convertToType(data['token_address'], 'String');
             }
-            if (data.hasOwnProperty('asset_id')) {
-                obj['asset_id'] = ApiClient.convertToType(data['asset_id'], 'String');
+            if (data.hasOwnProperty('fee_token_id')) {
+                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
+            }
+            if (data.hasOwnProperty('can_deposit')) {
+                obj['can_deposit'] = ApiClient.convertToType(data['can_deposit'], 'Boolean');
+            }
+            if (data.hasOwnProperty('can_withdraw')) {
+                obj['can_withdraw'] = ApiClient.convertToType(data['can_withdraw'], 'Boolean');
             }
         }
         return obj;
@@ -97,12 +109,16 @@ class TokenInfo {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
+        if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
+            throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
+        }
+        // ensure the json data is a string
         if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
             throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
         }
         // ensure the json data is a string
-        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
-            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
         if (data['icon_url'] && !(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
@@ -113,8 +129,8 @@ class TokenInfo {
             throw new Error("Expected the field `token_address` to be a primitive type in the JSON string but got " + data['token_address']);
         }
         // ensure the json data is a string
-        if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
-            throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
+        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
+            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
         }
 
         return true;
@@ -126,28 +142,40 @@ class TokenInfo {
 TokenInfo.RequiredProperties = ["token_id", "chain_id"];
 
 /**
- * The token ID.
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
  * @member {String} token_id
  */
 TokenInfo.prototype['token_id'] = undefined;
 
 /**
- * The blockchain on which the token operates.
+ * The ID of the chain on which the token operates.
  * @member {String} chain_id
  */
 TokenInfo.prototype['chain_id'] = undefined;
 
 /**
- * The token symbol.
+ * (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+ * @member {String} asset_id
+ */
+TokenInfo.prototype['asset_id'] = undefined;
+
+/**
+ * The token symbol, which is the abbreviated name of a token.
  * @member {String} symbol
  */
 TokenInfo.prototype['symbol'] = undefined;
 
 /**
- * The token description.
- * @member {String} description
+ * The token name, which is the full name of a token.
+ * @member {String} name
  */
-TokenInfo.prototype['description'] = undefined;
+TokenInfo.prototype['name'] = undefined;
+
+/**
+ * The token decimal.
+ * @member {Number} decimal
+ */
+TokenInfo.prototype['decimal'] = undefined;
 
 /**
  * The URL of the token icon.
@@ -162,10 +190,22 @@ TokenInfo.prototype['icon_url'] = undefined;
 TokenInfo.prototype['token_address'] = undefined;
 
 /**
- * The asset ID, which is used to group the balances of the correponding tokens. For example, if you have $1,000 worth of ETH_USDT and $2,000 worth of TRON_USDT, the balance of your USDT assets will be $3,000.
- * @member {String} asset_id
+ * The fee token ID. A fee token is the token with which you pay transaction fees.
+ * @member {String} fee_token_id
  */
-TokenInfo.prototype['asset_id'] = undefined;
+TokenInfo.prototype['fee_token_id'] = undefined;
+
+/**
+ * Whether deposits are enabled for this token.
+ * @member {Boolean} can_deposit
+ */
+TokenInfo.prototype['can_deposit'] = undefined;
+
+/**
+ * Whether withdrawals are enabled for this token.
+ * @member {Boolean} can_withdraw
+ */
+TokenInfo.prototype['can_withdraw'] = undefined;
 
 
 

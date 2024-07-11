@@ -11,7 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import GetTokens200ResponseDataInner from './GetTokens200ResponseDataInner';
+import ExtendedTokenInfo from './ExtendedTokenInfo';
 import Pagination from './Pagination';
 
 /**
@@ -49,7 +49,7 @@ class GetTokens200Response {
             obj = obj || new GetTokens200Response();
 
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], [GetTokens200ResponseDataInner]);
+                obj['data'] = ApiClient.convertToType(data['data'], [ExtendedTokenInfo]);
             }
             if (data.hasOwnProperty('pagination')) {
                 obj['pagination'] = Pagination.constructFromObject(data['pagination']);
@@ -71,7 +71,7 @@ class GetTokens200Response {
             }
             // validate the optional field `data` (array)
             for (const item of data['data']) {
-                GetTokens200ResponseDataInner.validateJSON(item);
+                ExtendedTokenInfo.validateJSON(item);
             };
         }
         // validate the optional field `pagination`
@@ -88,7 +88,7 @@ class GetTokens200Response {
 
 
 /**
- * @member {Array.<module:model/GetTokens200ResponseDataInner>} data
+ * @member {Array.<module:model/ExtendedTokenInfo>} data
  */
 GetTokens200Response.prototype['data'] = undefined;
 

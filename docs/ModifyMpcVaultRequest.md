@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The new name of vault | 
+**name** | **String** | The new name of the vault. | 
 
 

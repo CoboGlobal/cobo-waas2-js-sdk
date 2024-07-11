@@ -65,6 +65,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property totalCount (base name: "total_count")', function() {
+      // uncomment below and update the code to test the property totalCount
+      //var instance = new CoboWaas2JsApi.Pagination();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

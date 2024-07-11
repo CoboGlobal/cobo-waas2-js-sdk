@@ -162,14 +162,20 @@ class EstimationFee {
 EstimationFee.prototype['fee_type'] = undefined;
 
 /**
+ * The token ID of the transaction fee.
+ * @member {String} token_id
+ */
+EstimationFee.prototype['token_id'] = undefined;
+
+/**
  * @member {module:model/UtxoFeeSlow} slow
  */
 EstimationFee.prototype['slow'] = undefined;
 
 /**
- * @member {module:model/UtxoFeeSlow} standard
+ * @member {module:model/UtxoFeeSlow} recommended
  */
-EstimationFee.prototype['standard'] = undefined;
+EstimationFee.prototype['recommended'] = undefined;
 
 /**
  * @member {module:model/UtxoFeeSlow} fast
@@ -177,13 +183,7 @@ EstimationFee.prototype['standard'] = undefined;
 EstimationFee.prototype['fast'] = undefined;
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EstimationFee.prototype['fee_token_id'] = undefined;
-
-/**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 EstimationFee.prototype['max_fee_amount'] = undefined;

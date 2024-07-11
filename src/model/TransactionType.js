@@ -47,10 +47,10 @@ export default class TransactionType {
 
     
         /**
-         * value: "AutoFueling"
+         * value: "TransactionFeePayment"
          * @const
          */
-        "AutoFueling" = "AutoFueling";
+        "TransactionFeePayment" = "TransactionFeePayment";
 
     
         /**

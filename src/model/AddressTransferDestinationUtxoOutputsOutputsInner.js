@@ -46,8 +46,8 @@ class AddressTransferDestinationUtxoOutputsOutputsInner {
         if (data) {
             obj = obj || new AddressTransferDestinationUtxoOutputsOutputsInner();
 
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
@@ -66,8 +66,8 @@ class AddressTransferDestinationUtxoOutputsOutputsInner {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
@@ -87,19 +87,19 @@ class AddressTransferDestinationUtxoOutputsOutputsInner {
 
 
 /**
- * Destination address
- * @member {String} address_str
+ * The destination address.
+ * @member {String} address
  */
-AddressTransferDestinationUtxoOutputsOutputsInner.prototype['address_str'] = undefined;
+AddressTransferDestinationUtxoOutputsOutputsInner.prototype['address'] = undefined;
 
 /**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
  * @member {String} amount
  */
 AddressTransferDestinationUtxoOutputsOutputsInner.prototype['amount'] = undefined;
 
 /**
- * Script of the output
+ * The script of the output. It is a programmable code fragment that defines the conditions under which the UTXO can be spent.
  * @member {String} script
  */
 AddressTransferDestinationUtxoOutputsOutputsInner.prototype['script'] = undefined;

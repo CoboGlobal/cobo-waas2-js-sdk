@@ -24,14 +24,14 @@ class SafeContractCallSource {
      * Constructs a new <code>SafeContractCallSource</code>.
      * @alias module:model/SafeContractCallSource
      * @implements module:model/BaseContractCallSource
-     * @param sourceType {module:model/SafeContractCallSource.SourceTypeEnum} 
-     * @param walletId {String} Unique id of the wallet to initiate contract call from.
-     * @param addressStr {String} From address
+     * @param sourceType {module:model/SafeContractCallSource.SourceTypeEnum} The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      * @param delegate {module:model/SafeContractCallSourceAllOfDelegate} 
      */
-    constructor(sourceType, walletId, addressStr, delegate) { 
-        BaseContractCallSource.initialize(this, sourceType, walletId, addressStr);
-        SafeContractCallSource.initialize(this, sourceType, walletId, addressStr, delegate);
+    constructor(sourceType, walletId, address, delegate) { 
+        BaseContractCallSource.initialize(this, sourceType, walletId, address);
+        SafeContractCallSource.initialize(this, sourceType, walletId, address, delegate);
     }
 
     /**
@@ -39,10 +39,10 @@ class SafeContractCallSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr, delegate) { 
+    static initialize(obj, sourceType, walletId, address, delegate) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
+        obj['address'] = address;
         obj['delegate'] = delegate;
     }
 
@@ -64,8 +64,8 @@ class SafeContractCallSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('delegate')) {
                 obj['delegate'] = SafeContractCallSourceAllOfDelegate.constructFromObject(data['delegate']);
@@ -95,8 +95,8 @@ class SafeContractCallSource {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // validate the optional field `delegate`
         if (data['delegate']) { // data not null
@@ -109,24 +109,25 @@ class SafeContractCallSource {
 
 }
 
-SafeContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address_str", "delegate"];
+SafeContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address", "delegate"];
 
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/SafeContractCallSource.SourceTypeEnum} source_type
  */
 SafeContractCallSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 SafeContractCallSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-SafeContractCallSource.prototype['address_str'] = undefined;
+SafeContractCallSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/SafeContractCallSourceAllOfDelegate} delegate
@@ -136,19 +137,20 @@ SafeContractCallSource.prototype['delegate'] = undefined;
 
 // Implement BaseContractCallSource interface:
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/BaseContractCallSource.SourceTypeEnum} source_type
  */
 BaseContractCallSource.prototype['source_type'] = undefined;
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseContractCallSource.prototype['wallet_id'] = undefined;
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-BaseContractCallSource.prototype['address_str'] = undefined;
+BaseContractCallSource.prototype['address'] = undefined;
 
 
 

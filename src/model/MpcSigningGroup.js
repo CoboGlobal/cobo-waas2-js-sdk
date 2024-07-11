@@ -20,7 +20,7 @@ import ApiClient from '../ApiClient';
 class MpcSigningGroup {
     /**
      * Constructs a new <code>MpcSigningGroup</code>.
-     * The data for mpc signing key group.
+     * The information about the Signing Group of an MPC Wallet.
      * @alias module:model/MpcSigningGroup
      */
     constructor() { 
@@ -81,12 +81,13 @@ class MpcSigningGroup {
 
 
 /**
- * Unique id of the using key group.
+ * The ID of the Signing Group.
  * @member {String} used_key_group_id
  */
 MpcSigningGroup.prototype['used_key_group_id'] = undefined;
 
 /**
+ * The ID of the TSS Nodes that are required to participate in the signature.
  * @member {Array.<String>} used_node_ids
  */
 MpcSigningGroup.prototype['used_node_ids'] = undefined;

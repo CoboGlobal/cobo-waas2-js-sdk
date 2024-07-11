@@ -53,20 +53,32 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UtxoFeePrice);
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
-      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property feeRate (base name: "fee_rate")', function() {
-      // uncomment below and update the code to test the property feeRate
-      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
-      //expect(instance).to.be();
-    });
-
     it('should have the property feeType (base name: "fee_type")', function() {
       // uncomment below and update the code to test the property feeType
+      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
+      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property slow (base name: "slow")', function() {
+      // uncomment below and update the code to test the property slow
+      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property recommended (base name: "recommended")', function() {
+      // uncomment below and update the code to test the property recommended
+      //var instance = new CoboWaas2JsApi.UtxoFeePrice();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fast (base name: "fast")', function() {
+      // uncomment below and update the code to test the property fast
       //var instance = new CoboWaas2JsApi.UtxoFeePrice();
       //expect(instance).to.be();
     });

@@ -189,7 +189,7 @@ WalletInfo.prototype['name'] = undefined;
 WalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The ID of the owning Vault.
+ * The ID of the owning vault.
  * @member {String} vault_id
  */
 WalletInfo.prototype['vault_id'] = undefined;
@@ -206,7 +206,7 @@ WalletInfo.prototype['apikey'] = undefined;
 WalletInfo.prototype['exchange_id'] = undefined;
 
 /**
- * The wallet ID of the Main Account associated with the Sub Account. This is returned only if you are querying a Sub Account.
+ * The wallet ID of the Main Account associated with the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Sub Account).
  * @member {String} parent_wallet_id
  */
 WalletInfo.prototype['parent_wallet_id'] = undefined;

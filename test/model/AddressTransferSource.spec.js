@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property addressStr (base name: "address_str")', function() {
-      // uncomment below and update the code to test the property addressStr
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
       //var instance = new CoboWaas2JsApi.AddressTransferSource();
       //expect(instance).to.be();
     });

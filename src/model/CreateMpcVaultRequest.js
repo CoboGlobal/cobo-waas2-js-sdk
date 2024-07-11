@@ -22,7 +22,7 @@ class CreateMpcVaultRequest {
     /**
      * Constructs a new <code>CreateMpcVaultRequest</code>.
      * @alias module:model/CreateMpcVaultRequest
-     * @param name {String} The name of the mpc vault.
+     * @param name {String} The name of the new vault.
      * @param vaultType {module:model/MPCVaultType} 
      */
     constructor(name, vaultType) { 
@@ -94,13 +94,13 @@ class CreateMpcVaultRequest {
 CreateMpcVaultRequest.RequiredProperties = ["name", "vault_type"];
 
 /**
- * The id of the mpc project.
+ * The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).  **Notes:** 1. If you set `vault_type` to `OrgControlled`, the value of `project_id` will be ignored. 2. If you set `vault_type` to `UserControlled`, then `project_id` is required. 
  * @member {String} project_id
  */
 CreateMpcVaultRequest.prototype['project_id'] = undefined;
 
 /**
- * The name of the mpc vault.
+ * The name of the new vault.
  * @member {String} name
  */
 CreateMpcVaultRequest.prototype['name'] = undefined;

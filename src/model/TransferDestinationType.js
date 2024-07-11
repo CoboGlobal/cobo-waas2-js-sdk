@@ -26,10 +26,10 @@ export default class TransferDestinationType {
 
     
         /**
-         * value: "Exchange"
+         * value: "ExchangeWallet"
          * @const
          */
-        "Exchange" = "Exchange";
+        "ExchangeWallet" = "ExchangeWallet";
 
     
 

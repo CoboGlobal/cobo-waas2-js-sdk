@@ -37,6 +37,26 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('DevelopersWebhooksApi', function() {
+    describe('createWebhookEndpoint', function() {
+      it('should call createWebhookEndpoint successfully', function() {
+        //uncomment below and update the code to test createWebhookEndpoint
+        //instance.createWebhookEndpoint().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getWebhookEndpointById', function() {
+      it('should call getWebhookEndpointById successfully', function() {
+        //uncomment below and update the code to test getWebhookEndpointById
+        //instance.getWebhookEndpointById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getWebhookEvent', function() {
       it('should call getWebhookEvent successfully', function() {
         //uncomment below and update the code to test getWebhookEvent
@@ -67,10 +87,40 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listWebhookEndpoints', function() {
+      it('should call listWebhookEndpoints successfully', function() {
+        //uncomment below and update the code to test listWebhookEndpoints
+        //instance.listWebhookEndpoints().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listWebhookEventDefinitions', function() {
+      it('should call listWebhookEventDefinitions successfully', function() {
+        //uncomment below and update the code to test listWebhookEventDefinitions
+        //instance.listWebhookEventDefinitions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('retryWebhookEvent', function() {
       it('should call retryWebhookEvent successfully', function() {
         //uncomment below and update the code to test retryWebhookEvent
         //instance.retryWebhookEvent().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('updateWebhookEndpoint', function() {
+      it('should call updateWebhookEndpoint successfully', function() {
+        //uncomment below and update the code to test updateWebhookEndpoint
+        //instance.updateWebhookEndpoint().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

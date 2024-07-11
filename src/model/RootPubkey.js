@@ -21,7 +21,7 @@ import CurveType from './CurveType';
 class RootPubkey {
     /**
      * Constructs a new <code>RootPubkey</code>.
-     * The data for root pubkey information.
+     * The data for MPC Root Extended Public Key information.
      * @alias module:model/RootPubkey
      */
     constructor() { 
@@ -78,7 +78,7 @@ class RootPubkey {
 
 
 /**
- * the root pubkey of the mpc vault.
+ * The vault's [root extended public key](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/tss-node-deployment#tss-node-on-cobo-portal-and-mpc-root-extended-public-key).
  * @member {String} pubkey
  */
 RootPubkey.prototype['pubkey'] = undefined;

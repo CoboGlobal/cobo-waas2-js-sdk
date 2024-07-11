@@ -53,12 +53,6 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UtxoFeeBasePrice);
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
-      //var instance = new CoboWaas2JsApi.UtxoFeeBasePrice();
-      //expect(instance).to.be();
-    });
-
     it('should have the property feeRate (base name: "fee_rate")', function() {
       // uncomment below and update the code to test the property feeRate
       //var instance = new CoboWaas2JsApi.UtxoFeeBasePrice();

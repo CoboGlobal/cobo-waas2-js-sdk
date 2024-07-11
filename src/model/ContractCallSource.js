@@ -123,21 +123,22 @@ class ContractCallSource {
 }
 
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/ContractCallSource.SourceTypeEnum} source_type
  */
 ContractCallSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 ContractCallSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-ContractCallSource.prototype['address_str'] = undefined;
+ContractCallSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_group

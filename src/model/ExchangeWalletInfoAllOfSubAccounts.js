@@ -20,10 +20,9 @@ import ApiClient from '../ApiClient';
 class ExchangeWalletInfoAllOfSubAccounts {
     /**
      * Constructs a new <code>ExchangeWalletInfoAllOfSubAccounts</code>.
-     * The information of a Sub Account associated with the Main Account. This is returned only if you are querying a Main Account.
      * @alias module:model/ExchangeWalletInfoAllOfSubAccounts
-     * @param walletId {String} The wallet ID of the Sub Account.
-     * @param accountId {String} The Sub Account ID. It can be an email address, a user name, or a custom account ID.
+     * @param walletId {String} The wallet ID of the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
+     * @param accountId {String} The Sub Account ID. It can be an email address, a user name, or a custom account ID. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
      */
     constructor(walletId, accountId) { 
         
@@ -91,13 +90,13 @@ class ExchangeWalletInfoAllOfSubAccounts {
 ExchangeWalletInfoAllOfSubAccounts.RequiredProperties = ["wallet_id", "account_id"];
 
 /**
- * The wallet ID of the Sub Account.
+ * The wallet ID of the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
  * @member {String} wallet_id
  */
 ExchangeWalletInfoAllOfSubAccounts.prototype['wallet_id'] = undefined;
 
 /**
- * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
+ * The Sub Account ID. It can be an email address, a user name, or a custom account ID. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
  * @member {String} account_id
  */
 ExchangeWalletInfoAllOfSubAccounts.prototype['account_id'] = undefined;

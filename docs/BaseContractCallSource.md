@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | **String** |  | 
-**walletId** | **String** | Unique id of the wallet to initiate contract call from. | 
-**addressStr** | **String** | From address | 
+**sourceType** | **String** | The type of the wallet. Possible values include: - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled). - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled). - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet}).  | 
+**walletId** | **String** | The wallet ID. | 
+**address** | **String** | The wallet address. | 
 
 
 

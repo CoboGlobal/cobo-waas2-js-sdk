@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique id of the tss request. | [optional] 
+**id** | **String** | The TSS request ID. | [optional] 
 **type** | [**TSSRequestType**](TSSRequestType.md) |  | [optional] 
 **status** | [**TSSRequestStatus**](TSSRequestStatus.md) |  | [optional] 
 

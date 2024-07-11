@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique id of the vault | [optional] 
-**name** | **String** |  | [optional] 
+**id** | **String** | The vault ID. | [optional] 
+**name** | **String** | The vault name. | [optional] 
 **type** | [**MPCVaultType**](MPCVaultType.md) |  | [optional] 
 **rootPubkeys** | [**[RootPubkey]**](RootPubkey.md) |  | [optional] 
-**createTimestamp** | **Number** | The create time the vault. | [optional] 
+**createTimestamp** | **Number** | The vault&#39;s creation time in Unix timestamp format, measured in milliseconds. | [optional] 
 
 

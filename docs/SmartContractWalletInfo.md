@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **name** | **String** | The wallet name. | 
 **orgId** | **String** | The ID of the owning organization. | 
-**chainId** | **String** | The chain the wallet operates on. | [optional] 
+**chainId** | **String** | The ID of the chain on which the wallet operates. | [optional] 
 **label** | **String** | The wallet label. | [optional] 
 **smartContractWalletType** | [**SmartContractWalletType**](SmartContractWalletType.md) |  | 
 **safeAddress** | **String** | The Smart Contract Wallet address. | [optional] 
-**owners** | **[String]** | The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. | [optional] 
-**threshold** | **Number** | The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.  | [optional] 
+**signers** | **[String]** | The signers of the Smart Contract Wallet. | [optional] 
+**threshold** | **Number** | The minimum number of confirmations required for the Smart Contract Wallet.  | [optional] 
 **coboSafeAddress** | **String** | The address of Cobo Safe. | [optional] 
 **initiator** | [**SafeWalletAllOfInitiator**](SafeWalletAllOfInitiator.md) |  | [optional] 
 

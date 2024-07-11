@@ -22,15 +22,14 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 class UtxoFeePrice {
     /**
      * Constructs a new <code>UtxoFeePrice</code>.
-     * The transaction fee for UTXO-based chains.
+     * The transaction fee price for UTXO-based chains.
      * @alias module:model/UtxoFeePrice
-     * @implements module:model/UtxoFeeBasePrice
-     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      * @param feeType {module:model/FeeType} 
+     * @param recommended {module:model/UtxoFeeBasePrice} 
      */
-    constructor(feeRate, feeType) { 
-        UtxoFeeBasePrice.initialize(this, feeRate);
-        UtxoFeePrice.initialize(this, feeRate, feeType);
+    constructor(feeType, recommended) { 
+        
+        UtxoFeePrice.initialize(this, feeType, recommended);
     }
 
     /**
@@ -38,9 +37,9 @@ class UtxoFeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate, feeType) { 
-        obj['fee_rate'] = feeRate;
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -53,16 +52,21 @@ class UtxoFeePrice {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UtxoFeePrice();
-            UtxoFeeBasePrice.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
-            if (data.hasOwnProperty('fee_rate')) {
-                obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
-            }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
+            }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
+            if (data.hasOwnProperty('slow')) {
+                obj['slow'] = UtxoFeeBasePrice.constructFromObject(data['slow']);
+            }
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = UtxoFeeBasePrice.constructFromObject(data['recommended']);
+            }
+            if (data.hasOwnProperty('fast')) {
+                obj['fast'] = UtxoFeeBasePrice.constructFromObject(data['fast']);
             }
         }
         return obj;
@@ -81,12 +85,20 @@ class UtxoFeePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // ensure the json data is a string
-        if (data['fee_rate'] && !(typeof data['fee_rate'] === 'string' || data['fee_rate'] instanceof String)) {
-            throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
+        // validate the optional field `slow`
+        if (data['slow']) { // data not null
+          UtxoFeeBasePrice.validateJSON(data['slow']);
+        }
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          UtxoFeeBasePrice.validateJSON(data['recommended']);
+        }
+        // validate the optional field `fast`
+        if (data['fast']) { // data not null
+          UtxoFeeBasePrice.validateJSON(data['fast']);
         }
 
         return true;
@@ -95,37 +107,35 @@ class UtxoFeePrice {
 
 }
 
-UtxoFeePrice.RequiredProperties = ["fee_rate", "fee_type"];
-
-/**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-UtxoFeePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
- * @member {String} fee_rate
- */
-UtxoFeePrice.prototype['fee_rate'] = undefined;
+UtxoFeePrice.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
  */
 UtxoFeePrice.prototype['fee_type'] = undefined;
 
-
-// Implement UtxoFeeBasePrice interface:
 /**
  * The token ID of the transaction fee.
- * @member {String} fee_token_id
+ * @member {String} token_id
  */
-UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
+UtxoFeePrice.prototype['token_id'] = undefined;
+
 /**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
- * @member {String} fee_rate
+ * @member {module:model/UtxoFeeBasePrice} slow
  */
-UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
+UtxoFeePrice.prototype['slow'] = undefined;
+
+/**
+ * @member {module:model/UtxoFeeBasePrice} recommended
+ */
+UtxoFeePrice.prototype['recommended'] = undefined;
+
+/**
+ * @member {module:model/UtxoFeeBasePrice} fast
+ */
+UtxoFeePrice.prototype['fast'] = undefined;
+
+
 
 
 

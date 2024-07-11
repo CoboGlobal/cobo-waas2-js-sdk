@@ -20,7 +20,7 @@ import ApiClient from '../ApiClient';
 class MPCProject {
     /**
      * Constructs a new <code>MPCProject</code>.
-     * The data for mpc project information.
+     * The data for project information.
      * @alias module:model/MPCProject
      */
     constructor() { 
@@ -97,36 +97,37 @@ class MPCProject {
 
 
 /**
- * Unique id of the project
+ * The project ID.
  * @member {String} id
  */
 MPCProject.prototype['id'] = undefined;
 
 /**
- * Unique id of org
+ * The [Organization](https://manuals.cobo.com/en/portal/organization/introduction) ID.
  * @member {String} org_id
  */
 MPCProject.prototype['org_id'] = undefined;
 
 /**
+ * The project name.
  * @member {String} name
  */
 MPCProject.prototype['name'] = undefined;
 
 /**
- * The count of tss node of the project
+ * The number of key share holders in the project.
  * @member {Number} node_count
  */
 MPCProject.prototype['node_count'] = undefined;
 
 /**
- * The threshold number of project required for signature
+ * The number of key share holders required to sign an operation in the project.
  * @member {Number} threshold
  */
 MPCProject.prototype['threshold'] = undefined;
 
 /**
- * The create time the vault.
+ * The project's creation time in Unix timestamp format, measured in milliseconds.
  * @member {Number} create_timestamp
  */
 MPCProject.prototype['create_timestamp'] = undefined;

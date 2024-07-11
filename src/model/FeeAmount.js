@@ -20,12 +20,13 @@ import ApiClient from '../ApiClient';
 class FeeAmount {
     /**
      * Constructs a new <code>FeeAmount</code>.
-     * The estimated transaction fee in transaction tokens.
+     * The maximum transaction fee.
      * @alias module:model/FeeAmount
+     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
      */
-    constructor() { 
+    constructor(maxFeeAmount) { 
         
-        FeeAmount.initialize(this);
+        FeeAmount.initialize(this, maxFeeAmount);
     }
 
     /**
@@ -33,7 +34,8 @@ class FeeAmount {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, maxFeeAmount) { 
+        obj['max_fee_amount'] = maxFeeAmount;
     }
 
     /**
@@ -60,6 +62,12 @@ class FeeAmount {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FeeAmount</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FeeAmount.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['max_fee_amount'] && !(typeof data['max_fee_amount'] === 'string' || data['max_fee_amount'] instanceof String)) {
             throw new Error("Expected the field `max_fee_amount` to be a primitive type in the JSON string but got " + data['max_fee_amount']);
@@ -71,10 +79,10 @@ class FeeAmount {
 
 }
 
-
+FeeAmount.RequiredProperties = ["max_fee_amount"];
 
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 FeeAmount.prototype['max_fee_amount'] = undefined;

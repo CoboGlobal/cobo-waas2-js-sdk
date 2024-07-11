@@ -1,19 +1,20 @@
 # CoboWaas2JsApi.TransactionsApi
 
-All URIs are relative to *https://api.cobo.com/v2*
+All URIs are relative to *https://api.dev.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelTransactionById**](TransactionsApi.md#cancelTransactionById) | **POST** /transactions/{transaction_id}/cancel | Cancel a transaction by ID
-[**createSmartContractCallTransaction**](TransactionsApi.md#createSmartContractCallTransaction) | **POST** /transactions/contract_call | Create a smart contract call transaction
-[**createTransferTransaction**](TransactionsApi.md#createTransferTransaction) | **POST** /transactions/transfer | Create a transfer transaction
-[**dropTransactionById**](TransactionsApi.md#dropTransactionById) | **POST** /transactions/{transaction_id}/drop | Drop a transaction by ID
-[**estimateFee**](TransactionsApi.md#estimateFee) | **POST** /transactions/estimate_fee | Estimate the fee for transaction
-[**getChainFeePrice**](TransactionsApi.md#getChainFeePrice) | **GET** /transactions/fee_price | Get the fee price data for chain and/or token(Hold, TBD after normalize fee settings)
-[**getTransactionById**](TransactionsApi.md#getTransactionById) | **GET** /transactions/{transaction_id} | Get transaction information by ID
+[**cancelTransactionById**](TransactionsApi.md#cancelTransactionById) | **POST** /transactions/{transaction_id}/cancel | Cancel transaction
+[**createContractCallTransaction**](TransactionsApi.md#createContractCallTransaction) | **POST** /transactions/contract_call | Call smart contract
+[**createMessageSignTransaction**](TransactionsApi.md#createMessageSignTransaction) | **POST** /transactions/message_sign | Sign message
+[**createTransferTransaction**](TransactionsApi.md#createTransferTransaction) | **POST** /transactions/transfer | Transfer token
+[**dropTransactionById**](TransactionsApi.md#dropTransactionById) | **POST** /transactions/{transaction_id}/drop | Drop transaction
+[**estimateFee**](TransactionsApi.md#estimateFee) | **POST** /transactions/estimate_fee | Estimate transaction fee
+[**getTransactionById**](TransactionsApi.md#getTransactionById) | **GET** /transactions/{transaction_id} | Get transaction information
+[**listFeeRates**](TransactionsApi.md#listFeeRates) | **GET** /transactions/fee_rates | Get fee rates
 [**listTransactions**](TransactionsApi.md#listTransactions) | **GET** /transactions | List all transactions
-[**resendTransactionById**](TransactionsApi.md#resendTransactionById) | **POST** /transactions/{transaction_id}/resend | Resend a transaction by ID
-[**speedupTransactionById**](TransactionsApi.md#speedupTransactionById) | **POST** /transactions/{transaction_id}/speedup | Speed up a transaction by ID
+[**resendTransactionById**](TransactionsApi.md#resendTransactionById) | **POST** /transactions/{transaction_id}/resend | Resend transaction
+[**speedupTransactionById**](TransactionsApi.md#speedupTransactionById) | **POST** /transactions/{transaction_id}/speedup | Speed up transaction
 
 
 
@@ -21,9 +22,9 @@ Method | HTTP request | Description
 
 > CreateTransferTransaction201Response cancelTransactionById(transactionId)
 
-Cancel a transaction by ID
+Cancel transaction
 
-Cancel a transaction.
+This operation cancels a specified transaction. A transaction can be cancelled if its status is either of the following: - &#x60;Submitted&#x60; - &#x60;PendingScreening&#x60; - &#x60;PendingAuthorization&#x60; - &#x60;PendingSignature&#x60;   A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -36,7 +37,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The transaction ID.
 apiInstance.cancelTransactionById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -50,7 +51,7 @@ apiInstance.cancelTransactionById(transactionId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
+ **transactionId** | **String**| The transaction ID. | 
 
 ### Return type
 
@@ -66,13 +67,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## createSmartContractCallTransaction
+## createContractCallTransaction
 
-> CreateTransferTransaction201Response createSmartContractCallTransaction(opts)
+> CreateTransferTransaction201Response createContractCallTransaction(opts)
 
-Create a smart contract call transaction
+Call smart contract
 
-Create a transaction to call a smart contract.
+This operation creates a transaction to interact with a smart contract on the blockchain.  You need to provide details such as the source address, destination address, and the calldata. You can specify the fee-related properties to limit the transaction fee. A transaction request for tracking is returned upon successful operation.  Currently, this operation only applies to blockchains that have a similar architecture to Ethereum. 
 
 ### Example
 
@@ -86,9 +87,9 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const opts = {
-  'contractCall': new CoboWaas2JsApi.ContractCall() // ContractCall | The request body to create a smart contract transaction
+  'contractCall': new CoboWaas2JsApi.ContractCall() // ContractCall | The request body for making a contract call.
 };
-apiInstance.createSmartContractCallTransaction(opts).then((data) => {
+apiInstance.createContractCallTransaction(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -101,7 +102,7 @@ apiInstance.createSmartContractCallTransaction(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractCall** | [**ContractCall**](ContractCall.md)| The request body to create a smart contract transaction | [optional] 
+ **contractCall** | [**ContractCall**](ContractCall.md)| The request body for making a contract call. | [optional] 
 
 ### Return type
 
@@ -109,7 +110,58 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[CoboAuth](../README.md#CoboAuth)
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createMessageSignTransaction
+
+> CreateTransferTransaction201Response createMessageSignTransaction(opts)
+
+Sign message
+
+This operation creates a transaction to sign the provided message using cryptographic techniques.  In some scenarios, you want to sign a message for identity authentication or transaction approval. You need to provide details such as the source address, destination address, and the message to be signed. A transaction request for tracking is returned upon successful operation.  Currently, only MPC Wallets support this type of transaction to sign a message. 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const opts = {
+  'signMessage': new CoboWaas2JsApi.SignMessage() // SignMessage | The request body to create a message sign transaction
+};
+apiInstance.createMessageSignTransaction(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **signMessage** | [**SignMessage**](SignMessage.md)| The request body to create a message sign transaction | [optional] 
+
+### Return type
+
+[**CreateTransferTransaction201Response**](CreateTransferTransaction201Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
 
 ### HTTP request headers
 
@@ -121,9 +173,9 @@ Name | Type | Description  | Notes
 
 > CreateTransferTransaction201Response createTransferTransaction(opts)
 
-Create a transfer transaction
+Transfer token
 
-Create a transaction to transfer funds from one account to another.
+The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -160,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[CoboAuth](../README.md#CoboAuth)
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
 
 ### HTTP request headers
 
@@ -172,9 +224,9 @@ Name | Type | Description  | Notes
 
 > CreateTransferTransaction201Response dropTransactionById(transactionId, opts)
 
-Drop a transaction by ID
+Drop transaction
 
-Drop a transaction.
+This operation drops a specified transaction.   Dropping a transaction will trigger a Replace-By-Fee (RBF) transaction, which allows the you to replace your unconfirmed transaction with a new one with a higher transaction fee. A transaction can be dropped if its status is &#x60;Broadcasting&#x60; or &#x60;Confirming&#x60;.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -187,9 +239,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The transaction ID.
 const opts = {
-  'transactionFee': new CoboWaas2JsApi.TransactionFee() // TransactionFee | The request body of fee to initiate transaction
+  'transactionRbf': new CoboWaas2JsApi.TransactionRbf() // TransactionRbf | The request body to drop or to speed up transactions
 };
 apiInstance.dropTransactionById(transactionId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -204,8 +256,8 @@ apiInstance.dropTransactionById(transactionId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
- **transactionFee** | [**TransactionFee**](TransactionFee.md)| The request body of fee to initiate transaction | [optional] 
+ **transactionId** | **String**| The transaction ID. | 
+ **transactionRbf** | [**TransactionRbf**](TransactionRbf.md)| The request body to drop or to speed up transactions | [optional] 
 
 ### Return type
 
@@ -223,11 +275,11 @@ Name | Type | Description  | Notes
 
 ## estimateFee
 
-> EstimationFee estimateFee(opts)
+> [EstimationFee] estimateFee(opts)
 
-Estimate the fee for transaction
+Estimate transaction fee
 
-Estimate the transaction fee.
+This operation estimates the transaction fee rates of a token transfer or a contract call for three different transaction speeds (slow, recommended, and fast), based on factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, and token ID of the transaction fee.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
 
 ### Example
 
@@ -241,7 +293,7 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const opts = {
-  'estimateFee': new CoboWaas2JsApi.EstimateFee() // EstimateFee | The request body to estimate fee of transfer or call transaction
+  'estimateFee': new CoboWaas2JsApi.EstimateFee() // EstimateFee | The request body to estimate the transaction fee of a token transfer or a contract call.
 };
 apiInstance.estimateFee(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -256,11 +308,11 @@ apiInstance.estimateFee(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **estimateFee** | [**EstimateFee**](EstimateFee.md)| The request body to estimate fee of transfer or call transaction | [optional] 
+ **estimateFee** | [**EstimateFee**](EstimateFee.md)| The request body to estimate the transaction fee of a token transfer or a contract call. | [optional] 
 
 ### Return type
 
-[**EstimationFee**](EstimationFee.md)
+[**[EstimationFee]**](EstimationFee.md)
 
 ### Authorization
 
@@ -272,66 +324,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getChainFeePrice
-
-> ChainFeePrice getChainFeePrice(opts)
-
-Get the fee price data for chain and/or token(Hold, TBD after normalize fee settings)
-
-Retrieve the fee price data.
-
-### Example
-
-```javascript
-import CoboWaas2JsApi from 'cobo-waas2-js-api';
-// initial default api client
-const apiClient = CoboWaas2JsApi.ApiClient.instance
-// for dev env
-//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
-apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
-// call api
-const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const opts = {
-  'chainId': "ETH", // String | The chain ID.
-  'tokenId': "ETH_USDT" // String | The token ID.
-};
-apiInstance.getChainFeePrice(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chainId** | **String**| The chain ID. | [optional] 
- **tokenId** | **String**| The token ID. | [optional] 
-
-### Return type
-
-[**ChainFeePrice**](ChainFeePrice.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## getTransactionById
 
-> Transaction getTransactionById(transactionId)
+> TransactionDetail getTransactionById(transactionId)
 
-Get transaction information by ID
+Get transaction information
 
-Detailed description on retrieving transaction information by id
+This operation retrieves detailed information about a specified transaction, such as the transaction status, source address, destination address, and timestamp. 
 
 ### Example
 
@@ -344,7 +343,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The transaction ID.
 apiInstance.getTransactionById(transactionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -358,11 +357,60 @@ apiInstance.getTransactionById(transactionId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
+ **transactionId** | **String**| The transaction ID. | 
 
 ### Return type
 
-[**Transaction**](Transaction.md)
+[**TransactionDetail**](TransactionDetail.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listFeeRates
+
+> [FeeRate] listFeeRates(chainId)
+
+Get fee rates
+
+This operation retrieves current transaction fee rates on the blockchain based on the specified chain ID.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.TransactionsApi();
+const chainId = "ETH"; // String | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+apiInstance.listFeeRates(chainId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains). | 
+
+### Return type
+
+[**[FeeRate]**](FeeRate.md)
 
 ### Authorization
 
@@ -380,7 +428,7 @@ Name | Type | Description  | Notes
 
 List all transactions
 
-Retrieve a list of transactions.
+This operation retrieves all the transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamps. You can also paginate and sort your query results. 
 
 ### Example
 
@@ -394,26 +442,30 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
 const opts = {
-  'requestId': "web_send_by_user_327_1610444045047", // String | Request ID
-  'coboId': "20231213122855000000000000000000", // String | Cobo ID
-  'transactionId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the transaction
-  'transactionHash': "239861be9a4afe080c359b7fe4a1d035945ec46256b1a0f44d1267c71de8ec28", // String | Transaction hash
-  'type': [new CoboWaas2JsApi.TransactionType()], // [TransactionType] | The type of a transaction
-  'status': [new CoboWaas2JsApi.TransactionStatus()], // [TransactionStatus] | The status of a transaction
-  'walletType': new CoboWaas2JsApi.WalletType(), // WalletType | The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
-  'walletId': ["null"], // [String] | Unique id of the wallet
-  'chainId': ["null"], // [String] | Unique id of the chain
-  'tokenId': ["null"], // [String] | Unique id of the token
-  'assetId': ["null"], // [String] | Unique id of the asset
-  'vaultId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc vault
-  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | Unique id of the mpc project
-  'minCreatedTimestamp': 1635744000, // Number | The minimum transaction creation timestamp in Unix epoch seconds
-  'maxCreatedTimestamp': 1635744000, // Number | The maximum transaction creation timestamp in Unix epoch seconds
-  'sortBy': "timestamp", // String | Field of sort by
-  'direction': "ASC", // String | Direction to sort by
-  'limit': 10, // Number | The maximum number of objects to return. The value range is [1, 50].
-  'before': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-  'after': "8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+  'requestId': "web_send_by_user_327_1610444045047", // String | The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+  'coboId': "20231213122855000000000000000000", // String | The Cobo ID, which can be used to track a transaction.
+  'transactionId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | The transaction ID.
+  'transactionHash': "239861be9a4afe080c359b7fe4a1d035945ec46256b1a0f44d1267c71de8ec28", // String | The transaction hash.
+  'type': [new CoboWaas2JsApi.TransactionType()], // [TransactionType] | The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `RawMessage`: A transaction that signs a message. 
+  'status': [new CoboWaas2JsApi.TransactionStatus()], // [TransactionStatus] | The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected. 
+  'sourceType': [new CoboWaas2JsApi.TransactionSourceType()], // [TransactionSourceType] | The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
+  'sourceWalletId': ["null"], // [String] | The wallet ID of the transaction source.
+  'sourceAddress': ["null"], // [String] | The address of the transaction source.
+  'destinationType': [new CoboWaas2JsApi.TransactionDestinationType()], // [TransactionDestinationType] | The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
+  'destinationWalletId': ["null"], // [String] | The wallet ID of the transaction destination.
+  'destinationAddress': ["null"], // [String] | The address of the transaction destination.
+  'chainIds': "BTC,ETH", // String | A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+  'tokenIds': "ETH_USDT,ETH_USDC", // String | A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+  'assetIds': "USDT,USDC", // String | A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+  'vaultId': ["null"], // [String] | The MPC vault ID.
+  'projectId': ["null"], // [String] | The MPC project ID.
+  'minCreatedTimestamp': 1635744000, // Number | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
+  'maxCreatedTimestamp': 1635744000, // Number | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
+  'sortBy': "timestamp", // String | The field used for sorting.
+  'direction': "ASC", // String | The sort direction. Possible values include:   - `ASC`: Sort the results in ascending order.   - `DESC`: Sort the results in descending order. 
+  'limit': 10, // Number | The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
 };
 apiInstance.listTransactions(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -428,26 +480,30 @@ apiInstance.listTransactions(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | **String**| Request ID | [optional] 
- **coboId** | **String**| Cobo ID | [optional] 
- **transactionId** | **String**| Unique id of the transaction | [optional] 
- **transactionHash** | **String**| Transaction hash | [optional] 
- **type** | [**[TransactionType]**](TransactionType.md)| The type of a transaction | [optional] 
- **status** | [**[TransactionStatus]**](TransactionStatus.md)| The status of a transaction | [optional] 
- **walletType** | [**WalletType**](.md)| The wallet type.  - &#x60;Custodial&#x60;: Custodial Wallets  - &#x60;MPC&#x60;: MPC Wallets  - &#x60;SmartContract&#x60;: Smart Contract Wallets  - &#x60;Exchange&#x60;: Exchange Wallets  | [optional] 
- **walletId** | [**[String]**](String.md)| Unique id of the wallet | [optional] 
- **chainId** | [**[String]**](String.md)| Unique id of the chain | [optional] 
- **tokenId** | [**[String]**](String.md)| Unique id of the token | [optional] 
- **assetId** | [**[String]**](String.md)| Unique id of the asset | [optional] 
- **vaultId** | **String**| Unique id of the mpc vault | [optional] 
- **projectId** | **String**| Unique id of the mpc project | [optional] 
- **minCreatedTimestamp** | **Number**| The minimum transaction creation timestamp in Unix epoch seconds | [optional] 
- **maxCreatedTimestamp** | **Number**| The maximum transaction creation timestamp in Unix epoch seconds | [optional] 
- **sortBy** | **String**| Field of sort by | [optional] [default to &#39;&#39;]
- **direction** | **String**| Direction to sort by | [optional] [default to &#39;&#39;]
- **limit** | **Number**| The maximum number of objects to return. The value range is [1, 50]. | [optional] [default to 10]
- **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;foo&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;foo&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
- **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;bar&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;bar&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request. If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect. | [optional] 
+ **requestId** | **String**| The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization. | [optional] 
+ **coboId** | **String**| The Cobo ID, which can be used to track a transaction. | [optional] 
+ **transactionId** | **String**| The transaction ID. | [optional] 
+ **transactionHash** | **String**| The transaction hash. | [optional] 
+ **type** | [**[TransactionType]**](TransactionType.md)| The transaction type. Possible values include:    - &#x60;Deposit&#x60;: A deposit transaction.   - &#x60;Withdrawal&#x60;: A withdrawal transaction.   - &#x60;TokenApproval&#x60;: A transaction that grants permission to access your tokens.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;TransactionFeePayment&#x60;: A transaction that is initiated by Fee Station to pay your transaction fee.   - &#x60;RawMessage&#x60;: A transaction that signs a message.  | [optional] 
+ **status** | [**[TransactionStatus]**](TransactionStatus.md)| The transaction status. Possible values include:    - &#x60;Submitted&#x60;: The transaction is submitted.   - &#x60;PendingScreening&#x60;: The transaction is pending screening by Risk Control.    - &#x60;PendingAuthorization&#x60;: The transaction is pending approvals.   - &#x60;PendingSignature&#x60;: The transaction is pending signature.    - &#x60;Broadcasting&#x60;: The transaction is being broadcast.   - &#x60;Confirming&#x60;: The transaction is waiting for the required number of confirmations.   - &#x60;Completed&#x60;: The transaction is completed.   - &#x60;Failed&#x60;: The transaction failed.   - &#x60;Rejected&#x60;: The transaction is rejected.  | [optional] 
+ **sourceType** | [**[TransactionSourceType]**](TransactionSourceType.md)| The type of transaction source. Possible values include:   - &#x60;Address&#x60;: An external address.   - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallet (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.   - &#x60;FeeStation&#x60;: A Fee Station.  | [optional] 
+ **sourceWalletId** | [**[String]**](String.md)| The wallet ID of the transaction source. | [optional] 
+ **sourceAddress** | [**[String]**](String.md)| The address of the transaction source. | [optional] 
+ **destinationType** | [**[TransactionDestinationType]**](TransactionDestinationType.md)| The transaction destination type. Possible values include:   - &#x60;Address&#x60;: An external address.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;MessageSign&#x60;: A transaction that signs a message.    - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallets (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.  | [optional] 
+ **destinationWalletId** | [**[String]**](String.md)| The wallet ID of the transaction destination. | [optional] 
+ **destinationAddress** | [**[String]**](String.md)| The address of the transaction destination. | [optional] 
+ **chainIds** | **String**| A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains). | [optional] 
+ **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens). | [optional] 
+ **assetIds** | **String**| A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT. | [optional] 
+ **vaultId** | [**[String]**](String.md)| The MPC vault ID. | [optional] 
+ **projectId** | [**[String]**](String.md)| The MPC project ID. | [optional] 
+ **minCreatedTimestamp** | **Number**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time. | [optional] 
+ **maxCreatedTimestamp** | **Number**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time. | [optional] 
+ **sortBy** | **String**| The field used for sorting. | [optional] [default to &#39;&#39;]
+ **direction** | **String**| The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  | [optional] [default to &#39;&#39;]
+ **limit** | **Number**| The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. | [optional] [default to 10]
+ **before** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the specified ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect.  If the &#x60;before&#x60; and &#x60;after&#x60; are both set to empty, the first slice is returned. If the &#x60;before&#x60; is set to &#x60;infinity&#x60;, the last slice is returned.  | [optional] 
+ **after** | **String**| An object ID which serves as a cursor for pagination. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the specified ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  If you set both &#x60;after&#x60; or &#x60;before&#x60;, only the setting of &#x60;before&#x60; will take effect.  | [optional] 
 
 ### Return type
 
@@ -465,11 +521,11 @@ Name | Type | Description  | Notes
 
 ## resendTransactionById
 
-> CreateTransferTransaction201Response resendTransactionById(transactionId)
+> CreateTransferTransaction201Response resendTransactionById(transactionId, opts)
 
-Resend a transaction by ID
+Resend transaction
 
-Resend a transaction.
+This operation resends a specified transaction.   Resending a transaction initiates a new attempt to process the transaction that failed previously. A transaction can be resent if its status is &#x60;failed&#x60;.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -482,8 +538,11 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
-apiInstance.resendTransactionById(transactionId).then((data) => {
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The transaction ID.
+const opts = {
+  'transactionResend': new CoboWaas2JsApi.TransactionResend() // TransactionResend | The request body to resend transactions
+};
+apiInstance.resendTransactionById(transactionId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -496,7 +555,8 @@ apiInstance.resendTransactionById(transactionId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
+ **transactionId** | **String**| The transaction ID. | 
+ **transactionResend** | [**TransactionResend**](TransactionResend.md)| The request body to resend transactions | [optional] 
 
 ### Return type
 
@@ -508,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -516,9 +576,9 @@ Name | Type | Description  | Notes
 
 > CreateTransferTransaction201Response speedupTransactionById(transactionId, opts)
 
-Speed up a transaction by ID
+Speed up transaction
 
-Speed up a transaction.
+This operation accelerates a specified transaction.   Speeding up a transaction will trigger a Replace-By-Fee (RBF) transaction, which allows the you to replace your unconfirmed transaction with a new one with a higher transaction fee. A transaction can be accelerated if its status is either &#x60;Broadcasting&#x60; or &#x60;Confirming&#x60;.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -531,9 +591,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | Unique id of the transaction
+const transactionId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The transaction ID.
 const opts = {
-  'transactionFee': new CoboWaas2JsApi.TransactionFee() // TransactionFee | The request body of fee to initiate transaction
+  'transactionRbf': new CoboWaas2JsApi.TransactionRbf() // TransactionRbf | The request body to drop or to speed up transactions
 };
 apiInstance.speedupTransactionById(transactionId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -548,8 +608,8 @@ apiInstance.speedupTransactionById(transactionId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Unique id of the transaction | 
- **transactionFee** | [**TransactionFee**](TransactionFee.md)| The request body of fee to initiate transaction | [optional] 
+ **transactionId** | **String**| The transaction ID. | 
+ **transactionRbf** | [**TransactionRbf**](TransactionRbf.md)| The request body to drop or to speed up transactions | [optional] 
 
 ### Return type
 

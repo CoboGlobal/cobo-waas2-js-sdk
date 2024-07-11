@@ -22,10 +22,13 @@ class CreateTransferTransaction201Response {
     /**
      * Constructs a new <code>CreateTransferTransaction201Response</code>.
      * @alias module:model/CreateTransferTransaction201Response
+     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param transactionId {String} The transaction ID.
+     * @param status {module:model/TransactionStatus} 
      */
-    constructor() { 
+    constructor(requestId, transactionId, status) { 
         
-        CreateTransferTransaction201Response.initialize(this);
+        CreateTransferTransaction201Response.initialize(this, requestId, transactionId, status);
     }
 
     /**
@@ -33,7 +36,10 @@ class CreateTransferTransaction201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, requestId, transactionId, status) { 
+        obj['request_id'] = requestId;
+        obj['transaction_id'] = transactionId;
+        obj['status'] = status;
     }
 
     /**
@@ -66,6 +72,12 @@ class CreateTransferTransaction201Response {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateTransferTransaction201Response</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateTransferTransaction201Response.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
@@ -81,16 +93,16 @@ class CreateTransferTransaction201Response {
 
 }
 
-
+CreateTransferTransaction201Response.RequiredProperties = ["request_id", "transaction_id", "status"];
 
 /**
- * Unique id of the request.
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
 CreateTransferTransaction201Response.prototype['request_id'] = undefined;
 
 /**
- * The transaction id of of the request.
+ * The transaction ID.
  * @member {String} transaction_id
  */
 CreateTransferTransaction201Response.prototype['transaction_id'] = undefined;

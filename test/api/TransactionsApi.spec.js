@@ -47,10 +47,20 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('createSmartContractCallTransaction', function() {
-      it('should call createSmartContractCallTransaction successfully', function() {
-        //uncomment below and update the code to test createSmartContractCallTransaction
-        //instance.createSmartContractCallTransaction().then(function(data) {
+    describe('createContractCallTransaction', function() {
+      it('should call createContractCallTransaction successfully', function() {
+        //uncomment below and update the code to test createContractCallTransaction
+        //instance.createContractCallTransaction().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('createMessageSignTransaction', function() {
+      it('should call createMessageSignTransaction successfully', function() {
+        //uncomment below and update the code to test createMessageSignTransaction
+        //instance.createMessageSignTransaction().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -87,20 +97,20 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getChainFeePrice', function() {
-      it('should call getChainFeePrice successfully', function() {
-        //uncomment below and update the code to test getChainFeePrice
-        //instance.getChainFeePrice().then(function(data) {
+    describe('getTransactionById', function() {
+      it('should call getTransactionById successfully', function() {
+        //uncomment below and update the code to test getTransactionById
+        //instance.getTransactionById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getTransactionById', function() {
-      it('should call getTransactionById successfully', function() {
-        //uncomment below and update the code to test getTransactionById
-        //instance.getTransactionById().then(function(data) {
+    describe('listFeeRates', function() {
+      it('should call listFeeRates successfully', function() {
+        //uncomment below and update the code to test listFeeRates
+        //instance.listFeeRates().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

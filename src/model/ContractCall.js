@@ -11,9 +11,9 @@
  */
 
 import ApiClient from '../ApiClient';
-import ContractCallDestination from './ContractCallDestination';
 import ContractCallSource from './ContractCallSource';
-import TransactionFee from './TransactionFee';
+import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
+import TransactionTransferFee from './TransactionTransferFee';
 
 /**
  * The ContractCall model module.
@@ -23,16 +23,16 @@ import TransactionFee from './TransactionFee';
 class ContractCall {
     /**
      * Constructs a new <code>ContractCall</code>.
-     * The data for create smart contract call transaction.
+     * The information about a transaction that interacts with a smart contract
      * @alias module:model/ContractCall
-     * @param requestId {String} Unique id of the request.
-     * @param requestType {module:model/ContractCall.RequestTypeEnum} 
-     * @param chainId {String} The blockchain on which the token operates.
+     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
      * @param source {module:model/ContractCallSource} 
+     * @param destination {module:model/EstimateFeeContractCallDestination} 
      */
-    constructor(requestId, requestType, chainId, source) { 
+    constructor(requestId, chainId, source, destination) { 
         
-        ContractCall.initialize(this, requestId, requestType, chainId, source);
+        ContractCall.initialize(this, requestId, chainId, source, destination);
     }
 
     /**
@@ -40,11 +40,11 @@ class ContractCall {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, requestType, chainId, source) { 
+    static initialize(obj, requestId, chainId, source, destination) { 
         obj['request_id'] = requestId;
-        obj['request_type'] = requestType;
         obj['chain_id'] = chainId;
         obj['source'] = source;
+        obj['destination'] = destination;
     }
 
     /**
@@ -61,9 +61,6 @@ class ContractCall {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
-            if (data.hasOwnProperty('request_type')) {
-                obj['request_type'] = ApiClient.convertToType(data['request_type'], 'String');
-            }
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
@@ -71,10 +68,10 @@ class ContractCall {
                 obj['source'] = ContractCallSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ContractCallDestination.constructFromObject(data['destination']);
+                obj['destination'] = EstimateFeeContractCallDestination.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = TransactionFee.constructFromObject(data['fee']);
+                obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
         }
         return obj;
@@ -97,10 +94,6 @@ class ContractCall {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['request_type'] && !(typeof data['request_type'] === 'string' || data['request_type'] instanceof String)) {
-            throw new Error("Expected the field `request_type` to be a primitive type in the JSON string but got " + data['request_type']);
-        }
-        // ensure the json data is a string
         if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
@@ -110,11 +103,11 @@ class ContractCall {
         }
         // validate the optional field `destination`
         if (data['destination']) { // data not null
-          ContractCallDestination.validateJSON(data['destination']);
+          EstimateFeeContractCallDestination.validateJSON(data['destination']);
         }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
-          TransactionFee.validateJSON(data['fee']);
+          TransactionTransferFee.validateJSON(data['fee']);
         }
 
         return true;
@@ -123,21 +116,16 @@ class ContractCall {
 
 }
 
-ContractCall.RequiredProperties = ["request_id", "request_type", "chain_id", "source"];
+ContractCall.RequiredProperties = ["request_id", "chain_id", "source", "destination"];
 
 /**
- * Unique id of the request.
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
 ContractCall.prototype['request_id'] = undefined;
 
 /**
- * @member {module:model/ContractCall.RequestTypeEnum} request_type
- */
-ContractCall.prototype['request_type'] = undefined;
-
-/**
- * The blockchain on which the token operates.
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
  * @member {String} chain_id
  */
 ContractCall.prototype['chain_id'] = undefined;
@@ -148,44 +136,17 @@ ContractCall.prototype['chain_id'] = undefined;
 ContractCall.prototype['source'] = undefined;
 
 /**
- * @member {module:model/ContractCallDestination} destination
+ * @member {module:model/EstimateFeeContractCallDestination} destination
  */
 ContractCall.prototype['destination'] = undefined;
 
 /**
- * @member {module:model/TransactionFee} fee
+ * @member {module:model/TransactionTransferFee} fee
  */
 ContractCall.prototype['fee'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>request_type</code> property.
- * @enum {String}
- * @readonly
- */
-ContractCall['RequestTypeEnum'] = {
-
-    /**
-     * value: "Transfer"
-     * @const
-     */
-    "Transfer": "Transfer",
-
-    /**
-     * value: "Call"
-     * @const
-     */
-    "Call": "Call",
-
-    /**
-     * value: "Sign"
-     * @const
-     */
-    "Sign": "Sign"
-};
 
 
 

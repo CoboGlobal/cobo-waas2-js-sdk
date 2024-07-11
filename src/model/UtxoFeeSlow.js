@@ -25,11 +25,12 @@ class UtxoFeeSlow {
      * @alias module:model/UtxoFeeSlow
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
      */
-    constructor(feeRate) { 
-        UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this);
-        UtxoFeeSlow.initialize(this, feeRate);
+    constructor(feeRate, maxFeeAmount) { 
+        UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this, maxFeeAmount);
+        UtxoFeeSlow.initialize(this, feeRate, maxFeeAmount);
     }
 
     /**
@@ -37,8 +38,9 @@ class UtxoFeeSlow {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate) { 
+    static initialize(obj, feeRate, maxFeeAmount) { 
         obj['fee_rate'] = feeRate;
+        obj['max_fee_amount'] = maxFeeAmount;
     }
 
     /**
@@ -54,9 +56,6 @@ class UtxoFeeSlow {
             UtxoFeeBasePrice.constructFromObject(data, obj);
             FeeAmount.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
@@ -80,10 +79,6 @@ class UtxoFeeSlow {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
-        }
-        // ensure the json data is a string
         if (data['fee_rate'] && !(typeof data['fee_rate'] === 'string' || data['fee_rate'] instanceof String)) {
             throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
         }
@@ -98,22 +93,16 @@ class UtxoFeeSlow {
 
 }
 
-UtxoFeeSlow.RequiredProperties = ["fee_rate"];
+UtxoFeeSlow.RequiredProperties = ["fee_rate", "max_fee_amount"];
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-UtxoFeeSlow.prototype['fee_token_id'] = undefined;
-
-/**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+ * The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeSlow.prototype['fee_rate'] = undefined;
 
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 UtxoFeeSlow.prototype['max_fee_amount'] = undefined;
@@ -121,18 +110,13 @@ UtxoFeeSlow.prototype['max_fee_amount'] = undefined;
 
 // Implement UtxoFeeBasePrice interface:
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
-/**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+ * The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
 // Implement FeeAmount interface:
 /**
- * The maximum fee amount in fee_coin.
+ * The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
  * @member {String} max_fee_amount
  */
 FeeAmount.prototype['max_fee_amount'] = undefined;

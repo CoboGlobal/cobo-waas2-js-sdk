@@ -189,7 +189,7 @@ ExchangeWalletInfo.prototype['apikey'] = undefined;
 ExchangeWalletInfo.prototype['exchange_id'] = undefined;
 
 /**
- * The wallet ID of the Main Account associated with the Sub Account. This is returned only if you are querying a Sub Account.
+ * The wallet ID of the Main Account associated with the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Sub Account).
  * @member {String} parent_wallet_id
  */
 ExchangeWalletInfo.prototype['parent_wallet_id'] = undefined;

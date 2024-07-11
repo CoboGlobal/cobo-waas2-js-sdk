@@ -22,6 +22,7 @@ import WalletType from './WalletType';
 class CreateCustodialWallet {
     /**
      * Constructs a new <code>CreateCustodialWallet</code>.
+     * The information of Custodial Wallets.
      * @alias module:model/CreateCustodialWallet
      * @param name {String} The wallet name.
      * @param walletType {module:model/WalletType} 

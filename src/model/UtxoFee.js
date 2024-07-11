@@ -25,11 +25,11 @@ class UtxoFee {
      * The estimated transaction fee for UTXO-based chains.
      * @alias module:model/UtxoFee
      * @param feeType {module:model/FeeType} 
-     * @param standard {module:model/UtxoFeeSlow} 
+     * @param recommended {module:model/UtxoFeeSlow} 
      */
-    constructor(feeType, standard) { 
+    constructor(feeType, recommended) { 
         
-        UtxoFee.initialize(this, feeType, standard);
+        UtxoFee.initialize(this, feeType, recommended);
     }
 
     /**
@@ -37,9 +37,9 @@ class UtxoFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, standard) { 
+    static initialize(obj, feeType, recommended) { 
         obj['fee_type'] = feeType;
-        obj['standard'] = standard;
+        obj['recommended'] = recommended;
     }
 
     /**
@@ -56,11 +56,14 @@ class UtxoFee {
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
             if (data.hasOwnProperty('slow')) {
                 obj['slow'] = UtxoFeeSlow.constructFromObject(data['slow']);
             }
-            if (data.hasOwnProperty('standard')) {
-                obj['standard'] = UtxoFeeSlow.constructFromObject(data['standard']);
+            if (data.hasOwnProperty('recommended')) {
+                obj['recommended'] = UtxoFeeSlow.constructFromObject(data['recommended']);
             }
             if (data.hasOwnProperty('fast')) {
                 obj['fast'] = UtxoFeeSlow.constructFromObject(data['fast']);
@@ -81,13 +84,17 @@ class UtxoFee {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
         // validate the optional field `slow`
         if (data['slow']) { // data not null
           UtxoFeeSlow.validateJSON(data['slow']);
         }
-        // validate the optional field `standard`
-        if (data['standard']) { // data not null
-          UtxoFeeSlow.validateJSON(data['standard']);
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          UtxoFeeSlow.validateJSON(data['recommended']);
         }
         // validate the optional field `fast`
         if (data['fast']) { // data not null
@@ -100,7 +107,7 @@ class UtxoFee {
 
 }
 
-UtxoFee.RequiredProperties = ["fee_type", "standard"];
+UtxoFee.RequiredProperties = ["fee_type", "recommended"];
 
 /**
  * @member {module:model/FeeType} fee_type
@@ -108,14 +115,20 @@ UtxoFee.RequiredProperties = ["fee_type", "standard"];
 UtxoFee.prototype['fee_type'] = undefined;
 
 /**
+ * The token ID of the transaction fee.
+ * @member {String} token_id
+ */
+UtxoFee.prototype['token_id'] = undefined;
+
+/**
  * @member {module:model/UtxoFeeSlow} slow
  */
 UtxoFee.prototype['slow'] = undefined;
 
 /**
- * @member {module:model/UtxoFeeSlow} standard
+ * @member {module:model/UtxoFeeSlow} recommended
  */
-UtxoFee.prototype['standard'] = undefined;
+UtxoFee.prototype['recommended'] = undefined;
 
 /**
  * @member {module:model/UtxoFeeSlow} fast

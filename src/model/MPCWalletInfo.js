@@ -30,7 +30,7 @@ class MPCWalletInfo {
      * @param walletSubtype {module:model/WalletSubtype} 
      * @param name {String} The wallet name.
      * @param orgId {String} The ID of the owning organization.
-     * @param vaultId {String} The ID of the owning Vault.
+     * @param vaultId {String} The ID of the owning vault.
      */
     constructor(walletId, walletType, walletSubtype, name, orgId, vaultId) { 
         CustodialWalletInfo.initialize(this, walletId, walletType, walletSubtype, name, orgId);
@@ -151,7 +151,7 @@ MPCWalletInfo.prototype['name'] = undefined;
 MPCWalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The ID of the owning Vault.
+ * The ID of the owning vault.
  * @member {String} vault_id
  */
 MPCWalletInfo.prototype['vault_id'] = undefined;

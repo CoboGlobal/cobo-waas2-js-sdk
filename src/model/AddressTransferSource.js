@@ -25,12 +25,12 @@ class AddressTransferSource {
      * @alias module:model/AddressTransferSource
      * @implements module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} Unique id of the wallet to transfer from.
-     * @param addressStr {String} From address
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      */
-    constructor(sourceType, walletId, addressStr) { 
+    constructor(sourceType, walletId, address) { 
         BaseTransferSource.initialize(this, sourceType, walletId);
-        AddressTransferSource.initialize(this, sourceType, walletId, addressStr);
+        AddressTransferSource.initialize(this, sourceType, walletId, address);
     }
 
     /**
@@ -38,10 +38,10 @@ class AddressTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr) { 
+    static initialize(obj, sourceType, walletId, address) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
+        obj['address'] = address;
     }
 
     /**
@@ -62,8 +62,8 @@ class AddressTransferSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
         }
         return obj;
@@ -86,8 +86,8 @@ class AddressTransferSource {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
 
         return true;
@@ -96,7 +96,7 @@ class AddressTransferSource {
 
 }
 
-AddressTransferSource.RequiredProperties = ["source_type", "wallet_id", "address_str"];
+AddressTransferSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
  * @member {module:model/WalletSubtype} source_type
@@ -104,16 +104,16 @@ AddressTransferSource.RequiredProperties = ["source_type", "wallet_id", "address
 AddressTransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 AddressTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-AddressTransferSource.prototype['address_str'] = undefined;
+AddressTransferSource.prototype['address'] = undefined;
 
 
 // Implement BaseTransferSource interface:
@@ -122,7 +122,7 @@ AddressTransferSource.prototype['address_str'] = undefined;
  */
 BaseTransferSource.prototype['source_type'] = undefined;
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseTransferSource.prototype['wallet_id'] = undefined;

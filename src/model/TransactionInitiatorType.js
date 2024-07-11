@@ -33,6 +33,13 @@ export default class TransactionInitiatorType {
 
     
         /**
+         * value: "App"
+         * @const
+         */
+        "App" = "App";
+
+    
+        /**
          * value: "External"
          * @const
          */

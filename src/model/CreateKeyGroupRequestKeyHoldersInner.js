@@ -21,7 +21,7 @@ import KeyHolderType from './KeyHolderType';
 class CreateKeyGroupRequestKeyHoldersInner {
     /**
      * Constructs a new <code>CreateKeyGroupRequestKeyHoldersInner</code>.
-     * When creating MainKeyGroup and SigningKeyGroup, the cobo key holder will be added automatically
+     * When creating MainKeyGroup and SigningKeyGroup, the Cobo key share holder will be added automatically.
      * @alias module:model/CreateKeyGroupRequestKeyHoldersInner
      */
     constructor() { 
@@ -85,6 +85,7 @@ class CreateKeyGroupRequestKeyHoldersInner {
 
 
 /**
+ * Key share holder's name.
  * @member {String} name
  */
 CreateKeyGroupRequestKeyHoldersInner.prototype['name'] = undefined;
@@ -95,7 +96,7 @@ CreateKeyGroupRequestKeyHoldersInner.prototype['name'] = undefined;
 CreateKeyGroupRequestKeyHoldersInner.prototype['type'] = undefined;
 
 /**
- * The ID of the tss node.
+ * The TSS Node ID.
  * @member {String} tss_node_id
  */
 CreateKeyGroupRequestKeyHoldersInner.prototype['tss_node_id'] = undefined;

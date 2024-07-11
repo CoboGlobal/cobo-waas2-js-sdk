@@ -205,16 +205,28 @@ CreatedWallet.prototype['secret'] = undefined;
 CreatedWallet.prototype['passphrase'] = undefined;
 
 /**
+ * The API memo of your exchange account.
+ * @member {String} memo
+ */
+CreatedWallet.prototype['memo'] = undefined;
+
+/**
+ * The account identifier of your exchange account. - For Binance, this is the user's email address (e.g., 'xxx@cobo.com'). - For OKX, this is the user's account username. 
+ * @member {String} account_identify
+ */
+CreatedWallet.prototype['account_identify'] = undefined;
+
+/**
  * The GA code for the exchange.
  * @member {String} ga_code
  */
 CreatedWallet.prototype['ga_code'] = undefined;
 
 /**
- * The Sub Account ID. It can be an email address, a user name, or a custom account ID.
- * @member {Array.<String>} sub_account_ids
+ * The ID of the Exchange Wallet (Main Account).
+ * @member {String} main_wallet_id
  */
-CreatedWallet.prototype['sub_account_ids'] = undefined;
+CreatedWallet.prototype['main_wallet_id'] = undefined;
 
 
 CreatedWallet.OneOf = ["CreateCustodialWallet", "CreateExchangeWallet", "CreateMpcWallet", "CreateSmartContractWallet"];

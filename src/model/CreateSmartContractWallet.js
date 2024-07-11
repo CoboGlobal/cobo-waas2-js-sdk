@@ -141,25 +141,25 @@ CreateSmartContractWallet.prototype['chain_id'] = undefined;
 CreateSmartContractWallet.prototype['smart_contract_wallet_type'] = undefined;
 
 /**
- * The address of the Smart Contract Wallet. If this is not provided, Cobo will create a new Safe{Wallet} and set up Cobo Safe for you. In that case, the `threshold` and `owners` fields are required.
+ * The address of the Smart Contract Wallet. If this is not provided, Cobo will create a new Safe{Wallet} and set up Cobo Safe for you. In that case, the `threshold` and `signers` properties are required.
  * @member {String} safe_address
  */
 CreateSmartContractWallet.prototype['safe_address'] = undefined;
 
 /**
- * The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
- * @member {Array.<String>} owners
+ * The signers of the Smart Contract Wallet. This property is required when creating a new Safe{Wallet}.
+ * @member {Array.<String>} signers
  */
-CreateSmartContractWallet.prototype['owners'] = undefined;
+CreateSmartContractWallet.prototype['signers'] = undefined;
 
 /**
- * The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
+ * The minimum number of confirmations required for the Smart Contract Wallet. This property is required when creating a new Safe{Wallet}.
  * @member {Number} threshold
  */
 CreateSmartContractWallet.prototype['threshold'] = undefined;
 
 /**
- * The address of Cobo Safe. If you are importing an existing Safe{Wallet}, Cobo Safe must has been created and enabled.
+ * The address of Cobo Safe. If you are importing an existing Safe{Wallet}, Cobo Safe must have been created and enabled.
  * @member {String} cobo_safe_address
  */
 CreateSmartContractWallet.prototype['cobo_safe_address'] = undefined;

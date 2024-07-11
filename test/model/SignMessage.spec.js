@@ -59,12 +59,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property requestType (base name: "request_type")', function() {
-      // uncomment below and update the code to test the property requestType
-      //var instance = new CoboWaas2JsApi.SignMessage();
-      //expect(instance).to.be();
-    });
-
     it('should have the property chainId (base name: "chain_id")', function() {
       // uncomment below and update the code to test the property chainId
       //var instance = new CoboWaas2JsApi.SignMessage();

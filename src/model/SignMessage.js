@@ -22,15 +22,16 @@ import SignMessageSource from './SignMessageSource';
 class SignMessage {
     /**
      * Constructs a new <code>SignMessage</code>.
-     * The data for create a message-signing transaction.
+     * The information about a transaction that signs a message. You can provide the message either as raw data or as structured data.
      * @alias module:model/SignMessage
-     * @param requestId {String} Unique id of the request.
-     * @param requestType {module:model/SignMessage.RequestTypeEnum} 
-     * @param chainId {String} The blockchain on which the token operates.
+     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param source {module:model/SignMessageSource} 
+     * @param destination {module:model/SignMessageDestination} 
      */
-    constructor(requestId, requestType, chainId) { 
+    constructor(requestId, chainId, source, destination) { 
         
-        SignMessage.initialize(this, requestId, requestType, chainId);
+        SignMessage.initialize(this, requestId, chainId, source, destination);
     }
 
     /**
@@ -38,10 +39,11 @@ class SignMessage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, requestType, chainId) { 
+    static initialize(obj, requestId, chainId, source, destination) { 
         obj['request_id'] = requestId;
-        obj['request_type'] = requestType;
         obj['chain_id'] = chainId;
+        obj['source'] = source;
+        obj['destination'] = destination;
     }
 
     /**
@@ -57,9 +59,6 @@ class SignMessage {
 
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
-            }
-            if (data.hasOwnProperty('request_type')) {
-                obj['request_type'] = ApiClient.convertToType(data['request_type'], 'String');
             }
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
@@ -91,10 +90,6 @@ class SignMessage {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['request_type'] && !(typeof data['request_type'] === 'string' || data['request_type'] instanceof String)) {
-            throw new Error("Expected the field `request_type` to be a primitive type in the JSON string but got " + data['request_type']);
-        }
-        // ensure the json data is a string
         if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
@@ -113,21 +108,16 @@ class SignMessage {
 
 }
 
-SignMessage.RequiredProperties = ["request_id", "request_type", "chain_id"];
+SignMessage.RequiredProperties = ["request_id", "chain_id", "source", "destination"];
 
 /**
- * Unique id of the request.
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
 SignMessage.prototype['request_id'] = undefined;
 
 /**
- * @member {module:model/SignMessage.RequestTypeEnum} request_type
- */
-SignMessage.prototype['request_type'] = undefined;
-
-/**
- * The blockchain on which the token operates.
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
  * @member {String} chain_id
  */
 SignMessage.prototype['chain_id'] = undefined;
@@ -144,33 +134,6 @@ SignMessage.prototype['destination'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>request_type</code> property.
- * @enum {String}
- * @readonly
- */
-SignMessage['RequestTypeEnum'] = {
-
-    /**
-     * value: "Transfer"
-     * @const
-     */
-    "Transfer": "Transfer",
-
-    /**
-     * value: "Call"
-     * @const
-     */
-    "Call": "Call",
-
-    /**
-     * value: "Sign"
-     * @const
-     */
-    "Sign": "Sign"
-};
 
 
 

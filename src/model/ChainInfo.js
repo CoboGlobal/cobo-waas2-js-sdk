@@ -22,7 +22,7 @@ class ChainInfo {
      * Constructs a new <code>ChainInfo</code>.
      * The chain information.
      * @alias module:model/ChainInfo
-     * @param chainId {String} The chain on which the token operates.
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
      */
     constructor(chainId) { 
         
@@ -63,6 +63,9 @@ class ChainInfo {
             }
             if (data.hasOwnProperty('explorer_address_url')) {
                 obj['explorer_address_url'] = ApiClient.convertToType(data['explorer_address_url'], 'String');
+            }
+            if (data.hasOwnProperty('require_memo')) {
+                obj['require_memo'] = ApiClient.convertToType(data['require_memo'], 'Boolean');
             }
         }
         return obj;
@@ -110,13 +113,13 @@ class ChainInfo {
 ChainInfo.RequiredProperties = ["chain_id"];
 
 /**
- * The chain on which the token operates.
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
  * @member {String} chain_id
  */
 ChainInfo.prototype['chain_id'] = undefined;
 
 /**
- * The chain symbol.
+ * The chain symbol, which is the abbreviated name of a chain.
  * @member {String} symbol
  */
 ChainInfo.prototype['symbol'] = undefined;
@@ -138,6 +141,12 @@ ChainInfo.prototype['explorer_tx_url'] = undefined;
  * @member {String} explorer_address_url
  */
 ChainInfo.prototype['explorer_address_url'] = undefined;
+
+/**
+ * Whether the chain requires a memo.
+ * @member {Boolean} require_memo
+ */
+ChainInfo.prototype['require_memo'] = undefined;
 
 
 

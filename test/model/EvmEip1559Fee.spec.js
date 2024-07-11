@@ -59,14 +59,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
+      //var instance = new CoboWaas2JsApi.EvmEip1559Fee();
+      //expect(instance).to.be();
+    });
+
     it('should have the property slow (base name: "slow")', function() {
       // uncomment below and update the code to test the property slow
       //var instance = new CoboWaas2JsApi.EvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property standard (base name: "standard")', function() {
-      // uncomment below and update the code to test the property standard
+    it('should have the property recommended (base name: "recommended")', function() {
+      // uncomment below and update the code to test the property recommended
       //var instance = new CoboWaas2JsApi.EvmEip1559Fee();
       //expect(instance).to.be();
     });

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groupId** | **String** | the group id of the tss group. | [optional] 
+**groupId** | **String** | The TSS group ID. | [optional] 
 **curve** | [**CurveType**](CurveType.md) |  | [optional] 
 
 

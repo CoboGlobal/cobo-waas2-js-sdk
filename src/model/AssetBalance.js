@@ -23,7 +23,7 @@ class AssetBalance {
      * Constructs a new <code>AssetBalance</code>.
      * The data for token balance information.
      * @alias module:model/AssetBalance
-     * @param assetId {String} The asset ID.
+     * @param assetId {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
      * @param balance {module:model/TokenBalanceBalance} 
      */
     constructor(assetId, balance) { 
@@ -92,7 +92,7 @@ class AssetBalance {
 AssetBalance.RequiredProperties = ["asset_id", "balance"];
 
 /**
- * The asset ID.
+ * (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
  * @member {String} asset_id
  */
 AssetBalance.prototype['asset_id'] = undefined;

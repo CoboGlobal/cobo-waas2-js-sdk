@@ -83,24 +83,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property categoryNames (base name: "category_names")', function() {
-      // uncomment below and update the code to test the property categoryNames
-      //var instance = new CoboWaas2JsApi.EstimateFee();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new CoboWaas2JsApi.EstimateFee();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fee (base name: "fee")', function() {
-      // uncomment below and update the code to test the property fee
-      //var instance = new CoboWaas2JsApi.EstimateFee();
-      //expect(instance).to.be();
-    });
-
     it('should have the property chainId (base name: "chain_id")', function() {
       // uncomment below and update the code to test the property chainId
       //var instance = new CoboWaas2JsApi.EstimateFee();

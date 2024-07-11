@@ -11,7 +11,7 @@
 
 * `ContractCall` (value: `"ContractCall"`)
 
-* `AutoFueling` (value: `"AutoFueling"`)
+* `TransactionFeePayment` (value: `"TransactionFeePayment"`)
 
 * `RawMessage` (value: `"RawMessage"`)
 

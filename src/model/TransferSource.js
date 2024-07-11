@@ -15,10 +15,10 @@ import BaseTransferSource from './BaseTransferSource';
 import ExchangeTransferSource from './ExchangeTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
-import MpcTransferSourceAccountInput from './MpcTransferSourceAccountInput';
-import MpcTransferSourceUtxoInputs from './MpcTransferSourceUtxoInputs';
+import MpcTransferSourceAllOfUtxoInputs from './MpcTransferSourceAllOfUtxoInputs';
 import SafeTransferSource from './SafeTransferSource';
 import SafeTransferSourceAllOfDelegate from './SafeTransferSourceAllOfDelegate';
+import TransactionMPCWalletSourceAccountInput from './TransactionMPCWalletSourceAccountInput';
 import WalletSubtype from './WalletSubtype';
 
 /**
@@ -165,18 +165,18 @@ class TransferSource {
 TransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 TransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceAccountInput} account_input
+ * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input
  */
 TransferSource.prototype['account_input'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceUtxoInputs} utxo_inputs
+ * @member {module:model/MpcTransferSourceAllOfUtxoInputs} utxo_inputs
  */
 TransferSource.prototype['utxo_inputs'] = undefined;
 
@@ -186,10 +186,10 @@ TransferSource.prototype['utxo_inputs'] = undefined;
 TransferSource.prototype['mpc_used_key_group'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-TransferSource.prototype['address_str'] = undefined;
+TransferSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/SafeTransferSourceAllOfDelegate} delegate
@@ -197,7 +197,7 @@ TransferSource.prototype['address_str'] = undefined;
 TransferSource.prototype['delegate'] = undefined;
 
 /**
- * Exchange trading account or any sub wallet info for transfer.
+ * The exchange trading account or the sub-wallet ID.
  * @member {String} sub_wallet_id
  */
 TransferSource.prototype['sub_wallet_id'] = undefined;

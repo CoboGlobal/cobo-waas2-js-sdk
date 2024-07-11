@@ -19,24 +19,24 @@ import ApiClient from '../ApiClient';
 export default class KeyGroupType {
     
         /**
-         * value: "MainKeyGroup"
+         * value: "MainGroup"
          * @const
          */
-        "MainKeyGroup" = "MainKeyGroup";
+        "MainGroup" = "MainGroup";
 
     
         /**
-         * value: "SigningKeyGroup"
+         * value: "SigningGroup"
          * @const
          */
-        "SigningKeyGroup" = "SigningKeyGroup";
+        "SigningGroup" = "SigningGroup";
 
     
         /**
-         * value: "RecoveryKeyGroup"
+         * value: "RecoveryGroup"
          * @const
          */
-        "RecoveryKeyGroup" = "RecoveryKeyGroup";
+        "RecoveryGroup" = "RecoveryGroup";
 
     
 

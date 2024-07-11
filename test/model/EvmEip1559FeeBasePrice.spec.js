@@ -53,12 +53,6 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EvmEip1559FeeBasePrice);
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
-      //var instance = new CoboWaas2JsApi.EvmEip1559FeeBasePrice();
-      //expect(instance).to.be();
-    });
-
     it('should have the property maxPriorityFee (base name: "max_priority_fee")', function() {
       // uncomment below and update the code to test the property maxPriorityFee
       //var instance = new CoboWaas2JsApi.EvmEip1559FeeBasePrice();

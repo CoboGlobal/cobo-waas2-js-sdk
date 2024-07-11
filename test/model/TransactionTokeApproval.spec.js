@@ -65,14 +65,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property assetId (base name: "asset_id")', function() {
+      // uncomment below and update the code to test the property assetId
+      //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
+      //expect(instance).to.be();
+    });
+
     it('should have the property symbol (base name: "symbol")', function() {
       // uncomment below and update the code to test the property symbol
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property decimal (base name: "decimal")', function() {
+      // uncomment below and update the code to test the property decimal
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
@@ -89,8 +101,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property assetId (base name: "asset_id")', function() {
-      // uncomment below and update the code to test the property assetId
+    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
+      // uncomment below and update the code to test the property feeTokenId
+      //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property canDeposit (base name: "can_deposit")', function() {
+      // uncomment below and update the code to test the property canDeposit
+      //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property canWithdraw (base name: "can_withdraw")', function() {
+      // uncomment below and update the code to test the property canWithdraw
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });

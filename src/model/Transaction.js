@@ -11,13 +11,13 @@
  */
 
 import ApiClient from '../ApiClient';
-import ExchangeId from './ExchangeId';
 import TransactionDestination from './TransactionDestination';
 import TransactionFee from './TransactionFee';
+import TransactionInitiatorType from './TransactionInitiatorType';
+import TransactionReplacement from './TransactionReplacement';
 import TransactionSource from './TransactionSource';
 import TransactionStatus from './TransactionStatus';
 import TransactionSubStatus from './TransactionSubStatus';
-import TransactionToken from './TransactionToken';
 import TransactionType from './TransactionType';
 
 /**
@@ -28,21 +28,19 @@ import TransactionType from './TransactionType';
 class Transaction {
     /**
      * Constructs a new <code>Transaction</code>.
-     * The data for transaction information.
+     * The information about a transaction.
      * @alias module:model/Transaction
-     * @param transactionId {String} Unique transaction ID
-     * @param walletId {String} Wallet ID
-     * @param coboId {String} Cobo ID
+     * @param transactionId {String} The transaction ID.
      * @param status {module:model/TransactionStatus} 
-     * @param type {module:model/TransactionType} 
      * @param source {module:model/TransactionSource} 
      * @param destination {module:model/TransactionDestination} 
-     * @param createdTime {Number} Transaction creation time
-     * @param updatedTime {Number} Transaction update time
+     * @param initiatorType {module:model/TransactionInitiatorType} 
+     * @param createdTime {Number} The time when the transaction was created, in Unix timestamp format, measured in milliseconds.
+     * @param updatedTime {Number} The time when the transaction was updated, in Unix timestamp format, measured in milliseconds.
      */
-    constructor(transactionId, walletId, coboId, status, type, source, destination, createdTime, updatedTime) { 
+    constructor(transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
         
-        Transaction.initialize(this, transactionId, walletId, coboId, status, type, source, destination, createdTime, updatedTime);
+        Transaction.initialize(this, transactionId, status, source, destination, initiatorType, createdTime, updatedTime);
     }
 
     /**
@@ -50,14 +48,12 @@ class Transaction {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, transactionId, walletId, coboId, status, type, source, destination, createdTime, updatedTime) { 
+    static initialize(obj, transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
         obj['transaction_id'] = transactionId;
-        obj['wallet_id'] = walletId;
-        obj['cobo_id'] = coboId;
         obj['status'] = status;
-        obj['type'] = type;
         obj['source'] = source;
         obj['destination'] = destination;
+        obj['initiator_type'] = initiatorType;
         obj['created_time'] = createdTime;
         obj['updated_time'] = updatedTime;
     }
@@ -76,20 +72,14 @@ class Transaction {
             if (data.hasOwnProperty('transaction_id')) {
                 obj['transaction_id'] = ApiClient.convertToType(data['transaction_id'], 'String');
             }
-            if (data.hasOwnProperty('wallet_id')) {
-                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
+            if (data.hasOwnProperty('cobo_id')) {
+                obj['cobo_id'] = ApiClient.convertToType(data['cobo_id'], 'String');
             }
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
-            if (data.hasOwnProperty('cobo_id')) {
-                obj['cobo_id'] = ApiClient.convertToType(data['cobo_id'], 'String');
-            }
-            if (data.hasOwnProperty('initiator')) {
-                obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
-            }
-            if (data.hasOwnProperty('transaction_hash')) {
-                obj['transaction_hash'] = ApiClient.convertToType(data['transaction_hash'], 'String');
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = TransactionType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = TransactionStatus.constructFromObject(data['status']);
@@ -97,8 +87,11 @@ class Transaction {
             if (data.hasOwnProperty('sub_status')) {
                 obj['sub_status'] = TransactionSubStatus.constructFromObject(data['sub_status']);
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TransactionType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
+            if (data.hasOwnProperty('chain_id')) {
+                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
             if (data.hasOwnProperty('source')) {
                 obj['source'] = TransactionSource.constructFromObject(data['source']);
@@ -106,17 +99,38 @@ class Transaction {
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = TransactionDestination.constructFromObject(data['destination']);
             }
-            if (data.hasOwnProperty('chain_id')) {
-                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
-            }
-            if (data.hasOwnProperty('exchange_id')) {
-                obj['exchange_id'] = ExchangeId.constructFromObject(data['exchange_id']);
-            }
-            if (data.hasOwnProperty('tokens')) {
-                obj['tokens'] = ApiClient.convertToType(data['tokens'], [TransactionToken]);
-            }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionFee.constructFromObject(data['fee']);
+            }
+            if (data.hasOwnProperty('initiator')) {
+                obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
+            }
+            if (data.hasOwnProperty('initiator_type')) {
+                obj['initiator_type'] = TransactionInitiatorType.constructFromObject(data['initiator_type']);
+            }
+            if (data.hasOwnProperty('confirmed_num')) {
+                obj['confirmed_num'] = ApiClient.convertToType(data['confirmed_num'], 'Number');
+            }
+            if (data.hasOwnProperty('confirming_threshold')) {
+                obj['confirming_threshold'] = ApiClient.convertToType(data['confirming_threshold'], 'Number');
+            }
+            if (data.hasOwnProperty('block_number')) {
+                obj['block_number'] = ApiClient.convertToType(data['block_number'], 'Number');
+            }
+            if (data.hasOwnProperty('block_time')) {
+                obj['block_time'] = ApiClient.convertToType(data['block_time'], 'Number');
+            }
+            if (data.hasOwnProperty('block_hash')) {
+                obj['block_hash'] = ApiClient.convertToType(data['block_hash'], 'String');
+            }
+            if (data.hasOwnProperty('nonce')) {
+                obj['nonce'] = ApiClient.convertToType(data['nonce'], 'Number');
+            }
+            if (data.hasOwnProperty('transaction_hash')) {
+                obj['transaction_hash'] = ApiClient.convertToType(data['transaction_hash'], 'String');
+            }
+            if (data.hasOwnProperty('replacement')) {
+                obj['replacement'] = TransactionReplacement.constructFromObject(data['replacement']);
             }
             if (data.hasOwnProperty('category')) {
                 obj['category'] = ApiClient.convertToType(data['category'], ['String']);
@@ -124,11 +138,14 @@ class Transaction {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
-            if (data.hasOwnProperty('confirmed_num')) {
-                obj['confirmed_num'] = ApiClient.convertToType(data['confirmed_num'], 'Number');
+            if (data.hasOwnProperty('force_internal')) {
+                obj['force_internal'] = ApiClient.convertToType(data['force_internal'], 'Boolean');
             }
-            if (data.hasOwnProperty('confirming_threshold')) {
-                obj['confirming_threshold'] = ApiClient.convertToType(data['confirming_threshold'], 'Number');
+            if (data.hasOwnProperty('force_external')) {
+                obj['force_external'] = ApiClient.convertToType(data['force_external'], 'Boolean');
+            }
+            if (data.hasOwnProperty('is_loop')) {
+                obj['is_loop'] = ApiClient.convertToType(data['is_loop'], 'Boolean');
             }
             if (data.hasOwnProperty('created_time')) {
                 obj['created_time'] = ApiClient.convertToType(data['created_time'], 'Number');
@@ -157,24 +174,20 @@ class Transaction {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
-            throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
+        if (data['cobo_id'] && !(typeof data['cobo_id'] === 'string' || data['cobo_id'] instanceof String)) {
+            throw new Error("Expected the field `cobo_id` to be a primitive type in the JSON string but got " + data['cobo_id']);
         }
         // ensure the json data is a string
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['cobo_id'] && !(typeof data['cobo_id'] === 'string' || data['cobo_id'] instanceof String)) {
-            throw new Error("Expected the field `cobo_id` to be a primitive type in the JSON string but got " + data['cobo_id']);
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
         // ensure the json data is a string
-        if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
-            throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);
-        }
-        // ensure the json data is a string
-        if (data['transaction_hash'] && !(typeof data['transaction_hash'] === 'string' || data['transaction_hash'] instanceof String)) {
-            throw new Error("Expected the field `transaction_hash` to be a primitive type in the JSON string but got " + data['transaction_hash']);
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // validate the optional field `source`
         if (data['source']) { // data not null
@@ -184,23 +197,25 @@ class Transaction {
         if (data['destination']) { // data not null
           TransactionDestination.validateJSON(data['destination']);
         }
-        // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
-            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
-        }
-        if (data['tokens']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['tokens'])) {
-                throw new Error("Expected the field `tokens` to be an array in the JSON data but got " + data['tokens']);
-            }
-            // validate the optional field `tokens` (array)
-            for (const item of data['tokens']) {
-                TransactionToken.validateJSON(item);
-            };
-        }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
           TransactionFee.validateJSON(data['fee']);
+        }
+        // ensure the json data is a string
+        if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
+            throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);
+        }
+        // ensure the json data is a string
+        if (data['block_hash'] && !(typeof data['block_hash'] === 'string' || data['block_hash'] instanceof String)) {
+            throw new Error("Expected the field `block_hash` to be a primitive type in the JSON string but got " + data['block_hash']);
+        }
+        // ensure the json data is a string
+        if (data['transaction_hash'] && !(typeof data['transaction_hash'] === 'string' || data['transaction_hash'] instanceof String)) {
+            throw new Error("Expected the field `transaction_hash` to be a primitive type in the JSON string but got " + data['transaction_hash']);
+        }
+        // validate the optional field `replacement`
+        if (data['replacement']) { // data not null
+          TransactionReplacement.validateJSON(data['replacement']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['category'])) {
@@ -217,43 +232,30 @@ class Transaction {
 
 }
 
-Transaction.RequiredProperties = ["transaction_id", "wallet_id", "cobo_id", "status", "type", "source", "destination", "created_time", "updated_time"];
+Transaction.RequiredProperties = ["transaction_id", "status", "source", "destination", "initiator_type", "created_time", "updated_time"];
 
 /**
- * Unique transaction ID
+ * The transaction ID.
  * @member {String} transaction_id
  */
 Transaction.prototype['transaction_id'] = undefined;
 
 /**
- * Wallet ID
- * @member {String} wallet_id
- */
-Transaction.prototype['wallet_id'] = undefined;
-
-/**
- * Request ID
- * @member {String} request_id
- */
-Transaction.prototype['request_id'] = undefined;
-
-/**
- * Cobo ID
+ * The Cobo ID, which can be used to track a transaction.
  * @member {String} cobo_id
  */
 Transaction.prototype['cobo_id'] = undefined;
 
 /**
- * Transaction initiator
- * @member {String} initiator
+ * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+ * @member {String} request_id
  */
-Transaction.prototype['initiator'] = undefined;
+Transaction.prototype['request_id'] = undefined;
 
 /**
- * Transaction hash.
- * @member {String} transaction_hash
+ * @member {module:model/TransactionType} type
  */
-Transaction.prototype['transaction_hash'] = undefined;
+Transaction.prototype['type'] = undefined;
 
 /**
  * @member {module:model/TransactionStatus} status
@@ -266,9 +268,16 @@ Transaction.prototype['status'] = undefined;
 Transaction.prototype['sub_status'] = undefined;
 
 /**
- * @member {module:model/TransactionType} type
+ * The reason why the transaction failed.
+ * @member {String} failed_reason
  */
-Transaction.prototype['type'] = undefined;
+Transaction.prototype['failed_reason'] = undefined;
+
+/**
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+ * @member {String} chain_id
+ */
+Transaction.prototype['chain_id'] = undefined;
 
 /**
  * @member {module:model/TransactionSource} source
@@ -281,56 +290,106 @@ Transaction.prototype['source'] = undefined;
 Transaction.prototype['destination'] = undefined;
 
 /**
- * The blockchain on which the token operates.
- * @member {String} chain_id
- */
-Transaction.prototype['chain_id'] = undefined;
-
-/**
- * @member {module:model/ExchangeId} exchange_id
- */
-Transaction.prototype['exchange_id'] = undefined;
-
-/**
- * @member {Array.<module:model/TransactionToken>} tokens
- */
-Transaction.prototype['tokens'] = undefined;
-
-/**
  * @member {module:model/TransactionFee} fee
  */
 Transaction.prototype['fee'] = undefined;
 
 /**
- * @member {Array.<String>} category
+ * The transaction initiator.
+ * @member {String} initiator
  */
-Transaction.prototype['category'] = undefined;
+Transaction.prototype['initiator'] = undefined;
 
 /**
- * @member {String} description
+ * @member {module:model/TransactionInitiatorType} initiator_type
  */
-Transaction.prototype['description'] = undefined;
+Transaction.prototype['initiator_type'] = undefined;
 
 /**
- * Transaction confirmed number
+ * The number of confirmations this transaction has received.
  * @member {Number} confirmed_num
  */
 Transaction.prototype['confirmed_num'] = undefined;
 
 /**
- * Number of confirmations required for a transaction, such as 15 for ETH chain.
+ * The minimum number of confirmations required to deem a transaction secure. The common threshold is 6 for a Bitcoin transaction.
  * @member {Number} confirming_threshold
  */
 Transaction.prototype['confirming_threshold'] = undefined;
 
 /**
- * Transaction creation time
+ * The block number.
+ * @member {Number} block_number
+ */
+Transaction.prototype['block_number'] = undefined;
+
+/**
+ * The time when the block was created, in Unix timestamp format, measured in milliseconds.
+ * @member {Number} block_time
+ */
+Transaction.prototype['block_time'] = undefined;
+
+/**
+ * The block hash.
+ * @member {String} block_hash
+ */
+Transaction.prototype['block_hash'] = undefined;
+
+/**
+ * The transaction nonce.
+ * @member {Number} nonce
+ */
+Transaction.prototype['nonce'] = undefined;
+
+/**
+ * The transaction hash.
+ * @member {String} transaction_hash
+ */
+Transaction.prototype['transaction_hash'] = undefined;
+
+/**
+ * @member {module:model/TransactionReplacement} replacement
+ */
+Transaction.prototype['replacement'] = undefined;
+
+/**
+ * A custom transaction category for you to identify your transfers more easily.
+ * @member {Array.<String>} category
+ */
+Transaction.prototype['category'] = undefined;
+
+/**
+ * The description for your transaction.
+ * @member {String} description
+ */
+Transaction.prototype['description'] = undefined;
+
+/**
+ * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
+ * @member {Boolean} force_internal
+ */
+Transaction.prototype['force_internal'] = undefined;
+
+/**
+ * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
+ * @member {Boolean} force_external
+ */
+Transaction.prototype['force_external'] = undefined;
+
+/**
+ * Whether the transaction is a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).  - `true`: The transaction is a Loop transfer. - `false`: The transaction is not a Loop transfer. 
+ * @member {Boolean} is_loop
+ */
+Transaction.prototype['is_loop'] = undefined;
+
+/**
+ * The time when the transaction was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_time
  */
 Transaction.prototype['created_time'] = undefined;
 
 /**
- * Transaction update time
+ * The time when the transaction was updated, in Unix timestamp format, measured in milliseconds.
  * @member {Number} updated_time
  */
 Transaction.prototype['updated_time'] = undefined;

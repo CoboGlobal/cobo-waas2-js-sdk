@@ -11,9 +11,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import BaseTransferSource from './BaseTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
-import MpcTransferSourceAccountInput from './MpcTransferSourceAccountInput';
-import MpcTransferSourceUtxoInputs from './MpcTransferSourceUtxoInputs';
+import MpcTransferSourceAllOfUtxoInputs from './MpcTransferSourceAllOfUtxoInputs';
+import TransactionMPCWalletSourceAccountInput from './TransactionMPCWalletSourceAccountInput';
 import WalletSubtype from './WalletSubtype';
 
 /**
@@ -24,13 +25,14 @@ import WalletSubtype from './WalletSubtype';
 class MpcTransferSource {
     /**
      * Constructs a new <code>MpcTransferSource</code>.
-     * The base data for transfer source.
+     * The information about the transaction source. Specify either the &#x60;account_input&#x60; or &#x60;utxo_inputs&#x60; property.
      * @alias module:model/MpcTransferSource
+     * @implements module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} Unique id of the wallet to transfer from.
+     * @param walletId {String} The wallet ID.
      */
     constructor(sourceType, walletId) { 
-        
+        BaseTransferSource.initialize(this, sourceType, walletId);
         MpcTransferSource.initialize(this, sourceType, walletId);
     }
 
@@ -54,6 +56,7 @@ class MpcTransferSource {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new MpcTransferSource();
+            BaseTransferSource.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('source_type')) {
                 obj['source_type'] = WalletSubtype.constructFromObject(data['source_type']);
@@ -62,10 +65,10 @@ class MpcTransferSource {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
             if (data.hasOwnProperty('account_input')) {
-                obj['account_input'] = MpcTransferSourceAccountInput.constructFromObject(data['account_input']);
+                obj['account_input'] = TransactionMPCWalletSourceAccountInput.constructFromObject(data['account_input']);
             }
             if (data.hasOwnProperty('utxo_inputs')) {
-                obj['utxo_inputs'] = MpcTransferSourceUtxoInputs.constructFromObject(data['utxo_inputs']);
+                obj['utxo_inputs'] = MpcTransferSourceAllOfUtxoInputs.constructFromObject(data['utxo_inputs']);
             }
             if (data.hasOwnProperty('mpc_used_key_group')) {
                 obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
@@ -92,11 +95,11 @@ class MpcTransferSource {
         }
         // validate the optional field `account_input`
         if (data['account_input']) { // data not null
-          MpcTransferSourceAccountInput.validateJSON(data['account_input']);
+          TransactionMPCWalletSourceAccountInput.validateJSON(data['account_input']);
         }
         // validate the optional field `utxo_inputs`
         if (data['utxo_inputs']) { // data not null
-          MpcTransferSourceUtxoInputs.validateJSON(data['utxo_inputs']);
+          MpcTransferSourceAllOfUtxoInputs.validateJSON(data['utxo_inputs']);
         }
         // validate the optional field `mpc_used_key_group`
         if (data['mpc_used_key_group']) { // data not null
@@ -117,18 +120,18 @@ MpcTransferSource.RequiredProperties = ["source_type", "wallet_id"];
 MpcTransferSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 MpcTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceAccountInput} account_input
+ * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input
  */
 MpcTransferSource.prototype['account_input'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceUtxoInputs} utxo_inputs
+ * @member {module:model/MpcTransferSourceAllOfUtxoInputs} utxo_inputs
  */
 MpcTransferSource.prototype['utxo_inputs'] = undefined;
 
@@ -138,6 +141,16 @@ MpcTransferSource.prototype['utxo_inputs'] = undefined;
 MpcTransferSource.prototype['mpc_used_key_group'] = undefined;
 
 
+// Implement BaseTransferSource interface:
+/**
+ * @member {module:model/WalletSubtype} source_type
+ */
+BaseTransferSource.prototype['source_type'] = undefined;
+/**
+ * The wallet ID.
+ * @member {String} wallet_id
+ */
+BaseTransferSource.prototype['wallet_id'] = undefined;
 
 
 

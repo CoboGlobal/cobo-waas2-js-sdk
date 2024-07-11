@@ -71,6 +71,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property forceInternal (base name: "force_internal")', function() {
+      // uncomment below and update the code to test the property forceInternal
+      //var instance = new CoboWaas2JsApi.AddressTransferDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property forceExternal (base name: "force_external")', function() {
+      // uncomment below and update the code to test the property forceExternal
+      //var instance = new CoboWaas2JsApi.AddressTransferDestination();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

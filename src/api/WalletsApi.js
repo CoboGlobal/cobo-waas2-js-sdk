@@ -12,12 +12,15 @@
 
 
 import ApiClient from "../ApiClient";
-import AddWalletAddressRequest from '../model/AddWalletAddressRequest';
 import AddressInfo from '../model/AddressInfo';
+import ChainInfo from '../model/ChainInfo';
+import CheckAddressValidity200Response from '../model/CheckAddressValidity200Response';
 import CreatedWallet from '../model/CreatedWallet';
+import DeleteWalletById200Response from '../model/DeleteWalletById200Response';
 import ErrorResponse from '../model/ErrorResponse';
-import GetAddressValidity200Response from '../model/GetAddressValidity200Response';
+import GenerateWalletAddressRequest from '../model/GenerateWalletAddressRequest';
 import GetChains200Response from '../model/GetChains200Response';
+import GetSpendableList200Response from '../model/GetSpendableList200Response';
 import GetTokens200Response from '../model/GetTokens200Response';
 import GetWalletTokenBalances200Response from '../model/GetWalletTokenBalances200Response';
 import ListAddresses200Response from '../model/ListAddresses200Response';
@@ -25,7 +28,6 @@ import ListWallets200Response from '../model/ListWallets200Response';
 import LockSpendableList200Response from '../model/LockSpendableList200Response';
 import LockSpendableListRequest from '../model/LockSpendableListRequest';
 import MaxTransferableValue from '../model/MaxTransferableValue';
-import UTXO from '../model/UTXO';
 import UpdateWalletByIdRequest from '../model/UpdateWalletByIdRequest';
 import WalletInfo from '../model/WalletInfo';
 import WalletSubtype from '../model/WalletSubtype';
@@ -52,25 +54,28 @@ export default class WalletsApi {
 
 
     /**
-     * Add address to wallet
-     * This operation creates one or more addresses for the specified wallet. 
-     * @param {String} walletId The wallet ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AddWalletAddressRequest} [addWalletAddressRequest] The request body to add address to a wallet.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/AddressInfo>} and HTTP response
+     * Check address validity
+     * This operation verifies if a given address is valid for a specific token. 
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} address The wallet address.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CheckAddressValidity200Response} and HTTP response
      */
-    addWalletAddressWithHttpInfo(walletId, opts) {
-      opts = opts || {};
-      let postBody = opts['addWalletAddressRequest'];
-      // verify the required parameter 'walletId' is set
-      if (walletId === undefined || walletId === null) {
-        throw new Error("Missing the required parameter 'walletId' when calling addWalletAddress");
+    checkAddressValidityWithHttpInfo(tokenId, address) {
+      let postBody = null;
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling checkAddressValidity");
+      }
+      // verify the required parameter 'address' is set
+      if (address === undefined || address === null) {
+        throw new Error("Missing the required parameter 'address' when calling checkAddressValidity");
       }
 
       let pathParams = {
-        'wallet_id': walletId
       };
       let queryParams = {
+        'token_id': tokenId,
+        'address': address
       };
       let headerParams = {
       };
@@ -78,26 +83,25 @@ export default class WalletsApi {
       };
 
       let authNames = ['CoboAuth'];
-      let contentTypes = ['application/json'];
+      let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [AddressInfo];
+      let returnType = CheckAddressValidity200Response;
       return this.apiClient.callApi(
-        '/wallets/{wallet_id}/addresses', 'POST',
+        '/wallets/address/check_validity', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Add address to wallet
-     * This operation creates one or more addresses for the specified wallet. 
-     * @param {String} walletId The wallet ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AddWalletAddressRequest} opts.addWalletAddressRequest The request body to add address to a wallet.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/AddressInfo>}
+     * Check address validity
+     * This operation verifies if a given address is valid for a specific token. 
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} address The wallet address.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CheckAddressValidity200Response}
      */
-    addWalletAddress(walletId, opts) {
-      return this.addWalletAddressWithHttpInfo(walletId, opts)
+    checkAddressValidity(tokenId, address) {
+      return this.checkAddressValidityWithHttpInfo(tokenId, address)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -124,7 +128,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['CoboAuth'];
+      let authNames = ['OAuth2', 'CoboAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = WalletInfo;
@@ -151,10 +155,10 @@ export default class WalletsApi {
 
 
     /**
-     * Delete wallet by ID
-     * This operation deletes the specified wallet. <Note>This operation is applicable to Exchange Wallets only.</Note> 
+     * Delete wallet
+     * This operation deletes a specified wallet.  <Note>This operation is applicable to Exchange Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DeleteWalletById200Response} and HTTP response
      */
     deleteWalletByIdWithHttpInfo(walletId) {
       let postBody = null;
@@ -176,19 +180,19 @@ export default class WalletsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = DeleteWalletById200Response;
       return this.apiClient.callApi(
-        '/wallets/{wallet_id}', 'DELETE',
+        '/wallets/{wallet_id}/delete', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Delete wallet by ID
-     * This operation deletes the specified wallet. <Note>This operation is applicable to Exchange Wallets only.</Note> 
+     * Delete wallet
+     * This operation deletes a specified wallet.  <Note>This operation is applicable to Exchange Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeleteWalletById200Response}
      */
     deleteWalletById(walletId) {
       return this.deleteWalletByIdWithHttpInfo(walletId)
@@ -199,28 +203,91 @@ export default class WalletsApi {
 
 
     /**
-     * Check address validity
-     * This operation verifies if the given address is valid for the specified token. 
-     * @param {String} tokenId The token ID.
-     * @param {String} addressStr The wallet address.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetAddressValidity200Response} and HTTP response
+     * Generate new addresses in wallet
+     * This operation generates one or more addresses within a specified wallet.  <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
+     * @param {String} walletId The wallet ID.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/GenerateWalletAddressRequest} [generateWalletAddressRequest] The request body to generates addresses within a specified wallet.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/AddressInfo>} and HTTP response
      */
-    getAddressValidityWithHttpInfo(tokenId, addressStr) {
-      let postBody = null;
-      // verify the required parameter 'tokenId' is set
-      if (tokenId === undefined || tokenId === null) {
-        throw new Error("Missing the required parameter 'tokenId' when calling getAddressValidity");
-      }
-      // verify the required parameter 'addressStr' is set
-      if (addressStr === undefined || addressStr === null) {
-        throw new Error("Missing the required parameter 'addressStr' when calling getAddressValidity");
+    generateWalletAddressWithHttpInfo(walletId, opts) {
+      opts = opts || {};
+      let postBody = opts['generateWalletAddressRequest'];
+      // verify the required parameter 'walletId' is set
+      if (walletId === undefined || walletId === null) {
+        throw new Error("Missing the required parameter 'walletId' when calling generateWalletAddress");
       }
 
       let pathParams = {
+        'wallet_id': walletId
       };
       let queryParams = {
-        'token_id': tokenId,
-        'address_str': addressStr
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = [AddressInfo];
+      return this.apiClient.callApi(
+        '/wallets/{wallet_id}/addresses', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Generate new addresses in wallet
+     * This operation generates one or more addresses within a specified wallet.  <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
+     * @param {String} walletId The wallet ID.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/GenerateWalletAddressRequest} opts.generateWalletAddressRequest The request body to generates addresses within a specified wallet.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/AddressInfo>}
+     */
+    generateWalletAddress(walletId, opts) {
+      return this.generateWalletAddressWithHttpInfo(walletId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get address information
+     * This operation retrieves the detailed information about a specified address within a wallet. 
+     * @param {String} walletId The wallet ID.
+     * @param {String} address The wallet address.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tokenId] The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAddresses200Response} and HTTP response
+     */
+    getAddressByIdWithHttpInfo(walletId, address, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'walletId' is set
+      if (walletId === undefined || walletId === null) {
+        throw new Error("Missing the required parameter 'walletId' when calling getAddressById");
+      }
+      // verify the required parameter 'address' is set
+      if (address === undefined || address === null) {
+        throw new Error("Missing the required parameter 'address' when calling getAddressById");
+      }
+
+      let pathParams = {
+        'wallet_id': walletId,
+        'address': address
+      };
+      let queryParams = {
+        'token_id': opts['tokenId'],
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
       };
       let headerParams = {
       };
@@ -230,23 +297,28 @@ export default class WalletsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GetAddressValidity200Response;
+      let returnType = ListAddresses200Response;
       return this.apiClient.callApi(
-        '/wallets/address/validity', 'GET',
+        '/wallets/{wallet_id}/addresses/{address}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Check address validity
-     * This operation verifies if the given address is valid for the specified token. 
-     * @param {String} tokenId The token ID.
-     * @param {String} addressStr The wallet address.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetAddressValidity200Response}
+     * Get address information
+     * This operation retrieves the detailed information about a specified address within a wallet. 
+     * @param {String} walletId The wallet ID.
+     * @param {String} address The wallet address.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAddresses200Response}
      */
-    getAddressValidity(tokenId, addressStr) {
-      return this.getAddressValidityWithHttpInfo(tokenId, addressStr)
+    getAddressById(walletId, address, opts) {
+      return this.getAddressByIdWithHttpInfo(walletId, address, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -254,13 +326,61 @@ export default class WalletsApi {
 
 
     /**
-     * List chain metadata
-     * This operation retrieves the metadata of all chains supported by Cobo WaaS 2.0.  It provides details such as chain ID, chain name, and other relevant information. The chain metadata is publicly available without any permission restrictions. 
+     * Get chain information
+     * This operation retrieves the detailed information about a specified chain. 
+     * @param {String} chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChainInfo} and HTTP response
+     */
+    getChainByIdWithHttpInfo(chainId) {
+      let postBody = null;
+      // verify the required parameter 'chainId' is set
+      if (chainId === undefined || chainId === null) {
+        throw new Error("Missing the required parameter 'chainId' when calling getChainById");
+      }
+
+      let pathParams = {
+        'chain_id': chainId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ChainInfo;
+      return this.apiClient.callApi(
+        '/wallets/chains/{chain_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get chain information
+     * This operation retrieves the detailed information about a specified chain. 
+     * @param {String} chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChainInfo}
+     */
+    getChainById(chainId) {
+      return this.getChainByIdWithHttpInfo(chainId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List all supported chains
+     * This operation retrieves the metadata of all chains supported by Cobo WaaS 2.0.  It provides details such as the chain ID, chain symbol, and other relevant information. You can filter the result by chain ID. The chain metadata is publicly available without any permission restrictions. 
      * @param {Object} opts Optional parameters
-     * @param {String} [chainId] The chain ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [chainIds] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
      */
     getChainsWithHttpInfo(opts) {
@@ -270,7 +390,7 @@ export default class WalletsApi {
       let pathParams = {
       };
       let queryParams = {
-        'chain_id': opts['chainId'],
+        'chain_ids': opts['chainIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -292,13 +412,13 @@ export default class WalletsApi {
     }
 
     /**
-     * List chain metadata
-     * This operation retrieves the metadata of all chains supported by Cobo WaaS 2.0.  It provides details such as chain ID, chain name, and other relevant information. The chain metadata is publicly available without any permission restrictions. 
+     * List all supported chains
+     * This operation retrieves the metadata of all chains supported by Cobo WaaS 2.0.  It provides details such as the chain ID, chain symbol, and other relevant information. You can filter the result by chain ID. The chain metadata is publicly available without any permission restrictions. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.chainId The chain ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.chainIds A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
      */
     getChains(opts) {
@@ -310,14 +430,14 @@ export default class WalletsApi {
 
 
     /**
-     * List enabled chains
-     * This operation retrieves all the chains enabled for the organization associated with your API key. You can also specify the wallet type and subtype you want to query. 
+     * List organization enabled chains
+     * This operation retrieves all the chains that can be used by your organization.   You can filter the result by wallet type or subtype. If you do not specify a wallet type, this operation returns a combination of chains supported by each wallet type. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} [walletSubtype] The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
      */
     getEnabledChainsWithHttpInfo(opts) {
@@ -350,14 +470,14 @@ export default class WalletsApi {
     }
 
     /**
-     * List enabled chains
-     * This operation retrieves all the chains enabled for the organization associated with your API key. You can also specify the wallet type and subtype you want to query. 
+     * List organization enabled chains
+     * This operation retrieves all the chains that can be used by your organization.   You can filter the result by wallet type or subtype. If you do not specify a wallet type, this operation returns a combination of chains supported by each wallet type. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} opts.walletSubtype The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
      */
     getEnabledChains(opts) {
@@ -369,15 +489,15 @@ export default class WalletsApi {
 
 
     /**
-     * List enabled tokens
-     * This operation retrieves all tokens that can be used by the organization associated with your API key. You can filter the result by wallet type, subtype, and chain ID.  You can retrieve chain IDs by using the [List enabled chains](/api-references/v2/wallets/list-enabled-chains) operation. 
+     * List organization enabled tokens
+     * This operation retrieves all the tokens that can be used by your organization.   You can filter the result by wallet type, subtype, and chain ID list. If you do not specify a wallet type, this operation returns a combination of chains supported by each wallet type. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} [walletSubtype] The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} [chainId] The chain ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [chainIds] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
      */
     getEnabledTokensWithHttpInfo(opts) {
@@ -389,7 +509,7 @@ export default class WalletsApi {
       let queryParams = {
         'wallet_type': opts['walletType'],
         'wallet_subtype': opts['walletSubtype'],
-        'chain_id': opts['chainId'],
+        'chain_ids': opts['chainIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -411,15 +531,15 @@ export default class WalletsApi {
     }
 
     /**
-     * List enabled tokens
-     * This operation retrieves all tokens that can be used by the organization associated with your API key. You can filter the result by wallet type, subtype, and chain ID.  You can retrieve chain IDs by using the [List enabled chains](/api-references/v2/wallets/list-enabled-chains) operation. 
+     * List organization enabled tokens
+     * This operation retrieves all the tokens that can be used by your organization.   You can filter the result by wallet type, subtype, and chain ID list. If you do not specify a wallet type, this operation returns a combination of chains supported by each wallet type. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} opts.walletSubtype The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} opts.chainId The chain ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.chainIds A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
      */
     getEnabledTokens(opts) {
@@ -431,20 +551,30 @@ export default class WalletsApi {
 
 
     /**
-     * Get max transferable value
-     * This operation retrieves the maximum amount that you can transfer from a wallet or a specified wallet address, along with the corresponding transaction fee. 
+     * Get maximum transferable value
+     * This operation retrieves the maximum amount that you can transfer from a wallet or a specified wallet address, along with the corresponding transaction fee.  You must specify `to_address` in your query because it affects the transaction fee. 
      * @param {String} walletId The wallet ID.
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} feeRate The fee rate in sats/vByte or fee_price in gwei.
      * @param {String} toAddress The recipient's address.
      * @param {Object} opts Optional parameters
      * @param {String} [fromAddress] The sender's address.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MaxTransferableValue} and HTTP response
      */
-    getMaxTransferableValueWithHttpInfo(walletId, toAddress, opts) {
+    getMaxTransferableValueWithHttpInfo(walletId, tokenId, feeRate, toAddress, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
         throw new Error("Missing the required parameter 'walletId' when calling getMaxTransferableValue");
+      }
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling getMaxTransferableValue");
+      }
+      // verify the required parameter 'feeRate' is set
+      if (feeRate === undefined || feeRate === null) {
+        throw new Error("Missing the required parameter 'feeRate' when calling getMaxTransferableValue");
       }
       // verify the required parameter 'toAddress' is set
       if (toAddress === undefined || toAddress === null) {
@@ -455,6 +585,8 @@ export default class WalletsApi {
         'wallet_id': walletId
       };
       let queryParams = {
+        'token_id': tokenId,
+        'fee_rate': feeRate,
         'to_address': toAddress,
         'from_address': opts['fromAddress']
       };
@@ -475,16 +607,18 @@ export default class WalletsApi {
     }
 
     /**
-     * Get max transferable value
-     * This operation retrieves the maximum amount that you can transfer from a wallet or a specified wallet address, along with the corresponding transaction fee. 
+     * Get maximum transferable value
+     * This operation retrieves the maximum amount that you can transfer from a wallet or a specified wallet address, along with the corresponding transaction fee.  You must specify `to_address` in your query because it affects the transaction fee. 
      * @param {String} walletId The wallet ID.
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} feeRate The fee rate in sats/vByte or fee_price in gwei.
      * @param {String} toAddress The recipient's address.
      * @param {Object} opts Optional parameters
      * @param {String} opts.fromAddress The sender's address.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MaxTransferableValue}
      */
-    getMaxTransferableValue(walletId, toAddress, opts) {
-      return this.getMaxTransferableValueWithHttpInfo(walletId, toAddress, opts)
+    getMaxTransferableValue(walletId, tokenId, feeRate, toAddress, opts) {
+      return this.getMaxTransferableValueWithHttpInfo(walletId, tokenId, feeRate, toAddress, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -493,33 +627,31 @@ export default class WalletsApi {
 
     /**
      * List spendable UTXOs
-     * The operation retrieves a list of spendable unspent transaction outputs (UTXOs) for the specified wallet and token. 
+     * The operation retrieves a list of spendable unspent transaction outputs (UTXOs) for a specified wallet and token.  <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @param {String} txHash Transaction hash of the UTXO.
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
      * @param {Object} opts Optional parameters
-     * @param {String} [tokenId] The token ID.
-     * @param {String} [addressStr] The wallet address.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/UTXO>} and HTTP response
+     * @param {String} [address] The wallet address.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetSpendableList200Response} and HTTP response
      */
-    getSpendableListWithHttpInfo(walletId, txHash, opts) {
+    getSpendableListWithHttpInfo(walletId, tokenId, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
         throw new Error("Missing the required parameter 'walletId' when calling getSpendableList");
       }
-      // verify the required parameter 'txHash' is set
-      if (txHash === undefined || txHash === null) {
-        throw new Error("Missing the required parameter 'txHash' when calling getSpendableList");
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling getSpendableList");
       }
 
       let pathParams = {
         'wallet_id': walletId
       };
       let queryParams = {
-        'token_id': opts['tokenId'],
-        'address_str': opts['addressStr'],
-        'tx_hash': txHash
+        'token_id': tokenId,
+        'address': opts['address']
       };
       let headerParams = {
       };
@@ -529,7 +661,7 @@ export default class WalletsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [UTXO];
+      let returnType = GetSpendableList200Response;
       return this.apiClient.callApi(
         '/wallets/{wallet_id}/spendables', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -539,16 +671,15 @@ export default class WalletsApi {
 
     /**
      * List spendable UTXOs
-     * The operation retrieves a list of spendable unspent transaction outputs (UTXOs) for the specified wallet and token. 
+     * The operation retrieves a list of spendable unspent transaction outputs (UTXOs) for a specified wallet and token.  <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @param {String} txHash Transaction hash of the UTXO.
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tokenId The token ID.
-     * @param {String} opts.addressStr The wallet address.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/UTXO>}
+     * @param {String} opts.address The wallet address.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetSpendableList200Response}
      */
-    getSpendableList(walletId, txHash, opts) {
-      return this.getSpendableListWithHttpInfo(walletId, txHash, opts)
+    getSpendableList(walletId, tokenId, opts) {
+      return this.getSpendableListWithHttpInfo(walletId, tokenId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -556,14 +687,14 @@ export default class WalletsApi {
 
 
     /**
-     * List supported chains
-     * This operation retrieves all chains supported by the specified wallet type or subtype. 
+     * List wallet supported chains
+     * This operation retrieves all chains supported by a specific wallet type or subtype. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} [walletSubtype] The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetChains200Response} and HTTP response
      */
     getSupportedChainsWithHttpInfo(opts) {
@@ -596,14 +727,14 @@ export default class WalletsApi {
     }
 
     /**
-     * List supported chains
-     * This operation retrieves all chains supported by the specified wallet type or subtype. 
+     * List wallet supported chains
+     * This operation retrieves all chains supported by a specific wallet type or subtype. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} opts.walletSubtype The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetChains200Response}
      */
     getSupportedChains(opts) {
@@ -615,15 +746,15 @@ export default class WalletsApi {
 
 
     /**
-     * List supported tokens
-     * This operation retrieves all supported tokens for the organization associated with your API key. You can also specify the wallet type, subtype, and chain ID you want to query.  You can retrieve chain IDs by using the [List supported chains](/api-references/v2/wallets/list-supported-chains) operation. 
+     * List wallet supported tokens
+     * This operation retrieves all tokens supported by a specific wallet type or subtype. You can filter the result by chain ID list. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} [walletSubtype] The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} [chainId] The chain ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [chainIds] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
      */
     getSupportedTokensWithHttpInfo(opts) {
@@ -635,7 +766,7 @@ export default class WalletsApi {
       let queryParams = {
         'wallet_type': opts['walletType'],
         'wallet_subtype': opts['walletSubtype'],
-        'chain_id': opts['chainId'],
+        'chain_ids': opts['chainIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -657,15 +788,15 @@ export default class WalletsApi {
     }
 
     /**
-     * List supported tokens
-     * This operation retrieves all supported tokens for the organization associated with your API key. You can also specify the wallet type, subtype, and chain ID you want to query.  You can retrieve chain IDs by using the [List supported chains](/api-references/v2/wallets/list-supported-chains) operation. 
+     * List wallet supported tokens
+     * This operation retrieves all tokens supported by a specific wallet type or subtype. You can filter the result by chain ID list. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} opts.walletSubtype The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} opts.chainId The chain ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.chainIds A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
      */
     getSupportedTokens(opts) {
@@ -677,13 +808,61 @@ export default class WalletsApi {
 
 
     /**
-     * List token metadata
-     * This operation retrieves the metadata of the tokens stored under your account.  It provides details such as token ID, token symbol, and other relevant information. The token metadata is publicly available without any permission restrictions. 
+     * Get token information
+     * This operation retrieves the detailed information about a specified token. 
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
+     */
+    getTokenByIdWithHttpInfo(tokenId) {
+      let postBody = null;
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling getTokenById");
+      }
+
+      let pathParams = {
+        'token_id': tokenId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GetTokens200Response;
+      return this.apiClient.callApi(
+        '/wallets/tokens/{token_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get token information
+     * This operation retrieves the detailed information about a specified token. 
+     * @param {String} tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
+     */
+    getTokenById(tokenId) {
+      return this.getTokenByIdWithHttpInfo(tokenId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List all supported tokens
+     * This operation retrieves the metadata of all tokens supported by Cobo WaaS 2.0.  It provides details such as token ID, token symbol, and other relevant information. You can filter the result by token ID.  The token metadata is publicly available without any permission restrictions. 
      * @param {Object} opts Optional parameters
-     * @param {String} [tokenId] The token ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [tokenIds] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTokens200Response} and HTTP response
      */
     getTokensWithHttpInfo(opts) {
@@ -693,7 +872,7 @@ export default class WalletsApi {
       let pathParams = {
       };
       let queryParams = {
-        'token_id': opts['tokenId'],
+        'token_ids': opts['tokenIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -715,13 +894,13 @@ export default class WalletsApi {
     }
 
     /**
-     * List token metadata
-     * This operation retrieves the metadata of the tokens stored under your account.  It provides details such as token ID, token symbol, and other relevant information. The token metadata is publicly available without any permission restrictions. 
+     * List all supported tokens
+     * This operation retrieves the metadata of all tokens supported by Cobo WaaS 2.0.  It provides details such as token ID, token symbol, and other relevant information. You can filter the result by token ID.  The token metadata is publicly available without any permission restrictions. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tokenId The token ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTokens200Response}
      */
     getTokens(opts) {
@@ -734,34 +913,34 @@ export default class WalletsApi {
 
     /**
      * List token balances by address
-     * The operation retrieves a list of token balances for a specified address within an MPC Wallet. 
+     * The operation retrieves a list of token balances for a specified address within an MPC Wallet.   <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @param {String} addressId The address ID.
+     * @param {String} address The wallet address.
      * @param {Object} opts Optional parameters
-     * @param {String} [tokenId] The token ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [tokenIds] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetWalletTokenBalances200Response} and HTTP response
      */
-    getWalletAddressTokenBalancesWithHttpInfo(walletId, addressId, opts) {
+    getWalletAddressTokenBalancesWithHttpInfo(walletId, address, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
         throw new Error("Missing the required parameter 'walletId' when calling getWalletAddressTokenBalances");
       }
-      // verify the required parameter 'addressId' is set
-      if (addressId === undefined || addressId === null) {
-        throw new Error("Missing the required parameter 'addressId' when calling getWalletAddressTokenBalances");
+      // verify the required parameter 'address' is set
+      if (address === undefined || address === null) {
+        throw new Error("Missing the required parameter 'address' when calling getWalletAddressTokenBalances");
       }
 
       let pathParams = {
         'wallet_id': walletId,
-        'address_id': addressId
+        'address': address
       };
       let queryParams = {
-        'token_id': opts['tokenId'],
+        'token_ids': opts['tokenIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -776,7 +955,7 @@ export default class WalletsApi {
       let accepts = ['application/json'];
       let returnType = GetWalletTokenBalances200Response;
       return this.apiClient.callApi(
-        '/wallets/{wallet_id}/addresses/{address_id}/tokens', 'GET',
+        '/wallets/{wallet_id}/addresses/{address}/tokens', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -784,18 +963,18 @@ export default class WalletsApi {
 
     /**
      * List token balances by address
-     * The operation retrieves a list of token balances for a specified address within an MPC Wallet. 
+     * The operation retrieves a list of token balances for a specified address within an MPC Wallet.   <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
-     * @param {String} addressId The address ID.
+     * @param {String} address The wallet address.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tokenId The token ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetWalletTokenBalances200Response}
      */
-    getWalletAddressTokenBalances(walletId, addressId, opts) {
-      return this.getWalletAddressTokenBalancesWithHttpInfo(walletId, addressId, opts)
+    getWalletAddressTokenBalances(walletId, address, opts) {
+      return this.getWalletAddressTokenBalancesWithHttpInfo(walletId, address, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -803,8 +982,8 @@ export default class WalletsApi {
 
 
     /**
-     * Retrieve wallet information by ID
-     * This operation retrieves detailed information about the specified wallet. 
+     * Get wallet information
+     * This operation retrieves the detailed information about a specified wallet. 
      * @param {String} walletId The wallet ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WalletInfo} and HTTP response
      */
@@ -837,8 +1016,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Retrieve wallet information by ID
-     * This operation retrieves detailed information about the specified wallet. 
+     * Get wallet information
+     * This operation retrieves the detailed information about a specified wallet. 
      * @param {String} walletId The wallet ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WalletInfo}
      */
@@ -852,13 +1031,13 @@ export default class WalletsApi {
 
     /**
      * List token balances by wallet
-     * The operation retrieves a list of token balances within the specified wallet. <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
+     * The operation retrieves a list of token balances within a specified wallet.  <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {String} [tokenId] The token ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [tokenIds] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetWalletTokenBalances200Response} and HTTP response
      */
     getWalletTokenBalancesWithHttpInfo(walletId, opts) {
@@ -873,7 +1052,7 @@ export default class WalletsApi {
         'wallet_id': walletId
       };
       let queryParams = {
-        'token_id': opts['tokenId'],
+        'token_ids': opts['tokenIds'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -896,13 +1075,13 @@ export default class WalletsApi {
 
     /**
      * List token balances by wallet
-     * The operation retrieves a list of token balances within the specified wallet. <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
+     * The operation retrieves a list of token balances within a specified wallet.  <Note>This operation is applicable to Custodial Wallets and MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tokenId The token ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetWalletTokenBalances200Response}
      */
     getWalletTokenBalances(walletId, opts) {
@@ -914,15 +1093,15 @@ export default class WalletsApi {
 
 
     /**
-     * List wallet addresses by wallet ID
-     * This operation retrieves a list of addresses under the specified wallet. 
+     * List wallet addresses
+     * This operation retrieves a list of addresses within a specified wallet. 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {String} [tokenId] The token ID.
-     * @param {String} [addressStr] The wallet address.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [tokenId] The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} [addresses] A list of wallet addresses, separated by comma.
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAddresses200Response} and HTTP response
      */
     listAddressesWithHttpInfo(walletId, opts) {
@@ -938,7 +1117,7 @@ export default class WalletsApi {
       };
       let queryParams = {
         'token_id': opts['tokenId'],
-        'address_str': opts['addressStr'],
+        'addresses': opts['addresses'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -960,15 +1139,15 @@ export default class WalletsApi {
     }
 
     /**
-     * List wallet addresses by wallet ID
-     * This operation retrieves a list of addresses under the specified wallet. 
+     * List wallet addresses
+     * This operation retrieves a list of addresses within a specified wallet. 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tokenId The token ID.
-     * @param {String} opts.addressStr The wallet address.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.tokenId The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param {String} opts.addresses A list of wallet addresses, separated by comma.
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAddresses200Response}
      */
     listAddresses(walletId, opts) {
@@ -981,14 +1160,15 @@ export default class WalletsApi {
 
     /**
      * List all wallets
-     * This operation retrieves the information of all wallets under your organization. You can filter the result by wallet type, subtype, and Vault ID (for MPC Wallets). 
+     * This operation retrieves the information of all wallets under your organization. You can filter the result by wallet type, subtype, and vault ID (for MPC Wallets).  <Note>You must specify either the wallet type or subtype, or both.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} [walletType] The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} [walletSubtype] The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} [vaultId] The MPC Vault ID.
-     * @param {Number} [limit = 10)] The maximum number of objects to return. The value range is [1, 50].
-     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} [vaultId] The MPC vault ID. This parameter is applicable to MPC Wallets only.
+     * @param {Number} [limit = 10)] The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified.
+     * @param {String} [before] An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} [after] An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWallets200Response} and HTTP response
      */
     listWalletsWithHttpInfo(opts) {
@@ -1000,6 +1180,7 @@ export default class WalletsApi {
       let queryParams = {
         'wallet_type': opts['walletType'],
         'wallet_subtype': opts['walletSubtype'],
+        'project_id': opts['projectId'],
         'vault_id': opts['vaultId'],
         'limit': opts['limit'],
         'before': opts['before'],
@@ -1023,14 +1204,15 @@ export default class WalletsApi {
 
     /**
      * List all wallets
-     * This operation retrieves the information of all wallets under your organization. You can filter the result by wallet type, subtype, and Vault ID (for MPC Wallets). 
+     * This operation retrieves the information of all wallets under your organization. You can filter the result by wallet type, subtype, and vault ID (for MPC Wallets).  <Note>You must specify either the wallet type or subtype, or both.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: Custodial Wallets  - `MPC`: MPC Wallets  - `SmartContract`: Smart Contract Wallets  - `Exchange`: Exchange Wallets 
+     * @param {module:model/WalletType} opts.walletType The wallet type.  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
      * @param {module:model/WalletSubtype} opts.walletSubtype The wallet subtype.  - `Asset`: Custodial Wallets (Asset Wallets)  - `Web3`: Custodial Wallets (Web3 Wallets)  - `Main`: Exchange Wallets (Main Account)  - `Sub`: Exchange Wallets (Sub Account)  - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets)  - `User-Controlled`: MPC Wallets (User-Controlled Wallets)  - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}) 
-     * @param {String} opts.vaultId The MPC Vault ID.
-     * @param {Number} opts.limit The maximum number of objects to return. The value range is [1, 50]. (default to 10)
-     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `foo`, the request will retrieve a list of data objects that end before the object with the object ID `foo`. You can set this parameter to the value of `pagination.after` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
-     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `bar`, the request will retrieve a list of data objects that start after the object with the object ID `bar`. You can set this parameter to the value of `pagination.before` in the response of the previous request. If you set both `after` or `before`, only the setting of `before` will take effect.
+     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} opts.vaultId The MPC vault ID. This parameter is applicable to MPC Wallets only.
+     * @param {Number} opts.limit The maximum number of objects to return. The default value range is [1, 50] and can be set endpoint specified. (default to 10)
+     * @param {String} opts.before An object ID which serves as a cursor for pagination. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect.  If the `before` and `after` are both set to empty, the first slice is returned. If the `before` is set to `infinity`, the last slice is returned. 
+     * @param {String} opts.after An object ID which serves as a cursor for pagination. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the specified ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  If you set both `after` or `before`, only the setting of `before` will take effect. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWallets200Response}
      */
     listWallets(opts) {
@@ -1042,11 +1224,11 @@ export default class WalletsApi {
 
 
     /**
-     * Lock/Unlock the UTXOs in tx hash list
-     * Lock/Unlock the UTXOs in the given tx hash list. The Locked UTXO can not be transferred until unlocked. 
+     * Lock UTXOs
+     * This operation locks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/LockSpendableListRequest} [lockSpendableListRequest] The request body to lock/unlock spendable
+     * @param {module:model/LockSpendableListRequest} [lockSpendableListRequest] The request body of the Lock/Unlock UTXOs operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/LockSpendableList200Response} and HTTP response
      */
     lockSpendableListWithHttpInfo(walletId, opts) {
@@ -1079,11 +1261,11 @@ export default class WalletsApi {
     }
 
     /**
-     * Lock/Unlock the UTXOs in tx hash list
-     * Lock/Unlock the UTXOs in the given tx hash list. The Locked UTXO can not be transferred until unlocked. 
+     * Lock UTXOs
+     * This operation locks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  <Note>This operation is applicable to MPC Wallets only.</Note> 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/LockSpendableListRequest} opts.lockSpendableListRequest The request body to lock/unlock spendable
+     * @param {module:model/LockSpendableListRequest} opts.lockSpendableListRequest The request body of the Lock/Unlock UTXOs operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/LockSpendableList200Response}
      */
     lockSpendableList(walletId, opts) {
@@ -1095,8 +1277,61 @@ export default class WalletsApi {
 
 
     /**
-     * Update wallet by ID
-     * This operation updates the information of a specified wallet.  <Note>This operation is applicable to Exchange Wallets only.</Note> 
+     * Unlock UTXOs
+     * This operation unlocks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  <Note>This operation is applicable to MPC Wallets only.</Note> 
+     * @param {String} walletId The wallet ID.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LockSpendableListRequest} [lockSpendableListRequest] The request body of the Lock/Unlock UTXOs operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/LockSpendableList200Response} and HTTP response
+     */
+    unlockSpendableListWithHttpInfo(walletId, opts) {
+      opts = opts || {};
+      let postBody = opts['lockSpendableListRequest'];
+      // verify the required parameter 'walletId' is set
+      if (walletId === undefined || walletId === null) {
+        throw new Error("Missing the required parameter 'walletId' when calling unlockSpendableList");
+      }
+
+      let pathParams = {
+        'wallet_id': walletId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = LockSpendableList200Response;
+      return this.apiClient.callApi(
+        '/wallets/{wallet_id}/spendables/unlock', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Unlock UTXOs
+     * This operation unlocks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  <Note>This operation is applicable to MPC Wallets only.</Note> 
+     * @param {String} walletId The wallet ID.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LockSpendableListRequest} opts.lockSpendableListRequest The request body of the Lock/Unlock UTXOs operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/LockSpendableList200Response}
+     */
+    unlockSpendableList(walletId, opts) {
+      return this.unlockSpendableListWithHttpInfo(walletId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update wallet
+     * This operation updates the information of a specified wallet.  For Exchange Wallets, you can update the API key, API secret, and other information about your exchange accounts with this operation. For other wallet types, you can only update the wallet name. 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateWalletByIdRequest} [updateWalletByIdRequest] The request body.
@@ -1120,7 +1355,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['CoboAuth'];
+      let authNames = ['OAuth2', 'CoboAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = WalletInfo;
@@ -1132,8 +1367,8 @@ export default class WalletsApi {
     }
 
     /**
-     * Update wallet by ID
-     * This operation updates the information of a specified wallet.  <Note>This operation is applicable to Exchange Wallets only.</Note> 
+     * Update wallet
+     * This operation updates the information of a specified wallet.  For Exchange Wallets, you can update the API key, API secret, and other information about your exchange accounts with this operation. For other wallet types, you can only update the wallet name. 
      * @param {String} walletId The wallet ID.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateWalletByIdRequest} opts.updateWalletByIdRequest The request body.

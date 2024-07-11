@@ -54,8 +54,8 @@ class UTXO {
             if (data.hasOwnProperty('vout_n')) {
                 obj['vout_n'] = ApiClient.convertToType(data['vout_n'], 'Number');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('token_balances')) {
                 obj['token_balances'] = ApiClient.convertToType(data['token_balances'], [TokenBalance]);
@@ -84,8 +84,8 @@ class UTXO {
             throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         if (data['token_balances']) { // data not null
             // ensure the json data is an array
@@ -120,9 +120,9 @@ UTXO.prototype['vout_n'] = undefined;
 
 /**
  * The address of the UTXO.
- * @member {String} address_str
+ * @member {String} address
  */
-UTXO.prototype['address_str'] = undefined;
+UTXO.prototype['address'] = undefined;
 
 /**
  * @member {Array.<module:model/TokenBalance>} token_balances

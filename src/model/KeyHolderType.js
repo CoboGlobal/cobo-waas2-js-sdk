@@ -19,17 +19,17 @@ import ApiClient from '../ApiClient';
 export default class KeyHolderType {
     
         /**
-         * value: "COBO"
+         * value: "Cobo"
          * @const
          */
-        "COBO" = "COBO";
+        "Cobo" = "Cobo";
 
     
         /**
-         * value: "MOBILE"
+         * value: "Mobile"
          * @const
          */
-        "MOBILE" = "MOBILE";
+        "Mobile" = "Mobile";
 
     
         /**

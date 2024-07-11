@@ -136,7 +136,7 @@ SmartContractWalletInfo.prototype['name'] = undefined;
 SmartContractWalletInfo.prototype['org_id'] = undefined;
 
 /**
- * The chain the wallet operates on.
+ * The ID of the chain on which the wallet operates.
  * @member {String} chain_id
  */
 SmartContractWalletInfo.prototype['chain_id'] = undefined;
@@ -159,13 +159,13 @@ SmartContractWalletInfo.prototype['smart_contract_wallet_type'] = undefined;
 SmartContractWalletInfo.prototype['safe_address'] = undefined;
 
 /**
- * The owners of the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}.
- * @member {Array.<String>} owners
+ * The signers of the Smart Contract Wallet.
+ * @member {Array.<String>} signers
  */
-SmartContractWalletInfo.prototype['owners'] = undefined;
+SmartContractWalletInfo.prototype['signers'] = undefined;
 
 /**
- * The minimum number of confirmations required for the Smart Contract Wallet. This field is required when creating a new Safe{Wallet}. 
+ * The minimum number of confirmations required for the Smart Contract Wallet. 
  * @member {Number} threshold
  */
 SmartContractWalletInfo.prototype['threshold'] = undefined;

@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property usedKeyGroupId (base name: "used_key_group_id")', function() {
-      // uncomment below and update the code to test the property usedKeyGroupId
+    it('should have the property sourceKeyGroupId (base name: "source_key_group_id")', function() {
+      // uncomment below and update the code to test the property sourceKeyGroupId
       //var instance = new CoboWaas2JsApi.CreateTssRequestRequest();
       //expect(instance).to.be();
     });

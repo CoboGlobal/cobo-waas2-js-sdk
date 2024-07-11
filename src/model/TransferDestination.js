@@ -139,19 +139,31 @@ TransferDestination.prototype['account_output'] = undefined;
 TransferDestination.prototype['utxo_outputs'] = undefined;
 
 /**
- * Unique id of the wallet to transfer to.
+ * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
+ * @member {Boolean} force_internal
+ */
+TransferDestination.prototype['force_internal'] = undefined;
+
+/**
+ * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
+ * @member {Boolean} force_external
+ */
+TransferDestination.prototype['force_external'] = undefined;
+
+/**
+ * The wallet ID.
  * @member {String} wallet_id
  */
 TransferDestination.prototype['wallet_id'] = undefined;
 
 /**
- * Exchange trading account or any sub wallet info for transfer.
+ * The exchange trading account or the sub-wallet ID.
  * @member {String} sub_wallet_id
  */
 TransferDestination.prototype['sub_wallet_id'] = undefined;
 
 /**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
  * @member {String} amount
  */
 TransferDestination.prototype['amount'] = undefined;

@@ -21,11 +21,14 @@ import MpcSigningGroup from './MpcSigningGroup';
 class SignMessageSource {
     /**
      * Constructs a new <code>SignMessageSource</code>.
+     * The information about the transaction source.
      * @alias module:model/SignMessageSource
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      */
-    constructor() { 
+    constructor(walletId, address) { 
         
-        SignMessageSource.initialize(this);
+        SignMessageSource.initialize(this, walletId, address);
     }
 
     /**
@@ -33,7 +36,9 @@ class SignMessageSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, walletId, address) { 
+        obj['wallet_id'] = walletId;
+        obj['address'] = address;
     }
 
     /**
@@ -50,8 +55,8 @@ class SignMessageSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('mpc_used_key_group')) {
                 obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
@@ -66,13 +71,19 @@ class SignMessageSource {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SignMessageSource</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SignMessageSource.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // validate the optional field `mpc_used_key_group`
         if (data['mpc_used_key_group']) { // data not null
@@ -85,19 +96,19 @@ class SignMessageSource {
 
 }
 
-
+SignMessageSource.RequiredProperties = ["wallet_id", "address"];
 
 /**
- * Unique id of the wallet to sign message.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 SignMessageSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-SignMessageSource.prototype['address_str'] = undefined;
+SignMessageSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_group

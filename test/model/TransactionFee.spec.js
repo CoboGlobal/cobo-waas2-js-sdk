@@ -59,8 +59,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
+    it('should have the property feeUsed (base name: "fee_used")', function() {
+      // uncomment below and update the code to test the property feeUsed
+      //var instance = new CoboWaas2JsApi.TransactionFee();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property gasUsed (base name: "gas_used")', function() {
+      // uncomment below and update the code to test the property gasUsed
       //var instance = new CoboWaas2JsApi.TransactionFee();
       //expect(instance).to.be();
     });
@@ -97,6 +103,12 @@
 
     it('should have the property maxFeeAmount (base name: "max_fee_amount")', function() {
       // uncomment below and update the code to test the property maxFeeAmount
+      //var instance = new CoboWaas2JsApi.TransactionFee();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
       //var instance = new CoboWaas2JsApi.TransactionFee();
       //expect(instance).to.be();
     });

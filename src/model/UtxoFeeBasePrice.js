@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class UtxoFeeBasePrice {
     /**
      * Constructs a new <code>UtxoFeeBasePrice</code>.
-     * The base transaction fee for UTXO-based chains.
+     * The transaction fee price for UTXO-based chains (such as Bitcoin), which equals the fee rate.
      * @alias module:model/UtxoFeeBasePrice
-     * @param feeRate {String} The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      */
     constructor(feeRate) { 
         
@@ -49,9 +49,6 @@ class UtxoFeeBasePrice {
         if (data) {
             obj = obj || new UtxoFeeBasePrice();
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
@@ -72,10 +69,6 @@ class UtxoFeeBasePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
-        }
-        // ensure the json data is a string
         if (data['fee_rate'] && !(typeof data['fee_rate'] === 'string' || data['fee_rate'] instanceof String)) {
             throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
         }
@@ -89,13 +82,7 @@ class UtxoFeeBasePrice {
 UtxoFeeBasePrice.RequiredProperties = ["fee_rate"];
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-UtxoFeeBasePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The fee rate, in sats/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+ * The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;

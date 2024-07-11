@@ -24,14 +24,13 @@ class MpcContractCallSource {
      * Constructs a new <code>MpcContractCallSource</code>.
      * @alias module:model/MpcContractCallSource
      * @implements module:model/BaseContractCallSource
-     * @param sourceType {module:model/MpcContractCallSource.SourceTypeEnum} 
-     * @param walletId {String} Unique id of the wallet to initiate contract call from.
-     * @param addressStr {String} From address
-     * @param mpcUsedKeyGroup {module:model/MpcSigningGroup} 
+     * @param sourceType {module:model/MpcContractCallSource.SourceTypeEnum} The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
+     * @param walletId {String} The wallet ID.
+     * @param address {String} The wallet address.
      */
-    constructor(sourceType, walletId, addressStr, mpcUsedKeyGroup) { 
-        BaseContractCallSource.initialize(this, sourceType, walletId, addressStr);
-        MpcContractCallSource.initialize(this, sourceType, walletId, addressStr, mpcUsedKeyGroup);
+    constructor(sourceType, walletId, address) { 
+        BaseContractCallSource.initialize(this, sourceType, walletId, address);
+        MpcContractCallSource.initialize(this, sourceType, walletId, address);
     }
 
     /**
@@ -39,11 +38,10 @@ class MpcContractCallSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, addressStr, mpcUsedKeyGroup) { 
+    static initialize(obj, sourceType, walletId, address) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['address_str'] = addressStr;
-        obj['mpc_used_key_group'] = mpcUsedKeyGroup;
+        obj['address'] = address;
     }
 
     /**
@@ -64,8 +62,8 @@ class MpcContractCallSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('address_str')) {
-                obj['address_str'] = ApiClient.convertToType(data['address_str'], 'String');
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('mpc_used_key_group')) {
                 obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
@@ -95,8 +93,8 @@ class MpcContractCallSource {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address_str'] && !(typeof data['address_str'] === 'string' || data['address_str'] instanceof String)) {
-            throw new Error("Expected the field `address_str` to be a primitive type in the JSON string but got " + data['address_str']);
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // validate the optional field `mpc_used_key_group`
         if (data['mpc_used_key_group']) { // data not null
@@ -109,24 +107,25 @@ class MpcContractCallSource {
 
 }
 
-MpcContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address_str", "mpc_used_key_group"];
+MpcContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/MpcContractCallSource.SourceTypeEnum} source_type
  */
 MpcContractCallSource.prototype['source_type'] = undefined;
 
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 MpcContractCallSource.prototype['wallet_id'] = undefined;
 
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-MpcContractCallSource.prototype['address_str'] = undefined;
+MpcContractCallSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_group
@@ -136,19 +135,20 @@ MpcContractCallSource.prototype['mpc_used_key_group'] = undefined;
 
 // Implement BaseContractCallSource interface:
 /**
+ * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
  * @member {module:model/BaseContractCallSource.SourceTypeEnum} source_type
  */
 BaseContractCallSource.prototype['source_type'] = undefined;
 /**
- * Unique id of the wallet to initiate contract call from.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 BaseContractCallSource.prototype['wallet_id'] = undefined;
 /**
- * From address
- * @member {String} address_str
+ * The wallet address.
+ * @member {String} address
  */
-BaseContractCallSource.prototype['address_str'] = undefined;
+BaseContractCallSource.prototype['address'] = undefined;
 
 
 

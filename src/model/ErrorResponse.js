@@ -22,14 +22,13 @@ class ErrorResponse {
      * Constructs a new <code>ErrorResponse</code>.
      * The response of a failed request.
      * @alias module:model/ErrorResponse
-     * @param success {Boolean} Whether the API operation was successful. This is always `false` for a failed request.
      * @param errorCode {Number} The error code.
-     * @param errorDescription {String} The error description.
-     * @param errorId {String} A error log ID. You can use it for debugging purposes.
+     * @param errorMessage {String} The error description.
+     * @param errorId {String} The error log ID. You can provide the error ID when submitting a ticket to help Cobo to locate the issue.
      */
-    constructor(success, errorCode, errorDescription, errorId) { 
+    constructor(errorCode, errorMessage, errorId) { 
         
-        ErrorResponse.initialize(this, success, errorCode, errorDescription, errorId);
+        ErrorResponse.initialize(this, errorCode, errorMessage, errorId);
     }
 
     /**
@@ -37,10 +36,9 @@ class ErrorResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, success, errorCode, errorDescription, errorId) { 
-        obj['success'] = success || false;
+    static initialize(obj, errorCode, errorMessage, errorId) { 
         obj['error_code'] = errorCode;
-        obj['error_description'] = errorDescription;
+        obj['error_message'] = errorMessage;
         obj['error_id'] = errorId;
     }
 
@@ -55,14 +53,11 @@ class ErrorResponse {
         if (data) {
             obj = obj || new ErrorResponse();
 
-            if (data.hasOwnProperty('success')) {
-                obj['success'] = ApiClient.convertToType(data['success'], 'Boolean');
-            }
             if (data.hasOwnProperty('error_code')) {
                 obj['error_code'] = ApiClient.convertToType(data['error_code'], 'Number');
             }
-            if (data.hasOwnProperty('error_description')) {
-                obj['error_description'] = ApiClient.convertToType(data['error_description'], 'String');
+            if (data.hasOwnProperty('error_message')) {
+                obj['error_message'] = ApiClient.convertToType(data['error_message'], 'String');
             }
             if (data.hasOwnProperty('error_id')) {
                 obj['error_id'] = ApiClient.convertToType(data['error_id'], 'String');
@@ -84,8 +79,8 @@ class ErrorResponse {
             }
         }
         // ensure the json data is a string
-        if (data['error_description'] && !(typeof data['error_description'] === 'string' || data['error_description'] instanceof String)) {
-            throw new Error("Expected the field `error_description` to be a primitive type in the JSON string but got " + data['error_description']);
+        if (data['error_message'] && !(typeof data['error_message'] === 'string' || data['error_message'] instanceof String)) {
+            throw new Error("Expected the field `error_message` to be a primitive type in the JSON string but got " + data['error_message']);
         }
         // ensure the json data is a string
         if (data['error_id'] && !(typeof data['error_id'] === 'string' || data['error_id'] instanceof String)) {
@@ -98,14 +93,7 @@ class ErrorResponse {
 
 }
 
-ErrorResponse.RequiredProperties = ["success", "error_code", "error_description", "error_id"];
-
-/**
- * Whether the API operation was successful. This is always `false` for a failed request.
- * @member {Boolean} success
- * @default false
- */
-ErrorResponse.prototype['success'] = false;
+ErrorResponse.RequiredProperties = ["error_code", "error_message", "error_id"];
 
 /**
  * The error code.
@@ -115,12 +103,12 @@ ErrorResponse.prototype['error_code'] = undefined;
 
 /**
  * The error description.
- * @member {String} error_description
+ * @member {String} error_message
  */
-ErrorResponse.prototype['error_description'] = undefined;
+ErrorResponse.prototype['error_message'] = undefined;
 
 /**
- * A error log ID. You can use it for debugging purposes.
+ * The error log ID. You can provide the error ID when submitting a ticket to help Cobo to locate the issue.
  * @member {String} error_id
  */
 ErrorResponse.prototype['error_id'] = undefined;

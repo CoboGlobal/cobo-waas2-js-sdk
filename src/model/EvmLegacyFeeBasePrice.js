@@ -20,9 +20,9 @@ import ApiClient from '../ApiClient';
 class EvmLegacyFeeBasePrice {
     /**
      * Constructs a new <code>EvmLegacyFeeBasePrice</code>.
-     * The base transaction fee when using the legacy method.
+     * The transaction fee price based on the legacy fee model, which equals the gas price.
      * @alias module:model/EvmLegacyFeeBasePrice
-     * @param gasPrice {String} The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gasPrice {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      */
     constructor(gasPrice) { 
         
@@ -49,9 +49,6 @@ class EvmLegacyFeeBasePrice {
         if (data) {
             obj = obj || new EvmLegacyFeeBasePrice();
 
-            if (data.hasOwnProperty('fee_token_id')) {
-                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
-            }
             if (data.hasOwnProperty('gas_price')) {
                 obj['gas_price'] = ApiClient.convertToType(data['gas_price'], 'String');
             }
@@ -72,10 +69,6 @@ class EvmLegacyFeeBasePrice {
             }
         }
         // ensure the json data is a string
-        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
-            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
-        }
-        // ensure the json data is a string
         if (data['gas_price'] && !(typeof data['gas_price'] === 'string' || data['gas_price'] instanceof String)) {
             throw new Error("Expected the field `gas_price` to be a primitive type in the JSON string but got " + data['gas_price']);
         }
@@ -89,13 +82,7 @@ class EvmLegacyFeeBasePrice {
 EvmLegacyFeeBasePrice.RequiredProperties = ["gas_price"];
 
 /**
- * The token ID of the transaction fee.
- * @member {String} fee_token_id
- */
-EvmLegacyFeeBasePrice.prototype['fee_token_id'] = undefined;
-
-/**
- * The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+ * The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
  * @member {String} gas_price
  */
 EvmLegacyFeeBasePrice.prototype['gas_price'] = undefined;

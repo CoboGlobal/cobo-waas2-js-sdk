@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feeTokenId** | **String** | The token ID of the transaction fee. | [optional] 
-**gasPrice** | **String** | The gas price, in gwei. The gas price represents the amount of ETH that must be paid to validators for processing transactions. | 
-**gasLimit** | **String** | The gas limit, which represents the max number of gas units you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. Different operations require varying quantities of gas units. | [optional] [default to &#39;21000&#39;]
+**gasPrice** | **String** | The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions. | 
+**gasLimit** | **String** | The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies. | [default to &#39;21000&#39;]
 
 

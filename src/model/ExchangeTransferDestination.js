@@ -21,11 +21,11 @@ import TransferDestinationType from './TransferDestinationType';
 class ExchangeTransferDestination {
     /**
      * Constructs a new <code>ExchangeTransferDestination</code>.
-     * The data for exchange destination.
+     * The information about the transaction destination.
      * @alias module:model/ExchangeTransferDestination
      * @param destinationType {module:model/TransferDestinationType} 
-     * @param walletId {String} Unique id of the wallet to transfer to.
-     * @param subWalletId {String} Exchange trading account or any sub wallet info for transfer.
+     * @param walletId {String} The wallet ID.
+     * @param subWalletId {String} The exchange trading account or the sub-wallet ID.
      */
     constructor(destinationType, walletId, subWalletId) { 
         
@@ -109,19 +109,19 @@ ExchangeTransferDestination.RequiredProperties = ["destination_type", "wallet_id
 ExchangeTransferDestination.prototype['destination_type'] = undefined;
 
 /**
- * Unique id of the wallet to transfer to.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 ExchangeTransferDestination.prototype['wallet_id'] = undefined;
 
 /**
- * Exchange trading account or any sub wallet info for transfer.
+ * The exchange trading account or the sub-wallet ID.
  * @member {String} sub_wallet_id
  */
 ExchangeTransferDestination.prototype['sub_wallet_id'] = undefined;
 
 /**
- * Transaction value (Note that this is an absolute value. If you trade 1.5 ETH, then the value is 1.5) 
+ * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
  * @member {String} amount
  */
 ExchangeTransferDestination.prototype['amount'] = undefined;

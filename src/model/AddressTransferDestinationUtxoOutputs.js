@@ -92,7 +92,7 @@ class AddressTransferDestinationUtxoOutputs {
 AddressTransferDestinationUtxoOutputs.prototype['outputs'] = undefined;
 
 /**
- * Change address
+ * The address used to receive the remaining funds or change from the transaction.
  * @member {String} change_address
  */
 AddressTransferDestinationUtxoOutputs.prototype['change_address'] = undefined;
