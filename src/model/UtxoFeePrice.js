@@ -17,7 +17,7 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 /**
  * The UtxoFeePrice model module.
  * @module model/UtxoFeePrice
- * @version 0.1.0
+ * @version 0.2.5
  */
 class UtxoFeePrice {
     /**

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The key share group ID. | [optional] 
+**groupId** | **String** | The key share group ID. | [optional] 
 **type** | [**KeyGroupType**](KeyGroupType.md) |  | [optional] 
 **tssGroupIds** | [**[TSSGroupId]**](TSSGroupId.md) |  | [optional] 
 **keyHolders** | [**[KeyHolder]**](KeyHolder.md) |  | [optional] 

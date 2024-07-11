@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The project ID. | [optional] 
+**projectId** | **String** | The project ID. | [optional] 
 **orgId** | **String** | The [Organization](https://manuals.cobo.com/en/portal/organization/introduction) ID. | [optional] 
 **name** | **String** | The project name. | [optional] 
 **nodeCount** | **Number** | The number of key share holders in the project. | [optional] 

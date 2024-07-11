@@ -26,7 +26,7 @@ import TransactionSafeWalletDestination from './TransactionSafeWalletDestination
 /**
  * The TransactionDestination model module.
  * @module model/TransactionDestination
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionDestination {
     /**
@@ -215,7 +215,7 @@ class TransactionDestination {
 TransactionDestination.prototype['destination_type'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionDestination.prototype['token_id'] = undefined;

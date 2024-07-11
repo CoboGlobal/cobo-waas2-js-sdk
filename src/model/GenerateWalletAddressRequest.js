@@ -16,13 +16,13 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The GenerateWalletAddressRequest model module.
  * @module model/GenerateWalletAddressRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class GenerateWalletAddressRequest {
     /**
      * Constructs a new <code>GenerateWalletAddressRequest</code>.
      * @alias module:model/GenerateWalletAddressRequest
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param count {Number} The number of addresses to create.
      */
     constructor(tokenId, count) { 
@@ -90,7 +90,7 @@ class GenerateWalletAddressRequest {
 GenerateWalletAddressRequest.RequiredProperties = ["token_id", "count"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 GenerateWalletAddressRequest.prototype['token_id'] = undefined;

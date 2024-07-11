@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateWalletByIdRequest model module.
  * @module model/UpdateWalletByIdRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class UpdateWalletByIdRequest {
     /**
@@ -146,13 +146,13 @@ UpdateWalletByIdRequest.prototype['secret'] = undefined;
 UpdateWalletByIdRequest.prototype['passphrase'] = undefined;
 
 /**
- * The API memo of your exchange account.
+ * The memo you use when applying for the API key of your exchange account.
  * @member {String} memo
  */
 UpdateWalletByIdRequest.prototype['memo'] = undefined;
 
 /**
- * The account identifier of your exchange account. - For Binance, this is the user's email address (e.g., 'xxx@cobo.com'). - For OKX, this is the user's account username. 
+ * The identifier of your exchange account. - For Binance, this is email address of your exchange account. - For OKX, this is the user name of your exchange account. 
  * @member {String} account_identify
  */
 UpdateWalletByIdRequest.prototype['account_identify'] = undefined;

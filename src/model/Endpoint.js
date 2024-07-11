@@ -17,7 +17,7 @@ import WebhookEventType from './WebhookEventType';
 /**
  * The Endpoint model module.
  * @module model/Endpoint
- * @version 0.1.0
+ * @version 0.2.5
  */
 class Endpoint {
     /**

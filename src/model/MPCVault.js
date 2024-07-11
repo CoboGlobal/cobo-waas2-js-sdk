@@ -17,7 +17,7 @@ import RootPubkey from './RootPubkey';
 /**
  * The MPCVault model module.
  * @module model/MPCVault
- * @version 0.1.0
+ * @version 0.2.5
  */
 class MPCVault {
     /**
@@ -49,8 +49,8 @@ class MPCVault {
         if (data) {
             obj = obj || new MPCVault();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('vault_id')) {
+                obj['vault_id'] = ApiClient.convertToType(data['vault_id'], 'String');
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -75,8 +75,8 @@ class MPCVault {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['vault_id'] && !(typeof data['vault_id'] === 'string' || data['vault_id'] instanceof String)) {
+            throw new Error("Expected the field `vault_id` to be a primitive type in the JSON string but got " + data['vault_id']);
         }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
@@ -103,9 +103,9 @@ class MPCVault {
 
 /**
  * The vault ID.
- * @member {String} id
+ * @member {String} vault_id
  */
-MPCVault.prototype['id'] = undefined;
+MPCVault.prototype['vault_id'] = undefined;
 
 /**
  * The vault name.

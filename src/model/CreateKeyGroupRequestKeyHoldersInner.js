@@ -16,7 +16,7 @@ import KeyHolderType from './KeyHolderType';
 /**
  * The CreateKeyGroupRequestKeyHoldersInner model module.
  * @module model/CreateKeyGroupRequestKeyHoldersInner
- * @version 0.1.0
+ * @version 0.2.5
  */
 class CreateKeyGroupRequestKeyHoldersInner {
     /**

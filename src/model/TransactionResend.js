@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionResend model module.
  * @module model/TransactionResend
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionResend {
     /**

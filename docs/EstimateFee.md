@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **source** | [**ContractCallSource**](ContractCallSource.md) |  | 
 **tokenId** | **String** | The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation. | 
 **destination** | [**EstimateFeeContractCallDestination**](EstimateFeeContractCallDestination.md) |  | 
-**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains). | 
+**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | 
 
 
 

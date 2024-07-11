@@ -17,7 +17,7 @@ import TSSRequestType from './TSSRequestType';
 /**
  * The TSSRequest model module.
  * @module model/TSSRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TSSRequest {
     /**
@@ -49,8 +49,8 @@ class TSSRequest {
         if (data) {
             obj = obj || new TSSRequest();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('request_id')) {
+                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TSSRequestType.constructFromObject(data['type']);
@@ -69,8 +69,8 @@ class TSSRequest {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
 
         return true;
@@ -83,9 +83,9 @@ class TSSRequest {
 
 /**
  * The TSS request ID.
- * @member {String} id
+ * @member {String} request_id
  */
-TSSRequest.prototype['id'] = undefined;
+TSSRequest.prototype['request_id'] = undefined;
 
 /**
  * @member {module:model/TSSRequestType} type

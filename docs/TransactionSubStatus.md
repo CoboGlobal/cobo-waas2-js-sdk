@@ -27,10 +27,26 @@
 
 * `RejectedApproverAuth` (value: `"RejectedApproverAuth"`)
 
+* `RejectedbyMobileCosigner` (value: `"RejectedbyMobileCosigner"`)
+
 * `PendingWaitSigner` (value: `"PendingWaitSigner"`)
 
 * `FailedBySigner` (value: `"FailedBySigner"`)
 
 * `FailedBroadcasting` (value: `"FailedBroadcasting"`)
+
+* `FailedOnChain` (value: `"FailedOnChain"`)
+
+* `Queue` (value: `"Queue"`)
+
+* `PendingBlockConfirmations` (value: `"PendingBlockConfirmations"`)
+
+* `ReplacedByNewTransaction` (value: `"ReplacedByNewTransaction"`)
+
+* `CanceledBySpender` (value: `"CanceledBySpender"`)
+
+* `CanceledByAPI` (value: `"CanceledByAPI"`)
+
+* `OnchainRejection` (value: `"OnchainRejection"`)
 
 

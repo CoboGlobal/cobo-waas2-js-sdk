@@ -54,10 +54,24 @@ export default class TransactionType {
 
     
         /**
+         * value: "TransactionFeeRefund"
+         * @const
+         */
+        "TransactionFeeRefund" = "TransactionFeeRefund";
+
+    
+        /**
          * value: "RawMessage"
          * @const
          */
         "RawMessage" = "RawMessage";
+
+    
+        /**
+         * value: "Multi-Sig"
+         * @const
+         */
+        "Multi-Sig" = "Multi-Sig";
 
     
 

@@ -17,7 +17,7 @@ import TokenBalance from './TokenBalance';
 /**
  * The GetWalletTokenBalances200Response model module.
  * @module model/GetWalletTokenBalances200Response
- * @version 0.1.0
+ * @version 0.2.5
  */
 class GetWalletTokenBalances200Response {
     /**

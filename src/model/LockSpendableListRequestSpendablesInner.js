@@ -15,13 +15,13 @@ import ApiClient from '../ApiClient';
 /**
  * The LockSpendableListRequestSpendablesInner model module.
  * @module model/LockSpendableListRequestSpendablesInner
- * @version 0.1.0
+ * @version 0.2.5
  */
 class LockSpendableListRequestSpendablesInner {
     /**
      * Constructs a new <code>LockSpendableListRequestSpendablesInner</code>.
      * @alias module:model/LockSpendableListRequestSpendablesInner
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param txHash {String} The transaction hash.
      * @param voutN {Number} The output index of the UTXO.
      */
@@ -95,7 +95,7 @@ class LockSpendableListRequestSpendablesInner {
 LockSpendableListRequestSpendablesInner.RequiredProperties = ["token_id", "tx_hash", "vout_n"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 LockSpendableListRequestSpendablesInner.prototype['token_id'] = undefined;

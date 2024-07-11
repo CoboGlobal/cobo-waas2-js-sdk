@@ -19,7 +19,7 @@ import TSSGroupId from './TSSGroupId';
 /**
  * The KeyGroup model module.
  * @module model/KeyGroup
- * @version 0.1.0
+ * @version 0.2.5
  */
 class KeyGroup {
     /**
@@ -51,8 +51,8 @@ class KeyGroup {
         if (data) {
             obj = obj || new KeyGroup();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('group_id')) {
+                obj['group_id'] = ApiClient.convertToType(data['group_id'], 'String');
             }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = KeyGroupType.constructFromObject(data['type']);
@@ -86,8 +86,8 @@ class KeyGroup {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['group_id'] && !(typeof data['group_id'] === 'string' || data['group_id'] instanceof String)) {
+            throw new Error("Expected the field `group_id` to be a primitive type in the JSON string but got " + data['group_id']);
         }
         if (data['tss_group_ids']) { // data not null
             // ensure the json data is an array
@@ -120,9 +120,9 @@ class KeyGroup {
 
 /**
  * The key share group ID.
- * @member {String} id
+ * @member {String} group_id
  */
-KeyGroup.prototype['id'] = undefined;
+KeyGroup.prototype['group_id'] = undefined;
 
 /**
  * @member {module:model/KeyGroupType} type

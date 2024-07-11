@@ -18,12 +18,12 @@ import FeeType from './FeeType';
 /**
  * The EvmEip1559TransactionFee model module.
  * @module model/EvmEip1559TransactionFee
- * @version 0.1.0
+ * @version 0.2.5
  */
 class EvmEip1559TransactionFee {
     /**
      * Constructs a new <code>EvmEip1559TransactionFee</code>.
-     * The transaction fee is calculated by multiplying the sum of the base fee price and the maximum priority fee by the gas units used by the transaction. This can be expressed as: Transaction fee &#x3D; (base fee price + maximum priority fee) * gas units used. The gas units used must be smaller than the gas limit. 
+     * The transaction fee is calculated by multiplying the sum of the base fee price and the maximum priority fee by the gas units used by the transaction. This can be expressed as: Transaction fee &#x3D; (base fee price + maximum priority fee) * gas units used. If the gas units used exceeds the gas limit, the transaction will fail. 
      * @alias module:model/EvmEip1559TransactionFee
      * @implements module:model/EvmEip1559FeeBasePrice
      * @implements module:model/FeeData

@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MPCProject model module.
  * @module model/MPCProject
- * @version 0.1.0
+ * @version 0.2.5
  */
 class MPCProject {
     /**
@@ -47,8 +47,8 @@ class MPCProject {
         if (data) {
             obj = obj || new MPCProject();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'String');
             }
             if (data.hasOwnProperty('org_id')) {
                 obj['org_id'] = ApiClient.convertToType(data['org_id'], 'String');
@@ -76,8 +76,8 @@ class MPCProject {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['project_id'] && !(typeof data['project_id'] === 'string' || data['project_id'] instanceof String)) {
+            throw new Error("Expected the field `project_id` to be a primitive type in the JSON string but got " + data['project_id']);
         }
         // ensure the json data is a string
         if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
@@ -98,9 +98,9 @@ class MPCProject {
 
 /**
  * The project ID.
- * @member {String} id
+ * @member {String} project_id
  */
-MPCProject.prototype['id'] = undefined;
+MPCProject.prototype['project_id'] = undefined;
 
 /**
  * The [Organization](https://manuals.cobo.com/en/portal/organization/introduction) ID.

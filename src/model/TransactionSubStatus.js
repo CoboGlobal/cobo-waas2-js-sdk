@@ -103,6 +103,13 @@ export default class TransactionSubStatus {
 
     
         /**
+         * value: "RejectedbyMobileCosigner"
+         * @const
+         */
+        "RejectedbyMobileCosigner" = "RejectedbyMobileCosigner";
+
+    
+        /**
          * value: "PendingWaitSigner"
          * @const
          */
@@ -121,6 +128,55 @@ export default class TransactionSubStatus {
          * @const
          */
         "FailedBroadcasting" = "FailedBroadcasting";
+
+    
+        /**
+         * value: "FailedOnChain"
+         * @const
+         */
+        "FailedOnChain" = "FailedOnChain";
+
+    
+        /**
+         * value: "Queue"
+         * @const
+         */
+        "Queue" = "Queue";
+
+    
+        /**
+         * value: "PendingBlockConfirmations"
+         * @const
+         */
+        "PendingBlockConfirmations" = "PendingBlockConfirmations";
+
+    
+        /**
+         * value: "ReplacedByNewTransaction"
+         * @const
+         */
+        "ReplacedByNewTransaction" = "ReplacedByNewTransaction";
+
+    
+        /**
+         * value: "CanceledBySpender"
+         * @const
+         */
+        "CanceledBySpender" = "CanceledBySpender";
+
+    
+        /**
+         * value: "CanceledByAPI"
+         * @const
+         */
+        "CanceledByAPI" = "CanceledByAPI";
+
+    
+        /**
+         * value: "OnchainRejection"
+         * @const
+         */
+        "OnchainRejection" = "OnchainRejection";
 
     
 

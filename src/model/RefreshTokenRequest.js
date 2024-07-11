@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The RefreshTokenRequest model module.
  * @module model/RefreshTokenRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class RefreshTokenRequest {
     /**

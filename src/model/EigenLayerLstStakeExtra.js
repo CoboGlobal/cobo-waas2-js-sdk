@@ -17,7 +17,7 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The EigenLayerLstStakeExtra model module.
  * @module model/EigenLayerLstStakeExtra
- * @version 0.1.0
+ * @version 0.2.5
  */
 class EigenLayerLstStakeExtra {
     /**

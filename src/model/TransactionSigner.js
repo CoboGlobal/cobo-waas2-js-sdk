@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionSigner model module.
  * @module model/TransactionSigner
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionSigner {
     /**

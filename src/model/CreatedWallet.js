@@ -24,7 +24,7 @@ import WalletType from './WalletType';
 /**
  * The CreatedWallet model module.
  * @module model/CreatedWallet
- * @version 0.1.0
+ * @version 0.2.5
  */
 class CreatedWallet {
     /**
@@ -176,7 +176,7 @@ CreatedWallet.prototype['wallet_type'] = undefined;
 CreatedWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The ID of the owning vault.
+ * The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
  * @member {String} vault_id
  */
 CreatedWallet.prototype['vault_id'] = undefined;
@@ -205,13 +205,13 @@ CreatedWallet.prototype['secret'] = undefined;
 CreatedWallet.prototype['passphrase'] = undefined;
 
 /**
- * The API memo of your exchange account.
+ * The memo you use when applying for the API key of your exchange account.
  * @member {String} memo
  */
 CreatedWallet.prototype['memo'] = undefined;
 
 /**
- * The account identifier of your exchange account. - For Binance, this is the user's email address (e.g., 'xxx@cobo.com'). - For OKX, this is the user's account username. 
+ * The identifier of your exchange account. - For Binance, this is email address of your exchange account. - For OKX, this is the user name of your exchange account. 
  * @member {String} account_identify
  */
 CreatedWallet.prototype['account_identify'] = undefined;

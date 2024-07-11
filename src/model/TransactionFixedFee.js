@@ -17,7 +17,7 @@ import FeeType from './FeeType';
 /**
  * The TransactionFixedFee model module.
  * @module model/TransactionFixedFee
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionFixedFee {
     /**

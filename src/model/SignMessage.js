@@ -17,7 +17,7 @@ import SignMessageSource from './SignMessageSource';
 /**
  * The SignMessage model module.
  * @module model/SignMessage
- * @version 0.1.0
+ * @version 0.2.5
  */
 class SignMessage {
     /**
@@ -25,7 +25,7 @@ class SignMessage {
      * The information about a transaction that signs a message. You can provide the message either as raw data or as structured data.
      * @alias module:model/SignMessage
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/SignMessageSource} 
      * @param destination {module:model/SignMessageDestination} 
      */
@@ -69,6 +69,9 @@ class SignMessage {
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = SignMessageDestination.constructFromObject(data['destination']);
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
         }
         return obj;
     }
@@ -101,6 +104,10 @@ class SignMessage {
         if (data['destination']) { // data not null
           SignMessageDestination.validateJSON(data['destination']);
         }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
 
         return true;
     }
@@ -117,7 +124,7 @@ SignMessage.RequiredProperties = ["request_id", "chain_id", "source", "destinati
 SignMessage.prototype['request_id'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 SignMessage.prototype['chain_id'] = undefined;
@@ -131,6 +138,12 @@ SignMessage.prototype['source'] = undefined;
  * @member {module:model/SignMessageDestination} destination
  */
 SignMessage.prototype['destination'] = undefined;
+
+/**
+ * The description of the message sign.
+ * @member {String} description
+ */
+SignMessage.prototype['description'] = undefined;
 
 
 

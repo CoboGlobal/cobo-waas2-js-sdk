@@ -16,7 +16,7 @@ import AddressTransferDestinationUtxoOutputsOutputsInner from './AddressTransfer
 /**
  * The AddressTransferDestinationUtxoOutputs model module.
  * @module model/AddressTransferDestinationUtxoOutputs
- * @version 0.1.0
+ * @version 0.2.5
  */
 class AddressTransferDestinationUtxoOutputs {
     /**

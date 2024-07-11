@@ -17,7 +17,7 @@ import UtxoFeeSlow from './UtxoFeeSlow';
 /**
  * The UtxoFee model module.
  * @module model/UtxoFee
- * @version 0.1.0
+ * @version 0.2.5
  */
 class UtxoFee {
     /**

@@ -11,12 +11,11 @@
  */
 
 import ApiClient from '../ApiClient';
-import TokenBalance from './TokenBalance';
 
 /**
  * The UTXO model module.
  * @module model/UTXO
- * @version 0.1.0
+ * @version 0.2.5
  */
 class UTXO {
     /**
@@ -57,8 +56,11 @@ class UTXO {
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
-            if (data.hasOwnProperty('token_balances')) {
-                obj['token_balances'] = ApiClient.convertToType(data['token_balances'], [TokenBalance]);
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
+            if (data.hasOwnProperty('value')) {
+                obj['value'] = ApiClient.convertToType(data['value'], 'String');
             }
             if (data.hasOwnProperty('is_coinbase')) {
                 obj['is_coinbase'] = ApiClient.convertToType(data['is_coinbase'], 'Boolean');
@@ -87,15 +89,13 @@ class UTXO {
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
-        if (data['token_balances']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['token_balances'])) {
-                throw new Error("Expected the field `token_balances` to be an array in the JSON data but got " + data['token_balances']);
-            }
-            // validate the optional field `token_balances` (array)
-            for (const item of data['token_balances']) {
-                TokenBalance.validateJSON(item);
-            };
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
+        if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
+            throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
         }
 
         return true;
@@ -125,9 +125,16 @@ UTXO.prototype['vout_n'] = undefined;
 UTXO.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/TokenBalance>} token_balances
+ * The token ID, which is the unique identifier of a token.
+ * @member {String} token_id
  */
-UTXO.prototype['token_balances'] = undefined;
+UTXO.prototype['token_id'] = undefined;
+
+/**
+ * The value of the UTXO.
+ * @member {String} value
+ */
+UTXO.prototype['value'] = undefined;
 
 /**
  * Whether the UTXO comes from a coinbase transaction.

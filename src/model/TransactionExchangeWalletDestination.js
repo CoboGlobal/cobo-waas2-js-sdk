@@ -17,7 +17,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionExchangeWalletDestination model module.
  * @module model/TransactionExchangeWalletDestination
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionExchangeWalletDestination {
     /**
@@ -162,7 +162,7 @@ TransactionExchangeWalletDestination.prototype['wallet_id'] = undefined;
 TransactionExchangeWalletDestination.prototype['sub_wallet_id'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionExchangeWalletDestination.prototype['token_id'] = undefined;

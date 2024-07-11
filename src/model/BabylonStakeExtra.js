@@ -17,7 +17,7 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The BabylonStakeExtra model module.
  * @module model/BabylonStakeExtra
- * @version 0.1.0
+ * @version 0.2.5
  */
 class BabylonStakeExtra {
     /**

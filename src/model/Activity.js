@@ -18,7 +18,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The Activity model module.
  * @module model/Activity
- * @version 0.1.0
+ * @version 0.2.5
  */
 class Activity {
     /**

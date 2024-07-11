@@ -13,6 +13,10 @@
 
 * `TransactionFeePayment` (value: `"TransactionFeePayment"`)
 
+* `TransactionFeeRefund` (value: `"TransactionFeeRefund"`)
+
 * `RawMessage` (value: `"RawMessage"`)
+
+* `Multi-Sig` (value: `"Multi-Sig"`)
 
 

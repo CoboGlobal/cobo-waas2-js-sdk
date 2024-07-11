@@ -17,7 +17,7 @@ import UTXO from './UTXO';
 /**
  * The GetSpendableList200Response model module.
  * @module model/GetSpendableList200Response
- * @version 0.1.0
+ * @version 0.2.5
  */
 class GetSpendableList200Response {
     /**

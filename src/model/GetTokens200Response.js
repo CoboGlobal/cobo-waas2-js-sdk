@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The GetTokens200Response model module.
  * @module model/GetTokens200Response
- * @version 0.1.0
+ * @version 0.2.5
  */
 class GetTokens200Response {
     /**

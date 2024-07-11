@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **status** | [**TransactionStatus**](TransactionStatus.md) |  | 
 **subStatus** | [**TransactionSubStatus**](TransactionSubStatus.md) |  | [optional] 
 **failedReason** | **String** | The reason why the transaction failed. | [optional] 
-**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains). | [optional] 
+**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | [optional] 
 **source** | [**TransactionSource**](TransactionSource.md) |  | 
 **destination** | [**TransactionDestination**](TransactionDestination.md) |  | 
 **fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | [optional] 

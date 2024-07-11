@@ -17,7 +17,7 @@ import KeyGroupType from './KeyGroupType';
 /**
  * The CreateKeyGroupRequest model module.
  * @module model/CreateKeyGroupRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class CreateKeyGroupRequest {
     /**

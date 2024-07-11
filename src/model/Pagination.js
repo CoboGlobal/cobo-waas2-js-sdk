@@ -15,16 +15,16 @@ import ApiClient from '../ApiClient';
 /**
  * The Pagination model module.
  * @module model/Pagination
- * @version 0.1.0
+ * @version 0.2.5
  */
 class Pagination {
     /**
      * Constructs a new <code>Pagination</code>.
      * The pagination information of the returned data.
      * @alias module:model/Pagination
-     * @param before {String} An object ID which serves as a cursor for pagination. For example, if the value of `before` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data ends before the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
-     * @param after {String} An object ID which serves as a cursor for pagination. For example, if the value of `after` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data starts after the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
-     * @param totalCount {Number} The total count of the result set
+     * @param before {String} ｜ An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request. The `before` is empty if there is not any records before the first record returned.
+     * @param after {String} An object ID that acts as a starting point for retrieving data in chronological order for the next request. The `after` is empty if there is not any records after the first record returned. 
+     * @param totalCount {Number} The number of data objects returned.
      */
     constructor(before, after, totalCount) { 
         
@@ -96,19 +96,19 @@ class Pagination {
 Pagination.RequiredProperties = ["before", "after", "total_count"];
 
 /**
- * An object ID which serves as a cursor for pagination. For example, if the value of `before` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data ends before the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
+ * ｜ An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request. The `before` is empty if there is not any records before the first record returned.
  * @member {String} before
  */
 Pagination.prototype['before'] = undefined;
 
 /**
- * An object ID which serves as a cursor for pagination. For example, if the value of `after` is `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`, the returned data starts after the object with the object ID `8f2e919a-6a7b-4a9b-8c1a-4c0b3f5b8b1f`.
+ * An object ID that acts as a starting point for retrieving data in chronological order for the next request. The `after` is empty if there is not any records after the first record returned. 
  * @member {String} after
  */
 Pagination.prototype['after'] = undefined;
 
 /**
- * The total count of the result set
+ * The number of data objects returned.
  * @member {Number} total_count
  */
 Pagination.prototype['total_count'] = undefined;

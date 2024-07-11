@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AmountDetailsInner model module.
  * @module model/AmountDetailsInner
- * @version 0.1.0
+ * @version 0.2.5
  */
 class AmountDetailsInner {
     /**

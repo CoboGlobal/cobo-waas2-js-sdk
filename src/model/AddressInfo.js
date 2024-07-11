@@ -16,20 +16,19 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The AddressInfo model module.
  * @module model/AddressInfo
- * @version 0.1.0
+ * @version 0.2.5
  */
 class AddressInfo {
     /**
      * Constructs a new <code>AddressInfo</code>.
      * The address information.
      * @alias module:model/AddressInfo
-     * @param addressId {String} The address ID.
      * @param address {String} The wallet address.
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      */
-    constructor(addressId, address, tokenId) { 
+    constructor(address, tokenId) { 
         
-        AddressInfo.initialize(this, addressId, address, tokenId);
+        AddressInfo.initialize(this, address, tokenId);
     }
 
     /**
@@ -37,8 +36,7 @@ class AddressInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, addressId, address, tokenId) { 
-        obj['address_id'] = addressId;
+    static initialize(obj, address, tokenId) { 
         obj['address'] = address;
         obj['token_id'] = tokenId;
     }
@@ -54,9 +52,6 @@ class AddressInfo {
         if (data) {
             obj = obj || new AddressInfo();
 
-            if (data.hasOwnProperty('address_id')) {
-                obj['address_id'] = ApiClient.convertToType(data['address_id'], 'String');
-            }
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
@@ -92,10 +87,6 @@ class AddressInfo {
             }
         }
         // ensure the json data is a string
-        if (data['address_id'] && !(typeof data['address_id'] === 'string' || data['address_id'] instanceof String)) {
-            throw new Error("Expected the field `address_id` to be a primitive type in the JSON string but got " + data['address_id']);
-        }
-        // ensure the json data is a string
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
@@ -122,13 +113,7 @@ class AddressInfo {
 
 }
 
-AddressInfo.RequiredProperties = ["address_id", "address", "token_id"];
-
-/**
- * The address ID.
- * @member {String} address_id
- */
-AddressInfo.prototype['address_id'] = undefined;
+AddressInfo.RequiredProperties = ["address", "token_id"];
 
 /**
  * The wallet address.
@@ -137,7 +122,7 @@ AddressInfo.prototype['address_id'] = undefined;
 AddressInfo.prototype['address'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 AddressInfo.prototype['token_id'] = undefined;

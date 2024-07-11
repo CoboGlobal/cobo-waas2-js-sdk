@@ -17,7 +17,7 @@ import WebhookEvent from './WebhookEvent';
 /**
  * The ListEvents200Response model module.
  * @module model/ListEvents200Response
- * @version 0.1.0
+ * @version 0.2.5
  */
 class ListEvents200Response {
     /**

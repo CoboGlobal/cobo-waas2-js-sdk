@@ -18,12 +18,12 @@ import FeeType from './FeeType';
 /**
  * The EvmLegacyTransactionFee model module.
  * @module model/EvmLegacyTransactionFee
- * @version 0.1.0
+ * @version 0.2.5
  */
 class EvmLegacyTransactionFee {
     /**
      * Constructs a new <code>EvmLegacyTransactionFee</code>.
-     * The transaction fee is calculated by multiplying the gas price (fee price) by the gas units used by the transaction. This can be expressed as: Transaction fee &#x3D;  (gas price * gas units used). The gas units used must be smaller than the gas limit. 
+     * The transaction fee is calculated by multiplying the gas price (fee price) by the gas units used by the transaction. This can be expressed as: Transaction fee &#x3D;  (gas price * gas units used). If the gas units used exceeds the gas limit, the transaction will fail. 
      * @alias module:model/EvmLegacyTransactionFee
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData

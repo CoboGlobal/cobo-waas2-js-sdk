@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateSafeWalletAllOfInitiator model module.
  * @module model/CreateSafeWalletAllOfInitiator
- * @version 0.1.0
+ * @version 0.2.5
  */
 class CreateSafeWalletAllOfInitiator {
     /**

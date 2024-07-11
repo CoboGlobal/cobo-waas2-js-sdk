@@ -19,7 +19,7 @@ import EstimateFeeTransfer from './EstimateFeeTransfer';
 /**
  * The EstimateFee model module.
  * @module model/EstimateFee
- * @version 0.1.0
+ * @version 0.2.5
  */
 class EstimateFee {
     /**
@@ -151,7 +151,7 @@ EstimateFee.prototype['token_id'] = undefined;
 EstimateFee.prototype['destination'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFee.prototype['chain_id'] = undefined;

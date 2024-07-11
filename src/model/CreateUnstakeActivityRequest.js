@@ -18,7 +18,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The CreateUnstakeActivityRequest model module.
  * @module model/CreateUnstakeActivityRequest
- * @version 0.1.0
+ * @version 0.2.5
  */
 class CreateUnstakeActivityRequest {
     /**

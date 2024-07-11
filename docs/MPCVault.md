@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The vault ID. | [optional] 
+**vaultId** | **String** | The vault ID. | [optional] 
 **name** | **String** | The vault name. | [optional] 
 **type** | [**MPCVaultType**](MPCVaultType.md) |  | [optional] 
 **rootPubkeys** | [**[RootPubkey]**](RootPubkey.md) |  | [optional] 

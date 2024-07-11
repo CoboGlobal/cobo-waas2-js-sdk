@@ -16,7 +16,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The MaxTransferableValue model module.
  * @module model/MaxTransferableValue
- * @version 0.1.0
+ * @version 0.2.5
  */
 class MaxTransferableValue {
     /**
@@ -89,7 +89,7 @@ class MaxTransferableValue {
 
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List organization enabled tokens](/v2/api-references/wallets/list-organization-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 MaxTransferableValue.prototype['token_id'] = undefined;

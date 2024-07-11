@@ -11,11 +11,12 @@
  */
 
 import ApiClient from '../ApiClient';
+import ReplacedType from './ReplacedType';
 
 /**
  * The TransactionReplacement model module.
  * @module model/TransactionReplacement
- * @version 0.1.0
+ * @version 0.2.5
  */
 class TransactionReplacement {
     /**
@@ -46,14 +47,17 @@ class TransactionReplacement {
         if (data) {
             obj = obj || new TransactionReplacement();
 
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            if (data.hasOwnProperty('replaced_by_type')) {
+                obj['replaced_by_type'] = ReplacedType.constructFromObject(data['replaced_by_type']);
             }
             if (data.hasOwnProperty('replaced_by_transaction_id')) {
                 obj['replaced_by_transaction_id'] = ApiClient.convertToType(data['replaced_by_transaction_id'], 'String');
             }
             if (data.hasOwnProperty('replaced_by_transaction_hash')) {
                 obj['replaced_by_transaction_hash'] = ApiClient.convertToType(data['replaced_by_transaction_hash'], 'String');
+            }
+            if (data.hasOwnProperty('replaced_type')) {
+                obj['replaced_type'] = ApiClient.convertToType(data['replaced_type'], 'String');
             }
             if (data.hasOwnProperty('replaced_transaction_id')) {
                 obj['replaced_transaction_id'] = ApiClient.convertToType(data['replaced_transaction_id'], 'String');
@@ -72,16 +76,16 @@ class TransactionReplacement {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
-            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
-        }
-        // ensure the json data is a string
         if (data['replaced_by_transaction_id'] && !(typeof data['replaced_by_transaction_id'] === 'string' || data['replaced_by_transaction_id'] instanceof String)) {
             throw new Error("Expected the field `replaced_by_transaction_id` to be a primitive type in the JSON string but got " + data['replaced_by_transaction_id']);
         }
         // ensure the json data is a string
         if (data['replaced_by_transaction_hash'] && !(typeof data['replaced_by_transaction_hash'] === 'string' || data['replaced_by_transaction_hash'] instanceof String)) {
             throw new Error("Expected the field `replaced_by_transaction_hash` to be a primitive type in the JSON string but got " + data['replaced_by_transaction_hash']);
+        }
+        // ensure the json data is a string
+        if (data['replaced_type'] && !(typeof data['replaced_type'] === 'string' || data['replaced_type'] instanceof String)) {
+            throw new Error("Expected the field `replaced_type` to be a primitive type in the JSON string but got " + data['replaced_type']);
         }
         // ensure the json data is a string
         if (data['replaced_transaction_id'] && !(typeof data['replaced_transaction_id'] === 'string' || data['replaced_transaction_id'] instanceof String)) {
@@ -101,10 +105,9 @@ class TransactionReplacement {
 
 
 /**
- * The transaction replacement type. Possible values include:    - `Cancel`: To cancel a transaction.   - `Drop`: To drop a transaction.   - `Resend`: To resend a transaction.   - `SpeedUp`: To speed up a transaction. 
- * @member {module:model/TransactionReplacement.TypeEnum} type
+ * @member {module:model/ReplacedType} replaced_by_type
  */
-TransactionReplacement.prototype['type'] = undefined;
+TransactionReplacement.prototype['replaced_by_type'] = undefined;
 
 /**
  * The ID of the replacement transaction that this transaction was replaced by.
@@ -117,6 +120,12 @@ TransactionReplacement.prototype['replaced_by_transaction_id'] = undefined;
  * @member {String} replaced_by_transaction_hash
  */
 TransactionReplacement.prototype['replaced_by_transaction_hash'] = undefined;
+
+/**
+ * The transaction replacement type. Possible values include:    - `Cancel`: To cancel a transaction.   - `Drop`: To drop a transaction.   - `Resend`: To resend a transaction.   - `SpeedUp`: To speed up a transaction. 
+ * @member {module:model/TransactionReplacement.ReplacedTypeEnum} replaced_type
+ */
+TransactionReplacement.prototype['replaced_type'] = undefined;
 
 /**
  * The ID of the transaction that this transaction replaced.
@@ -135,11 +144,11 @@ TransactionReplacement.prototype['replaced_transaction_hash'] = undefined;
 
 
 /**
- * Allowed values for the <code>type</code> property.
+ * Allowed values for the <code>replaced_type</code> property.
  * @enum {String}
  * @readonly
  */
-TransactionReplacement['TypeEnum'] = {
+TransactionReplacement['ReplacedTypeEnum'] = {
 
     /**
      * value: "Cancel"

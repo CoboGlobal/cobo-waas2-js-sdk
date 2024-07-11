@@ -698,7 +698,7 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
 const opts = {
-  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479" // String | The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479" // String | The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
 };
 apiInstance.listMpcVault(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -713,7 +713,7 @@ apiInstance.listMpcVault(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). | [optional] 
+ **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only. | [optional] 
 
 ### Return type
 

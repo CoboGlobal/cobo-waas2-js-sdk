@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BaseContractCallSource model module.
  * @module model/BaseContractCallSource
- * @version 0.1.0
+ * @version 0.2.5
  */
 class BaseContractCallSource {
     /**

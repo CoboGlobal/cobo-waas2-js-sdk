@@ -18,7 +18,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The ContractCall model module.
  * @module model/ContractCall
- * @version 0.1.0
+ * @version 0.2.5
  */
 class ContractCall {
     /**
@@ -26,7 +26,7 @@ class ContractCall {
      * The information about a transaction that interacts with a smart contract
      * @alias module:model/ContractCall
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/ContractCallSource} 
      * @param destination {module:model/EstimateFeeContractCallDestination} 
      */
@@ -70,6 +70,9 @@ class ContractCall {
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = EstimateFeeContractCallDestination.constructFromObject(data['destination']);
             }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
@@ -105,6 +108,10 @@ class ContractCall {
         if (data['destination']) { // data not null
           EstimateFeeContractCallDestination.validateJSON(data['destination']);
         }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
           TransactionTransferFee.validateJSON(data['fee']);
@@ -125,7 +132,7 @@ ContractCall.RequiredProperties = ["request_id", "chain_id", "source", "destinat
 ContractCall.prototype['request_id'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List organization enabled chains](/v2/api-references/wallets/list-organization-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 ContractCall.prototype['chain_id'] = undefined;
@@ -139,6 +146,12 @@ ContractCall.prototype['source'] = undefined;
  * @member {module:model/EstimateFeeContractCallDestination} destination
  */
 ContractCall.prototype['destination'] = undefined;
+
+/**
+ * The description of the contract call.
+ * @member {String} description
+ */
+ContractCall.prototype['description'] = undefined;
 
 /**
  * @member {module:model/TransactionTransferFee} fee

@@ -30,7 +30,7 @@ import UpdateMpcProjectRequest from '../model/UpdateMpcProjectRequest';
 /**
 * WalletsMPCWallets service.
 * @module api/WalletsMPCWalletsApi
-* @version 0.1.0
+* @version 0.2.5
 */
 export default class WalletsMPCWalletsApi {
 
@@ -701,7 +701,7 @@ export default class WalletsMPCWalletsApi {
      * List all vaults
      * This operation retrieves a list of all vaults.  <Note>By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/MPCVault>} and HTTP response
      */
     listMpcVaultWithHttpInfo(opts) {
@@ -733,7 +733,7 @@ export default class WalletsMPCWalletsApi {
      * List all vaults
      * This operation retrieves a list of all vaults.  <Note>By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/MPCVault>}
      */
     listMpcVault(opts) {
