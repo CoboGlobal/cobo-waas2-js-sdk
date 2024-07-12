@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ChainInfo model module.
  * @module model/ChainInfo
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ChainInfo {
     /**

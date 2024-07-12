@@ -18,12 +18,12 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The AddressTransferDestination model module.
  * @module model/AddressTransferDestination
- * @version 0.2.6
+ * @version 0.2.7
  */
 class AddressTransferDestination {
     /**
      * Constructs a new <code>AddressTransferDestination</code>.
-     * The information about the transaction destination. Specify either the &#x60;account_output&#x60; property or the &#x60;utxo_outputs&#x60; property. 
+     * The information about the transaction destination. Specify either the &#x60;account_output&#x60; property or the &#x60;utxo_outputs&#x60; property. Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the &#x60;utxo_outputs&#x60; property. 
      * @alias module:model/AddressTransferDestination
      * @param destinationType {module:model/TransferDestinationType} 
      */

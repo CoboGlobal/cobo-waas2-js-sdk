@@ -18,7 +18,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionAddressDestination model module.
  * @module model/TransactionAddressDestination
- * @version 0.2.6
+ * @version 0.2.7
  */
 class TransactionAddressDestination {
     /**

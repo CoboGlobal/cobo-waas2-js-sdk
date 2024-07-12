@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SafeTransferSourceAllOfDelegate model module.
  * @module model/SafeTransferSourceAllOfDelegate
- * @version 0.2.6
+ * @version 0.2.7
  */
 class SafeTransferSourceAllOfDelegate {
     /**

@@ -18,11 +18,12 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The SafeTransferSource model module.
  * @module model/SafeTransferSource
- * @version 0.2.6
+ * @version 0.2.7
  */
 class SafeTransferSource {
     /**
      * Constructs a new <code>SafeTransferSource</code>.
+     * The information about the transaction source.
      * @alias module:model/SafeTransferSource
      * @implements module:model/AddressTransferSource
      * @param sourceType {module:model/WalletSubtype} 

@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 Transfer token
 
-The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  &lt;Note&gt;  There are some requirements towards the transfer source and destination: Only Exchange source can transfer to Exchange destination. Exchange Sub wallet source can only be transferred to Exchange destination. Only MPC source support to transfer to multiple address by using &#39;utxo_outputs&#39; property in BTC-like chains &lt;/Note&gt; 
+The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  &lt;Note&gt;Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the &lt;code&gt;utxo_outputs&lt;/code&gt; property.&lt;/Note&gt; 
 
 ### Example
 

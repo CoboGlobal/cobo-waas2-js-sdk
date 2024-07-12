@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The GetExchangeSupportedAssets200Response model module.
  * @module model/GetExchangeSupportedAssets200Response
- * @version 0.2.6
+ * @version 0.2.7
  */
 class GetExchangeSupportedAssets200Response {
     /**

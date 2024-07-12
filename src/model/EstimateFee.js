@@ -19,7 +19,7 @@ import EstimateFeeTransfer from './EstimateFeeTransfer';
 /**
  * The EstimateFee model module.
  * @module model/EstimateFee
- * @version 0.2.6
+ * @version 0.2.7
  */
 class EstimateFee {
     /**

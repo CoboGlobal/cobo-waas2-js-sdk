@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | 
 **source** | [**SignMessageSource**](SignMessageSource.md) |  | 
 **destination** | [**SignMessageDestination**](SignMessageDestination.md) |  | 
-**description** | **String** | The description of the message sign. | [optional] 
+**description** | **String** | The description of the message sign transaction. | [optional] 
 
 

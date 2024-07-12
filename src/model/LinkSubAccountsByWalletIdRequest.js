@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LinkSubAccountsByWalletIdRequest model module.
  * @module model/LinkSubAccountsByWalletIdRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class LinkSubAccountsByWalletIdRequest {
     /**

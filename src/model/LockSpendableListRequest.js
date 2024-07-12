@@ -16,7 +16,7 @@ import LockSpendableListRequestSpendablesInner from './LockSpendableListRequestS
 /**
  * The LockSpendableListRequest model module.
  * @module model/LockSpendableListRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class LockSpendableListRequest {
     /**

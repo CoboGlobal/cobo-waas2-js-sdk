@@ -17,7 +17,7 @@ import Stakings from './Stakings';
 /**
  * The ListStakings200Response model module.
  * @module model/ListStakings200Response
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ListStakings200Response {
     /**

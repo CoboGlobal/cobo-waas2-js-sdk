@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## getStakingById
 
-> ListStakings200Response getStakingById(stakingId)
+> Stakings getStakingById(stakingId)
 
 Get staking by id
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListStakings200Response**](ListStakings200Response.md)
+[**Stakings**](Stakings.md)
 
 ### Authorization
 

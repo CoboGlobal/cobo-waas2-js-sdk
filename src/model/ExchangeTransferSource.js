@@ -17,11 +17,12 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The ExchangeTransferSource model module.
  * @module model/ExchangeTransferSource
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ExchangeTransferSource {
     /**
      * Constructs a new <code>ExchangeTransferSource</code>.
+     * The information about the transaction source. An Exchange Wallet (Sub Account) as the transaction source can only transfer tokens to another Exchange Wallet.
      * @alias module:model/ExchangeTransferSource
      * @implements module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 

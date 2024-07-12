@@ -17,7 +17,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The AddressTransferSource model module.
  * @module model/AddressTransferSource
- * @version 0.2.6
+ * @version 0.2.7
  */
 class AddressTransferSource {
     /**

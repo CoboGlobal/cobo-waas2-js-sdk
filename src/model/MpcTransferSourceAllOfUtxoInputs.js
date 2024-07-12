@@ -17,7 +17,7 @@ import MpcTransferSourceAllOfUtxoInputsIncludedInputs from './MpcTransferSourceA
 /**
  * The MpcTransferSourceAllOfUtxoInputs model module.
  * @module model/MpcTransferSourceAllOfUtxoInputs
- * @version 0.2.6
+ * @version 0.2.7
  */
 class MpcTransferSourceAllOfUtxoInputs {
     /**

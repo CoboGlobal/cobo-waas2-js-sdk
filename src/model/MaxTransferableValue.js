@@ -16,7 +16,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The MaxTransferableValue model module.
  * @module model/MaxTransferableValue
- * @version 0.2.6
+ * @version 0.2.7
  */
 class MaxTransferableValue {
     /**

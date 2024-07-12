@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateStakeActivity201Response model module.
  * @module model/CreateStakeActivity201Response
- * @version 0.2.6
+ * @version 0.2.7
  */
 class CreateStakeActivity201Response {
     /**

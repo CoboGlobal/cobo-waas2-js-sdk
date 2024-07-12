@@ -17,7 +17,7 @@ import RootPubkey from './RootPubkey';
 /**
  * The MPCVault model module.
  * @module model/MPCVault
- * @version 0.2.6
+ * @version 0.2.7
  */
 class MPCVault {
     /**

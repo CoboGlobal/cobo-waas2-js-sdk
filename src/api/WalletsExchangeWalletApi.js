@@ -23,7 +23,7 @@ import ListExchanges200ResponseInner from '../model/ListExchanges200ResponseInne
 /**
 * WalletsExchangeWallet service.
 * @module api/WalletsExchangeWalletApi
-* @version 0.2.6
+* @version 0.2.7
 */
 export default class WalletsExchangeWalletApi {
 

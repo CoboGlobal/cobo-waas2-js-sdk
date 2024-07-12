@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SignMessageDestination model module.
  * @module model/SignMessageDestination
- * @version 0.2.6
+ * @version 0.2.7
  */
 class SignMessageDestination {
     /**

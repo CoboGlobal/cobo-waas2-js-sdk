@@ -19,7 +19,7 @@ import TSSGroupId from './TSSGroupId';
 /**
  * The KeyGroup model module.
  * @module model/KeyGroup
- * @version 0.2.6
+ * @version 0.2.7
  */
 class KeyGroup {
     /**

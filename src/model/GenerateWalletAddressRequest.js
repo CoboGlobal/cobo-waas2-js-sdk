@@ -16,7 +16,7 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The GenerateWalletAddressRequest model module.
  * @module model/GenerateWalletAddressRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class GenerateWalletAddressRequest {
     /**

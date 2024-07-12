@@ -16,12 +16,12 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The ExchangeTransferDestination model module.
  * @module model/ExchangeTransferDestination
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ExchangeTransferDestination {
     /**
      * Constructs a new <code>ExchangeTransferDestination</code>.
-     * The information about the transaction destination.
+     * The information about the transaction destination. An Exchange Wallet (Sub Account) as the transaction destination can only receives token transfers from another Exchange Wallet.
      * @alias module:model/ExchangeTransferDestination
      * @param destinationType {module:model/TransferDestinationType} 
      * @param walletId {String} The wallet ID.

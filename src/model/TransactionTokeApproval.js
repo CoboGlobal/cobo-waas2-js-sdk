@@ -16,7 +16,7 @@ import TokenInfo from './TokenInfo';
 /**
  * The TransactionTokeApproval model module.
  * @module model/TransactionTokeApproval
- * @version 0.2.6
+ * @version 0.2.7
  */
 class TransactionTokeApproval {
     /**

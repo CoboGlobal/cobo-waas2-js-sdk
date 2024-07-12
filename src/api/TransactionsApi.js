@@ -32,7 +32,7 @@ import Transfer from '../model/Transfer';
 /**
 * Transactions service.
 * @module api/TransactionsApi
-* @version 0.2.6
+* @version 0.2.7
 */
 export default class TransactionsApi {
 
@@ -191,7 +191,7 @@ export default class TransactionsApi {
 
     /**
      * Transfer token
-     * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>  There are some requirements towards the transfer source and destination: Only Exchange source can transfer to Exchange destination. Exchange Sub wallet source can only be transferred to Exchange destination. Only MPC source support to transfer to multiple address by using 'utxo_outputs' property in BTC-like chains </Note> 
+     * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the <code>utxo_outputs</code> property.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/Transfer} [transfer] The request body to create a transfer transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
@@ -222,7 +222,7 @@ export default class TransactionsApi {
 
     /**
      * Transfer token
-     * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>  There are some requirements towards the transfer source and destination: Only Exchange source can transfer to Exchange destination. Exchange Sub wallet source can only be transferred to Exchange destination. Only MPC source support to transfer to multiple address by using 'utxo_outputs' property in BTC-like chains </Note> 
+     * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the <code>utxo_outputs</code> property.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/Transfer} opts.transfer The request body to create a transfer transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}

@@ -21,7 +21,7 @@ import UtxoFeeSlow from './UtxoFeeSlow';
 /**
  * The EstimationFee model module.
  * @module model/EstimationFee
- * @version 0.2.6
+ * @version 0.2.7
  */
 class EstimationFee {
     /**

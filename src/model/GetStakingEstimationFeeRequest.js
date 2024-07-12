@@ -21,7 +21,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The GetStakingEstimationFeeRequest model module.
  * @module model/GetStakingEstimationFeeRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class GetStakingEstimationFeeRequest {
     /**

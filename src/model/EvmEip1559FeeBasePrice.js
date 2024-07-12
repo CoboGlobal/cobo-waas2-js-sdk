@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EvmEip1559FeeBasePrice model module.
  * @module model/EvmEip1559FeeBasePrice
- * @version 0.2.6
+ * @version 0.2.7
  */
 class EvmEip1559FeeBasePrice {
     /**

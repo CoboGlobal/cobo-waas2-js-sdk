@@ -17,7 +17,7 @@ import SafeContractCallSourceAllOfDelegate from './SafeContractCallSourceAllOfDe
 /**
  * The SafeContractCallSource model module.
  * @module model/SafeContractCallSource
- * @version 0.2.6
+ * @version 0.2.7
  */
 class SafeContractCallSource {
     /**

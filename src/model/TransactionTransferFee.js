@@ -20,7 +20,7 @@ import UtxoTransactionFee from './UtxoTransactionFee';
 /**
  * The TransactionTransferFee model module.
  * @module model/TransactionTransferFee
- * @version 0.2.6
+ * @version 0.2.7
  */
 class TransactionTransferFee {
     /**

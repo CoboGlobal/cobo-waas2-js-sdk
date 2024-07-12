@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MpcSigningGroup model module.
  * @module model/MpcSigningGroup
- * @version 0.2.6
+ * @version 0.2.7
  */
 class MpcSigningGroup {
     /**

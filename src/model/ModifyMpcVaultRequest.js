@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ModifyMpcVaultRequest model module.
  * @module model/ModifyMpcVaultRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ModifyMpcVaultRequest {
     /**

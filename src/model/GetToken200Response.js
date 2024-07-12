@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetToken200Response model module.
  * @module model/GetToken200Response
- * @version 0.2.6
+ * @version 0.2.7
  */
 class GetToken200Response {
     /**

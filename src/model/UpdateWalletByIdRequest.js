@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateWalletByIdRequest model module.
  * @module model/UpdateWalletByIdRequest
- * @version 0.2.6
+ * @version 0.2.7
  */
 class UpdateWalletByIdRequest {
     /**

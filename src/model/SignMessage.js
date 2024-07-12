@@ -17,7 +17,7 @@ import SignMessageSource from './SignMessageSource';
 /**
  * The SignMessage model module.
  * @module model/SignMessage
- * @version 0.2.6
+ * @version 0.2.7
  */
 class SignMessage {
     /**
@@ -140,7 +140,7 @@ SignMessage.prototype['source'] = undefined;
 SignMessage.prototype['destination'] = undefined;
 
 /**
- * The description of the message sign.
+ * The description of the message sign transaction.
  * @member {String} description
  */
 SignMessage.prototype['description'] = undefined;

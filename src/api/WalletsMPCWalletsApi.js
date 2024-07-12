@@ -30,7 +30,7 @@ import UpdateMpcProjectRequest from '../model/UpdateMpcProjectRequest';
 /**
 * WalletsMPCWallets service.
 * @module api/WalletsMPCWalletsApi
-* @version 0.2.6
+* @version 0.2.7
 */
 export default class WalletsMPCWalletsApi {
 

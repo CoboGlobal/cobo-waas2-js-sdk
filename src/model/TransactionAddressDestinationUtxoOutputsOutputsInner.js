@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionAddressDestinationUtxoOutputsOutputsInner model module.
  * @module model/TransactionAddressDestinationUtxoOutputsOutputsInner
- * @version 0.2.6
+ * @version 0.2.7
  */
 class TransactionAddressDestinationUtxoOutputsOutputsInner {
     /**

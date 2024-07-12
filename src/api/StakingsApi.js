@@ -26,11 +26,12 @@ import ListActivities200Response from '../model/ListActivities200Response';
 import ListStakingPools200Response from '../model/ListStakingPools200Response';
 import ListStakings200Response from '../model/ListStakings200Response';
 import PoolDetails from '../model/PoolDetails';
+import Stakings from '../model/Stakings';
 
 /**
 * Stakings service.
 * @module api/StakingsApi
-* @version 0.2.6
+* @version 0.2.7
 */
 export default class StakingsApi {
 
@@ -237,7 +238,7 @@ export default class StakingsApi {
      * Get staking by id
      * This operation retrieves a staking by id. 
      * @param {String} stakingId staking id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListStakings200Response} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Stakings} and HTTP response
      */
     getStakingByIdWithHttpInfo(stakingId) {
       let postBody = null;
@@ -259,7 +260,7 @@ export default class StakingsApi {
       let authNames = ['CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = ListStakings200Response;
+      let returnType = Stakings;
       return this.apiClient.callApi(
         '/stakings/{staking_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -271,7 +272,7 @@ export default class StakingsApi {
      * Get staking by id
      * This operation retrieves a staking by id. 
      * @param {String} stakingId staking id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListStakings200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Stakings}
      */
     getStakingById(stakingId) {
       return this.getStakingByIdWithHttpInfo(stakingId)

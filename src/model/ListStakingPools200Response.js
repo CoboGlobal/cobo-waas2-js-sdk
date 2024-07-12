@@ -17,7 +17,7 @@ import PoolSummary from './PoolSummary';
 /**
  * The ListStakingPools200Response model module.
  * @module model/ListStakingPools200Response
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ListStakingPools200Response {
     /**

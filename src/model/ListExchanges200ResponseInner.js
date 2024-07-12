@@ -16,7 +16,7 @@ import ExchangeId from './ExchangeId';
 /**
  * The ListExchanges200ResponseInner model module.
  * @module model/ListExchanges200ResponseInner
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ListExchanges200ResponseInner {
     /**

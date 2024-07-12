@@ -18,7 +18,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The ContractCall model module.
  * @module model/ContractCall
- * @version 0.2.6
+ * @version 0.2.7
  */
 class ContractCall {
     /**
@@ -148,7 +148,7 @@ ContractCall.prototype['source'] = undefined;
 ContractCall.prototype['destination'] = undefined;
 
 /**
- * The description of the contract call.
+ * The description of the contract call transaction.
  * @member {String} description
  */
 ContractCall.prototype['description'] = undefined;

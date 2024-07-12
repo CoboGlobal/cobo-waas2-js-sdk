@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionMPCWalletSourceAccountInput model module.
  * @module model/TransactionMPCWalletSourceAccountInput
- * @version 0.2.6
+ * @version 0.2.7
  */
 class TransactionMPCWalletSourceAccountInput {
     /**

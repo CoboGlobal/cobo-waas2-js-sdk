@@ -23,7 +23,7 @@ import TransactionType from './TransactionType';
 /**
  * The Transaction model module.
  * @module model/Transaction
- * @version 0.2.6
+ * @version 0.2.7
  */
 class Transaction {
     /**
