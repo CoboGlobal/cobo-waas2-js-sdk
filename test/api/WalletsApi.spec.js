@@ -147,26 +147,6 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getSupportedChains', function() {
-      it('should call getSupportedChains successfully', function() {
-        //uncomment below and update the code to test getSupportedChains
-        //instance.getSupportedChains().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getSupportedTokens', function() {
-      it('should call getSupportedTokens successfully', function() {
-        //uncomment below and update the code to test getSupportedTokens
-        //instance.getSupportedTokens().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('getTokenById', function() {
       it('should call getTokenById successfully', function() {
         //uncomment below and update the code to test getTokenById

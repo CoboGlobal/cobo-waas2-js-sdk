@@ -17,7 +17,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionExchangeWalletDestination model module.
  * @module model/TransactionExchangeWalletDestination
- * @version 0.2.5
+ * @version 0.2.6
  */
 class TransactionExchangeWalletDestination {
     /**

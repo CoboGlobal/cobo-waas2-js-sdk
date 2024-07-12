@@ -16,7 +16,7 @@ import FeeType from './FeeType';
 /**
  * The GetStakingEstimationFee201Response model module.
  * @module model/GetStakingEstimationFee201Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class GetStakingEstimationFee201Response {
     /**

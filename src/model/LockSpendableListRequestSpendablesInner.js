@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LockSpendableListRequestSpendablesInner model module.
  * @module model/LockSpendableListRequestSpendablesInner
- * @version 0.2.5
+ * @version 0.2.6
  */
 class LockSpendableListRequestSpendablesInner {
     /**

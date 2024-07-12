@@ -17,7 +17,7 @@ import WalletType from './WalletType';
 /**
  * The CreateCustodialWallet model module.
  * @module model/CreateCustodialWallet
- * @version 0.2.5
+ * @version 0.2.6
  */
 class CreateCustodialWallet {
     /**

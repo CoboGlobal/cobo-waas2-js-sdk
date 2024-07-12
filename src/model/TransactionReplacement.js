@@ -11,12 +11,12 @@
  */
 
 import ApiClient from '../ApiClient';
-import ReplacedType from './ReplacedType';
+import ReplaceType from './ReplaceType';
 
 /**
  * The TransactionReplacement model module.
  * @module model/TransactionReplacement
- * @version 0.2.5
+ * @version 0.2.6
  */
 class TransactionReplacement {
     /**
@@ -48,7 +48,7 @@ class TransactionReplacement {
             obj = obj || new TransactionReplacement();
 
             if (data.hasOwnProperty('replaced_by_type')) {
-                obj['replaced_by_type'] = ReplacedType.constructFromObject(data['replaced_by_type']);
+                obj['replaced_by_type'] = ReplaceType.constructFromObject(data['replaced_by_type']);
             }
             if (data.hasOwnProperty('replaced_by_transaction_id')) {
                 obj['replaced_by_transaction_id'] = ApiClient.convertToType(data['replaced_by_transaction_id'], 'String');
@@ -57,7 +57,7 @@ class TransactionReplacement {
                 obj['replaced_by_transaction_hash'] = ApiClient.convertToType(data['replaced_by_transaction_hash'], 'String');
             }
             if (data.hasOwnProperty('replaced_type')) {
-                obj['replaced_type'] = ApiClient.convertToType(data['replaced_type'], 'String');
+                obj['replaced_type'] = ReplaceType.constructFromObject(data['replaced_type']);
             }
             if (data.hasOwnProperty('replaced_transaction_id')) {
                 obj['replaced_transaction_id'] = ApiClient.convertToType(data['replaced_transaction_id'], 'String');
@@ -84,10 +84,6 @@ class TransactionReplacement {
             throw new Error("Expected the field `replaced_by_transaction_hash` to be a primitive type in the JSON string but got " + data['replaced_by_transaction_hash']);
         }
         // ensure the json data is a string
-        if (data['replaced_type'] && !(typeof data['replaced_type'] === 'string' || data['replaced_type'] instanceof String)) {
-            throw new Error("Expected the field `replaced_type` to be a primitive type in the JSON string but got " + data['replaced_type']);
-        }
-        // ensure the json data is a string
         if (data['replaced_transaction_id'] && !(typeof data['replaced_transaction_id'] === 'string' || data['replaced_transaction_id'] instanceof String)) {
             throw new Error("Expected the field `replaced_transaction_id` to be a primitive type in the JSON string but got " + data['replaced_transaction_id']);
         }
@@ -105,7 +101,7 @@ class TransactionReplacement {
 
 
 /**
- * @member {module:model/ReplacedType} replaced_by_type
+ * @member {module:model/ReplaceType} replaced_by_type
  */
 TransactionReplacement.prototype['replaced_by_type'] = undefined;
 
@@ -122,8 +118,7 @@ TransactionReplacement.prototype['replaced_by_transaction_id'] = undefined;
 TransactionReplacement.prototype['replaced_by_transaction_hash'] = undefined;
 
 /**
- * The transaction replacement type. Possible values include:    - `Cancel`: To cancel a transaction.   - `Drop`: To drop a transaction.   - `Resend`: To resend a transaction.   - `SpeedUp`: To speed up a transaction. 
- * @member {module:model/TransactionReplacement.ReplacedTypeEnum} replaced_type
+ * @member {module:model/ReplaceType} replaced_type
  */
 TransactionReplacement.prototype['replaced_type'] = undefined;
 
@@ -141,39 +136,6 @@ TransactionReplacement.prototype['replaced_transaction_hash'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>replaced_type</code> property.
- * @enum {String}
- * @readonly
- */
-TransactionReplacement['ReplacedTypeEnum'] = {
-
-    /**
-     * value: "Cancel"
-     * @const
-     */
-    "Cancel": "Cancel",
-
-    /**
-     * value: "Drop"
-     * @const
-     */
-    "Drop": "Drop",
-
-    /**
-     * value: "Resend"
-     * @const
-     */
-    "Resend": "Resend",
-
-    /**
-     * value: "SpeedUp"
-     * @const
-     */
-    "SpeedUp": "SpeedUp"
-};
 
 
 

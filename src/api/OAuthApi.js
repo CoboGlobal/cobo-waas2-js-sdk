@@ -19,7 +19,7 @@ import RefreshTokenRequest from '../model/RefreshTokenRequest';
 /**
 * OAuth service.
 * @module api/OAuthApi
-* @version 0.2.5
+* @version 0.2.6
 */
 export default class OAuthApi {
 

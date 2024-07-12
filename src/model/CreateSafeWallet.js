@@ -19,7 +19,7 @@ import WalletType from './WalletType';
 /**
  * The CreateSafeWallet model module.
  * @module model/CreateSafeWallet
- * @version 0.2.5
+ * @version 0.2.6
  */
 class CreateSafeWallet {
     /**

@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The ListWebhookEndpoints200Response model module.
  * @module model/ListWebhookEndpoints200Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class ListWebhookEndpoints200Response {
     /**

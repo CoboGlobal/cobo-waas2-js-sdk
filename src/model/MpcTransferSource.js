@@ -20,7 +20,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The MpcTransferSource model module.
  * @module model/MpcTransferSource
- * @version 0.2.5
+ * @version 0.2.6
  */
 class MpcTransferSource {
     /**

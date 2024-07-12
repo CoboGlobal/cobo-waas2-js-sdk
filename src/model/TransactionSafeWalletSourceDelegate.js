@@ -16,7 +16,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The TransactionSafeWalletSourceDelegate model module.
  * @module model/TransactionSafeWalletSourceDelegate
- * @version 0.2.5
+ * @version 0.2.6
  */
 class TransactionSafeWalletSourceDelegate {
     /**

@@ -17,7 +17,7 @@ import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestina
 /**
  * The EstimateFeeContractCall model module.
  * @module model/EstimateFeeContractCall
- * @version 0.2.5
+ * @version 0.2.6
  */
 class EstimateFeeContractCall {
     /**

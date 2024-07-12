@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The GetExchangeWalletAssetBalances200Response model module.
  * @module model/GetExchangeWalletAssetBalances200Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class GetExchangeWalletAssetBalances200Response {
     /**

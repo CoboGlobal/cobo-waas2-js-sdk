@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LockSpendableList200Response model module.
  * @module model/LockSpendableList200Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class LockSpendableList200Response {
     /**

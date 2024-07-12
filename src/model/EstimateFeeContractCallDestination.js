@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EstimateFeeContractCallDestination model module.
  * @module model/EstimateFeeContractCallDestination
- * @version 0.2.5
+ * @version 0.2.6
  */
 class EstimateFeeContractCallDestination {
     /**

@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionReplacement);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property replacedByType (base name: "replaced_by_type")', function() {
+      // uncomment below and update the code to test the property replacedByType
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
@@ -67,6 +67,12 @@
 
     it('should have the property replacedByTransactionHash (base name: "replaced_by_transaction_hash")', function() {
       // uncomment below and update the code to test the property replacedByTransactionHash
+      //var instance = new CoboWaas2JsApi.TransactionReplacement();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property replacedType (base name: "replaced_type")', function() {
+      // uncomment below and update the code to test the property replacedType
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });

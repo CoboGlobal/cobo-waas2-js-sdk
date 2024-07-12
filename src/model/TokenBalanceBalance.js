@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TokenBalanceBalance model module.
  * @module model/TokenBalanceBalance
- * @version 0.2.5
+ * @version 0.2.6
  */
 class TokenBalanceBalance {
     /**

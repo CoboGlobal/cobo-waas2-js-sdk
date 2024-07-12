@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateMpcProjectRequest model module.
  * @module model/UpdateMpcProjectRequest
- * @version 0.2.5
+ * @version 0.2.6
  */
 class UpdateMpcProjectRequest {
     /**

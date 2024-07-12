@@ -144,6 +144,7 @@ import PoolDetails from './model/PoolDetails';
 import PoolDetailsAllOfValidatorsInfo from './model/PoolDetailsAllOfValidatorsInfo';
 import PoolSummary from './model/PoolSummary';
 import RefreshTokenRequest from './model/RefreshTokenRequest';
+import ReplaceType from './model/ReplaceType';
 import RetryWebhookEvent201Response from './model/RetryWebhookEvent201Response';
 import RootPubkey from './model/RootPubkey';
 import SafeContractCallSource from './model/SafeContractCallSource';
@@ -276,7 +277,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 0.2.5
+* @version 0.2.6
 */
 export {
     Env,
@@ -1077,6 +1078,12 @@ export {
      * @property {module:model/RefreshTokenRequest}
      */
     RefreshTokenRequest,
+
+    /**
+     * The ReplaceType model constructor.
+     * @property {module:model/ReplaceType}
+     */
+    ReplaceType,
 
     /**
      * The RetryWebhookEvent201Response model constructor.

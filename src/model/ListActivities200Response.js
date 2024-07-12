@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The ListActivities200Response model module.
  * @module model/ListActivities200Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class ListActivities200Response {
     /**

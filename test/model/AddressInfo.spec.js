@@ -53,12 +53,6 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.AddressInfo);
     });
 
-    it('should have the property addressId (base name: "address_id")', function() {
-      // uncomment below and update the code to test the property addressId
-      //var instance = new CoboWaas2JsApi.AddressInfo();
-      //expect(instance).to.be();
-    });
-
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
       //var instance = new CoboWaas2JsApi.AddressInfo();

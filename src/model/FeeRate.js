@@ -21,7 +21,7 @@ import UtxoFeePrice from './UtxoFeePrice';
 /**
  * The FeeRate model module.
  * @module model/FeeRate
- * @version 0.2.5
+ * @version 0.2.6
  */
 class FeeRate {
     /**

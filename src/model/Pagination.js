@@ -15,15 +15,15 @@ import ApiClient from '../ApiClient';
 /**
  * The Pagination model module.
  * @module model/Pagination
- * @version 0.2.5
+ * @version 0.2.6
  */
 class Pagination {
     /**
      * Constructs a new <code>Pagination</code>.
      * The pagination information of the returned data.
      * @alias module:model/Pagination
-     * @param before {String} ｜ An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request. The `before` is empty if there is not any records before the first record returned.
-     * @param after {String} An object ID that acts as a starting point for retrieving data in chronological order for the next request. The `after` is empty if there is not any records after the first record returned. 
+     * @param before {String} An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request.   If this property is empty, it means that you have reached the start of the data records. 
+     * @param after {String} An object ID that acts as a starting point for retrieving data in chronological order for the next request.  If this property is empty, it means that you have reached the end of the data records. 
      * @param totalCount {Number} The number of data objects returned.
      */
     constructor(before, after, totalCount) { 
@@ -96,13 +96,13 @@ class Pagination {
 Pagination.RequiredProperties = ["before", "after", "total_count"];
 
 /**
- * ｜ An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request. The `before` is empty if there is not any records before the first record returned.
+ * An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request.   If this property is empty, it means that you have reached the start of the data records. 
  * @member {String} before
  */
 Pagination.prototype['before'] = undefined;
 
 /**
- * An object ID that acts as a starting point for retrieving data in chronological order for the next request. The `after` is empty if there is not any records after the first record returned. 
+ * An object ID that acts as a starting point for retrieving data in chronological order for the next request.  If this property is empty, it means that you have reached the end of the data records. 
  * @member {String} after
  */
 Pagination.prototype['after'] = undefined;

@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateKeyGroupRequest model module.
  * @module model/UpdateKeyGroupRequest
- * @version 0.2.5
+ * @version 0.2.6
  */
 class UpdateKeyGroupRequest {
     /**

@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StakingsValidatorInfo model module.
  * @module model/StakingsValidatorInfo
- * @version 0.2.5
+ * @version 0.2.6
  */
 class StakingsValidatorInfo {
     /**

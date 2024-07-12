@@ -17,7 +17,7 @@ import KeyHolderType from './KeyHolderType';
 /**
  * The KeyHolder model module.
  * @module model/KeyHolder
- * @version 0.2.5
+ * @version 0.2.6
  */
 class KeyHolder {
     /**

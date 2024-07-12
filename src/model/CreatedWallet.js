@@ -24,7 +24,7 @@ import WalletType from './WalletType';
 /**
  * The CreatedWallet model module.
  * @module model/CreatedWallet
- * @version 0.2.5
+ * @version 0.2.6
  */
 class CreatedWallet {
     /**

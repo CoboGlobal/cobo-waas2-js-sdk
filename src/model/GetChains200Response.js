@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The GetChains200Response model module.
  * @module model/GetChains200Response
- * @version 0.2.5
+ * @version 0.2.6
  */
 class GetChains200Response {
     /**

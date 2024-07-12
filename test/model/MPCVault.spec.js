@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MPCVault);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property vaultId (base name: "vault_id")', function() {
+      // uncomment below and update the code to test the property vaultId
       //var instance = new CoboWaas2JsApi.MPCVault();
       //expect(instance).to.be();
     });

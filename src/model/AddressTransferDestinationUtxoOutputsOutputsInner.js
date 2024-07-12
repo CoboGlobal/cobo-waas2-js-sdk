@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AddressTransferDestinationUtxoOutputsOutputsInner model module.
  * @module model/AddressTransferDestinationUtxoOutputsOutputsInner
- * @version 0.2.5
+ * @version 0.2.6
  */
 class AddressTransferDestinationUtxoOutputsOutputsInner {
     /**

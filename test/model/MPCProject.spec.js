@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MPCProject);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
       //var instance = new CoboWaas2JsApi.MPCProject();
       //expect(instance).to.be();
     });

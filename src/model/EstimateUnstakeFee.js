@@ -19,7 +19,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The EstimateUnstakeFee model module.
  * @module model/EstimateUnstakeFee
- * @version 0.2.5
+ * @version 0.2.6
  */
 class EstimateUnstakeFee {
     /**

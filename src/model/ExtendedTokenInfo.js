@@ -16,7 +16,7 @@ import TokenInfo from './TokenInfo';
 /**
  * The ExtendedTokenInfo model module.
  * @module model/ExtendedTokenInfo
- * @version 0.2.5
+ * @version 0.2.6
  */
 class ExtendedTokenInfo {
     /**
