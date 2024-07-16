@@ -140,7 +140,7 @@ UpdateWalletByIdRequest.prototype['apikey'] = undefined;
 UpdateWalletByIdRequest.prototype['secret'] = undefined;
 
 /**
- * The passphrase of your exchange account. This property is required when updating the information of an Exchange Wallet.
+ * The passphrase of your exchange account.
  * @member {String} passphrase
  */
 UpdateWalletByIdRequest.prototype['passphrase'] = undefined;

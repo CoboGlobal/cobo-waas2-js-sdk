@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import MpcSigningGroup from './MpcSigningGroup';
 import TransactionTransferFee from './TransactionTransferFee';
 
 /**
@@ -56,6 +57,9 @@ class TransactionRbf {
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
+            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
+                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
+            }
         }
         return obj;
     }
@@ -80,6 +84,10 @@ class TransactionRbf {
         if (data['fee']) { // data not null
           TransactionTransferFee.validateJSON(data['fee']);
         }
+        // validate the optional field `mpc_used_key_share_holder_group`
+        if (data['mpc_used_key_share_holder_group']) { // data not null
+          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
+        }
 
         return true;
     }
@@ -99,6 +107,11 @@ TransactionRbf.prototype['request_id'] = undefined;
  * @member {module:model/TransactionTransferFee} fee
  */
 TransactionRbf.prototype['fee'] = undefined;
+
+/**
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
+ */
+TransactionRbf.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 
 

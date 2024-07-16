@@ -25,7 +25,7 @@ class SignMessage {
      * The information about a transaction that signs a message. You can provide the message either as raw data or as structured data.
      * @alias module:model/SignMessage
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/SignMessageSource} 
      * @param destination {module:model/SignMessageDestination} 
      */
@@ -124,7 +124,7 @@ SignMessage.RequiredProperties = ["request_id", "chain_id", "source", "destinati
 SignMessage.prototype['request_id'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 SignMessage.prototype['chain_id'] = undefined;

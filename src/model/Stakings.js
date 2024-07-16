@@ -29,13 +29,14 @@ class Stakings {
      * @param address {String} The staker wallet address.
      * @param amounts {Array.<module:model/AmountDetailsInner>} The staking amount details.
      * @param poolId {String} The unique pool id.
+     * @param tokenId {String} The token id.
      * @param createdTime {Number} The time when the stake was created.
      * @param updatedTime {Number} The time when the stake was last updated.
      * @param validatorInfo {module:model/StakingsValidatorInfo} 
      */
-    constructor(id, walletId, address, amounts, poolId, createdTime, updatedTime, validatorInfo) { 
+    constructor(id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo) { 
         
-        Stakings.initialize(this, id, walletId, address, amounts, poolId, createdTime, updatedTime, validatorInfo);
+        Stakings.initialize(this, id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo);
     }
 
     /**
@@ -43,12 +44,13 @@ class Stakings {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, walletId, address, amounts, poolId, createdTime, updatedTime, validatorInfo) { 
+    static initialize(obj, id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo) { 
         obj['id'] = id;
         obj['wallet_id'] = walletId;
         obj['address'] = address;
         obj['amounts'] = amounts;
         obj['pool_id'] = poolId;
+        obj['token_id'] = tokenId;
         obj['created_time'] = createdTime;
         obj['updated_time'] = updatedTime;
         obj['validator_info'] = validatorInfo;
@@ -88,6 +90,9 @@ class Stakings {
             }
             if (data.hasOwnProperty('pool_id')) {
                 obj['pool_id'] = ApiClient.convertToType(data['pool_id'], 'String');
+            }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
             if (data.hasOwnProperty('pos_chain')) {
                 obj['pos_chain'] = ApiClient.convertToType(data['pos_chain'], 'String');
@@ -151,6 +156,10 @@ class Stakings {
             throw new Error("Expected the field `pool_id` to be a primitive type in the JSON string but got " + data['pool_id']);
         }
         // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
         if (data['pos_chain'] && !(typeof data['pos_chain'] === 'string' || data['pos_chain'] instanceof String)) {
             throw new Error("Expected the field `pos_chain` to be a primitive type in the JSON string but got " + data['pos_chain']);
         }
@@ -165,7 +174,7 @@ class Stakings {
 
 }
 
-Stakings.RequiredProperties = ["id", "wallet_id", "address", "amounts", "pool_id", "created_time", "updated_time", "validator_info"];
+Stakings.RequiredProperties = ["id", "wallet_id", "address", "amounts", "pool_id", "token_id", "created_time", "updated_time", "validator_info"];
 
 /**
  * The unique id of the stake.
@@ -214,6 +223,12 @@ Stakings.prototype['unlock_block_height'] = undefined;
  * @member {String} pool_id
  */
 Stakings.prototype['pool_id'] = undefined;
+
+/**
+ * The token id.
+ * @member {String} token_id
+ */
+Stakings.prototype['token_id'] = undefined;
 
 /**
  * The pos chain of the stake.

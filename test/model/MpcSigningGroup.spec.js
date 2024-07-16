@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MpcSigningGroup);
     });
 
-    it('should have the property usedKeyGroupId (base name: "used_key_group_id")', function() {
-      // uncomment below and update the code to test the property usedKeyGroupId
+    it('should have the property usedKeyShareHolderGroupId (base name: "used_key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property usedKeyShareHolderGroupId
       //var instance = new CoboWaas2JsApi.MpcSigningGroup();
       //expect(instance).to.be();
     });
 
-    it('should have the property usedNodeIds (base name: "used_node_ids")', function() {
-      // uncomment below and update the code to test the property usedNodeIds
+    it('should have the property usedTssNodeIds (base name: "used_tss_node_ids")', function() {
+      // uncomment below and update the code to test the property usedTssNodeIds
       //var instance = new CoboWaas2JsApi.MpcSigningGroup();
       //expect(instance).to.be();
     });

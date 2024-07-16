@@ -24,11 +24,11 @@ class AddressInfo {
      * The address information.
      * @alias module:model/AddressInfo
      * @param address {String} The wallet address.
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      */
-    constructor(address, tokenId) { 
+    constructor(address, chainId) { 
         
-        AddressInfo.initialize(this, address, tokenId);
+        AddressInfo.initialize(this, address, chainId);
     }
 
     /**
@@ -36,9 +36,9 @@ class AddressInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, address, tokenId) { 
+    static initialize(obj, address, chainId) { 
         obj['address'] = address;
-        obj['token_id'] = tokenId;
+        obj['chain_id'] = chainId;
     }
 
     /**
@@ -55,8 +55,8 @@ class AddressInfo {
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
-            if (data.hasOwnProperty('token_id')) {
-                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            if (data.hasOwnProperty('chain_id')) {
+                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
             if (data.hasOwnProperty('memo')) {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
@@ -91,8 +91,8 @@ class AddressInfo {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
-            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
         if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
@@ -113,7 +113,7 @@ class AddressInfo {
 
 }
 
-AddressInfo.RequiredProperties = ["address", "token_id"];
+AddressInfo.RequiredProperties = ["address", "chain_id"];
 
 /**
  * The wallet address.
@@ -122,10 +122,10 @@ AddressInfo.RequiredProperties = ["address", "token_id"];
 AddressInfo.prototype['address'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
- * @member {String} token_id
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+ * @member {String} chain_id
  */
-AddressInfo.prototype['token_id'] = undefined;
+AddressInfo.prototype['chain_id'] = undefined;
 
 /**
  * The memo code.
@@ -134,7 +134,7 @@ AddressInfo.prototype['token_id'] = undefined;
 AddressInfo.prototype['memo'] = undefined;
 
 /**
- * The derivation path of the address.
+ * The derivation path of the address. This property applies to MPC Wallets only.
  * @member {String} path
  */
 AddressInfo.prototype['path'] = undefined;
@@ -145,7 +145,7 @@ AddressInfo.prototype['path'] = undefined;
 AddressInfo.prototype['encoding'] = undefined;
 
 /**
- * The public key of the address.
+ * The public key of the address. This property applies to MPC Wallets only.
  * @member {String} pubkey
  */
 AddressInfo.prototype['pubkey'] = undefined;

@@ -26,7 +26,7 @@ class TransactionAddressDestination {
      * The information about the transaction destination.
      * @alias module:model/TransactionAddressDestination
      * @param destinationType {module:model/TransactionDestinationType} 
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
      */
     constructor(destinationType, tokenId) { 
         
@@ -116,7 +116,7 @@ TransactionAddressDestination.RequiredProperties = ["destination_type", "token_i
 TransactionAddressDestination.prototype['destination_type'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionAddressDestination.prototype['token_id'] = undefined;

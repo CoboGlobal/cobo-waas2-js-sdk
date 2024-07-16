@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **protocol** | **String** | The name of the protocol. | 
 **protocolIconUrl** | **String** | The URL of the protocol&#39;s icon. | 
 **supportedWalletTypes** | [**[WalletType]**](WalletType.md) | The list of available wallet types. | 
+**supportedWalletSubtypes** | [**[WalletSubtype]**](WalletSubtype.md) | The list of available wallet types. | 
 **tokenId** | **String** | The unique token id. | 
 **estApr** | **Number** | The estimated APR. | 
 

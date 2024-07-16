@@ -28,11 +28,11 @@ class TransactionMPCWalletSource {
      * @alias module:model/TransactionMPCWalletSource
      * @param sourceType {module:model/TransactionSourceType} 
      * @param walletId {String} The wallet ID.
-     * @param mpcUsedKeyGroup {module:model/MpcSigningGroup} 
+     * @param mpcUsedKeyShareHolderGroup {module:model/MpcSigningGroup} 
      */
-    constructor(sourceType, walletId, mpcUsedKeyGroup) { 
+    constructor(sourceType, walletId, mpcUsedKeyShareHolderGroup) { 
         
-        TransactionMPCWalletSource.initialize(this, sourceType, walletId, mpcUsedKeyGroup);
+        TransactionMPCWalletSource.initialize(this, sourceType, walletId, mpcUsedKeyShareHolderGroup);
     }
 
     /**
@@ -40,10 +40,10 @@ class TransactionMPCWalletSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, mpcUsedKeyGroup) { 
+    static initialize(obj, sourceType, walletId, mpcUsedKeyShareHolderGroup) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['mpc_used_key_group'] = mpcUsedKeyGroup;
+        obj['mpc_used_key_share_holder_group'] = mpcUsedKeyShareHolderGroup;
     }
 
     /**
@@ -63,8 +63,8 @@ class TransactionMPCWalletSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('mpc_used_key_group')) {
-                obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
+            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
+                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
             }
             if (data.hasOwnProperty('account_input')) {
                 obj['account_input'] = TransactionMPCWalletSourceAccountInput.constructFromObject(data['account_input']);
@@ -92,9 +92,9 @@ class TransactionMPCWalletSource {
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
-        // validate the optional field `mpc_used_key_group`
-        if (data['mpc_used_key_group']) { // data not null
-          MpcSigningGroup.validateJSON(data['mpc_used_key_group']);
+        // validate the optional field `mpc_used_key_share_holder_group`
+        if (data['mpc_used_key_share_holder_group']) { // data not null
+          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
         }
         // validate the optional field `account_input`
         if (data['account_input']) { // data not null
@@ -117,7 +117,7 @@ class TransactionMPCWalletSource {
 
 }
 
-TransactionMPCWalletSource.RequiredProperties = ["source_type", "wallet_id", "mpc_used_key_group"];
+TransactionMPCWalletSource.RequiredProperties = ["source_type", "wallet_id", "mpc_used_key_share_holder_group"];
 
 /**
  * @member {module:model/TransactionSourceType} source_type
@@ -131,9 +131,9 @@ TransactionMPCWalletSource.prototype['source_type'] = undefined;
 TransactionMPCWalletSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-TransactionMPCWalletSource.prototype['mpc_used_key_group'] = undefined;
+TransactionMPCWalletSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 /**
  * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input

@@ -15,6 +15,7 @@ import ContractCallSource from './ContractCallSource';
 import EstimateFeeContractCall from './EstimateFeeContractCall';
 import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
 import EstimateFeeTransfer from './EstimateFeeTransfer';
+import FeeType from './FeeType';
 
 /**
  * The EstimateFee model module.
@@ -151,7 +152,12 @@ EstimateFee.prototype['token_id'] = undefined;
 EstimateFee.prototype['destination'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+ * @member {module:model/FeeType} fee_type
+ */
+EstimateFee.prototype['fee_type'] = undefined;
+
+/**
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFee.prototype['chain_id'] = undefined;

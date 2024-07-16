@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property feeType (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property feeType
+      //var instance = new CoboWaas2JsApi.EstimateFeeContractCall();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

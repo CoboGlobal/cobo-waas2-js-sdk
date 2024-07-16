@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property endpointId (base name: "endpoint_id")', function() {
+      // uncomment below and update the code to test the property endpointId
       //var instance = new CoboWaas2JsApi.Endpoint();
       //expect(instance).to.be();
     });

@@ -162,7 +162,7 @@ TransactionExchangeWalletDestination.prototype['wallet_id'] = undefined;
 TransactionExchangeWalletDestination.prototype['sub_wallet_id'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionExchangeWalletDestination.prototype['token_id'] = undefined;

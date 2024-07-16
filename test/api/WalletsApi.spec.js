@@ -47,6 +47,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createAddress', function() {
+      it('should call createAddress successfully', function() {
+        //uncomment below and update the code to test createAddress
+        //instance.createAddress().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createWallet', function() {
       it('should call createWallet successfully', function() {
         //uncomment below and update the code to test createWallet
@@ -67,20 +77,10 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('generateWalletAddress', function() {
-      it('should call generateWalletAddress successfully', function() {
-        //uncomment below and update the code to test generateWalletAddress
-        //instance.generateWalletAddress().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getAddressById', function() {
-      it('should call getAddressById successfully', function() {
-        //uncomment below and update the code to test getAddressById
-        //instance.getAddressById().then(function(data) {
+    describe('getAddress', function() {
+      it('should call getAddress successfully', function() {
+        //uncomment below and update the code to test getAddress
+        //instance.getAddress().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -97,50 +97,10 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getChains', function() {
-      it('should call getChains successfully', function() {
-        //uncomment below and update the code to test getChains
-        //instance.getChains().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getEnabledChains', function() {
-      it('should call getEnabledChains successfully', function() {
-        //uncomment below and update the code to test getEnabledChains
-        //instance.getEnabledChains().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getEnabledTokens', function() {
-      it('should call getEnabledTokens successfully', function() {
-        //uncomment below and update the code to test getEnabledTokens
-        //instance.getEnabledTokens().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('getMaxTransferableValue', function() {
       it('should call getMaxTransferableValue successfully', function() {
         //uncomment below and update the code to test getMaxTransferableValue
         //instance.getMaxTransferableValue().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getSpendableList', function() {
-      it('should call getSpendableList successfully', function() {
-        //uncomment below and update the code to test getSpendableList
-        //instance.getSpendableList().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -157,40 +117,10 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getTokens', function() {
-      it('should call getTokens successfully', function() {
-        //uncomment below and update the code to test getTokens
-        //instance.getTokens().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getWalletAddressTokenBalances', function() {
-      it('should call getWalletAddressTokenBalances successfully', function() {
-        //uncomment below and update the code to test getWalletAddressTokenBalances
-        //instance.getWalletAddressTokenBalances().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('getWalletById', function() {
       it('should call getWalletById successfully', function() {
         //uncomment below and update the code to test getWalletById
         //instance.getWalletById().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('getWalletTokenBalances', function() {
-      it('should call getWalletTokenBalances successfully', function() {
-        //uncomment below and update the code to test getWalletTokenBalances
-        //instance.getWalletTokenBalances().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -207,6 +137,76 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listEnabledChains', function() {
+      it('should call listEnabledChains successfully', function() {
+        //uncomment below and update the code to test listEnabledChains
+        //instance.listEnabledChains().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listEnabledTokens', function() {
+      it('should call listEnabledTokens successfully', function() {
+        //uncomment below and update the code to test listEnabledTokens
+        //instance.listEnabledTokens().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listSupportedChains', function() {
+      it('should call listSupportedChains successfully', function() {
+        //uncomment below and update the code to test listSupportedChains
+        //instance.listSupportedChains().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listSupportedTokens', function() {
+      it('should call listSupportedTokens successfully', function() {
+        //uncomment below and update the code to test listSupportedTokens
+        //instance.listSupportedTokens().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listTokenBalancesForAddress', function() {
+      it('should call listTokenBalancesForAddress successfully', function() {
+        //uncomment below and update the code to test listTokenBalancesForAddress
+        //instance.listTokenBalancesForAddress().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listTokenBalancesForWallet', function() {
+      it('should call listTokenBalancesForWallet successfully', function() {
+        //uncomment below and update the code to test listTokenBalancesForWallet
+        //instance.listTokenBalancesForWallet().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listUtxos', function() {
+      it('should call listUtxos successfully', function() {
+        //uncomment below and update the code to test listUtxos
+        //instance.listUtxos().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listWallets', function() {
       it('should call listWallets successfully', function() {
         //uncomment below and update the code to test listWallets
@@ -217,20 +217,20 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('lockSpendableList', function() {
-      it('should call lockSpendableList successfully', function() {
-        //uncomment below and update the code to test lockSpendableList
-        //instance.lockSpendableList().then(function(data) {
+    describe('lockUtxos', function() {
+      it('should call lockUtxos successfully', function() {
+        //uncomment below and update the code to test lockUtxos
+        //instance.lockUtxos().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('unlockSpendableList', function() {
-      it('should call unlockSpendableList successfully', function() {
-        //uncomment below and update the code to test unlockSpendableList
-        //instance.unlockSpendableList().then(function(data) {
+    describe('unlockUtxos', function() {
+      it('should call unlockUtxos successfully', function() {
+        //uncomment below and update the code to test unlockUtxos
+        //instance.unlockUtxos().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

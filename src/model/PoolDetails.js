@@ -14,6 +14,7 @@ import ApiClient from '../ApiClient';
 import PoolDetailsAllOfValidatorsInfo from './PoolDetailsAllOfValidatorsInfo';
 import PoolSummary from './PoolSummary';
 import StakingPoolType from './StakingPoolType';
+import WalletSubtype from './WalletSubtype';
 import WalletType from './WalletType';
 
 /**
@@ -31,13 +32,14 @@ class PoolDetails {
      * @param protocol {String} The name of the protocol.
      * @param protocolIconUrl {String} The URL of the protocol's icon.
      * @param supportedWalletTypes {Array.<module:model/WalletType>} The list of available wallet types.
+     * @param supportedWalletSubtypes {Array.<module:model/WalletSubtype>} The list of available wallet types.
      * @param tokenId {String} The unique token id.
      * @param estApr {Number} The estimated APR.
      * @param validatorsInfo {Array.<module:model/PoolDetailsAllOfValidatorsInfo>} The list of validators.
      */
-    constructor(id, chainId, protocol, protocolIconUrl, supportedWalletTypes, tokenId, estApr, validatorsInfo) { 
-        PoolSummary.initialize(this, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, tokenId, estApr);
-        PoolDetails.initialize(this, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, tokenId, estApr, validatorsInfo);
+    constructor(id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr, validatorsInfo) { 
+        PoolSummary.initialize(this, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr);
+        PoolDetails.initialize(this, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr, validatorsInfo);
     }
 
     /**
@@ -45,12 +47,13 @@ class PoolDetails {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, tokenId, estApr, validatorsInfo) { 
+    static initialize(obj, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr, validatorsInfo) { 
         obj['id'] = id;
         obj['chain_id'] = chainId;
         obj['protocol'] = protocol;
         obj['protocol_icon_url'] = protocolIconUrl;
         obj['supported_wallet_types'] = supportedWalletTypes;
+        obj['supported_wallet_subtypes'] = supportedWalletSubtypes;
         obj['token_id'] = tokenId;
         obj['est_apr'] = estApr;
         obj['validators_info'] = validatorsInfo;
@@ -82,6 +85,9 @@ class PoolDetails {
             }
             if (data.hasOwnProperty('supported_wallet_types')) {
                 obj['supported_wallet_types'] = ApiClient.convertToType(data['supported_wallet_types'], [WalletType]);
+            }
+            if (data.hasOwnProperty('supported_wallet_subtypes')) {
+                obj['supported_wallet_subtypes'] = ApiClient.convertToType(data['supported_wallet_subtypes'], [WalletSubtype]);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -143,6 +149,10 @@ class PoolDetails {
         if (!Array.isArray(data['supported_wallet_types'])) {
             throw new Error("Expected the field `supported_wallet_types` to be an array in the JSON data but got " + data['supported_wallet_types']);
         }
+        // ensure the json data is an array
+        if (!Array.isArray(data['supported_wallet_subtypes'])) {
+            throw new Error("Expected the field `supported_wallet_subtypes` to be an array in the JSON data but got " + data['supported_wallet_subtypes']);
+        }
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
@@ -172,7 +182,7 @@ class PoolDetails {
 
 }
 
-PoolDetails.RequiredProperties = ["id", "chain_id", "protocol", "protocol_icon_url", "supported_wallet_types", "token_id", "est_apr", "validators_info"];
+PoolDetails.RequiredProperties = ["id", "chain_id", "protocol", "protocol_icon_url", "supported_wallet_types", "supported_wallet_subtypes", "token_id", "est_apr", "validators_info"];
 
 /**
  * The unique protocol id.
@@ -203,6 +213,12 @@ PoolDetails.prototype['protocol_icon_url'] = undefined;
  * @member {Array.<module:model/WalletType>} supported_wallet_types
  */
 PoolDetails.prototype['supported_wallet_types'] = undefined;
+
+/**
+ * The list of available wallet types.
+ * @member {Array.<module:model/WalletSubtype>} supported_wallet_subtypes
+ */
+PoolDetails.prototype['supported_wallet_subtypes'] = undefined;
 
 /**
  * The unique token id.
@@ -278,6 +294,11 @@ PoolSummary.prototype['protocol_icon_url'] = undefined;
  * @member {Array.<module:model/WalletType>} supported_wallet_types
  */
 PoolSummary.prototype['supported_wallet_types'] = undefined;
+/**
+ * The list of available wallet types.
+ * @member {Array.<module:model/WalletSubtype>} supported_wallet_subtypes
+ */
+PoolSummary.prototype['supported_wallet_subtypes'] = undefined;
 /**
  * The unique token id.
  * @member {String} token_id

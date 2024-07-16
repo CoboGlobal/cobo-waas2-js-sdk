@@ -25,15 +25,14 @@ class WebhookEvent {
      * Constructs a new <code>WebhookEvent</code>.
      * The webhook event payload.
      * @alias module:model/WebhookEvent
-     * @param id {String} The event ID.
      * @param url {String} The webhook endpoint URL.
      * @param createdTimestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
      * @param type {module:model/WebhookEventType} 
      * @param data {module:model/Transaction} 
      */
-    constructor(id, url, createdTimestamp, type, data) { 
+    constructor(url, createdTimestamp, type, data) { 
         
-        WebhookEvent.initialize(this, id, url, createdTimestamp, type, data);
+        WebhookEvent.initialize(this, url, createdTimestamp, type, data);
     }
 
     /**
@@ -41,8 +40,7 @@ class WebhookEvent {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, url, createdTimestamp, type, data) { 
-        obj['id'] = id;
+    static initialize(obj, url, createdTimestamp, type, data) { 
         obj['url'] = url;
         obj['created_timestamp'] = createdTimestamp;
         obj['type'] = type;
@@ -60,8 +58,8 @@ class WebhookEvent {
         if (data) {
             obj = obj || new WebhookEvent();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('event_id')) {
+                obj['event_id'] = ApiClient.convertToType(data['event_id'], 'String');
             }
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
@@ -101,8 +99,8 @@ class WebhookEvent {
             }
         }
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['event_id'] && !(typeof data['event_id'] === 'string' || data['event_id'] instanceof String)) {
+            throw new Error("Expected the field `event_id` to be a primitive type in the JSON string but got " + data['event_id']);
         }
         // ensure the json data is a string
         if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
@@ -119,13 +117,13 @@ class WebhookEvent {
 
 }
 
-WebhookEvent.RequiredProperties = ["id", "url", "created_timestamp", "type", "data"];
+WebhookEvent.RequiredProperties = ["url", "created_timestamp", "type", "data"];
 
 /**
  * The event ID.
- * @member {String} id
+ * @member {String} event_id
  */
-WebhookEvent.prototype['id'] = undefined;
+WebhookEvent.prototype['event_id'] = undefined;
 
 /**
  * The webhook endpoint URL.

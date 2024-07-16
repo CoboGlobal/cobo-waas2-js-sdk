@@ -70,8 +70,8 @@ class MpcTransferSource {
             if (data.hasOwnProperty('utxo_inputs')) {
                 obj['utxo_inputs'] = MpcTransferSourceAllOfUtxoInputs.constructFromObject(data['utxo_inputs']);
             }
-            if (data.hasOwnProperty('mpc_used_key_group')) {
-                obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
+            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
+                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
             }
         }
         return obj;
@@ -101,9 +101,9 @@ class MpcTransferSource {
         if (data['utxo_inputs']) { // data not null
           MpcTransferSourceAllOfUtxoInputs.validateJSON(data['utxo_inputs']);
         }
-        // validate the optional field `mpc_used_key_group`
-        if (data['mpc_used_key_group']) { // data not null
-          MpcSigningGroup.validateJSON(data['mpc_used_key_group']);
+        // validate the optional field `mpc_used_key_share_holder_group`
+        if (data['mpc_used_key_share_holder_group']) { // data not null
+          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
         }
 
         return true;
@@ -136,9 +136,9 @@ MpcTransferSource.prototype['account_input'] = undefined;
 MpcTransferSource.prototype['utxo_inputs'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-MpcTransferSource.prototype['mpc_used_key_group'] = undefined;
+MpcTransferSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 
 // Implement BaseTransferSource interface:

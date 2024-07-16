@@ -181,9 +181,9 @@ TransferSource.prototype['account_input'] = undefined;
 TransferSource.prototype['utxo_inputs'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-TransferSource.prototype['mpc_used_key_group'] = undefined;
+TransferSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 /**
  * The wallet address.

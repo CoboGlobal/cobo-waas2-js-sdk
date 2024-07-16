@@ -22,7 +22,7 @@ class TokenInfo {
      * Constructs a new <code>TokenInfo</code>.
      * The token information.
      * @alias module:model/TokenInfo
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param chainId {String} The ID of the chain on which the token operates.
      */
     constructor(tokenId, chainId) { 
@@ -142,7 +142,7 @@ class TokenInfo {
 TokenInfo.RequiredProperties = ["token_id", "chain_id"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TokenInfo.prototype['token_id'] = undefined;

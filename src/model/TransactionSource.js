@@ -216,9 +216,15 @@ TransactionSource.prototype['utxo_inputs'] = undefined;
 TransactionSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-TransactionSource.prototype['mpc_used_key_group'] = undefined;
+TransactionSource.prototype['mpc_used_key_share_holder_group'] = undefined;
+
+/**
+ * The wallet address.
+ * @member {String} address
+ */
+TransactionSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/TransactionSafeWalletSourceDelegate} delegate

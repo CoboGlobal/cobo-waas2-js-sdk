@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property supportedWalletSubtypes (base name: "supported_wallet_subtypes")', function() {
+      // uncomment below and update the code to test the property supportedWalletSubtypes
+      //var instance = new CoboWaas2JsApi.PoolDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property tokenId (base name: "token_id")', function() {
       // uncomment below and update the code to test the property tokenId
       //var instance = new CoboWaas2JsApi.PoolDetails();

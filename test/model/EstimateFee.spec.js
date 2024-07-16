@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property feeType (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property feeType
+      //var instance = new CoboWaas2JsApi.EstimateFee();
+      //expect(instance).to.be();
+    });
+
     it('should have the property chainId (base name: "chain_id")', function() {
       // uncomment below and update the code to test the property chainId
       //var instance = new CoboWaas2JsApi.EstimateFee();

@@ -56,8 +56,8 @@ class TransactionSafeWalletSourceDelegate {
             if (data.hasOwnProperty('wallet_address')) {
                 obj['wallet_address'] = ApiClient.convertToType(data['wallet_address'], 'String');
             }
-            if (data.hasOwnProperty('mpc_used_key_group')) {
-                obj['mpc_used_key_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_group']);
+            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
+                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
             }
         }
         return obj;
@@ -81,9 +81,9 @@ class TransactionSafeWalletSourceDelegate {
         if (data['wallet_address'] && !(typeof data['wallet_address'] === 'string' || data['wallet_address'] instanceof String)) {
             throw new Error("Expected the field `wallet_address` to be a primitive type in the JSON string but got " + data['wallet_address']);
         }
-        // validate the optional field `mpc_used_key_group`
-        if (data['mpc_used_key_group']) { // data not null
-          MpcSigningGroup.validateJSON(data['mpc_used_key_group']);
+        // validate the optional field `mpc_used_key_share_holder_group`
+        if (data['mpc_used_key_share_holder_group']) { // data not null
+          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
         }
 
         return true;
@@ -95,7 +95,7 @@ class TransactionSafeWalletSourceDelegate {
 
 
 /**
- * The wallet ID of the Delegate. This is required for initiating a transfer from Smart Contract Wallets (Safe{Wallet}). 
+ * The wallet ID of the Delegate. This is required for initiating a transfer from Smart Contract Wallets (Safe{Wallet}).
  * @member {String} wallet_id
  */
 TransactionSafeWalletSourceDelegate.prototype['wallet_id'] = undefined;
@@ -113,9 +113,9 @@ TransactionSafeWalletSourceDelegate.prototype['wallet_type'] = undefined;
 TransactionSafeWalletSourceDelegate.prototype['wallet_address'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-TransactionSafeWalletSourceDelegate.prototype['mpc_used_key_group'] = undefined;
+TransactionSafeWalletSourceDelegate.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 
 

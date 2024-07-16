@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FeeType from './FeeType';
 import TransferDestination from './TransferDestination';
 import TransferSource from './TransferSource';
 
@@ -73,6 +74,9 @@ class EstimateFeeTransfer {
             }
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = TransferDestination.constructFromObject(data['destination']);
+            }
+            if (data.hasOwnProperty('fee_type')) {
+                obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
         }
         return obj;
@@ -146,6 +150,11 @@ EstimateFeeTransfer.prototype['token_id'] = undefined;
  * @member {module:model/TransferDestination} destination
  */
 EstimateFeeTransfer.prototype['destination'] = undefined;
+
+/**
+ * @member {module:model/FeeType} fee_type
+ */
+EstimateFeeTransfer.prototype['fee_type'] = undefined;
 
 
 

@@ -107,16 +107,6 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('listFeeRates', function() {
-      it('should call listFeeRates successfully', function() {
-        //uncomment below and update the code to test listFeeRates
-        //instance.listFeeRates().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('listTransactions', function() {
       it('should call listTransactions successfully', function() {
         //uncomment below and update the code to test listTransactions

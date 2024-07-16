@@ -77,8 +77,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyGroup (base name: "mpc_used_key_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyGroup
+    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
+      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
       //var instance = new CoboWaas2JsApi.MpcTransferSource();
       //expect(instance).to.be();
     });

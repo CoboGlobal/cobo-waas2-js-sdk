@@ -88,6 +88,13 @@ export default class TransactionStatus {
         "Rejected" = "Rejected";
 
     
+        /**
+         * value: "Pending"
+         * @const
+         */
+        "Pending" = "Pending";
+
+    
 
     /**
     * Returns a <code>TransactionStatus</code> enum value from a Javascript object name.

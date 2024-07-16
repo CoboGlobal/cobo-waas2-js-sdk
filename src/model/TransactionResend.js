@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import MpcSigningGroup from './MpcSigningGroup';
 
 /**
  * The TransactionResend model module.
@@ -52,6 +53,9 @@ class TransactionResend {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
+            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
+                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
+            }
         }
         return obj;
     }
@@ -72,6 +76,10 @@ class TransactionResend {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
+        // validate the optional field `mpc_used_key_share_holder_group`
+        if (data['mpc_used_key_share_holder_group']) { // data not null
+          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
+        }
 
         return true;
     }
@@ -86,6 +94,11 @@ TransactionResend.RequiredProperties = ["request_id"];
  * @member {String} request_id
  */
 TransactionResend.prototype['request_id'] = undefined;
+
+/**
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
+ */
+TransactionResend.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 
 

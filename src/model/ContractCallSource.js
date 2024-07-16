@@ -141,9 +141,9 @@ ContractCallSource.prototype['wallet_id'] = undefined;
 ContractCallSource.prototype['address'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_group
+ * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
-ContractCallSource.prototype['mpc_used_key_group'] = undefined;
+ContractCallSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 /**
  * @member {module:model/SafeContractCallSourceAllOfDelegate} delegate

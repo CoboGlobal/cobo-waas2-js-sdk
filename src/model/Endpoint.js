@@ -27,12 +27,11 @@ class Endpoint {
      * @param url {String} The webhook endpoint URL.
      * @param subscribedEvents {Array.<module:model/WebhookEventType>} The event types subscribed by a webhook endpoint.
      * @param createdTimestamp {Number} The time when the endpoint was registered, in Unix timestamp format, measured in seconds.
-     * @param id {String} The webhook endpoint ID.
      * @param status {module:model/EndpointStatus} 
      */
-    constructor(url, subscribedEvents, createdTimestamp, id, status) { 
+    constructor(url, subscribedEvents, createdTimestamp, status) { 
         
-        Endpoint.initialize(this, url, subscribedEvents, createdTimestamp, id, status);
+        Endpoint.initialize(this, url, subscribedEvents, createdTimestamp, status);
     }
 
     /**
@@ -40,11 +39,10 @@ class Endpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, url, subscribedEvents, createdTimestamp, id, status) { 
+    static initialize(obj, url, subscribedEvents, createdTimestamp, status) { 
         obj['url'] = url;
         obj['subscribed_events'] = subscribedEvents;
         obj['created_timestamp'] = createdTimestamp;
-        obj['id'] = id;
         obj['status'] = status;
     }
 
@@ -68,8 +66,8 @@ class Endpoint {
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('endpoint_id')) {
+                obj['endpoint_id'] = ApiClient.convertToType(data['endpoint_id'], 'String');
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = EndpointStatus.constructFromObject(data['status']);
@@ -102,8 +100,8 @@ class Endpoint {
             throw new Error("Expected the field `subscribed_events` to be an array in the JSON data but got " + data['subscribed_events']);
         }
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        if (data['endpoint_id'] && !(typeof data['endpoint_id'] === 'string' || data['endpoint_id'] instanceof String)) {
+            throw new Error("Expected the field `endpoint_id` to be a primitive type in the JSON string but got " + data['endpoint_id']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
@@ -116,7 +114,7 @@ class Endpoint {
 
 }
 
-Endpoint.RequiredProperties = ["url", "subscribed_events", "created_timestamp", "id", "status"];
+Endpoint.RequiredProperties = ["url", "subscribed_events", "created_timestamp", "status"];
 
 /**
  * The webhook endpoint URL.
@@ -138,9 +136,9 @@ Endpoint.prototype['created_timestamp'] = undefined;
 
 /**
  * The webhook endpoint ID.
- * @member {String} id
+ * @member {String} endpoint_id
  */
-Endpoint.prototype['id'] = undefined;
+Endpoint.prototype['endpoint_id'] = undefined;
 
 /**
  * @member {module:model/EndpointStatus} status

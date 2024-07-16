@@ -13,6 +13,7 @@
 import ApiClient from '../ApiClient';
 import ContractCallSource from './ContractCallSource';
 import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
+import FeeType from './FeeType';
 
 /**
  * The EstimateFeeContractCall model module.
@@ -26,7 +27,7 @@ class EstimateFeeContractCall {
      * @alias module:model/EstimateFeeContractCall
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      * @param requestType {module:model/EstimateFeeContractCall.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/ContractCallSource} 
      * @param destination {module:model/EstimateFeeContractCallDestination} 
      */
@@ -73,6 +74,9 @@ class EstimateFeeContractCall {
             }
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = EstimateFeeContractCallDestination.constructFromObject(data['destination']);
+            }
+            if (data.hasOwnProperty('fee_type')) {
+                obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
             }
         }
         return obj;
@@ -132,7 +136,7 @@ EstimateFeeContractCall.prototype['request_id'] = undefined;
 EstimateFeeContractCall.prototype['request_type'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFeeContractCall.prototype['chain_id'] = undefined;
@@ -146,6 +150,11 @@ EstimateFeeContractCall.prototype['source'] = undefined;
  * @member {module:model/EstimateFeeContractCallDestination} destination
  */
 EstimateFeeContractCall.prototype['destination'] = undefined;
+
+/**
+ * @member {module:model/FeeType} fee_type
+ */
+EstimateFeeContractCall.prototype['fee_type'] = undefined;
 
 
 

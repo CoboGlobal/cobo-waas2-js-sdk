@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**dropTransactionById**](TransactionsApi.md#dropTransactionById) | **POST** /transactions/{transaction_id}/drop | Drop transaction
 [**estimateFee**](TransactionsApi.md#estimateFee) | **POST** /transactions/estimate_fee | Estimate transaction fee
 [**getTransactionById**](TransactionsApi.md#getTransactionById) | **GET** /transactions/{transaction_id} | Get transaction information
-[**listFeeRates**](TransactionsApi.md#listFeeRates) | **GET** /transactions/fee_rates | Get fee rates
 [**listTransactions**](TransactionsApi.md#listTransactions) | **GET** /transactions | List all transactions
 [**resendTransactionById**](TransactionsApi.md#resendTransactionById) | **POST** /transactions/{transaction_id}/resend | Resend transaction
 [**speedupTransactionById**](TransactionsApi.md#speedupTransactionById) | **POST** /transactions/{transaction_id}/speedup | Speed up transaction
@@ -226,7 +225,7 @@ Name | Type | Description  | Notes
 
 Drop transaction
 
-This operation drops a specified transaction.   Dropping a transaction will trigger a Replace-By-Fee (RBF) transaction which is a new version of the original transaction. For EVM chains, this RBF transaction has a transfer amount of &#x60;0&#x60; and the sending address is the same as the receiving address. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be dropped if its status is &#x60;Broadcasting&#x60; or &#x60;Confirming&#x60;.  A transaction request for tracking is returned upon successful operation. 
+This operation drops a specified transaction.   Dropping a transaction will trigger a Replace-By-Fee (RBF) transaction which is a new version of the original transaction. For EVM chains, this RBF transaction has a transfer amount of &#x60;0&#x60; and the sending address is the same as the receiving address. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be dropped if its status is &#x60;Broadcasting&#x60;.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 
@@ -275,7 +274,7 @@ Name | Type | Description  | Notes
 
 ## estimateFee
 
-> [EstimationFee] estimateFee(opts)
+> EstimationFee estimateFee(opts)
 
 Estimate transaction fee
 
@@ -312,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[EstimationFee]**](EstimationFee.md)
+[**EstimationFee**](EstimationFee.md)
 
 ### Authorization
 
@@ -373,55 +372,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listFeeRates
-
-> [FeeRate] listFeeRates(chainId)
-
-Get fee rates
-
-This operation retrieves current transaction fee rates on the blockchain based on the specified chain ID.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
-
-### Example
-
-```javascript
-import CoboWaas2JsApi from 'cobo-waas2-js-api';
-// initial default api client
-const apiClient = CoboWaas2JsApi.ApiClient.instance
-// for dev env
-//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
-apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
-// call api
-const apiInstance = new CoboWaas2JsApi.TransactionsApi();
-const chainId = "ETH"; // String | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-apiInstance.listFeeRates(chainId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chainId** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | 
-
-### Return type
-
-[**[FeeRate]**](FeeRate.md)
-
-### Authorization
-
-[CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## listTransactions
 
 > ListTransactions200Response listTransactions(opts)
@@ -446,18 +396,18 @@ const opts = {
   'coboId': "20231213122855000000000000000000", // String | The Cobo ID, which can be used to track a transaction.
   'transactionId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | The transaction ID.
   'transactionHash': "239861be9a4afe080c359b7fe4a1d035945ec46256b1a0f44d1267c71de8ec28", // String | The transaction hash.
-  'type': new CoboWaas2JsApi.TransactionType(), // TransactionType | The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `RawMessage`: A transaction that signs a message. 
-  'status': new CoboWaas2JsApi.TransactionStatus(), // TransactionStatus | The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected. 
-  'sourceType': new CoboWaas2JsApi.TransactionSourceType(), // TransactionSourceType | The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
+  'type': "Deposit,Withdrawal", // String | The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
+  'status': Completed,Failed, // Object | The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
+  'sourceType': Deposit,Withdrawal, // Object | The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
   'sourceWalletId': "f47ac10b-58cc-4372-a567-0e02b2c3d479,557918d2-632a-4fe1-932f-315711f05fe3", // String | The wallet ID of the transaction source.
   'sourceAddress': "sourceAddress_example", // String | The address of the transaction source.
-  'destinationType': new CoboWaas2JsApi.TransactionDestinationType(), // TransactionDestinationType | The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
+  'destinationType': ContractCall,MessageSign, // Object | The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
   'destinationWalletId': "f47ac10b-58cc-4372-a567-0e02b2c3d479,557918d2-632a-4fe1-932f-315711f05fe3", // String | The wallet ID of the transaction destination.
-  'destinationAddress': "destinationAddress_example", // String | The address of the transaction destination. If the address includes a memo, the format should be `address|memo`. 
-  'chainIds': "BTC,ETH", // String | A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-  'tokenIds': "ETH_USDT,ETH_USDC", // String | A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+  'destinationAddress': "destinationAddress_example", // String | The address of the transaction destination. If the address includes a memo, use `|` to append the memo to the address. For example, if the address is `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku` and the memo is `82840924`, you need to provide `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924` as the property value. 
+  'chainIds': "BTC,ETH", // String | A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+  'tokenIds': "ETH_USDT,ETH_USDC", // String | A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
   'assetIds': "USDT,USDC", // String | A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
-  'vaultId': "f5c3f9e8-1d8a-44b2-9284-94bf76b7b017,ab2e3f55-472e-4a98-86d1-446d2f9e839e", // String | The MPC vault ID.
+  'vaultId': "f5c3f9e8-1d8a-44b2-9284-94bf76b7b017,ab2e3f55-472e-4a98-86d1-446d2f9e839e", // String | The vault ID.
   'projectId': "a3d8eae2-1740-4b5e-92f2-88c2b1e44c6b,b51f63a3-8a8e-4a34-ae9e-6f3e6b1fdf99", // String | The MPC project ID.
   'minCreatedTimestamp': 1635744000, // Number | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
   'maxCreatedTimestamp': 1635744000, // Number | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
@@ -482,18 +432,18 @@ Name | Type | Description  | Notes
  **coboId** | **String**| The Cobo ID, which can be used to track a transaction. | [optional] 
  **transactionId** | **String**| The transaction ID. | [optional] 
  **transactionHash** | **String**| The transaction hash. | [optional] 
- **type** | [**TransactionType**](.md)| The transaction type. Possible values include:    - &#x60;Deposit&#x60;: A deposit transaction.   - &#x60;Withdrawal&#x60;: A withdrawal transaction.   - &#x60;TokenApproval&#x60;: A transaction that grants permission to access your tokens.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;TransactionFeePayment&#x60;: A transaction that is initiated by Fee Station to pay your transaction fee.   - &#x60;RawMessage&#x60;: A transaction that signs a message.  | [optional] 
- **status** | [**TransactionStatus**](.md)| The transaction status. Possible values include:    - &#x60;Submitted&#x60;: The transaction is submitted.   - &#x60;PendingScreening&#x60;: The transaction is pending screening by Risk Control.    - &#x60;PendingAuthorization&#x60;: The transaction is pending approvals.   - &#x60;PendingSignature&#x60;: The transaction is pending signature.    - &#x60;Broadcasting&#x60;: The transaction is being broadcast.   - &#x60;Confirming&#x60;: The transaction is waiting for the required number of confirmations.   - &#x60;Completed&#x60;: The transaction is completed.   - &#x60;Failed&#x60;: The transaction failed.   - &#x60;Rejected&#x60;: The transaction is rejected.  | [optional] 
- **sourceType** | [**TransactionSourceType**](.md)| The type of transaction source. Possible values include:   - &#x60;Address&#x60;: An external address.   - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallet (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.   - &#x60;FeeStation&#x60;: A Fee Station.  | [optional] 
+ **type** | **String**| The transaction type. Possible values include:    - &#x60;Deposit&#x60;: A deposit transaction.   - &#x60;Withdrawal&#x60;: A withdrawal transaction.   - &#x60;TokenApproval&#x60;: A transaction that grants permission to access your tokens.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;TransactionFeePayment&#x60;: A transaction that is initiated by Fee Station to pay your transaction fee.   - &#x60;TransactionFeeRefund&#x60;: A transaction that refunds transaction fees to Fee Station.   - &#x60;MessageSign&#x60;: A transaction that signs a message.    - &#x60;MultiSig&#x60;: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed.  | [optional] 
+ **status** | [**Object**](.md)| The transaction status. Possible values include:    - &#x60;Submitted&#x60;: The transaction is submitted.   - &#x60;PendingScreening&#x60;: The transaction is pending screening by Risk Control.    - &#x60;PendingAuthorization&#x60;: The transaction is pending approvals.   - &#x60;PendingSignature&#x60;: The transaction is pending signature.    - &#x60;Broadcasting&#x60;: The transaction is being broadcast.   - &#x60;Confirming&#x60;: The transaction is waiting for the required number of confirmations.   - &#x60;Completed&#x60;: The transaction is completed.   - &#x60;Failed&#x60;: The transaction failed.   - &#x60;Rejected&#x60;: The transaction is rejected.   - &#x60;Pending&#x60;: The transaction is pending.  | [optional] 
+ **sourceType** | [**Object**](.md)| The type of transaction source. Possible values include:   - &#x60;Address&#x60;: An external address.   - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallet (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.   - &#x60;FeeStation&#x60;: A Fee Station.  | [optional] 
  **sourceWalletId** | **String**| The wallet ID of the transaction source. | [optional] 
  **sourceAddress** | **String**| The address of the transaction source. | [optional] 
- **destinationType** | [**TransactionDestinationType**](.md)| The transaction destination type. Possible values include:   - &#x60;Address&#x60;: An external address.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;MessageSign&#x60;: A transaction that signs a message.    - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallets (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.  | [optional] 
+ **destinationType** | [**Object**](.md)| The transaction destination type. Possible values include:   - &#x60;Address&#x60;: An external address.    - &#x60;ContractCall&#x60;: A transaction that interacts with a smart contract.   - &#x60;MessageSign&#x60;: A transaction that signs a message.    - &#x60;CustodialWallet&#x60;: A Custodial Wallet.   - &#x60;MPCWallet&#x60;: An MPC Wallet.   - &#x60;SafeWallet&#x60;: A Smart Contract Wallets (Safe{Wallet}).   - &#x60;ExchangeWallet&#x60;: An Exchange Wallet.  | [optional] 
  **destinationWalletId** | **String**| The wallet ID of the transaction destination. | [optional] 
- **destinationAddress** | **String**| The address of the transaction destination. If the address includes a memo, the format should be &#x60;address|memo&#x60;.  | [optional] 
- **chainIds** | **String**| A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | [optional] 
- **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens). | [optional] 
+ **destinationAddress** | **String**| The address of the transaction destination. If the address includes a memo, use &#x60;|&#x60; to append the memo to the address. For example, if the address is &#x60;19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku&#x60; and the memo is &#x60;82840924&#x60;, you need to provide &#x60;19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924&#x60; as the property value.  | [optional] 
+ **chainIds** | **String**| A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains). | [optional] 
+ **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens). | [optional] 
  **assetIds** | **String**| A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT. | [optional] 
- **vaultId** | **String**| The MPC vault ID. | [optional] 
+ **vaultId** | **String**| The vault ID. | [optional] 
  **projectId** | **String**| The MPC project ID. | [optional] 
  **minCreatedTimestamp** | **Number**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time. | [optional] 
  **maxCreatedTimestamp** | **Number**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time. | [optional] 
@@ -574,7 +524,7 @@ Name | Type | Description  | Notes
 
 Speed up transaction
 
-This operation accelerates a specified transaction.   Speeding up a transaction will trigger an RBF transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either &#x60;Broadcasting&#x60; or &#x60;Confirming&#x60;.  A transaction request for tracking is returned upon successful operation. 
+This operation accelerates a specified transaction.   Speeding up a transaction will trigger an RBF transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either &#x60;Broadcasting&#x60;.  A transaction request for tracking is returned upon successful operation. 
 
 ### Example
 

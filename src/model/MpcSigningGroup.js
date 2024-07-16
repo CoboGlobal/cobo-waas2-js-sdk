@@ -47,11 +47,11 @@ class MpcSigningGroup {
         if (data) {
             obj = obj || new MpcSigningGroup();
 
-            if (data.hasOwnProperty('used_key_group_id')) {
-                obj['used_key_group_id'] = ApiClient.convertToType(data['used_key_group_id'], 'String');
+            if (data.hasOwnProperty('used_key_share_holder_group_id')) {
+                obj['used_key_share_holder_group_id'] = ApiClient.convertToType(data['used_key_share_holder_group_id'], 'String');
             }
-            if (data.hasOwnProperty('used_node_ids')) {
-                obj['used_node_ids'] = ApiClient.convertToType(data['used_node_ids'], ['String']);
+            if (data.hasOwnProperty('used_tss_node_ids')) {
+                obj['used_tss_node_ids'] = ApiClient.convertToType(data['used_tss_node_ids'], ['String']);
             }
         }
         return obj;
@@ -64,12 +64,12 @@ class MpcSigningGroup {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['used_key_group_id'] && !(typeof data['used_key_group_id'] === 'string' || data['used_key_group_id'] instanceof String)) {
-            throw new Error("Expected the field `used_key_group_id` to be a primitive type in the JSON string but got " + data['used_key_group_id']);
+        if (data['used_key_share_holder_group_id'] && !(typeof data['used_key_share_holder_group_id'] === 'string' || data['used_key_share_holder_group_id'] instanceof String)) {
+            throw new Error("Expected the field `used_key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['used_key_share_holder_group_id']);
         }
         // ensure the json data is an array
-        if (!Array.isArray(data['used_node_ids'])) {
-            throw new Error("Expected the field `used_node_ids` to be an array in the JSON data but got " + data['used_node_ids']);
+        if (!Array.isArray(data['used_tss_node_ids'])) {
+            throw new Error("Expected the field `used_tss_node_ids` to be an array in the JSON data but got " + data['used_tss_node_ids']);
         }
 
         return true;
@@ -82,15 +82,15 @@ class MpcSigningGroup {
 
 /**
  * The ID of the Signing Group.
- * @member {String} used_key_group_id
+ * @member {String} used_key_share_holder_group_id
  */
-MpcSigningGroup.prototype['used_key_group_id'] = undefined;
+MpcSigningGroup.prototype['used_key_share_holder_group_id'] = undefined;
 
 /**
  * The ID of the TSS Nodes that are required to participate in the signature.
- * @member {Array.<String>} used_node_ids
+ * @member {Array.<String>} used_tss_node_ids
  */
-MpcSigningGroup.prototype['used_node_ids'] = undefined;
+MpcSigningGroup.prototype['used_tss_node_ids'] = undefined;
 
 
 

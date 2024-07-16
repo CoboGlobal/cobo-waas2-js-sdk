@@ -11,6 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AmountStatus from './AmountStatus';
 
 /**
  * The AmountDetailsInner model module.
@@ -21,7 +22,7 @@ class AmountDetailsInner {
     /**
      * Constructs a new <code>AmountDetailsInner</code>.
      * @alias module:model/AmountDetailsInner
-     * @param status {String} The staking status.
+     * @param status {module:model/AmountStatus} 
      * @param amount {String} The staking amount.
      */
     constructor(status, amount) { 
@@ -51,7 +52,7 @@ class AmountDetailsInner {
             obj = obj || new AmountDetailsInner();
 
             if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], 'String');
+                obj['status'] = AmountStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
@@ -76,10 +77,6 @@ class AmountDetailsInner {
             }
         }
         // ensure the json data is a string
-        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
-            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
-        }
-        // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
@@ -97,8 +94,7 @@ class AmountDetailsInner {
 AmountDetailsInner.RequiredProperties = ["status", "amount"];
 
 /**
- * The staking status.
- * @member {String} status
+ * @member {module:model/AmountStatus} status
  */
 AmountDetailsInner.prototype['status'] = undefined;
 

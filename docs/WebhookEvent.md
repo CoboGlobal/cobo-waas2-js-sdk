@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The event ID. | 
+**eventId** | **String** | The event ID. | [optional] 
 **url** | **String** | The webhook endpoint URL. | 
 **createdTimestamp** | **Number** | The time when the event occurred, in Unix timestamp format, measured in milliseconds. | 
 **type** | [**WebhookEventType**](WebhookEventType.md) |  | 

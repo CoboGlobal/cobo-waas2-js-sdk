@@ -106,13 +106,13 @@ class TransactionReplacement {
 TransactionReplacement.prototype['replaced_by_type'] = undefined;
 
 /**
- * The ID of the replacement transaction that this transaction was replaced by.
+ * The ID of the transaction that this transaction was replaced by.
  * @member {String} replaced_by_transaction_id
  */
 TransactionReplacement.prototype['replaced_by_transaction_id'] = undefined;
 
 /**
- * The hash of the replacement transaction that this transaction was replaced by.
+ * The hash of the transaction that this transaction was replaced by.
  * @member {String} replaced_by_transaction_hash
  */
 TransactionReplacement.prototype['replaced_by_transaction_hash'] = undefined;

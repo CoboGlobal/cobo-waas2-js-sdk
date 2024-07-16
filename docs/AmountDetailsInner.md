@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **String** | The staking status. | 
+**status** | [**AmountStatus**](AmountStatus.md) |  | 
 **amount** | **String** | The staking amount. | 
 **activityId** | **String** | The related staking activity ID. | [optional] 
 

@@ -52,6 +52,12 @@ class TSSRequest {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
+            if (data.hasOwnProperty('source_key_share_holder_group_id')) {
+                obj['source_key_share_holder_group_id'] = ApiClient.convertToType(data['source_key_share_holder_group_id'], 'String');
+            }
+            if (data.hasOwnProperty('target_key_share_holder_group_id')) {
+                obj['target_key_share_holder_group_id'] = ApiClient.convertToType(data['target_key_share_holder_group_id'], 'String');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TSSRequestType.constructFromObject(data['type']);
             }
@@ -72,6 +78,14 @@ class TSSRequest {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
+        // ensure the json data is a string
+        if (data['source_key_share_holder_group_id'] && !(typeof data['source_key_share_holder_group_id'] === 'string' || data['source_key_share_holder_group_id'] instanceof String)) {
+            throw new Error("Expected the field `source_key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['source_key_share_holder_group_id']);
+        }
+        // ensure the json data is a string
+        if (data['target_key_share_holder_group_id'] && !(typeof data['target_key_share_holder_group_id'] === 'string' || data['target_key_share_holder_group_id'] instanceof String)) {
+            throw new Error("Expected the field `target_key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['target_key_share_holder_group_id']);
+        }
 
         return true;
     }
@@ -86,6 +100,18 @@ class TSSRequest {
  * @member {String} request_id
  */
 TSSRequest.prototype['request_id'] = undefined;
+
+/**
+ * The Source key share holder group ID.
+ * @member {String} source_key_share_holder_group_id
+ */
+TSSRequest.prototype['source_key_share_holder_group_id'] = undefined;
+
+/**
+ * The Target key share holder group ID.
+ * @member {String} target_key_share_holder_group_id
+ */
+TSSRequest.prototype['target_key_share_holder_group_id'] = undefined;
 
 /**
  * @member {module:model/TSSRequestType} type

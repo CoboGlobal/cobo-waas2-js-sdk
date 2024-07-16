@@ -15,8 +15,8 @@
 
 * `TransactionFeeRefund` (value: `"TransactionFeeRefund"`)
 
-* `RawMessage` (value: `"RawMessage"`)
+* `MessageSign` (value: `"MessageSign"`)
 
-* `Multi-Sig` (value: `"Multi-Sig"`)
+* `MultiSig` (value: `"MultiSig"`)
 
 

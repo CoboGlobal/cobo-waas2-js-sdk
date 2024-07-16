@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **type** | [**TransactionType**](TransactionType.md) |  | [optional] 
 **status** | [**TransactionStatus**](TransactionStatus.md) |  | 
 **subStatus** | [**TransactionSubStatus**](TransactionSubStatus.md) |  | [optional] 
-**failedReason** | **String** | The reason why the transaction failed. | [optional] 
-**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains). | [optional] 
+**failedReason** | **String** | The reason why the transaction failed. This property only applies to approval failures and signature failures. | [optional] 
+**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains). | [optional] 
 **source** | [**TransactionSource**](TransactionSource.md) |  | 
 **destination** | [**TransactionDestination**](TransactionDestination.md) |  | 
 **fee** | [**TransactionFee**](TransactionFee.md) |  | [optional] 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **source** | [**TransferSource**](TransferSource.md) |  | 
 **tokenId** | **String** | The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation. | 
 **destination** | [**TransferDestination**](TransferDestination.md) |  | 
+**feeType** | [**FeeType**](FeeType.md) |  | [optional] 
 
 
 

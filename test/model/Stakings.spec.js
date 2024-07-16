@@ -101,6 +101,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
+      //var instance = new CoboWaas2JsApi.Stakings();
+      //expect(instance).to.be();
+    });
+
     it('should have the property posChain (base name: "pos_chain")', function() {
       // uncomment below and update the code to test the property posChain
       //var instance = new CoboWaas2JsApi.Stakings();

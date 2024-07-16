@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sourceType** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
 **walletId** | **String** | The wallet ID. | 
-**mpcUsedKeyGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | 
+**mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | 
 **accountInput** | [**TransactionMPCWalletSourceAccountInput**](TransactionMPCWalletSourceAccountInput.md) |  | [optional] 
 **utxoInputs** | [**[TransactionMPCWalletSourceUtxoInputsInner]**](TransactionMPCWalletSourceUtxoInputsInner.md) |  | [optional] 
 

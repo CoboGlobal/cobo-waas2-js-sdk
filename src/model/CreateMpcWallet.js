@@ -28,7 +28,7 @@ class CreateMpcWallet {
      * @param name {String} The wallet name.
      * @param walletType {module:model/WalletType} 
      * @param walletSubtype {module:model/WalletSubtype} 
-     * @param vaultId {String} The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
+     * @param vaultId {String} The ID of the owning vault. You can call [List all vaults](/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
      */
     constructor(name, walletType, walletSubtype, vaultId) { 
         CreateCustodialWallet.initialize(this, name, walletType, walletSubtype);
@@ -121,7 +121,7 @@ CreateMpcWallet.prototype['wallet_type'] = undefined;
 CreateMpcWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
+ * The ID of the owning vault. You can call [List all vaults](/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
  * @member {String} vault_id
  */
 CreateMpcWallet.prototype['vault_id'] = undefined;

@@ -26,10 +26,11 @@ class BabylonStakeExtra {
      * @implements module:model/BaseStakeExtra
      * @param poolType {module:model/StakingPoolType} 
      * @param finalityProviderPublicKey {String} The public key of finality provider.
+     * @param stakeBlockTime {Number} The stake block time.
      */
-    constructor(poolType, finalityProviderPublicKey) { 
+    constructor(poolType, finalityProviderPublicKey, stakeBlockTime) { 
         BaseStakeExtra.initialize(this, poolType);
-        BabylonStakeExtra.initialize(this, poolType, finalityProviderPublicKey);
+        BabylonStakeExtra.initialize(this, poolType, finalityProviderPublicKey, stakeBlockTime);
     }
 
     /**
@@ -37,9 +38,10 @@ class BabylonStakeExtra {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolType, finalityProviderPublicKey) { 
+    static initialize(obj, poolType, finalityProviderPublicKey, stakeBlockTime) { 
         obj['pool_type'] = poolType;
         obj['finality_provider_public_key'] = finalityProviderPublicKey;
+        obj['stake_block_time'] = stakeBlockTime;
     }
 
     /**
@@ -90,7 +92,7 @@ class BabylonStakeExtra {
 
 }
 
-BabylonStakeExtra.RequiredProperties = ["pool_type", "finality_provider_public_key"];
+BabylonStakeExtra.RequiredProperties = ["pool_type", "finality_provider_public_key", "stake_block_time"];
 
 /**
  * @member {module:model/StakingPoolType} pool_type

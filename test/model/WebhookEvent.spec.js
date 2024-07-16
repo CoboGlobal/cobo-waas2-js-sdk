@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.WebhookEvent);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property eventId (base name: "event_id")', function() {
+      // uncomment below and update the code to test the property eventId
       //var instance = new CoboWaas2JsApi.WebhookEvent();
       //expect(instance).to.be();
     });

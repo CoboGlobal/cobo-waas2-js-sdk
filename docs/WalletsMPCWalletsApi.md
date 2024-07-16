@@ -4,30 +4,30 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelTssRequest**](WalletsMPCWalletsApi.md#cancelTssRequest) | **POST** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id}/cancel | Cancel TSS request
-[**createKeyGroup**](WalletsMPCWalletsApi.md#createKeyGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_groups | Create key share group
+[**cancelTssRequestById**](WalletsMPCWalletsApi.md#cancelTssRequestById) | **POST** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id}/cancel | Cancel TSS request
+[**createKeyShareHolderGroup**](WalletsMPCWalletsApi.md#createKeyShareHolderGroup) | **POST** /wallets/mpc/vaults/{vault_id}/key_share_holder_groups | Create key share holder group
 [**createMpcProject**](WalletsMPCWalletsApi.md#createMpcProject) | **POST** /wallets/mpc/projects | Create project
 [**createMpcVault**](WalletsMPCWalletsApi.md#createMpcVault) | **POST** /wallets/mpc/vaults | Create vault
 [**createTssRequest**](WalletsMPCWalletsApi.md#createTssRequest) | **POST** /wallets/mpc/vaults/{vault_id}/tss_requests | Create TSS request
-[**deleteKeyGroup**](WalletsMPCWalletsApi.md#deleteKeyGroup) | **DELETE** /wallets/mpc/vaults/{vault_id}/key_groups/{key_share_group_id} | Delete key share group
-[**getKeyGroup**](WalletsMPCWalletsApi.md#getKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups/{key_share_group_id} | Get key share group information
-[**getMpcProject**](WalletsMPCWalletsApi.md#getMpcProject) | **GET** /wallets/mpc/projects/{project_id} | Get project information
-[**getMpcVault**](WalletsMPCWalletsApi.md#getMpcVault) | **GET** /wallets/mpc/vaults/{vault_id} | Get vault information
-[**getTssRequest**](WalletsMPCWalletsApi.md#getTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Get TSS request
-[**listCoboKeyHolder**](WalletsMPCWalletsApi.md#listCoboKeyHolder) | **GET** /wallets/mpc/cobo_key_holders | List all Cobo key share holders
-[**listKeyGroup**](WalletsMPCWalletsApi.md#listKeyGroup) | **GET** /wallets/mpc/vaults/{vault_id}/key_groups | List all key share groups
-[**listMpcProject**](WalletsMPCWalletsApi.md#listMpcProject) | **GET** /wallets/mpc/projects | List all projects
-[**listMpcVault**](WalletsMPCWalletsApi.md#listMpcVault) | **GET** /wallets/mpc/vaults | List all vaults
-[**listTssRequest**](WalletsMPCWalletsApi.md#listTssRequest) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List TSS requests
-[**modifyMpcVault**](WalletsMPCWalletsApi.md#modifyMpcVault) | **PUT** /wallets/mpc/vaults/{vault_id} | Update vault name
-[**updateKeyGroup**](WalletsMPCWalletsApi.md#updateKeyGroup) | **PUT** /wallets/mpc/vaults/{vault_id}/key_groups/{key_share_group_id} | Update key share group
-[**updateMpcProject**](WalletsMPCWalletsApi.md#updateMpcProject) | **PUT** /wallets/mpc/projects/{project_id} | Update project name
+[**deleteKeyShareHolderGroupById**](WalletsMPCWalletsApi.md#deleteKeyShareHolderGroupById) | **POST** /wallets/mpc/vaults/{vault_id}/key_share_holder_groups/{key_share_holder_group_id}/delete | Delete key share holder group
+[**getKeyShareHolderGroupById**](WalletsMPCWalletsApi.md#getKeyShareHolderGroupById) | **GET** /wallets/mpc/vaults/{vault_id}/key_share_holder_groups/{key_share_holder_group_id} | Get key share holder group information
+[**getMpcProjectById**](WalletsMPCWalletsApi.md#getMpcProjectById) | **GET** /wallets/mpc/projects/{project_id} | Get project information
+[**getMpcVaultById**](WalletsMPCWalletsApi.md#getMpcVaultById) | **GET** /wallets/mpc/vaults/{vault_id} | Get vault information
+[**getTssRequestById**](WalletsMPCWalletsApi.md#getTssRequestById) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests/{tss_request_id} | Get TSS request
+[**listCoboKeyHolders**](WalletsMPCWalletsApi.md#listCoboKeyHolders) | **GET** /wallets/mpc/cobo_key_share_holders | List all Cobo key share holders
+[**listKeyShareHolderGroups**](WalletsMPCWalletsApi.md#listKeyShareHolderGroups) | **GET** /wallets/mpc/vaults/{vault_id}/key_share_holder_groups | List all key share holder groups
+[**listMpcProjects**](WalletsMPCWalletsApi.md#listMpcProjects) | **GET** /wallets/mpc/projects | List all projects
+[**listMpcVaults**](WalletsMPCWalletsApi.md#listMpcVaults) | **GET** /wallets/mpc/vaults | List all vaults
+[**listTssRequests**](WalletsMPCWalletsApi.md#listTssRequests) | **GET** /wallets/mpc/vaults/{vault_id}/tss_requests | List TSS requests
+[**updateKeyShareHolderGroupById**](WalletsMPCWalletsApi.md#updateKeyShareHolderGroupById) | **PUT** /wallets/mpc/vaults/{vault_id}/key_share_holder_groups/{key_share_holder_group_id} | Update key share holder group
+[**updateMpcProjectById**](WalletsMPCWalletsApi.md#updateMpcProjectById) | **PUT** /wallets/mpc/projects/{project_id} | Update project name
+[**updateMpcVaultById**](WalletsMPCWalletsApi.md#updateMpcVaultById) | **PUT** /wallets/mpc/vaults/{vault_id} | Update vault name
 
 
 
-## cancelTssRequest
+## cancelTssRequestById
 
-> TSSRequest cancelTssRequest(vaultId, tssRequestId)
+> TSSRequest cancelTssRequestById(vaultId, tssRequestId)
 
 Cancel TSS request
 
@@ -44,9 +44,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
-apiInstance.cancelTssRequest(vaultId, tssRequestId).then((data) => {
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const tssRequestId = "20240711114129000132315000003970"; // String | The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+apiInstance.cancelTssRequestById(vaultId, tssRequestId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -59,8 +59,8 @@ apiInstance.cancelTssRequest(vaultId, tssRequestId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **tssRequestId** | **String**| The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests). | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **tssRequestId** | **String**| The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests). | 
 
 ### Return type
 
@@ -76,11 +76,11 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## createKeyGroup
+## createKeyShareHolderGroup
 
-> KeyGroup createKeyGroup(vaultId, opts)
+> KeyShareHolderGroup createKeyShareHolderGroup(vaultId, opts)
 
-Create key share group
+Create key share holder group
 
 This operation creates a key share group for a specified vault. 
 
@@ -95,11 +95,11 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
 const opts = {
-  'createKeyGroupRequest': new CoboWaas2JsApi.CreateKeyGroupRequest() // CreateKeyGroupRequest | The request body to create a key share group.
+  'createKeyShareHolderGroupRequest': new CoboWaas2JsApi.CreateKeyShareHolderGroupRequest() // CreateKeyShareHolderGroupRequest | The request body to create a key share holder group.
 };
-apiInstance.createKeyGroup(vaultId, opts).then((data) => {
+apiInstance.createKeyShareHolderGroup(vaultId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -112,12 +112,12 @@ apiInstance.createKeyGroup(vaultId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **createKeyGroupRequest** | [**CreateKeyGroupRequest**](CreateKeyGroupRequest.md)| The request body to create a key share group. | [optional] 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **createKeyShareHolderGroupRequest** | [**CreateKeyShareHolderGroupRequest**](CreateKeyShareHolderGroupRequest.md)| The request body to create a key share holder group. | [optional] 
 
 ### Return type
 
-[**KeyGroup**](KeyGroup.md)
+[**KeyShareHolderGroup**](KeyShareHolderGroup.md)
 
 ### Authorization
 
@@ -250,7 +250,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
 const opts = {
   'createTssRequestRequest': new CoboWaas2JsApi.CreateTssRequestRequest() // CreateTssRequestRequest | The request body to create a TSS request.
 };
@@ -267,7 +267,7 @@ apiInstance.createTssRequest(vaultId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
  **createTssRequestRequest** | [**CreateTssRequestRequest**](CreateTssRequestRequest.md)| The request body to create a TSS request. | [optional] 
 
 ### Return type
@@ -284,64 +284,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## deleteKeyGroup
+## deleteKeyShareHolderGroupById
 
-> deleteKeyGroup(vaultId, keyShareGroupId)
+> DeleteKeyShareHolderGroupById201Response deleteKeyShareHolderGroupById(vaultId, keyShareHolderGroupId)
 
-Delete key share group
+Delete key share holder group
 
-This operation deletes a specified key share group.
-
-### Example
-
-```javascript
-import CoboWaas2JsApi from 'cobo-waas2-js-api';
-// initial default api client
-const apiClient = CoboWaas2JsApi.ApiClient.instance
-// for dev env
-//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
-apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
-// call api
-const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const keyShareGroupId = "880311524363903326"; // String | The key share group ID.
-apiInstance.deleteKeyGroup(vaultId, keyShareGroupId).then(() => {
-  console.log('API called successfully.');
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **keyShareGroupId** | **String**| The key share group ID. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## getKeyGroup
-
-> KeyGroup getKeyGroup(vaultId, keyShareGroupId)
-
-Get key share group information
-
-This operation retrieves detailed information about a specified key share group. 
+This operation deletes a specified key share holder group.
 
 ### Example
 
@@ -354,9 +303,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const keyShareGroupId = "880311524363903326"; // String | The key share group ID.
-apiInstance.getKeyGroup(vaultId, keyShareGroupId).then((data) => {
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const keyShareHolderGroupId = "e8257ac8-76b8-4d1e-a1f9-eec4cb931dce"; // String | The key share group ID.
+apiInstance.deleteKeyShareHolderGroupById(vaultId, keyShareHolderGroupId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -369,12 +318,63 @@ apiInstance.getKeyGroup(vaultId, keyShareGroupId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **keyShareGroupId** | **String**| The key share group ID. | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **keyShareHolderGroupId** | **String**| The key share group ID. | 
 
 ### Return type
 
-[**KeyGroup**](KeyGroup.md)
+[**DeleteKeyShareHolderGroupById201Response**](DeleteKeyShareHolderGroupById201Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getKeyShareHolderGroupById
+
+> KeyShareHolderGroup getKeyShareHolderGroupById(vaultId, keyShareHolderGroupId)
+
+Get key share holder group information
+
+This operation retrieves detailed information about a specified key share holder group. 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const keyShareHolderGroupId = "e8257ac8-76b8-4d1e-a1f9-eec4cb931dce"; // String | The key share group ID.
+apiInstance.getKeyShareHolderGroupById(vaultId, keyShareHolderGroupId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **keyShareHolderGroupId** | **String**| The key share group ID. | 
+
+### Return type
+
+[**KeyShareHolderGroup**](KeyShareHolderGroup.md)
 
 ### Authorization
 
@@ -386,9 +386,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getMpcProject
+## getMpcProjectById
 
-> MPCProject getMpcProject(projectId)
+> MPCProject getMpcProjectById(projectId)
 
 Get project information
 
@@ -405,8 +405,8 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
-apiInstance.getMpcProject(projectId).then((data) => {
+const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
+apiInstance.getMpcProjectById(projectId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -419,7 +419,7 @@ apiInstance.getMpcProject(projectId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). | 
+ **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). | 
 
 ### Return type
 
@@ -435,9 +435,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getMpcVault
+## getMpcVaultById
 
-> MPCVault getMpcVault(vaultId)
+> MPCVault getMpcVaultById(vaultId)
 
 Get vault information
 
@@ -454,8 +454,8 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-apiInstance.getMpcVault(vaultId).then((data) => {
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+apiInstance.getMpcVaultById(vaultId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -468,7 +468,7 @@ apiInstance.getMpcVault(vaultId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
 
 ### Return type
 
@@ -484,9 +484,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getTssRequest
+## getTssRequestById
 
-> TSSRequest getTssRequest(vaultId, tssRequestId)
+> TSSRequest getTssRequestById(vaultId, tssRequestId)
 
 Get TSS request
 
@@ -503,9 +503,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const tssRequestId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
-apiInstance.getTssRequest(vaultId, tssRequestId).then((data) => {
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const tssRequestId = "20240711114129000132315000003970"; // String | The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+apiInstance.getTssRequestById(vaultId, tssRequestId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -518,8 +518,8 @@ apiInstance.getTssRequest(vaultId, tssRequestId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **tssRequestId** | **String**| The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests). | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **tssRequestId** | **String**| The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests). | 
 
 ### Return type
 
@@ -535,9 +535,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listCoboKeyHolder
+## listCoboKeyHolders
 
-> [KeyHolder] listCoboKeyHolder()
+> [KeyShareHolder] listCoboKeyHolders()
 
 List all Cobo key share holders
 
@@ -554,7 +554,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-apiInstance.listCoboKeyHolder().then((data) => {
+apiInstance.listCoboKeyHolders().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -568,7 +568,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[KeyHolder]**](KeyHolder.md)
+[**[KeyShareHolder]**](KeyShareHolder.md)
 
 ### Authorization
 
@@ -580,13 +580,13 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## listKeyGroup
+## listKeyShareHolderGroups
 
-> [KeyGroup] listKeyGroup(vaultId, opts)
+> ListKeyShareHolderGroups200Response listKeyShareHolderGroups(vaultId, opts)
 
-List all key share groups
+List all key share holder groups
 
-This operation retrieves all key share groups under a specified vault. You can filter the result by group type. 
+This operation retrieves all key share holder groups under a specified vault. You can filter the result by group type. 
 
 ### Example
 
@@ -599,11 +599,14 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
 const opts = {
-  'keyGroupType': new CoboWaas2JsApi.KeyGroupType() // KeyGroupType | The selected key share group type to retrieve. Possible values include: - `MainKeyGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningKeyGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryKeyGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_group_type`, all key share group types will be retrieved. 
+  'keyShareHolderGroupType': new CoboWaas2JsApi.KeyShareHolderGroupType(), // KeyShareHolderGroupType | The selected key share group type to retrieve. Possible values include: - `MainKeyGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningKeyGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryKeyGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_group_type`, all key share group types will be retrieved. 
+  'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
 };
-apiInstance.listKeyGroup(vaultId, opts).then((data) => {
+apiInstance.listKeyShareHolderGroups(vaultId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -616,12 +619,15 @@ apiInstance.listKeyGroup(vaultId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **keyGroupType** | [**KeyGroupType**](.md)| The selected key share group type to retrieve. Possible values include: - &#x60;MainKeyGroup&#x60;: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - &#x60;SigningKeyGroup&#x60;: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - &#x60;RecoveryKeyGroup&#x60;: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there&#39;s no value selected for &#x60;key_group_type&#x60;, all key share group types will be retrieved.  | [optional] 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **keyShareHolderGroupType** | [**KeyShareHolderGroupType**](.md)| The selected key share group type to retrieve. Possible values include: - &#x60;MainKeyGroup&#x60;: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - &#x60;SigningKeyGroup&#x60;: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - &#x60;RecoveryKeyGroup&#x60;: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there&#39;s no value selected for &#x60;key_group_type&#x60;, all key share group types will be retrieved.  | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
+ **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
 
 ### Return type
 
-[**[KeyGroup]**](KeyGroup.md)
+[**ListKeyShareHolderGroups200Response**](ListKeyShareHolderGroups200Response.md)
 
 ### Authorization
 
@@ -633,9 +639,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listMpcProject
+## listMpcProjects
 
-> [MPCProject] listMpcProject()
+> ListMpcProjects200Response listMpcProjects(opts)
 
 List all projects
 
@@ -652,7 +658,12 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-apiInstance.listMpcProject().then((data) => {
+const opts = {
+  'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
+};
+apiInstance.listMpcProjects(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -662,11 +673,16 @@ apiInstance.listMpcProject().then((data) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
+ **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
 
 ### Return type
 
-[**[MPCProject]**](MPCProject.md)
+[**ListMpcProjects200Response**](ListMpcProjects200Response.md)
 
 ### Authorization
 
@@ -678,9 +694,9 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## listMpcVault
+## listMpcVaults
 
-> [MPCVault] listMpcVault(opts)
+> ListMpcVaults200Response listMpcVaults(vaultType, opts)
 
 List all vaults
 
@@ -697,10 +713,14 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
+const vaultType = new CoboWaas2JsApi.MPCVaultType(); // MPCVaultType | The Vault type.
 const opts = {
-  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479" // String | The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
+  'projectId': "f47ac10b-58cc-4372-a567-0e02b2c3d479", // String | The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
+  'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
 };
-apiInstance.listMpcVault(opts).then((data) => {
+apiInstance.listMpcVaults(vaultType, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -713,11 +733,15 @@ apiInstance.listMpcVault(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only. | [optional] 
+ **vaultType** | [**MPCVaultType**](.md)| The Vault type. | 
+ **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only. | [optional] 
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
+ **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
 
 ### Return type
 
-[**[MPCVault]**](MPCVault.md)
+[**ListMpcVaults200Response**](ListMpcVaults200Response.md)
 
 ### Authorization
 
@@ -729,9 +753,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listTssRequest
+## listTssRequests
 
-> [TSSRequest] listTssRequest(vaultId, targetKeyGroupId)
+> ListTssRequests200Response listTssRequests(vaultId, keyShareHolderGroupId, opts)
 
 List TSS requests
 
@@ -748,9 +772,14 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const targetKeyGroupId = "880311524363903326"; // String | The target key share group ID of the TSS request, which you can retrieve by calling [List all key share groups](/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups).
-apiInstance.listTssRequest(vaultId, targetKeyGroupId).then((data) => {
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const keyShareHolderGroupId = "a3a45e99-5a12-444f-867a-ffe0ebb1bb30"; // String | The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share groups](/developers/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups).
+const opts = {
+  'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
+};
+apiInstance.listTssRequests(vaultId, keyShareHolderGroupId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -763,12 +792,15 @@ apiInstance.listTssRequest(vaultId, targetKeyGroupId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **targetKeyGroupId** | **String**| The target key share group ID of the TSS request, which you can retrieve by calling [List all key share groups](/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups). | 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **keyShareHolderGroupId** | **String**| The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share groups](/developers/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups). | 
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
+ **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
 
 ### Return type
 
-[**[TSSRequest]**](TSSRequest.md)
+[**ListTssRequests200Response**](ListTssRequests200Response.md)
 
 ### Authorization
 
@@ -780,64 +812,11 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## modifyMpcVault
+## updateKeyShareHolderGroupById
 
-> MPCVault modifyMpcVault(vaultId, opts)
+> KeyShareHolderGroup updateKeyShareHolderGroupById(vaultId, keyShareHolderGroupId, opts)
 
-Update vault name
-
-This operation updates a vault&#39;s name. 
-
-### Example
-
-```javascript
-import CoboWaas2JsApi from 'cobo-waas2-js-api';
-// initial default api client
-const apiClient = CoboWaas2JsApi.ApiClient.instance
-// for dev env
-//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
-apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
-// call api
-const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const opts = {
-  'modifyMpcVaultRequest': new CoboWaas2JsApi.ModifyMpcVaultRequest() // ModifyMpcVaultRequest | The request body to update a vault's name.
-};
-apiInstance.modifyMpcVault(vaultId, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **modifyMpcVaultRequest** | [**ModifyMpcVaultRequest**](ModifyMpcVaultRequest.md)| The request body to update a vault&#39;s name. | [optional] 
-
-### Return type
-
-[**MPCVault**](MPCVault.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## updateKeyGroup
-
-> KeyGroup updateKeyGroup(vaultId, keyShareGroupId, opts)
-
-Update key share group
+Update key share holder group
 
 This operation updates a specified active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). For example, you can use this operation to upgrade a Signing Group to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). 
 
@@ -852,12 +831,12 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-const keyShareGroupId = "880311524363903326"; // String | The key share group ID.
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const keyShareHolderGroupId = "e8257ac8-76b8-4d1e-a1f9-eec4cb931dce"; // String | The key share group ID.
 const opts = {
-  'updateKeyGroupRequest': new CoboWaas2JsApi.UpdateKeyGroupRequest() // UpdateKeyGroupRequest | 
+  'updateKeyShareHolderGroupByIdRequest': new CoboWaas2JsApi.UpdateKeyShareHolderGroupByIdRequest() // UpdateKeyShareHolderGroupByIdRequest | 
 };
-apiInstance.updateKeyGroup(vaultId, keyShareGroupId, opts).then((data) => {
+apiInstance.updateKeyShareHolderGroupById(vaultId, keyShareHolderGroupId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -870,13 +849,13 @@ apiInstance.updateKeyGroup(vaultId, keyShareGroupId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
- **keyShareGroupId** | **String**| The key share group ID. | 
- **updateKeyGroupRequest** | [**UpdateKeyGroupRequest**](UpdateKeyGroupRequest.md)|  | [optional] 
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **keyShareHolderGroupId** | **String**| The key share group ID. | 
+ **updateKeyShareHolderGroupByIdRequest** | [**UpdateKeyShareHolderGroupByIdRequest**](UpdateKeyShareHolderGroupByIdRequest.md)|  | [optional] 
 
 ### Return type
 
-[**KeyGroup**](KeyGroup.md)
+[**KeyShareHolderGroup**](KeyShareHolderGroup.md)
 
 ### Authorization
 
@@ -888,9 +867,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## updateMpcProject
+## updateMpcProjectById
 
-> MPCProject updateMpcProject(projectId, opts)
+> MPCProject updateMpcProjectById(projectId, opts)
 
 Update project name
 
@@ -907,11 +886,11 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
-const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
+const projectId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
 const opts = {
-  'updateMpcProjectRequest': new CoboWaas2JsApi.UpdateMpcProjectRequest() // UpdateMpcProjectRequest | The request body to update a project's name.
+  'updateMpcProjectByIdRequest': new CoboWaas2JsApi.UpdateMpcProjectByIdRequest() // UpdateMpcProjectByIdRequest | The request body to update a project's name.
 };
-apiInstance.updateMpcProject(projectId, opts).then((data) => {
+apiInstance.updateMpcProjectById(projectId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -924,12 +903,65 @@ apiInstance.updateMpcProject(projectId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). | 
- **updateMpcProjectRequest** | [**UpdateMpcProjectRequest**](UpdateMpcProjectRequest.md)| The request body to update a project&#39;s name. | [optional] 
+ **projectId** | **String**| The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). | 
+ **updateMpcProjectByIdRequest** | [**UpdateMpcProjectByIdRequest**](UpdateMpcProjectByIdRequest.md)| The request body to update a project&#39;s name. | [optional] 
 
 ### Return type
 
 [**MPCProject**](MPCProject.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateMpcVaultById
+
+> MPCVault updateMpcVaultById(vaultId, opts)
+
+Update vault name
+
+This operation updates a vault&#39;s name. 
+
+### Example
+
+```javascript
+import CoboWaas2JsApi from 'cobo-waas2-js-api';
+// initial default api client
+const apiClient = CoboWaas2JsApi.ApiClient.instance
+// for dev env
+//apiClient.setEnv(CoboWaas2JsApi.Env.DEV"));
+apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
+// call api
+const apiInstance = new CoboWaas2JsApi.WalletsMPCWalletsApi();
+const vaultId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+const opts = {
+  'updateMpcVaultByIdRequest': new CoboWaas2JsApi.UpdateMpcVaultByIdRequest() // UpdateMpcVaultByIdRequest | The request body to update a vault's name.
+};
+apiInstance.updateMpcVaultById(vaultId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **vaultId** | **String**| The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults). | 
+ **updateMpcVaultByIdRequest** | [**UpdateMpcVaultByIdRequest**](UpdateMpcVaultByIdRequest.md)| The request body to update a vault&#39;s name. | [optional] 
+
+### Return type
+
+[**MPCVault**](MPCVault.md)
 
 ### Authorization
 

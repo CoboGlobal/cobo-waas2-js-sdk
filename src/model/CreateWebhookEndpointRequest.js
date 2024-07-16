@@ -23,7 +23,7 @@ class CreateWebhookEndpointRequest {
      * Constructs a new <code>CreateWebhookEndpointRequest</code>.
      * @alias module:model/CreateWebhookEndpointRequest
      * @param url {String} The webhook endpoint URL.
-     * @param subscribedEvents {Array.<module:model/WebhookEventType>} The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
+     * @param subscribedEvents {Array.<module:model/WebhookEventType>} The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/developers/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
      */
     constructor(url, subscribedEvents) { 
         
@@ -104,7 +104,7 @@ CreateWebhookEndpointRequest.RequiredProperties = ["url", "subscribed_events"];
 CreateWebhookEndpointRequest.prototype['url'] = undefined;
 
 /**
- * The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
+ * The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/developers/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
  * @member {Array.<module:model/WebhookEventType>} subscribed_events
  */
 CreateWebhookEndpointRequest.prototype['subscribed_events'] = undefined;

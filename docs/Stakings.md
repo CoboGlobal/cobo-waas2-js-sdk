@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **unlockTime** | **Number** | The unlock time. | [optional] 
 **unlockBlockHeight** | **Number** | The unlock block height. | [optional] 
 **poolId** | **String** | The unique pool id. | 
+**tokenId** | **String** | The token id. | 
 **posChain** | **String** | The pos chain of the stake. | [optional] 
 **rewardsInfo** | **Object** | The rewards info of the stake. | [optional] 
 **createdTime** | **Number** | The time when the stake was created. | 

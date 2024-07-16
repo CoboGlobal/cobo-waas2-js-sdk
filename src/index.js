@@ -24,6 +24,7 @@ import AddressTransferDestinationUtxoOutputs from './model/AddressTransferDestin
 import AddressTransferDestinationUtxoOutputsOutputsInner from './model/AddressTransferDestinationUtxoOutputsOutputsInner';
 import AddressTransferSource from './model/AddressTransferSource';
 import AmountDetailsInner from './model/AmountDetailsInner';
+import AmountStatus from './model/AmountStatus';
 import AssetBalance from './model/AssetBalance';
 import AssetInfo from './model/AssetInfo';
 import BabylonStakeExtra from './model/BabylonStakeExtra';
@@ -36,10 +37,11 @@ import ChainInfo from './model/ChainInfo';
 import CheckAddressValidity200Response from './model/CheckAddressValidity200Response';
 import ContractCall from './model/ContractCall';
 import ContractCallSource from './model/ContractCallSource';
+import CreateAddressRequest from './model/CreateAddressRequest';
 import CreateCustodialWallet from './model/CreateCustodialWallet';
 import CreateExchangeWallet from './model/CreateExchangeWallet';
-import CreateKeyGroupRequest from './model/CreateKeyGroupRequest';
-import CreateKeyGroupRequestKeyHoldersInner from './model/CreateKeyGroupRequestKeyHoldersInner';
+import CreateKeyShareHolder from './model/CreateKeyShareHolder';
+import CreateKeyShareHolderGroupRequest from './model/CreateKeyShareHolderGroupRequest';
 import CreateMpcProjectRequest from './model/CreateMpcProjectRequest';
 import CreateMpcVaultRequest from './model/CreateMpcVaultRequest';
 import CreateMpcWallet from './model/CreateMpcWallet';
@@ -47,21 +49,18 @@ import CreateSafeWallet from './model/CreateSafeWallet';
 import CreateSafeWalletAllOfInitiator from './model/CreateSafeWalletAllOfInitiator';
 import CreateSmartContractWallet from './model/CreateSmartContractWallet';
 import CreateStakeActivity from './model/CreateStakeActivity';
-import CreateStakeActivity201Response from './model/CreateStakeActivity201Response';
 import CreateStakeActivityExtra from './model/CreateStakeActivityExtra';
-import CreateStakeActivityRequest from './model/CreateStakeActivityRequest';
 import CreateTransferTransaction201Response from './model/CreateTransferTransaction201Response';
 import CreateTssRequestRequest from './model/CreateTssRequestRequest';
 import CreateTssRequestRequestDetailParams from './model/CreateTssRequestRequestDetailParams';
 import CreateUnstakeActivity from './model/CreateUnstakeActivity';
-import CreateUnstakeActivityRequest from './model/CreateUnstakeActivityRequest';
 import CreateWebhookEndpointRequest from './model/CreateWebhookEndpointRequest';
 import CreateWithdrawActivity from './model/CreateWithdrawActivity';
-import CreateWithdrawActivityRequest from './model/CreateWithdrawActivityRequest';
 import CreatedWallet from './model/CreatedWallet';
 import CurveType from './model/CurveType';
 import CustodialWalletInfo from './model/CustodialWalletInfo';
-import DeleteWalletById200Response from './model/DeleteWalletById200Response';
+import DeleteKeyShareHolderGroupById201Response from './model/DeleteKeyShareHolderGroupById201Response';
+import DeleteWalletById201Response from './model/DeleteWalletById201Response';
 import EigenLayerLstStakeExtra from './model/EigenLayerLstStakeExtra';
 import EigenLayerNativeStakeExtra from './model/EigenLayerNativeStakeExtra';
 import EigenlayerValidator from './model/EigenlayerValidator';
@@ -97,42 +96,34 @@ import FeeData from './model/FeeData';
 import FeeRate from './model/FeeRate';
 import FeeType from './model/FeeType';
 import FixedFee from './model/FixedFee';
-import GenerateWalletAddressRequest from './model/GenerateWalletAddressRequest';
-import GetChains200Response from './model/GetChains200Response';
-import GetExchangeSupportedAssets200Response from './model/GetExchangeSupportedAssets200Response';
-import GetExchangeWalletAssetBalances200Response from './model/GetExchangeWalletAssetBalances200Response';
-import GetSpendableList200Response from './model/GetSpendableList200Response';
-import GetStakingEstimationFee201Response from './model/GetStakingEstimationFee201Response';
-import GetStakingEstimationFeeRequest from './model/GetStakingEstimationFeeRequest';
-import GetToken200Response from './model/GetToken200Response';
-import GetTokens200Response from './model/GetTokens200Response';
-import GetWalletTokenBalances200Response from './model/GetWalletTokenBalances200Response';
-import KeyGroup from './model/KeyGroup';
-import KeyGroupStatus from './model/KeyGroupStatus';
-import KeyGroupType from './model/KeyGroupType';
-import KeyHolder from './model/KeyHolder';
-import KeyHolderStatus from './model/KeyHolderStatus';
-import KeyHolderType from './model/KeyHolderType';
-import LinkSubAccountsByWalletIdRequest from './model/LinkSubAccountsByWalletIdRequest';
-import ListActivities200Response from './model/ListActivities200Response';
+import KeyShareHolder from './model/KeyShareHolder';
+import KeyShareHolderGroup from './model/KeyShareHolderGroup';
+import KeyShareHolderGroupStatus from './model/KeyShareHolderGroupStatus';
+import KeyShareHolderGroupType from './model/KeyShareHolderGroupType';
+import KeyShareHolderStatus from './model/KeyShareHolderStatus';
+import KeyShareHolderType from './model/KeyShareHolderType';
 import ListAddresses200Response from './model/ListAddresses200Response';
 import ListEvents200Response from './model/ListEvents200Response';
-import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
-import ListStakingPools200Response from './model/ListStakingPools200Response';
-import ListStakings200Response from './model/ListStakings200Response';
+import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
+import ListMpcProjects200Response from './model/ListMpcProjects200Response';
+import ListMpcVaults200Response from './model/ListMpcVaults200Response';
+import ListSupportedChains200Response from './model/ListSupportedChains200Response';
+import ListSupportedTokens200Response from './model/ListSupportedTokens200Response';
+import ListTokenBalancesForAddress200Response from './model/ListTokenBalancesForAddress200Response';
 import ListTransactions200Response from './model/ListTransactions200Response';
+import ListTssRequests200Response from './model/ListTssRequests200Response';
+import ListUtxos200Response from './model/ListUtxos200Response';
 import ListWallets200Response from './model/ListWallets200Response';
 import ListWebhookEndpoints200Response from './model/ListWebhookEndpoints200Response';
 import ListWebhookEventDefinitions200ResponseInner from './model/ListWebhookEventDefinitions200ResponseInner';
-import LockSpendableList200Response from './model/LockSpendableList200Response';
-import LockSpendableListRequest from './model/LockSpendableListRequest';
-import LockSpendableListRequestSpendablesInner from './model/LockSpendableListRequestSpendablesInner';
+import LockUtxos201Response from './model/LockUtxos201Response';
+import LockUtxosRequest from './model/LockUtxosRequest';
+import LockUtxosRequestUtxosInner from './model/LockUtxosRequestUtxosInner';
 import MPCProject from './model/MPCProject';
 import MPCVault from './model/MPCVault';
 import MPCVaultType from './model/MPCVaultType';
 import MPCWalletInfo from './model/MPCWalletInfo';
 import MaxTransferableValue from './model/MaxTransferableValue';
-import ModifyMpcVaultRequest from './model/ModifyMpcVaultRequest';
 import MpcContractCallSource from './model/MpcContractCallSource';
 import MpcSigningGroup from './model/MpcSigningGroup';
 import MpcTransferSource from './model/MpcTransferSource';
@@ -143,9 +134,8 @@ import Pagination from './model/Pagination';
 import PoolDetails from './model/PoolDetails';
 import PoolDetailsAllOfValidatorsInfo from './model/PoolDetailsAllOfValidatorsInfo';
 import PoolSummary from './model/PoolSummary';
-import RefreshTokenRequest from './model/RefreshTokenRequest';
 import ReplaceType from './model/ReplaceType';
-import RetryWebhookEvent201Response from './model/RetryWebhookEvent201Response';
+import RetryWebhookEventById201Response from './model/RetryWebhookEventById201Response';
 import RootPubkey from './model/RootPubkey';
 import SafeContractCallSource from './model/SafeContractCallSource';
 import SafeContractCallSourceAllOfDelegate from './model/SafeContractCallSourceAllOfDelegate';
@@ -162,7 +152,7 @@ import SmartContractWalletType from './model/SmartContractWalletType';
 import StakingPoolType from './model/StakingPoolType';
 import Stakings from './model/Stakings';
 import StakingsValidatorInfo from './model/StakingsValidatorInfo';
-import TSSGroupId from './model/TSSGroupId';
+import TSSGroups from './model/TSSGroups';
 import TSSRequest from './model/TSSRequest';
 import TSSRequestStatus from './model/TSSRequestStatus';
 import TSSRequestType from './model/TSSRequestType';
@@ -222,10 +212,11 @@ import TransferDestination from './model/TransferDestination';
 import TransferDestinationType from './model/TransferDestinationType';
 import TransferSource from './model/TransferSource';
 import UTXO from './model/UTXO';
-import UpdateKeyGroupRequest from './model/UpdateKeyGroupRequest';
-import UpdateMpcProjectRequest from './model/UpdateMpcProjectRequest';
+import UpdateKeyShareHolderGroupByIdRequest from './model/UpdateKeyShareHolderGroupByIdRequest';
+import UpdateMpcProjectByIdRequest from './model/UpdateMpcProjectByIdRequest';
+import UpdateMpcVaultByIdRequest from './model/UpdateMpcVaultByIdRequest';
 import UpdateWalletByIdRequest from './model/UpdateWalletByIdRequest';
-import UpdateWebhookEndpointRequest from './model/UpdateWebhookEndpointRequest';
+import UpdateWebhookEndpointByIdRequest from './model/UpdateWebhookEndpointByIdRequest';
 import UtxoFee from './model/UtxoFee';
 import UtxoFeeBasePrice from './model/UtxoFeeBasePrice';
 import UtxoFeePrice from './model/UtxoFeePrice';
@@ -239,11 +230,8 @@ import WebhookEventLog from './model/WebhookEventLog';
 import WebhookEventStatus from './model/WebhookEventStatus';
 import WebhookEventType from './model/WebhookEventType';
 import DevelopersWebhooksApi from './api/DevelopersWebhooksApi';
-import OAuthApi from './api/OAuthApi';
-import StakingsApi from './api/StakingsApi';
 import TransactionsApi from './api/TransactionsApi';
 import WalletsApi from './api/WalletsApi';
-import WalletsExchangeWalletApi from './api/WalletsExchangeWalletApi';
 import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 
 
@@ -360,6 +348,12 @@ export {
     AmountDetailsInner,
 
     /**
+     * The AmountStatus model constructor.
+     * @property {module:model/AmountStatus}
+     */
+    AmountStatus,
+
+    /**
      * The AssetBalance model constructor.
      * @property {module:model/AssetBalance}
      */
@@ -432,6 +426,12 @@ export {
     ContractCallSource,
 
     /**
+     * The CreateAddressRequest model constructor.
+     * @property {module:model/CreateAddressRequest}
+     */
+    CreateAddressRequest,
+
+    /**
      * The CreateCustodialWallet model constructor.
      * @property {module:model/CreateCustodialWallet}
      */
@@ -444,16 +444,16 @@ export {
     CreateExchangeWallet,
 
     /**
-     * The CreateKeyGroupRequest model constructor.
-     * @property {module:model/CreateKeyGroupRequest}
+     * The CreateKeyShareHolder model constructor.
+     * @property {module:model/CreateKeyShareHolder}
      */
-    CreateKeyGroupRequest,
+    CreateKeyShareHolder,
 
     /**
-     * The CreateKeyGroupRequestKeyHoldersInner model constructor.
-     * @property {module:model/CreateKeyGroupRequestKeyHoldersInner}
+     * The CreateKeyShareHolderGroupRequest model constructor.
+     * @property {module:model/CreateKeyShareHolderGroupRequest}
      */
-    CreateKeyGroupRequestKeyHoldersInner,
+    CreateKeyShareHolderGroupRequest,
 
     /**
      * The CreateMpcProjectRequest model constructor.
@@ -498,22 +498,10 @@ export {
     CreateStakeActivity,
 
     /**
-     * The CreateStakeActivity201Response model constructor.
-     * @property {module:model/CreateStakeActivity201Response}
-     */
-    CreateStakeActivity201Response,
-
-    /**
      * The CreateStakeActivityExtra model constructor.
      * @property {module:model/CreateStakeActivityExtra}
      */
     CreateStakeActivityExtra,
-
-    /**
-     * The CreateStakeActivityRequest model constructor.
-     * @property {module:model/CreateStakeActivityRequest}
-     */
-    CreateStakeActivityRequest,
 
     /**
      * The CreateTransferTransaction201Response model constructor.
@@ -540,12 +528,6 @@ export {
     CreateUnstakeActivity,
 
     /**
-     * The CreateUnstakeActivityRequest model constructor.
-     * @property {module:model/CreateUnstakeActivityRequest}
-     */
-    CreateUnstakeActivityRequest,
-
-    /**
      * The CreateWebhookEndpointRequest model constructor.
      * @property {module:model/CreateWebhookEndpointRequest}
      */
@@ -556,12 +538,6 @@ export {
      * @property {module:model/CreateWithdrawActivity}
      */
     CreateWithdrawActivity,
-
-    /**
-     * The CreateWithdrawActivityRequest model constructor.
-     * @property {module:model/CreateWithdrawActivityRequest}
-     */
-    CreateWithdrawActivityRequest,
 
     /**
      * The CreatedWallet model constructor.
@@ -582,10 +558,16 @@ export {
     CustodialWalletInfo,
 
     /**
-     * The DeleteWalletById200Response model constructor.
-     * @property {module:model/DeleteWalletById200Response}
+     * The DeleteKeyShareHolderGroupById201Response model constructor.
+     * @property {module:model/DeleteKeyShareHolderGroupById201Response}
      */
-    DeleteWalletById200Response,
+    DeleteKeyShareHolderGroupById201Response,
+
+    /**
+     * The DeleteWalletById201Response model constructor.
+     * @property {module:model/DeleteWalletById201Response}
+     */
+    DeleteWalletById201Response,
 
     /**
      * The EigenLayerLstStakeExtra model constructor.
@@ -798,112 +780,40 @@ export {
     FixedFee,
 
     /**
-     * The GenerateWalletAddressRequest model constructor.
-     * @property {module:model/GenerateWalletAddressRequest}
+     * The KeyShareHolder model constructor.
+     * @property {module:model/KeyShareHolder}
      */
-    GenerateWalletAddressRequest,
+    KeyShareHolder,
 
     /**
-     * The GetChains200Response model constructor.
-     * @property {module:model/GetChains200Response}
+     * The KeyShareHolderGroup model constructor.
+     * @property {module:model/KeyShareHolderGroup}
      */
-    GetChains200Response,
+    KeyShareHolderGroup,
 
     /**
-     * The GetExchangeSupportedAssets200Response model constructor.
-     * @property {module:model/GetExchangeSupportedAssets200Response}
+     * The KeyShareHolderGroupStatus model constructor.
+     * @property {module:model/KeyShareHolderGroupStatus}
      */
-    GetExchangeSupportedAssets200Response,
+    KeyShareHolderGroupStatus,
 
     /**
-     * The GetExchangeWalletAssetBalances200Response model constructor.
-     * @property {module:model/GetExchangeWalletAssetBalances200Response}
+     * The KeyShareHolderGroupType model constructor.
+     * @property {module:model/KeyShareHolderGroupType}
      */
-    GetExchangeWalletAssetBalances200Response,
+    KeyShareHolderGroupType,
 
     /**
-     * The GetSpendableList200Response model constructor.
-     * @property {module:model/GetSpendableList200Response}
+     * The KeyShareHolderStatus model constructor.
+     * @property {module:model/KeyShareHolderStatus}
      */
-    GetSpendableList200Response,
+    KeyShareHolderStatus,
 
     /**
-     * The GetStakingEstimationFee201Response model constructor.
-     * @property {module:model/GetStakingEstimationFee201Response}
+     * The KeyShareHolderType model constructor.
+     * @property {module:model/KeyShareHolderType}
      */
-    GetStakingEstimationFee201Response,
-
-    /**
-     * The GetStakingEstimationFeeRequest model constructor.
-     * @property {module:model/GetStakingEstimationFeeRequest}
-     */
-    GetStakingEstimationFeeRequest,
-
-    /**
-     * The GetToken200Response model constructor.
-     * @property {module:model/GetToken200Response}
-     */
-    GetToken200Response,
-
-    /**
-     * The GetTokens200Response model constructor.
-     * @property {module:model/GetTokens200Response}
-     */
-    GetTokens200Response,
-
-    /**
-     * The GetWalletTokenBalances200Response model constructor.
-     * @property {module:model/GetWalletTokenBalances200Response}
-     */
-    GetWalletTokenBalances200Response,
-
-    /**
-     * The KeyGroup model constructor.
-     * @property {module:model/KeyGroup}
-     */
-    KeyGroup,
-
-    /**
-     * The KeyGroupStatus model constructor.
-     * @property {module:model/KeyGroupStatus}
-     */
-    KeyGroupStatus,
-
-    /**
-     * The KeyGroupType model constructor.
-     * @property {module:model/KeyGroupType}
-     */
-    KeyGroupType,
-
-    /**
-     * The KeyHolder model constructor.
-     * @property {module:model/KeyHolder}
-     */
-    KeyHolder,
-
-    /**
-     * The KeyHolderStatus model constructor.
-     * @property {module:model/KeyHolderStatus}
-     */
-    KeyHolderStatus,
-
-    /**
-     * The KeyHolderType model constructor.
-     * @property {module:model/KeyHolderType}
-     */
-    KeyHolderType,
-
-    /**
-     * The LinkSubAccountsByWalletIdRequest model constructor.
-     * @property {module:model/LinkSubAccountsByWalletIdRequest}
-     */
-    LinkSubAccountsByWalletIdRequest,
-
-    /**
-     * The ListActivities200Response model constructor.
-     * @property {module:model/ListActivities200Response}
-     */
-    ListActivities200Response,
+    KeyShareHolderType,
 
     /**
      * The ListAddresses200Response model constructor.
@@ -918,28 +828,58 @@ export {
     ListEvents200Response,
 
     /**
-     * The ListExchanges200ResponseInner model constructor.
-     * @property {module:model/ListExchanges200ResponseInner}
+     * The ListKeyShareHolderGroups200Response model constructor.
+     * @property {module:model/ListKeyShareHolderGroups200Response}
      */
-    ListExchanges200ResponseInner,
+    ListKeyShareHolderGroups200Response,
 
     /**
-     * The ListStakingPools200Response model constructor.
-     * @property {module:model/ListStakingPools200Response}
+     * The ListMpcProjects200Response model constructor.
+     * @property {module:model/ListMpcProjects200Response}
      */
-    ListStakingPools200Response,
+    ListMpcProjects200Response,
 
     /**
-     * The ListStakings200Response model constructor.
-     * @property {module:model/ListStakings200Response}
+     * The ListMpcVaults200Response model constructor.
+     * @property {module:model/ListMpcVaults200Response}
      */
-    ListStakings200Response,
+    ListMpcVaults200Response,
+
+    /**
+     * The ListSupportedChains200Response model constructor.
+     * @property {module:model/ListSupportedChains200Response}
+     */
+    ListSupportedChains200Response,
+
+    /**
+     * The ListSupportedTokens200Response model constructor.
+     * @property {module:model/ListSupportedTokens200Response}
+     */
+    ListSupportedTokens200Response,
+
+    /**
+     * The ListTokenBalancesForAddress200Response model constructor.
+     * @property {module:model/ListTokenBalancesForAddress200Response}
+     */
+    ListTokenBalancesForAddress200Response,
 
     /**
      * The ListTransactions200Response model constructor.
      * @property {module:model/ListTransactions200Response}
      */
     ListTransactions200Response,
+
+    /**
+     * The ListTssRequests200Response model constructor.
+     * @property {module:model/ListTssRequests200Response}
+     */
+    ListTssRequests200Response,
+
+    /**
+     * The ListUtxos200Response model constructor.
+     * @property {module:model/ListUtxos200Response}
+     */
+    ListUtxos200Response,
 
     /**
      * The ListWallets200Response model constructor.
@@ -960,22 +900,22 @@ export {
     ListWebhookEventDefinitions200ResponseInner,
 
     /**
-     * The LockSpendableList200Response model constructor.
-     * @property {module:model/LockSpendableList200Response}
+     * The LockUtxos201Response model constructor.
+     * @property {module:model/LockUtxos201Response}
      */
-    LockSpendableList200Response,
+    LockUtxos201Response,
 
     /**
-     * The LockSpendableListRequest model constructor.
-     * @property {module:model/LockSpendableListRequest}
+     * The LockUtxosRequest model constructor.
+     * @property {module:model/LockUtxosRequest}
      */
-    LockSpendableListRequest,
+    LockUtxosRequest,
 
     /**
-     * The LockSpendableListRequestSpendablesInner model constructor.
-     * @property {module:model/LockSpendableListRequestSpendablesInner}
+     * The LockUtxosRequestUtxosInner model constructor.
+     * @property {module:model/LockUtxosRequestUtxosInner}
      */
-    LockSpendableListRequestSpendablesInner,
+    LockUtxosRequestUtxosInner,
 
     /**
      * The MPCProject model constructor.
@@ -1006,12 +946,6 @@ export {
      * @property {module:model/MaxTransferableValue}
      */
     MaxTransferableValue,
-
-    /**
-     * The ModifyMpcVaultRequest model constructor.
-     * @property {module:model/ModifyMpcVaultRequest}
-     */
-    ModifyMpcVaultRequest,
 
     /**
      * The MpcContractCallSource model constructor.
@@ -1074,22 +1008,16 @@ export {
     PoolSummary,
 
     /**
-     * The RefreshTokenRequest model constructor.
-     * @property {module:model/RefreshTokenRequest}
-     */
-    RefreshTokenRequest,
-
-    /**
      * The ReplaceType model constructor.
      * @property {module:model/ReplaceType}
      */
     ReplaceType,
 
     /**
-     * The RetryWebhookEvent201Response model constructor.
-     * @property {module:model/RetryWebhookEvent201Response}
+     * The RetryWebhookEventById201Response model constructor.
+     * @property {module:model/RetryWebhookEventById201Response}
      */
-    RetryWebhookEvent201Response,
+    RetryWebhookEventById201Response,
 
     /**
      * The RootPubkey model constructor.
@@ -1188,10 +1116,10 @@ export {
     StakingsValidatorInfo,
 
     /**
-     * The TSSGroupId model constructor.
-     * @property {module:model/TSSGroupId}
+     * The TSSGroups model constructor.
+     * @property {module:model/TSSGroups}
      */
-    TSSGroupId,
+    TSSGroups,
 
     /**
      * The TSSRequest model constructor.
@@ -1548,16 +1476,22 @@ export {
     UTXO,
 
     /**
-     * The UpdateKeyGroupRequest model constructor.
-     * @property {module:model/UpdateKeyGroupRequest}
+     * The UpdateKeyShareHolderGroupByIdRequest model constructor.
+     * @property {module:model/UpdateKeyShareHolderGroupByIdRequest}
      */
-    UpdateKeyGroupRequest,
+    UpdateKeyShareHolderGroupByIdRequest,
 
     /**
-     * The UpdateMpcProjectRequest model constructor.
-     * @property {module:model/UpdateMpcProjectRequest}
+     * The UpdateMpcProjectByIdRequest model constructor.
+     * @property {module:model/UpdateMpcProjectByIdRequest}
      */
-    UpdateMpcProjectRequest,
+    UpdateMpcProjectByIdRequest,
+
+    /**
+     * The UpdateMpcVaultByIdRequest model constructor.
+     * @property {module:model/UpdateMpcVaultByIdRequest}
+     */
+    UpdateMpcVaultByIdRequest,
 
     /**
      * The UpdateWalletByIdRequest model constructor.
@@ -1566,10 +1500,10 @@ export {
     UpdateWalletByIdRequest,
 
     /**
-     * The UpdateWebhookEndpointRequest model constructor.
-     * @property {module:model/UpdateWebhookEndpointRequest}
+     * The UpdateWebhookEndpointByIdRequest model constructor.
+     * @property {module:model/UpdateWebhookEndpointByIdRequest}
      */
-    UpdateWebhookEndpointRequest,
+    UpdateWebhookEndpointByIdRequest,
 
     /**
      * The UtxoFee model constructor.
@@ -1650,18 +1584,6 @@ export {
     DevelopersWebhooksApi,
 
     /**
-    * The OAuthApi service constructor.
-    * @property {module:api/OAuthApi}
-    */
-    OAuthApi,
-
-    /**
-    * The StakingsApi service constructor.
-    * @property {module:api/StakingsApi}
-    */
-    StakingsApi,
-
-    /**
     * The TransactionsApi service constructor.
     * @property {module:api/TransactionsApi}
     */
@@ -1672,12 +1594,6 @@ export {
     * @property {module:api/WalletsApi}
     */
     WalletsApi,
-
-    /**
-    * The WalletsExchangeWalletApi service constructor.
-    * @property {module:api/WalletsExchangeWalletApi}
-    */
-    WalletsExchangeWalletApi,
 
     /**
     * The WalletsMPCWalletsApi service constructor.

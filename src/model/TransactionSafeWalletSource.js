@@ -26,11 +26,11 @@ class TransactionSafeWalletSource {
      * @alias module:model/TransactionSafeWalletSource
      * @param sourceType {module:model/TransactionSourceType} 
      * @param walletId {String} The wallet ID.
-     * @param delegate {module:model/TransactionSafeWalletSourceDelegate} 
+     * @param address {String} The wallet address.
      */
-    constructor(sourceType, walletId, delegate) { 
+    constructor(sourceType, walletId, address) { 
         
-        TransactionSafeWalletSource.initialize(this, sourceType, walletId, delegate);
+        TransactionSafeWalletSource.initialize(this, sourceType, walletId, address);
     }
 
     /**
@@ -38,10 +38,10 @@ class TransactionSafeWalletSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, delegate) { 
+    static initialize(obj, sourceType, walletId, address) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['delegate'] = delegate;
+        obj['address'] = address;
     }
 
     /**
@@ -60,6 +60,9 @@ class TransactionSafeWalletSource {
             }
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
+            }
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('delegate')) {
                 obj['delegate'] = TransactionSafeWalletSourceDelegate.constructFromObject(data['delegate']);
@@ -84,6 +87,10 @@ class TransactionSafeWalletSource {
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
+        // ensure the json data is a string
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        }
         // validate the optional field `delegate`
         if (data['delegate']) { // data not null
           TransactionSafeWalletSourceDelegate.validateJSON(data['delegate']);
@@ -95,7 +102,7 @@ class TransactionSafeWalletSource {
 
 }
 
-TransactionSafeWalletSource.RequiredProperties = ["source_type", "wallet_id", "delegate"];
+TransactionSafeWalletSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
  * @member {module:model/TransactionSourceType} source_type
@@ -107,6 +114,12 @@ TransactionSafeWalletSource.prototype['source_type'] = undefined;
  * @member {String} wallet_id
  */
 TransactionSafeWalletSource.prototype['wallet_id'] = undefined;
+
+/**
+ * The wallet address.
+ * @member {String} address
+ */
+TransactionSafeWalletSource.prototype['address'] = undefined;
 
 /**
  * @member {module:model/TransactionSafeWalletSourceDelegate} delegate

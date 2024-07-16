@@ -57,20 +57,20 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getWebhookEvent', function() {
-      it('should call getWebhookEvent successfully', function() {
-        //uncomment below and update the code to test getWebhookEvent
-        //instance.getWebhookEvent().then(function(data) {
+    describe('getWebhookEventById', function() {
+      it('should call getWebhookEventById successfully', function() {
+        //uncomment below and update the code to test getWebhookEventById
+        //instance.getWebhookEventById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getWebhookEventLogs', function() {
-      it('should call getWebhookEventLogs successfully', function() {
-        //uncomment below and update the code to test getWebhookEventLogs
-        //instance.getWebhookEventLogs().then(function(data) {
+    describe('getWebhookEventLogsById', function() {
+      it('should call getWebhookEventLogsById successfully', function() {
+        //uncomment below and update the code to test getWebhookEventLogsById
+        //instance.getWebhookEventLogsById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -107,20 +107,20 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('retryWebhookEvent', function() {
-      it('should call retryWebhookEvent successfully', function() {
-        //uncomment below and update the code to test retryWebhookEvent
-        //instance.retryWebhookEvent().then(function(data) {
+    describe('retryWebhookEventById', function() {
+      it('should call retryWebhookEventById successfully', function() {
+        //uncomment below and update the code to test retryWebhookEventById
+        //instance.retryWebhookEventById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('updateWebhookEndpoint', function() {
-      it('should call updateWebhookEndpoint successfully', function() {
-        //uncomment below and update the code to test updateWebhookEndpoint
-        //instance.updateWebhookEndpoint().then(function(data) {
+    describe('updateWebhookEndpointById', function() {
+      it('should call updateWebhookEndpointById successfully', function() {
+        //uncomment below and update the code to test updateWebhookEndpointById
+        //instance.updateWebhookEndpointById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

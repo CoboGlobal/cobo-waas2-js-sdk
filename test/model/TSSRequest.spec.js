@@ -59,6 +59,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property sourceKeyShareHolderGroupId (base name: "source_key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property sourceKeyShareHolderGroupId
+      //var instance = new CoboWaas2JsApi.TSSRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property targetKeyShareHolderGroupId (base name: "target_key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property targetKeyShareHolderGroupId
+      //var instance = new CoboWaas2JsApi.TSSRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
       //var instance = new CoboWaas2JsApi.TSSRequest();

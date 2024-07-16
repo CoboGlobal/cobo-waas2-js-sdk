@@ -37,20 +37,20 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('WalletsMPCWalletsApi', function() {
-    describe('cancelTssRequest', function() {
-      it('should call cancelTssRequest successfully', function() {
-        //uncomment below and update the code to test cancelTssRequest
-        //instance.cancelTssRequest().then(function(data) {
+    describe('cancelTssRequestById', function() {
+      it('should call cancelTssRequestById successfully', function() {
+        //uncomment below and update the code to test cancelTssRequestById
+        //instance.cancelTssRequestById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('createKeyGroup', function() {
-      it('should call createKeyGroup successfully', function() {
-        //uncomment below and update the code to test createKeyGroup
-        //instance.createKeyGroup().then(function(data) {
+    describe('createKeyShareHolderGroup', function() {
+      it('should call createKeyShareHolderGroup successfully', function() {
+        //uncomment below and update the code to test createKeyShareHolderGroup
+        //instance.createKeyShareHolderGroup().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -87,130 +87,130 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('deleteKeyGroup', function() {
-      it('should call deleteKeyGroup successfully', function() {
-        //uncomment below and update the code to test deleteKeyGroup
-        //instance.deleteKeyGroup().then(function(data) {
+    describe('deleteKeyShareHolderGroupById', function() {
+      it('should call deleteKeyShareHolderGroupById successfully', function() {
+        //uncomment below and update the code to test deleteKeyShareHolderGroupById
+        //instance.deleteKeyShareHolderGroupById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getKeyGroup', function() {
-      it('should call getKeyGroup successfully', function() {
-        //uncomment below and update the code to test getKeyGroup
-        //instance.getKeyGroup().then(function(data) {
+    describe('getKeyShareHolderGroupById', function() {
+      it('should call getKeyShareHolderGroupById successfully', function() {
+        //uncomment below and update the code to test getKeyShareHolderGroupById
+        //instance.getKeyShareHolderGroupById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getMpcProject', function() {
-      it('should call getMpcProject successfully', function() {
-        //uncomment below and update the code to test getMpcProject
-        //instance.getMpcProject().then(function(data) {
+    describe('getMpcProjectById', function() {
+      it('should call getMpcProjectById successfully', function() {
+        //uncomment below and update the code to test getMpcProjectById
+        //instance.getMpcProjectById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getMpcVault', function() {
-      it('should call getMpcVault successfully', function() {
-        //uncomment below and update the code to test getMpcVault
-        //instance.getMpcVault().then(function(data) {
+    describe('getMpcVaultById', function() {
+      it('should call getMpcVaultById successfully', function() {
+        //uncomment below and update the code to test getMpcVaultById
+        //instance.getMpcVaultById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('getTssRequest', function() {
-      it('should call getTssRequest successfully', function() {
-        //uncomment below and update the code to test getTssRequest
-        //instance.getTssRequest().then(function(data) {
+    describe('getTssRequestById', function() {
+      it('should call getTssRequestById successfully', function() {
+        //uncomment below and update the code to test getTssRequestById
+        //instance.getTssRequestById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('listCoboKeyHolder', function() {
-      it('should call listCoboKeyHolder successfully', function() {
-        //uncomment below and update the code to test listCoboKeyHolder
-        //instance.listCoboKeyHolder().then(function(data) {
+    describe('listCoboKeyHolders', function() {
+      it('should call listCoboKeyHolders successfully', function() {
+        //uncomment below and update the code to test listCoboKeyHolders
+        //instance.listCoboKeyHolders().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('listKeyGroup', function() {
-      it('should call listKeyGroup successfully', function() {
-        //uncomment below and update the code to test listKeyGroup
-        //instance.listKeyGroup().then(function(data) {
+    describe('listKeyShareHolderGroups', function() {
+      it('should call listKeyShareHolderGroups successfully', function() {
+        //uncomment below and update the code to test listKeyShareHolderGroups
+        //instance.listKeyShareHolderGroups().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('listMpcProject', function() {
-      it('should call listMpcProject successfully', function() {
-        //uncomment below and update the code to test listMpcProject
-        //instance.listMpcProject().then(function(data) {
+    describe('listMpcProjects', function() {
+      it('should call listMpcProjects successfully', function() {
+        //uncomment below and update the code to test listMpcProjects
+        //instance.listMpcProjects().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('listMpcVault', function() {
-      it('should call listMpcVault successfully', function() {
-        //uncomment below and update the code to test listMpcVault
-        //instance.listMpcVault().then(function(data) {
+    describe('listMpcVaults', function() {
+      it('should call listMpcVaults successfully', function() {
+        //uncomment below and update the code to test listMpcVaults
+        //instance.listMpcVaults().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('listTssRequest', function() {
-      it('should call listTssRequest successfully', function() {
-        //uncomment below and update the code to test listTssRequest
-        //instance.listTssRequest().then(function(data) {
+    describe('listTssRequests', function() {
+      it('should call listTssRequests successfully', function() {
+        //uncomment below and update the code to test listTssRequests
+        //instance.listTssRequests().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('modifyMpcVault', function() {
-      it('should call modifyMpcVault successfully', function() {
-        //uncomment below and update the code to test modifyMpcVault
-        //instance.modifyMpcVault().then(function(data) {
+    describe('updateKeyShareHolderGroupById', function() {
+      it('should call updateKeyShareHolderGroupById successfully', function() {
+        //uncomment below and update the code to test updateKeyShareHolderGroupById
+        //instance.updateKeyShareHolderGroupById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('updateKeyGroup', function() {
-      it('should call updateKeyGroup successfully', function() {
-        //uncomment below and update the code to test updateKeyGroup
-        //instance.updateKeyGroup().then(function(data) {
+    describe('updateMpcProjectById', function() {
+      it('should call updateMpcProjectById successfully', function() {
+        //uncomment below and update the code to test updateMpcProjectById
+        //instance.updateMpcProjectById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
         //});
       });
     });
-    describe('updateMpcProject', function() {
-      it('should call updateMpcProject successfully', function() {
-        //uncomment below and update the code to test updateMpcProject
-        //instance.updateMpcProject().then(function(data) {
+    describe('updateMpcVaultById', function() {
+      it('should call updateMpcVaultById successfully', function() {
+        //uncomment below and update the code to test updateMpcVaultById
+        //instance.updateMpcVaultById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

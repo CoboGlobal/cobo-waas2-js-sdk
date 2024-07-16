@@ -6,13 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createWebhookEndpoint**](DevelopersWebhooksApi.md#createWebhookEndpoint) | **POST** /webhooks/endpoints | Register webhook endpoint
 [**getWebhookEndpointById**](DevelopersWebhooksApi.md#getWebhookEndpointById) | **GET** /webhooks/endpoints/{endpoint_id} | Get webhook endpoint information
-[**getWebhookEvent**](DevelopersWebhooksApi.md#getWebhookEvent) | **GET** /webhooks/endpoints/{endpoint_id}/events/{event_id} | Retrieve event information
-[**getWebhookEventLogs**](DevelopersWebhooksApi.md#getWebhookEventLogs) | **GET** /webhooks/endpoints/{endpoint_id}/events/{event_id}/logs | List event logs
+[**getWebhookEventById**](DevelopersWebhooksApi.md#getWebhookEventById) | **GET** /webhooks/endpoints/{endpoint_id}/events/{event_id} | Retrieve event information
+[**getWebhookEventLogsById**](DevelopersWebhooksApi.md#getWebhookEventLogsById) | **GET** /webhooks/endpoints/{endpoint_id}/events/{event_id}/logs | List event logs
 [**listEvents**](DevelopersWebhooksApi.md#listEvents) | **GET** /webhooks/endpoints/{endpoint_id}/events | List all events
 [**listWebhookEndpoints**](DevelopersWebhooksApi.md#listWebhookEndpoints) | **GET** /webhooks/endpoints | List webhook endpoints
 [**listWebhookEventDefinitions**](DevelopersWebhooksApi.md#listWebhookEventDefinitions) | **GET** /webhooks/events/definitions | Get webhook event types
-[**retryWebhookEvent**](DevelopersWebhooksApi.md#retryWebhookEvent) | **POST** /webhooks/endpoints/{endpoint_id}/events/{event_id}/retry | Retry event
-[**updateWebhookEndpoint**](DevelopersWebhooksApi.md#updateWebhookEndpoint) | **PUT** /webhooks/endpoints/{endpoint_id} | Update webhook endpoint
+[**retryWebhookEventById**](DevelopersWebhooksApi.md#retryWebhookEventById) | **POST** /webhooks/endpoints/{endpoint_id}/events/{event_id}/retry | Retry event
+[**updateWebhookEndpointById**](DevelopersWebhooksApi.md#updateWebhookEndpointById) | **PUT** /webhooks/endpoints/{endpoint_id} | Update webhook endpoint
 
 
 
@@ -86,7 +86,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
 apiInstance.getWebhookEndpointById(endpointId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -100,7 +100,7 @@ apiInstance.getWebhookEndpointById(endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -116,9 +116,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getWebhookEvent
+## getWebhookEventById
 
-> WebhookEvent getWebhookEvent(eventId, endpointId)
+> WebhookEvent getWebhookEventById(eventId, endpointId)
 
 Retrieve event information
 
@@ -135,9 +135,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.getWebhookEvent(eventId, endpointId).then((data) => {
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.getWebhookEventById(eventId, endpointId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -150,8 +150,8 @@ apiInstance.getWebhookEvent(eventId, endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -167,9 +167,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getWebhookEventLogs
+## getWebhookEventLogsById
 
-> [WebhookEventLog] getWebhookEventLogs(eventId, endpointId)
+> [WebhookEventLog] getWebhookEventLogsById(eventId, endpointId)
 
 List event logs
 
@@ -186,9 +186,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.getWebhookEventLogs(eventId, endpointId).then((data) => {
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.getWebhookEventLogsById(eventId, endpointId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -201,8 +201,8 @@ apiInstance.getWebhookEventLogs(eventId, endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -237,7 +237,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
 const opts = {
   'status': new CoboWaas2JsApi.WebhookEventStatus(), // WebhookEventStatus | 
   'type': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | 
@@ -258,7 +258,7 @@ apiInstance.listEvents(endpointId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
  **status** | [**WebhookEventStatus**](.md)|  | [optional] 
  **type** | [**WebhookEventType**](.md)|  | [optional] 
  **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
@@ -383,9 +383,9 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## retryWebhookEvent
+## retryWebhookEventById
 
-> RetryWebhookEvent201Response retryWebhookEvent(eventId, endpointId)
+> RetryWebhookEventById201Response retryWebhookEventById(eventId, endpointId)
 
 Retry event
 
@@ -402,9 +402,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.retryWebhookEvent(eventId, endpointId).then((data) => {
+const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.retryWebhookEventById(eventId, endpointId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -417,12 +417,12 @@ apiInstance.retryWebhookEvent(eventId, endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/developers/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
-[**RetryWebhookEvent201Response**](RetryWebhookEvent201Response.md)
+[**RetryWebhookEventById201Response**](RetryWebhookEventById201Response.md)
 
 ### Authorization
 
@@ -434,9 +434,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## updateWebhookEndpoint
+## updateWebhookEndpointById
 
-> Endpoint updateWebhookEndpoint(endpointId, opts)
+> Endpoint updateWebhookEndpointById(endpointId, opts)
 
 Update webhook endpoint
 
@@ -453,11 +453,11 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints).
 const opts = {
-  'updateWebhookEndpointRequest': new CoboWaas2JsApi.UpdateWebhookEndpointRequest() // UpdateWebhookEndpointRequest | The request body to update a webhook endpoint.
+  'updateWebhookEndpointByIdRequest': new CoboWaas2JsApi.UpdateWebhookEndpointByIdRequest() // UpdateWebhookEndpointByIdRequest | The request body to update a webhook endpoint.
 };
-apiInstance.updateWebhookEndpoint(endpointId, opts).then((data) => {
+apiInstance.updateWebhookEndpointById(endpointId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -470,8 +470,8 @@ apiInstance.updateWebhookEndpoint(endpointId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
- **updateWebhookEndpointRequest** | [**UpdateWebhookEndpointRequest**](UpdateWebhookEndpointRequest.md)| The request body to update a webhook endpoint. | [optional] 
+ **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/developers/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **updateWebhookEndpointByIdRequest** | [**UpdateWebhookEndpointByIdRequest**](UpdateWebhookEndpointByIdRequest.md)| The request body to update a webhook endpoint. | [optional] 
 
 ### Return type
 

@@ -268,13 +268,13 @@ Transaction.prototype['status'] = undefined;
 Transaction.prototype['sub_status'] = undefined;
 
 /**
- * The reason why the transaction failed.
+ * The reason why the transaction failed. This property only applies to approval failures and signature failures.
  * @member {String} failed_reason
  */
 Transaction.prototype['failed_reason'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 Transaction.prototype['chain_id'] = undefined;

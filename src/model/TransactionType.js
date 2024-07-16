@@ -61,17 +61,17 @@ export default class TransactionType {
 
     
         /**
-         * value: "RawMessage"
+         * value: "MessageSign"
          * @const
          */
-        "RawMessage" = "RawMessage";
+        "MessageSign" = "MessageSign";
 
     
         /**
-         * value: "Multi-Sig"
+         * value: "MultiSig"
          * @const
          */
-        "Multi-Sig" = "Multi-Sig";
+        "MultiSig" = "MultiSig";
 
     
 
