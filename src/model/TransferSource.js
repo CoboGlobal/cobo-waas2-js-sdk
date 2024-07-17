@@ -24,7 +24,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The TransferSource model module.
  * @module model/TransferSource
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransferSource {
     /**

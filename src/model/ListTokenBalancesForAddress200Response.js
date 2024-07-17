@@ -17,7 +17,7 @@ import TokenBalance from './TokenBalance';
 /**
  * The ListTokenBalancesForAddress200Response model module.
  * @module model/ListTokenBalancesForAddress200Response
- * @version 0.2.7
+ * @version 0.4.1
  */
 class ListTokenBalancesForAddress200Response {
     /**

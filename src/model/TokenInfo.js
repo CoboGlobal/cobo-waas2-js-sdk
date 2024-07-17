@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TokenInfo model module.
  * @module model/TokenInfo
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TokenInfo {
     /**

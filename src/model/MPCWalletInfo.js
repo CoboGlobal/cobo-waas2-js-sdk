@@ -18,7 +18,7 @@ import WalletType from './WalletType';
 /**
  * The MPCWalletInfo model module.
  * @module model/MPCWalletInfo
- * @version 0.2.7
+ * @version 0.4.1
  */
 class MPCWalletInfo {
     /**

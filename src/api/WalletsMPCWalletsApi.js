@@ -36,7 +36,7 @@ import UpdateMpcVaultByIdRequest from '../model/UpdateMpcVaultByIdRequest';
 /**
 * WalletsMPCWallets service.
 * @module api/WalletsMPCWalletsApi
-* @version 0.2.7
+* @version 0.4.1
 */
 export default class WalletsMPCWalletsApi {
 

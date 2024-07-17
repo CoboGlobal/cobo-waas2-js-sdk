@@ -24,7 +24,7 @@ import TransactionType from './TransactionType';
 /**
  * The WebhookEventData model module.
  * @module model/WebhookEventData
- * @version 0.2.7
+ * @version 0.4.1
  */
 class WebhookEventData {
     /**

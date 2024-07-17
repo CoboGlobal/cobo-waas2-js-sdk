@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The ListSupportedChains200Response model module.
  * @module model/ListSupportedChains200Response
- * @version 0.2.7
+ * @version 0.4.1
  */
 class ListSupportedChains200Response {
     /**

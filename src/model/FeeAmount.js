@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The FeeAmount model module.
  * @module model/FeeAmount
- * @version 0.2.7
+ * @version 0.4.1
  */
 class FeeAmount {
     /**

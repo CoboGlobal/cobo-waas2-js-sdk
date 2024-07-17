@@ -27,7 +27,7 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionSource model module.
  * @module model/TransactionSource
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransactionSource {
     /**

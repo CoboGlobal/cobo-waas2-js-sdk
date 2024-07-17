@@ -16,7 +16,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The SafeContractCallSourceAllOfDelegate model module.
  * @module model/SafeContractCallSourceAllOfDelegate
- * @version 0.2.7
+ * @version 0.4.1
  */
 class SafeContractCallSourceAllOfDelegate {
     /**

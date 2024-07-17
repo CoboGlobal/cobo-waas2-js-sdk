@@ -16,7 +16,7 @@ import TransactionAddressDestinationUtxoOutputsOutputsInner from './TransactionA
 /**
  * The TransactionAddressDestinationUtxoOutputs model module.
  * @module model/TransactionAddressDestinationUtxoOutputs
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransactionAddressDestinationUtxoOutputs {
     /**

@@ -20,7 +20,7 @@ import WalletType from './WalletType';
 /**
  * The SmartContractWalletInfo model module.
  * @module model/SmartContractWalletInfo
- * @version 0.2.7
+ * @version 0.4.1
  */
 class SmartContractWalletInfo {
     /**

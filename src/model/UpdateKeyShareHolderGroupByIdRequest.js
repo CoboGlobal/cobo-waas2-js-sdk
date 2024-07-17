@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateKeyShareHolderGroupByIdRequest model module.
  * @module model/UpdateKeyShareHolderGroupByIdRequest
- * @version 0.2.7
+ * @version 0.4.1
  */
 class UpdateKeyShareHolderGroupByIdRequest {
     /**

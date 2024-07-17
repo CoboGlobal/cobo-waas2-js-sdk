@@ -16,7 +16,7 @@ import CurveType from './CurveType';
 /**
  * The RootPubkey model module.
  * @module model/RootPubkey
- * @version 0.2.7
+ * @version 0.4.1
  */
 class RootPubkey {
     /**

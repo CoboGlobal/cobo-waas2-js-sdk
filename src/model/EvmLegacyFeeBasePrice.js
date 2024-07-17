@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EvmLegacyFeeBasePrice model module.
  * @module model/EvmLegacyFeeBasePrice
- * @version 0.2.7
+ * @version 0.4.1
  */
 class EvmLegacyFeeBasePrice {
     /**

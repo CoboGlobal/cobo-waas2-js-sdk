@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UTXO model module.
  * @module model/UTXO
- * @version 0.2.7
+ * @version 0.4.1
  */
 class UTXO {
     /**

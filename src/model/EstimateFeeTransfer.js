@@ -18,7 +18,7 @@ import TransferSource from './TransferSource';
 /**
  * The EstimateFeeTransfer model module.
  * @module model/EstimateFeeTransfer
- * @version 0.2.7
+ * @version 0.4.1
  */
 class EstimateFeeTransfer {
     /**

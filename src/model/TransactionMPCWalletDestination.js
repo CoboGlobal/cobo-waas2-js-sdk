@@ -16,7 +16,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionMPCWalletDestination model module.
  * @module model/TransactionMPCWalletDestination
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransactionMPCWalletDestination {
     /**

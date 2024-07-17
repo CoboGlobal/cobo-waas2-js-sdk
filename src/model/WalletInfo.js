@@ -25,7 +25,7 @@ import WalletType from './WalletType';
 /**
  * The WalletInfo model module.
  * @module model/WalletInfo
- * @version 0.2.7
+ * @version 0.4.1
  */
 class WalletInfo {
     /**

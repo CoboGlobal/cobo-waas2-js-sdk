@@ -17,7 +17,7 @@ import Pagination from './Pagination';
 /**
  * The ListSupportedTokens200Response model module.
  * @module model/ListSupportedTokens200Response
- * @version 0.2.7
+ * @version 0.4.1
  */
 class ListSupportedTokens200Response {
     /**

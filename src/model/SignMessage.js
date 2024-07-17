@@ -17,7 +17,7 @@ import SignMessageSource from './SignMessageSource';
 /**
  * The SignMessage model module.
  * @module model/SignMessage
- * @version 0.2.7
+ * @version 0.4.1
  */
 class SignMessage {
     /**

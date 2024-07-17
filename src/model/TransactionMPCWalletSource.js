@@ -19,7 +19,7 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionMPCWalletSource model module.
  * @module model/TransactionMPCWalletSource
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransactionMPCWalletSource {
     /**

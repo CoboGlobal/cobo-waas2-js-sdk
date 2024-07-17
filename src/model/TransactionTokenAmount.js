@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionTokenAmount model module.
  * @module model/TransactionTokenAmount
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransactionTokenAmount {
     /**

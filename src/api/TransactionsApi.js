@@ -27,7 +27,7 @@ import Transfer from '../model/Transfer';
 /**
 * Transactions service.
 * @module api/TransactionsApi
-* @version 0.2.7
+* @version 0.4.1
 */
 export default class TransactionsApi {
 

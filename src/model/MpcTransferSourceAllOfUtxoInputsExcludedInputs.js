@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MpcTransferSourceAllOfUtxoInputsExcludedInputs model module.
  * @module model/MpcTransferSourceAllOfUtxoInputsExcludedInputs
- * @version 0.2.7
+ * @version 0.4.1
  */
 class MpcTransferSourceAllOfUtxoInputsExcludedInputs {
     /**

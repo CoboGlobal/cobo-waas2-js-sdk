@@ -29,7 +29,7 @@ import WebhookEventType from '../model/WebhookEventType';
 /**
 * DevelopersWebhooks service.
 * @module api/DevelopersWebhooksApi
-* @version 0.2.7
+* @version 0.4.1
 */
 export default class DevelopersWebhooksApi {
 

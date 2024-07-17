@@ -20,7 +20,7 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The TransferDestination model module.
  * @module model/TransferDestination
- * @version 0.2.7
+ * @version 0.4.1
  */
 class TransferDestination {
     /**

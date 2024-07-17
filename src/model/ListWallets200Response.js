@@ -17,7 +17,7 @@ import WalletInfo from './WalletInfo';
 /**
  * The ListWallets200Response model module.
  * @module model/ListWallets200Response
- * @version 0.2.7
+ * @version 0.4.1
  */
 class ListWallets200Response {
     /**
