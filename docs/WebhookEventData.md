@@ -1,9 +1,10 @@
-# CoboWaas2JsApi.TransactionDetails
+# CoboWaas2JsApi.WebhookEventData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**dataType** | **String** | The model of data. | 
 **transactionId** | **String** | The transaction ID. | 
 **coboId** | **String** | The Cobo ID, which can be used to track a transaction. | [optional] 
 **requestId** | **String** | The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization. | [optional] 
@@ -15,15 +16,15 @@ Name | Type | Description | Notes
 **chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains). | [optional] 
 **source** | [**TransactionSource**](TransactionSource.md) |  | 
 **destination** | [**TransactionDestination**](TransactionDestination.md) |  | 
-**fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | [optional] 
-**initiator** | **String** | Transaction initiator | [optional] 
+**fee** | [**TransactionFee**](TransactionFee.md) |  | [optional] 
+**initiator** | **String** | The transaction initiator. | [optional] 
 **initiatorType** | [**TransactionInitiatorType**](TransactionInitiatorType.md) |  | 
-**confirmedNum** | **Number** | Transaction confirmed number | [optional] 
-**confirmingThreshold** | **Number** | Number of confirmations required for a transaction, such as 15 for ETH chain. | [optional] 
+**confirmedNum** | **Number** | The number of confirmations this transaction has received. | [optional] 
+**confirmingThreshold** | **Number** | The minimum number of confirmations required to deem a transaction secure. The common threshold is 6 for a Bitcoin transaction. | [optional] 
 **blockNumber** | **Number** | The block number. | [optional] 
 **blockTime** | **Number** | The time when the block was created, in Unix timestamp format, measured in milliseconds. | [optional] 
 **blockHash** | **String** | The block hash. | [optional] 
-**nonce** | **Number** | Transaction nonce | [optional] 
+**nonce** | **Number** | The transaction nonce. | [optional] 
 **transactionHash** | **String** | The transaction hash. | [optional] 
 **replacement** | [**TransactionReplacement**](TransactionReplacement.md) |  | [optional] 
 **category** | **[String]** | A custom transaction category for you to identify your transfers more easily. | [optional] 
@@ -33,13 +34,14 @@ Name | Type | Description | Notes
 **isLoop** | **Boolean** | Whether the transaction is a Loop transfer. For more information about Loop, see [Loop&#39;s website](https://loop.top/).  - &#x60;true&#x60;: The transaction is a Loop transfer. - &#x60;false&#x60;: The transaction is not a Loop transfer.  | [optional] 
 **createdTime** | **Number** | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. | 
 **updatedTime** | **Number** | The time when the transaction was updated, in Unix timestamp format, measured in milliseconds. | 
-**approvers** | [**[TransactionApprover]**](TransactionApprover.md) |  | [optional] 
-**signers** | [**[TransactionSigner]**](TransactionSigner.md) |  | [optional] 
-**replacedBy** | **String** | Replace by transaction hash | [optional] 
-**fueledBy** | **String** | Fueled by address | [optional] 
-**tokenApproval** | [**TransactionTokeApproval**](TransactionTokeApproval.md) |  | [optional] 
-**message** | **String** | Transaction raw message | [optional] 
-**algorithm** | **String** | Transaction message signing algorithm | [optional] 
-**timeline** | [**[TransactionTimeline]**](TransactionTimeline.md) |  | [optional] 
+
+
+
+## Enum: DataTypeEnum
+
+
+* `Transaction` (value: `"Transaction"`)
+
+
 
 

@@ -50,9 +50,6 @@ class AddressTransferDestinationUtxoOutputs {
             if (data.hasOwnProperty('outputs')) {
                 obj['outputs'] = ApiClient.convertToType(data['outputs'], [AddressTransferDestinationUtxoOutputsOutputsInner]);
             }
-            if (data.hasOwnProperty('change_address')) {
-                obj['change_address'] = ApiClient.convertToType(data['change_address'], 'String');
-            }
         }
         return obj;
     }
@@ -73,10 +70,6 @@ class AddressTransferDestinationUtxoOutputs {
                 AddressTransferDestinationUtxoOutputsOutputsInner.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['change_address'] && !(typeof data['change_address'] === 'string' || data['change_address'] instanceof String)) {
-            throw new Error("Expected the field `change_address` to be a primitive type in the JSON string but got " + data['change_address']);
-        }
 
         return true;
     }
@@ -90,12 +83,6 @@ class AddressTransferDestinationUtxoOutputs {
  * @member {Array.<module:model/AddressTransferDestinationUtxoOutputsOutputsInner>} outputs
  */
 AddressTransferDestinationUtxoOutputs.prototype['outputs'] = undefined;
-
-/**
- * The address used to receive the remaining funds or change from the transaction.
- * @member {String} change_address
- */
-AddressTransferDestinationUtxoOutputs.prototype['change_address'] = undefined;
 
 
 

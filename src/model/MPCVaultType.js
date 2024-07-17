@@ -19,17 +19,17 @@ import ApiClient from '../ApiClient';
 export default class MPCVaultType {
     
         /**
-         * value: "OrgControlled"
+         * value: "Org-Controlled"
          * @const
          */
-        "OrgControlled" = "OrgControlled";
+        "Org-Controlled" = "Org-Controlled";
 
     
         /**
-         * value: "UserControlled"
+         * value: "User-Controlled"
          * @const
          */
-        "UserControlled" = "UserControlled";
+        "User-Controlled" = "User-Controlled";
 
     
 

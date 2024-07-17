@@ -61,6 +61,9 @@ class AddressTransferDestination {
             if (data.hasOwnProperty('utxo_outputs')) {
                 obj['utxo_outputs'] = AddressTransferDestinationUtxoOutputs.constructFromObject(data['utxo_outputs']);
             }
+            if (data.hasOwnProperty('change_address')) {
+                obj['change_address'] = ApiClient.convertToType(data['change_address'], 'String');
+            }
             if (data.hasOwnProperty('force_internal')) {
                 obj['force_internal'] = ApiClient.convertToType(data['force_internal'], 'Boolean');
             }
@@ -91,6 +94,10 @@ class AddressTransferDestination {
         if (data['utxo_outputs']) { // data not null
           AddressTransferDestinationUtxoOutputs.validateJSON(data['utxo_outputs']);
         }
+        // ensure the json data is a string
+        if (data['change_address'] && !(typeof data['change_address'] === 'string' || data['change_address'] instanceof String)) {
+            throw new Error("Expected the field `change_address` to be a primitive type in the JSON string but got " + data['change_address']);
+        }
 
         return true;
     }
@@ -114,6 +121,12 @@ AddressTransferDestination.prototype['account_output'] = undefined;
  * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
  */
 AddressTransferDestination.prototype['utxo_outputs'] = undefined;
+
+/**
+ * The address used to receive the remaining funds or change from the transaction.
+ * @member {String} change_address
+ */
+AddressTransferDestination.prototype['change_address'] = undefined;
 
 /**
  * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 

@@ -71,6 +71,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property changeAddress (base name: "change_address")', function() {
+      // uncomment below and update the code to test the property changeAddress
+      //var instance = new CoboWaas2JsApi.TransferDestination();
+      //expect(instance).to.be();
+    });
+
     it('should have the property forceInternal (base name: "force_internal")', function() {
       // uncomment below and update the code to test the property forceInternal
       //var instance = new CoboWaas2JsApi.TransferDestination();

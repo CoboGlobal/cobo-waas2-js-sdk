@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property projectId (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property projectId
+      //var instance = new CoboWaas2JsApi.MPCWalletInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property vaultId (base name: "vault_id")', function() {
       // uncomment below and update the code to test the property vaultId
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();

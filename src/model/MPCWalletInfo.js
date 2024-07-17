@@ -78,6 +78,9 @@ class MPCWalletInfo {
             if (data.hasOwnProperty('org_id')) {
                 obj['org_id'] = ApiClient.convertToType(data['org_id'], 'String');
             }
+            if (data.hasOwnProperty('project_id')) {
+                obj['project_id'] = ApiClient.convertToType(data['project_id'], 'String');
+            }
             if (data.hasOwnProperty('vault_id')) {
                 obj['vault_id'] = ApiClient.convertToType(data['vault_id'], 'String');
             }
@@ -108,6 +111,10 @@ class MPCWalletInfo {
         // ensure the json data is a string
         if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
+        }
+        // ensure the json data is a string
+        if (data['project_id'] && !(typeof data['project_id'] === 'string' || data['project_id'] instanceof String)) {
+            throw new Error("Expected the field `project_id` to be a primitive type in the JSON string but got " + data['project_id']);
         }
         // ensure the json data is a string
         if (data['vault_id'] && !(typeof data['vault_id'] === 'string' || data['vault_id'] instanceof String)) {
@@ -149,6 +156,12 @@ MPCWalletInfo.prototype['name'] = undefined;
  * @member {String} org_id
  */
 MPCWalletInfo.prototype['org_id'] = undefined;
+
+/**
+ * The project ID.
+ * @member {String} project_id
+ */
+MPCWalletInfo.prototype['project_id'] = undefined;
 
 /**
  * The ID of the owning vault.

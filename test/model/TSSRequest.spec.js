@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TSSRequest);
     });
 
-    it('should have the property requestId (base name: "request_id")', function() {
-      // uncomment below and update the code to test the property requestId
+    it('should have the property tssRequestId (base name: "tss_request_id")', function() {
+      // uncomment below and update the code to test the property tssRequestId
       //var instance = new CoboWaas2JsApi.TSSRequest();
       //expect(instance).to.be();
     });

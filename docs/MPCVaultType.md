@@ -3,8 +3,8 @@
 ## Enum
 
 
-* `OrgControlled` (value: `"OrgControlled"`)
+* `Org-Controlled` (value: `"Org-Controlled"`)
 
-* `UserControlled` (value: `"UserControlled"`)
+* `User-Controlled` (value: `"User-Controlled"`)
 
 

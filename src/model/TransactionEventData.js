@@ -13,7 +13,6 @@
 import ApiClient from '../ApiClient';
 import Transaction from './Transaction';
 import TransactionDestination from './TransactionDestination';
-import TransactionDetailAllOfTimeline from './TransactionDetailAllOfTimeline';
 import TransactionFee from './TransactionFee';
 import TransactionInitiatorType from './TransactionInitiatorType';
 import TransactionReplacement from './TransactionReplacement';
@@ -21,17 +20,20 @@ import TransactionSource from './TransactionSource';
 import TransactionStatus from './TransactionStatus';
 import TransactionSubStatus from './TransactionSubStatus';
 import TransactionType from './TransactionType';
+import WebhookEventDataType from './WebhookEventDataType';
 
 /**
- * The TransactionDetail model module.
- * @module model/TransactionDetail
+ * The TransactionEventData model module.
+ * @module model/TransactionEventData
  * @version 0.2.7
  */
-class TransactionDetail {
+class TransactionEventData {
     /**
-     * Constructs a new <code>TransactionDetail</code>.
-     * @alias module:model/TransactionDetail
+     * Constructs a new <code>TransactionEventData</code>.
+     * @alias module:model/TransactionEventData
+     * @implements module:model/WebhookEventDataType
      * @implements module:model/Transaction
+     * @param dataType {module:model/TransactionEventData.DataTypeEnum} The model of data.
      * @param transactionId {String} The transaction ID.
      * @param status {module:model/TransactionStatus} 
      * @param source {module:model/TransactionSource} 
@@ -40,9 +42,9 @@ class TransactionDetail {
      * @param createdTime {Number} The time when the transaction was created, in Unix timestamp format, measured in milliseconds.
      * @param updatedTime {Number} The time when the transaction was updated, in Unix timestamp format, measured in milliseconds.
      */
-    constructor(transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
-        Transaction.initialize(this, transactionId, status, source, destination, initiatorType, createdTime, updatedTime);
-        TransactionDetail.initialize(this, transactionId, status, source, destination, initiatorType, createdTime, updatedTime);
+    constructor(dataType, transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
+        WebhookEventDataType.initialize(this, dataType);Transaction.initialize(this, transactionId, status, source, destination, initiatorType, createdTime, updatedTime);
+        TransactionEventData.initialize(this, dataType, transactionId, status, source, destination, initiatorType, createdTime, updatedTime);
     }
 
     /**
@@ -50,7 +52,8 @@ class TransactionDetail {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
+    static initialize(obj, dataType, transactionId, status, source, destination, initiatorType, createdTime, updatedTime) { 
+        obj['data_type'] = dataType;
         obj['transaction_id'] = transactionId;
         obj['status'] = status;
         obj['source'] = source;
@@ -61,17 +64,21 @@ class TransactionDetail {
     }
 
     /**
-     * Constructs a <code>TransactionDetail</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>TransactionEventData</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/TransactionDetail} obj Optional instance to populate.
-     * @return {module:model/TransactionDetail} The populated <code>TransactionDetail</code> instance.
+     * @param {module:model/TransactionEventData} obj Optional instance to populate.
+     * @return {module:model/TransactionEventData} The populated <code>TransactionEventData</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new TransactionDetail();
+            obj = obj || new TransactionEventData();
+            WebhookEventDataType.constructFromObject(data, obj);
             Transaction.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('data_type')) {
+                obj['data_type'] = ApiClient.convertToType(data['data_type'], 'String');
+            }
             if (data.hasOwnProperty('transaction_id')) {
                 obj['transaction_id'] = ApiClient.convertToType(data['transaction_id'], 'String');
             }
@@ -159,24 +166,25 @@ class TransactionDetail {
             if (data.hasOwnProperty('updated_time')) {
                 obj['updated_time'] = ApiClient.convertToType(data['updated_time'], 'Number');
             }
-            if (data.hasOwnProperty('timeline')) {
-                obj['timeline'] = ApiClient.convertToType(data['timeline'], [TransactionDetailAllOfTimeline]);
-            }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>TransactionDetail</code>.
+     * Validates the JSON data with respect to <code>TransactionEventData</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TransactionDetail</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TransactionEventData</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of TransactionDetail.RequiredProperties) {
+        for (const property of TransactionEventData.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+            throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
         // ensure the json data is a string
         if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
@@ -238,16 +246,6 @@ class TransactionDetail {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
-        if (data['timeline']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['timeline'])) {
-                throw new Error("Expected the field `timeline` to be an array in the JSON data but got " + data['timeline']);
-            }
-            // validate the optional field `timeline` (array)
-            for (const item of data['timeline']) {
-                TransactionDetailAllOfTimeline.validateJSON(item);
-            };
-        }
 
         return true;
     }
@@ -255,180 +253,187 @@ class TransactionDetail {
 
 }
 
-TransactionDetail.RequiredProperties = ["transaction_id", "status", "source", "destination", "initiator_type", "created_time", "updated_time"];
+TransactionEventData.RequiredProperties = ["data_type", "transaction_id", "status", "source", "destination", "initiator_type", "created_time", "updated_time"];
+
+/**
+ * The model of data.
+ * @member {module:model/TransactionEventData.DataTypeEnum} data_type
+ */
+TransactionEventData.prototype['data_type'] = undefined;
 
 /**
  * The transaction ID.
  * @member {String} transaction_id
  */
-TransactionDetail.prototype['transaction_id'] = undefined;
+TransactionEventData.prototype['transaction_id'] = undefined;
 
 /**
  * The Cobo ID, which can be used to track a transaction.
  * @member {String} cobo_id
  */
-TransactionDetail.prototype['cobo_id'] = undefined;
+TransactionEventData.prototype['cobo_id'] = undefined;
 
 /**
  * The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
  * @member {String} request_id
  */
-TransactionDetail.prototype['request_id'] = undefined;
+TransactionEventData.prototype['request_id'] = undefined;
 
 /**
  * The wallet ID of the transaction.
  * @member {String} wallet_id
  */
-TransactionDetail.prototype['wallet_id'] = undefined;
+TransactionEventData.prototype['wallet_id'] = undefined;
 
 /**
  * @member {module:model/TransactionType} type
  */
-TransactionDetail.prototype['type'] = undefined;
+TransactionEventData.prototype['type'] = undefined;
 
 /**
  * @member {module:model/TransactionStatus} status
  */
-TransactionDetail.prototype['status'] = undefined;
+TransactionEventData.prototype['status'] = undefined;
 
 /**
  * @member {module:model/TransactionSubStatus} sub_status
  */
-TransactionDetail.prototype['sub_status'] = undefined;
+TransactionEventData.prototype['sub_status'] = undefined;
 
 /**
  * The reason why the transaction failed. This property only applies to approval failures and signature failures.
  * @member {String} failed_reason
  */
-TransactionDetail.prototype['failed_reason'] = undefined;
+TransactionEventData.prototype['failed_reason'] = undefined;
 
 /**
  * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
-TransactionDetail.prototype['chain_id'] = undefined;
+TransactionEventData.prototype['chain_id'] = undefined;
 
 /**
  * @member {module:model/TransactionSource} source
  */
-TransactionDetail.prototype['source'] = undefined;
+TransactionEventData.prototype['source'] = undefined;
 
 /**
  * @member {module:model/TransactionDestination} destination
  */
-TransactionDetail.prototype['destination'] = undefined;
+TransactionEventData.prototype['destination'] = undefined;
 
 /**
  * @member {module:model/TransactionFee} fee
  */
-TransactionDetail.prototype['fee'] = undefined;
+TransactionEventData.prototype['fee'] = undefined;
 
 /**
  * The transaction initiator.
  * @member {String} initiator
  */
-TransactionDetail.prototype['initiator'] = undefined;
+TransactionEventData.prototype['initiator'] = undefined;
 
 /**
  * @member {module:model/TransactionInitiatorType} initiator_type
  */
-TransactionDetail.prototype['initiator_type'] = undefined;
+TransactionEventData.prototype['initiator_type'] = undefined;
 
 /**
  * The number of confirmations this transaction has received.
  * @member {Number} confirmed_num
  */
-TransactionDetail.prototype['confirmed_num'] = undefined;
+TransactionEventData.prototype['confirmed_num'] = undefined;
 
 /**
  * The minimum number of confirmations required to deem a transaction secure. The common threshold is 6 for a Bitcoin transaction.
  * @member {Number} confirming_threshold
  */
-TransactionDetail.prototype['confirming_threshold'] = undefined;
+TransactionEventData.prototype['confirming_threshold'] = undefined;
 
 /**
  * The block number.
  * @member {Number} block_number
  */
-TransactionDetail.prototype['block_number'] = undefined;
+TransactionEventData.prototype['block_number'] = undefined;
 
 /**
  * The time when the block was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} block_time
  */
-TransactionDetail.prototype['block_time'] = undefined;
+TransactionEventData.prototype['block_time'] = undefined;
 
 /**
  * The block hash.
  * @member {String} block_hash
  */
-TransactionDetail.prototype['block_hash'] = undefined;
+TransactionEventData.prototype['block_hash'] = undefined;
 
 /**
  * The transaction nonce.
  * @member {Number} nonce
  */
-TransactionDetail.prototype['nonce'] = undefined;
+TransactionEventData.prototype['nonce'] = undefined;
 
 /**
  * The transaction hash.
  * @member {String} transaction_hash
  */
-TransactionDetail.prototype['transaction_hash'] = undefined;
+TransactionEventData.prototype['transaction_hash'] = undefined;
 
 /**
  * @member {module:model/TransactionReplacement} replacement
  */
-TransactionDetail.prototype['replacement'] = undefined;
+TransactionEventData.prototype['replacement'] = undefined;
 
 /**
  * A custom transaction category for you to identify your transfers more easily.
  * @member {Array.<String>} category
  */
-TransactionDetail.prototype['category'] = undefined;
+TransactionEventData.prototype['category'] = undefined;
 
 /**
  * The description for your transaction.
  * @member {String} description
  */
-TransactionDetail.prototype['description'] = undefined;
+TransactionEventData.prototype['description'] = undefined;
 
 /**
  * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
  * @member {Boolean} force_internal
  */
-TransactionDetail.prototype['force_internal'] = undefined;
+TransactionEventData.prototype['force_internal'] = undefined;
 
 /**
  * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
  * @member {Boolean} force_external
  */
-TransactionDetail.prototype['force_external'] = undefined;
+TransactionEventData.prototype['force_external'] = undefined;
 
 /**
  * Whether the transaction is a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).  - `true`: The transaction is a Loop transfer. - `false`: The transaction is not a Loop transfer. 
  * @member {Boolean} is_loop
  */
-TransactionDetail.prototype['is_loop'] = undefined;
+TransactionEventData.prototype['is_loop'] = undefined;
 
 /**
  * The time when the transaction was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_time
  */
-TransactionDetail.prototype['created_time'] = undefined;
+TransactionEventData.prototype['created_time'] = undefined;
 
 /**
  * The time when the transaction was updated, in Unix timestamp format, measured in milliseconds.
  * @member {Number} updated_time
  */
-TransactionDetail.prototype['updated_time'] = undefined;
+TransactionEventData.prototype['updated_time'] = undefined;
 
+
+// Implement WebhookEventDataType interface:
 /**
- * @member {Array.<module:model/TransactionDetailAllOfTimeline>} timeline
+ * The model of data.
+ * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
-TransactionDetail.prototype['timeline'] = undefined;
-
-
+WebhookEventDataType.prototype['data_type'] = undefined;
 // Implement Transaction interface:
 /**
  * The transaction ID.
@@ -570,6 +575,21 @@ Transaction.prototype['updated_time'] = undefined;
 
 
 
+/**
+ * Allowed values for the <code>data_type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+TransactionEventData['DataTypeEnum'] = {
 
-export default TransactionDetail;
+    /**
+     * value: "Transaction"
+     * @const
+     */
+    "Transaction": "Transaction"
+};
+
+
+
+export default TransactionEventData;
 

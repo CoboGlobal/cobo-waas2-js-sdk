@@ -78,6 +78,9 @@ class Transaction {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
+            if (data.hasOwnProperty('wallet_id')) {
+                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
+            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TransactionType.constructFromObject(data['type']);
             }
@@ -182,6 +185,10 @@ class Transaction {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+            throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
+        }
+        // ensure the json data is a string
         if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
             throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
@@ -251,6 +258,12 @@ Transaction.prototype['cobo_id'] = undefined;
  * @member {String} request_id
  */
 Transaction.prototype['request_id'] = undefined;
+
+/**
+ * The wallet ID of the transaction.
+ * @member {String} wallet_id
+ */
+Transaction.prototype['wallet_id'] = undefined;
 
 /**
  * @member {module:model/TransactionType} type

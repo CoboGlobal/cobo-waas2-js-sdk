@@ -177,6 +177,7 @@ import TransactionDestinationType from './model/TransactionDestinationType';
 import TransactionDetail from './model/TransactionDetail';
 import TransactionDetailAllOfTimeline from './model/TransactionDetailAllOfTimeline';
 import TransactionDetails from './model/TransactionDetails';
+import TransactionEventData from './model/TransactionEventData';
 import TransactionEvmEip1559Fee from './model/TransactionEvmEip1559Fee';
 import TransactionEvmLegacyFee from './model/TransactionEvmLegacyFee';
 import TransactionExchangeWalletDestination from './model/TransactionExchangeWalletDestination';
@@ -226,6 +227,8 @@ import WalletInfo from './model/WalletInfo';
 import WalletSubtype from './model/WalletSubtype';
 import WalletType from './model/WalletType';
 import WebhookEvent from './model/WebhookEvent';
+import WebhookEventData from './model/WebhookEventData';
+import WebhookEventDataType from './model/WebhookEventDataType';
 import WebhookEventLog from './model/WebhookEventLog';
 import WebhookEventStatus from './model/WebhookEventStatus';
 import WebhookEventType from './model/WebhookEventType';
@@ -1266,6 +1269,12 @@ export {
     TransactionDetails,
 
     /**
+     * The TransactionEventData model constructor.
+     * @property {module:model/TransactionEventData}
+     */
+    TransactionEventData,
+
+    /**
      * The TransactionEvmEip1559Fee model constructor.
      * @property {module:model/TransactionEvmEip1559Fee}
      */
@@ -1558,6 +1567,18 @@ export {
      * @property {module:model/WebhookEvent}
      */
     WebhookEvent,
+
+    /**
+     * The WebhookEventData model constructor.
+     * @property {module:model/WebhookEventData}
+     */
+    WebhookEventData,
+
+    /**
+     * The WebhookEventDataType model constructor.
+     * @property {module:model/WebhookEventDataType}
+     */
+    WebhookEventDataType,
 
     /**
      * The WebhookEventLog model constructor.

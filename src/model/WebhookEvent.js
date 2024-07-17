@@ -11,7 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Transaction from './Transaction';
+import WebhookEventData from './WebhookEventData';
 import WebhookEventStatus from './WebhookEventStatus';
 import WebhookEventType from './WebhookEventType';
 
@@ -28,7 +28,7 @@ class WebhookEvent {
      * @param url {String} The webhook endpoint URL.
      * @param createdTimestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
      * @param type {module:model/WebhookEventType} 
-     * @param data {module:model/Transaction} 
+     * @param data {module:model/WebhookEventData} 
      */
     constructor(url, createdTimestamp, type, data) { 
         
@@ -71,7 +71,7 @@ class WebhookEvent {
                 obj['type'] = WebhookEventType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('data')) {
-                obj['data'] = Transaction.constructFromObject(data['data']);
+                obj['data'] = WebhookEventData.constructFromObject(data['data']);
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = WebhookEventStatus.constructFromObject(data['status']);
@@ -108,7 +108,7 @@ class WebhookEvent {
         }
         // validate the optional field `data`
         if (data['data']) { // data not null
-          Transaction.validateJSON(data['data']);
+          WebhookEventData.validateJSON(data['data']);
         }
 
         return true;
@@ -143,7 +143,7 @@ WebhookEvent.prototype['created_timestamp'] = undefined;
 WebhookEvent.prototype['type'] = undefined;
 
 /**
- * @member {module:model/Transaction} data
+ * @member {module:model/WebhookEventData} data
  */
 WebhookEvent.prototype['data'] = undefined;
 

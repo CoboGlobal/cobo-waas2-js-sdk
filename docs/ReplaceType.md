@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `Cancel` (value: `"Cancel"`)
-
 * `Drop` (value: `"Drop"`)
 
 * `Resend` (value: `"Resend"`)

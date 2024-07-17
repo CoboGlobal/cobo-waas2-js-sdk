@@ -27,7 +27,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2JsApi.AddressTransferDestinationUtxoOutputs();
+    instance = new CoboWaas2JsApi.WebhookEventDataType();
   });
 
   var getProperty = function(object, getter, property) {
@@ -46,16 +46,16 @@
       object[property] = value;
   }
 
-  describe('AddressTransferDestinationUtxoOutputs', function() {
-    it('should create an instance of AddressTransferDestinationUtxoOutputs', function() {
-      // uncomment below and update the code to test AddressTransferDestinationUtxoOutputs
-      //var instance = new CoboWaas2JsApi.AddressTransferDestinationUtxoOutputs();
-      //expect(instance).to.be.a(CoboWaas2JsApi.AddressTransferDestinationUtxoOutputs);
+  describe('WebhookEventDataType', function() {
+    it('should create an instance of WebhookEventDataType', function() {
+      // uncomment below and update the code to test WebhookEventDataType
+      //var instance = new CoboWaas2JsApi.WebhookEventDataType();
+      //expect(instance).to.be.a(CoboWaas2JsApi.WebhookEventDataType);
     });
 
-    it('should have the property outputs (base name: "outputs")', function() {
-      // uncomment below and update the code to test the property outputs
-      //var instance = new CoboWaas2JsApi.AddressTransferDestinationUtxoOutputs();
+    it('should have the property dataType (base name: "data_type")', function() {
+      // uncomment below and update the code to test the property dataType
+      //var instance = new CoboWaas2JsApi.WebhookEventDataType();
       //expect(instance).to.be();
     });
 

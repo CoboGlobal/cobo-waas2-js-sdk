@@ -113,6 +113,16 @@ class ApiClient {
     }
 
     /**
+    * @param {Object.<String, String>} header
+    */
+    setHeader(header) {
+        this.defaultHeaders = {
+            ...this.defaultHeaders,
+            ...header,
+        }
+    }
+
+    /**
     * Returns a string representation for an actual parameter.
     * @param param The actual parameter.
     * @returns {String} The string representation of <code>param</code>.

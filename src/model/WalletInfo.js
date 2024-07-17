@@ -189,6 +189,12 @@ WalletInfo.prototype['name'] = undefined;
 WalletInfo.prototype['org_id'] = undefined;
 
 /**
+ * The project ID.
+ * @member {String} project_id
+ */
+WalletInfo.prototype['project_id'] = undefined;
+
+/**
  * The ID of the owning vault.
  * @member {String} vault_id
  */

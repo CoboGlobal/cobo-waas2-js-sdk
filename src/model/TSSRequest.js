@@ -49,8 +49,8 @@ class TSSRequest {
         if (data) {
             obj = obj || new TSSRequest();
 
-            if (data.hasOwnProperty('request_id')) {
-                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
+            if (data.hasOwnProperty('tss_request_id')) {
+                obj['tss_request_id'] = ApiClient.convertToType(data['tss_request_id'], 'String');
             }
             if (data.hasOwnProperty('source_key_share_holder_group_id')) {
                 obj['source_key_share_holder_group_id'] = ApiClient.convertToType(data['source_key_share_holder_group_id'], 'String');
@@ -75,8 +75,8 @@ class TSSRequest {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
-            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
+        if (data['tss_request_id'] && !(typeof data['tss_request_id'] === 'string' || data['tss_request_id'] instanceof String)) {
+            throw new Error("Expected the field `tss_request_id` to be a primitive type in the JSON string but got " + data['tss_request_id']);
         }
         // ensure the json data is a string
         if (data['source_key_share_holder_group_id'] && !(typeof data['source_key_share_holder_group_id'] === 'string' || data['source_key_share_holder_group_id'] instanceof String)) {
@@ -97,9 +97,9 @@ class TSSRequest {
 
 /**
  * The TSS request ID.
- * @member {String} request_id
+ * @member {String} tss_request_id
  */
-TSSRequest.prototype['request_id'] = undefined;
+TSSRequest.prototype['tss_request_id'] = undefined;
 
 /**
  * The Source key share holder group ID.

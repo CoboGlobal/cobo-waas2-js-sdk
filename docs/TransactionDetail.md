@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **transactionId** | **String** | The transaction ID. | 
 **coboId** | **String** | The Cobo ID, which can be used to track a transaction. | [optional] 
 **requestId** | **String** | The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization. | [optional] 
+**walletId** | **String** | The wallet ID of the transaction. | [optional] 
 **type** | [**TransactionType**](TransactionType.md) |  | [optional] 
 **status** | [**TransactionStatus**](TransactionStatus.md) |  | 
 **subStatus** | [**TransactionSubStatus**](TransactionSubStatus.md) |  | [optional] 

@@ -139,6 +139,12 @@ TransferDestination.prototype['account_output'] = undefined;
 TransferDestination.prototype['utxo_outputs'] = undefined;
 
 /**
+ * The address used to receive the remaining funds or change from the transaction.
+ * @member {String} change_address
+ */
+TransferDestination.prototype['change_address'] = undefined;
+
+/**
  * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
  * @member {Boolean} force_internal
  */

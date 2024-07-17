@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **name** | **String** | The wallet name. | 
 **orgId** | **String** | The ID of the owning organization. | 
+**projectId** | **String** | The project ID. | [optional] 
 **vaultId** | **String** | The ID of the owning vault. | 
 **apikey** | **String** | The API key of your exchange account. | 
 **exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 

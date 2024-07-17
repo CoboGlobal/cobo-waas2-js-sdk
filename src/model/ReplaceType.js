@@ -19,13 +19,6 @@ import ApiClient from '../ApiClient';
 export default class ReplaceType {
     
         /**
-         * value: "Cancel"
-         * @const
-         */
-        "Cancel" = "Cancel";
-
-    
-        /**
          * value: "Drop"
          * @const
          */

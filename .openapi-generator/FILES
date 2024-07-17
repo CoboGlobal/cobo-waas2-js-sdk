@@ -169,6 +169,7 @@ docs/TransactionDestinationType.md
 docs/TransactionDetail.md
 docs/TransactionDetailAllOfTimeline.md
 docs/TransactionDetails.md
+docs/TransactionEventData.md
 docs/TransactionEvmEip1559Fee.md
 docs/TransactionEvmLegacyFee.md
 docs/TransactionExchangeWalletDestination.md
@@ -221,6 +222,8 @@ docs/WalletType.md
 docs/WalletsApi.md
 docs/WalletsMPCWalletsApi.md
 docs/WebhookEvent.md
+docs/WebhookEventData.md
+docs/WebhookEventDataType.md
 docs/WebhookEventLog.md
 docs/WebhookEventStatus.md
 docs/WebhookEventType.md
@@ -400,6 +403,7 @@ src/model/TransactionDestinationType.js
 src/model/TransactionDetail.js
 src/model/TransactionDetailAllOfTimeline.js
 src/model/TransactionDetails.js
+src/model/TransactionEventData.js
 src/model/TransactionEvmEip1559Fee.js
 src/model/TransactionEvmLegacyFee.js
 src/model/TransactionExchangeWalletDestination.js
@@ -449,6 +453,8 @@ src/model/WalletInfo.js
 src/model/WalletSubtype.js
 src/model/WalletType.js
 src/model/WebhookEvent.js
+src/model/WebhookEventData.js
+src/model/WebhookEventDataType.js
 src/model/WebhookEventLog.js
 src/model/WebhookEventStatus.js
 src/model/WebhookEventType.js
@@ -621,6 +627,7 @@ test/model/TransactionDestinationType.spec.js
 test/model/TransactionDetail.spec.js
 test/model/TransactionDetailAllOfTimeline.spec.js
 test/model/TransactionDetails.spec.js
+test/model/TransactionEventData.spec.js
 test/model/TransactionEvmEip1559Fee.spec.js
 test/model/TransactionEvmLegacyFee.spec.js
 test/model/TransactionExchangeWalletDestination.spec.js
@@ -670,6 +677,8 @@ test/model/WalletInfo.spec.js
 test/model/WalletSubtype.spec.js
 test/model/WalletType.spec.js
 test/model/WebhookEvent.spec.js
+test/model/WebhookEventData.spec.js
+test/model/WebhookEventDataType.spec.js
 test/model/WebhookEventLog.spec.js
 test/model/WebhookEventStatus.spec.js
 test/model/WebhookEventType.spec.js

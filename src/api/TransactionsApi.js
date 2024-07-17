@@ -382,22 +382,21 @@ export default class TransactionsApi {
      * This operation retrieves all the transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamps. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} [requestId] The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param {String} [coboId] The Cobo ID, which can be used to track a transaction.
-     * @param {String} [transactionId] The transaction ID.
-     * @param {String} [transactionHash] The transaction hash.
-     * @param {String} [type] The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
-     * @param {Object} [status] The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
-     * @param {Object} [sourceType] The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
-     * @param {String} [sourceWalletId] The wallet ID of the transaction source.
-     * @param {String} [sourceAddress] The address of the transaction source.
-     * @param {Object} [destinationType] The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
-     * @param {String} [destinationWalletId] The wallet ID of the transaction destination.
-     * @param {String} [destinationAddress] The address of the transaction destination. If the address includes a memo, use `|` to append the memo to the address. For example, if the address is `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku` and the memo is `82840924`, you need to provide `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924` as the property value. 
+     * @param {String} [coboIds] A list of Cobo IDs, separated by comma. The Cobo ID, which can be used to track a transaction.
+     * @param {String} [transactionIds] A list of transaction ID, separated by comma. The transaction ID.
+     * @param {String} [transactionHashes] A list of transaction hash, separated by comma. The transaction hash.
+     * @param {String} [types] A list of transaction types, separated by comma. The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
+     * @param {String} [statuses] A list of transaction statuses, separated by comma. The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
+     * @param {String} [walletIds] A list of wallet IDs, separated by comma.
      * @param {String} [chainIds] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} [tokenIds] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param {String} [assetIds] A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
-     * @param {String} [vaultId] The vault ID.
-     * @param {String} [projectId] The MPC project ID.
+     * @param {String} [sourceTypes] A list of transaction sources, separated by comma. The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
+     * @param {String} [sourceAddresses] A list of addresses, separated by comma. The address of the transaction source.
+     * @param {String} [destinationTypes] A list of destination types, separated by comma. The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
+     * @param {String} [destinationAddresses] A list of addresses, separated by comma. The address of the transaction destination. If the address includes a memo, use `|` to append the memo to the address. For example, if the address is `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku` and the memo is `82840924`, you need to provide `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924` as the property value. 
+     * @param {String} [vaultId] The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
+     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
      * @param {Number} [minCreatedTimestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
      * @param {Number} [maxCreatedTimestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
@@ -413,20 +412,19 @@ export default class TransactionsApi {
       };
       let queryParams = {
         'request_id': opts['requestId'],
-        'cobo_id': opts['coboId'],
-        'transaction_id': opts['transactionId'],
-        'transaction_hash': opts['transactionHash'],
-        'type': opts['type'],
-        'status': opts['status'],
-        'source_type': opts['sourceType'],
-        'source_wallet_id': opts['sourceWalletId'],
-        'source_address': opts['sourceAddress'],
-        'destination_type': opts['destinationType'],
-        'destination_wallet_id': opts['destinationWalletId'],
-        'destination_address': opts['destinationAddress'],
+        'cobo_ids': opts['coboIds'],
+        'transaction_ids': opts['transactionIds'],
+        'transaction_hashes': opts['transactionHashes'],
+        'types': opts['types'],
+        'statuses': opts['statuses'],
+        'wallet_ids': opts['walletIds'],
         'chain_ids': opts['chainIds'],
         'token_ids': opts['tokenIds'],
         'asset_ids': opts['assetIds'],
+        'source_types': opts['sourceTypes'],
+        'source_addresses': opts['sourceAddresses'],
+        'destination_types': opts['destinationTypes'],
+        'destination_addresses': opts['destinationAddresses'],
         'vault_id': opts['vaultId'],
         'project_id': opts['projectId'],
         'min_created_timestamp': opts['minCreatedTimestamp'],
@@ -456,22 +454,21 @@ export default class TransactionsApi {
      * This operation retrieves all the transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamps. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.requestId The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param {String} opts.coboId The Cobo ID, which can be used to track a transaction.
-     * @param {String} opts.transactionId The transaction ID.
-     * @param {String} opts.transactionHash The transaction hash.
-     * @param {String} opts.type The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
-     * @param {Object} opts.status The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
-     * @param {Object} opts.sourceType The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
-     * @param {String} opts.sourceWalletId The wallet ID of the transaction source.
-     * @param {String} opts.sourceAddress The address of the transaction source.
-     * @param {Object} opts.destinationType The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
-     * @param {String} opts.destinationWalletId The wallet ID of the transaction destination.
-     * @param {String} opts.destinationAddress The address of the transaction destination. If the address includes a memo, use `|` to append the memo to the address. For example, if the address is `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku` and the memo is `82840924`, you need to provide `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924` as the property value. 
+     * @param {String} opts.coboIds A list of Cobo IDs, separated by comma. The Cobo ID, which can be used to track a transaction.
+     * @param {String} opts.transactionIds A list of transaction ID, separated by comma. The transaction ID.
+     * @param {String} opts.transactionHashes A list of transaction hash, separated by comma. The transaction hash.
+     * @param {String} opts.types A list of transaction types, separated by comma. The transaction type. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
+     * @param {String} opts.statuses A list of transaction statuses, separated by comma. The transaction status. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
+     * @param {String} opts.walletIds A list of wallet IDs, separated by comma.
      * @param {String} opts.chainIds A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} opts.tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param {String} opts.assetIds A list of asset IDs, separated by comma. (This concept applies to Exchange Wallets only) An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
-     * @param {String} opts.vaultId The vault ID.
-     * @param {String} opts.projectId The MPC project ID.
+     * @param {String} opts.sourceTypes A list of transaction sources, separated by comma. The type of transaction source. Possible values include:   - `Address`: An external address.   - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallet (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet.   - `FeeStation`: A Fee Station. 
+     * @param {String} opts.sourceAddresses A list of addresses, separated by comma. The address of the transaction source.
+     * @param {String} opts.destinationTypes A list of destination types, separated by comma. The transaction destination type. Possible values include:   - `Address`: An external address.    - `ContractCall`: A transaction that interacts with a smart contract.   - `MessageSign`: A transaction that signs a message.    - `CustodialWallet`: A Custodial Wallet.   - `MPCWallet`: An MPC Wallet.   - `SafeWallet`: A Smart Contract Wallets (Safe{Wallet}).   - `ExchangeWallet`: An Exchange Wallet. 
+     * @param {String} opts.destinationAddresses A list of addresses, separated by comma. The address of the transaction destination. If the address includes a memo, use `|` to append the memo to the address. For example, if the address is `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku` and the memo is `82840924`, you need to provide `19AR6YWEGbSoY8UT9Ksy9WrmrZPD5sL4Ku|82840924` as the property value. 
+     * @param {String} opts.vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
+     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
      * @param {Number} opts.minCreatedTimestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
      * @param {Number} opts.maxCreatedTimestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
