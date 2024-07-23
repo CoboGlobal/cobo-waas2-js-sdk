@@ -19,7 +19,7 @@ import TSSGroups from './TSSGroups';
 /**
  * The KeyShareHolderGroup model module.
  * @module model/KeyShareHolderGroup
- * @version 0.4.1
+ * @version 0.4.4
  */
 class KeyShareHolderGroup {
     /**
@@ -119,7 +119,7 @@ class KeyShareHolderGroup {
 
 
 /**
- * The key share group ID.
+ * The key share holder group ID.
  * @member {String} key_share_holder_group_id
  */
 KeyShareHolderGroup.prototype['key_share_holder_group_id'] = undefined;
@@ -140,13 +140,13 @@ KeyShareHolderGroup.prototype['tss_key_share_groups'] = undefined;
 KeyShareHolderGroup.prototype['key_share_holders'] = undefined;
 
 /**
- * The number of key share holders in this key share group.
+ * The number of key share holders in this key share holder group.
  * @member {Number} node_count
  */
 KeyShareHolderGroup.prototype['node_count'] = undefined;
 
 /**
- * The number of key share holders required to approve each operation in this key share group.
+ * The number of key share holders required to approve each operation in this key share holder group.
  * @member {Number} threshold
  */
 KeyShareHolderGroup.prototype['threshold'] = undefined;
@@ -157,7 +157,7 @@ KeyShareHolderGroup.prototype['threshold'] = undefined;
 KeyShareHolderGroup.prototype['status'] = undefined;
 
 /**
- * The key share group's creation time in Unix timestamp format, measured in milliseconds.
+ * The key share holder group's creation time in Unix timestamp format, measured in milliseconds.
  * @member {Number} create_timestamp
  */
 KeyShareHolderGroup.prototype['create_timestamp'] = undefined;

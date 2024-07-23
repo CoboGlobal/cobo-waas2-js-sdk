@@ -131,6 +131,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property minStakeBlocks (base name: "min_stake_blocks")', function() {
+      // uncomment below and update the code to test the property minStakeBlocks
+      //var instance = new CoboWaas2JsApi.PoolDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxStakeBlocks (base name: "max_stake_blocks")', function() {
+      // uncomment below and update the code to test the property maxStakeBlocks
+      //var instance = new CoboWaas2JsApi.PoolDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property validatorsInfo (base name: "validators_info")', function() {
       // uncomment below and update the code to test the property validatorsInfo
       //var instance = new CoboWaas2JsApi.PoolDetails();

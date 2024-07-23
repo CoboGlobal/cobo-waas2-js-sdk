@@ -12,13 +12,13 @@
 
 import ApiClient from '../ApiClient';
 import AddressTransferSource from './AddressTransferSource';
-import SafeTransferSourceAllOfDelegate from './SafeTransferSourceAllOfDelegate';
+import CoboSafeDelegate from './CoboSafeDelegate';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The SafeTransferSource model module.
  * @module model/SafeTransferSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class SafeTransferSource {
     /**
@@ -29,7 +29,7 @@ class SafeTransferSource {
      * @param sourceType {module:model/WalletSubtype} 
      * @param walletId {String} The wallet ID.
      * @param address {String} The wallet address.
-     * @param delegate {module:model/SafeTransferSourceAllOfDelegate} 
+     * @param delegate {module:model/CoboSafeDelegate} 
      */
     constructor(sourceType, walletId, address, delegate) { 
         AddressTransferSource.initialize(this, sourceType, walletId, address);
@@ -70,7 +70,7 @@ class SafeTransferSource {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('delegate')) {
-                obj['delegate'] = SafeTransferSourceAllOfDelegate.constructFromObject(data['delegate']);
+                obj['delegate'] = CoboSafeDelegate.constructFromObject(data['delegate']);
             }
         }
         return obj;
@@ -98,7 +98,7 @@ class SafeTransferSource {
         }
         // validate the optional field `delegate`
         if (data['delegate']) { // data not null
-          SafeTransferSourceAllOfDelegate.validateJSON(data['delegate']);
+          CoboSafeDelegate.validateJSON(data['delegate']);
         }
 
         return true;
@@ -127,7 +127,7 @@ SafeTransferSource.prototype['wallet_id'] = undefined;
 SafeTransferSource.prototype['address'] = undefined;
 
 /**
- * @member {module:model/SafeTransferSourceAllOfDelegate} delegate
+ * @member {module:model/CoboSafeDelegate} delegate
  */
 SafeTransferSource.prototype['delegate'] = undefined;
 

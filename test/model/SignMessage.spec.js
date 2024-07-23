@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property categoryNames (base name: "category_names")', function() {
+      // uncomment below and update the code to test the property categoryNames
+      //var instance = new CoboWaas2JsApi.SignMessage();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

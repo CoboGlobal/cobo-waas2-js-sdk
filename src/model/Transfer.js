@@ -18,7 +18,7 @@ import TransferSource from './TransferSource';
 /**
  * The Transfer model module.
  * @module model/Transfer
- * @version 0.4.1
+ * @version 0.4.4
  */
 class Transfer {
     /**
@@ -27,7 +27,7 @@ class Transfer {
      * @alias module:model/Transfer
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      * @param source {module:model/TransferSource} 
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param destination {module:model/TransferDestination} 
      */
     constructor(requestId, source, tokenId, destination) { 
@@ -144,7 +144,7 @@ Transfer.prototype['request_id'] = undefined;
 Transfer.prototype['source'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 Transfer.prototype['token_id'] = undefined;

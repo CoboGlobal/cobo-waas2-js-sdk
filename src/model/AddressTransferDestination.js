@@ -12,13 +12,13 @@
 
 import ApiClient from '../ApiClient';
 import AddressTransferDestinationAccountOutput from './AddressTransferDestinationAccountOutput';
-import AddressTransferDestinationUtxoOutputs from './AddressTransferDestinationUtxoOutputs';
+import AddressTransferDestinationUtxoOutputsInner from './AddressTransferDestinationUtxoOutputsInner';
 import TransferDestinationType from './TransferDestinationType';
 
 /**
  * The AddressTransferDestination model module.
  * @module model/AddressTransferDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class AddressTransferDestination {
     /**
@@ -59,7 +59,7 @@ class AddressTransferDestination {
                 obj['account_output'] = AddressTransferDestinationAccountOutput.constructFromObject(data['account_output']);
             }
             if (data.hasOwnProperty('utxo_outputs')) {
-                obj['utxo_outputs'] = AddressTransferDestinationUtxoOutputs.constructFromObject(data['utxo_outputs']);
+                obj['utxo_outputs'] = ApiClient.convertToType(data['utxo_outputs'], [AddressTransferDestinationUtxoOutputsInner]);
             }
             if (data.hasOwnProperty('change_address')) {
                 obj['change_address'] = ApiClient.convertToType(data['change_address'], 'String');
@@ -90,9 +90,15 @@ class AddressTransferDestination {
         if (data['account_output']) { // data not null
           AddressTransferDestinationAccountOutput.validateJSON(data['account_output']);
         }
-        // validate the optional field `utxo_outputs`
         if (data['utxo_outputs']) { // data not null
-          AddressTransferDestinationUtxoOutputs.validateJSON(data['utxo_outputs']);
+            // ensure the json data is an array
+            if (!Array.isArray(data['utxo_outputs'])) {
+                throw new Error("Expected the field `utxo_outputs` to be an array in the JSON data but got " + data['utxo_outputs']);
+            }
+            // validate the optional field `utxo_outputs` (array)
+            for (const item of data['utxo_outputs']) {
+                AddressTransferDestinationUtxoOutputsInner.validateJSON(item);
+            };
         }
         // ensure the json data is a string
         if (data['change_address'] && !(typeof data['change_address'] === 'string' || data['change_address'] instanceof String)) {
@@ -118,7 +124,7 @@ AddressTransferDestination.prototype['destination_type'] = undefined;
 AddressTransferDestination.prototype['account_output'] = undefined;
 
 /**
- * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
+ * @member {Array.<module:model/AddressTransferDestinationUtxoOutputsInner>} utxo_outputs
  */
 AddressTransferDestination.prototype['utxo_outputs'] = undefined;
 

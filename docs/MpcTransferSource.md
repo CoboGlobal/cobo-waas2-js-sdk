@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sourceType** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **walletId** | **String** | The wallet ID. | 
-**accountInput** | [**TransactionMPCWalletSourceAccountInput**](TransactionMPCWalletSourceAccountInput.md) |  | [optional] 
-**utxoInputs** | [**MpcTransferSourceAllOfUtxoInputs**](MpcTransferSourceAllOfUtxoInputs.md) |  | [optional] 
+**address** | **String** | The wallet address. | [optional] 
+**includedUtxos** | [**[MpcTransferSourceAllOfIncludedUtxos]**](MpcTransferSourceAllOfIncludedUtxos.md) |  | [optional] 
+**excludedUtxos** | [**[MpcTransferSourceAllOfExcludedUtxos]**](MpcTransferSourceAllOfExcludedUtxos.md) |  | [optional] 
 **mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
 
 

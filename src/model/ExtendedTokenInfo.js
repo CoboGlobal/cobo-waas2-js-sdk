@@ -16,7 +16,7 @@ import TokenInfo from './TokenInfo';
 /**
  * The ExtendedTokenInfo model module.
  * @module model/ExtendedTokenInfo
- * @version 0.4.1
+ * @version 0.4.4
  */
 class ExtendedTokenInfo {
     /**
@@ -24,7 +24,7 @@ class ExtendedTokenInfo {
      * The token information, including whether the token can be deposited or withdrawn.
      * @alias module:model/ExtendedTokenInfo
      * @implements module:model/TokenInfo
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param chainId {String} The ID of the chain on which the token operates.
      */
     constructor(tokenId, chainId) { 
@@ -145,7 +145,7 @@ class ExtendedTokenInfo {
 ExtendedTokenInfo.RequiredProperties = ["token_id", "chain_id"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 ExtendedTokenInfo.prototype['token_id'] = undefined;
@@ -215,7 +215,7 @@ ExtendedTokenInfo.prototype['can_withdraw'] = false;
 
 // Implement TokenInfo interface:
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TokenInfo.prototype['token_id'] = undefined;

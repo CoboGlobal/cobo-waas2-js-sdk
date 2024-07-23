@@ -12,19 +12,19 @@
 
 import ApiClient from '../ApiClient';
 import BaseTransferSource from './BaseTransferSource';
+import CoboSafeDelegate from './CoboSafeDelegate';
 import ExchangeTransferSource from './ExchangeTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
-import MpcTransferSourceAllOfUtxoInputs from './MpcTransferSourceAllOfUtxoInputs';
+import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import SafeTransferSource from './SafeTransferSource';
-import SafeTransferSourceAllOfDelegate from './SafeTransferSourceAllOfDelegate';
-import TransactionMPCWalletSourceAccountInput from './TransactionMPCWalletSourceAccountInput';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The TransferSource model module.
  * @module model/TransferSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransferSource {
     /**
@@ -171,14 +171,20 @@ TransferSource.prototype['source_type'] = undefined;
 TransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input
+ * The wallet address.
+ * @member {String} address
  */
-TransferSource.prototype['account_input'] = undefined;
+TransferSource.prototype['address'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceAllOfUtxoInputs} utxo_inputs
+ * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
  */
-TransferSource.prototype['utxo_inputs'] = undefined;
+TransferSource.prototype['included_utxos'] = undefined;
+
+/**
+ * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
+ */
+TransferSource.prototype['excluded_utxos'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
@@ -186,13 +192,7 @@ TransferSource.prototype['utxo_inputs'] = undefined;
 TransferSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 /**
- * The wallet address.
- * @member {String} address
- */
-TransferSource.prototype['address'] = undefined;
-
-/**
- * @member {module:model/SafeTransferSourceAllOfDelegate} delegate
+ * @member {module:model/CoboSafeDelegate} delegate
  */
 TransferSource.prototype['delegate'] = undefined;
 

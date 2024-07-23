@@ -11,13 +11,13 @@
  */
 
 import ApiClient from '../ApiClient';
-import SignMessageDestination from './SignMessageDestination';
-import SignMessageSource from './SignMessageSource';
+import MessageSignDestination from './MessageSignDestination';
+import MessageSignSource from './MessageSignSource';
 
 /**
  * The SignMessage model module.
  * @module model/SignMessage
- * @version 0.4.1
+ * @version 0.4.4
  */
 class SignMessage {
     /**
@@ -25,9 +25,9 @@ class SignMessage {
      * The information about a transaction that signs a message. You can provide the message either as raw data or as structured data.
      * @alias module:model/SignMessage
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
-     * @param source {module:model/SignMessageSource} 
-     * @param destination {module:model/SignMessageDestination} 
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param source {module:model/MessageSignSource} 
+     * @param destination {module:model/MessageSignDestination} 
      */
     constructor(requestId, chainId, source, destination) { 
         
@@ -64,13 +64,16 @@ class SignMessage {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = SignMessageSource.constructFromObject(data['source']);
+                obj['source'] = MessageSignSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = SignMessageDestination.constructFromObject(data['destination']);
+                obj['destination'] = MessageSignDestination.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('category_names')) {
+                obj['category_names'] = ApiClient.convertToType(data['category_names'], ['String']);
             }
         }
         return obj;
@@ -98,15 +101,19 @@ class SignMessage {
         }
         // validate the optional field `source`
         if (data['source']) { // data not null
-          SignMessageSource.validateJSON(data['source']);
+          MessageSignSource.validateJSON(data['source']);
         }
         // validate the optional field `destination`
         if (data['destination']) { // data not null
-          SignMessageDestination.validateJSON(data['destination']);
+          MessageSignDestination.validateJSON(data['destination']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['category_names'])) {
+            throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
         }
 
         return true;
@@ -124,18 +131,18 @@ SignMessage.RequiredProperties = ["request_id", "chain_id", "source", "destinati
 SignMessage.prototype['request_id'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 SignMessage.prototype['chain_id'] = undefined;
 
 /**
- * @member {module:model/SignMessageSource} source
+ * @member {module:model/MessageSignSource} source
  */
 SignMessage.prototype['source'] = undefined;
 
 /**
- * @member {module:model/SignMessageDestination} destination
+ * @member {module:model/MessageSignDestination} destination
  */
 SignMessage.prototype['destination'] = undefined;
 
@@ -144,6 +151,12 @@ SignMessage.prototype['destination'] = undefined;
  * @member {String} description
  */
 SignMessage.prototype['description'] = undefined;
+
+/**
+ * The custom category for you to identify your transactions.
+ * @member {Array.<String>} category_names
+ */
+SignMessage.prototype['category_names'] = undefined;
 
 
 

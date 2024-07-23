@@ -16,7 +16,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionMessageSignDestination model module.
  * @module model/TransactionMessageSignDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionMessageSignDestination {
     /**

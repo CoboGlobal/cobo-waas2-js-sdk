@@ -16,7 +16,7 @@ import ExchangeId from './ExchangeId';
 import ExchangeWalletInfo from './ExchangeWalletInfo';
 import ExchangeWalletInfoAllOfSubAccounts from './ExchangeWalletInfoAllOfSubAccounts';
 import MPCWalletInfo from './MPCWalletInfo';
-import SafeWalletAllOfInitiator from './SafeWalletAllOfInitiator';
+import SmartContractInitiator from './SmartContractInitiator';
 import SmartContractWalletInfo from './SmartContractWalletInfo';
 import SmartContractWalletType from './SmartContractWalletType';
 import WalletSubtype from './WalletSubtype';
@@ -25,7 +25,7 @@ import WalletType from './WalletType';
 /**
  * The WalletInfo model module.
  * @module model/WalletInfo
- * @version 0.4.1
+ * @version 0.4.4
  */
 class WalletInfo {
     /**

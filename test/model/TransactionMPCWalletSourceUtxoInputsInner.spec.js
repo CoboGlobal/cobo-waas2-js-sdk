@@ -59,6 +59,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property voutN (base name: "vout_n")', function() {
+      // uncomment below and update the code to test the property voutN
+      //var instance = new CoboWaas2JsApi.TransactionMPCWalletSourceUtxoInputsInner();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -14,9 +14,9 @@ import ApiClient from '../ApiClient';
 import CreateCustodialWallet from './CreateCustodialWallet';
 import CreateExchangeWallet from './CreateExchangeWallet';
 import CreateMpcWallet from './CreateMpcWallet';
-import CreateSafeWalletAllOfInitiator from './CreateSafeWalletAllOfInitiator';
 import CreateSmartContractWallet from './CreateSmartContractWallet';
 import ExchangeId from './ExchangeId';
+import SmartContractInitiator from './SmartContractInitiator';
 import SmartContractWalletType from './SmartContractWalletType';
 import WalletSubtype from './WalletSubtype';
 import WalletType from './WalletType';
@@ -24,7 +24,7 @@ import WalletType from './WalletType';
 /**
  * The CreatedWallet model module.
  * @module model/CreatedWallet
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreatedWallet {
     /**
@@ -176,7 +176,7 @@ CreatedWallet.prototype['wallet_type'] = undefined;
 CreatedWallet.prototype['wallet_subtype'] = undefined;
 
 /**
- * The ID of the owning vault. You can call [List all vaults](/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
+ * The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
  * @member {String} vault_id
  */
 CreatedWallet.prototype['vault_id'] = undefined;

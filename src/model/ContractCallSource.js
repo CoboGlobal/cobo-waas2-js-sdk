@@ -11,15 +11,16 @@
  */
 
 import ApiClient from '../ApiClient';
+import CoboSafeDelegate from './CoboSafeDelegate';
+import ContractCallSourceType from './ContractCallSourceType';
 import MpcContractCallSource from './MpcContractCallSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import SafeContractCallSource from './SafeContractCallSource';
-import SafeContractCallSourceAllOfDelegate from './SafeContractCallSourceAllOfDelegate';
 
 /**
  * The ContractCallSource model module.
  * @module model/ContractCallSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class ContractCallSource {
     /**
@@ -123,8 +124,7 @@ class ContractCallSource {
 }
 
 /**
- * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
- * @member {module:model/ContractCallSource.SourceTypeEnum} source_type
+ * @member {module:model/ContractCallSourceType} source_type
  */
 ContractCallSource.prototype['source_type'] = undefined;
 
@@ -146,7 +146,7 @@ ContractCallSource.prototype['address'] = undefined;
 ContractCallSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
 /**
- * @member {module:model/SafeContractCallSourceAllOfDelegate} delegate
+ * @member {module:model/CoboSafeDelegate} delegate
  */
 ContractCallSource.prototype['delegate'] = undefined;
 

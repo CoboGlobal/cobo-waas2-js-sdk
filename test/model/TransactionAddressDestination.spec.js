@@ -83,6 +83,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property changeAddress (base name: "change_address")', function() {
+      // uncomment below and update the code to test the property changeAddress
+      //var instance = new CoboWaas2JsApi.TransactionAddressDestination();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

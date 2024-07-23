@@ -12,27 +12,26 @@
 
 import ApiClient from '../ApiClient';
 import CreateStakeActivityExtra from './CreateStakeActivityExtra';
+import StakingSource from './StakingSource';
 import TransactionTransferFee from './TransactionTransferFee';
 
 /**
  * The CreateStakeActivity model module.
  * @module model/CreateStakeActivity
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreateStakeActivity {
     /**
      * Constructs a new <code>CreateStakeActivity</code>.
      * @alias module:model/CreateStakeActivity
-     * @param walletId {String} The id of the wallet to stake.
-     * @param address {String} The staker wallet address.
      * @param poolId {String} The id of the staking pool
      * @param amount {String} The amount to stake
      * @param fee {module:model/TransactionTransferFee} 
      * @param extra {module:model/CreateStakeActivityExtra} 
      */
-    constructor(walletId, address, poolId, amount, fee, extra) { 
+    constructor(poolId, amount, fee, extra) { 
         
-        CreateStakeActivity.initialize(this, walletId, address, poolId, amount, fee, extra);
+        CreateStakeActivity.initialize(this, poolId, amount, fee, extra);
     }
 
     /**
@@ -40,9 +39,7 @@ class CreateStakeActivity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, address, poolId, amount, fee, extra) { 
-        obj['wallet_id'] = walletId;
-        obj['address'] = address;
+    static initialize(obj, poolId, amount, fee, extra) { 
         obj['pool_id'] = poolId;
         obj['amount'] = amount;
         obj['fee'] = fee;
@@ -60,11 +57,8 @@ class CreateStakeActivity {
         if (data) {
             obj = obj || new CreateStakeActivity();
 
-            if (data.hasOwnProperty('wallet_id')) {
-                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
-            }
-            if (data.hasOwnProperty('address')) {
-                obj['address'] = ApiClient.convertToType(data['address'], 'String');
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = StakingSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('pool_id')) {
                 obj['pool_id'] = ApiClient.convertToType(data['pool_id'], 'String');
@@ -94,13 +88,9 @@ class CreateStakeActivity {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
-            throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
-        }
-        // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
-            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          StakingSource.validateJSON(data['source']);
         }
         // ensure the json data is a string
         if (data['pool_id'] && !(typeof data['pool_id'] === 'string' || data['pool_id'] instanceof String)) {
@@ -125,19 +115,12 @@ class CreateStakeActivity {
 
 }
 
-CreateStakeActivity.RequiredProperties = ["wallet_id", "address", "pool_id", "amount", "fee", "extra"];
+CreateStakeActivity.RequiredProperties = ["pool_id", "amount", "fee", "extra"];
 
 /**
- * The id of the wallet to stake.
- * @member {String} wallet_id
+ * @member {module:model/StakingSource} source
  */
-CreateStakeActivity.prototype['wallet_id'] = undefined;
-
-/**
- * The staker wallet address.
- * @member {String} address
- */
-CreateStakeActivity.prototype['address'] = undefined;
+CreateStakeActivity.prototype['source'] = undefined;
 
 /**
  * The id of the staking pool

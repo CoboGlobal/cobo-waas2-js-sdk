@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AddressTransferDestinationAccountOutput model module.
  * @module model/AddressTransferDestinationAccountOutput
- * @version 0.4.1
+ * @version 0.4.4
  */
 class AddressTransferDestinationAccountOutput {
     /**

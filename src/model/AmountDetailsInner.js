@@ -16,7 +16,7 @@ import AmountStatus from './AmountStatus';
 /**
  * The AmountDetailsInner model module.
  * @module model/AmountDetailsInner
- * @version 0.4.1
+ * @version 0.4.4
  */
 class AmountDetailsInner {
     /**

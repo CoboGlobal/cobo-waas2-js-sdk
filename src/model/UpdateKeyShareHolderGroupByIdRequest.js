@@ -15,13 +15,13 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateKeyShareHolderGroupByIdRequest model module.
  * @module model/UpdateKeyShareHolderGroupByIdRequest
- * @version 0.4.1
+ * @version 0.4.4
  */
 class UpdateKeyShareHolderGroupByIdRequest {
     /**
      * Constructs a new <code>UpdateKeyShareHolderGroupByIdRequest</code>.
      * @alias module:model/UpdateKeyShareHolderGroupByIdRequest
-     * @param updateKeyShareHolderGroupAction {module:model/UpdateKeyShareHolderGroupByIdRequest.UpdateKeyShareHolderGroupActionEnum} The available actions of key share group update. Possible values include: - `UpgradeToMainGroup`: This upgrades an active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). The original Main Group will be permanently deleted. 
+     * @param updateKeyShareHolderGroupAction {module:model/UpdateKeyShareHolderGroupByIdRequest.UpdateKeyShareHolderGroupActionEnum} The available actions of key share holder group update. Possible values include: - `UpgradeToMainGroup`: This upgrades an active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). The original Main Group will be permanently deleted. 
      */
     constructor(updateKeyShareHolderGroupAction) { 
         
@@ -81,7 +81,7 @@ class UpdateKeyShareHolderGroupByIdRequest {
 UpdateKeyShareHolderGroupByIdRequest.RequiredProperties = ["update_key_share_holder_group_action"];
 
 /**
- * The available actions of key share group update. Possible values include: - `UpgradeToMainGroup`: This upgrades an active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). The original Main Group will be permanently deleted. 
+ * The available actions of key share holder group update. Possible values include: - `UpgradeToMainGroup`: This upgrades an active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). The original Main Group will be permanently deleted. 
  * @member {module:model/UpdateKeyShareHolderGroupByIdRequest.UpdateKeyShareHolderGroupActionEnum} update_key_share_holder_group_action
  */
 UpdateKeyShareHolderGroupByIdRequest.prototype['update_key_share_holder_group_action'] = undefined;

@@ -15,13 +15,13 @@ import ApiClient from '../ApiClient';
 /**
  * The LockUtxosRequestUtxosInner model module.
  * @module model/LockUtxosRequestUtxosInner
- * @version 0.4.1
+ * @version 0.4.4
  */
 class LockUtxosRequestUtxosInner {
     /**
      * Constructs a new <code>LockUtxosRequestUtxosInner</code>.
      * @alias module:model/LockUtxosRequestUtxosInner
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param txHash {String} The transaction hash.
      * @param voutN {Number} The output index of the UTXO.
      */
@@ -95,7 +95,7 @@ class LockUtxosRequestUtxosInner {
 LockUtxosRequestUtxosInner.RequiredProperties = ["token_id", "tx_hash", "vout_n"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 LockUtxosRequestUtxosInner.prototype['token_id'] = undefined;

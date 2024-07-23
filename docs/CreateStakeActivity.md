@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | The id of the wallet to stake. | 
-**address** | **String** | The staker wallet address. | 
+**source** | [**StakingSource**](StakingSource.md) |  | [optional] 
 **poolId** | **String** | The id of the staking pool | 
 **amount** | **String** | The amount to stake | 
 **fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | 

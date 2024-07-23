@@ -12,13 +12,14 @@
 
 import ApiClient from '../ApiClient';
 import ActivityStatus from './ActivityStatus';
+import ActivityTimeline from './ActivityTimeline';
 import ActivityType from './ActivityType';
 import TransactionTransferFee from './TransactionTransferFee';
 
 /**
  * The Activity model module.
  * @module model/Activity
- * @version 0.4.1
+ * @version 0.4.4
  */
 class Activity {
     /**
@@ -26,12 +27,13 @@ class Activity {
      * The staking activity.
      * @alias module:model/Activity
      * @param poolId {String} The id of the staking pool.
+     * @param tokenId {String} The id of the token.
      * @param amount {String} The amount of the activity.
      * @param status {module:model/ActivityStatus} 
      */
-    constructor(poolId, amount, status) { 
+    constructor(poolId, tokenId, amount, status) { 
         
-        Activity.initialize(this, poolId, amount, status);
+        Activity.initialize(this, poolId, tokenId, amount, status);
     }
 
     /**
@@ -39,8 +41,9 @@ class Activity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolId, amount, status) { 
+    static initialize(obj, poolId, tokenId, amount, status) { 
         obj['pool_id'] = poolId;
+        obj['token_id'] = tokenId;
         obj['amount'] = amount;
         obj['status'] = status;
     }
@@ -74,14 +77,20 @@ class Activity {
             if (data.hasOwnProperty('pool_id')) {
                 obj['pool_id'] = ApiClient.convertToType(data['pool_id'], 'String');
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
             if (data.hasOwnProperty('staking_id')) {
                 obj['staking_id'] = ApiClient.convertToType(data['staking_id'], 'String');
             }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
-            if (data.hasOwnProperty('tx_ids')) {
-                obj['tx_ids'] = ApiClient.convertToType(data['tx_ids'], ['String']);
+            if (data.hasOwnProperty('transaction_ids')) {
+                obj['transaction_ids'] = ApiClient.convertToType(data['transaction_ids'], ['String']);
+            }
+            if (data.hasOwnProperty('timeline')) {
+                obj['timeline'] = ApiClient.convertToType(data['timeline'], [ActivityTimeline]);
             }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
@@ -132,6 +141,10 @@ class Activity {
             throw new Error("Expected the field `pool_id` to be a primitive type in the JSON string but got " + data['pool_id']);
         }
         // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
         if (data['staking_id'] && !(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
             throw new Error("Expected the field `staking_id` to be a primitive type in the JSON string but got " + data['staking_id']);
         }
@@ -140,8 +153,18 @@ class Activity {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is an array
-        if (!Array.isArray(data['tx_ids'])) {
-            throw new Error("Expected the field `tx_ids` to be an array in the JSON data but got " + data['tx_ids']);
+        if (!Array.isArray(data['transaction_ids'])) {
+            throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+        }
+        if (data['timeline']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['timeline'])) {
+                throw new Error("Expected the field `timeline` to be an array in the JSON data but got " + data['timeline']);
+            }
+            // validate the optional field `timeline` (array)
+            for (const item of data['timeline']) {
+                ActivityTimeline.validateJSON(item);
+            };
         }
         // validate the optional field `fee`
         if (data['fee']) { // data not null
@@ -154,7 +177,7 @@ class Activity {
 
 }
 
-Activity.RequiredProperties = ["pool_id", "amount", "status"];
+Activity.RequiredProperties = ["pool_id", "token_id", "amount", "status"];
 
 /**
  * The unique id of the activity.
@@ -192,6 +215,12 @@ Activity.prototype['address'] = undefined;
 Activity.prototype['pool_id'] = undefined;
 
 /**
+ * The id of the token.
+ * @member {String} token_id
+ */
+Activity.prototype['token_id'] = undefined;
+
+/**
  * The id of the related staking.
  * @member {String} staking_id
  */
@@ -205,9 +234,15 @@ Activity.prototype['amount'] = undefined;
 
 /**
  * The related txs of the activity.
- * @member {Array.<String>} tx_ids
+ * @member {Array.<String>} transaction_ids
  */
-Activity.prototype['tx_ids'] = undefined;
+Activity.prototype['transaction_ids'] = undefined;
+
+/**
+ * The timeline of the activity.
+ * @member {Array.<module:model/ActivityTimeline>} timeline
+ */
+Activity.prototype['timeline'] = undefined;
 
 /**
  * @member {module:model/TransactionTransferFee} fee

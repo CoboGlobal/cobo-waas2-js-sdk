@@ -13,14 +13,14 @@
 import ApiClient from '../ApiClient';
 import AddressTransferDestination from './AddressTransferDestination';
 import AddressTransferDestinationAccountOutput from './AddressTransferDestinationAccountOutput';
-import AddressTransferDestinationUtxoOutputs from './AddressTransferDestinationUtxoOutputs';
+import AddressTransferDestinationUtxoOutputsInner from './AddressTransferDestinationUtxoOutputsInner';
 import ExchangeTransferDestination from './ExchangeTransferDestination';
 import TransferDestinationType from './TransferDestinationType';
 
 /**
  * The TransferDestination model module.
  * @module model/TransferDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransferDestination {
     /**
@@ -134,7 +134,7 @@ TransferDestination.prototype['destination_type'] = undefined;
 TransferDestination.prototype['account_output'] = undefined;
 
 /**
- * @member {module:model/AddressTransferDestinationUtxoOutputs} utxo_outputs
+ * @member {Array.<module:model/AddressTransferDestinationUtxoOutputsInner>} utxo_outputs
  */
 TransferDestination.prototype['utxo_outputs'] = undefined;
 

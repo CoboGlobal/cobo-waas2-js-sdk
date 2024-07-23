@@ -16,7 +16,7 @@ import MPCVaultType from './MPCVaultType';
 /**
  * The CreateMpcVaultRequest model module.
  * @module model/CreateMpcVaultRequest
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreateMpcVaultRequest {
     /**
@@ -94,7 +94,7 @@ class CreateMpcVaultRequest {
 CreateMpcVaultRequest.RequiredProperties = ["name", "vault_type"];
 
 /**
- * The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).  **Notes:** 1. If you set `vault_type` to `OrgControlled`, the value of `project_id` will be ignored. 2. If you set `vault_type` to `UserControlled`, then `project_id` is required. 
+ * The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).  **Notes:** 1. If you set `vault_type` to `OrgControlled`, the value of `project_id` will be ignored. 2. If you set `vault_type` to `UserControlled`, then `project_id` is required. 
  * @member {String} project_id
  */
 CreateMpcVaultRequest.prototype['project_id'] = undefined;

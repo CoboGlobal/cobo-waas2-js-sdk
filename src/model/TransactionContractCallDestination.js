@@ -16,7 +16,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionContractCallDestination model module.
  * @module model/TransactionContractCallDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionContractCallDestination {
     /**

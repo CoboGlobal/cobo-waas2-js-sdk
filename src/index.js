@@ -13,15 +13,16 @@
 import Env from "./Env";
 import ApiClient from './ApiClient';
 import Activity from './model/Activity';
+import ActivityAction from './model/ActivityAction';
 import ActivityInitiator from './model/ActivityInitiator';
 import ActivityStatus from './model/ActivityStatus';
+import ActivityTimeline from './model/ActivityTimeline';
 import ActivityType from './model/ActivityType';
 import AddressEncoding from './model/AddressEncoding';
 import AddressInfo from './model/AddressInfo';
 import AddressTransferDestination from './model/AddressTransferDestination';
 import AddressTransferDestinationAccountOutput from './model/AddressTransferDestinationAccountOutput';
-import AddressTransferDestinationUtxoOutputs from './model/AddressTransferDestinationUtxoOutputs';
-import AddressTransferDestinationUtxoOutputsOutputsInner from './model/AddressTransferDestinationUtxoOutputsOutputsInner';
+import AddressTransferDestinationUtxoOutputsInner from './model/AddressTransferDestinationUtxoOutputsInner';
 import AddressTransferSource from './model/AddressTransferSource';
 import AmountDetailsInner from './model/AmountDetailsInner';
 import AmountStatus from './model/AmountStatus';
@@ -35,8 +36,12 @@ import BaseStakeExtra from './model/BaseStakeExtra';
 import BaseTransferSource from './model/BaseTransferSource';
 import ChainInfo from './model/ChainInfo';
 import CheckAddressValidity200Response from './model/CheckAddressValidity200Response';
+import CoboSafeDelegate from './model/CoboSafeDelegate';
 import ContractCall from './model/ContractCall';
+import ContractCallDestination from './model/ContractCallDestination';
+import ContractCallDestinationType from './model/ContractCallDestinationType';
 import ContractCallSource from './model/ContractCallSource';
+import ContractCallSourceType from './model/ContractCallSourceType';
 import CreateAddressRequest from './model/CreateAddressRequest';
 import CreateCustodialWallet from './model/CreateCustodialWallet';
 import CreateExchangeWallet from './model/CreateExchangeWallet';
@@ -46,7 +51,6 @@ import CreateMpcProjectRequest from './model/CreateMpcProjectRequest';
 import CreateMpcVaultRequest from './model/CreateMpcVaultRequest';
 import CreateMpcWallet from './model/CreateMpcWallet';
 import CreateSafeWallet from './model/CreateSafeWallet';
-import CreateSafeWalletAllOfInitiator from './model/CreateSafeWalletAllOfInitiator';
 import CreateSmartContractWallet from './model/CreateSmartContractWallet';
 import CreateStakeActivity from './model/CreateStakeActivity';
 import CreateStakeActivityExtra from './model/CreateStakeActivityExtra';
@@ -69,12 +73,14 @@ import EndpointStatus from './model/EndpointStatus';
 import ErrorResponse from './model/ErrorResponse';
 import EstimateFee from './model/EstimateFee';
 import EstimateFeeContractCall from './model/EstimateFeeContractCall';
-import EstimateFeeContractCallDestination from './model/EstimateFeeContractCallDestination';
 import EstimateFeeTransfer from './model/EstimateFeeTransfer';
 import EstimateStakeFee from './model/EstimateStakeFee';
 import EstimateUnstakeFee from './model/EstimateUnstakeFee';
 import EstimateWithdrawFee from './model/EstimateWithdrawFee';
 import EstimationFee from './model/EstimationFee';
+import EvmContractCallDestination from './model/EvmContractCallDestination';
+import EvmEIP191MessageSignDestination from './model/EvmEIP191MessageSignDestination';
+import EvmEIP712MessageSignDestination from './model/EvmEIP712MessageSignDestination';
 import EvmEip1559Fee from './model/EvmEip1559Fee';
 import EvmEip1559FeeBasePrice from './model/EvmEip1559FeeBasePrice';
 import EvmEip1559FeePrice from './model/EvmEip1559FeePrice';
@@ -103,7 +109,6 @@ import KeyShareHolderGroupType from './model/KeyShareHolderGroupType';
 import KeyShareHolderStatus from './model/KeyShareHolderStatus';
 import KeyShareHolderType from './model/KeyShareHolderType';
 import ListAddresses200Response from './model/ListAddresses200Response';
-import ListEvents200Response from './model/ListEvents200Response';
 import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
 import ListMpcProjects200Response from './model/ListMpcProjects200Response';
 import ListMpcVaults200Response from './model/ListMpcVaults200Response';
@@ -116,20 +121,27 @@ import ListUtxos200Response from './model/ListUtxos200Response';
 import ListWallets200Response from './model/ListWallets200Response';
 import ListWebhookEndpoints200Response from './model/ListWebhookEndpoints200Response';
 import ListWebhookEventDefinitions200ResponseInner from './model/ListWebhookEventDefinitions200ResponseInner';
+import ListWebhookEventLogs200Response from './model/ListWebhookEventLogs200Response';
+import ListWebhookEvents200Response from './model/ListWebhookEvents200Response';
 import LockUtxos201Response from './model/LockUtxos201Response';
 import LockUtxosRequest from './model/LockUtxosRequest';
 import LockUtxosRequestUtxosInner from './model/LockUtxosRequestUtxosInner';
+import MPCDelegate from './model/MPCDelegate';
 import MPCProject from './model/MPCProject';
 import MPCVault from './model/MPCVault';
 import MPCVaultType from './model/MPCVaultType';
 import MPCWalletInfo from './model/MPCWalletInfo';
 import MaxTransferableValue from './model/MaxTransferableValue';
+import MessageSignDestination from './model/MessageSignDestination';
+import MessageSignDestinationType from './model/MessageSignDestinationType';
+import MessageSignSource from './model/MessageSignSource';
+import MessageSignSourceType from './model/MessageSignSourceType';
 import MpcContractCallSource from './model/MpcContractCallSource';
+import MpcMessageSignSource from './model/MpcMessageSignSource';
 import MpcSigningGroup from './model/MpcSigningGroup';
 import MpcTransferSource from './model/MpcTransferSource';
-import MpcTransferSourceAllOfUtxoInputs from './model/MpcTransferSourceAllOfUtxoInputs';
-import MpcTransferSourceAllOfUtxoInputsExcludedInputs from './model/MpcTransferSourceAllOfUtxoInputsExcludedInputs';
-import MpcTransferSourceAllOfUtxoInputsIncludedInputs from './model/MpcTransferSourceAllOfUtxoInputsIncludedInputs';
+import MpcTransferSourceAllOfExcludedUtxos from './model/MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './model/MpcTransferSourceAllOfIncludedUtxos';
 import Pagination from './model/Pagination';
 import PoolDetails from './model/PoolDetails';
 import PoolDetailsAllOfValidatorsInfo from './model/PoolDetailsAllOfValidatorsInfo';
@@ -138,18 +150,15 @@ import ReplaceType from './model/ReplaceType';
 import RetryWebhookEventById201Response from './model/RetryWebhookEventById201Response';
 import RootPubkey from './model/RootPubkey';
 import SafeContractCallSource from './model/SafeContractCallSource';
-import SafeContractCallSourceAllOfDelegate from './model/SafeContractCallSourceAllOfDelegate';
 import SafeTransferSource from './model/SafeTransferSource';
-import SafeTransferSourceAllOfDelegate from './model/SafeTransferSourceAllOfDelegate';
 import SafeWallet from './model/SafeWallet';
-import SafeWalletAllOfInitiator from './model/SafeWalletAllOfInitiator';
 import SignMessage from './model/SignMessage';
-import SignMessageDestination from './model/SignMessageDestination';
-import SignMessageSource from './model/SignMessageSource';
+import SmartContractInitiator from './model/SmartContractInitiator';
 import SmartContractWalletInfo from './model/SmartContractWalletInfo';
 import SmartContractWalletOperationType from './model/SmartContractWalletOperationType';
 import SmartContractWalletType from './model/SmartContractWalletType';
 import StakingPoolType from './model/StakingPoolType';
+import StakingSource from './model/StakingSource';
 import Stakings from './model/Stakings';
 import StakingsValidatorInfo from './model/StakingsValidatorInfo';
 import TSSGroups from './model/TSSGroups';
@@ -192,6 +201,7 @@ import TransactionMPCWalletSourceAccountInput from './model/TransactionMPCWallet
 import TransactionMPCWalletSourceUtxoInputsInner from './model/TransactionMPCWalletSourceUtxoInputsInner';
 import TransactionMessageSignDestination from './model/TransactionMessageSignDestination';
 import TransactionRbf from './model/TransactionRbf';
+import TransactionRbfSource from './model/TransactionRbfSource';
 import TransactionReplacement from './model/TransactionReplacement';
 import TransactionResend from './model/TransactionResend';
 import TransactionSafeWalletDestination from './model/TransactionSafeWalletDestination';
@@ -268,7 +278,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 0.4.1
+* @version 0.4.4
 */
 export {
     Env,
@@ -285,6 +295,12 @@ export {
     Activity,
 
     /**
+     * The ActivityAction model constructor.
+     * @property {module:model/ActivityAction}
+     */
+    ActivityAction,
+
+    /**
      * The ActivityInitiator model constructor.
      * @property {module:model/ActivityInitiator}
      */
@@ -295,6 +311,12 @@ export {
      * @property {module:model/ActivityStatus}
      */
     ActivityStatus,
+
+    /**
+     * The ActivityTimeline model constructor.
+     * @property {module:model/ActivityTimeline}
+     */
+    ActivityTimeline,
 
     /**
      * The ActivityType model constructor.
@@ -327,16 +349,10 @@ export {
     AddressTransferDestinationAccountOutput,
 
     /**
-     * The AddressTransferDestinationUtxoOutputs model constructor.
-     * @property {module:model/AddressTransferDestinationUtxoOutputs}
+     * The AddressTransferDestinationUtxoOutputsInner model constructor.
+     * @property {module:model/AddressTransferDestinationUtxoOutputsInner}
      */
-    AddressTransferDestinationUtxoOutputs,
-
-    /**
-     * The AddressTransferDestinationUtxoOutputsOutputsInner model constructor.
-     * @property {module:model/AddressTransferDestinationUtxoOutputsOutputsInner}
-     */
-    AddressTransferDestinationUtxoOutputsOutputsInner,
+    AddressTransferDestinationUtxoOutputsInner,
 
     /**
      * The AddressTransferSource model constructor.
@@ -417,16 +433,40 @@ export {
     CheckAddressValidity200Response,
 
     /**
+     * The CoboSafeDelegate model constructor.
+     * @property {module:model/CoboSafeDelegate}
+     */
+    CoboSafeDelegate,
+
+    /**
      * The ContractCall model constructor.
      * @property {module:model/ContractCall}
      */
     ContractCall,
 
     /**
+     * The ContractCallDestination model constructor.
+     * @property {module:model/ContractCallDestination}
+     */
+    ContractCallDestination,
+
+    /**
+     * The ContractCallDestinationType model constructor.
+     * @property {module:model/ContractCallDestinationType}
+     */
+    ContractCallDestinationType,
+
+    /**
      * The ContractCallSource model constructor.
      * @property {module:model/ContractCallSource}
      */
     ContractCallSource,
+
+    /**
+     * The ContractCallSourceType model constructor.
+     * @property {module:model/ContractCallSourceType}
+     */
+    ContractCallSourceType,
 
     /**
      * The CreateAddressRequest model constructor.
@@ -481,12 +521,6 @@ export {
      * @property {module:model/CreateSafeWallet}
      */
     CreateSafeWallet,
-
-    /**
-     * The CreateSafeWalletAllOfInitiator model constructor.
-     * @property {module:model/CreateSafeWalletAllOfInitiator}
-     */
-    CreateSafeWalletAllOfInitiator,
 
     /**
      * The CreateSmartContractWallet model constructor.
@@ -621,12 +655,6 @@ export {
     EstimateFeeContractCall,
 
     /**
-     * The EstimateFeeContractCallDestination model constructor.
-     * @property {module:model/EstimateFeeContractCallDestination}
-     */
-    EstimateFeeContractCallDestination,
-
-    /**
      * The EstimateFeeTransfer model constructor.
      * @property {module:model/EstimateFeeTransfer}
      */
@@ -655,6 +683,24 @@ export {
      * @property {module:model/EstimationFee}
      */
     EstimationFee,
+
+    /**
+     * The EvmContractCallDestination model constructor.
+     * @property {module:model/EvmContractCallDestination}
+     */
+    EvmContractCallDestination,
+
+    /**
+     * The EvmEIP191MessageSignDestination model constructor.
+     * @property {module:model/EvmEIP191MessageSignDestination}
+     */
+    EvmEIP191MessageSignDestination,
+
+    /**
+     * The EvmEIP712MessageSignDestination model constructor.
+     * @property {module:model/EvmEIP712MessageSignDestination}
+     */
+    EvmEIP712MessageSignDestination,
 
     /**
      * The EvmEip1559Fee model constructor.
@@ -825,12 +871,6 @@ export {
     ListAddresses200Response,
 
     /**
-     * The ListEvents200Response model constructor.
-     * @property {module:model/ListEvents200Response}
-     */
-    ListEvents200Response,
-
-    /**
      * The ListKeyShareHolderGroups200Response model constructor.
      * @property {module:model/ListKeyShareHolderGroups200Response}
      */
@@ -903,6 +943,18 @@ export {
     ListWebhookEventDefinitions200ResponseInner,
 
     /**
+     * The ListWebhookEventLogs200Response model constructor.
+     * @property {module:model/ListWebhookEventLogs200Response}
+     */
+    ListWebhookEventLogs200Response,
+
+    /**
+     * The ListWebhookEvents200Response model constructor.
+     * @property {module:model/ListWebhookEvents200Response}
+     */
+    ListWebhookEvents200Response,
+
+    /**
      * The LockUtxos201Response model constructor.
      * @property {module:model/LockUtxos201Response}
      */
@@ -919,6 +971,12 @@ export {
      * @property {module:model/LockUtxosRequestUtxosInner}
      */
     LockUtxosRequestUtxosInner,
+
+    /**
+     * The MPCDelegate model constructor.
+     * @property {module:model/MPCDelegate}
+     */
+    MPCDelegate,
 
     /**
      * The MPCProject model constructor.
@@ -951,10 +1009,40 @@ export {
     MaxTransferableValue,
 
     /**
+     * The MessageSignDestination model constructor.
+     * @property {module:model/MessageSignDestination}
+     */
+    MessageSignDestination,
+
+    /**
+     * The MessageSignDestinationType model constructor.
+     * @property {module:model/MessageSignDestinationType}
+     */
+    MessageSignDestinationType,
+
+    /**
+     * The MessageSignSource model constructor.
+     * @property {module:model/MessageSignSource}
+     */
+    MessageSignSource,
+
+    /**
+     * The MessageSignSourceType model constructor.
+     * @property {module:model/MessageSignSourceType}
+     */
+    MessageSignSourceType,
+
+    /**
      * The MpcContractCallSource model constructor.
      * @property {module:model/MpcContractCallSource}
      */
     MpcContractCallSource,
+
+    /**
+     * The MpcMessageSignSource model constructor.
+     * @property {module:model/MpcMessageSignSource}
+     */
+    MpcMessageSignSource,
 
     /**
      * The MpcSigningGroup model constructor.
@@ -969,22 +1057,16 @@ export {
     MpcTransferSource,
 
     /**
-     * The MpcTransferSourceAllOfUtxoInputs model constructor.
-     * @property {module:model/MpcTransferSourceAllOfUtxoInputs}
+     * The MpcTransferSourceAllOfExcludedUtxos model constructor.
+     * @property {module:model/MpcTransferSourceAllOfExcludedUtxos}
      */
-    MpcTransferSourceAllOfUtxoInputs,
+    MpcTransferSourceAllOfExcludedUtxos,
 
     /**
-     * The MpcTransferSourceAllOfUtxoInputsExcludedInputs model constructor.
-     * @property {module:model/MpcTransferSourceAllOfUtxoInputsExcludedInputs}
+     * The MpcTransferSourceAllOfIncludedUtxos model constructor.
+     * @property {module:model/MpcTransferSourceAllOfIncludedUtxos}
      */
-    MpcTransferSourceAllOfUtxoInputsExcludedInputs,
-
-    /**
-     * The MpcTransferSourceAllOfUtxoInputsIncludedInputs model constructor.
-     * @property {module:model/MpcTransferSourceAllOfUtxoInputsIncludedInputs}
-     */
-    MpcTransferSourceAllOfUtxoInputsIncludedInputs,
+    MpcTransferSourceAllOfIncludedUtxos,
 
     /**
      * The Pagination model constructor.
@@ -1035,22 +1117,10 @@ export {
     SafeContractCallSource,
 
     /**
-     * The SafeContractCallSourceAllOfDelegate model constructor.
-     * @property {module:model/SafeContractCallSourceAllOfDelegate}
-     */
-    SafeContractCallSourceAllOfDelegate,
-
-    /**
      * The SafeTransferSource model constructor.
      * @property {module:model/SafeTransferSource}
      */
     SafeTransferSource,
-
-    /**
-     * The SafeTransferSourceAllOfDelegate model constructor.
-     * @property {module:model/SafeTransferSourceAllOfDelegate}
-     */
-    SafeTransferSourceAllOfDelegate,
 
     /**
      * The SafeWallet model constructor.
@@ -1059,28 +1129,16 @@ export {
     SafeWallet,
 
     /**
-     * The SafeWalletAllOfInitiator model constructor.
-     * @property {module:model/SafeWalletAllOfInitiator}
-     */
-    SafeWalletAllOfInitiator,
-
-    /**
      * The SignMessage model constructor.
      * @property {module:model/SignMessage}
      */
     SignMessage,
 
     /**
-     * The SignMessageDestination model constructor.
-     * @property {module:model/SignMessageDestination}
+     * The SmartContractInitiator model constructor.
+     * @property {module:model/SmartContractInitiator}
      */
-    SignMessageDestination,
-
-    /**
-     * The SignMessageSource model constructor.
-     * @property {module:model/SignMessageSource}
-     */
-    SignMessageSource,
+    SmartContractInitiator,
 
     /**
      * The SmartContractWalletInfo model constructor.
@@ -1105,6 +1163,12 @@ export {
      * @property {module:model/StakingPoolType}
      */
     StakingPoolType,
+
+    /**
+     * The StakingSource model constructor.
+     * @property {module:model/StakingSource}
+     */
+    StakingSource,
 
     /**
      * The Stakings model constructor.
@@ -1357,6 +1421,12 @@ export {
      * @property {module:model/TransactionRbf}
      */
     TransactionRbf,
+
+    /**
+     * The TransactionRbfSource model constructor.
+     * @property {module:model/TransactionRbfSource}
+     */
+    TransactionRbfSource,
 
     /**
      * The TransactionReplacement model constructor.

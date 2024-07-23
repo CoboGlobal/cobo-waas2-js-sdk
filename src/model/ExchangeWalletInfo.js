@@ -20,7 +20,7 @@ import WalletType from './WalletType';
 /**
  * The ExchangeWalletInfo model module.
  * @module model/ExchangeWalletInfo
- * @version 0.4.1
+ * @version 0.4.4
  */
 class ExchangeWalletInfo {
     /**

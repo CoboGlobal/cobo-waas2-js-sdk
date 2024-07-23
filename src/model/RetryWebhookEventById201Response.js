@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The RetryWebhookEventById201Response model module.
  * @module model/RetryWebhookEventById201Response
- * @version 0.4.1
+ * @version 0.4.4
  */
 class RetryWebhookEventById201Response {
     /**

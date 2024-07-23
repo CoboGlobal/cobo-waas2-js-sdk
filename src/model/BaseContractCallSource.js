@@ -11,18 +11,19 @@
  */
 
 import ApiClient from '../ApiClient';
+import ContractCallSourceType from './ContractCallSourceType';
 
 /**
  * The BaseContractCallSource model module.
  * @module model/BaseContractCallSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class BaseContractCallSource {
     /**
      * Constructs a new <code>BaseContractCallSource</code>.
      * The information about the transaction source.
      * @alias module:model/BaseContractCallSource
-     * @param sourceType {module:model/BaseContractCallSource.SourceTypeEnum} The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
+     * @param sourceType {module:model/ContractCallSourceType} 
      * @param walletId {String} The wallet ID.
      * @param address {String} The wallet address.
      */
@@ -54,7 +55,7 @@ class BaseContractCallSource {
             obj = obj || new BaseContractCallSource();
 
             if (data.hasOwnProperty('source_type')) {
-                obj['source_type'] = ApiClient.convertToType(data['source_type'], 'String');
+                obj['source_type'] = ContractCallSourceType.constructFromObject(data['source_type']);
             }
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
@@ -79,10 +80,6 @@ class BaseContractCallSource {
             }
         }
         // ensure the json data is a string
-        if (data['source_type'] && !(typeof data['source_type'] === 'string' || data['source_type'] instanceof String)) {
-            throw new Error("Expected the field `source_type` to be a primitive type in the JSON string but got " + data['source_type']);
-        }
-        // ensure the json data is a string
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
@@ -100,8 +97,7 @@ class BaseContractCallSource {
 BaseContractCallSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
- * The type of the wallet. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled). - `User-Controlled`: MPC Wallets (User-Controlled). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). 
- * @member {module:model/BaseContractCallSource.SourceTypeEnum} source_type
+ * @member {module:model/ContractCallSourceType} source_type
  */
 BaseContractCallSource.prototype['source_type'] = undefined;
 
@@ -119,33 +115,6 @@ BaseContractCallSource.prototype['address'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>source_type</code> property.
- * @enum {String}
- * @readonly
- */
-BaseContractCallSource['SourceTypeEnum'] = {
-
-    /**
-     * value: "Org-Controlled"
-     * @const
-     */
-    "Org-Controlled": "Org-Controlled",
-
-    /**
-     * value: "User-Controlled"
-     * @const
-     */
-    "User-Controlled": "User-Controlled",
-
-    /**
-     * value: "Safe{Wallet}"
-     * @const
-     */
-    "Safe{Wallet}": "Safe{Wallet}"
-};
 
 
 

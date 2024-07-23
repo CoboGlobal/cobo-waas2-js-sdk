@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionMPCWalletSourceUtxoInputsInner model module.
  * @module model/TransactionMPCWalletSourceUtxoInputsInner
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionMPCWalletSourceUtxoInputsInner {
     /**
@@ -49,6 +49,9 @@ class TransactionMPCWalletSourceUtxoInputsInner {
             if (data.hasOwnProperty('tx_hash')) {
                 obj['tx_hash'] = ApiClient.convertToType(data['tx_hash'], 'String');
             }
+            if (data.hasOwnProperty('vout_n')) {
+                obj['vout_n'] = ApiClient.convertToType(data['vout_n'], 'Number');
+            }
         }
         return obj;
     }
@@ -77,6 +80,12 @@ class TransactionMPCWalletSourceUtxoInputsInner {
  * @member {String} tx_hash
  */
 TransactionMPCWalletSourceUtxoInputsInner.prototype['tx_hash'] = undefined;
+
+/**
+ * The output index of the UTXO.
+ * @member {Number} vout_n
+ */
+TransactionMPCWalletSourceUtxoInputsInner.prototype['vout_n'] = undefined;
 
 
 

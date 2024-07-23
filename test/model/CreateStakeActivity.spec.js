@@ -53,14 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateStakeActivity);
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
-      //var instance = new CoboWaas2JsApi.CreateStakeActivity();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
+    it('should have the property source (base name: "source")', function() {
+      // uncomment below and update the code to test the property source
       //var instance = new CoboWaas2JsApi.CreateStakeActivity();
       //expect(instance).to.be();
     });

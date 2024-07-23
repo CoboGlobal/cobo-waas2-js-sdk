@@ -17,7 +17,7 @@ import StakingsValidatorInfo from './StakingsValidatorInfo';
 /**
  * The Stakings model module.
  * @module model/Stakings
- * @version 0.4.1
+ * @version 0.4.4
  */
 class Stakings {
     /**

@@ -16,7 +16,7 @@ import KeyShareHolderType from './KeyShareHolderType';
 /**
  * The CreateKeyShareHolder model module.
  * @module model/CreateKeyShareHolder
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreateKeyShareHolder {
     /**

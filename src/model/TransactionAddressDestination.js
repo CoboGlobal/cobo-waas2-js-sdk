@@ -18,7 +18,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionAddressDestination model module.
  * @module model/TransactionAddressDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionAddressDestination {
     /**
@@ -26,7 +26,7 @@ class TransactionAddressDestination {
      * The information about the transaction destination.
      * @alias module:model/TransactionAddressDestination
      * @param destinationType {module:model/TransactionDestinationType} 
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      */
     constructor(destinationType, tokenId) { 
         
@@ -69,6 +69,9 @@ class TransactionAddressDestination {
             if (data.hasOwnProperty('utxo_outputs')) {
                 obj['utxo_outputs'] = TransactionAddressDestinationUtxoOutputs.constructFromObject(data['utxo_outputs']);
             }
+            if (data.hasOwnProperty('change_address')) {
+                obj['change_address'] = ApiClient.convertToType(data['change_address'], 'String');
+            }
         }
         return obj;
     }
@@ -101,6 +104,10 @@ class TransactionAddressDestination {
         if (data['utxo_outputs']) { // data not null
           TransactionAddressDestinationUtxoOutputs.validateJSON(data['utxo_outputs']);
         }
+        // ensure the json data is a string
+        if (data['change_address'] && !(typeof data['change_address'] === 'string' || data['change_address'] instanceof String)) {
+            throw new Error("Expected the field `change_address` to be a primitive type in the JSON string but got " + data['change_address']);
+        }
 
         return true;
     }
@@ -116,7 +123,7 @@ TransactionAddressDestination.RequiredProperties = ["destination_type", "token_i
 TransactionAddressDestination.prototype['destination_type'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionAddressDestination.prototype['token_id'] = undefined;
@@ -136,6 +143,12 @@ TransactionAddressDestination.prototype['account_output'] = undefined;
  * @member {module:model/TransactionAddressDestinationUtxoOutputs} utxo_outputs
  */
 TransactionAddressDestination.prototype['utxo_outputs'] = undefined;
+
+/**
+ * The address used to receive the remaining funds or change from the transaction.
+ * @member {String} change_address
+ */
+TransactionAddressDestination.prototype['change_address'] = undefined;
 
 
 

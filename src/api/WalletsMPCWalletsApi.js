@@ -36,7 +36,7 @@ import UpdateMpcVaultByIdRequest from '../model/UpdateMpcVaultByIdRequest';
 /**
 * WalletsMPCWallets service.
 * @module api/WalletsMPCWalletsApi
-* @version 0.4.1
+* @version 0.4.4
 */
 export default class WalletsMPCWalletsApi {
 
@@ -56,8 +56,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Cancel TSS request
      * This operation cancels a TSS request. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TSSRequest} and HTTP response
      */
     cancelTssRequestByIdWithHttpInfo(vaultId, tssRequestId) {
@@ -96,8 +96,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Cancel TSS request
      * This operation cancels a TSS request. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TSSRequest}
      */
     cancelTssRequestById(vaultId, tssRequestId) {
@@ -110,8 +110,8 @@ export default class WalletsMPCWalletsApi {
 
     /**
      * Create key share holder group
-     * This operation creates a key share group for a specified vault. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * This operation creates a key share holder group for a specified vault. 
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKeyShareHolderGroupRequest} [createKeyShareHolderGroupRequest] The request body to create a key share holder group.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KeyShareHolderGroup} and HTTP response
@@ -147,8 +147,8 @@ export default class WalletsMPCWalletsApi {
 
     /**
      * Create key share holder group
-     * This operation creates a key share group for a specified vault. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * This operation creates a key share holder group for a specified vault. 
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKeyShareHolderGroupRequest} opts.createKeyShareHolderGroupRequest The request body to create a key share holder group.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KeyShareHolderGroup}
@@ -256,7 +256,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Create TSS request
      * This operation creates a TSS request under a specified vault. You can use this operation to perform actions such as key generation and recovery. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateTssRequestRequest} [createTssRequestRequest] The request body to create a TSS request.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TSSRequest} and HTTP response
@@ -293,7 +293,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Create TSS request
      * This operation creates a TSS request under a specified vault. You can use this operation to perform actions such as key generation and recovery. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateTssRequestRequest} opts.createTssRequestRequest The request body to create a TSS request.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TSSRequest}
@@ -309,8 +309,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Delete key share holder group
      * This operation deletes a specified key share holder group.
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DeleteKeyShareHolderGroupById201Response} and HTTP response
      */
     deleteKeyShareHolderGroupByIdWithHttpInfo(vaultId, keyShareHolderGroupId) {
@@ -349,8 +349,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Delete key share holder group
      * This operation deletes a specified key share holder group.
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeleteKeyShareHolderGroupById201Response}
      */
     deleteKeyShareHolderGroupById(vaultId, keyShareHolderGroupId) {
@@ -364,8 +364,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get key share holder group information
      * This operation retrieves detailed information about a specified key share holder group. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KeyShareHolderGroup} and HTTP response
      */
     getKeyShareHolderGroupByIdWithHttpInfo(vaultId, keyShareHolderGroupId) {
@@ -404,8 +404,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get key share holder group information
      * This operation retrieves detailed information about a specified key share holder group. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KeyShareHolderGroup}
      */
     getKeyShareHolderGroupById(vaultId, keyShareHolderGroupId) {
@@ -419,7 +419,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get project information
      * This operation retrieves detailed information about a project. 
-     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCProject} and HTTP response
      */
     getMpcProjectByIdWithHttpInfo(projectId) {
@@ -453,7 +453,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get project information
      * This operation retrieves detailed information about a project. 
-     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCProject}
      */
     getMpcProjectById(projectId) {
@@ -467,7 +467,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get vault information
      * This operation retrieves detailed information about a vault. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCVault} and HTTP response
      */
     getMpcVaultByIdWithHttpInfo(vaultId) {
@@ -501,7 +501,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get vault information
      * This operation retrieves detailed information about a vault. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCVault}
      */
     getMpcVaultById(vaultId) {
@@ -515,8 +515,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get TSS request
      * This operation retrieves detailed information about a TSS request. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TSSRequest} and HTTP response
      */
     getTssRequestByIdWithHttpInfo(vaultId, tssRequestId) {
@@ -555,8 +555,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Get TSS request
      * This operation retrieves detailed information about a TSS request. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/developers/v2/api-references/wallets--mpc-wallets/list-tss-requests).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} tssRequestId The TSS request ID, which you can retrieve by calling [List TSS requests](/v2/api-references/wallets--mpc-wallets/list-tss-requests).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TSSRequest}
      */
     getTssRequestById(vaultId, tssRequestId) {
@@ -611,9 +611,9 @@ export default class WalletsMPCWalletsApi {
     /**
      * List all key share holder groups
      * This operation retrieves all key share holder groups under a specified vault. You can filter the result by group type. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
-     * @param {module:model/KeyShareHolderGroupType} [keyShareHolderGroupType] The selected key share group type to retrieve. Possible values include: - `MainKeyGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningKeyGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryKeyGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_group_type`, all key share group types will be retrieved. 
+     * @param {module:model/KeyShareHolderGroupType} [keyShareHolderGroupType] The selected key share holder group type to retrieve. Possible values include: - `MainGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_share_holder_group_type`, all key share holder group types will be retrieved. 
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -655,9 +655,9 @@ export default class WalletsMPCWalletsApi {
     /**
      * List all key share holder groups
      * This operation retrieves all key share holder groups under a specified vault. You can filter the result by group type. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
-     * @param {module:model/KeyShareHolderGroupType} opts.keyShareHolderGroupType The selected key share group type to retrieve. Possible values include: - `MainKeyGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningKeyGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryKeyGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_group_type`, all key share group types will be retrieved. 
+     * @param {module:model/KeyShareHolderGroupType} opts.keyShareHolderGroupType The selected key share holder group type to retrieve. Possible values include: - `MainGroup`: Only [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `SigningGroup`: Only [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  - `RecoveryGroup`: Only [Recovery Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups) will be retrieved.  **Note:** If there's no value selected for `key_share_holder_group_type`, all key share holder group types will be retrieved. 
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -726,10 +726,10 @@ export default class WalletsMPCWalletsApi {
 
     /**
      * List all vaults
-     * This operation retrieves a list of all vaults.  <Note>By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.</Note> 
-     * @param {module:model/MPCVaultType} vaultType The Vault type.
+     * This operation retrieves a list of all vaults. By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.  **Notes for query parameters**: 1. `project_id` is required when `vault_type` is set to `User-Controlled`. 2. `project_id` must be left blank when `vault_type` is set to `Org-Controlled`. 
+     * @param {module:model/MPCVaultType} vaultType The vault type. Possible values include: - `Org-Controlled`: This vault is a collection of [Organization-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#organization-controlled-wallets).  - `User-Controlled`: This vault is a collection of [User-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#user-controlled-wallets). 
      * @param {Object} opts Optional parameters
-     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
+     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -770,10 +770,10 @@ export default class WalletsMPCWalletsApi {
 
     /**
      * List all vaults
-     * This operation retrieves a list of all vaults.  <Note>By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.</Note> 
-     * @param {module:model/MPCVaultType} vaultType The Vault type.
+     * This operation retrieves a list of all vaults. By optionally specifying a project ID, you can retrieve a list of all vaults under a single project.  **Notes for query parameters**: 1. `project_id` is required when `vault_type` is set to `User-Controlled`. 2. `project_id` must be left blank when `vault_type` is set to `Org-Controlled`. 
+     * @param {module:model/MPCVaultType} vaultType The vault type. Possible values include: - `Org-Controlled`: This vault is a collection of [Organization-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#organization-controlled-wallets).  - `User-Controlled`: This vault is a collection of [User-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#user-controlled-wallets). 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects). This parameter is applicable to MPC Wallets only.
+     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -790,8 +790,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * List TSS requests
      * This operation retrieves a list of TSS requests and their details. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share groups](/developers/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share holder groups](/v2/api-references/wallets--mpc-wallets/list-all-key-share-holder-groups).
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
@@ -838,8 +838,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * List TSS requests
      * This operation retrieves a list of TSS requests and their details. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share groups](/developers/v2/api-references/wallets--mpc-wallets/list-all-key-share-groups).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID of the TSS request, which you can retrieve by calling [List all key share holder groups](/v2/api-references/wallets--mpc-wallets/list-all-key-share-holder-groups).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
@@ -857,8 +857,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update key share holder group
      * This operation updates a specified active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). For example, you can use this operation to upgrade a Signing Group to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateKeyShareHolderGroupByIdRequest} [updateKeyShareHolderGroupByIdRequest] 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KeyShareHolderGroup} and HTTP response
@@ -900,8 +900,8 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update key share holder group
      * This operation updates a specified active [Signing Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). For example, you can use this operation to upgrade a Signing Group to the [Main Group](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/create-key-share-groups). 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
-     * @param {String} keyShareHolderGroupId The key share group ID.
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} keyShareHolderGroupId The key share holder group ID.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateKeyShareHolderGroupByIdRequest} opts.updateKeyShareHolderGroupByIdRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KeyShareHolderGroup}
@@ -917,7 +917,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update project name
      * This operation updates a project's name. 
-     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcProjectByIdRequest} [updateMpcProjectByIdRequest] The request body to update a project's name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCProject} and HTTP response
@@ -954,7 +954,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update project name
      * This operation updates a project's name. 
-     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/developers/v2/api-references/wallets--mpc-wallets/list-all-projects).
+     * @param {String} projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects).
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcProjectByIdRequest} opts.updateMpcProjectByIdRequest The request body to update a project's name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCProject}
@@ -970,7 +970,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update vault name
      * This operation updates a vault's name. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcVaultByIdRequest} [updateMpcVaultByIdRequest] The request body to update a vault's name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MPCVault} and HTTP response
@@ -1007,7 +1007,7 @@ export default class WalletsMPCWalletsApi {
     /**
      * Update vault name
      * This operation updates a vault's name. 
-     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/developers/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
+     * @param {String} vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallet/list-all-mpc-vaults).
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateMpcVaultByIdRequest} opts.updateMpcVaultByIdRequest The request body to update a vault's name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MPCVault}

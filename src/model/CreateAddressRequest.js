@@ -16,7 +16,7 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The CreateAddressRequest model module.
  * @module model/CreateAddressRequest
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreateAddressRequest {
     /**

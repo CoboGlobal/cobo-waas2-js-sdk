@@ -65,8 +65,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
+    it('should have the property source (base name: "source")', function() {
+      // uncomment below and update the code to test the property source
+      //var instance = new CoboWaas2JsApi.TransactionRbf();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property categoryNames (base name: "category_names")', function() {
+      // uncomment below and update the code to test the property categoryNames
+      //var instance = new CoboWaas2JsApi.TransactionRbf();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
       //var instance = new CoboWaas2JsApi.TransactionRbf();
       //expect(instance).to.be();
     });

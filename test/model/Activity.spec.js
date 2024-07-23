@@ -89,6 +89,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
+      //var instance = new CoboWaas2JsApi.Activity();
+      //expect(instance).to.be();
+    });
+
     it('should have the property stakingId (base name: "staking_id")', function() {
       // uncomment below and update the code to test the property stakingId
       //var instance = new CoboWaas2JsApi.Activity();
@@ -101,8 +107,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property txIds (base name: "tx_ids")', function() {
-      // uncomment below and update the code to test the property txIds
+    it('should have the property transactionIds (base name: "transaction_ids")', function() {
+      // uncomment below and update the code to test the property transactionIds
+      //var instance = new CoboWaas2JsApi.Activity();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeline (base name: "timeline")', function() {
+      // uncomment below and update the code to test the property timeline
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });

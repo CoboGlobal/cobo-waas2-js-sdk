@@ -18,7 +18,7 @@ import TransferSource from './TransferSource';
 /**
  * The EstimateFeeTransfer model module.
  * @module model/EstimateFeeTransfer
- * @version 0.4.1
+ * @version 0.4.4
  */
 class EstimateFeeTransfer {
     /**
@@ -26,7 +26,7 @@ class EstimateFeeTransfer {
      * The information about a token transfer.
      * @alias module:model/EstimateFeeTransfer
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param requestType {module:model/EstimateFeeTransfer.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
+     * @param requestType {module:model/EstimateFeeTransfer.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
      * @param source {module:model/TransferSource} 
      * @param tokenId {String} The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation.
      * @param destination {module:model/TransferDestination} 
@@ -130,7 +130,7 @@ EstimateFeeTransfer.RequiredProperties = ["request_id", "request_type", "source"
 EstimateFeeTransfer.prototype['request_id'] = undefined;
 
 /**
- * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
+ * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
  * @member {module:model/EstimateFeeTransfer.RequestTypeEnum} request_type
  */
 EstimateFeeTransfer.prototype['request_type'] = undefined;
@@ -177,13 +177,7 @@ EstimateFeeTransfer['RequestTypeEnum'] = {
      * value: "ContractCall"
      * @const
      */
-    "ContractCall": "ContractCall",
-
-    /**
-     * value: "MessageSign"
-     * @const
-     */
-    "MessageSign": "MessageSign"
+    "ContractCall": "ContractCall"
 };
 
 

@@ -24,7 +24,7 @@ import TransactionType from './TransactionType';
 /**
  * The WebhookEventData model module.
  * @module model/WebhookEventData
- * @version 0.4.1
+ * @version 0.4.4
  */
 class WebhookEventData {
     /**
@@ -136,7 +136,7 @@ WebhookEventData.prototype['cobo_id'] = undefined;
 WebhookEventData.prototype['request_id'] = undefined;
 
 /**
- * The wallet ID of the transaction.
+ * For deposit transactions, this property represents the wallet ID of the transaction destination. For transactions of other types, this property represents the wallet ID of the transaction source.
  * @member {String} wallet_id
  */
 WebhookEventData.prototype['wallet_id'] = undefined;
@@ -163,7 +163,7 @@ WebhookEventData.prototype['sub_status'] = undefined;
 WebhookEventData.prototype['failed_reason'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 WebhookEventData.prototype['chain_id'] = undefined;

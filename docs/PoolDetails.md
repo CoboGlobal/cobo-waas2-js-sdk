@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **maxAmount** | **String** | The maximum amount to stake. | [optional] 
 **minStakePeriod** | **Number** | The minimum staking period in days. | [optional] 
 **maxStakePeriod** | **Number** | The maximum staking period in days. | [optional] 
+**minStakeBlocks** | **Number** | The minimum staking blocks. | [optional] 
+**maxStakeBlocks** | **Number** | The maximum staking blocks. | [optional] 
 **validatorsInfo** | [**[PoolDetailsAllOfValidatorsInfo]**](PoolDetailsAllOfValidatorsInfo.md) | The list of validators. | 
 
 

@@ -11,14 +11,14 @@
  */
 
 import ApiClient from '../ApiClient';
+import ContractCallDestination from './ContractCallDestination';
 import ContractCallSource from './ContractCallSource';
-import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
 import FeeType from './FeeType';
 
 /**
  * The EstimateFeeContractCall model module.
  * @module model/EstimateFeeContractCall
- * @version 0.4.1
+ * @version 0.4.4
  */
 class EstimateFeeContractCall {
     /**
@@ -26,10 +26,10 @@ class EstimateFeeContractCall {
      * The information about a transaction that interacts with a smart contract
      * @alias module:model/EstimateFeeContractCall
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param requestType {module:model/EstimateFeeContractCall.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+     * @param requestType {module:model/EstimateFeeContractCall.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
+     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/ContractCallSource} 
-     * @param destination {module:model/EstimateFeeContractCallDestination} 
+     * @param destination {module:model/ContractCallDestination} 
      */
     constructor(requestId, requestType, chainId, source, destination) { 
         
@@ -73,7 +73,7 @@ class EstimateFeeContractCall {
                 obj['source'] = ContractCallSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = EstimateFeeContractCallDestination.constructFromObject(data['destination']);
+                obj['destination'] = ContractCallDestination.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('fee_type')) {
                 obj['fee_type'] = FeeType.constructFromObject(data['fee_type']);
@@ -112,7 +112,7 @@ class EstimateFeeContractCall {
         }
         // validate the optional field `destination`
         if (data['destination']) { // data not null
-          EstimateFeeContractCallDestination.validateJSON(data['destination']);
+          ContractCallDestination.validateJSON(data['destination']);
         }
 
         return true;
@@ -130,13 +130,13 @@ EstimateFeeContractCall.RequiredProperties = ["request_id", "request_type", "cha
 EstimateFeeContractCall.prototype['request_id'] = undefined;
 
 /**
- * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
+ * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
  * @member {module:model/EstimateFeeContractCall.RequestTypeEnum} request_type
  */
 EstimateFeeContractCall.prototype['request_type'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFeeContractCall.prototype['chain_id'] = undefined;
@@ -147,7 +147,7 @@ EstimateFeeContractCall.prototype['chain_id'] = undefined;
 EstimateFeeContractCall.prototype['source'] = undefined;
 
 /**
- * @member {module:model/EstimateFeeContractCallDestination} destination
+ * @member {module:model/ContractCallDestination} destination
  */
 EstimateFeeContractCall.prototype['destination'] = undefined;
 
@@ -177,13 +177,7 @@ EstimateFeeContractCall['RequestTypeEnum'] = {
      * value: "ContractCall"
      * @const
      */
-    "ContractCall": "ContractCall",
-
-    /**
-     * value: "MessageSign"
-     * @const
-     */
-    "MessageSign": "MessageSign"
+    "ContractCall": "ContractCall"
 };
 
 

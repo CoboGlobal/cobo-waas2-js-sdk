@@ -20,7 +20,7 @@ import WalletType from './WalletType';
 /**
  * The PoolDetails model module.
  * @module model/PoolDetails
- * @version 0.4.1
+ * @version 0.4.4
  */
 class PoolDetails {
     /**
@@ -109,6 +109,12 @@ class PoolDetails {
             }
             if (data.hasOwnProperty('max_stake_period')) {
                 obj['max_stake_period'] = ApiClient.convertToType(data['max_stake_period'], 'Number');
+            }
+            if (data.hasOwnProperty('min_stake_blocks')) {
+                obj['min_stake_blocks'] = ApiClient.convertToType(data['min_stake_blocks'], 'Number');
+            }
+            if (data.hasOwnProperty('max_stake_blocks')) {
+                obj['max_stake_blocks'] = ApiClient.convertToType(data['max_stake_blocks'], 'Number');
             }
             if (data.hasOwnProperty('validators_info')) {
                 obj['validators_info'] = ApiClient.convertToType(data['validators_info'], [PoolDetailsAllOfValidatorsInfo]);
@@ -260,6 +266,18 @@ PoolDetails.prototype['min_stake_period'] = undefined;
  * @member {Number} max_stake_period
  */
 PoolDetails.prototype['max_stake_period'] = undefined;
+
+/**
+ * The minimum staking blocks.
+ * @member {Number} min_stake_blocks
+ */
+PoolDetails.prototype['min_stake_blocks'] = undefined;
+
+/**
+ * The maximum staking blocks.
+ * @member {Number} max_stake_blocks
+ */
+PoolDetails.prototype['max_stake_blocks'] = undefined;
 
 /**
  * The list of validators.

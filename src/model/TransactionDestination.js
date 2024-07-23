@@ -26,7 +26,7 @@ import TransactionSafeWalletDestination from './TransactionSafeWalletDestination
 /**
  * The TransactionDestination model module.
  * @module model/TransactionDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionDestination {
     /**
@@ -215,7 +215,7 @@ class TransactionDestination {
 TransactionDestination.prototype['destination_type'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionDestination.prototype['token_id'] = undefined;
@@ -235,6 +235,12 @@ TransactionDestination.prototype['account_output'] = undefined;
  * @member {module:model/TransactionAddressDestinationUtxoOutputs} utxo_outputs
  */
 TransactionDestination.prototype['utxo_outputs'] = undefined;
+
+/**
+ * The address used to receive the remaining funds or change from the transaction.
+ * @member {String} change_address
+ */
+TransactionDestination.prototype['change_address'] = undefined;
 
 /**
  * The destination address.

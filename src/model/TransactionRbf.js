@@ -11,13 +11,13 @@
  */
 
 import ApiClient from '../ApiClient';
-import MpcSigningGroup from './MpcSigningGroup';
+import TransactionRbfSource from './TransactionRbfSource';
 import TransactionTransferFee from './TransactionTransferFee';
 
 /**
  * The TransactionRbf model module.
  * @module model/TransactionRbf
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionRbf {
     /**
@@ -57,8 +57,14 @@ class TransactionRbf {
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionTransferFee.constructFromObject(data['fee']);
             }
-            if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
-                obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = TransactionRbfSource.constructFromObject(data['source']);
+            }
+            if (data.hasOwnProperty('category_names')) {
+                obj['category_names'] = ApiClient.convertToType(data['category_names'], ['String']);
+            }
+            if (data.hasOwnProperty('description')) {
+                obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
         }
         return obj;
@@ -84,9 +90,17 @@ class TransactionRbf {
         if (data['fee']) { // data not null
           TransactionTransferFee.validateJSON(data['fee']);
         }
-        // validate the optional field `mpc_used_key_share_holder_group`
-        if (data['mpc_used_key_share_holder_group']) { // data not null
-          MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          TransactionRbfSource.validateJSON(data['source']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['category_names'])) {
+            throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
 
         return true;
@@ -109,9 +123,21 @@ TransactionRbf.prototype['request_id'] = undefined;
 TransactionRbf.prototype['fee'] = undefined;
 
 /**
- * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
+ * @member {module:model/TransactionRbfSource} source
  */
-TransactionRbf.prototype['mpc_used_key_share_holder_group'] = undefined;
+TransactionRbf.prototype['source'] = undefined;
+
+/**
+ * The custom category for you to identify your transactions.
+ * @member {Array.<String>} category_names
+ */
+TransactionRbf.prototype['category_names'] = undefined;
+
+/**
+ * The description of the rbf transaction.
+ * @member {String} description
+ */
+TransactionRbf.prototype['description'] = undefined;
 
 
 

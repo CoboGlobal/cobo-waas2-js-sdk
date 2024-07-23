@@ -11,7 +11,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import SafeWalletAllOfInitiator from './SafeWalletAllOfInitiator';
+import SmartContractInitiator from './SmartContractInitiator';
 import SmartContractWalletType from './SmartContractWalletType';
 import WalletSubtype from './WalletSubtype';
 import WalletType from './WalletType';
@@ -19,7 +19,7 @@ import WalletType from './WalletType';
 /**
  * The SafeWallet model module.
  * @module model/SafeWallet
- * @version 0.4.1
+ * @version 0.4.4
  */
 class SafeWallet {
     /**
@@ -80,9 +80,6 @@ class SafeWallet {
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
-            if (data.hasOwnProperty('label')) {
-                obj['label'] = ApiClient.convertToType(data['label'], 'String');
-            }
             if (data.hasOwnProperty('smart_contract_wallet_type')) {
                 obj['smart_contract_wallet_type'] = SmartContractWalletType.constructFromObject(data['smart_contract_wallet_type']);
             }
@@ -99,7 +96,7 @@ class SafeWallet {
                 obj['cobo_safe_address'] = ApiClient.convertToType(data['cobo_safe_address'], 'String');
             }
             if (data.hasOwnProperty('initiator')) {
-                obj['initiator'] = SafeWalletAllOfInitiator.constructFromObject(data['initiator']);
+                obj['initiator'] = SmartContractInitiator.constructFromObject(data['initiator']);
             }
         }
         return obj;
@@ -134,10 +131,6 @@ class SafeWallet {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (data['label'] && !(typeof data['label'] === 'string' || data['label'] instanceof String)) {
-            throw new Error("Expected the field `label` to be a primitive type in the JSON string but got " + data['label']);
-        }
-        // ensure the json data is a string
         if (data['safe_address'] && !(typeof data['safe_address'] === 'string' || data['safe_address'] instanceof String)) {
             throw new Error("Expected the field `safe_address` to be a primitive type in the JSON string but got " + data['safe_address']);
         }
@@ -151,7 +144,7 @@ class SafeWallet {
         }
         // validate the optional field `initiator`
         if (data['initiator']) { // data not null
-          SafeWalletAllOfInitiator.validateJSON(data['initiator']);
+          SmartContractInitiator.validateJSON(data['initiator']);
         }
 
         return true;
@@ -197,12 +190,6 @@ SafeWallet.prototype['org_id'] = undefined;
 SafeWallet.prototype['chain_id'] = undefined;
 
 /**
- * The wallet label.
- * @member {String} label
- */
-SafeWallet.prototype['label'] = undefined;
-
-/**
  * @member {module:model/SmartContractWalletType} smart_contract_wallet_type
  */
 SafeWallet.prototype['smart_contract_wallet_type'] = undefined;
@@ -232,7 +219,7 @@ SafeWallet.prototype['threshold'] = undefined;
 SafeWallet.prototype['cobo_safe_address'] = undefined;
 
 /**
- * @member {module:model/SafeWalletAllOfInitiator} initiator
+ * @member {module:model/SmartContractInitiator} initiator
  */
 SafeWallet.prototype['initiator'] = undefined;
 

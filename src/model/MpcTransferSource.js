@@ -13,19 +13,19 @@
 import ApiClient from '../ApiClient';
 import BaseTransferSource from './BaseTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
-import MpcTransferSourceAllOfUtxoInputs from './MpcTransferSourceAllOfUtxoInputs';
-import TransactionMPCWalletSourceAccountInput from './TransactionMPCWalletSourceAccountInput';
+import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The MpcTransferSource model module.
  * @module model/MpcTransferSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class MpcTransferSource {
     /**
      * Constructs a new <code>MpcTransferSource</code>.
-     * The information about the transaction source. Specify either the &#x60;account_input&#x60; or &#x60;utxo_inputs&#x60; property.
+     * The information about the transaction source. If both the &#x60;address&#x60; or &#x60;included_utxos&#x60; are specified, the &#x60;included_utxos&#x60; should belong to the &#x60;address&#x60;.
      * @alias module:model/MpcTransferSource
      * @implements module:model/BaseTransferSource
      * @param sourceType {module:model/WalletSubtype} 
@@ -64,11 +64,14 @@ class MpcTransferSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
-            if (data.hasOwnProperty('account_input')) {
-                obj['account_input'] = TransactionMPCWalletSourceAccountInput.constructFromObject(data['account_input']);
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
-            if (data.hasOwnProperty('utxo_inputs')) {
-                obj['utxo_inputs'] = MpcTransferSourceAllOfUtxoInputs.constructFromObject(data['utxo_inputs']);
+            if (data.hasOwnProperty('included_utxos')) {
+                obj['included_utxos'] = ApiClient.convertToType(data['included_utxos'], [MpcTransferSourceAllOfIncludedUtxos]);
+            }
+            if (data.hasOwnProperty('excluded_utxos')) {
+                obj['excluded_utxos'] = ApiClient.convertToType(data['excluded_utxos'], [MpcTransferSourceAllOfExcludedUtxos]);
             }
             if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
                 obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
@@ -93,13 +96,29 @@ class MpcTransferSource {
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
-        // validate the optional field `account_input`
-        if (data['account_input']) { // data not null
-          TransactionMPCWalletSourceAccountInput.validateJSON(data['account_input']);
+        // ensure the json data is a string
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
-        // validate the optional field `utxo_inputs`
-        if (data['utxo_inputs']) { // data not null
-          MpcTransferSourceAllOfUtxoInputs.validateJSON(data['utxo_inputs']);
+        if (data['included_utxos']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['included_utxos'])) {
+                throw new Error("Expected the field `included_utxos` to be an array in the JSON data but got " + data['included_utxos']);
+            }
+            // validate the optional field `included_utxos` (array)
+            for (const item of data['included_utxos']) {
+                MpcTransferSourceAllOfIncludedUtxos.validateJSON(item);
+            };
+        }
+        if (data['excluded_utxos']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['excluded_utxos'])) {
+                throw new Error("Expected the field `excluded_utxos` to be an array in the JSON data but got " + data['excluded_utxos']);
+            }
+            // validate the optional field `excluded_utxos` (array)
+            for (const item of data['excluded_utxos']) {
+                MpcTransferSourceAllOfExcludedUtxos.validateJSON(item);
+            };
         }
         // validate the optional field `mpc_used_key_share_holder_group`
         if (data['mpc_used_key_share_holder_group']) { // data not null
@@ -126,14 +145,20 @@ MpcTransferSource.prototype['source_type'] = undefined;
 MpcTransferSource.prototype['wallet_id'] = undefined;
 
 /**
- * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input
+ * The wallet address.
+ * @member {String} address
  */
-MpcTransferSource.prototype['account_input'] = undefined;
+MpcTransferSource.prototype['address'] = undefined;
 
 /**
- * @member {module:model/MpcTransferSourceAllOfUtxoInputs} utxo_inputs
+ * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
  */
-MpcTransferSource.prototype['utxo_inputs'] = undefined;
+MpcTransferSource.prototype['included_utxos'] = undefined;
+
+/**
+ * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
+ */
+MpcTransferSource.prototype['excluded_utxos'] = undefined;
 
 /**
  * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group

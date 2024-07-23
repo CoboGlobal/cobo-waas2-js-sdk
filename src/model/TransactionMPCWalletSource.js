@@ -19,7 +19,7 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionMPCWalletSource model module.
  * @module model/TransactionMPCWalletSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionMPCWalletSource {
     /**
@@ -28,11 +28,10 @@ class TransactionMPCWalletSource {
      * @alias module:model/TransactionMPCWalletSource
      * @param sourceType {module:model/TransactionSourceType} 
      * @param walletId {String} The wallet ID.
-     * @param mpcUsedKeyShareHolderGroup {module:model/MpcSigningGroup} 
      */
-    constructor(sourceType, walletId, mpcUsedKeyShareHolderGroup) { 
+    constructor(sourceType, walletId) { 
         
-        TransactionMPCWalletSource.initialize(this, sourceType, walletId, mpcUsedKeyShareHolderGroup);
+        TransactionMPCWalletSource.initialize(this, sourceType, walletId);
     }
 
     /**
@@ -40,10 +39,9 @@ class TransactionMPCWalletSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, mpcUsedKeyShareHolderGroup) { 
+    static initialize(obj, sourceType, walletId) { 
         obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
-        obj['mpc_used_key_share_holder_group'] = mpcUsedKeyShareHolderGroup;
     }
 
     /**
@@ -117,7 +115,7 @@ class TransactionMPCWalletSource {
 
 }
 
-TransactionMPCWalletSource.RequiredProperties = ["source_type", "wallet_id", "mpc_used_key_share_holder_group"];
+TransactionMPCWalletSource.RequiredProperties = ["source_type", "wallet_id"];
 
 /**
  * @member {module:model/TransactionSourceType} source_type

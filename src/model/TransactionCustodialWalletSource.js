@@ -16,7 +16,7 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionCustodialWalletSource model module.
  * @module model/TransactionCustodialWalletSource
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionCustodialWalletSource {
     /**

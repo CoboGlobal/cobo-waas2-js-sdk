@@ -17,7 +17,7 @@ import TSSRequestType from './TSSRequestType';
 /**
  * The TSSRequest model module.
  * @module model/TSSRequest
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TSSRequest {
     /**
@@ -102,13 +102,13 @@ class TSSRequest {
 TSSRequest.prototype['tss_request_id'] = undefined;
 
 /**
- * The Source key share holder group ID.
+ * The source key share holder group ID.
  * @member {String} source_key_share_holder_group_id
  */
 TSSRequest.prototype['source_key_share_holder_group_id'] = undefined;
 
 /**
- * The Target key share holder group ID.
+ * The target key share holder group ID.
  * @member {String} target_key_share_holder_group_id
  */
 TSSRequest.prototype['target_key_share_holder_group_id'] = undefined;

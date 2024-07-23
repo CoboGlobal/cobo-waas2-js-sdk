@@ -17,14 +17,14 @@ import TSSRequestType from './TSSRequestType';
 /**
  * The CreateTssRequestRequest model module.
  * @module model/CreateTssRequestRequest
- * @version 0.4.1
+ * @version 0.4.4
  */
 class CreateTssRequestRequest {
     /**
      * Constructs a new <code>CreateTssRequestRequest</code>.
      * @alias module:model/CreateTssRequestRequest
      * @param type {module:model/TSSRequestType} 
-     * @param targetKeyShareHolderGroupId {String} The target key share group ID.
+     * @param targetKeyShareHolderGroupId {String} The target key share holder group ID.
      */
     constructor(type, targetKeyShareHolderGroupId) { 
         
@@ -107,13 +107,13 @@ CreateTssRequestRequest.RequiredProperties = ["type", "target_key_share_holder_g
 CreateTssRequestRequest.prototype['type'] = undefined;
 
 /**
- * The target key share group ID.
+ * The target key share holder group ID.
  * @member {String} target_key_share_holder_group_id
  */
 CreateTssRequestRequest.prototype['target_key_share_holder_group_id'] = undefined;
 
 /**
- * The source key share group ID.  **Note:** `source_key_share_group_id` is used only when `type` is set to either `KeyGenfromKeyGroup` or `Recovery`. This is to specify the key share group to be used as the source key share group to create key shares for the `target_key_share_group`. 
+ * The source key share holder group ID.  **Note:** `source_key_share_holder_group_id` is used only when `type` is set to either `KeyGenfromKeyGroup` or `Recovery`. This is to specify the key share holder group to be used as the source key share holder group to create key shares for the `target_key_share_holder_group`. 
  * @member {String} source_key_share_holder_group_id
  */
 CreateTssRequestRequest.prototype['source_key_share_holder_group_id'] = undefined;

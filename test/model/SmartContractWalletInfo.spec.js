@@ -89,12 +89,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property label (base name: "label")', function() {
-      // uncomment below and update the code to test the property label
-      //var instance = new CoboWaas2JsApi.SmartContractWalletInfo();
-      //expect(instance).to.be();
-    });
-
     it('should have the property smartContractWalletType (base name: "smart_contract_wallet_type")', function() {
       // uncomment below and update the code to test the property smartContractWalletType
       //var instance = new CoboWaas2JsApi.SmartContractWalletInfo();

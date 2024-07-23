@@ -12,7 +12,7 @@
 
 import ApiClient from '../ApiClient';
 import SafeWallet from './SafeWallet';
-import SafeWalletAllOfInitiator from './SafeWalletAllOfInitiator';
+import SmartContractInitiator from './SmartContractInitiator';
 import SmartContractWalletType from './SmartContractWalletType';
 import WalletSubtype from './WalletSubtype';
 import WalletType from './WalletType';
@@ -20,7 +20,7 @@ import WalletType from './WalletType';
 /**
  * The SmartContractWalletInfo model module.
  * @module model/SmartContractWalletInfo
- * @version 0.4.1
+ * @version 0.4.4
  */
 class SmartContractWalletInfo {
     /**
@@ -142,12 +142,6 @@ SmartContractWalletInfo.prototype['org_id'] = undefined;
 SmartContractWalletInfo.prototype['chain_id'] = undefined;
 
 /**
- * The wallet label.
- * @member {String} label
- */
-SmartContractWalletInfo.prototype['label'] = undefined;
-
-/**
  * @member {module:model/SmartContractWalletType} smart_contract_wallet_type
  */
 SmartContractWalletInfo.prototype['smart_contract_wallet_type'] = undefined;
@@ -177,7 +171,7 @@ SmartContractWalletInfo.prototype['threshold'] = undefined;
 SmartContractWalletInfo.prototype['cobo_safe_address'] = undefined;
 
 /**
- * @member {module:model/SafeWalletAllOfInitiator} initiator
+ * @member {module:model/SmartContractInitiator} initiator
  */
 SmartContractWalletInfo.prototype['initiator'] = undefined;
 

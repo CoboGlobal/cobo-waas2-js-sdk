@@ -16,7 +16,7 @@ import TransactionDestinationType from './TransactionDestinationType';
 /**
  * The TransactionSafeWalletDestination model module.
  * @module model/TransactionSafeWalletDestination
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionSafeWalletDestination {
     /**
@@ -25,7 +25,7 @@ class TransactionSafeWalletDestination {
      * @alias module:model/TransactionSafeWalletDestination
      * @param destinationType {module:model/TransactionDestinationType} 
      * @param walletId {String} The wallet ID.
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param address {String} The destination address.
      * @param amount {String} The transaction amount. For example, if you trade 1.5 ETH, then the amount is `1.5`. 
      */
@@ -140,7 +140,7 @@ TransactionSafeWalletDestination.prototype['destination_type'] = undefined;
 TransactionSafeWalletDestination.prototype['wallet_id'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionSafeWalletDestination.prototype['token_id'] = undefined;

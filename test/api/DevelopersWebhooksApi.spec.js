@@ -67,26 +67,6 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getWebhookEventLogsById', function() {
-      it('should call getWebhookEventLogsById successfully', function() {
-        //uncomment below and update the code to test getWebhookEventLogsById
-        //instance.getWebhookEventLogsById().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('listEvents', function() {
-      it('should call listEvents successfully', function() {
-        //uncomment below and update the code to test listEvents
-        //instance.listEvents().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('listWebhookEndpoints', function() {
       it('should call listWebhookEndpoints successfully', function() {
         //uncomment below and update the code to test listWebhookEndpoints
@@ -101,6 +81,26 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call listWebhookEventDefinitions successfully', function() {
         //uncomment below and update the code to test listWebhookEventDefinitions
         //instance.listWebhookEventDefinitions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listWebhookEventLogs', function() {
+      it('should call listWebhookEventLogs successfully', function() {
+        //uncomment below and update the code to test listWebhookEventLogs
+        //instance.listWebhookEventLogs().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listWebhookEvents', function() {
+      it('should call listWebhookEvents successfully', function() {
+        //uncomment below and update the code to test listWebhookEvents
+        //instance.listWebhookEvents().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

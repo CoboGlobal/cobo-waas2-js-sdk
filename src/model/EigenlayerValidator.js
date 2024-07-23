@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EigenlayerValidator model module.
  * @module model/EigenlayerValidator
- * @version 0.4.1
+ * @version 0.4.4
  */
 class EigenlayerValidator {
     /**

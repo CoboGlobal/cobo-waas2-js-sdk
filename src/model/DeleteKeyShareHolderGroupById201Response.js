@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DeleteKeyShareHolderGroupById201Response model module.
  * @module model/DeleteKeyShareHolderGroupById201Response
- * @version 0.4.1
+ * @version 0.4.4
  */
 class DeleteKeyShareHolderGroupById201Response {
     /**

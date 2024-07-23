@@ -16,7 +16,7 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The BaseStakeExtra model module.
  * @module model/BaseStakeExtra
- * @version 0.4.1
+ * @version 0.4.4
  */
 class BaseStakeExtra {
     /**

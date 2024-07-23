@@ -11,16 +11,16 @@
  */
 
 import ApiClient from '../ApiClient';
+import ContractCallDestination from './ContractCallDestination';
 import ContractCallSource from './ContractCallSource';
 import EstimateFeeContractCall from './EstimateFeeContractCall';
-import EstimateFeeContractCallDestination from './EstimateFeeContractCallDestination';
 import EstimateFeeTransfer from './EstimateFeeTransfer';
 import FeeType from './FeeType';
 
 /**
  * The EstimateFee model module.
  * @module model/EstimateFee
- * @version 0.4.1
+ * @version 0.4.4
  */
 class EstimateFee {
     /**
@@ -130,7 +130,7 @@ class EstimateFee {
 EstimateFee.prototype['request_id'] = undefined;
 
 /**
- * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract.   - `MessageSign`: A request to sign a message. 
+ * The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
  * @member {module:model/EstimateFee.RequestTypeEnum} request_type
  */
 EstimateFee.prototype['request_type'] = undefined;
@@ -147,7 +147,7 @@ EstimateFee.prototype['source'] = undefined;
 EstimateFee.prototype['token_id'] = undefined;
 
 /**
- * @member {module:model/EstimateFeeContractCallDestination} destination
+ * @member {module:model/ContractCallDestination} destination
  */
 EstimateFee.prototype['destination'] = undefined;
 
@@ -157,7 +157,7 @@ EstimateFee.prototype['destination'] = undefined;
 EstimateFee.prototype['fee_type'] = undefined;
 
 /**
- * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/developers/v2/api-references/wallets/list-enabled-chains).
+ * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
  * @member {String} chain_id
  */
 EstimateFee.prototype['chain_id'] = undefined;

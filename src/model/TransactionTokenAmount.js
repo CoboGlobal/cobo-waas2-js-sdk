@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionTokenAmount model module.
  * @module model/TransactionTokenAmount
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TransactionTokenAmount {
     /**
@@ -98,7 +98,7 @@ class TransactionTokenAmount {
 TransactionTokenAmount.RequiredProperties = ["asset_id", "amount"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TransactionTokenAmount.prototype['token_id'] = undefined;

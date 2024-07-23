@@ -16,14 +16,14 @@ import TokenBalanceBalance from './TokenBalanceBalance';
 /**
  * The TokenBalance model module.
  * @module model/TokenBalance
- * @version 0.4.1
+ * @version 0.4.4
  */
 class TokenBalance {
     /**
      * Constructs a new <code>TokenBalance</code>.
      * The balance information.
      * @alias module:model/TokenBalance
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param balance {module:model/TokenBalanceBalance} 
      */
     constructor(tokenId, balance) { 
@@ -92,7 +92,7 @@ class TokenBalance {
 TokenBalance.RequiredProperties = ["token_id", "balance"];
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 TokenBalance.prototype['token_id'] = undefined;
