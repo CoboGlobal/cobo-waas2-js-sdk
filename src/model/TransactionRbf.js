@@ -17,12 +17,12 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The TransactionRbf model module.
  * @module model/TransactionRbf
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionRbf {
     /**
      * Constructs a new <code>TransactionRbf</code>.
-     * the information about the request to drop or to speed up transactions.
+     * The information about the request to drop or to speed up transactions.
      * @alias module:model/TransactionRbf
      * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      */
@@ -134,7 +134,7 @@ TransactionRbf.prototype['source'] = undefined;
 TransactionRbf.prototype['category_names'] = undefined;
 
 /**
- * The description of the rbf transaction.
+ * The description of the RBF transaction.
  * @member {String} description
  */
 TransactionRbf.prototype['description'] = undefined;

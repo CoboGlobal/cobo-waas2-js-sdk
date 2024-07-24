@@ -15,16 +15,17 @@ import ApiClient from '../ApiClient';
 /**
  * The AddressTransferDestinationUtxoOutputsInner model module.
  * @module model/AddressTransferDestinationUtxoOutputsInner
- * @version 0.4.4
+ * @version 0.4.5
  */
 class AddressTransferDestinationUtxoOutputsInner {
     /**
      * Constructs a new <code>AddressTransferDestinationUtxoOutputsInner</code>.
      * @alias module:model/AddressTransferDestinationUtxoOutputsInner
+     * @param address {String} The destination address.
      */
-    constructor() { 
+    constructor(address) { 
         
-        AddressTransferDestinationUtxoOutputsInner.initialize(this);
+        AddressTransferDestinationUtxoOutputsInner.initialize(this, address);
     }
 
     /**
@@ -32,7 +33,8 @@ class AddressTransferDestinationUtxoOutputsInner {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, address) { 
+        obj['address'] = address;
     }
 
     /**
@@ -65,6 +67,12 @@ class AddressTransferDestinationUtxoOutputsInner {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AddressTransferDestinationUtxoOutputsInner</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AddressTransferDestinationUtxoOutputsInner.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
@@ -84,7 +92,7 @@ class AddressTransferDestinationUtxoOutputsInner {
 
 }
 
-
+AddressTransferDestinationUtxoOutputsInner.RequiredProperties = ["address"];
 
 /**
  * The destination address.

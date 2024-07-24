@@ -37,7 +37,7 @@ import WalletType from '../model/WalletType';
 /**
 * Wallets service.
 * @module api/WalletsApi
-* @version 0.4.4
+* @version 0.4.5
 */
 export default class WalletsApi {
 

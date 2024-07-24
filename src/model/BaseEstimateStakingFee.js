@@ -16,7 +16,7 @@ import ActivityType from './ActivityType';
 /**
  * The BaseEstimateStakingFee model module.
  * @module model/BaseEstimateStakingFee
- * @version 0.4.4
+ * @version 0.4.5
  */
 class BaseEstimateStakingFee {
     /**

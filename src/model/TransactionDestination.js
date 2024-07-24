@@ -12,27 +12,29 @@
 
 import ApiClient from '../ApiClient';
 import ExchangeId from './ExchangeId';
-import TransactionAddressDestination from './TransactionAddressDestination';
-import TransactionAddressDestinationAccountOutput from './TransactionAddressDestinationAccountOutput';
-import TransactionAddressDestinationUtxoOutputs from './TransactionAddressDestinationUtxoOutputs';
-import TransactionContractCallDestination from './TransactionContractCallDestination';
-import TransactionCustodialWalletDestination from './TransactionCustodialWalletDestination';
+import TransactionDepositToAddressDestination from './TransactionDepositToAddressDestination';
+import TransactionDepositToWalletDestination from './TransactionDepositToWalletDestination';
 import TransactionDestinationType from './TransactionDestinationType';
-import TransactionExchangeWalletDestination from './TransactionExchangeWalletDestination';
-import TransactionMPCWalletDestination from './TransactionMPCWalletDestination';
-import TransactionMessageSignDestination from './TransactionMessageSignDestination';
-import TransactionSafeWalletDestination from './TransactionSafeWalletDestination';
+import TransactionEvmContractDestination from './TransactionEvmContractDestination';
+import TransactionMessageSignEIP191Destination from './TransactionMessageSignEIP191Destination';
+import TransactionMessageSignEIP712Destination from './TransactionMessageSignEIP712Destination';
+import TransactionTransferToAddressDestination from './TransactionTransferToAddressDestination';
+import TransactionTransferToAddressDestinationAccountOutput from './TransactionTransferToAddressDestinationAccountOutput';
+import TransactionTransferToAddressDestinationUtxoOutputsInner from './TransactionTransferToAddressDestinationUtxoOutputsInner';
+import TransactionTransferToWalletDestination from './TransactionTransferToWalletDestination';
+import WalletSubtype from './WalletSubtype';
+import WalletType from './WalletType';
 
 /**
  * The TransactionDestination model module.
  * @module model/TransactionDestination
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionDestination {
     /**
      * Constructs a new <code>TransactionDestination</code>.
      * @alias module:model/TransactionDestination
-     * @param {(module:model/TransactionAddressDestination|module:model/TransactionContractCallDestination|module:model/TransactionCustodialWalletDestination|module:model/TransactionExchangeWalletDestination|module:model/TransactionMPCWalletDestination|module:model/TransactionMessageSignDestination|module:model/TransactionSafeWalletDestination)} instance The actual instance to initialize TransactionDestination.
+     * @param {(module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} instance The actual instance to initialize TransactionDestination.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -42,122 +44,122 @@ class TransactionDestination {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "TransactionAddressDestination") {
+            if (typeof instance === "TransactionTransferToAddressDestination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionAddressDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionAddressDestination from JS object
-                this.actualInstance = TransactionAddressDestination.constructFromObject(instance);
+                TransactionTransferToAddressDestination.validateJSON(instance); // throw an exception if no match
+                // create TransactionTransferToAddressDestination from JS object
+                this.actualInstance = TransactionTransferToAddressDestination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionAddressDestination
-            errorMessages.push("Failed to construct TransactionAddressDestination: " + err)
+            // json data failed to deserialize into TransactionTransferToAddressDestination
+            errorMessages.push("Failed to construct TransactionTransferToAddressDestination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionContractCallDestination") {
+            if (typeof instance === "TransactionTransferToWalletDestination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionContractCallDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionContractCallDestination from JS object
-                this.actualInstance = TransactionContractCallDestination.constructFromObject(instance);
+                TransactionTransferToWalletDestination.validateJSON(instance); // throw an exception if no match
+                // create TransactionTransferToWalletDestination from JS object
+                this.actualInstance = TransactionTransferToWalletDestination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionContractCallDestination
-            errorMessages.push("Failed to construct TransactionContractCallDestination: " + err)
+            // json data failed to deserialize into TransactionTransferToWalletDestination
+            errorMessages.push("Failed to construct TransactionTransferToWalletDestination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionMessageSignDestination") {
+            if (typeof instance === "TransactionEvmContractDestination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionMessageSignDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionMessageSignDestination from JS object
-                this.actualInstance = TransactionMessageSignDestination.constructFromObject(instance);
+                TransactionEvmContractDestination.validateJSON(instance); // throw an exception if no match
+                // create TransactionEvmContractDestination from JS object
+                this.actualInstance = TransactionEvmContractDestination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionMessageSignDestination
-            errorMessages.push("Failed to construct TransactionMessageSignDestination: " + err)
+            // json data failed to deserialize into TransactionEvmContractDestination
+            errorMessages.push("Failed to construct TransactionEvmContractDestination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionCustodialWalletDestination") {
+            if (typeof instance === "TransactionMessageSignEIP191Destination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionCustodialWalletDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionCustodialWalletDestination from JS object
-                this.actualInstance = TransactionCustodialWalletDestination.constructFromObject(instance);
+                TransactionMessageSignEIP191Destination.validateJSON(instance); // throw an exception if no match
+                // create TransactionMessageSignEIP191Destination from JS object
+                this.actualInstance = TransactionMessageSignEIP191Destination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionCustodialWalletDestination
-            errorMessages.push("Failed to construct TransactionCustodialWalletDestination: " + err)
+            // json data failed to deserialize into TransactionMessageSignEIP191Destination
+            errorMessages.push("Failed to construct TransactionMessageSignEIP191Destination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionMPCWalletDestination") {
+            if (typeof instance === "TransactionMessageSignEIP712Destination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionMPCWalletDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionMPCWalletDestination from JS object
-                this.actualInstance = TransactionMPCWalletDestination.constructFromObject(instance);
+                TransactionMessageSignEIP712Destination.validateJSON(instance); // throw an exception if no match
+                // create TransactionMessageSignEIP712Destination from JS object
+                this.actualInstance = TransactionMessageSignEIP712Destination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionMPCWalletDestination
-            errorMessages.push("Failed to construct TransactionMPCWalletDestination: " + err)
+            // json data failed to deserialize into TransactionMessageSignEIP712Destination
+            errorMessages.push("Failed to construct TransactionMessageSignEIP712Destination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionSafeWalletDestination") {
+            if (typeof instance === "TransactionDepositToAddressDestination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionSafeWalletDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionSafeWalletDestination from JS object
-                this.actualInstance = TransactionSafeWalletDestination.constructFromObject(instance);
+                TransactionDepositToAddressDestination.validateJSON(instance); // throw an exception if no match
+                // create TransactionDepositToAddressDestination from JS object
+                this.actualInstance = TransactionDepositToAddressDestination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionSafeWalletDestination
-            errorMessages.push("Failed to construct TransactionSafeWalletDestination: " + err)
+            // json data failed to deserialize into TransactionDepositToAddressDestination
+            errorMessages.push("Failed to construct TransactionDepositToAddressDestination: " + err)
         }
 
         try {
-            if (typeof instance === "TransactionExchangeWalletDestination") {
+            if (typeof instance === "TransactionDepositToWalletDestination") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransactionExchangeWalletDestination.validateJSON(instance); // throw an exception if no match
-                // create TransactionExchangeWalletDestination from JS object
-                this.actualInstance = TransactionExchangeWalletDestination.constructFromObject(instance);
+                TransactionDepositToWalletDestination.validateJSON(instance); // throw an exception if no match
+                // create TransactionDepositToWalletDestination from JS object
+                this.actualInstance = TransactionDepositToWalletDestination.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransactionExchangeWalletDestination
-            errorMessages.push("Failed to construct TransactionExchangeWalletDestination: " + err)
+            // json data failed to deserialize into TransactionDepositToWalletDestination
+            errorMessages.push("Failed to construct TransactionDepositToWalletDestination: " + err)
         }
 
         if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransactionDestination` with oneOf schemas TransactionAddressDestination, TransactionContractCallDestination, TransactionCustodialWalletDestination, TransactionExchangeWalletDestination, TransactionMPCWalletDestination, TransactionMessageSignDestination, TransactionSafeWalletDestination. Input: " + JSON.stringify(instance));
+            throw new Error("Multiple matches found constructing `TransactionDestination` with oneOf schemas TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Input: " + JSON.stringify(instance));
         } else if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
-            throw new Error("No match found constructing `TransactionDestination` with oneOf schemas TransactionAddressDestination, TransactionContractCallDestination, TransactionCustodialWalletDestination, TransactionExchangeWalletDestination, TransactionMPCWalletDestination, TransactionMessageSignDestination, TransactionSafeWalletDestination. Details: " +
+            throw new Error("No match found constructing `TransactionDestination` with oneOf schemas TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Details: " +
                             errorMessages.join(", "));
         } else { // only 1 match
             // the input is valid
@@ -176,16 +178,16 @@ class TransactionDestination {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TransactionAddressDestination</code>, <code>TransactionContractCallDestination</code>, <code>TransactionCustodialWalletDestination</code>, <code>TransactionExchangeWalletDestination</code>, <code>TransactionMPCWalletDestination</code>, <code>TransactionMessageSignDestination</code>, <code>TransactionSafeWalletDestination</code>.
-     * @return {(module:model/TransactionAddressDestination|module:model/TransactionContractCallDestination|module:model/TransactionCustodialWalletDestination|module:model/TransactionExchangeWalletDestination|module:model/TransactionMPCWalletDestination|module:model/TransactionMessageSignDestination|module:model/TransactionSafeWalletDestination)} The actual instance.
+     * Gets the actual instance, which can be <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
+     * @return {(module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TransactionAddressDestination</code>, <code>TransactionContractCallDestination</code>, <code>TransactionCustodialWalletDestination</code>, <code>TransactionExchangeWalletDestination</code>, <code>TransactionMPCWalletDestination</code>, <code>TransactionMessageSignDestination</code>, <code>TransactionSafeWalletDestination</code>.
-     * @param {(module:model/TransactionAddressDestination|module:model/TransactionContractCallDestination|module:model/TransactionCustodialWalletDestination|module:model/TransactionExchangeWalletDestination|module:model/TransactionMPCWalletDestination|module:model/TransactionMessageSignDestination|module:model/TransactionSafeWalletDestination)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
+     * @param {(module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TransactionDestination.constructFromObject(obj).getActualInstance();
@@ -215,24 +217,12 @@ class TransactionDestination {
 TransactionDestination.prototype['destination_type'] = undefined;
 
 /**
- * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
- * @member {String} token_id
- */
-TransactionDestination.prototype['token_id'] = undefined;
-
-/**
- * (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
- * @member {String} asset_id
- */
-TransactionDestination.prototype['asset_id'] = undefined;
-
-/**
- * @member {module:model/TransactionAddressDestinationAccountOutput} account_output
+ * @member {module:model/TransactionTransferToAddressDestinationAccountOutput} account_output
  */
 TransactionDestination.prototype['account_output'] = undefined;
 
 /**
- * @member {module:model/TransactionAddressDestinationUtxoOutputs} utxo_outputs
+ * @member {Array.<module:model/TransactionTransferToAddressDestinationUtxoOutputsInner>} utxo_outputs
  */
 TransactionDestination.prototype['utxo_outputs'] = undefined;
 
@@ -241,6 +231,41 @@ TransactionDestination.prototype['utxo_outputs'] = undefined;
  * @member {String} change_address
  */
 TransactionDestination.prototype['change_address'] = undefined;
+
+/**
+ * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
+ * @member {Boolean} force_internal
+ */
+TransactionDestination.prototype['force_internal'] = undefined;
+
+/**
+ * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
+ * @member {Boolean} force_external
+ */
+TransactionDestination.prototype['force_external'] = undefined;
+
+/**
+ * The wallet ID.
+ * @member {String} wallet_id
+ */
+TransactionDestination.prototype['wallet_id'] = undefined;
+
+/**
+ * The exchange trading account or the sub-wallet ID.
+ * @member {String} sub_wallet_id
+ */
+TransactionDestination.prototype['sub_wallet_id'] = undefined;
+
+/**
+ * @member {module:model/ExchangeId} exchange_id
+ */
+TransactionDestination.prototype['exchange_id'] = undefined;
+
+/**
+ * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
+ * @member {String} amount
+ */
+TransactionDestination.prototype['amount'] = undefined;
 
 /**
  * The destination address.
@@ -261,22 +286,26 @@ TransactionDestination.prototype['value'] = undefined;
 TransactionDestination.prototype['calldata'] = undefined;
 
 /**
- * The raw data to be signed that are encoded in Base64.
+ * The raw data of the message to be signed, encoded in Base64 format.
  * @member {String} message
  */
 TransactionDestination.prototype['message'] = undefined;
 
 /**
- * The structured data to be signed that are encoded in JSON.
- * @member {String} structured_data
+ * The structured data of the message to be signed, encoded in JSON format.
+ * @member {Object.<String, Object>} structured_data
  */
 TransactionDestination.prototype['structured_data'] = undefined;
 
 /**
- * The wallet ID.
- * @member {String} wallet_id
+ * @member {module:model/WalletType} wallet_type
  */
-TransactionDestination.prototype['wallet_id'] = undefined;
+TransactionDestination.prototype['wallet_type'] = undefined;
+
+/**
+ * @member {module:model/WalletSubtype} wallet_subtype
+ */
+TransactionDestination.prototype['wallet_subtype'] = undefined;
 
 /**
  * The memo that identifies a transaction in order to credit the correct account. For transfers out of Cobo Portal, it is highly recommended to include a memo for the chains such as XRP, EOS, XLM, IOST, BNB_BNB, ATOM, LUNA, and TON.
@@ -284,25 +313,8 @@ TransactionDestination.prototype['wallet_id'] = undefined;
  */
 TransactionDestination.prototype['memo'] = undefined;
 
-/**
- * The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
- * @member {String} amount
- */
-TransactionDestination.prototype['amount'] = undefined;
 
-/**
- * @member {module:model/ExchangeId} exchange_id
- */
-TransactionDestination.prototype['exchange_id'] = undefined;
-
-/**
- * The exchange trading account or the sub-wallet ID.
- * @member {String} sub_wallet_id
- */
-TransactionDestination.prototype['sub_wallet_id'] = undefined;
-
-
-TransactionDestination.OneOf = ["TransactionAddressDestination", "TransactionContractCallDestination", "TransactionCustodialWalletDestination", "TransactionExchangeWalletDestination", "TransactionMPCWalletDestination", "TransactionMessageSignDestination", "TransactionSafeWalletDestination"];
+TransactionDestination.OneOf = ["TransactionDepositToAddressDestination", "TransactionDepositToWalletDestination", "TransactionEvmContractDestination", "TransactionMessageSignEIP191Destination", "TransactionMessageSignEIP712Destination", "TransactionTransferToAddressDestination", "TransactionTransferToWalletDestination"];
 
 export default TransactionDestination;
 

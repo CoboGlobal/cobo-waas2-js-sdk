@@ -3,6 +3,6 @@
 ## Enum
 
 
-* `EVM` (value: `"EVM"`)
+* `EVM_Contract` (value: `"EVM_Contract"`)
 
 

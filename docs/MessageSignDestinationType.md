@@ -3,8 +3,8 @@
 ## Enum
 
 
-* `191` (value: `"EVM_EIP_191"`)
+* `191_Signature` (value: `"EVM_EIP_191_Signature"`)
 
-* `712` (value: `"EVM_EIP_712"`)
+* `712_Signature` (value: `"EVM_EIP_712_Signature"`)
 
 

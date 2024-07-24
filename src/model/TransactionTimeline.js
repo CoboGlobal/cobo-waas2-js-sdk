@@ -16,7 +16,7 @@ import TransactionStatus from './TransactionStatus';
 /**
  * The TransactionTimeline model module.
  * @module model/TransactionTimeline
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionTimeline {
     /**
@@ -82,13 +82,13 @@ class TransactionTimeline {
 TransactionTimeline.prototype['status'] = undefined;
 
 /**
- * Whether the timeline status finished
+ * Whether the transaction status is completed: - `true`: The transaction status is completed. - `false`: The transaction is currently in the status. 
  * @member {Boolean} finished
  */
 TransactionTimeline.prototype['finished'] = undefined;
 
 /**
- * Timeline status finished time
+ * The time when the transaction status is completed in Unix timestamp format, measured in milliseconds.
  * @member {Number} finished_time
  */
 TransactionTimeline.prototype['finished_time'] = undefined;

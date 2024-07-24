@@ -19,10 +19,10 @@ import ApiClient from '../ApiClient';
 export default class ContractCallDestinationType {
     
         /**
-         * value: "EVM"
+         * value: "EVM_Contract"
          * @const
          */
-        "EVM" = "EVM";
+        "EVM_Contract" = "EVM_Contract";
 
     
 

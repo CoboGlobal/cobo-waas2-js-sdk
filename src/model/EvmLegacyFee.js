@@ -17,7 +17,7 @@ import FeeType from './FeeType';
 /**
  * The EvmLegacyFee model module.
  * @module model/EvmLegacyFee
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EvmLegacyFee {
     /**

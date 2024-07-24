@@ -11,11 +11,13 @@
  */
 
 import ApiClient from '../ApiClient';
+import TransactionBlockInfo from './TransactionBlockInfo';
 import TransactionDestination from './TransactionDestination';
 import TransactionEventData from './TransactionEventData';
 import TransactionFee from './TransactionFee';
 import TransactionInitiatorType from './TransactionInitiatorType';
 import TransactionReplacement from './TransactionReplacement';
+import TransactionResult from './TransactionResult';
 import TransactionSource from './TransactionSource';
 import TransactionStatus from './TransactionStatus';
 import TransactionSubStatus from './TransactionSubStatus';
@@ -24,7 +26,7 @@ import TransactionType from './TransactionType';
 /**
  * The WebhookEventData model module.
  * @module model/WebhookEventData
- * @version 0.4.4
+ * @version 0.4.5
  */
 class WebhookEventData {
     /**
@@ -169,6 +171,18 @@ WebhookEventData.prototype['failed_reason'] = undefined;
 WebhookEventData.prototype['chain_id'] = undefined;
 
 /**
+ * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+ * @member {String} token_id
+ */
+WebhookEventData.prototype['token_id'] = undefined;
+
+/**
+ * (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+ * @member {String} asset_id
+ */
+WebhookEventData.prototype['asset_id'] = undefined;
+
+/**
  * @member {module:model/TransactionSource} source
  */
 WebhookEventData.prototype['source'] = undefined;
@@ -177,6 +191,11 @@ WebhookEventData.prototype['source'] = undefined;
  * @member {module:model/TransactionDestination} destination
  */
 WebhookEventData.prototype['destination'] = undefined;
+
+/**
+ * @member {module:model/TransactionResult} result
+ */
+WebhookEventData.prototype['result'] = undefined;
 
 /**
  * @member {module:model/TransactionFee} fee
@@ -207,22 +226,9 @@ WebhookEventData.prototype['confirmed_num'] = undefined;
 WebhookEventData.prototype['confirming_threshold'] = undefined;
 
 /**
- * The block number.
- * @member {Number} block_number
+ * @member {module:model/TransactionBlockInfo} block_info
  */
-WebhookEventData.prototype['block_number'] = undefined;
-
-/**
- * The time when the block was created, in Unix timestamp format, measured in milliseconds.
- * @member {Number} block_time
- */
-WebhookEventData.prototype['block_time'] = undefined;
-
-/**
- * The block hash.
- * @member {String} block_hash
- */
-WebhookEventData.prototype['block_hash'] = undefined;
+WebhookEventData.prototype['block_info'] = undefined;
 
 /**
  * The transaction nonce.
@@ -252,18 +258,6 @@ WebhookEventData.prototype['category'] = undefined;
  * @member {String} description
  */
 WebhookEventData.prototype['description'] = undefined;
-
-/**
- * Whether the transaction request must be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must be executed as a Loop transfer.   - `false`: The transaction request may not be executed as a Loop transfer. 
- * @member {Boolean} force_internal
- */
-WebhookEventData.prototype['force_internal'] = undefined;
-
-/**
- * Whether the transaction request must not be executed as a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).   - `true`: The transaction request must not be executed as a Loop transfer.   - `false`: The transaction request can be executed as a Loop transfer. 
- * @member {Boolean} force_external
- */
-WebhookEventData.prototype['force_external'] = undefined;
 
 /**
  * Whether the transaction is a Loop transfer. For more information about Loop, see [Loop's website](https://loop.top/).  - `true`: The transaction is a Loop transfer. - `false`: The transaction is not a Loop transfer. 

@@ -16,15 +16,15 @@ import CoboSafeDelegate from './CoboSafeDelegate';
 import ExchangeTransferSource from './ExchangeTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
-import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
-import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import SafeTransferSource from './SafeTransferSource';
+import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
+import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The TransferSource model module.
  * @module model/TransferSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransferSource {
     /**
@@ -177,12 +177,12 @@ TransferSource.prototype['wallet_id'] = undefined;
 TransferSource.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
+ * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
  */
 TransferSource.prototype['included_utxos'] = undefined;
 
 /**
- * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
+ * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
  */
 TransferSource.prototype['excluded_utxos'] = undefined;
 

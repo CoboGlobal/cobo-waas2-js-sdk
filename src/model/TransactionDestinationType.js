@@ -26,45 +26,45 @@ export default class TransactionDestinationType {
 
     
         /**
-         * value: "ContractCall"
-         * @const
-         */
-        "ContractCall" = "ContractCall";
-
-    
-        /**
-         * value: "MessageSign"
-         * @const
-         */
-        "MessageSign" = "MessageSign";
-
-    
-        /**
-         * value: "CustodialWallet"
-         * @const
-         */
-        "CustodialWallet" = "CustodialWallet";
-
-    
-        /**
-         * value: "MPCWallet"
-         * @const
-         */
-        "MPCWallet" = "MPCWallet";
-
-    
-        /**
-         * value: "SafeWallet"
-         * @const
-         */
-        "SafeWallet" = "SafeWallet";
-
-    
-        /**
          * value: "ExchangeWallet"
          * @const
          */
         "ExchangeWallet" = "ExchangeWallet";
+
+    
+        /**
+         * value: "EVM_Contract"
+         * @const
+         */
+        "EVM_Contract" = "EVM_Contract";
+
+    
+        /**
+         * value: "EVM_EIP_191_Signature"
+         * @const
+         */
+        "EVM_EIP_191_Signature" = "EVM_EIP_191_Signature";
+
+    
+        /**
+         * value: "EVM_EIP_712_Signature"
+         * @const
+         */
+        "EVM_EIP_712_Signature" = "EVM_EIP_712_Signature";
+
+    
+        /**
+         * value: "DepositToAddress"
+         * @const
+         */
+        "DepositToAddress" = "DepositToAddress";
+
+    
+        /**
+         * value: "DepositToWallet"
+         * @const
+         */
+        "DepositToWallet" = "DepositToWallet";
 
     
 

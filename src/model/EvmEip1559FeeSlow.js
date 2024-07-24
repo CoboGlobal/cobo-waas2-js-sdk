@@ -17,7 +17,7 @@ import FeeData from './FeeData';
 /**
  * The EvmEip1559FeeSlow model module.
  * @module model/EvmEip1559FeeSlow
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EvmEip1559FeeSlow {
     /**

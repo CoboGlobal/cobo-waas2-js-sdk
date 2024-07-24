@@ -19,17 +19,17 @@ import ApiClient from '../ApiClient';
 export default class MessageSignDestinationType {
     
         /**
-         * value: "EVM_EIP_191"
+         * value: "EVM_EIP_191_Signature"
          * @const
          */
-        "191" = "EVM_EIP_191";
+        "191_Signature" = "EVM_EIP_191_Signature";
 
     
         /**
-         * value: "EVM_EIP_712"
+         * value: "EVM_EIP_712_Signature"
          * @const
          */
-        "712" = "EVM_EIP_712";
+        "712_Signature" = "EVM_EIP_712_Signature";
 
     
 

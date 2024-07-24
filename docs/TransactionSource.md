@@ -5,13 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sourceType** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
-**accountInput** | [**TransactionMPCWalletSourceAccountInput**](TransactionMPCWalletSourceAccountInput.md) |  | [optional] 
-**utxoInputs** | [**[TransactionMPCWalletSourceUtxoInputsInner]**](TransactionMPCWalletSourceUtxoInputsInner.md) |  | [optional] 
-**walletId** | **String** | The Wallet ID. | 
-**mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
+**walletId** | **String** | The wallet ID. | 
 **address** | **String** | The wallet address. | 
-**delegate** | [**TransactionSafeWalletSourceDelegate**](TransactionSafeWalletSourceDelegate.md) |  | [optional] 
+**includedUtxos** | [**[TransactionMPCWalletSourceIncludedUtxosInner]**](TransactionMPCWalletSourceIncludedUtxosInner.md) |  | [optional] 
+**excludedUtxos** | [**[TransactionMPCWalletSourceExcludedUtxosInner]**](TransactionMPCWalletSourceExcludedUtxosInner.md) |  | [optional] 
+**mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
+**delegate** | [**CoboSafeDelegate**](CoboSafeDelegate.md) |  | [optional] 
 **exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 
 **subWalletId** | **String** | The exchange trading account or a sub-wallet ID. | [optional] 
+**walletType** | [**WalletType**](WalletType.md) |  | 
+**walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**addresses** | **[String]** |  | 
 
 

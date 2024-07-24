@@ -19,38 +19,45 @@ import ApiClient from '../ApiClient';
 export default class TransactionSourceType {
     
         /**
-         * value: "Address"
+         * value: "Asset"
          * @const
          */
-        "Address" = "Address";
+        "Asset" = "Asset";
 
     
         /**
-         * value: "CustodialWallet"
+         * value: "Org-Controlled"
          * @const
          */
-        "CustodialWallet" = "CustodialWallet";
+        "Org-Controlled" = "Org-Controlled";
 
     
         /**
-         * value: "MPCWallet"
+         * value: "User-Controlled"
          * @const
          */
-        "MPCWallet" = "MPCWallet";
+        "User-Controlled" = "User-Controlled";
 
     
         /**
-         * value: "SafeWallet"
+         * value: "Safe{Wallet}"
          * @const
          */
-        "SafeWallet" = "SafeWallet";
+        "Safe{Wallet}" = "Safe{Wallet}";
 
     
         /**
-         * value: "ExchangeWallet"
+         * value: "Main"
          * @const
          */
-        "ExchangeWallet" = "ExchangeWallet";
+        "Main" = "Main";
+
+    
+        /**
+         * value: "Sub"
+         * @const
+         */
+        "Sub" = "Sub";
 
     
         /**
@@ -58,6 +65,20 @@ export default class TransactionSourceType {
          * @const
          */
         "FeeStation" = "FeeStation";
+
+    
+        /**
+         * value: "DepositFromAddress"
+         * @const
+         */
+        "DepositFromAddress" = "DepositFromAddress";
+
+    
+        /**
+         * value: "DepositFromWallet"
+         * @const
+         */
+        "DepositFromWallet" = "DepositFromWallet";
 
     
 

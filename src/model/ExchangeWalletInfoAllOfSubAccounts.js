@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ExchangeWalletInfoAllOfSubAccounts model module.
  * @module model/ExchangeWalletInfoAllOfSubAccounts
- * @version 0.4.4
+ * @version 0.4.5
  */
 class ExchangeWalletInfoAllOfSubAccounts {
     /**

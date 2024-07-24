@@ -17,18 +17,19 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MpcMessageSignSource model module.
  * @module model/MpcMessageSignSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class MpcMessageSignSource {
     /**
      * Constructs a new <code>MpcMessageSignSource</code>.
      * @alias module:model/MpcMessageSignSource
+     * @param sourceType {module:model/MessageSignSourceType} 
      * @param walletId {String} The wallet ID.
      * @param address {String} The wallet address.
      */
-    constructor(walletId, address) { 
+    constructor(sourceType, walletId, address) { 
         
-        MpcMessageSignSource.initialize(this, walletId, address);
+        MpcMessageSignSource.initialize(this, sourceType, walletId, address);
     }
 
     /**
@@ -36,7 +37,8 @@ class MpcMessageSignSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, address) { 
+    static initialize(obj, sourceType, walletId, address) { 
+        obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
         obj['address'] = address;
     }
@@ -99,7 +101,7 @@ class MpcMessageSignSource {
 
 }
 
-MpcMessageSignSource.RequiredProperties = ["wallet_id", "address"];
+MpcMessageSignSource.RequiredProperties = ["source_type", "wallet_id", "address"];
 
 /**
  * @member {module:model/MessageSignSourceType} source_type

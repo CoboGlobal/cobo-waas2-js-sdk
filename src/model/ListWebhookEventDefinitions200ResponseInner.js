@@ -16,7 +16,7 @@ import WebhookEventType from './WebhookEventType';
 /**
  * The ListWebhookEventDefinitions200ResponseInner model module.
  * @module model/ListWebhookEventDefinitions200ResponseInner
- * @version 0.4.4
+ * @version 0.4.5
  */
 class ListWebhookEventDefinitions200ResponseInner {
     /**

@@ -17,7 +17,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The CoboSafeDelegate model module.
  * @module model/CoboSafeDelegate
- * @version 0.4.4
+ * @version 0.4.5
  */
 class CoboSafeDelegate {
     /**

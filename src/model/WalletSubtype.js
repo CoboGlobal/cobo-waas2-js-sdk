@@ -33,20 +33,6 @@ export default class WalletSubtype {
 
     
         /**
-         * value: "Main"
-         * @const
-         */
-        "Main" = "Main";
-
-    
-        /**
-         * value: "Sub"
-         * @const
-         */
-        "Sub" = "Sub";
-
-    
-        /**
          * value: "Org-Controlled"
          * @const
          */
@@ -65,6 +51,20 @@ export default class WalletSubtype {
          * @const
          */
         "Safe{Wallet}" = "Safe{Wallet}";
+
+    
+        /**
+         * value: "Main"
+         * @const
+         */
+        "Main" = "Main";
+
+    
+        /**
+         * value: "Sub"
+         * @const
+         */
+        "Sub" = "Sub";
 
     
 

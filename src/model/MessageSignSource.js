@@ -18,7 +18,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MessageSignSource model module.
  * @module model/MessageSignSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class MessageSignSource {
     /**

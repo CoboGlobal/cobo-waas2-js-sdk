@@ -13,14 +13,14 @@
 import ApiClient from '../ApiClient';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
-import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
-import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
+import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
+import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The TransactionRbfSource model module.
  * @module model/TransactionRbfSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionRbfSource {
     /**
@@ -125,12 +125,12 @@ TransactionRbfSource.prototype['wallet_id'] = undefined;
 TransactionRbfSource.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
+ * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
  */
 TransactionRbfSource.prototype['included_utxos'] = undefined;
 
 /**
- * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
+ * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
  */
 TransactionRbfSource.prototype['excluded_utxos'] = undefined;
 

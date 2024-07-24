@@ -18,7 +18,7 @@ import ContractCallSourceType from './ContractCallSourceType';
 /**
  * The SafeContractCallSource model module.
  * @module model/SafeContractCallSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class SafeContractCallSource {
     /**

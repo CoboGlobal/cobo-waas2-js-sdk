@@ -59,32 +59,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property accountInput (base name: "account_input")', function() {
-      // uncomment below and update the code to test the property accountInput
-      //var instance = new CoboWaas2JsApi.TransactionSource();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property utxoInputs (base name: "utxo_inputs")', function() {
-      // uncomment below and update the code to test the property utxoInputs
-      //var instance = new CoboWaas2JsApi.TransactionSource();
-      //expect(instance).to.be();
-    });
-
     it('should have the property walletId (base name: "wallet_id")', function() {
       // uncomment below and update the code to test the property walletId
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
+    it('should have the property includedUtxos (base name: "included_utxos")', function() {
+      // uncomment below and update the code to test the property includedUtxos
+      //var instance = new CoboWaas2JsApi.TransactionSource();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property excludedUtxos (base name: "excluded_utxos")', function() {
+      // uncomment below and update the code to test the property excludedUtxos
+      //var instance = new CoboWaas2JsApi.TransactionSource();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
+      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });
@@ -103,6 +103,24 @@
 
     it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
       // uncomment below and update the code to test the property subWalletId
+      //var instance = new CoboWaas2JsApi.TransactionSource();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletType (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property walletType
+      //var instance = new CoboWaas2JsApi.TransactionSource();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property walletSubtype
+      //var instance = new CoboWaas2JsApi.TransactionSource();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property addresses (base name: "addresses")', function() {
+      // uncomment below and update the code to test the property addresses
       //var instance = new CoboWaas2JsApi.TransactionSource();
       //expect(instance).to.be();
     });

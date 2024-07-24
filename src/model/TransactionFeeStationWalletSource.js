@@ -16,7 +16,7 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionFeeStationWalletSource model module.
  * @module model/TransactionFeeStationWalletSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionFeeStationWalletSource {
     /**

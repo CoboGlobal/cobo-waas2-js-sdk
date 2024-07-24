@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | [optional] 
 **source** | [**TransactionRbfSource**](TransactionRbfSource.md) |  | [optional] 
 **categoryNames** | **[String]** | The custom category for you to identify your transactions. | [optional] 
-**description** | **String** | The description of the rbf transaction. | [optional] 
+**description** | **String** | The description of the RBF transaction. | [optional] 
 
 

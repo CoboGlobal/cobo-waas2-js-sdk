@@ -20,7 +20,7 @@ import FeeType from './FeeType';
 /**
  * The EstimateFee model module.
  * @module model/EstimateFee
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EstimateFee {
     /**

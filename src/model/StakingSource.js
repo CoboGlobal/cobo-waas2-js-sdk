@@ -20,7 +20,7 @@ import SafeContractCallSource from './SafeContractCallSource';
 /**
  * The StakingSource model module.
  * @module model/StakingSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class StakingSource {
     /**

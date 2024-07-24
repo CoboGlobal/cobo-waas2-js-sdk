@@ -16,12 +16,12 @@ import ContractCallDestinationType from './ContractCallDestinationType';
 /**
  * The EvmContractCallDestination model module.
  * @module model/EvmContractCallDestination
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EvmContractCallDestination {
     /**
      * Constructs a new <code>EvmContractCallDestination</code>.
-     * The information about the EVM transaction destination.
+     * The information about the transaction destination.
      * @alias module:model/EvmContractCallDestination
      * @param destinationType {module:model/ContractCallDestinationType} 
      * @param address {String} The destination address.

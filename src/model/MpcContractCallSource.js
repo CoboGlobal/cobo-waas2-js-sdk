@@ -18,7 +18,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MpcContractCallSource model module.
  * @module model/MpcContractCallSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class MpcContractCallSource {
     /**

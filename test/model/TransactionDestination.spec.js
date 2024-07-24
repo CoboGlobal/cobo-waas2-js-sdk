@@ -59,18 +59,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
-      //var instance = new CoboWaas2JsApi.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property assetId (base name: "asset_id")', function() {
-      // uncomment below and update the code to test the property assetId
-      //var instance = new CoboWaas2JsApi.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
     it('should have the property accountOutput (base name: "account_output")', function() {
       // uncomment below and update the code to test the property accountOutput
       //var instance = new CoboWaas2JsApi.TransactionDestination();
@@ -85,6 +73,42 @@
 
     it('should have the property changeAddress (base name: "change_address")', function() {
       // uncomment below and update the code to test the property changeAddress
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property forceInternal (base name: "force_internal")', function() {
+      // uncomment below and update the code to test the property forceInternal
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property forceExternal (base name: "force_external")', function() {
+      // uncomment below and update the code to test the property forceExternal
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletId (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property walletId
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
+      // uncomment below and update the code to test the property subWalletId
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property exchangeId (base name: "exchange_id")', function() {
+      // uncomment below and update the code to test the property exchangeId
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property amount (base name: "amount")', function() {
+      // uncomment below and update the code to test the property amount
       //var instance = new CoboWaas2JsApi.TransactionDestination();
       //expect(instance).to.be();
     });
@@ -119,32 +143,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property walletType (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property walletType
+      //var instance = new CoboWaas2JsApi.TransactionDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property walletSubtype
       //var instance = new CoboWaas2JsApi.TransactionDestination();
       //expect(instance).to.be();
     });
 
     it('should have the property memo (base name: "memo")', function() {
       // uncomment below and update the code to test the property memo
-      //var instance = new CoboWaas2JsApi.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2JsApi.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property exchangeId (base name: "exchange_id")', function() {
-      // uncomment below and update the code to test the property exchangeId
-      //var instance = new CoboWaas2JsApi.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
-      // uncomment below and update the code to test the property subWalletId
       //var instance = new CoboWaas2JsApi.TransactionDestination();
       //expect(instance).to.be();
     });

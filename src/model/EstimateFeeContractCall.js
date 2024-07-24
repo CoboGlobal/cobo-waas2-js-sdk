@@ -18,7 +18,7 @@ import FeeType from './FeeType';
 /**
  * The EstimateFeeContractCall model module.
  * @module model/EstimateFeeContractCall
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EstimateFeeContractCall {
     /**

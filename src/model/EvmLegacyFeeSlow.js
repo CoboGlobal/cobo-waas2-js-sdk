@@ -17,7 +17,7 @@ import FeeData from './FeeData';
 /**
  * The EvmLegacyFeeSlow model module.
  * @module model/EvmLegacyFeeSlow
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EvmLegacyFeeSlow {
     /**

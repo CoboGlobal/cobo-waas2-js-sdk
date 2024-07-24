@@ -18,7 +18,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The SafeTransferSource model module.
  * @module model/SafeTransferSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class SafeTransferSource {
     /**

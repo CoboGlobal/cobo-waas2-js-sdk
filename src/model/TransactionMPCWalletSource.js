@@ -12,14 +12,14 @@
 
 import ApiClient from '../ApiClient';
 import MpcSigningGroup from './MpcSigningGroup';
-import TransactionMPCWalletSourceAccountInput from './TransactionMPCWalletSourceAccountInput';
-import TransactionMPCWalletSourceUtxoInputsInner from './TransactionMPCWalletSourceUtxoInputsInner';
+import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
+import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
 import TransactionSourceType from './TransactionSourceType';
 
 /**
  * The TransactionMPCWalletSource model module.
  * @module model/TransactionMPCWalletSource
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionMPCWalletSource {
     /**
@@ -61,14 +61,17 @@ class TransactionMPCWalletSource {
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
+            if (data.hasOwnProperty('address')) {
+                obj['address'] = ApiClient.convertToType(data['address'], 'String');
+            }
+            if (data.hasOwnProperty('included_utxos')) {
+                obj['included_utxos'] = ApiClient.convertToType(data['included_utxos'], [TransactionMPCWalletSourceIncludedUtxosInner]);
+            }
+            if (data.hasOwnProperty('excluded_utxos')) {
+                obj['excluded_utxos'] = ApiClient.convertToType(data['excluded_utxos'], [TransactionMPCWalletSourceExcludedUtxosInner]);
+            }
             if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
                 obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
-            }
-            if (data.hasOwnProperty('account_input')) {
-                obj['account_input'] = TransactionMPCWalletSourceAccountInput.constructFromObject(data['account_input']);
-            }
-            if (data.hasOwnProperty('utxo_inputs')) {
-                obj['utxo_inputs'] = ApiClient.convertToType(data['utxo_inputs'], [TransactionMPCWalletSourceUtxoInputsInner]);
             }
         }
         return obj;
@@ -90,23 +93,33 @@ class TransactionMPCWalletSource {
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
+        // ensure the json data is a string
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        }
+        if (data['included_utxos']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['included_utxos'])) {
+                throw new Error("Expected the field `included_utxos` to be an array in the JSON data but got " + data['included_utxos']);
+            }
+            // validate the optional field `included_utxos` (array)
+            for (const item of data['included_utxos']) {
+                TransactionMPCWalletSourceIncludedUtxosInner.validateJSON(item);
+            };
+        }
+        if (data['excluded_utxos']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['excluded_utxos'])) {
+                throw new Error("Expected the field `excluded_utxos` to be an array in the JSON data but got " + data['excluded_utxos']);
+            }
+            // validate the optional field `excluded_utxos` (array)
+            for (const item of data['excluded_utxos']) {
+                TransactionMPCWalletSourceExcludedUtxosInner.validateJSON(item);
+            };
+        }
         // validate the optional field `mpc_used_key_share_holder_group`
         if (data['mpc_used_key_share_holder_group']) { // data not null
           MpcSigningGroup.validateJSON(data['mpc_used_key_share_holder_group']);
-        }
-        // validate the optional field `account_input`
-        if (data['account_input']) { // data not null
-          TransactionMPCWalletSourceAccountInput.validateJSON(data['account_input']);
-        }
-        if (data['utxo_inputs']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['utxo_inputs'])) {
-                throw new Error("Expected the field `utxo_inputs` to be an array in the JSON data but got " + data['utxo_inputs']);
-            }
-            // validate the optional field `utxo_inputs` (array)
-            for (const item of data['utxo_inputs']) {
-                TransactionMPCWalletSourceUtxoInputsInner.validateJSON(item);
-            };
         }
 
         return true;
@@ -129,19 +142,25 @@ TransactionMPCWalletSource.prototype['source_type'] = undefined;
 TransactionMPCWalletSource.prototype['wallet_id'] = undefined;
 
 /**
+ * The wallet address.
+ * @member {String} address
+ */
+TransactionMPCWalletSource.prototype['address'] = undefined;
+
+/**
+ * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
+ */
+TransactionMPCWalletSource.prototype['included_utxos'] = undefined;
+
+/**
+ * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
+ */
+TransactionMPCWalletSource.prototype['excluded_utxos'] = undefined;
+
+/**
  * @member {module:model/MpcSigningGroup} mpc_used_key_share_holder_group
  */
 TransactionMPCWalletSource.prototype['mpc_used_key_share_holder_group'] = undefined;
-
-/**
- * @member {module:model/TransactionMPCWalletSourceAccountInput} account_input
- */
-TransactionMPCWalletSource.prototype['account_input'] = undefined;
-
-/**
- * @member {Array.<module:model/TransactionMPCWalletSourceUtxoInputsInner>} utxo_inputs
- */
-TransactionMPCWalletSource.prototype['utxo_inputs'] = undefined;
 
 
 

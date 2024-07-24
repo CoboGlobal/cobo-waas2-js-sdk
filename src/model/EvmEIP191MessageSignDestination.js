@@ -16,7 +16,7 @@ import MessageSignDestinationType from './MessageSignDestinationType';
 /**
  * The EvmEIP191MessageSignDestination model module.
  * @module model/EvmEIP191MessageSignDestination
- * @version 0.4.4
+ * @version 0.4.5
  */
 class EvmEIP191MessageSignDestination {
     /**

@@ -18,7 +18,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The ContractCall model module.
  * @module model/ContractCall
- * @version 0.4.4
+ * @version 0.4.5
  */
 class ContractCall {
     /**

@@ -113,6 +113,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tokenId (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property tokenId
+      //var instance = new CoboWaas2JsApi.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property assetId (base name: "asset_id")', function() {
+      // uncomment below and update the code to test the property assetId
+      //var instance = new CoboWaas2JsApi.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property source (base name: "source")', function() {
       // uncomment below and update the code to test the property source
       //var instance = new CoboWaas2JsApi.WebhookEventData();
@@ -121,6 +133,12 @@
 
     it('should have the property destination (base name: "destination")', function() {
       // uncomment below and update the code to test the property destination
+      //var instance = new CoboWaas2JsApi.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property result (base name: "result")', function() {
+      // uncomment below and update the code to test the property result
       //var instance = new CoboWaas2JsApi.WebhookEventData();
       //expect(instance).to.be();
     });
@@ -155,20 +173,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property blockNumber (base name: "block_number")', function() {
-      // uncomment below and update the code to test the property blockNumber
-      //var instance = new CoboWaas2JsApi.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockTime (base name: "block_time")', function() {
-      // uncomment below and update the code to test the property blockTime
-      //var instance = new CoboWaas2JsApi.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockHash (base name: "block_hash")', function() {
-      // uncomment below and update the code to test the property blockHash
+    it('should have the property blockInfo (base name: "block_info")', function() {
+      // uncomment below and update the code to test the property blockInfo
       //var instance = new CoboWaas2JsApi.WebhookEventData();
       //expect(instance).to.be();
     });
@@ -199,18 +205,6 @@
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new CoboWaas2JsApi.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property forceInternal (base name: "force_internal")', function() {
-      // uncomment below and update the code to test the property forceInternal
-      //var instance = new CoboWaas2JsApi.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property forceExternal (base name: "force_external")', function() {
-      // uncomment below and update the code to test the property forceExternal
       //var instance = new CoboWaas2JsApi.WebhookEventData();
       //expect(instance).to.be();
     });

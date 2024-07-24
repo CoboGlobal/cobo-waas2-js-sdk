@@ -18,7 +18,7 @@ import TransferSource from './TransferSource';
 /**
  * The Transfer model module.
  * @module model/Transfer
- * @version 0.4.4
+ * @version 0.4.5
  */
 class Transfer {
     /**

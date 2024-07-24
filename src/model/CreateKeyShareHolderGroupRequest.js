@@ -17,7 +17,7 @@ import KeyShareHolderGroupType from './KeyShareHolderGroupType';
 /**
  * The CreateKeyShareHolderGroupRequest model module.
  * @module model/CreateKeyShareHolderGroupRequest
- * @version 0.4.4
+ * @version 0.4.5
  */
 class CreateKeyShareHolderGroupRequest {
     /**

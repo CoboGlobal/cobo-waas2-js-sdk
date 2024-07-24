@@ -16,7 +16,7 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The ExchangeTransferDestination model module.
  * @module model/ExchangeTransferDestination
- * @version 0.4.4
+ * @version 0.4.5
  */
 class ExchangeTransferDestination {
     /**
@@ -26,10 +26,11 @@ class ExchangeTransferDestination {
      * @param destinationType {module:model/TransferDestinationType} 
      * @param walletId {String} The wallet ID.
      * @param subWalletId {String} The exchange trading account or the sub-wallet ID.
+     * @param amount {String} The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
      */
-    constructor(destinationType, walletId, subWalletId) { 
+    constructor(destinationType, walletId, subWalletId, amount) { 
         
-        ExchangeTransferDestination.initialize(this, destinationType, walletId, subWalletId);
+        ExchangeTransferDestination.initialize(this, destinationType, walletId, subWalletId, amount);
     }
 
     /**
@@ -37,10 +38,11 @@ class ExchangeTransferDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, walletId, subWalletId) { 
+    static initialize(obj, destinationType, walletId, subWalletId, amount) { 
         obj['destination_type'] = destinationType;
         obj['wallet_id'] = walletId;
         obj['sub_wallet_id'] = subWalletId;
+        obj['amount'] = amount;
     }
 
     /**
@@ -101,7 +103,7 @@ class ExchangeTransferDestination {
 
 }
 
-ExchangeTransferDestination.RequiredProperties = ["destination_type", "wallet_id", "sub_wallet_id"];
+ExchangeTransferDestination.RequiredProperties = ["destination_type", "wallet_id", "sub_wallet_id", "amount"];
 
 /**
  * @member {module:model/TransferDestinationType} destination_type

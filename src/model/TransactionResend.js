@@ -16,7 +16,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The TransactionResend model module.
  * @module model/TransactionResend
- * @version 0.4.4
+ * @version 0.4.5
  */
 class TransactionResend {
     /**
