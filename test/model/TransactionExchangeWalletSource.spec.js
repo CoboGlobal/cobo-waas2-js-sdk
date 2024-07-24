@@ -53,26 +53,26 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionExchangeWalletSource);
     });
 
-    it('should have the property sourceType (base name: "source_type")', function() {
-      // uncomment below and update the code to test the property sourceType
+    it('should have the property source_type (base name: "source_type")', function() {
+      // uncomment below and update the code to test the property source_type
       //var instance = new CoboWaas2JsApi.TransactionExchangeWalletSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property exchangeId (base name: "exchange_id")', function() {
-      // uncomment below and update the code to test the property exchangeId
+    it('should have the property exchange_id (base name: "exchange_id")', function() {
+      // uncomment below and update the code to test the property exchange_id
       //var instance = new CoboWaas2JsApi.TransactionExchangeWalletSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.TransactionExchangeWalletSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
-      // uncomment below and update the code to test the property subWalletId
+    it('should have the property sub_wallet_id (base name: "sub_wallet_id")', function() {
+      // uncomment below and update the code to test the property sub_wallet_id
       //var instance = new CoboWaas2JsApi.TransactionExchangeWalletSource();
       //expect(instance).to.be();
     });

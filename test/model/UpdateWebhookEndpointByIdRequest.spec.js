@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UpdateWebhookEndpointByIdRequest);
     });
 
-    it('should have the property subscribedEvents (base name: "subscribed_events")', function() {
-      // uncomment below and update the code to test the property subscribedEvents
+    it('should have the property subscribed_events (base name: "subscribed_events")', function() {
+      // uncomment below and update the code to test the property subscribed_events
       //var instance = new CoboWaas2JsApi.UpdateWebhookEndpointByIdRequest();
       //expect(instance).to.be();
     });

@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.WebhookEventDataType);
     });
 
-    it('should have the property dataType (base name: "data_type")', function() {
-      // uncomment below and update the code to test the property dataType
+    it('should have the property data_type (base name: "data_type")', function() {
+      // uncomment below and update the code to test the property data_type
       //var instance = new CoboWaas2JsApi.WebhookEventDataType();
       //expect(instance).to.be();
     });

@@ -16,19 +16,19 @@ import TokenInfo from './TokenInfo';
 /**
  * The TransactionTokeApproval model module.
  * @module model/TransactionTokeApproval
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionTokeApproval {
     /**
      * Constructs a new <code>TransactionTokeApproval</code>.
      * @alias module:model/TransactionTokeApproval
      * @implements module:model/TokenInfo
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
-     * @param chainId {String} The ID of the chain on which the token operates.
+     * @param token_id {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param chain_id {String} The ID of the chain on which the token operates.
      */
-    constructor(tokenId, chainId) { 
-        TokenInfo.initialize(this, tokenId, chainId);
-        TransactionTokeApproval.initialize(this, tokenId, chainId);
+    constructor(token_id, chain_id) { 
+        TokenInfo.initialize(this, token_id, chain_id);
+        TransactionTokeApproval.initialize(this, token_id, chain_id);
     }
 
     /**
@@ -36,9 +36,9 @@ class TransactionTokeApproval {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, tokenId, chainId) { 
-        obj['token_id'] = tokenId;
-        obj['chain_id'] = chainId;
+    static initialize(obj, token_id, chain_id) { 
+        obj['token_id'] = token_id;
+        obj['chain_id'] = chain_id;
     }
 
     /**

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tssRequestId** | **String** | The TSS request ID. | [optional] 
-**sourceKeyShareHolderGroupId** | **String** | The source key share holder group ID. | [optional] 
-**targetKeyShareHolderGroupId** | **String** | The target key share holder group ID. | [optional] 
+**tss_request_id** | **String** | The TSS request ID. | [optional] 
+**source_key_share_holder_group_id** | **String** | The source key share holder group ID. | [optional] 
+**target_key_share_holder_group_id** | **String** | The target key share holder group ID. | [optional] 
 **type** | [**TSSRequestType**](TSSRequestType.md) |  | [optional] 
 **status** | [**TSSRequestStatus**](TSSRequestStatus.md) |  | [optional] 
 

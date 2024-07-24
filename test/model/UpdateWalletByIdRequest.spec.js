@@ -83,20 +83,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property accountIdentify (base name: "account_identify")', function() {
-      // uncomment below and update the code to test the property accountIdentify
+    it('should have the property account_identify (base name: "account_identify")', function() {
+      // uncomment below and update the code to test the property account_identify
       //var instance = new CoboWaas2JsApi.UpdateWalletByIdRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property gaCode (base name: "ga_code")', function() {
-      // uncomment below and update the code to test the property gaCode
+    it('should have the property ga_code (base name: "ga_code")', function() {
+      // uncomment below and update the code to test the property ga_code
       //var instance = new CoboWaas2JsApi.UpdateWalletByIdRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property mainWalletId (base name: "main_wallet_id")', function() {
-      // uncomment below and update the code to test the property mainWalletId
+    it('should have the property main_wallet_id (base name: "main_wallet_id")', function() {
+      // uncomment below and update the code to test the property main_wallet_id
       //var instance = new CoboWaas2JsApi.UpdateWalletByIdRequest();
       //expect(instance).to.be();
     });

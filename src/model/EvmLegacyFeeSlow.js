@@ -17,7 +17,7 @@ import FeeData from './FeeData';
 /**
  * The EvmLegacyFeeSlow model module.
  * @module model/EvmLegacyFeeSlow
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmLegacyFeeSlow {
     /**
@@ -25,12 +25,12 @@ class EvmLegacyFeeSlow {
      * @alias module:model/EvmLegacyFeeSlow
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData
-     * @param gasPrice {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
-     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
+     * @param gas_price {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gas_limit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
      */
-    constructor(gasPrice, gasLimit) { 
-        EvmLegacyFeeBasePrice.initialize(this, gasPrice);FeeData.initialize(this, gasLimit);
-        EvmLegacyFeeSlow.initialize(this, gasPrice, gasLimit);
+    constructor(gas_price, gas_limit) { 
+        EvmLegacyFeeBasePrice.initialize(this, gas_price);FeeData.initialize(this, gas_limit);
+        EvmLegacyFeeSlow.initialize(this, gas_price, gas_limit);
     }
 
     /**
@@ -38,9 +38,9 @@ class EvmLegacyFeeSlow {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasPrice, gasLimit) { 
-        obj['gas_price'] = gasPrice;
-        obj['gas_limit'] = gasLimit || '21000';
+    static initialize(obj, gas_price, gas_limit) { 
+        obj['gas_price'] = gas_price;
+        obj['gas_limit'] = gas_limit || '21000';
     }
 
     /**

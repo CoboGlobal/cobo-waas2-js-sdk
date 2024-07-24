@@ -20,7 +20,7 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The TransferDestination model module.
  * @module model/TransferDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransferDestination {
     /**
@@ -36,12 +36,10 @@ class TransferDestination {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "AddressTransferDestination") {
+            if (instance instanceof AddressTransferDestination) {
                 this.actualInstance = instance;
-            } else {
+            } else if(AddressTransferDestination.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                AddressTransferDestination.validateJSON(instance); // throw an exception if no match
                 // create AddressTransferDestination from JS object
                 this.actualInstance = AddressTransferDestination.constructFromObject(instance);
             }
@@ -52,12 +50,10 @@ class TransferDestination {
         }
 
         try {
-            if (typeof instance === "ExchangeTransferDestination") {
+            if (instance instanceof ExchangeTransferDestination) {
                 this.actualInstance = instance;
-            } else {
+            } else if(ExchangeTransferDestination.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                ExchangeTransferDestination.validateJSON(instance); // throw an exception if no match
                 // create ExchangeTransferDestination from JS object
                 this.actualInstance = ExchangeTransferDestination.constructFromObject(instance);
             }
@@ -67,9 +63,10 @@ class TransferDestination {
             errorMessages.push("Failed to construct ExchangeTransferDestination: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransferDestination` with oneOf schemas AddressTransferDestination, ExchangeTransferDestination. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `TransferDestination` with oneOf schemas AddressTransferDestination, ExchangeTransferDestination. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `TransferDestination` with oneOf schemas AddressTransferDestination, ExchangeTransferDestination. Details: " +
                             errorMessages.join(", "));

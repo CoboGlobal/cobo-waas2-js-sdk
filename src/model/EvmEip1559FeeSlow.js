@@ -17,7 +17,7 @@ import FeeData from './FeeData';
 /**
  * The EvmEip1559FeeSlow model module.
  * @module model/EvmEip1559FeeSlow
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmEip1559FeeSlow {
     /**
@@ -25,13 +25,13 @@ class EvmEip1559FeeSlow {
      * @alias module:model/EvmEip1559FeeSlow
      * @implements module:model/EvmEip1559FeeBasePrice
      * @implements module:model/FeeData
-     * @param maxPriorityFee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
-     * @param baseFee {String} The base fee price of the chain, in wei.
-     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
+     * @param max_priority_fee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
+     * @param base_fee {String} The base fee price of the chain, in wei.
+     * @param gas_limit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
      */
-    constructor(maxPriorityFee, baseFee, gasLimit) { 
-        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);FeeData.initialize(this, gasLimit);
-        EvmEip1559FeeSlow.initialize(this, maxPriorityFee, baseFee, gasLimit);
+    constructor(max_priority_fee, base_fee, gas_limit) { 
+        EvmEip1559FeeBasePrice.initialize(this, max_priority_fee, base_fee);FeeData.initialize(this, gas_limit);
+        EvmEip1559FeeSlow.initialize(this, max_priority_fee, base_fee, gas_limit);
     }
 
     /**
@@ -39,10 +39,10 @@ class EvmEip1559FeeSlow {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxPriorityFee, baseFee, gasLimit) { 
-        obj['max_priority_fee'] = maxPriorityFee;
-        obj['base_fee'] = baseFee;
-        obj['gas_limit'] = gasLimit || '21000';
+    static initialize(obj, max_priority_fee, base_fee, gas_limit) { 
+        obj['max_priority_fee'] = max_priority_fee;
+        obj['base_fee'] = base_fee;
+        obj['gas_limit'] = gas_limit || '21000';
     }
 
     /**

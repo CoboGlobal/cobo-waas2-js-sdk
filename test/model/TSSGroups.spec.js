@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TSSGroups);
     });
 
-    it('should have the property tssKeyShareGroupId (base name: "tss_key_share_group_id")', function() {
-      // uncomment below and update the code to test the property tssKeyShareGroupId
+    it('should have the property tss_key_share_group_id (base name: "tss_key_share_group_id")', function() {
+      // uncomment below and update the code to test the property tss_key_share_group_id
       //var instance = new CoboWaas2JsApi.TSSGroups();
       //expect(instance).to.be();
     });

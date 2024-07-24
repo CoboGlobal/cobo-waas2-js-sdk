@@ -36,7 +36,7 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
 const opts = {
-  'createWebhookEndpointRequest': new CoboWaas2JsApi.CreateWebhookEndpointRequest() // CreateWebhookEndpointRequest | The request body to register a webhook endpoint.
+  'CreateWebhookEndpointRequest': new CoboWaas2JsApi.CreateWebhookEndpointRequest() // CreateWebhookEndpointRequest | The request body to register a webhook endpoint.
 };
 apiInstance.createWebhookEndpoint(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -51,7 +51,7 @@ apiInstance.createWebhookEndpoint(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createWebhookEndpointRequest** | [**CreateWebhookEndpointRequest**](CreateWebhookEndpointRequest.md)| The request body to register a webhook endpoint. | [optional] 
+ **CreateWebhookEndpointRequest** | [**CreateWebhookEndpointRequest**](CreateWebhookEndpointRequest.md)| The request body to register a webhook endpoint. | [optional] 
 
 ### Return type
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ## getWebhookEndpointById
 
-> Endpoint getWebhookEndpointById(endpointId)
+> Endpoint getWebhookEndpointById(endpoint_id)
 
 Get webhook endpoint information
 
@@ -86,8 +86,8 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.getWebhookEndpointById(endpointId).then((data) => {
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.getWebhookEndpointById(endpoint_id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -100,7 +100,7 @@ apiInstance.getWebhookEndpointById(endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ## getWebhookEventById
 
-> WebhookEvent getWebhookEventById(eventId, endpointId)
+> WebhookEvent getWebhookEventById(event_id, endpoint_id)
 
 Retrieve event information
 
@@ -135,9 +135,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.getWebhookEventById(eventId, endpointId).then((data) => {
+const event_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.getWebhookEventById(event_id, endpoint_id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -150,8 +150,8 @@ apiInstance.getWebhookEventById(eventId, endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **event_id** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -188,7 +188,7 @@ apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
 const opts = {
   'status': new CoboWaas2JsApi.EndpointStatus(), // EndpointStatus | 
-  'eventType': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | 
+  'event_type': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | 
   'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
   'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
   'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -207,7 +207,7 @@ apiInstance.listWebhookEndpoints(opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**EndpointStatus**](.md)|  | [optional] 
- **eventType** | [**WebhookEventType**](.md)|  | [optional] 
+ **event_type** | [**WebhookEventType**](.md)|  | [optional] 
  **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
  **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
  **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
@@ -273,7 +273,7 @@ This endpoint does not need any parameter.
 
 ## listWebhookEventLogs
 
-> ListWebhookEventLogs200Response listWebhookEventLogs(eventId, endpointId, opts)
+> ListWebhookEventLogs200Response listWebhookEventLogs(event_id, endpoint_id, opts)
 
 List webhook event logs
 
@@ -290,14 +290,14 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const event_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
 const opts = {
   'limit': 10, // Number | The maximum number of objects to return. For most operations, the value range is [1, 50].
   'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
   'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
 };
-apiInstance.listWebhookEventLogs(eventId, endpointId, opts).then((data) => {
+apiInstance.listWebhookEventLogs(event_id, endpoint_id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -310,8 +310,8 @@ apiInstance.listWebhookEventLogs(eventId, endpointId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **event_id** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
  **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
  **before** | **String**| An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify &#x60;before&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;, the request will retrieve a list of data objects that end before the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1&#x60;. You can set this parameter to the value of &#x60;pagination.before&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  - If you set &#x60;before&#x60; to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
  **after** | **String**| An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify &#x60;after&#x60; as &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;, the request will retrieve a list of data objects that start after the object with the object ID &#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;. You can set this parameter to the value of &#x60;pagination.after&#x60; in the response of the previous request.  - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur.  - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 
 ## listWebhookEvents
 
-> ListWebhookEvents200Response listWebhookEvents(endpointId, opts)
+> ListWebhookEvents200Response listWebhookEvents(endpoint_id, opts)
 
 List all webhook events
 
@@ -349,7 +349,7 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
 const opts = {
   'status': new CoboWaas2JsApi.WebhookEventStatus(), // WebhookEventStatus | 
   'type': new CoboWaas2JsApi.WebhookEventType(), // WebhookEventType | 
@@ -357,7 +357,7 @@ const opts = {
   'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1", // String | An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
   'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk" // String | An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
 };
-apiInstance.listWebhookEvents(endpointId, opts).then((data) => {
+apiInstance.listWebhookEvents(endpoint_id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -370,7 +370,7 @@ apiInstance.listWebhookEvents(endpointId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
  **status** | [**WebhookEventStatus**](.md)|  | [optional] 
  **type** | [**WebhookEventType**](.md)|  | [optional] 
  **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## retryWebhookEventById
 
-> RetryWebhookEventById201Response retryWebhookEventById(eventId, endpointId)
+> RetryWebhookEventById201Response retryWebhookEventById(event_id, endpoint_id)
 
 Retry event
 
@@ -410,9 +410,9 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const eventId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
-apiInstance.retryWebhookEventById(eventId, endpointId).then((data) => {
+const event_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+apiInstance.retryWebhookEventById(event_id, endpoint_id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -425,8 +425,8 @@ apiInstance.retryWebhookEventById(eventId, endpointId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventId** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **event_id** | **String**| The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events). | 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
 
 ### Return type
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## updateWebhookEndpointById
 
-> Endpoint updateWebhookEndpointById(endpointId, opts)
+> Endpoint updateWebhookEndpointById(endpoint_id, opts)
 
 Update webhook endpoint
 
@@ -461,11 +461,11 @@ const apiClient = CoboWaas2JsApi.ApiClient.instance
 apiClient.setPrivateKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
 // call api
 const apiInstance = new CoboWaas2JsApi.DevelopersWebhooksApi();
-const endpointId = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+const endpoint_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; // String | The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
 const opts = {
-  'updateWebhookEndpointByIdRequest': new CoboWaas2JsApi.UpdateWebhookEndpointByIdRequest() // UpdateWebhookEndpointByIdRequest | The request body to update a webhook endpoint.
+  'UpdateWebhookEndpointByIdRequest': new CoboWaas2JsApi.UpdateWebhookEndpointByIdRequest() // UpdateWebhookEndpointByIdRequest | The request body to update a webhook endpoint.
 };
-apiInstance.updateWebhookEndpointById(endpointId, opts).then((data) => {
+apiInstance.updateWebhookEndpointById(endpoint_id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -478,8 +478,8 @@ apiInstance.updateWebhookEndpointById(endpointId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
- **updateWebhookEndpointByIdRequest** | [**UpdateWebhookEndpointByIdRequest**](UpdateWebhookEndpointByIdRequest.md)| The request body to update a webhook endpoint. | [optional] 
+ **endpoint_id** | **String**| The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints). | 
+ **UpdateWebhookEndpointByIdRequest** | [**UpdateWebhookEndpointByIdRequest**](UpdateWebhookEndpointByIdRequest.md)| The request body to update a webhook endpoint. | [optional] 
 
 ### Return type
 

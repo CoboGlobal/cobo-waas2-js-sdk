@@ -59,14 +59,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletType (base name: "wallet_type")', function() {
-      // uncomment below and update the code to test the property walletType
+    it('should have the property wallet_type (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property wallet_type
       //var instance = new CoboWaas2JsApi.CreateCustodialWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
-      // uncomment below and update the code to test the property walletSubtype
+    it('should have the property wallet_subtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property wallet_subtype
       //var instance = new CoboWaas2JsApi.CreateCustodialWallet();
       //expect(instance).to.be();
     });

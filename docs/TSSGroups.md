@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tssKeyShareGroupId** | **String** | The TSS key share group ID. | [optional] 
+**tss_key_share_group_id** | **String** | The TSS key share group ID. | [optional] 
 **curve** | [**CurveType**](CurveType.md) |  | [optional] 
 
 

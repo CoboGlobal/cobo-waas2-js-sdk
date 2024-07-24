@@ -18,7 +18,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The SafeTransferSource model module.
  * @module model/SafeTransferSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class SafeTransferSource {
     /**
@@ -26,14 +26,14 @@ class SafeTransferSource {
      * The information about the transaction source.
      * @alias module:model/SafeTransferSource
      * @implements module:model/AddressTransferSource
-     * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
      * @param address {String} The wallet address.
      * @param delegate {module:model/CoboSafeDelegate} 
      */
-    constructor(sourceType, walletId, address, delegate) { 
-        AddressTransferSource.initialize(this, sourceType, walletId, address);
-        SafeTransferSource.initialize(this, sourceType, walletId, address, delegate);
+    constructor(source_type, wallet_id, address, delegate) { 
+        AddressTransferSource.initialize(this, source_type, wallet_id, address);
+        SafeTransferSource.initialize(this, source_type, wallet_id, address, delegate);
     }
 
     /**
@@ -41,9 +41,9 @@ class SafeTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, address, delegate) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, wallet_id, address, delegate) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
         obj['delegate'] = delegate;
     }

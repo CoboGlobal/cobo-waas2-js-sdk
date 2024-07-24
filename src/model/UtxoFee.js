@@ -17,19 +17,19 @@ import UtxoFeeSlow from './UtxoFeeSlow';
 /**
  * The UtxoFee model module.
  * @module model/UtxoFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class UtxoFee {
     /**
      * Constructs a new <code>UtxoFee</code>.
      * The estimated transaction fee for UTXO-based chains.
      * @alias module:model/UtxoFee
-     * @param feeType {module:model/FeeType} 
+     * @param fee_type {module:model/FeeType} 
      * @param recommended {module:model/UtxoFeeSlow} 
      */
-    constructor(feeType, recommended) { 
+    constructor(fee_type, recommended) { 
         
-        UtxoFee.initialize(this, feeType, recommended);
+        UtxoFee.initialize(this, fee_type, recommended);
     }
 
     /**
@@ -37,8 +37,8 @@ class UtxoFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, recommended) { 
-        obj['fee_type'] = feeType;
+    static initialize(obj, fee_type, recommended) { 
+        obj['fee_type'] = fee_type;
         obj['recommended'] = recommended;
     }
 

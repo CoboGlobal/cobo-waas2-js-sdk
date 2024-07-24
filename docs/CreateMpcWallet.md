@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The wallet name. | 
-**walletType** | [**WalletType**](WalletType.md) |  | 
-**walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**vaultId** | **String** | The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization. | 
+**wallet_type** | [**WalletType**](WalletType.md) |  | 
+**wallet_subtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**vault_id** | **String** | The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization. | 
 
 

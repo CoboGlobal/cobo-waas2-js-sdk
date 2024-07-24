@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateTransferTransaction201Response);
     });
 
-    it('should have the property requestId (base name: "request_id")', function() {
-      // uncomment below and update the code to test the property requestId
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
       //var instance = new CoboWaas2JsApi.CreateTransferTransaction201Response();
       //expect(instance).to.be();
     });
 
-    it('should have the property transactionId (base name: "transaction_id")', function() {
-      // uncomment below and update the code to test the property transactionId
+    it('should have the property transaction_id (base name: "transaction_id")', function() {
+      // uncomment below and update the code to test the property transaction_id
       //var instance = new CoboWaas2JsApi.CreateTransferTransaction201Response();
       //expect(instance).to.be();
     });

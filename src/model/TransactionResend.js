@@ -16,18 +16,18 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The TransactionResend model module.
  * @module model/TransactionResend
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionResend {
     /**
      * Constructs a new <code>TransactionResend</code>.
      * The information about the request to resend transactions.
      * @alias module:model/TransactionResend
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      */
-    constructor(requestId) { 
+    constructor(request_id) { 
         
-        TransactionResend.initialize(this, requestId);
+        TransactionResend.initialize(this, request_id);
     }
 
     /**
@@ -35,8 +35,8 @@ class TransactionResend {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId) { 
-        obj['request_id'] = requestId;
+    static initialize(obj, request_id) { 
+        obj['request_id'] = request_id;
     }
 
     /**

@@ -15,17 +15,17 @@ import ApiClient from '../ApiClient';
 /**
  * The FeeData model module.
  * @module model/FeeData
- * @version 0.4.5
+ * @version 0.4.4
  */
 class FeeData {
     /**
      * Constructs a new <code>FeeData</code>.
      * @alias module:model/FeeData
-     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
+     * @param gas_limit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
      */
-    constructor(gasLimit) { 
+    constructor(gas_limit) { 
         
-        FeeData.initialize(this, gasLimit);
+        FeeData.initialize(this, gas_limit);
     }
 
     /**
@@ -33,8 +33,8 @@ class FeeData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasLimit) { 
-        obj['gas_limit'] = gasLimit || '21000';
+    static initialize(obj, gas_limit) { 
+        obj['gas_limit'] = gas_limit || '21000';
     }
 
     /**

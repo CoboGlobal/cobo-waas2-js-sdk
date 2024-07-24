@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.SmartContractInitiator);
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.SmartContractInitiator();
       //expect(instance).to.be();
     });

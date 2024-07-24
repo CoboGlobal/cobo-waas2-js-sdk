@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**iconUrl** | **String** | The URL of the validator&#39;s icon. | 
+**icon_url** | **String** | The URL of the validator&#39;s icon. | 
 **name** | **String** | The name of validator. | 
 **priority** | **Number** | The priority of validator. | [optional] 
-**publicKey** | **String** | The public key of validator. | 
-**commissionRate** | **Number** | The commission of validator. | 
-**supportedPosChains** | **[String]** | The list of supported pos chains. | 
+**public_key** | **String** | The public key of validator. | 
+**commission_rate** | **Number** | The commission of validator. | 
+**supported_pos_chains** | **[String]** | The list of supported pos chains. | 
 **address** | **String** | The address of validator. | 
 
 

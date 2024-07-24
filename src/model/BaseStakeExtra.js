@@ -16,18 +16,18 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The BaseStakeExtra model module.
  * @module model/BaseStakeExtra
- * @version 0.4.5
+ * @version 0.4.4
  */
 class BaseStakeExtra {
     /**
      * Constructs a new <code>BaseStakeExtra</code>.
      * Base stake extra.
      * @alias module:model/BaseStakeExtra
-     * @param poolType {module:model/StakingPoolType} 
+     * @param pool_type {module:model/StakingPoolType} 
      */
-    constructor(poolType) { 
+    constructor(pool_type) { 
         
-        BaseStakeExtra.initialize(this, poolType);
+        BaseStakeExtra.initialize(this, pool_type);
     }
 
     /**
@@ -35,8 +35,8 @@ class BaseStakeExtra {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolType) { 
-        obj['pool_type'] = poolType;
+    static initialize(obj, pool_type) { 
+        obj['pool_type'] = pool_type;
     }
 
     /**

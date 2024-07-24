@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**replacedByType** | [**ReplaceType**](ReplaceType.md) |  | [optional] 
-**replacedByTransactionId** | **String** | The ID of the transaction that this transaction was replaced by. | [optional] 
-**replacedByTransactionHash** | **String** | The hash of the transaction that this transaction was replaced by. | [optional] 
-**replacedType** | [**ReplaceType**](ReplaceType.md) |  | [optional] 
-**replacedTransactionId** | **String** | The ID of the transaction that this transaction replaced. | [optional] 
-**replacedTransactionHash** | **String** | The hash of the transaction that this transaction replaced. | [optional] 
+**replaced_by_type** | [**ReplaceType**](ReplaceType.md) |  | [optional] 
+**replaced_by_transaction_id** | **String** | The ID of the transaction that this transaction was replaced by. | [optional] 
+**replaced_by_transaction_hash** | **String** | The hash of the transaction that this transaction was replaced by. | [optional] 
+**replaced_type** | [**ReplaceType**](ReplaceType.md) |  | [optional] 
+**replaced_transaction_id** | **String** | The ID of the transaction that this transaction replaced. | [optional] 
+**replaced_transaction_hash** | **String** | The hash of the transaction that this transaction replaced. | [optional] 
 
 

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **String** | The webhook endpoint URL. | 
-**subscribedEvents** | [**[WebhookEventType]**](WebhookEventType.md) | The event types subscribed by a webhook endpoint. | 
-**createdTimestamp** | **Number** | The time when the endpoint was registered, in Unix timestamp format, measured in seconds. | 
-**endpointId** | **String** | The webhook endpoint ID. | [optional] 
+**subscribed_events** | [**[WebhookEventType]**](WebhookEventType.md) | The event types subscribed by a webhook endpoint. | 
+**created_timestamp** | **Number** | The time when the endpoint was registered, in Unix timestamp format, measured in seconds. | 
+**endpoint_id** | **String** | The webhook endpoint ID. | [optional] 
 **status** | [**EndpointStatus**](EndpointStatus.md) |  | 
 **description** | **String** | The description of the webhook endpoint. | [optional] 
 

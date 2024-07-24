@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ListWebhookEventDefinitions200ResponseInner);
     });
 
-    it('should have the property eventType (base name: "event_type")', function() {
-      // uncomment below and update the code to test the property eventType
+    it('should have the property event_type (base name: "event_type")', function() {
+      // uncomment below and update the code to test the property event_type
       //var instance = new CoboWaas2JsApi.ListWebhookEventDefinitions200ResponseInner();
       //expect(instance).to.be();
     });

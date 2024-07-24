@@ -19,7 +19,7 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The CreateStakeActivityExtra model module.
  * @module model/CreateStakeActivityExtra
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateStakeActivityExtra {
     /**
@@ -35,12 +35,10 @@ class CreateStakeActivityExtra {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "BabylonStakeExtra") {
+            if (instance instanceof BabylonStakeExtra) {
                 this.actualInstance = instance;
-            } else {
+            } else if(BabylonStakeExtra.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                BabylonStakeExtra.validateJSON(instance); // throw an exception if no match
                 // create BabylonStakeExtra from JS object
                 this.actualInstance = BabylonStakeExtra.constructFromObject(instance);
             }
@@ -51,12 +49,10 @@ class CreateStakeActivityExtra {
         }
 
         try {
-            if (typeof instance === "EigenLayerLstStakeExtra") {
+            if (instance instanceof EigenLayerLstStakeExtra) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EigenLayerLstStakeExtra.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EigenLayerLstStakeExtra.validateJSON(instance); // throw an exception if no match
                 // create EigenLayerLstStakeExtra from JS object
                 this.actualInstance = EigenLayerLstStakeExtra.constructFromObject(instance);
             }
@@ -67,12 +63,10 @@ class CreateStakeActivityExtra {
         }
 
         try {
-            if (typeof instance === "EigenLayerNativeStakeExtra") {
+            if (instance instanceof EigenLayerNativeStakeExtra) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EigenLayerNativeStakeExtra.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EigenLayerNativeStakeExtra.validateJSON(instance); // throw an exception if no match
                 // create EigenLayerNativeStakeExtra from JS object
                 this.actualInstance = EigenLayerNativeStakeExtra.constructFromObject(instance);
             }
@@ -82,9 +76,10 @@ class CreateStakeActivityExtra {
             errorMessages.push("Failed to construct EigenLayerNativeStakeExtra: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `CreateStakeActivityExtra` with oneOf schemas BabylonStakeExtra, EigenLayerLstStakeExtra, EigenLayerNativeStakeExtra. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `CreateStakeActivityExtra` with oneOf schemas BabylonStakeExtra, EigenLayerLstStakeExtra, EigenLayerNativeStakeExtra. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `CreateStakeActivityExtra` with oneOf schemas BabylonStakeExtra, EigenLayerLstStakeExtra, EigenLayerNativeStakeExtra. Details: " +
                             errorMessages.join(", "));

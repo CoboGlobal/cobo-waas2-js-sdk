@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MPCWalletInfo);
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletType (base name: "wallet_type")', function() {
-      // uncomment below and update the code to test the property walletType
+    it('should have the property wallet_type (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property wallet_type
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
-      // uncomment below and update the code to test the property walletSubtype
+    it('should have the property wallet_subtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property wallet_subtype
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });
@@ -77,20 +77,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property orgId (base name: "org_id")', function() {
-      // uncomment below and update the code to test the property orgId
+    it('should have the property org_id (base name: "org_id")', function() {
+      // uncomment below and update the code to test the property org_id
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property projectId (base name: "project_id")', function() {
-      // uncomment below and update the code to test the property projectId
+    it('should have the property project_id (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property project_id
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property vaultId (base name: "vault_id")', function() {
-      // uncomment below and update the code to test the property vaultId
+    it('should have the property vault_id (base name: "vault_id")', function() {
+      // uncomment below and update the code to test the property vault_id
       //var instance = new CoboWaas2JsApi.MPCWalletInfo();
       //expect(instance).to.be();
     });

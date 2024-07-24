@@ -59,20 +59,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property subscribedEvents (base name: "subscribed_events")', function() {
-      // uncomment below and update the code to test the property subscribedEvents
+    it('should have the property subscribed_events (base name: "subscribed_events")', function() {
+      // uncomment below and update the code to test the property subscribed_events
       //var instance = new CoboWaas2JsApi.Endpoint();
       //expect(instance).to.be();
     });
 
-    it('should have the property createdTimestamp (base name: "created_timestamp")', function() {
-      // uncomment below and update the code to test the property createdTimestamp
+    it('should have the property created_timestamp (base name: "created_timestamp")', function() {
+      // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2JsApi.Endpoint();
       //expect(instance).to.be();
     });
 
-    it('should have the property endpointId (base name: "endpoint_id")', function() {
-      // uncomment below and update the code to test the property endpointId
+    it('should have the property endpoint_id (base name: "endpoint_id")', function() {
+      // uncomment below and update the code to test the property endpoint_id
       //var instance = new CoboWaas2JsApi.Endpoint();
       //expect(instance).to.be();
     });

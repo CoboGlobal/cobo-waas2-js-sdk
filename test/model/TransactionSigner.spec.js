@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property failedReason (base name: "failed_reason")', function() {
-      // uncomment below and update the code to test the property failedReason
+    it('should have the property failed_reason (base name: "failed_reason")', function() {
+      // uncomment below and update the code to test the property failed_reason
       //var instance = new CoboWaas2JsApi.TransactionSigner();
       //expect(instance).to.be();
     });

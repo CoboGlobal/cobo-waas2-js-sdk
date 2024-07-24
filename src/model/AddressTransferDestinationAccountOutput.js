@@ -15,18 +15,16 @@ import ApiClient from '../ApiClient';
 /**
  * The AddressTransferDestinationAccountOutput model module.
  * @module model/AddressTransferDestinationAccountOutput
- * @version 0.4.5
+ * @version 0.4.4
  */
 class AddressTransferDestinationAccountOutput {
     /**
      * Constructs a new <code>AddressTransferDestinationAccountOutput</code>.
      * @alias module:model/AddressTransferDestinationAccountOutput
-     * @param address {String} The destination address.
-     * @param amount {String} The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
      */
-    constructor(address, amount) { 
+    constructor() { 
         
-        AddressTransferDestinationAccountOutput.initialize(this, address, amount);
+        AddressTransferDestinationAccountOutput.initialize(this);
     }
 
     /**
@@ -34,9 +32,7 @@ class AddressTransferDestinationAccountOutput {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, address, amount) { 
-        obj['address'] = address;
-        obj['amount'] = amount;
+    static initialize(obj) { 
     }
 
     /**
@@ -69,12 +65,6 @@ class AddressTransferDestinationAccountOutput {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AddressTransferDestinationAccountOutput</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of AddressTransferDestinationAccountOutput.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
@@ -94,7 +84,7 @@ class AddressTransferDestinationAccountOutput {
 
 }
 
-AddressTransferDestinationAccountOutput.RequiredProperties = ["address", "amount"];
+
 
 /**
  * The destination address.

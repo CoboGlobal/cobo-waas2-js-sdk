@@ -15,20 +15,20 @@ import ApiClient from '../ApiClient';
 /**
  * The ErrorResponse model module.
  * @module model/ErrorResponse
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ErrorResponse {
     /**
      * Constructs a new <code>ErrorResponse</code>.
      * The response of a failed request.
      * @alias module:model/ErrorResponse
-     * @param errorCode {Number} The error code.
-     * @param errorMessage {String} The error description.
-     * @param errorId {String} The error log ID. You can provide the error ID when submitting a ticket to help Cobo to locate the issue.
+     * @param error_code {Number} The error code.
+     * @param error_message {String} The error description.
+     * @param error_id {String} The error log ID. You can provide the error ID when submitting a ticket to help Cobo to locate the issue.
      */
-    constructor(errorCode, errorMessage, errorId) { 
+    constructor(error_code, error_message, error_id) { 
         
-        ErrorResponse.initialize(this, errorCode, errorMessage, errorId);
+        ErrorResponse.initialize(this, error_code, error_message, error_id);
     }
 
     /**
@@ -36,10 +36,10 @@ class ErrorResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, errorCode, errorMessage, errorId) { 
-        obj['error_code'] = errorCode;
-        obj['error_message'] = errorMessage;
-        obj['error_id'] = errorId;
+    static initialize(obj, error_code, error_message, error_id) { 
+        obj['error_code'] = error_code;
+        obj['error_message'] = error_message;
+        obj['error_id'] = error_id;
     }
 
     /**

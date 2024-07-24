@@ -20,7 +20,7 @@ import UtxoTransactionFee from './UtxoTransactionFee';
 /**
  * The TransactionTransferFee model module.
  * @module model/TransactionTransferFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionTransferFee {
     /**
@@ -36,12 +36,10 @@ class TransactionTransferFee {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EvmEip1559TransactionFee") {
+            if (instance instanceof EvmEip1559TransactionFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmEip1559TransactionFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmEip1559TransactionFee.validateJSON(instance); // throw an exception if no match
                 // create EvmEip1559TransactionFee from JS object
                 this.actualInstance = EvmEip1559TransactionFee.constructFromObject(instance);
             }
@@ -52,12 +50,10 @@ class TransactionTransferFee {
         }
 
         try {
-            if (typeof instance === "EvmLegacyTransactionFee") {
+            if (instance instanceof EvmLegacyTransactionFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmLegacyTransactionFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmLegacyTransactionFee.validateJSON(instance); // throw an exception if no match
                 // create EvmLegacyTransactionFee from JS object
                 this.actualInstance = EvmLegacyTransactionFee.constructFromObject(instance);
             }
@@ -68,12 +64,10 @@ class TransactionTransferFee {
         }
 
         try {
-            if (typeof instance === "UtxoTransactionFee") {
+            if (instance instanceof UtxoTransactionFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(UtxoTransactionFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                UtxoTransactionFee.validateJSON(instance); // throw an exception if no match
                 // create UtxoTransactionFee from JS object
                 this.actualInstance = UtxoTransactionFee.constructFromObject(instance);
             }
@@ -84,12 +78,10 @@ class TransactionTransferFee {
         }
 
         try {
-            if (typeof instance === "FixedFee") {
+            if (instance instanceof FixedFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(FixedFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                FixedFee.validateJSON(instance); // throw an exception if no match
                 // create FixedFee from JS object
                 this.actualInstance = FixedFee.constructFromObject(instance);
             }
@@ -99,9 +91,10 @@ class TransactionTransferFee {
             errorMessages.push("Failed to construct FixedFee: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransactionTransferFee` with oneOf schemas EvmEip1559TransactionFee, EvmLegacyTransactionFee, FixedFee, UtxoTransactionFee. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `TransactionTransferFee` with oneOf schemas EvmEip1559TransactionFee, EvmLegacyTransactionFee, FixedFee, UtxoTransactionFee. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `TransactionTransferFee` with oneOf schemas EvmEip1559TransactionFee, EvmLegacyTransactionFee, FixedFee, UtxoTransactionFee. Details: " +
                             errorMessages.join(", "));

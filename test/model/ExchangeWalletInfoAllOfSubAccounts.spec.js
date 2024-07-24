@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ExchangeWalletInfoAllOfSubAccounts);
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.ExchangeWalletInfoAllOfSubAccounts();
       //expect(instance).to.be();
     });
 
-    it('should have the property accountId (base name: "account_id")', function() {
-      // uncomment below and update the code to test the property accountId
+    it('should have the property account_id (base name: "account_id")', function() {
+      // uncomment below and update the code to test the property account_id
       //var instance = new CoboWaas2JsApi.ExchangeWalletInfoAllOfSubAccounts();
       //expect(instance).to.be();
     });

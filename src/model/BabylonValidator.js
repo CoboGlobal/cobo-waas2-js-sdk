@@ -15,22 +15,22 @@ import ApiClient from '../ApiClient';
 /**
  * The BabylonValidator model module.
  * @module model/BabylonValidator
- * @version 0.4.5
+ * @version 0.4.4
  */
 class BabylonValidator {
     /**
      * Constructs a new <code>BabylonValidator</code>.
      * The babylon validator information.
      * @alias module:model/BabylonValidator
-     * @param iconUrl {String} The URL of the validator's icon.
+     * @param icon_url {String} The URL of the validator's icon.
      * @param name {String} The name of validator.
-     * @param publicKey {String} The public key of validator.
-     * @param commissionRate {Number} The commission rate of validator.
-     * @param supportedPosChains {Array.<module:model/BabylonValidator.SupportedPosChainsEnum>} The list of supported pos chains.
+     * @param public_key {String} The public key of validator.
+     * @param commission_rate {Number} The commission rate of validator.
+     * @param supported_pos_chains {Array.<module:model/BabylonValidator.SupportedPosChainsEnum>} The list of supported pos chains.
      */
-    constructor(iconUrl, name, publicKey, commissionRate, supportedPosChains) { 
+    constructor(icon_url, name, public_key, commission_rate, supported_pos_chains) { 
         
-        BabylonValidator.initialize(this, iconUrl, name, publicKey, commissionRate, supportedPosChains);
+        BabylonValidator.initialize(this, icon_url, name, public_key, commission_rate, supported_pos_chains);
     }
 
     /**
@@ -38,12 +38,12 @@ class BabylonValidator {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, iconUrl, name, publicKey, commissionRate, supportedPosChains) { 
-        obj['icon_url'] = iconUrl;
+    static initialize(obj, icon_url, name, public_key, commission_rate, supported_pos_chains) { 
+        obj['icon_url'] = icon_url;
         obj['name'] = name;
-        obj['public_key'] = publicKey;
-        obj['commission_rate'] = commissionRate;
-        obj['supported_pos_chains'] = supportedPosChains;
+        obj['public_key'] = public_key;
+        obj['commission_rate'] = commission_rate;
+        obj['supported_pos_chains'] = supported_pos_chains;
     }
 
     /**
@@ -157,7 +157,7 @@ BabylonValidator.prototype['supported_pos_chains'] = undefined;
 
 
 /**
- * Allowed values for the <code>supportedPosChains</code> property.
+ * Allowed values for the <code>supported_pos_chains</code> property.
  * @enum {String}
  * @readonly
  */

@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ChainInfo);
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.ChainInfo();
       //expect(instance).to.be();
     });
@@ -65,26 +65,26 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property iconUrl (base name: "icon_url")', function() {
-      // uncomment below and update the code to test the property iconUrl
+    it('should have the property icon_url (base name: "icon_url")', function() {
+      // uncomment below and update the code to test the property icon_url
       //var instance = new CoboWaas2JsApi.ChainInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property explorerTxUrl (base name: "explorer_tx_url")', function() {
-      // uncomment below and update the code to test the property explorerTxUrl
+    it('should have the property explorer_tx_url (base name: "explorer_tx_url")', function() {
+      // uncomment below and update the code to test the property explorer_tx_url
       //var instance = new CoboWaas2JsApi.ChainInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property explorerAddressUrl (base name: "explorer_address_url")', function() {
-      // uncomment below and update the code to test the property explorerAddressUrl
+    it('should have the property explorer_address_url (base name: "explorer_address_url")', function() {
+      // uncomment below and update the code to test the property explorer_address_url
       //var instance = new CoboWaas2JsApi.ChainInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property requireMemo (base name: "require_memo")', function() {
-      // uncomment below and update the code to test the property requireMemo
+    it('should have the property require_memo (base name: "require_memo")', function() {
+      // uncomment below and update the code to test the property require_memo
       //var instance = new CoboWaas2JsApi.ChainInfo();
       //expect(instance).to.be();
     });

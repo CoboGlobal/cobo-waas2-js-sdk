@@ -20,7 +20,7 @@ import SafeContractCallSource from './SafeContractCallSource';
 /**
  * The ContractCallSource model module.
  * @module model/ContractCallSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ContractCallSource {
     /**
@@ -36,12 +36,10 @@ class ContractCallSource {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "MpcContractCallSource") {
+            if (instance instanceof MpcContractCallSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MpcContractCallSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MpcContractCallSource.validateJSON(instance); // throw an exception if no match
                 // create MpcContractCallSource from JS object
                 this.actualInstance = MpcContractCallSource.constructFromObject(instance);
             }
@@ -52,12 +50,10 @@ class ContractCallSource {
         }
 
         try {
-            if (typeof instance === "SafeContractCallSource") {
+            if (instance instanceof SafeContractCallSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(SafeContractCallSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                SafeContractCallSource.validateJSON(instance); // throw an exception if no match
                 // create SafeContractCallSource from JS object
                 this.actualInstance = SafeContractCallSource.constructFromObject(instance);
             }
@@ -67,9 +63,10 @@ class ContractCallSource {
             errorMessages.push("Failed to construct SafeContractCallSource: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `ContractCallSource` with oneOf schemas MpcContractCallSource, SafeContractCallSource. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `ContractCallSource` with oneOf schemas MpcContractCallSource, SafeContractCallSource. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `ContractCallSource` with oneOf schemas MpcContractCallSource, SafeContractCallSource. Details: " +
                             errorMessages.join(", "));

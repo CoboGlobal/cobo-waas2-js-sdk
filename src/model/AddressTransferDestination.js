@@ -18,18 +18,18 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The AddressTransferDestination model module.
  * @module model/AddressTransferDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class AddressTransferDestination {
     /**
      * Constructs a new <code>AddressTransferDestination</code>.
      * The information about the transaction destination. Specify either the &#x60;account_output&#x60; property or the &#x60;utxo_outputs&#x60; property. Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the &#x60;utxo_outputs&#x60; property. 
      * @alias module:model/AddressTransferDestination
-     * @param destinationType {module:model/TransferDestinationType} 
+     * @param destination_type {module:model/TransferDestinationType} 
      */
-    constructor(destinationType) { 
+    constructor(destination_type) { 
         
-        AddressTransferDestination.initialize(this, destinationType);
+        AddressTransferDestination.initialize(this, destination_type);
     }
 
     /**
@@ -37,8 +37,8 @@ class AddressTransferDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType) { 
-        obj['destination_type'] = destinationType;
+    static initialize(obj, destination_type) { 
+        obj['destination_type'] = destination_type;
     }
 
     /**

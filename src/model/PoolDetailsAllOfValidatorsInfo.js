@@ -17,7 +17,7 @@ import EigenlayerValidator from './EigenlayerValidator';
 /**
  * The PoolDetailsAllOfValidatorsInfo model module.
  * @module model/PoolDetailsAllOfValidatorsInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class PoolDetailsAllOfValidatorsInfo {
     /**
@@ -33,12 +33,10 @@ class PoolDetailsAllOfValidatorsInfo {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "BabylonValidator") {
+            if (instance instanceof BabylonValidator) {
                 this.actualInstance = instance;
-            } else {
+            } else if(BabylonValidator.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                BabylonValidator.validateJSON(instance); // throw an exception if no match
                 // create BabylonValidator from JS object
                 this.actualInstance = BabylonValidator.constructFromObject(instance);
             }
@@ -49,12 +47,10 @@ class PoolDetailsAllOfValidatorsInfo {
         }
 
         try {
-            if (typeof instance === "EigenlayerValidator") {
+            if (instance instanceof EigenlayerValidator) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EigenlayerValidator.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EigenlayerValidator.validateJSON(instance); // throw an exception if no match
                 // create EigenlayerValidator from JS object
                 this.actualInstance = EigenlayerValidator.constructFromObject(instance);
             }
@@ -64,9 +60,10 @@ class PoolDetailsAllOfValidatorsInfo {
             errorMessages.push("Failed to construct EigenlayerValidator: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `PoolDetailsAllOfValidatorsInfo` with oneOf schemas BabylonValidator, EigenlayerValidator. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `PoolDetailsAllOfValidatorsInfo` with oneOf schemas BabylonValidator, EigenlayerValidator. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `PoolDetailsAllOfValidatorsInfo` with oneOf schemas BabylonValidator, EigenlayerValidator. Details: " +
                             errorMessages.join(", "));

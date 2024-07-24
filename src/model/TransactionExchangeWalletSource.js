@@ -17,20 +17,20 @@ import TransactionSourceType from './TransactionSourceType';
 /**
  * The TransactionExchangeWalletSource model module.
  * @module model/TransactionExchangeWalletSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionExchangeWalletSource {
     /**
      * Constructs a new <code>TransactionExchangeWalletSource</code>.
      * The information about the transaction source.
      * @alias module:model/TransactionExchangeWalletSource
-     * @param sourceType {module:model/TransactionSourceType} 
-     * @param exchangeId {module:model/ExchangeId} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/TransactionSourceType} 
+     * @param exchange_id {module:model/ExchangeId} 
+     * @param wallet_id {String} The wallet ID.
      */
-    constructor(sourceType, exchangeId, walletId) { 
+    constructor(source_type, exchange_id, wallet_id) { 
         
-        TransactionExchangeWalletSource.initialize(this, sourceType, exchangeId, walletId);
+        TransactionExchangeWalletSource.initialize(this, source_type, exchange_id, wallet_id);
     }
 
     /**
@@ -38,10 +38,10 @@ class TransactionExchangeWalletSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, exchangeId, walletId) { 
-        obj['source_type'] = sourceType;
-        obj['exchange_id'] = exchangeId;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, exchange_id, wallet_id) { 
+        obj['source_type'] = source_type;
+        obj['exchange_id'] = exchange_id;
+        obj['wallet_id'] = wallet_id;
     }
 
     /**

@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.AssetBalance);
     });
 
-    it('should have the property assetId (base name: "asset_id")', function() {
-      // uncomment below and update the code to test the property assetId
+    it('should have the property asset_id (base name: "asset_id")', function() {
+      // uncomment below and update the code to test the property asset_id
       //var instance = new CoboWaas2JsApi.AssetBalance();
       //expect(instance).to.be();
     });

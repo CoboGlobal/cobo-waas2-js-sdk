@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ContractCall);
     });
 
-    it('should have the property requestId (base name: "request_id")', function() {
-      // uncomment below and update the code to test the property requestId
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
       //var instance = new CoboWaas2JsApi.ContractCall();
       //expect(instance).to.be();
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.ContractCall();
       //expect(instance).to.be();
     });
@@ -83,8 +83,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property categoryNames (base name: "category_names")', function() {
-      // uncomment below and update the code to test the property categoryNames
+    it('should have the property category_names (base name: "category_names")', function() {
+      // uncomment below and update the code to test the property category_names
       //var instance = new CoboWaas2JsApi.ContractCall();
       //expect(instance).to.be();
     });

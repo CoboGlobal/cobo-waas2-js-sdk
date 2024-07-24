@@ -21,7 +21,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The EstimateStakeFee model module.
  * @module model/EstimateStakeFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EstimateStakeFee {
     /**
@@ -29,15 +29,15 @@ class EstimateStakeFee {
      * @alias module:model/EstimateStakeFee
      * @implements module:model/BaseEstimateStakingFee
      * @implements module:model/CreateStakeActivity
-     * @param activityType {module:model/ActivityType} 
-     * @param poolId {String} The id of the staking pool
+     * @param activity_type {module:model/ActivityType} 
+     * @param pool_id {String} The id of the staking pool
      * @param amount {String} The amount to stake
      * @param fee {module:model/TransactionTransferFee} 
      * @param extra {module:model/CreateStakeActivityExtra} 
      */
-    constructor(activityType, poolId, amount, fee, extra) { 
-        BaseEstimateStakingFee.initialize(this, activityType);CreateStakeActivity.initialize(this, poolId, amount, fee, extra);
-        EstimateStakeFee.initialize(this, activityType, poolId, amount, fee, extra);
+    constructor(activity_type, pool_id, amount, fee, extra) { 
+        BaseEstimateStakingFee.initialize(this, activity_type);CreateStakeActivity.initialize(this, pool_id, amount, fee, extra);
+        EstimateStakeFee.initialize(this, activity_type, pool_id, amount, fee, extra);
     }
 
     /**
@@ -45,9 +45,9 @@ class EstimateStakeFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, activityType, poolId, amount, fee, extra) { 
-        obj['activity_type'] = activityType;
-        obj['pool_id'] = poolId;
+    static initialize(obj, activity_type, pool_id, amount, fee, extra) { 
+        obj['activity_type'] = activity_type;
+        obj['pool_id'] = pool_id;
         obj['amount'] = amount;
         obj['fee'] = fee;
         obj['extra'] = extra;

@@ -16,19 +16,19 @@ import TokenBalanceBalance from './TokenBalanceBalance';
 /**
  * The TokenBalance model module.
  * @module model/TokenBalance
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TokenBalance {
     /**
      * Constructs a new <code>TokenBalance</code>.
      * The balance information.
      * @alias module:model/TokenBalance
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param token_id {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param balance {module:model/TokenBalanceBalance} 
      */
-    constructor(tokenId, balance) { 
+    constructor(token_id, balance) { 
         
-        TokenBalance.initialize(this, tokenId, balance);
+        TokenBalance.initialize(this, token_id, balance);
     }
 
     /**
@@ -36,8 +36,8 @@ class TokenBalance {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, tokenId, balance) { 
-        obj['token_id'] = tokenId;
+    static initialize(obj, token_id, balance) { 
+        obj['token_id'] = token_id;
         obj['balance'] = balance;
     }
 

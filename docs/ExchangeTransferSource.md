@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**walletId** | **String** | The wallet ID. | 
-**subWalletId** | **String** | The exchange trading account or the sub-wallet ID. | 
+**source_type** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
+**sub_wallet_id** | **String** | The exchange trading account or the sub-wallet ID. | 
 
 

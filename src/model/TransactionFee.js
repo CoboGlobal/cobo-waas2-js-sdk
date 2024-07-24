@@ -20,7 +20,7 @@ import TransactionUtxoFee from './TransactionUtxoFee';
 /**
  * The TransactionFee model module.
  * @module model/TransactionFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionFee {
     /**
@@ -36,12 +36,10 @@ class TransactionFee {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "TransactionEvmEip1559Fee") {
+            if (instance instanceof TransactionEvmEip1559Fee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(TransactionEvmEip1559Fee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                TransactionEvmEip1559Fee.validateJSON(instance); // throw an exception if no match
                 // create TransactionEvmEip1559Fee from JS object
                 this.actualInstance = TransactionEvmEip1559Fee.constructFromObject(instance);
             }
@@ -52,12 +50,10 @@ class TransactionFee {
         }
 
         try {
-            if (typeof instance === "TransactionEvmLegacyFee") {
+            if (instance instanceof TransactionEvmLegacyFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(TransactionEvmLegacyFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                TransactionEvmLegacyFee.validateJSON(instance); // throw an exception if no match
                 // create TransactionEvmLegacyFee from JS object
                 this.actualInstance = TransactionEvmLegacyFee.constructFromObject(instance);
             }
@@ -68,12 +64,10 @@ class TransactionFee {
         }
 
         try {
-            if (typeof instance === "TransactionUtxoFee") {
+            if (instance instanceof TransactionUtxoFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(TransactionUtxoFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                TransactionUtxoFee.validateJSON(instance); // throw an exception if no match
                 // create TransactionUtxoFee from JS object
                 this.actualInstance = TransactionUtxoFee.constructFromObject(instance);
             }
@@ -84,12 +78,10 @@ class TransactionFee {
         }
 
         try {
-            if (typeof instance === "TransactionFixedFee") {
+            if (instance instanceof TransactionFixedFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(TransactionFixedFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                TransactionFixedFee.validateJSON(instance); // throw an exception if no match
                 // create TransactionFixedFee from JS object
                 this.actualInstance = TransactionFixedFee.constructFromObject(instance);
             }
@@ -99,9 +91,10 @@ class TransactionFee {
             errorMessages.push("Failed to construct TransactionFixedFee: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransactionFee` with oneOf schemas TransactionEvmEip1559Fee, TransactionEvmLegacyFee, TransactionFixedFee, TransactionUtxoFee. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `TransactionFee` with oneOf schemas TransactionEvmEip1559Fee, TransactionEvmLegacyFee, TransactionFixedFee, TransactionUtxoFee. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `TransactionFee` with oneOf schemas TransactionEvmEip1559Fee, TransactionEvmLegacyFee, TransactionFixedFee, TransactionUtxoFee. Details: " +
                             errorMessages.join(", "));

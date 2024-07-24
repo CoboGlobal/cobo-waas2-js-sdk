@@ -24,7 +24,7 @@ import WalletType from './WalletType';
 /**
  * The CreatedWallet model module.
  * @module model/CreatedWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreatedWallet {
     /**
@@ -40,12 +40,10 @@ class CreatedWallet {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "CreateCustodialWallet") {
+            if (instance instanceof CreateCustodialWallet) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CreateCustodialWallet.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CreateCustodialWallet.validateJSON(instance); // throw an exception if no match
                 // create CreateCustodialWallet from JS object
                 this.actualInstance = CreateCustodialWallet.constructFromObject(instance);
             }
@@ -56,12 +54,10 @@ class CreatedWallet {
         }
 
         try {
-            if (typeof instance === "CreateMpcWallet") {
+            if (instance instanceof CreateMpcWallet) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CreateMpcWallet.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CreateMpcWallet.validateJSON(instance); // throw an exception if no match
                 // create CreateMpcWallet from JS object
                 this.actualInstance = CreateMpcWallet.constructFromObject(instance);
             }
@@ -72,12 +68,10 @@ class CreatedWallet {
         }
 
         try {
-            if (typeof instance === "CreateSmartContractWallet") {
+            if (instance instanceof CreateSmartContractWallet) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CreateSmartContractWallet.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CreateSmartContractWallet.validateJSON(instance); // throw an exception if no match
                 // create CreateSmartContractWallet from JS object
                 this.actualInstance = CreateSmartContractWallet.constructFromObject(instance);
             }
@@ -88,12 +82,10 @@ class CreatedWallet {
         }
 
         try {
-            if (typeof instance === "CreateExchangeWallet") {
+            if (instance instanceof CreateExchangeWallet) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CreateExchangeWallet.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CreateExchangeWallet.validateJSON(instance); // throw an exception if no match
                 // create CreateExchangeWallet from JS object
                 this.actualInstance = CreateExchangeWallet.constructFromObject(instance);
             }
@@ -103,9 +95,10 @@ class CreatedWallet {
             errorMessages.push("Failed to construct CreateExchangeWallet: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `CreatedWallet` with oneOf schemas CreateCustodialWallet, CreateExchangeWallet, CreateMpcWallet, CreateSmartContractWallet. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `CreatedWallet` with oneOf schemas CreateCustodialWallet, CreateExchangeWallet, CreateMpcWallet, CreateSmartContractWallet. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `CreatedWallet` with oneOf schemas CreateCustodialWallet, CreateExchangeWallet, CreateMpcWallet, CreateSmartContractWallet. Details: " +
                             errorMessages.join(", "));

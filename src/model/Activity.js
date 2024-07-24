@@ -19,21 +19,21 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The Activity model module.
  * @module model/Activity
- * @version 0.4.5
+ * @version 0.4.4
  */
 class Activity {
     /**
      * Constructs a new <code>Activity</code>.
      * The staking activity.
      * @alias module:model/Activity
-     * @param poolId {String} The id of the staking pool.
-     * @param tokenId {String} The id of the token.
+     * @param pool_id {String} The id of the staking pool.
+     * @param token_id {String} The id of the token.
      * @param amount {String} The amount of the activity.
      * @param status {module:model/ActivityStatus} 
      */
-    constructor(poolId, tokenId, amount, status) { 
+    constructor(pool_id, token_id, amount, status) { 
         
-        Activity.initialize(this, poolId, tokenId, amount, status);
+        Activity.initialize(this, pool_id, token_id, amount, status);
     }
 
     /**
@@ -41,9 +41,9 @@ class Activity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolId, tokenId, amount, status) { 
-        obj['pool_id'] = poolId;
-        obj['token_id'] = tokenId;
+    static initialize(obj, pool_id, token_id, amount, status) { 
+        obj['pool_id'] = pool_id;
+        obj['token_id'] = token_id;
         obj['amount'] = amount;
         obj['status'] = status;
     }

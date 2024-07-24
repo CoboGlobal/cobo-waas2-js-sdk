@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EigenLayerNativeStakeExtra);
     });
 
-    it('should have the property poolType (base name: "pool_type")', function() {
-      // uncomment below and update the code to test the property poolType
+    it('should have the property pool_type (base name: "pool_type")', function() {
+      // uncomment below and update the code to test the property pool_type
       //var instance = new CoboWaas2JsApi.EigenLayerNativeStakeExtra();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeRecipient (base name: "fee_recipient")', function() {
-      // uncomment below and update the code to test the property feeRecipient
+    it('should have the property fee_recipient (base name: "fee_recipient")', function() {
+      // uncomment below and update the code to test the property fee_recipient
       //var instance = new CoboWaas2JsApi.EigenLayerNativeStakeExtra();
       //expect(instance).to.be();
     });

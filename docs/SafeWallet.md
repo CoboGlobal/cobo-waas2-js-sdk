@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | The wallet ID. | 
-**walletType** | [**WalletType**](WalletType.md) |  | 
-**walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
+**wallet_type** | [**WalletType**](WalletType.md) |  | 
+**wallet_subtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **name** | **String** | The wallet name. | 
-**orgId** | **String** | The ID of the owning organization. | 
-**chainId** | **String** | The ID of the chain on which the wallet operates. | [optional] 
-**smartContractWalletType** | [**SmartContractWalletType**](SmartContractWalletType.md) |  | 
-**safeAddress** | **String** | The Smart Contract Wallet address. | [optional] 
+**org_id** | **String** | The ID of the owning organization. | 
+**chain_id** | **String** | The ID of the chain on which the wallet operates. | [optional] 
+**smart_contract_wallet_type** | [**SmartContractWalletType**](SmartContractWalletType.md) |  | 
+**safe_address** | **String** | The Smart Contract Wallet address. | [optional] 
 **signers** | **[String]** | The signers of the Smart Contract Wallet. | [optional] 
 **threshold** | **Number** | The minimum number of confirmations required for the Smart Contract Wallet.  | [optional] 
-**coboSafeAddress** | **String** | The address of Cobo Safe. | [optional] 
+**cobo_safe_address** | **String** | The address of Cobo Safe. | [optional] 
 **initiator** | [**SmartContractInitiator**](SmartContractInitiator.md) |  | [optional] 
 
 

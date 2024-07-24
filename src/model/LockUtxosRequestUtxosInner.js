@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 /**
  * The LockUtxosRequestUtxosInner model module.
  * @module model/LockUtxosRequestUtxosInner
- * @version 0.4.5
+ * @version 0.4.4
  */
 class LockUtxosRequestUtxosInner {
     /**
      * Constructs a new <code>LockUtxosRequestUtxosInner</code>.
      * @alias module:model/LockUtxosRequestUtxosInner
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
-     * @param txHash {String} The transaction hash.
-     * @param voutN {Number} The output index of the UTXO.
+     * @param token_id {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param tx_hash {String} The transaction hash.
+     * @param vout_n {Number} The output index of the UTXO.
      */
-    constructor(tokenId, txHash, voutN) { 
+    constructor(token_id, tx_hash, vout_n) { 
         
-        LockUtxosRequestUtxosInner.initialize(this, tokenId, txHash, voutN);
+        LockUtxosRequestUtxosInner.initialize(this, token_id, tx_hash, vout_n);
     }
 
     /**
@@ -35,10 +35,10 @@ class LockUtxosRequestUtxosInner {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, tokenId, txHash, voutN) { 
-        obj['token_id'] = tokenId;
-        obj['tx_hash'] = txHash;
-        obj['vout_n'] = voutN;
+    static initialize(obj, token_id, tx_hash, vout_n) { 
+        obj['token_id'] = token_id;
+        obj['tx_hash'] = tx_hash;
+        obj['vout_n'] = vout_n;
     }
 
     /**

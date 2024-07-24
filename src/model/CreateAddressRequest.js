@@ -16,18 +16,18 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The CreateAddressRequest model module.
  * @module model/CreateAddressRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateAddressRequest {
     /**
      * Constructs a new <code>CreateAddressRequest</code>.
      * @alias module:model/CreateAddressRequest
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param chain_id {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      * @param count {Number} The number of addresses to create.
      */
-    constructor(chainId, count) { 
+    constructor(chain_id, count) { 
         
-        CreateAddressRequest.initialize(this, chainId, count);
+        CreateAddressRequest.initialize(this, chain_id, count);
     }
 
     /**
@@ -35,8 +35,8 @@ class CreateAddressRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, chainId, count) { 
-        obj['chain_id'] = chainId;
+    static initialize(obj, chain_id, count) { 
+        obj['chain_id'] = chain_id;
         obj['count'] = count || 1;
     }
 

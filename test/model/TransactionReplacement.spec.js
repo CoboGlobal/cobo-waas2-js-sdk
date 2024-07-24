@@ -53,38 +53,38 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionReplacement);
     });
 
-    it('should have the property replacedByType (base name: "replaced_by_type")', function() {
-      // uncomment below and update the code to test the property replacedByType
+    it('should have the property replaced_by_type (base name: "replaced_by_type")', function() {
+      // uncomment below and update the code to test the property replaced_by_type
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
 
-    it('should have the property replacedByTransactionId (base name: "replaced_by_transaction_id")', function() {
-      // uncomment below and update the code to test the property replacedByTransactionId
+    it('should have the property replaced_by_transaction_id (base name: "replaced_by_transaction_id")', function() {
+      // uncomment below and update the code to test the property replaced_by_transaction_id
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
 
-    it('should have the property replacedByTransactionHash (base name: "replaced_by_transaction_hash")', function() {
-      // uncomment below and update the code to test the property replacedByTransactionHash
+    it('should have the property replaced_by_transaction_hash (base name: "replaced_by_transaction_hash")', function() {
+      // uncomment below and update the code to test the property replaced_by_transaction_hash
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
 
-    it('should have the property replacedType (base name: "replaced_type")', function() {
-      // uncomment below and update the code to test the property replacedType
+    it('should have the property replaced_type (base name: "replaced_type")', function() {
+      // uncomment below and update the code to test the property replaced_type
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
 
-    it('should have the property replacedTransactionId (base name: "replaced_transaction_id")', function() {
-      // uncomment below and update the code to test the property replacedTransactionId
+    it('should have the property replaced_transaction_id (base name: "replaced_transaction_id")', function() {
+      // uncomment below and update the code to test the property replaced_transaction_id
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });
 
-    it('should have the property replacedTransactionHash (base name: "replaced_transaction_hash")', function() {
-      // uncomment below and update the code to test the property replacedTransactionHash
+    it('should have the property replaced_transaction_hash (base name: "replaced_transaction_hash")', function() {
+      // uncomment below and update the code to test the property replaced_transaction_hash
       //var instance = new CoboWaas2JsApi.TransactionReplacement();
       //expect(instance).to.be();
     });

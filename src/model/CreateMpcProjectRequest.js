@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateMpcProjectRequest model module.
  * @module model/CreateMpcProjectRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateMpcProjectRequest {
     /**
      * Constructs a new <code>CreateMpcProjectRequest</code>.
      * @alias module:model/CreateMpcProjectRequest
      * @param name {String} The project name.
-     * @param nodeCount {Number} The number of key share holders in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
+     * @param node_count {Number} The number of key share holders in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
      * @param threshold {Number} The number of key share holders required to sign an operation in the project.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
      */
-    constructor(name, nodeCount, threshold) { 
+    constructor(name, node_count, threshold) { 
         
-        CreateMpcProjectRequest.initialize(this, name, nodeCount, threshold);
+        CreateMpcProjectRequest.initialize(this, name, node_count, threshold);
     }
 
     /**
@@ -35,9 +35,9 @@ class CreateMpcProjectRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, nodeCount, threshold) { 
+    static initialize(obj, name, node_count, threshold) { 
         obj['name'] = name;
-        obj['node_count'] = nodeCount;
+        obj['node_count'] = node_count;
         obj['threshold'] = threshold;
     }
 

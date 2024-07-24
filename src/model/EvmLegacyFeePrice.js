@@ -17,19 +17,19 @@ import FeeType from './FeeType';
 /**
  * The EvmLegacyFeePrice model module.
  * @module model/EvmLegacyFeePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmLegacyFeePrice {
     /**
      * Constructs a new <code>EvmLegacyFeePrice</code>.
      * The transaction fee price based on the legacy fee model.
      * @alias module:model/EvmLegacyFeePrice
-     * @param feeType {module:model/FeeType} 
+     * @param fee_type {module:model/FeeType} 
      * @param recommended {module:model/EvmLegacyFeeBasePrice} 
      */
-    constructor(feeType, recommended) { 
+    constructor(fee_type, recommended) { 
         
-        EvmLegacyFeePrice.initialize(this, feeType, recommended);
+        EvmLegacyFeePrice.initialize(this, fee_type, recommended);
     }
 
     /**
@@ -37,8 +37,8 @@ class EvmLegacyFeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, recommended) { 
-        obj['fee_type'] = feeType;
+    static initialize(obj, fee_type, recommended) { 
+        obj['fee_type'] = fee_type;
         obj['recommended'] = recommended;
     }
 

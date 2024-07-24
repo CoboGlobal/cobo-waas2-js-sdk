@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dataType** | **String** | The model of data. | 
+**data_type** | **String** | The model of data. | 
 
 
 

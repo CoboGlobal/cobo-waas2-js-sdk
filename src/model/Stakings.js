@@ -17,7 +17,7 @@ import StakingsValidatorInfo from './StakingsValidatorInfo';
 /**
  * The Stakings model module.
  * @module model/Stakings
- * @version 0.4.5
+ * @version 0.4.4
  */
 class Stakings {
     /**
@@ -25,18 +25,18 @@ class Stakings {
      * The staking info.
      * @alias module:model/Stakings
      * @param id {String} The unique id of the stake.
-     * @param walletId {String} The unique wallet id.
+     * @param wallet_id {String} The unique wallet id.
      * @param address {String} The staker wallet address.
      * @param amounts {Array.<module:model/AmountDetailsInner>} The staking amount details.
-     * @param poolId {String} The unique pool id.
-     * @param tokenId {String} The token id.
-     * @param createdTime {Number} The time when the stake was created.
-     * @param updatedTime {Number} The time when the stake was last updated.
-     * @param validatorInfo {module:model/StakingsValidatorInfo} 
+     * @param pool_id {String} The unique pool id.
+     * @param token_id {String} The token id.
+     * @param created_time {Number} The time when the stake was created.
+     * @param updated_time {Number} The time when the stake was last updated.
+     * @param validator_info {module:model/StakingsValidatorInfo} 
      */
-    constructor(id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo) { 
+    constructor(id, wallet_id, address, amounts, pool_id, token_id, created_time, updated_time, validator_info) { 
         
-        Stakings.initialize(this, id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo);
+        Stakings.initialize(this, id, wallet_id, address, amounts, pool_id, token_id, created_time, updated_time, validator_info);
     }
 
     /**
@@ -44,16 +44,16 @@ class Stakings {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, walletId, address, amounts, poolId, tokenId, createdTime, updatedTime, validatorInfo) { 
+    static initialize(obj, id, wallet_id, address, amounts, pool_id, token_id, created_time, updated_time, validator_info) { 
         obj['id'] = id;
-        obj['wallet_id'] = walletId;
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
         obj['amounts'] = amounts;
-        obj['pool_id'] = poolId;
-        obj['token_id'] = tokenId;
-        obj['created_time'] = createdTime;
-        obj['updated_time'] = updatedTime;
-        obj['validator_info'] = validatorInfo;
+        obj['pool_id'] = pool_id;
+        obj['token_id'] = token_id;
+        obj['created_time'] = created_time;
+        obj['updated_time'] = updated_time;
+        obj['validator_info'] = validator_info;
     }
 
     /**

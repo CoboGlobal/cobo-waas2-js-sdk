@@ -21,7 +21,7 @@ import UtxoFeePrice from './UtxoFeePrice';
 /**
  * The FeeRate model module.
  * @module model/FeeRate
- * @version 0.4.5
+ * @version 0.4.4
  */
 class FeeRate {
     /**
@@ -37,12 +37,10 @@ class FeeRate {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EvmEip1559FeePrice") {
+            if (instance instanceof EvmEip1559FeePrice) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmEip1559FeePrice.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmEip1559FeePrice.validateJSON(instance); // throw an exception if no match
                 // create EvmEip1559FeePrice from JS object
                 this.actualInstance = EvmEip1559FeePrice.constructFromObject(instance);
             }
@@ -53,12 +51,10 @@ class FeeRate {
         }
 
         try {
-            if (typeof instance === "EvmLegacyFeePrice") {
+            if (instance instanceof EvmLegacyFeePrice) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmLegacyFeePrice.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmLegacyFeePrice.validateJSON(instance); // throw an exception if no match
                 // create EvmLegacyFeePrice from JS object
                 this.actualInstance = EvmLegacyFeePrice.constructFromObject(instance);
             }
@@ -69,12 +65,10 @@ class FeeRate {
         }
 
         try {
-            if (typeof instance === "UtxoFeePrice") {
+            if (instance instanceof UtxoFeePrice) {
                 this.actualInstance = instance;
-            } else {
+            } else if(UtxoFeePrice.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                UtxoFeePrice.validateJSON(instance); // throw an exception if no match
                 // create UtxoFeePrice from JS object
                 this.actualInstance = UtxoFeePrice.constructFromObject(instance);
             }
@@ -85,12 +79,10 @@ class FeeRate {
         }
 
         try {
-            if (typeof instance === "FixedFee") {
+            if (instance instanceof FixedFee) {
                 this.actualInstance = instance;
-            } else {
+            } else if(FixedFee.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                FixedFee.validateJSON(instance); // throw an exception if no match
                 // create FixedFee from JS object
                 this.actualInstance = FixedFee.constructFromObject(instance);
             }
@@ -100,9 +92,10 @@ class FeeRate {
             errorMessages.push("Failed to construct FixedFee: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `FeeRate` with oneOf schemas EvmEip1559FeePrice, EvmLegacyFeePrice, FixedFee, UtxoFeePrice. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `FeeRate` with oneOf schemas EvmEip1559FeePrice, EvmLegacyFeePrice, FixedFee, UtxoFeePrice. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `FeeRate` with oneOf schemas EvmEip1559FeePrice, EvmLegacyFeePrice, FixedFee, UtxoFeePrice. Details: " +
                             errorMessages.join(", "));

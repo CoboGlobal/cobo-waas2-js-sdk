@@ -59,8 +59,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
@@ -83,56 +83,56 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property unlockTime (base name: "unlock_time")', function() {
-      // uncomment below and update the code to test the property unlockTime
+    it('should have the property unlock_time (base name: "unlock_time")', function() {
+      // uncomment below and update the code to test the property unlock_time
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property unlockBlockHeight (base name: "unlock_block_height")', function() {
-      // uncomment below and update the code to test the property unlockBlockHeight
+    it('should have the property unlock_block_height (base name: "unlock_block_height")', function() {
+      // uncomment below and update the code to test the property unlock_block_height
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property poolId (base name: "pool_id")', function() {
-      // uncomment below and update the code to test the property poolId
+    it('should have the property pool_id (base name: "pool_id")', function() {
+      // uncomment below and update the code to test the property pool_id
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property posChain (base name: "pos_chain")', function() {
-      // uncomment below and update the code to test the property posChain
+    it('should have the property pos_chain (base name: "pos_chain")', function() {
+      // uncomment below and update the code to test the property pos_chain
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property rewardsInfo (base name: "rewards_info")', function() {
-      // uncomment below and update the code to test the property rewardsInfo
+    it('should have the property rewards_info (base name: "rewards_info")', function() {
+      // uncomment below and update the code to test the property rewards_info
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property createdTime (base name: "created_time")', function() {
-      // uncomment below and update the code to test the property createdTime
+    it('should have the property created_time (base name: "created_time")', function() {
+      // uncomment below and update the code to test the property created_time
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property updatedTime (base name: "updated_time")', function() {
-      // uncomment below and update the code to test the property updatedTime
+    it('should have the property updated_time (base name: "updated_time")', function() {
+      // uncomment below and update the code to test the property updated_time
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });
 
-    it('should have the property validatorInfo (base name: "validator_info")', function() {
-      // uncomment below and update the code to test the property validatorInfo
+    it('should have the property validator_info (base name: "validator_info")', function() {
+      // uncomment below and update the code to test the property validator_info
       //var instance = new CoboWaas2JsApi.Stakings();
       //expect(instance).to.be();
     });

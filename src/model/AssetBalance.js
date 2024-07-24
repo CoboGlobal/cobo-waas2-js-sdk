@@ -16,19 +16,19 @@ import TokenBalanceBalance from './TokenBalanceBalance';
 /**
  * The AssetBalance model module.
  * @module model/AssetBalance
- * @version 0.4.5
+ * @version 0.4.4
  */
 class AssetBalance {
     /**
      * Constructs a new <code>AssetBalance</code>.
      * The data for token balance information.
      * @alias module:model/AssetBalance
-     * @param assetId {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+     * @param asset_id {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
      * @param balance {module:model/TokenBalanceBalance} 
      */
-    constructor(assetId, balance) { 
+    constructor(asset_id, balance) { 
         
-        AssetBalance.initialize(this, assetId, balance);
+        AssetBalance.initialize(this, asset_id, balance);
     }
 
     /**
@@ -36,8 +36,8 @@ class AssetBalance {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, assetId, balance) { 
-        obj['asset_id'] = assetId;
+    static initialize(obj, asset_id, balance) { 
+        obj['asset_id'] = asset_id;
         obj['balance'] = balance;
     }
 

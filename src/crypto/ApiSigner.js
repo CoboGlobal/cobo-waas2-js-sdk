@@ -8,7 +8,7 @@ export default class ApiSigner {
 
     generateHeaders(path, method, body, queryString) {
         const nonce = String(new Date().getTime());
-        const strToSign = [method, path, nonce, queryString, body].join('|');
+        const strToSign = [method, path, nonce, queryString, body?JSON.stringify(body):''].join('|');
         console.log("strToSign:", strToSign)
         const hash2String = CryptoJS.SHA256(CryptoJS.SHA256(strToSign)).toString(CryptoJS.enc.Hex);
         return {

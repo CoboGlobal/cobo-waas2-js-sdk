@@ -53,38 +53,38 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionEvmEip1559Fee);
     });
 
-    it('should have the property maxPriorityFee (base name: "max_priority_fee")', function() {
-      // uncomment below and update the code to test the property maxPriorityFee
+    it('should have the property max_priority_fee (base name: "max_priority_fee")', function() {
+      // uncomment below and update the code to test the property max_priority_fee
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property baseFee (base name: "base_fee")', function() {
-      // uncomment below and update the code to test the property baseFee
+    it('should have the property base_fee (base name: "base_fee")', function() {
+      // uncomment below and update the code to test the property base_fee
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property gasLimit (base name: "gas_limit")', function() {
-      // uncomment below and update the code to test the property gasLimit
+    it('should have the property gas_limit (base name: "gas_limit")', function() {
+      // uncomment below and update the code to test the property gas_limit
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeType (base name: "fee_type")', function() {
-      // uncomment below and update the code to test the property feeType
+    it('should have the property fee_type (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property fee_type
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeUsed (base name: "fee_used")', function() {
-      // uncomment below and update the code to test the property feeUsed
+    it('should have the property fee_used (base name: "fee_used")', function() {
+      // uncomment below and update the code to test the property fee_used
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });
 
-    it('should have the property gasUsed (base name: "gas_used")', function() {
-      // uncomment below and update the code to test the property gasUsed
+    it('should have the property gas_used (base name: "gas_used")', function() {
+      // uncomment below and update the code to test the property gas_used
       //var instance = new CoboWaas2JsApi.TransactionEvmEip1559Fee();
       //expect(instance).to.be();
     });

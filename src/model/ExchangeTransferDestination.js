@@ -16,21 +16,20 @@ import TransferDestinationType from './TransferDestinationType';
 /**
  * The ExchangeTransferDestination model module.
  * @module model/ExchangeTransferDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ExchangeTransferDestination {
     /**
      * Constructs a new <code>ExchangeTransferDestination</code>.
      * The information about the transaction destination. An Exchange Wallet (Sub Account) as the transaction destination can only receives token transfers from another Exchange Wallet.
      * @alias module:model/ExchangeTransferDestination
-     * @param destinationType {module:model/TransferDestinationType} 
-     * @param walletId {String} The wallet ID.
-     * @param subWalletId {String} The exchange trading account or the sub-wallet ID.
-     * @param amount {String} The quantity of the token in the transaction. For example, if you trade 1.5 ETH, then the value is `1.5`. 
+     * @param destination_type {module:model/TransferDestinationType} 
+     * @param wallet_id {String} The wallet ID.
+     * @param sub_wallet_id {String} The exchange trading account or the sub-wallet ID.
      */
-    constructor(destinationType, walletId, subWalletId, amount) { 
+    constructor(destination_type, wallet_id, sub_wallet_id) { 
         
-        ExchangeTransferDestination.initialize(this, destinationType, walletId, subWalletId, amount);
+        ExchangeTransferDestination.initialize(this, destination_type, wallet_id, sub_wallet_id);
     }
 
     /**
@@ -38,11 +37,10 @@ class ExchangeTransferDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, walletId, subWalletId, amount) { 
-        obj['destination_type'] = destinationType;
-        obj['wallet_id'] = walletId;
-        obj['sub_wallet_id'] = subWalletId;
-        obj['amount'] = amount;
+    static initialize(obj, destination_type, wallet_id, sub_wallet_id) { 
+        obj['destination_type'] = destination_type;
+        obj['wallet_id'] = wallet_id;
+        obj['sub_wallet_id'] = sub_wallet_id;
     }
 
     /**
@@ -103,7 +101,7 @@ class ExchangeTransferDestination {
 
 }
 
-ExchangeTransferDestination.RequiredProperties = ["destination_type", "wallet_id", "sub_wallet_id", "amount"];
+ExchangeTransferDestination.RequiredProperties = ["destination_type", "wallet_id", "sub_wallet_id"];
 
 /**
  * @member {module:model/TransferDestinationType} destination_type

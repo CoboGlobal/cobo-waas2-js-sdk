@@ -25,7 +25,7 @@ import WalletType from './WalletType';
 /**
  * The WalletInfo model module.
  * @module model/WalletInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class WalletInfo {
     /**
@@ -41,12 +41,10 @@ class WalletInfo {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "CustodialWalletInfo") {
+            if (instance instanceof CustodialWalletInfo) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CustodialWalletInfo.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CustodialWalletInfo.validateJSON(instance); // throw an exception if no match
                 // create CustodialWalletInfo from JS object
                 this.actualInstance = CustodialWalletInfo.constructFromObject(instance);
             }
@@ -57,12 +55,10 @@ class WalletInfo {
         }
 
         try {
-            if (typeof instance === "MPCWalletInfo") {
+            if (instance instanceof MPCWalletInfo) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MPCWalletInfo.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MPCWalletInfo.validateJSON(instance); // throw an exception if no match
                 // create MPCWalletInfo from JS object
                 this.actualInstance = MPCWalletInfo.constructFromObject(instance);
             }
@@ -73,12 +69,10 @@ class WalletInfo {
         }
 
         try {
-            if (typeof instance === "SmartContractWalletInfo") {
+            if (instance instanceof SmartContractWalletInfo) {
                 this.actualInstance = instance;
-            } else {
+            } else if(SmartContractWalletInfo.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                SmartContractWalletInfo.validateJSON(instance); // throw an exception if no match
                 // create SmartContractWalletInfo from JS object
                 this.actualInstance = SmartContractWalletInfo.constructFromObject(instance);
             }
@@ -89,12 +83,10 @@ class WalletInfo {
         }
 
         try {
-            if (typeof instance === "ExchangeWalletInfo") {
+            if (instance instanceof ExchangeWalletInfo) {
                 this.actualInstance = instance;
-            } else {
+            } else if(ExchangeWalletInfo.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                ExchangeWalletInfo.validateJSON(instance); // throw an exception if no match
                 // create ExchangeWalletInfo from JS object
                 this.actualInstance = ExchangeWalletInfo.constructFromObject(instance);
             }
@@ -104,9 +96,10 @@ class WalletInfo {
             errorMessages.push("Failed to construct ExchangeWalletInfo: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo, SmartContractWalletInfo. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo, SmartContractWalletInfo. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo, SmartContractWalletInfo. Details: " +
                             errorMessages.join(", "));

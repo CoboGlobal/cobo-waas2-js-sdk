@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ActivityInitiator model module.
  * @module model/ActivityInitiator
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ActivityInitiator {
     /**

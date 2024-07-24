@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ExchangeTransferDestination);
     });
 
-    it('should have the property destinationType (base name: "destination_type")', function() {
-      // uncomment below and update the code to test the property destinationType
+    it('should have the property destination_type (base name: "destination_type")', function() {
+      // uncomment below and update the code to test the property destination_type
       //var instance = new CoboWaas2JsApi.ExchangeTransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.ExchangeTransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
-      // uncomment below and update the code to test the property subWalletId
+    it('should have the property sub_wallet_id (base name: "sub_wallet_id")', function() {
+      // uncomment below and update the code to test the property sub_wallet_id
       //var instance = new CoboWaas2JsApi.ExchangeTransferDestination();
       //expect(instance).to.be();
     });

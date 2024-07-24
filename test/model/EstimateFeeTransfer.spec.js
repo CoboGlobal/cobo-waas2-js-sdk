@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EstimateFeeTransfer);
     });
 
-    it('should have the property requestId (base name: "request_id")', function() {
-      // uncomment below and update the code to test the property requestId
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
       //var instance = new CoboWaas2JsApi.EstimateFeeTransfer();
       //expect(instance).to.be();
     });
 
-    it('should have the property requestType (base name: "request_type")', function() {
-      // uncomment below and update the code to test the property requestType
+    it('should have the property request_type (base name: "request_type")', function() {
+      // uncomment below and update the code to test the property request_type
       //var instance = new CoboWaas2JsApi.EstimateFeeTransfer();
       //expect(instance).to.be();
     });
@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.EstimateFeeTransfer();
       //expect(instance).to.be();
     });
@@ -83,8 +83,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property feeType (base name: "fee_type")', function() {
-      // uncomment below and update the code to test the property feeType
+    it('should have the property fee_type (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property fee_type
       //var instance = new CoboWaas2JsApi.EstimateFeeTransfer();
       //expect(instance).to.be();
     });

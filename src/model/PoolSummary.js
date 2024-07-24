@@ -17,7 +17,7 @@ import WalletType from './WalletType';
 /**
  * The PoolSummary model module.
  * @module model/PoolSummary
- * @version 0.4.5
+ * @version 0.4.4
  */
 class PoolSummary {
     /**
@@ -25,17 +25,17 @@ class PoolSummary {
      * The summary of the staking pool.
      * @alias module:model/PoolSummary
      * @param id {String} The unique protocol id.
-     * @param chainId {String} The unique chain id.
+     * @param chain_id {String} The unique chain id.
      * @param protocol {String} The name of the protocol.
-     * @param protocolIconUrl {String} The URL of the protocol's icon.
-     * @param supportedWalletTypes {Array.<module:model/WalletType>} The list of available wallet types.
-     * @param supportedWalletSubtypes {Array.<module:model/WalletSubtype>} The list of available wallet types.
-     * @param tokenId {String} The unique token id.
-     * @param estApr {Number} The estimated APR.
+     * @param protocol_icon_url {String} The URL of the protocol's icon.
+     * @param supported_wallet_types {Array.<module:model/WalletType>} The list of available wallet types.
+     * @param supported_wallet_subtypes {Array.<module:model/WalletSubtype>} The list of available wallet types.
+     * @param token_id {String} The unique token id.
+     * @param est_apr {Number} The estimated APR.
      */
-    constructor(id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr) { 
+    constructor(id, chain_id, protocol, protocol_icon_url, supported_wallet_types, supported_wallet_subtypes, token_id, est_apr) { 
         
-        PoolSummary.initialize(this, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr);
+        PoolSummary.initialize(this, id, chain_id, protocol, protocol_icon_url, supported_wallet_types, supported_wallet_subtypes, token_id, est_apr);
     }
 
     /**
@@ -43,15 +43,15 @@ class PoolSummary {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, chainId, protocol, protocolIconUrl, supportedWalletTypes, supportedWalletSubtypes, tokenId, estApr) { 
+    static initialize(obj, id, chain_id, protocol, protocol_icon_url, supported_wallet_types, supported_wallet_subtypes, token_id, est_apr) { 
         obj['id'] = id;
-        obj['chain_id'] = chainId;
+        obj['chain_id'] = chain_id;
         obj['protocol'] = protocol;
-        obj['protocol_icon_url'] = protocolIconUrl;
-        obj['supported_wallet_types'] = supportedWalletTypes;
-        obj['supported_wallet_subtypes'] = supportedWalletSubtypes;
-        obj['token_id'] = tokenId;
-        obj['est_apr'] = estApr;
+        obj['protocol_icon_url'] = protocol_icon_url;
+        obj['supported_wallet_types'] = supported_wallet_types;
+        obj['supported_wallet_subtypes'] = supported_wallet_subtypes;
+        obj['token_id'] = token_id;
+        obj['est_apr'] = est_apr;
     }
 
     /**

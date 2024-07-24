@@ -17,20 +17,20 @@ import KeyShareHolderGroupType from './KeyShareHolderGroupType';
 /**
  * The CreateKeyShareHolderGroupRequest model module.
  * @module model/CreateKeyShareHolderGroupRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateKeyShareHolderGroupRequest {
     /**
      * Constructs a new <code>CreateKeyShareHolderGroupRequest</code>.
      * @alias module:model/CreateKeyShareHolderGroupRequest
-     * @param keyShareHolderGroupType {module:model/KeyShareHolderGroupType} 
-     * @param nodeCount {Number} The number of key share holders in this key share holder group.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
+     * @param key_share_holder_group_type {module:model/KeyShareHolderGroupType} 
+     * @param node_count {Number} The number of key share holders in this key share holder group.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `node_count` to 2 or 3.   2. Threshold must be less than or equal to node count. 
      * @param threshold {Number} The number of key share holders required to sign an operation.  **Notes:** 1. Currently, the available [Threshold Signature Schemes (TSS)](https://manuals.cobo.com/en/portal/mpc-wallets/introduction#threshold-signature-scheme-tss) are 2-2, 2-3, and 3-3 schemes (in the \"threshold - node count\" format), so you can only set `threshold` to 2 or 3.   2. Threshold must be less than or equal to node count. 
-     * @param keyShareHolders {Array.<module:model/CreateKeyShareHolder>} 
+     * @param key_share_holders {Array.<module:model/CreateKeyShareHolder>} 
      */
-    constructor(keyShareHolderGroupType, nodeCount, threshold, keyShareHolders) { 
+    constructor(key_share_holder_group_type, node_count, threshold, key_share_holders) { 
         
-        CreateKeyShareHolderGroupRequest.initialize(this, keyShareHolderGroupType, nodeCount, threshold, keyShareHolders);
+        CreateKeyShareHolderGroupRequest.initialize(this, key_share_holder_group_type, node_count, threshold, key_share_holders);
     }
 
     /**
@@ -38,11 +38,11 @@ class CreateKeyShareHolderGroupRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, keyShareHolderGroupType, nodeCount, threshold, keyShareHolders) { 
-        obj['key_share_holder_group_type'] = keyShareHolderGroupType;
-        obj['node_count'] = nodeCount;
+    static initialize(obj, key_share_holder_group_type, node_count, threshold, key_share_holders) { 
+        obj['key_share_holder_group_type'] = key_share_holder_group_type;
+        obj['node_count'] = node_count;
         obj['threshold'] = threshold;
-        obj['key_share_holders'] = keyShareHolders;
+        obj['key_share_holders'] = key_share_holders;
     }
 
     /**

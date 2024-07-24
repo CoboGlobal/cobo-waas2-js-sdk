@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CoboSafeDelegate);
     });
 
-    it('should have the property delegateType (base name: "delegate_type")', function() {
-      // uncomment below and update the code to test the property delegateType
+    it('should have the property delegate_type (base name: "delegate_type")', function() {
+      // uncomment below and update the code to test the property delegate_type
       //var instance = new CoboWaas2JsApi.CoboSafeDelegate();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.CoboSafeDelegate();
       //expect(instance).to.be();
     });
@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
+    it('should have the property mpc_used_key_share_holder_group (base name: "mpc_used_key_share_holder_group")', function() {
+      // uncomment below and update the code to test the property mpc_used_key_share_holder_group
       //var instance = new CoboWaas2JsApi.CoboSafeDelegate();
       //expect(instance).to.be();
     });

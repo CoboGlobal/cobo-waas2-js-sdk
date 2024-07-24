@@ -17,7 +17,7 @@ import FeeType from './FeeType';
 /**
  * The TransactionFixedFee model module.
  * @module model/TransactionFixedFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionFixedFee {
     /**
@@ -25,12 +25,12 @@ class TransactionFixedFee {
      * The transaction fee actually charged by the chain that uses the fixed fee model.
      * @alias module:model/TransactionFixedFee
      * @implements module:model/FeeAmount
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
-     * @param feeType {module:model/FeeType} 
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param fee_type {module:model/FeeType} 
      */
-    constructor(maxFeeAmount, feeType) { 
-        FeeAmount.initialize(this, maxFeeAmount);
-        TransactionFixedFee.initialize(this, maxFeeAmount, feeType);
+    constructor(max_fee_amount, fee_type) { 
+        FeeAmount.initialize(this, max_fee_amount);
+        TransactionFixedFee.initialize(this, max_fee_amount, fee_type);
     }
 
     /**
@@ -38,9 +38,9 @@ class TransactionFixedFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxFeeAmount, feeType) { 
-        obj['max_fee_amount'] = maxFeeAmount;
-        obj['fee_type'] = feeType;
+    static initialize(obj, max_fee_amount, fee_type) { 
+        obj['max_fee_amount'] = max_fee_amount;
+        obj['fee_type'] = fee_type;
     }
 
     /**

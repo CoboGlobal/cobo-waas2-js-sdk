@@ -16,18 +16,18 @@ import MessageSignDestinationType from './MessageSignDestinationType';
 /**
  * The EvmEIP712MessageSignDestination model module.
  * @module model/EvmEIP712MessageSignDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmEIP712MessageSignDestination {
     /**
      * Constructs a new <code>EvmEIP712MessageSignDestination</code>.
      * @alias module:model/EvmEIP712MessageSignDestination
-     * @param destinationType {module:model/MessageSignDestinationType} 
-     * @param structuredData {Object.<String, Object>} The structured data of the message to be signed, encoded in JSON format.
+     * @param destination_type {module:model/MessageSignDestinationType} 
+     * @param structured_data {Object.<String, Object>} The structured data of the message to be signed, encoded in JSON format.
      */
-    constructor(destinationType, structuredData) { 
+    constructor(destination_type, structured_data) { 
         
-        EvmEIP712MessageSignDestination.initialize(this, destinationType, structuredData);
+        EvmEIP712MessageSignDestination.initialize(this, destination_type, structured_data);
     }
 
     /**
@@ -35,9 +35,9 @@ class EvmEIP712MessageSignDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, structuredData) { 
-        obj['destination_type'] = destinationType;
-        obj['structured_data'] = structuredData;
+    static initialize(obj, destination_type, structured_data) { 
+        obj['destination_type'] = destination_type;
+        obj['structured_data'] = structured_data;
     }
 
     /**

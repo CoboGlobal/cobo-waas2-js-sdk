@@ -17,21 +17,21 @@ import MessageSignSource from './MessageSignSource';
 /**
  * The SignMessage model module.
  * @module model/SignMessage
- * @version 0.4.5
+ * @version 0.4.4
  */
 class SignMessage {
     /**
      * Constructs a new <code>SignMessage</code>.
      * The information about a transaction that signs a message. You can provide the message either as raw data or as structured data.
      * @alias module:model/SignMessage
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param chain_id {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      * @param source {module:model/MessageSignSource} 
      * @param destination {module:model/MessageSignDestination} 
      */
-    constructor(requestId, chainId, source, destination) { 
+    constructor(request_id, chain_id, source, destination) { 
         
-        SignMessage.initialize(this, requestId, chainId, source, destination);
+        SignMessage.initialize(this, request_id, chain_id, source, destination);
     }
 
     /**
@@ -39,9 +39,9 @@ class SignMessage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, chainId, source, destination) { 
-        obj['request_id'] = requestId;
-        obj['chain_id'] = chainId;
+    static initialize(obj, request_id, chain_id, source, destination) { 
+        obj['request_id'] = request_id;
+        obj['chain_id'] = chain_id;
         obj['source'] = source;
         obj['destination'] = destination;
     }

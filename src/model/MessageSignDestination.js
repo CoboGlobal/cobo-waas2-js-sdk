@@ -18,7 +18,7 @@ import MessageSignDestinationType from './MessageSignDestinationType';
 /**
  * The MessageSignDestination model module.
  * @module model/MessageSignDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class MessageSignDestination {
     /**
@@ -34,12 +34,10 @@ class MessageSignDestination {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EvmEIP191MessageSignDestination") {
+            if (instance instanceof EvmEIP191MessageSignDestination) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmEIP191MessageSignDestination.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmEIP191MessageSignDestination.validateJSON(instance); // throw an exception if no match
                 // create EvmEIP191MessageSignDestination from JS object
                 this.actualInstance = EvmEIP191MessageSignDestination.constructFromObject(instance);
             }
@@ -50,12 +48,10 @@ class MessageSignDestination {
         }
 
         try {
-            if (typeof instance === "EvmEIP712MessageSignDestination") {
+            if (instance instanceof EvmEIP712MessageSignDestination) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmEIP712MessageSignDestination.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmEIP712MessageSignDestination.validateJSON(instance); // throw an exception if no match
                 // create EvmEIP712MessageSignDestination from JS object
                 this.actualInstance = EvmEIP712MessageSignDestination.constructFromObject(instance);
             }
@@ -65,9 +61,10 @@ class MessageSignDestination {
             errorMessages.push("Failed to construct EvmEIP712MessageSignDestination: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `MessageSignDestination` with oneOf schemas EvmEIP191MessageSignDestination, EvmEIP712MessageSignDestination. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `MessageSignDestination` with oneOf schemas EvmEIP191MessageSignDestination, EvmEIP712MessageSignDestination. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `MessageSignDestination` with oneOf schemas EvmEIP191MessageSignDestination, EvmEIP712MessageSignDestination. Details: " +
                             errorMessages.join(", "));

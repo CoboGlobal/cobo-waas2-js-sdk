@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The FeeAmount model module.
  * @module model/FeeAmount
- * @version 0.4.5
+ * @version 0.4.4
  */
 class FeeAmount {
     /**
      * Constructs a new <code>FeeAmount</code>.
      * The maximum transaction fee.
      * @alias module:model/FeeAmount
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
      */
-    constructor(maxFeeAmount) { 
+    constructor(max_fee_amount) { 
         
-        FeeAmount.initialize(this, maxFeeAmount);
+        FeeAmount.initialize(this, max_fee_amount);
     }
 
     /**
@@ -34,8 +34,8 @@ class FeeAmount {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxFeeAmount) { 
-        obj['max_fee_amount'] = maxFeeAmount;
+    static initialize(obj, max_fee_amount) { 
+        obj['max_fee_amount'] = max_fee_amount;
     }
 
     /**

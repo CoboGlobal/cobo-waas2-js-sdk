@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activityType** | [**ActivityType**](ActivityType.md) |  | 
-**stakingId** | **String** | The id of the related staking. | 
+**activity_type** | [**ActivityType**](ActivityType.md) |  | 
+**staking_id** | **String** | The id of the related staking. | 
 **amount** | **String** | The amount to stake | [optional] 
 **fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | 
 

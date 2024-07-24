@@ -18,20 +18,20 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MpcContractCallSource model module.
  * @module model/MpcContractCallSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class MpcContractCallSource {
     /**
      * Constructs a new <code>MpcContractCallSource</code>.
      * @alias module:model/MpcContractCallSource
      * @implements module:model/BaseContractCallSource
-     * @param sourceType {module:model/ContractCallSourceType} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/ContractCallSourceType} 
+     * @param wallet_id {String} The wallet ID.
      * @param address {String} The wallet address.
      */
-    constructor(sourceType, walletId, address) { 
-        BaseContractCallSource.initialize(this, sourceType, walletId, address);
-        MpcContractCallSource.initialize(this, sourceType, walletId, address);
+    constructor(source_type, wallet_id, address) { 
+        BaseContractCallSource.initialize(this, source_type, wallet_id, address);
+        MpcContractCallSource.initialize(this, source_type, wallet_id, address);
     }
 
     /**
@@ -39,9 +39,9 @@ class MpcContractCallSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, address) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, wallet_id, address) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
     }
 

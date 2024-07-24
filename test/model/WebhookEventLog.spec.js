@@ -59,38 +59,38 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property createdTimestamp (base name: "created_timestamp")', function() {
-      // uncomment below and update the code to test the property createdTimestamp
+    it('should have the property created_timestamp (base name: "created_timestamp")', function() {
+      // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
-    it('should have the property requestHeaders (base name: "request_headers")', function() {
-      // uncomment below and update the code to test the property requestHeaders
+    it('should have the property request_headers (base name: "request_headers")', function() {
+      // uncomment below and update the code to test the property request_headers
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
-    it('should have the property requestBody (base name: "request_body")', function() {
-      // uncomment below and update the code to test the property requestBody
+    it('should have the property request_body (base name: "request_body")', function() {
+      // uncomment below and update the code to test the property request_body
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
-    it('should have the property responseBody (base name: "response_body")', function() {
-      // uncomment below and update the code to test the property responseBody
+    it('should have the property response_body (base name: "response_body")', function() {
+      // uncomment below and update the code to test the property response_body
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
-    it('should have the property responseStatusCode (base name: "response_status_code")', function() {
-      // uncomment below and update the code to test the property responseStatusCode
+    it('should have the property response_status_code (base name: "response_status_code")', function() {
+      // uncomment below and update the code to test the property response_status_code
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
 
-    it('should have the property responseTime (base name: "response_time")', function() {
-      // uncomment below and update the code to test the property responseTime
+    it('should have the property response_time (base name: "response_time")', function() {
+      // uncomment below and update the code to test the property response_time
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });
@@ -101,8 +101,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property failureReason (base name: "failure_reason")', function() {
-      // uncomment below and update the code to test the property failureReason
+    it('should have the property failure_reason (base name: "failure_reason")', function() {
+      // uncomment below and update the code to test the property failure_reason
       //var instance = new CoboWaas2JsApi.WebhookEventLog();
       //expect(instance).to.be();
     });

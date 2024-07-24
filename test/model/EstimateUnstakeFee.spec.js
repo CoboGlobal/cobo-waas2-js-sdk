@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EstimateUnstakeFee);
     });
 
-    it('should have the property activityType (base name: "activity_type")', function() {
-      // uncomment below and update the code to test the property activityType
+    it('should have the property activity_type (base name: "activity_type")', function() {
+      // uncomment below and update the code to test the property activity_type
       //var instance = new CoboWaas2JsApi.EstimateUnstakeFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property stakingId (base name: "staking_id")', function() {
-      // uncomment below and update the code to test the property stakingId
+    it('should have the property staking_id (base name: "staking_id")', function() {
+      // uncomment below and update the code to test the property staking_id
       //var instance = new CoboWaas2JsApi.EstimateUnstakeFee();
       //expect(instance).to.be();
     });

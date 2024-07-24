@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateAddressRequest);
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.CreateAddressRequest();
       //expect(instance).to.be();
     });

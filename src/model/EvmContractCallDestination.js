@@ -16,20 +16,20 @@ import ContractCallDestinationType from './ContractCallDestinationType';
 /**
  * The EvmContractCallDestination model module.
  * @module model/EvmContractCallDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmContractCallDestination {
     /**
      * Constructs a new <code>EvmContractCallDestination</code>.
-     * The information about the transaction destination.
+     * The information about the EVM transaction destination.
      * @alias module:model/EvmContractCallDestination
-     * @param destinationType {module:model/ContractCallDestinationType} 
+     * @param destination_type {module:model/ContractCallDestinationType} 
      * @param address {String} The destination address.
      * @param calldata {Blob} The data that is used to invoke a specific function or method within the specified contract at the destination address. 
      */
-    constructor(destinationType, address, calldata) { 
+    constructor(destination_type, address, calldata) { 
         
-        EvmContractCallDestination.initialize(this, destinationType, address, calldata);
+        EvmContractCallDestination.initialize(this, destination_type, address, calldata);
     }
 
     /**
@@ -37,8 +37,8 @@ class EvmContractCallDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, address, calldata) { 
-        obj['destination_type'] = destinationType;
+    static initialize(obj, destination_type, address, calldata) { 
+        obj['destination_type'] = destination_type;
         obj['address'] = address;
         obj['calldata'] = calldata;
     }

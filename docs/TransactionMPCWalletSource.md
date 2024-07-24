@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
-**walletId** | **String** | The wallet ID. | 
-**address** | **String** | The wallet address. | [optional] 
-**includedUtxos** | [**[TransactionMPCWalletSourceIncludedUtxosInner]**](TransactionMPCWalletSourceIncludedUtxosInner.md) |  | [optional] 
-**excludedUtxos** | [**[TransactionMPCWalletSourceExcludedUtxosInner]**](TransactionMPCWalletSourceExcludedUtxosInner.md) |  | [optional] 
-**mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
+**source_type** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
+**mpc_used_key_share_holder_group** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
+**account_input** | [**TransactionMPCWalletSourceAccountInput**](TransactionMPCWalletSourceAccountInput.md) |  | [optional] 
+**utxo_inputs** | [**[TransactionMPCWalletSourceUtxoInputsInner]**](TransactionMPCWalletSourceUtxoInputsInner.md) |  | [optional] 
 
 

@@ -16,17 +16,17 @@ import ActivityType from './ActivityType';
 /**
  * The BaseEstimateStakingFee model module.
  * @module model/BaseEstimateStakingFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class BaseEstimateStakingFee {
     /**
      * Constructs a new <code>BaseEstimateStakingFee</code>.
      * @alias module:model/BaseEstimateStakingFee
-     * @param activityType {module:model/ActivityType} 
+     * @param activity_type {module:model/ActivityType} 
      */
-    constructor(activityType) { 
+    constructor(activity_type) { 
         
-        BaseEstimateStakingFee.initialize(this, activityType);
+        BaseEstimateStakingFee.initialize(this, activity_type);
     }
 
     /**
@@ -34,8 +34,8 @@ class BaseEstimateStakingFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, activityType) { 
-        obj['activity_type'] = activityType;
+    static initialize(obj, activity_type) { 
+        obj['activity_type'] = activity_type;
     }
 
     /**

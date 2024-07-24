@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walletId** | **String** | The wallet ID. | 
-**walletType** | [**WalletType**](WalletType.md) |  | 
-**walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
+**wallet_type** | [**WalletType**](WalletType.md) |  | 
+**wallet_subtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
 **name** | **String** | The wallet name. | 
-**orgId** | **String** | The ID of the owning organization. | 
+**org_id** | **String** | The ID of the owning organization. | 
 
 

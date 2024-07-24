@@ -53,32 +53,32 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionEvmLegacyFee);
     });
 
-    it('should have the property gasPrice (base name: "gas_price")', function() {
-      // uncomment below and update the code to test the property gasPrice
+    it('should have the property gas_price (base name: "gas_price")', function() {
+      // uncomment below and update the code to test the property gas_price
       //var instance = new CoboWaas2JsApi.TransactionEvmLegacyFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property gasLimit (base name: "gas_limit")', function() {
-      // uncomment below and update the code to test the property gasLimit
+    it('should have the property gas_limit (base name: "gas_limit")', function() {
+      // uncomment below and update the code to test the property gas_limit
       //var instance = new CoboWaas2JsApi.TransactionEvmLegacyFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeType (base name: "fee_type")', function() {
-      // uncomment below and update the code to test the property feeType
+    it('should have the property fee_type (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property fee_type
       //var instance = new CoboWaas2JsApi.TransactionEvmLegacyFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeUsed (base name: "fee_used")', function() {
-      // uncomment below and update the code to test the property feeUsed
+    it('should have the property fee_used (base name: "fee_used")', function() {
+      // uncomment below and update the code to test the property fee_used
       //var instance = new CoboWaas2JsApi.TransactionEvmLegacyFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property gasUsed (base name: "gas_used")', function() {
-      // uncomment below and update the code to test the property gasUsed
+    it('should have the property gas_used (base name: "gas_used")', function() {
+      // uncomment below and update the code to test the property gas_used
       //var instance = new CoboWaas2JsApi.TransactionEvmLegacyFee();
       //expect(instance).to.be();
     });

@@ -17,19 +17,19 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 /**
  * The UtxoFeePrice model module.
  * @module model/UtxoFeePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class UtxoFeePrice {
     /**
      * Constructs a new <code>UtxoFeePrice</code>.
      * The transaction fee price for UTXO-based chains.
      * @alias module:model/UtxoFeePrice
-     * @param feeType {module:model/FeeType} 
+     * @param fee_type {module:model/FeeType} 
      * @param recommended {module:model/UtxoFeeBasePrice} 
      */
-    constructor(feeType, recommended) { 
+    constructor(fee_type, recommended) { 
         
-        UtxoFeePrice.initialize(this, feeType, recommended);
+        UtxoFeePrice.initialize(this, fee_type, recommended);
     }
 
     /**
@@ -37,8 +37,8 @@ class UtxoFeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, recommended) { 
-        obj['fee_type'] = feeType;
+    static initialize(obj, fee_type, recommended) { 
+        obj['fee_type'] = fee_type;
         obj['recommended'] = recommended;
     }
 

@@ -13,14 +13,14 @@
 import ApiClient from '../ApiClient';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
-import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
-import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
+import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The TransactionRbfSource model module.
  * @module model/TransactionRbfSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionRbfSource {
     /**
@@ -36,12 +36,10 @@ class TransactionRbfSource {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "MpcTransferSource") {
+            if (instance instanceof MpcTransferSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MpcTransferSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MpcTransferSource.validateJSON(instance); // throw an exception if no match
                 // create MpcTransferSource from JS object
                 this.actualInstance = MpcTransferSource.constructFromObject(instance);
             }
@@ -51,9 +49,10 @@ class TransactionRbfSource {
             errorMessages.push("Failed to construct MpcTransferSource: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransactionRbfSource` with oneOf schemas MpcTransferSource. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `TransactionRbfSource` with oneOf schemas MpcTransferSource. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `TransactionRbfSource` with oneOf schemas MpcTransferSource. Details: " +
                             errorMessages.join(", "));
@@ -125,12 +124,12 @@ TransactionRbfSource.prototype['wallet_id'] = undefined;
 TransactionRbfSource.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
  */
 TransactionRbfSource.prototype['included_utxos'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
  */
 TransactionRbfSource.prototype['excluded_utxos'] = undefined;
 

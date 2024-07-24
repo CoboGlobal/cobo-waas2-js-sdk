@@ -17,18 +17,18 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The TransactionRbf model module.
  * @module model/TransactionRbf
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionRbf {
     /**
      * Constructs a new <code>TransactionRbf</code>.
-     * The information about the request to drop or to speed up transactions.
+     * the information about the request to drop or to speed up transactions.
      * @alias module:model/TransactionRbf
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      */
-    constructor(requestId) { 
+    constructor(request_id) { 
         
-        TransactionRbf.initialize(this, requestId);
+        TransactionRbf.initialize(this, request_id);
     }
 
     /**
@@ -36,8 +36,8 @@ class TransactionRbf {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId) { 
-        obj['request_id'] = requestId;
+    static initialize(obj, request_id) { 
+        obj['request_id'] = request_id;
     }
 
     /**
@@ -134,7 +134,7 @@ TransactionRbf.prototype['source'] = undefined;
 TransactionRbf.prototype['category_names'] = undefined;
 
 /**
- * The description of the RBF transaction.
+ * The description of the rbf transaction.
  * @member {String} description
  */
 TransactionRbf.prototype['description'] = undefined;

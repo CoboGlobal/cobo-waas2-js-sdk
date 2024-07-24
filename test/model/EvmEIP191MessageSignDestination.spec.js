@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EvmEIP191MessageSignDestination);
     });
 
-    it('should have the property destinationType (base name: "destination_type")', function() {
-      // uncomment below and update the code to test the property destinationType
+    it('should have the property destination_type (base name: "destination_type")', function() {
+      // uncomment below and update the code to test the property destination_type
       //var instance = new CoboWaas2JsApi.EvmEIP191MessageSignDestination();
       //expect(instance).to.be();
     });

@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.WebhookEvent);
     });
 
-    it('should have the property eventId (base name: "event_id")', function() {
-      // uncomment below and update the code to test the property eventId
+    it('should have the property event_id (base name: "event_id")', function() {
+      // uncomment below and update the code to test the property event_id
       //var instance = new CoboWaas2JsApi.WebhookEvent();
       //expect(instance).to.be();
     });
@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property createdTimestamp (base name: "created_timestamp")', function() {
-      // uncomment below and update the code to test the property createdTimestamp
+    it('should have the property created_timestamp (base name: "created_timestamp")', function() {
+      // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2JsApi.WebhookEvent();
       //expect(instance).to.be();
     });
@@ -89,14 +89,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property nextRetryTimestamp (base name: "next_retry_timestamp")', function() {
-      // uncomment below and update the code to test the property nextRetryTimestamp
+    it('should have the property next_retry_timestamp (base name: "next_retry_timestamp")', function() {
+      // uncomment below and update the code to test the property next_retry_timestamp
       //var instance = new CoboWaas2JsApi.WebhookEvent();
       //expect(instance).to.be();
     });
 
-    it('should have the property retriesLeft (base name: "retries_left")', function() {
-      // uncomment below and update the code to test the property retriesLeft
+    it('should have the property retries_left (base name: "retries_left")', function() {
+      // uncomment below and update the code to test the property retries_left
       //var instance = new CoboWaas2JsApi.WebhookEvent();
       //expect(instance).to.be();
     });

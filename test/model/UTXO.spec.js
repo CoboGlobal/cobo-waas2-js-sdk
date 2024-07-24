@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UTXO);
     });
 
-    it('should have the property txHash (base name: "tx_hash")', function() {
-      // uncomment below and update the code to test the property txHash
+    it('should have the property tx_hash (base name: "tx_hash")', function() {
+      // uncomment below and update the code to test the property tx_hash
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
-    it('should have the property voutN (base name: "vout_n")', function() {
-      // uncomment below and update the code to test the property voutN
+    it('should have the property vout_n (base name: "vout_n")', function() {
+      // uncomment below and update the code to test the property vout_n
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
@@ -83,20 +83,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property isCoinbase (base name: "is_coinbase")', function() {
-      // uncomment below and update the code to test the property isCoinbase
+    it('should have the property is_coinbase (base name: "is_coinbase")', function() {
+      // uncomment below and update the code to test the property is_coinbase
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
-    it('should have the property isLocked (base name: "is_locked")', function() {
-      // uncomment below and update the code to test the property isLocked
+    it('should have the property is_locked (base name: "is_locked")', function() {
+      // uncomment below and update the code to test the property is_locked
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });
 
-    it('should have the property confirmedNumber (base name: "confirmed_number")', function() {
-      // uncomment below and update the code to test the property confirmedNumber
+    it('should have the property confirmed_number (base name: "confirmed_number")', function() {
+      // uncomment below and update the code to test the property confirmed_number
       //var instance = new CoboWaas2JsApi.UTXO();
       //expect(instance).to.be();
     });

@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The UtxoFeeBasePrice model module.
  * @module model/UtxoFeeBasePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class UtxoFeeBasePrice {
     /**
      * Constructs a new <code>UtxoFeeBasePrice</code>.
      * The transaction fee price for UTXO-based chains (such as Bitcoin), which equals the fee rate.
      * @alias module:model/UtxoFeeBasePrice
-     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param fee_rate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
      */
-    constructor(feeRate) { 
+    constructor(fee_rate) { 
         
-        UtxoFeeBasePrice.initialize(this, feeRate);
+        UtxoFeeBasePrice.initialize(this, fee_rate);
     }
 
     /**
@@ -34,8 +34,8 @@ class UtxoFeeBasePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate) { 
-        obj['fee_rate'] = feeRate;
+    static initialize(obj, fee_rate) { 
+        obj['fee_rate'] = fee_rate;
     }
 
     /**

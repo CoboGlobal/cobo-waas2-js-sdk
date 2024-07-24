@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.ErrorResponse);
     });
 
-    it('should have the property errorCode (base name: "error_code")', function() {
-      // uncomment below and update the code to test the property errorCode
+    it('should have the property error_code (base name: "error_code")', function() {
+      // uncomment below and update the code to test the property error_code
       //var instance = new CoboWaas2JsApi.ErrorResponse();
       //expect(instance).to.be();
     });
 
-    it('should have the property errorMessage (base name: "error_message")', function() {
-      // uncomment below and update the code to test the property errorMessage
+    it('should have the property error_message (base name: "error_message")', function() {
+      // uncomment below and update the code to test the property error_message
       //var instance = new CoboWaas2JsApi.ErrorResponse();
       //expect(instance).to.be();
     });
 
-    it('should have the property errorId (base name: "error_id")', function() {
-      // uncomment below and update the code to test the property errorId
+    it('should have the property error_id (base name: "error_id")', function() {
+      // uncomment below and update the code to test the property error_id
       //var instance = new CoboWaas2JsApi.ErrorResponse();
       //expect(instance).to.be();
     });

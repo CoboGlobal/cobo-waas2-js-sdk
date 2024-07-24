@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionTokenAmount);
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.TransactionTokenAmount();
       //expect(instance).to.be();
     });
 
-    it('should have the property assetId (base name: "asset_id")', function() {
-      // uncomment below and update the code to test the property assetId
+    it('should have the property asset_id (base name: "asset_id")', function() {
+      // uncomment below and update the code to test the property asset_id
       //var instance = new CoboWaas2JsApi.TransactionTokenAmount();
       //expect(instance).to.be();
     });

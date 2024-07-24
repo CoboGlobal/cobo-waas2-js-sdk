@@ -16,19 +16,19 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The BaseTransferSource model module.
  * @module model/BaseTransferSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class BaseTransferSource {
     /**
      * Constructs a new <code>BaseTransferSource</code>.
      * The information about the transaction source.
      * @alias module:model/BaseTransferSource
-     * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
      */
-    constructor(sourceType, walletId) { 
+    constructor(source_type, wallet_id) { 
         
-        BaseTransferSource.initialize(this, sourceType, walletId);
+        BaseTransferSource.initialize(this, source_type, wallet_id);
     }
 
     /**
@@ -36,9 +36,9 @@ class BaseTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, wallet_id) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
     }
 
     /**

@@ -16,7 +16,7 @@ import AddressEncoding from './AddressEncoding';
 /**
  * The AddressInfo model module.
  * @module model/AddressInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class AddressInfo {
     /**
@@ -24,11 +24,11 @@ class AddressInfo {
      * The address information.
      * @alias module:model/AddressInfo
      * @param address {String} The wallet address.
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param chain_id {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      */
-    constructor(address, chainId) { 
+    constructor(address, chain_id) { 
         
-        AddressInfo.initialize(this, address, chainId);
+        AddressInfo.initialize(this, address, chain_id);
     }
 
     /**
@@ -36,9 +36,9 @@ class AddressInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, address, chainId) { 
+    static initialize(obj, address, chain_id) { 
         obj['address'] = address;
-        obj['chain_id'] = chainId;
+        obj['chain_id'] = chain_id;
     }
 
     /**

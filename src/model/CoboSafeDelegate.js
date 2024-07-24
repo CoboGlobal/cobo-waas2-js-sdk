@@ -17,7 +17,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The CoboSafeDelegate model module.
  * @module model/CoboSafeDelegate
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CoboSafeDelegate {
     /**
@@ -33,12 +33,10 @@ class CoboSafeDelegate {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "MPCDelegate") {
+            if (instance instanceof MPCDelegate) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MPCDelegate.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MPCDelegate.validateJSON(instance); // throw an exception if no match
                 // create MPCDelegate from JS object
                 this.actualInstance = MPCDelegate.constructFromObject(instance);
             }
@@ -48,9 +46,10 @@ class CoboSafeDelegate {
             errorMessages.push("Failed to construct MPCDelegate: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `CoboSafeDelegate` with oneOf schemas MPCDelegate. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `CoboSafeDelegate` with oneOf schemas MPCDelegate. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `CoboSafeDelegate` with oneOf schemas MPCDelegate. Details: " +
                             errorMessages.join(", "));

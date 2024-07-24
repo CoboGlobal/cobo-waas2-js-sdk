@@ -53,26 +53,26 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionUtxoFee);
     });
 
-    it('should have the property feeRate (base name: "fee_rate")', function() {
-      // uncomment below and update the code to test the property feeRate
+    it('should have the property fee_rate (base name: "fee_rate")', function() {
+      // uncomment below and update the code to test the property fee_rate
       //var instance = new CoboWaas2JsApi.TransactionUtxoFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property maxFeeAmount (base name: "max_fee_amount")', function() {
-      // uncomment below and update the code to test the property maxFeeAmount
+    it('should have the property max_fee_amount (base name: "max_fee_amount")', function() {
+      // uncomment below and update the code to test the property max_fee_amount
       //var instance = new CoboWaas2JsApi.TransactionUtxoFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeType (base name: "fee_type")', function() {
-      // uncomment below and update the code to test the property feeType
+    it('should have the property fee_type (base name: "fee_type")', function() {
+      // uncomment below and update the code to test the property fee_type
       //var instance = new CoboWaas2JsApi.TransactionUtxoFee();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeUsed (base name: "fee_used")', function() {
-      // uncomment below and update the code to test the property feeUsed
+    it('should have the property fee_used (base name: "fee_used")', function() {
+      // uncomment below and update the code to test the property fee_used
       //var instance = new CoboWaas2JsApi.TransactionUtxoFee();
       //expect(instance).to.be();
     });

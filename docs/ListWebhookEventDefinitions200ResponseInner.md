@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**eventType** | [**WebhookEventType**](WebhookEventType.md) |  | [optional] 
+**event_type** | [**WebhookEventType**](WebhookEventType.md) |  | [optional] 
 **description** | **String** | The description of the webhook event type. | [optional] 
 
 

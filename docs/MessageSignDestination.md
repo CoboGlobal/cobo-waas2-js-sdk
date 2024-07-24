@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**destinationType** | [**MessageSignDestinationType**](MessageSignDestinationType.md) |  | 
+**destination_type** | [**MessageSignDestinationType**](MessageSignDestinationType.md) |  | 
 **message** | **String** | The raw data of the message to be signed, encoded in Base64 format. | 
-**structuredData** | **{String: Object}** | The structured data of the message to be signed, encoded in JSON format. | 
+**structured_data** | **{String: Object}** | The structured data of the message to be signed, encoded in JSON format. | 
 
 

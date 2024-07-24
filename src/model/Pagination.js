@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Pagination model module.
  * @module model/Pagination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class Pagination {
     /**
@@ -24,11 +24,11 @@ class Pagination {
      * @alias module:model/Pagination
      * @param before {String} An object ID that serves as a starting point for retrieving data in reverse chronological order for the next request.   If this property is empty, it means that you have reached the start of the data records. 
      * @param after {String} An object ID that acts as a starting point for retrieving data in chronological order for the next request.  If this property is empty, it means that you have reached the end of the data records. 
-     * @param totalCount {Number} The number of data objects returned.
+     * @param total_count {Number} The number of data objects returned.
      */
-    constructor(before, after, totalCount) { 
+    constructor(before, after, total_count) { 
         
-        Pagination.initialize(this, before, after, totalCount);
+        Pagination.initialize(this, before, after, total_count);
     }
 
     /**
@@ -36,10 +36,10 @@ class Pagination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, before, after, totalCount) { 
+    static initialize(obj, before, after, total_count) { 
         obj['before'] = before;
         obj['after'] = after;
-        obj['total_count'] = totalCount;
+        obj['total_count'] = total_count;
     }
 
     /**

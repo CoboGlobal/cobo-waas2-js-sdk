@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.BaseEstimateStakingFee);
     });
 
-    it('should have the property activityType (base name: "activity_type")', function() {
-      // uncomment below and update the code to test the property activityType
+    it('should have the property activity_type (base name: "activity_type")', function() {
+      // uncomment below and update the code to test the property activity_type
       //var instance = new CoboWaas2JsApi.BaseEstimateStakingFee();
       //expect(instance).to.be();
     });

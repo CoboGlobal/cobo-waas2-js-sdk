@@ -16,7 +16,7 @@ import CurveType from './CurveType';
 /**
  * The TSSGroups model module.
  * @module model/TSSGroups
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TSSGroups {
     /**

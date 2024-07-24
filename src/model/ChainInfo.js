@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The ChainInfo model module.
  * @module model/ChainInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ChainInfo {
     /**
      * Constructs a new <code>ChainInfo</code>.
      * The chain information.
      * @alias module:model/ChainInfo
-     * @param chainId {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param chain_id {String} The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
      */
-    constructor(chainId) { 
+    constructor(chain_id) { 
         
-        ChainInfo.initialize(this, chainId);
+        ChainInfo.initialize(this, chain_id);
     }
 
     /**
@@ -34,8 +34,8 @@ class ChainInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, chainId) { 
-        obj['chain_id'] = chainId;
+    static initialize(obj, chain_id) { 
+        obj['chain_id'] = chain_id;
     }
 
     /**

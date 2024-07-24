@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**maxFeeAmount** | **String** | The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee. | 
-**feeType** | [**FeeType**](FeeType.md) |  | 
-**tokenId** | **String** | The token ID of the transaction fee. | 
+**max_fee_amount** | **String** | The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee. | 
+**fee_type** | [**FeeType**](FeeType.md) |  | 
+**token_id** | **String** | The token ID of the transaction fee. | 
 
 

@@ -59,8 +59,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property nodeCount (base name: "node_count")', function() {
-      // uncomment below and update the code to test the property nodeCount
+    it('should have the property node_count (base name: "node_count")', function() {
+      // uncomment below and update the code to test the property node_count
       //var instance = new CoboWaas2JsApi.CreateMpcProjectRequest();
       //expect(instance).to.be();
     });

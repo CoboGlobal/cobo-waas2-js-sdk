@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The AssetInfo model module.
  * @module model/AssetInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class AssetInfo {
     /**
      * Constructs a new <code>AssetInfo</code>.
      * The asset information.
      * @alias module:model/AssetInfo
-     * @param assetId {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+     * @param asset_id {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
      */
-    constructor(assetId) { 
+    constructor(asset_id) { 
         
-        AssetInfo.initialize(this, assetId);
+        AssetInfo.initialize(this, asset_id);
     }
 
     /**
@@ -34,8 +34,8 @@ class AssetInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, assetId) { 
-        obj['asset_id'] = assetId;
+    static initialize(obj, asset_id) { 
+        obj['asset_id'] = asset_id;
     }
 
     /**

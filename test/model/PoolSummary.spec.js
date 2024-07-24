@@ -59,8 +59,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });
@@ -71,32 +71,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property protocolIconUrl (base name: "protocol_icon_url")', function() {
-      // uncomment below and update the code to test the property protocolIconUrl
+    it('should have the property protocol_icon_url (base name: "protocol_icon_url")', function() {
+      // uncomment below and update the code to test the property protocol_icon_url
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property supportedWalletTypes (base name: "supported_wallet_types")', function() {
-      // uncomment below and update the code to test the property supportedWalletTypes
+    it('should have the property supported_wallet_types (base name: "supported_wallet_types")', function() {
+      // uncomment below and update the code to test the property supported_wallet_types
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property supportedWalletSubtypes (base name: "supported_wallet_subtypes")', function() {
-      // uncomment below and update the code to test the property supportedWalletSubtypes
+    it('should have the property supported_wallet_subtypes (base name: "supported_wallet_subtypes")', function() {
+      // uncomment below and update the code to test the property supported_wallet_subtypes
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property estApr (base name: "est_apr")', function() {
-      // uncomment below and update the code to test the property estApr
+    it('should have the property est_apr (base name: "est_apr")', function() {
+      // uncomment below and update the code to test the property est_apr
       //var instance = new CoboWaas2JsApi.PoolSummary();
       //expect(instance).to.be();
     });

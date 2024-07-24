@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**ContractCallSourceType**](ContractCallSourceType.md) |  | 
-**walletId** | **String** | The wallet ID. | 
+**source_type** | [**ContractCallSourceType**](ContractCallSourceType.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
 **address** | **String** | The wallet address. | 
-**mpcUsedKeyShareHolderGroup** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
+**mpc_used_key_share_holder_group** | [**MpcSigningGroup**](MpcSigningGroup.md) |  | [optional] 
 **delegate** | [**CoboSafeDelegate**](CoboSafeDelegate.md) |  | 
 
 

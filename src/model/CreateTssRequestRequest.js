@@ -17,18 +17,18 @@ import TSSRequestType from './TSSRequestType';
 /**
  * The CreateTssRequestRequest model module.
  * @module model/CreateTssRequestRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateTssRequestRequest {
     /**
      * Constructs a new <code>CreateTssRequestRequest</code>.
      * @alias module:model/CreateTssRequestRequest
      * @param type {module:model/TSSRequestType} 
-     * @param targetKeyShareHolderGroupId {String} The target key share holder group ID.
+     * @param target_key_share_holder_group_id {String} The target key share holder group ID.
      */
-    constructor(type, targetKeyShareHolderGroupId) { 
+    constructor(type, target_key_share_holder_group_id) { 
         
-        CreateTssRequestRequest.initialize(this, type, targetKeyShareHolderGroupId);
+        CreateTssRequestRequest.initialize(this, type, target_key_share_holder_group_id);
     }
 
     /**
@@ -36,9 +36,9 @@ class CreateTssRequestRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, type, targetKeyShareHolderGroupId) { 
+    static initialize(obj, type, target_key_share_holder_group_id) { 
         obj['type'] = type;
-        obj['target_key_share_holder_group_id'] = targetKeyShareHolderGroupId;
+        obj['target_key_share_holder_group_id'] = target_key_share_holder_group_id;
     }
 
     /**

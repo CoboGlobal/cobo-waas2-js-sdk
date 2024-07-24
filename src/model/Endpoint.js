@@ -17,7 +17,7 @@ import WebhookEventType from './WebhookEventType';
 /**
  * The Endpoint model module.
  * @module model/Endpoint
- * @version 0.4.5
+ * @version 0.4.4
  */
 class Endpoint {
     /**
@@ -25,13 +25,13 @@ class Endpoint {
      * The information about a webhook endpoint.
      * @alias module:model/Endpoint
      * @param url {String} The webhook endpoint URL.
-     * @param subscribedEvents {Array.<module:model/WebhookEventType>} The event types subscribed by a webhook endpoint.
-     * @param createdTimestamp {Number} The time when the endpoint was registered, in Unix timestamp format, measured in seconds.
+     * @param subscribed_events {Array.<module:model/WebhookEventType>} The event types subscribed by a webhook endpoint.
+     * @param created_timestamp {Number} The time when the endpoint was registered, in Unix timestamp format, measured in seconds.
      * @param status {module:model/EndpointStatus} 
      */
-    constructor(url, subscribedEvents, createdTimestamp, status) { 
+    constructor(url, subscribed_events, created_timestamp, status) { 
         
-        Endpoint.initialize(this, url, subscribedEvents, createdTimestamp, status);
+        Endpoint.initialize(this, url, subscribed_events, created_timestamp, status);
     }
 
     /**
@@ -39,10 +39,10 @@ class Endpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, url, subscribedEvents, createdTimestamp, status) { 
+    static initialize(obj, url, subscribed_events, created_timestamp, status) { 
         obj['url'] = url;
-        obj['subscribed_events'] = subscribedEvents;
-        obj['created_timestamp'] = createdTimestamp;
+        obj['subscribed_events'] = subscribed_events;
+        obj['created_timestamp'] = created_timestamp;
         obj['status'] = status;
     }
 

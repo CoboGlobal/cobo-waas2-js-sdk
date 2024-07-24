@@ -18,7 +18,7 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 /**
  * The TransactionUtxoFee model module.
  * @module model/TransactionUtxoFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionUtxoFee {
     /**
@@ -27,13 +27,13 @@ class TransactionUtxoFee {
      * @alias module:model/TransactionUtxoFee
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
-     * @param feeType {module:model/FeeType} 
+     * @param fee_rate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param fee_type {module:model/FeeType} 
      */
-    constructor(feeRate, maxFeeAmount, feeType) { 
-        UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this, maxFeeAmount);
-        TransactionUtxoFee.initialize(this, feeRate, maxFeeAmount, feeType);
+    constructor(fee_rate, max_fee_amount, fee_type) { 
+        UtxoFeeBasePrice.initialize(this, fee_rate);FeeAmount.initialize(this, max_fee_amount);
+        TransactionUtxoFee.initialize(this, fee_rate, max_fee_amount, fee_type);
     }
 
     /**
@@ -41,10 +41,10 @@ class TransactionUtxoFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate, maxFeeAmount, feeType) { 
-        obj['fee_rate'] = feeRate;
-        obj['max_fee_amount'] = maxFeeAmount;
-        obj['fee_type'] = feeType;
+    static initialize(obj, fee_rate, max_fee_amount, fee_type) { 
+        obj['fee_rate'] = fee_rate;
+        obj['max_fee_amount'] = max_fee_amount;
+        obj['fee_type'] = fee_type;
     }
 
     /**

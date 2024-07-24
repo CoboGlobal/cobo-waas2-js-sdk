@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EvmLegacyFeeBasePrice);
     });
 
-    it('should have the property gasPrice (base name: "gas_price")', function() {
-      // uncomment below and update the code to test the property gasPrice
+    it('should have the property gas_price (base name: "gas_price")', function() {
+      // uncomment below and update the code to test the property gas_price
       //var instance = new CoboWaas2JsApi.EvmLegacyFeeBasePrice();
       //expect(instance).to.be();
     });

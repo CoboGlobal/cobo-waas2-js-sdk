@@ -53,17 +53,13 @@ import CreateMpcWallet from './model/CreateMpcWallet';
 import CreateSafeWallet from './model/CreateSafeWallet';
 import CreateSmartContractWallet from './model/CreateSmartContractWallet';
 import CreateStakeActivity from './model/CreateStakeActivity';
-import CreateStakeActivity201Response from './model/CreateStakeActivity201Response';
 import CreateStakeActivityExtra from './model/CreateStakeActivityExtra';
-import CreateStakeActivityRequest from './model/CreateStakeActivityRequest';
 import CreateTransferTransaction201Response from './model/CreateTransferTransaction201Response';
 import CreateTssRequestRequest from './model/CreateTssRequestRequest';
 import CreateTssRequestRequestDetailParams from './model/CreateTssRequestRequestDetailParams';
 import CreateUnstakeActivity from './model/CreateUnstakeActivity';
-import CreateUnstakeActivityRequest from './model/CreateUnstakeActivityRequest';
 import CreateWebhookEndpointRequest from './model/CreateWebhookEndpointRequest';
 import CreateWithdrawActivity from './model/CreateWithdrawActivity';
-import CreateWithdrawActivityRequest from './model/CreateWithdrawActivityRequest';
 import CreatedWallet from './model/CreatedWallet';
 import CurveType from './model/CurveType';
 import CustodialWalletInfo from './model/CustodialWalletInfo';
@@ -106,26 +102,16 @@ import FeeData from './model/FeeData';
 import FeeRate from './model/FeeRate';
 import FeeType from './model/FeeType';
 import FixedFee from './model/FixedFee';
-import GetExchangeSupportedAssets200Response from './model/GetExchangeSupportedAssets200Response';
-import GetExchangeWalletAssetBalances200Response from './model/GetExchangeWalletAssetBalances200Response';
-import GetStakingEstimationFee201Response from './model/GetStakingEstimationFee201Response';
-import GetStakingEstimationFeeRequest from './model/GetStakingEstimationFeeRequest';
-import GetToken200Response from './model/GetToken200Response';
 import KeyShareHolder from './model/KeyShareHolder';
 import KeyShareHolderGroup from './model/KeyShareHolderGroup';
 import KeyShareHolderGroupStatus from './model/KeyShareHolderGroupStatus';
 import KeyShareHolderGroupType from './model/KeyShareHolderGroupType';
 import KeyShareHolderStatus from './model/KeyShareHolderStatus';
 import KeyShareHolderType from './model/KeyShareHolderType';
-import LinkSubAccountsByWalletIdRequest from './model/LinkSubAccountsByWalletIdRequest';
 import ListAddresses200Response from './model/ListAddresses200Response';
-import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
 import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
 import ListMpcProjects200Response from './model/ListMpcProjects200Response';
 import ListMpcVaults200Response from './model/ListMpcVaults200Response';
-import ListStakingActivities200Response from './model/ListStakingActivities200Response';
-import ListStakingPools200Response from './model/ListStakingPools200Response';
-import ListStakings200Response from './model/ListStakings200Response';
 import ListSupportedChains200Response from './model/ListSupportedChains200Response';
 import ListSupportedTokens200Response from './model/ListSupportedTokens200Response';
 import ListTokenBalancesForAddress200Response from './model/ListTokenBalancesForAddress200Response';
@@ -154,11 +140,12 @@ import MpcContractCallSource from './model/MpcContractCallSource';
 import MpcMessageSignSource from './model/MpcMessageSignSource';
 import MpcSigningGroup from './model/MpcSigningGroup';
 import MpcTransferSource from './model/MpcTransferSource';
+import MpcTransferSourceAllOfExcludedUtxos from './model/MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './model/MpcTransferSourceAllOfIncludedUtxos';
 import Pagination from './model/Pagination';
 import PoolDetails from './model/PoolDetails';
 import PoolDetailsAllOfValidatorsInfo from './model/PoolDetailsAllOfValidatorsInfo';
 import PoolSummary from './model/PoolSummary';
-import RefreshTokenRequest from './model/RefreshTokenRequest';
 import ReplaceType from './model/ReplaceType';
 import RetryWebhookEventById201Response from './model/RetryWebhookEventById201Response';
 import RootPubkey from './model/RootPubkey';
@@ -166,7 +153,6 @@ import SafeContractCallSource from './model/SafeContractCallSource';
 import SafeTransferSource from './model/SafeTransferSource';
 import SafeWallet from './model/SafeWallet';
 import SignMessage from './model/SignMessage';
-import Signature from './model/Signature';
 import SmartContractInitiator from './model/SmartContractInitiator';
 import SmartContractWalletInfo from './model/SmartContractWalletInfo';
 import SmartContractWalletOperationType from './model/SmartContractWalletOperationType';
@@ -183,40 +169,45 @@ import TokenBalance from './model/TokenBalance';
 import TokenBalanceBalance from './model/TokenBalanceBalance';
 import TokenInfo from './model/TokenInfo';
 import Transaction from './model/Transaction';
+import TransactionAddressDestination from './model/TransactionAddressDestination';
+import TransactionAddressDestinationAccountOutput from './model/TransactionAddressDestinationAccountOutput';
+import TransactionAddressDestinationUtxoOutputs from './model/TransactionAddressDestinationUtxoOutputs';
+import TransactionAddressDestinationUtxoOutputsOutputsInner from './model/TransactionAddressDestinationUtxoOutputsOutputsInner';
+import TransactionAddressSource from './model/TransactionAddressSource';
+import TransactionAddressSourceAccountInput from './model/TransactionAddressSourceAccountInput';
+import TransactionAddressSourceUtxoInputsInner from './model/TransactionAddressSourceUtxoInputsInner';
 import TransactionAddressType from './model/TransactionAddressType';
 import TransactionApprover from './model/TransactionApprover';
-import TransactionBlockInfo from './model/TransactionBlockInfo';
-import TransactionCustodialAssetWalletSource from './model/TransactionCustodialAssetWalletSource';
-import TransactionDepositFromAddressSource from './model/TransactionDepositFromAddressSource';
-import TransactionDepositFromWalletSource from './model/TransactionDepositFromWalletSource';
-import TransactionDepositToAddressDestination from './model/TransactionDepositToAddressDestination';
-import TransactionDepositToWalletDestination from './model/TransactionDepositToWalletDestination';
+import TransactionContractCallDestination from './model/TransactionContractCallDestination';
+import TransactionCustodialWalletDestination from './model/TransactionCustodialWalletDestination';
+import TransactionCustodialWalletSource from './model/TransactionCustodialWalletSource';
 import TransactionDestination from './model/TransactionDestination';
 import TransactionDestinationType from './model/TransactionDestinationType';
 import TransactionDetail from './model/TransactionDetail';
 import TransactionDetailAllOfTimeline from './model/TransactionDetailAllOfTimeline';
 import TransactionDetails from './model/TransactionDetails';
 import TransactionEventData from './model/TransactionEventData';
-import TransactionEvmContractDestination from './model/TransactionEvmContractDestination';
 import TransactionEvmEip1559Fee from './model/TransactionEvmEip1559Fee';
 import TransactionEvmLegacyFee from './model/TransactionEvmLegacyFee';
+import TransactionExchangeWalletDestination from './model/TransactionExchangeWalletDestination';
 import TransactionExchangeWalletSource from './model/TransactionExchangeWalletSource';
 import TransactionFee from './model/TransactionFee';
 import TransactionFeeStationWalletSource from './model/TransactionFeeStationWalletSource';
 import TransactionFixedFee from './model/TransactionFixedFee';
 import TransactionInitiatorType from './model/TransactionInitiatorType';
+import TransactionMPCWalletDestination from './model/TransactionMPCWalletDestination';
 import TransactionMPCWalletSource from './model/TransactionMPCWalletSource';
-import TransactionMPCWalletSourceExcludedUtxosInner from './model/TransactionMPCWalletSourceExcludedUtxosInner';
-import TransactionMPCWalletSourceIncludedUtxosInner from './model/TransactionMPCWalletSourceIncludedUtxosInner';
-import TransactionMessageSignEIP191Destination from './model/TransactionMessageSignEIP191Destination';
-import TransactionMessageSignEIP712Destination from './model/TransactionMessageSignEIP712Destination';
+import TransactionMPCWalletSourceAccountInput from './model/TransactionMPCWalletSourceAccountInput';
+import TransactionMPCWalletSourceUtxoInputsInner from './model/TransactionMPCWalletSourceUtxoInputsInner';
+import TransactionMessageSignDestination from './model/TransactionMessageSignDestination';
 import TransactionRbf from './model/TransactionRbf';
 import TransactionRbfSource from './model/TransactionRbfSource';
 import TransactionReplacement from './model/TransactionReplacement';
 import TransactionResend from './model/TransactionResend';
-import TransactionResult from './model/TransactionResult';
+import TransactionSafeWalletDestination from './model/TransactionSafeWalletDestination';
+import TransactionSafeWalletSource from './model/TransactionSafeWalletSource';
+import TransactionSafeWalletSourceDelegate from './model/TransactionSafeWalletSourceDelegate';
 import TransactionSigner from './model/TransactionSigner';
-import TransactionSmartContractSafeWalletSource from './model/TransactionSmartContractSafeWalletSource';
 import TransactionSource from './model/TransactionSource';
 import TransactionSourceType from './model/TransactionSourceType';
 import TransactionStatus from './model/TransactionStatus';
@@ -225,10 +216,6 @@ import TransactionTimeline from './model/TransactionTimeline';
 import TransactionTokeApproval from './model/TransactionTokeApproval';
 import TransactionTokenAmount from './model/TransactionTokenAmount';
 import TransactionTransferFee from './model/TransactionTransferFee';
-import TransactionTransferToAddressDestination from './model/TransactionTransferToAddressDestination';
-import TransactionTransferToAddressDestinationAccountOutput from './model/TransactionTransferToAddressDestinationAccountOutput';
-import TransactionTransferToAddressDestinationUtxoOutputsInner from './model/TransactionTransferToAddressDestinationUtxoOutputsInner';
-import TransactionTransferToWalletDestination from './model/TransactionTransferToWalletDestination';
 import TransactionType from './model/TransactionType';
 import TransactionUtxoFee from './model/TransactionUtxoFee';
 import Transfer from './model/Transfer';
@@ -256,11 +243,8 @@ import WebhookEventLog from './model/WebhookEventLog';
 import WebhookEventStatus from './model/WebhookEventStatus';
 import WebhookEventType from './model/WebhookEventType';
 import DevelopersWebhooksApi from './api/DevelopersWebhooksApi';
-import OAuthApi from './api/OAuthApi';
-import StakingsApi from './api/StakingsApi';
 import TransactionsApi from './api/TransactionsApi';
 import WalletsApi from './api/WalletsApi';
-import WalletsExchangeWalletApi from './api/WalletsExchangeWalletApi';
 import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 
 
@@ -294,7 +278,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 0.4.5
+* @version 0.4.4
 */
 export {
     Env,
@@ -551,22 +535,10 @@ export {
     CreateStakeActivity,
 
     /**
-     * The CreateStakeActivity201Response model constructor.
-     * @property {module:model/CreateStakeActivity201Response}
-     */
-    CreateStakeActivity201Response,
-
-    /**
      * The CreateStakeActivityExtra model constructor.
      * @property {module:model/CreateStakeActivityExtra}
      */
     CreateStakeActivityExtra,
-
-    /**
-     * The CreateStakeActivityRequest model constructor.
-     * @property {module:model/CreateStakeActivityRequest}
-     */
-    CreateStakeActivityRequest,
 
     /**
      * The CreateTransferTransaction201Response model constructor.
@@ -593,12 +565,6 @@ export {
     CreateUnstakeActivity,
 
     /**
-     * The CreateUnstakeActivityRequest model constructor.
-     * @property {module:model/CreateUnstakeActivityRequest}
-     */
-    CreateUnstakeActivityRequest,
-
-    /**
      * The CreateWebhookEndpointRequest model constructor.
      * @property {module:model/CreateWebhookEndpointRequest}
      */
@@ -609,12 +575,6 @@ export {
      * @property {module:model/CreateWithdrawActivity}
      */
     CreateWithdrawActivity,
-
-    /**
-     * The CreateWithdrawActivityRequest model constructor.
-     * @property {module:model/CreateWithdrawActivityRequest}
-     */
-    CreateWithdrawActivityRequest,
 
     /**
      * The CreatedWallet model constructor.
@@ -869,36 +829,6 @@ export {
     FixedFee,
 
     /**
-     * The GetExchangeSupportedAssets200Response model constructor.
-     * @property {module:model/GetExchangeSupportedAssets200Response}
-     */
-    GetExchangeSupportedAssets200Response,
-
-    /**
-     * The GetExchangeWalletAssetBalances200Response model constructor.
-     * @property {module:model/GetExchangeWalletAssetBalances200Response}
-     */
-    GetExchangeWalletAssetBalances200Response,
-
-    /**
-     * The GetStakingEstimationFee201Response model constructor.
-     * @property {module:model/GetStakingEstimationFee201Response}
-     */
-    GetStakingEstimationFee201Response,
-
-    /**
-     * The GetStakingEstimationFeeRequest model constructor.
-     * @property {module:model/GetStakingEstimationFeeRequest}
-     */
-    GetStakingEstimationFeeRequest,
-
-    /**
-     * The GetToken200Response model constructor.
-     * @property {module:model/GetToken200Response}
-     */
-    GetToken200Response,
-
-    /**
      * The KeyShareHolder model constructor.
      * @property {module:model/KeyShareHolder}
      */
@@ -935,22 +865,10 @@ export {
     KeyShareHolderType,
 
     /**
-     * The LinkSubAccountsByWalletIdRequest model constructor.
-     * @property {module:model/LinkSubAccountsByWalletIdRequest}
-     */
-    LinkSubAccountsByWalletIdRequest,
-
-    /**
      * The ListAddresses200Response model constructor.
      * @property {module:model/ListAddresses200Response}
      */
     ListAddresses200Response,
-
-    /**
-     * The ListExchanges200ResponseInner model constructor.
-     * @property {module:model/ListExchanges200ResponseInner}
-     */
-    ListExchanges200ResponseInner,
 
     /**
      * The ListKeyShareHolderGroups200Response model constructor.
@@ -969,24 +887,6 @@ export {
      * @property {module:model/ListMpcVaults200Response}
      */
     ListMpcVaults200Response,
-
-    /**
-     * The ListStakingActivities200Response model constructor.
-     * @property {module:model/ListStakingActivities200Response}
-     */
-    ListStakingActivities200Response,
-
-    /**
-     * The ListStakingPools200Response model constructor.
-     * @property {module:model/ListStakingPools200Response}
-     */
-    ListStakingPools200Response,
-
-    /**
-     * The ListStakings200Response model constructor.
-     * @property {module:model/ListStakings200Response}
-     */
-    ListStakings200Response,
 
     /**
      * The ListSupportedChains200Response model constructor.
@@ -1157,6 +1057,18 @@ export {
     MpcTransferSource,
 
     /**
+     * The MpcTransferSourceAllOfExcludedUtxos model constructor.
+     * @property {module:model/MpcTransferSourceAllOfExcludedUtxos}
+     */
+    MpcTransferSourceAllOfExcludedUtxos,
+
+    /**
+     * The MpcTransferSourceAllOfIncludedUtxos model constructor.
+     * @property {module:model/MpcTransferSourceAllOfIncludedUtxos}
+     */
+    MpcTransferSourceAllOfIncludedUtxos,
+
+    /**
      * The Pagination model constructor.
      * @property {module:model/Pagination}
      */
@@ -1179,12 +1091,6 @@ export {
      * @property {module:model/PoolSummary}
      */
     PoolSummary,
-
-    /**
-     * The RefreshTokenRequest model constructor.
-     * @property {module:model/RefreshTokenRequest}
-     */
-    RefreshTokenRequest,
 
     /**
      * The ReplaceType model constructor.
@@ -1227,12 +1133,6 @@ export {
      * @property {module:model/SignMessage}
      */
     SignMessage,
-
-    /**
-     * The Signature model constructor.
-     * @property {module:model/Signature}
-     */
-    Signature,
 
     /**
      * The SmartContractInitiator model constructor.
@@ -1331,6 +1231,48 @@ export {
     Transaction,
 
     /**
+     * The TransactionAddressDestination model constructor.
+     * @property {module:model/TransactionAddressDestination}
+     */
+    TransactionAddressDestination,
+
+    /**
+     * The TransactionAddressDestinationAccountOutput model constructor.
+     * @property {module:model/TransactionAddressDestinationAccountOutput}
+     */
+    TransactionAddressDestinationAccountOutput,
+
+    /**
+     * The TransactionAddressDestinationUtxoOutputs model constructor.
+     * @property {module:model/TransactionAddressDestinationUtxoOutputs}
+     */
+    TransactionAddressDestinationUtxoOutputs,
+
+    /**
+     * The TransactionAddressDestinationUtxoOutputsOutputsInner model constructor.
+     * @property {module:model/TransactionAddressDestinationUtxoOutputsOutputsInner}
+     */
+    TransactionAddressDestinationUtxoOutputsOutputsInner,
+
+    /**
+     * The TransactionAddressSource model constructor.
+     * @property {module:model/TransactionAddressSource}
+     */
+    TransactionAddressSource,
+
+    /**
+     * The TransactionAddressSourceAccountInput model constructor.
+     * @property {module:model/TransactionAddressSourceAccountInput}
+     */
+    TransactionAddressSourceAccountInput,
+
+    /**
+     * The TransactionAddressSourceUtxoInputsInner model constructor.
+     * @property {module:model/TransactionAddressSourceUtxoInputsInner}
+     */
+    TransactionAddressSourceUtxoInputsInner,
+
+    /**
      * The TransactionAddressType model constructor.
      * @property {module:model/TransactionAddressType}
      */
@@ -1343,40 +1285,22 @@ export {
     TransactionApprover,
 
     /**
-     * The TransactionBlockInfo model constructor.
-     * @property {module:model/TransactionBlockInfo}
+     * The TransactionContractCallDestination model constructor.
+     * @property {module:model/TransactionContractCallDestination}
      */
-    TransactionBlockInfo,
+    TransactionContractCallDestination,
 
     /**
-     * The TransactionCustodialAssetWalletSource model constructor.
-     * @property {module:model/TransactionCustodialAssetWalletSource}
+     * The TransactionCustodialWalletDestination model constructor.
+     * @property {module:model/TransactionCustodialWalletDestination}
      */
-    TransactionCustodialAssetWalletSource,
+    TransactionCustodialWalletDestination,
 
     /**
-     * The TransactionDepositFromAddressSource model constructor.
-     * @property {module:model/TransactionDepositFromAddressSource}
+     * The TransactionCustodialWalletSource model constructor.
+     * @property {module:model/TransactionCustodialWalletSource}
      */
-    TransactionDepositFromAddressSource,
-
-    /**
-     * The TransactionDepositFromWalletSource model constructor.
-     * @property {module:model/TransactionDepositFromWalletSource}
-     */
-    TransactionDepositFromWalletSource,
-
-    /**
-     * The TransactionDepositToAddressDestination model constructor.
-     * @property {module:model/TransactionDepositToAddressDestination}
-     */
-    TransactionDepositToAddressDestination,
-
-    /**
-     * The TransactionDepositToWalletDestination model constructor.
-     * @property {module:model/TransactionDepositToWalletDestination}
-     */
-    TransactionDepositToWalletDestination,
+    TransactionCustodialWalletSource,
 
     /**
      * The TransactionDestination model constructor.
@@ -1415,12 +1339,6 @@ export {
     TransactionEventData,
 
     /**
-     * The TransactionEvmContractDestination model constructor.
-     * @property {module:model/TransactionEvmContractDestination}
-     */
-    TransactionEvmContractDestination,
-
-    /**
      * The TransactionEvmEip1559Fee model constructor.
      * @property {module:model/TransactionEvmEip1559Fee}
      */
@@ -1431,6 +1349,12 @@ export {
      * @property {module:model/TransactionEvmLegacyFee}
      */
     TransactionEvmLegacyFee,
+
+    /**
+     * The TransactionExchangeWalletDestination model constructor.
+     * @property {module:model/TransactionExchangeWalletDestination}
+     */
+    TransactionExchangeWalletDestination,
 
     /**
      * The TransactionExchangeWalletSource model constructor.
@@ -1463,34 +1387,34 @@ export {
     TransactionInitiatorType,
 
     /**
+     * The TransactionMPCWalletDestination model constructor.
+     * @property {module:model/TransactionMPCWalletDestination}
+     */
+    TransactionMPCWalletDestination,
+
+    /**
      * The TransactionMPCWalletSource model constructor.
      * @property {module:model/TransactionMPCWalletSource}
      */
     TransactionMPCWalletSource,
 
     /**
-     * The TransactionMPCWalletSourceExcludedUtxosInner model constructor.
-     * @property {module:model/TransactionMPCWalletSourceExcludedUtxosInner}
+     * The TransactionMPCWalletSourceAccountInput model constructor.
+     * @property {module:model/TransactionMPCWalletSourceAccountInput}
      */
-    TransactionMPCWalletSourceExcludedUtxosInner,
+    TransactionMPCWalletSourceAccountInput,
 
     /**
-     * The TransactionMPCWalletSourceIncludedUtxosInner model constructor.
-     * @property {module:model/TransactionMPCWalletSourceIncludedUtxosInner}
+     * The TransactionMPCWalletSourceUtxoInputsInner model constructor.
+     * @property {module:model/TransactionMPCWalletSourceUtxoInputsInner}
      */
-    TransactionMPCWalletSourceIncludedUtxosInner,
+    TransactionMPCWalletSourceUtxoInputsInner,
 
     /**
-     * The TransactionMessageSignEIP191Destination model constructor.
-     * @property {module:model/TransactionMessageSignEIP191Destination}
+     * The TransactionMessageSignDestination model constructor.
+     * @property {module:model/TransactionMessageSignDestination}
      */
-    TransactionMessageSignEIP191Destination,
-
-    /**
-     * The TransactionMessageSignEIP712Destination model constructor.
-     * @property {module:model/TransactionMessageSignEIP712Destination}
-     */
-    TransactionMessageSignEIP712Destination,
+    TransactionMessageSignDestination,
 
     /**
      * The TransactionRbf model constructor.
@@ -1517,22 +1441,28 @@ export {
     TransactionResend,
 
     /**
-     * The TransactionResult model constructor.
-     * @property {module:model/TransactionResult}
+     * The TransactionSafeWalletDestination model constructor.
+     * @property {module:model/TransactionSafeWalletDestination}
      */
-    TransactionResult,
+    TransactionSafeWalletDestination,
+
+    /**
+     * The TransactionSafeWalletSource model constructor.
+     * @property {module:model/TransactionSafeWalletSource}
+     */
+    TransactionSafeWalletSource,
+
+    /**
+     * The TransactionSafeWalletSourceDelegate model constructor.
+     * @property {module:model/TransactionSafeWalletSourceDelegate}
+     */
+    TransactionSafeWalletSourceDelegate,
 
     /**
      * The TransactionSigner model constructor.
      * @property {module:model/TransactionSigner}
      */
     TransactionSigner,
-
-    /**
-     * The TransactionSmartContractSafeWalletSource model constructor.
-     * @property {module:model/TransactionSmartContractSafeWalletSource}
-     */
-    TransactionSmartContractSafeWalletSource,
 
     /**
      * The TransactionSource model constructor.
@@ -1581,30 +1511,6 @@ export {
      * @property {module:model/TransactionTransferFee}
      */
     TransactionTransferFee,
-
-    /**
-     * The TransactionTransferToAddressDestination model constructor.
-     * @property {module:model/TransactionTransferToAddressDestination}
-     */
-    TransactionTransferToAddressDestination,
-
-    /**
-     * The TransactionTransferToAddressDestinationAccountOutput model constructor.
-     * @property {module:model/TransactionTransferToAddressDestinationAccountOutput}
-     */
-    TransactionTransferToAddressDestinationAccountOutput,
-
-    /**
-     * The TransactionTransferToAddressDestinationUtxoOutputsInner model constructor.
-     * @property {module:model/TransactionTransferToAddressDestinationUtxoOutputsInner}
-     */
-    TransactionTransferToAddressDestinationUtxoOutputsInner,
-
-    /**
-     * The TransactionTransferToWalletDestination model constructor.
-     * @property {module:model/TransactionTransferToWalletDestination}
-     */
-    TransactionTransferToWalletDestination,
 
     /**
      * The TransactionType model constructor.
@@ -1769,18 +1675,6 @@ export {
     DevelopersWebhooksApi,
 
     /**
-    * The OAuthApi service constructor.
-    * @property {module:api/OAuthApi}
-    */
-    OAuthApi,
-
-    /**
-    * The StakingsApi service constructor.
-    * @property {module:api/StakingsApi}
-    */
-    StakingsApi,
-
-    /**
     * The TransactionsApi service constructor.
     * @property {module:api/TransactionsApi}
     */
@@ -1791,12 +1685,6 @@ export {
     * @property {module:api/WalletsApi}
     */
     WalletsApi,
-
-    /**
-    * The WalletsExchangeWalletApi service constructor.
-    * @property {module:api/WalletsExchangeWalletApi}
-    */
-    WalletsExchangeWalletApi,
 
     /**
     * The WalletsMPCWalletsApi service constructor.

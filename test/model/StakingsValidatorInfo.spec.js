@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.StakingsValidatorInfo);
     });
 
-    it('should have the property iconUrl (base name: "icon_url")', function() {
-      // uncomment below and update the code to test the property iconUrl
+    it('should have the property icon_url (base name: "icon_url")', function() {
+      // uncomment below and update the code to test the property icon_url
       //var instance = new CoboWaas2JsApi.StakingsValidatorInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property publicKey (base name: "public_key")', function() {
-      // uncomment below and update the code to test the property publicKey
+    it('should have the property public_key (base name: "public_key")', function() {
+      // uncomment below and update the code to test the property public_key
       //var instance = new CoboWaas2JsApi.StakingsValidatorInfo();
       //expect(instance).to.be();
     });
@@ -77,8 +77,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property commissionRate (base name: "commission_rate")', function() {
-      // uncomment below and update the code to test the property commissionRate
+    it('should have the property commission_rate (base name: "commission_rate")', function() {
+      // uncomment below and update the code to test the property commission_rate
       //var instance = new CoboWaas2JsApi.StakingsValidatorInfo();
       //expect(instance).to.be();
     });

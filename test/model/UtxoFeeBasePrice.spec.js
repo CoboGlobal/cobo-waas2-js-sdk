@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UtxoFeeBasePrice);
     });
 
-    it('should have the property feeRate (base name: "fee_rate")', function() {
-      // uncomment below and update the code to test the property feeRate
+    it('should have the property fee_rate (base name: "fee_rate")', function() {
+      // uncomment below and update the code to test the property fee_rate
       //var instance = new CoboWaas2JsApi.UtxoFeeBasePrice();
       //expect(instance).to.be();
     });

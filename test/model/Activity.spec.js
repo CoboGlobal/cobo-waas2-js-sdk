@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
@@ -83,20 +83,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property poolId (base name: "pool_id")', function() {
-      // uncomment below and update the code to test the property poolId
+    it('should have the property pool_id (base name: "pool_id")', function() {
+      // uncomment below and update the code to test the property pool_id
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
 
-    it('should have the property stakingId (base name: "staking_id")', function() {
-      // uncomment below and update the code to test the property stakingId
+    it('should have the property staking_id (base name: "staking_id")', function() {
+      // uncomment below and update the code to test the property staking_id
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
@@ -107,8 +107,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property transactionIds (base name: "transaction_ids")', function() {
-      // uncomment below and update the code to test the property transactionIds
+    it('should have the property transaction_ids (base name: "transaction_ids")', function() {
+      // uncomment below and update the code to test the property transaction_ids
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
@@ -131,14 +131,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property createdTime (base name: "created_time")', function() {
-      // uncomment below and update the code to test the property createdTime
+    it('should have the property created_time (base name: "created_time")', function() {
+      // uncomment below and update the code to test the property created_time
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });
 
-    it('should have the property updatedTime (base name: "updated_time")', function() {
-      // uncomment below and update the code to test the property updatedTime
+    it('should have the property updated_time (base name: "updated_time")', function() {
+      // uncomment below and update the code to test the property updated_time
       //var instance = new CoboWaas2JsApi.Activity();
       //expect(instance).to.be();
     });

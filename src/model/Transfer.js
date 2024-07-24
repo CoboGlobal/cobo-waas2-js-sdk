@@ -18,21 +18,21 @@ import TransferSource from './TransferSource';
 /**
  * The Transfer model module.
  * @module model/Transfer
- * @version 0.4.5
+ * @version 0.4.4
  */
 class Transfer {
     /**
      * Constructs a new <code>Transfer</code>.
      * The information about a token transfer.
      * @alias module:model/Transfer
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
      * @param source {module:model/TransferSource} 
-     * @param tokenId {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param token_id {String} The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
      * @param destination {module:model/TransferDestination} 
      */
-    constructor(requestId, source, tokenId, destination) { 
+    constructor(request_id, source, token_id, destination) { 
         
-        Transfer.initialize(this, requestId, source, tokenId, destination);
+        Transfer.initialize(this, request_id, source, token_id, destination);
     }
 
     /**
@@ -40,10 +40,10 @@ class Transfer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, source, tokenId, destination) { 
-        obj['request_id'] = requestId;
+    static initialize(obj, request_id, source, token_id, destination) { 
+        obj['request_id'] = request_id;
         obj['source'] = source;
-        obj['token_id'] = tokenId;
+        obj['token_id'] = token_id;
         obj['destination'] = destination;
     }
 

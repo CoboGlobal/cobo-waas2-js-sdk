@@ -16,18 +16,18 @@ import MessageSignDestinationType from './MessageSignDestinationType';
 /**
  * The EvmEIP191MessageSignDestination model module.
  * @module model/EvmEIP191MessageSignDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmEIP191MessageSignDestination {
     /**
      * Constructs a new <code>EvmEIP191MessageSignDestination</code>.
      * @alias module:model/EvmEIP191MessageSignDestination
-     * @param destinationType {module:model/MessageSignDestinationType} 
+     * @param destination_type {module:model/MessageSignDestinationType} 
      * @param message {String} The raw data of the message to be signed, encoded in Base64 format.
      */
-    constructor(destinationType, message) { 
+    constructor(destination_type, message) { 
         
-        EvmEIP191MessageSignDestination.initialize(this, destinationType, message);
+        EvmEIP191MessageSignDestination.initialize(this, destination_type, message);
     }
 
     /**
@@ -35,8 +35,8 @@ class EvmEIP191MessageSignDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, destinationType, message) { 
-        obj['destination_type'] = destinationType;
+    static initialize(obj, destination_type, message) { 
+        obj['destination_type'] = destination_type;
         obj['message'] = message;
     }
 

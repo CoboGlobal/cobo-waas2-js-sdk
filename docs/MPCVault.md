@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vaultId** | **String** | The vault ID. | [optional] 
-**projectId** | **String** | The project ID. | [optional] 
+**vault_id** | **String** | The vault ID. | [optional] 
+**project_id** | **String** | The project ID. | [optional] 
 **name** | **String** | The vault name. | [optional] 
 **type** | [**MPCVaultType**](MPCVaultType.md) |  | [optional] 
-**rootPubkeys** | [**[RootPubkey]**](RootPubkey.md) |  | [optional] 
-**createTimestamp** | **Number** | The vault&#39;s creation time in Unix timestamp format, measured in milliseconds. | [optional] 
+**root_pubkeys** | [**[RootPubkey]**](RootPubkey.md) |  | [optional] 
+**create_timestamp** | **Number** | The vault&#39;s creation time in Unix timestamp format, measured in milliseconds. | [optional] 
 
 

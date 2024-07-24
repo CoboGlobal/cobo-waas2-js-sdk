@@ -16,20 +16,21 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MPCDelegate model module.
  * @module model/MPCDelegate
- * @version 0.4.5
+ * @version 0.4.4
  */
 class MPCDelegate {
     /**
      * Constructs a new <code>MPCDelegate</code>.
      * The information about the MPC delegate.
      * @alias module:model/MPCDelegate
-     * @param delegateType {module:model/MPCDelegate.DelegateTypeEnum} The delegator subtype. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). 
-     * @param walletId {String} The wallet ID of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}).
+     * @param delegate_type {module:model/MPCDelegate.DelegateTypeEnum} The delegator subtype. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). 
+     * @param wallet_id {String} The wallet ID of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}).
      * @param address {String} The wallet address of the Delegate. This is required when initiating a transfer from Smart Contract Wallets (Safe{Wallet}).
+     * @param mpc_used_key_share_holder_group {module:model/MpcSigningGroup} 
      */
-    constructor(delegateType, walletId, address) { 
+    constructor(delegate_type, wallet_id, address, mpc_used_key_share_holder_group) { 
         
-        MPCDelegate.initialize(this, delegateType, walletId, address);
+        MPCDelegate.initialize(this, delegate_type, wallet_id, address, mpc_used_key_share_holder_group);
     }
 
     /**
@@ -37,10 +38,11 @@ class MPCDelegate {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, delegateType, walletId, address) { 
-        obj['delegate_type'] = delegateType || 'Org-Controlled';
-        obj['wallet_id'] = walletId;
+    static initialize(obj, delegate_type, wallet_id, address, mpc_used_key_share_holder_group) { 
+        obj['delegate_type'] = delegate_type || 'Org-Controlled';
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
+        obj['mpc_used_key_share_holder_group'] = mpc_used_key_share_holder_group;
     }
 
     /**
@@ -105,7 +107,7 @@ class MPCDelegate {
 
 }
 
-MPCDelegate.RequiredProperties = ["delegate_type", "wallet_id", "address"];
+MPCDelegate.RequiredProperties = ["delegate_type", "wallet_id", "address", "mpc_used_key_share_holder_group"];
 
 /**
  * The delegator subtype. Possible values include: - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). 

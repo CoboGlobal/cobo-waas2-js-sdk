@@ -18,7 +18,7 @@ import WalletType from './WalletType';
 /**
  * The CreateMpcWallet model module.
  * @module model/CreateMpcWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateMpcWallet {
     /**
@@ -26,13 +26,13 @@ class CreateMpcWallet {
      * @alias module:model/CreateMpcWallet
      * @implements module:model/CreateCustodialWallet
      * @param name {String} The wallet name.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
-     * @param vaultId {String} The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
+     * @param vault_id {String} The ID of the owning vault. You can call [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
      */
-    constructor(name, walletType, walletSubtype, vaultId) { 
-        CreateCustodialWallet.initialize(this, name, walletType, walletSubtype);
-        CreateMpcWallet.initialize(this, name, walletType, walletSubtype, vaultId);
+    constructor(name, wallet_type, wallet_subtype, vault_id) { 
+        CreateCustodialWallet.initialize(this, name, wallet_type, wallet_subtype);
+        CreateMpcWallet.initialize(this, name, wallet_type, wallet_subtype, vault_id);
     }
 
     /**
@@ -40,11 +40,11 @@ class CreateMpcWallet {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, walletType, walletSubtype, vaultId) { 
+    static initialize(obj, name, wallet_type, wallet_subtype, vault_id) { 
         obj['name'] = name;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
-        obj['vault_id'] = vaultId;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
+        obj['vault_id'] = vault_id;
     }
 
     /**

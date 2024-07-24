@@ -17,18 +17,18 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The EigenLayerNativeStakeExtra model module.
  * @module model/EigenLayerNativeStakeExtra
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EigenLayerNativeStakeExtra {
     /**
      * Constructs a new <code>EigenLayerNativeStakeExtra</code>.
      * @alias module:model/EigenLayerNativeStakeExtra
      * @implements module:model/BaseStakeExtra
-     * @param poolType {module:model/StakingPoolType} 
+     * @param pool_type {module:model/StakingPoolType} 
      */
-    constructor(poolType) { 
-        BaseStakeExtra.initialize(this, poolType);
-        EigenLayerNativeStakeExtra.initialize(this, poolType);
+    constructor(pool_type) { 
+        BaseStakeExtra.initialize(this, pool_type);
+        EigenLayerNativeStakeExtra.initialize(this, pool_type);
     }
 
     /**
@@ -36,8 +36,8 @@ class EigenLayerNativeStakeExtra {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolType) { 
-        obj['pool_type'] = poolType;
+    static initialize(obj, pool_type) { 
+        obj['pool_type'] = pool_type;
     }
 
     /**

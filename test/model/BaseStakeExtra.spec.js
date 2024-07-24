@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.BaseStakeExtra);
     });
 
-    it('should have the property poolType (base name: "pool_type")', function() {
-      // uncomment below and update the code to test the property poolType
+    it('should have the property pool_type (base name: "pool_type")', function() {
+      // uncomment below and update the code to test the property pool_type
       //var instance = new CoboWaas2JsApi.BaseStakeExtra();
       //expect(instance).to.be();
     });

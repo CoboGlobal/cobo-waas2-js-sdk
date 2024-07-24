@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionTokeApproval);
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property assetId (base name: "asset_id")', function() {
-      // uncomment below and update the code to test the property assetId
+    it('should have the property asset_id (base name: "asset_id")', function() {
+      // uncomment below and update the code to test the property asset_id
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
@@ -89,32 +89,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property iconUrl (base name: "icon_url")', function() {
-      // uncomment below and update the code to test the property iconUrl
+    it('should have the property icon_url (base name: "icon_url")', function() {
+      // uncomment below and update the code to test the property icon_url
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenAddress (base name: "token_address")', function() {
-      // uncomment below and update the code to test the property tokenAddress
+    it('should have the property token_address (base name: "token_address")', function() {
+      // uncomment below and update the code to test the property token_address
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property feeTokenId (base name: "fee_token_id")', function() {
-      // uncomment below and update the code to test the property feeTokenId
+    it('should have the property fee_token_id (base name: "fee_token_id")', function() {
+      // uncomment below and update the code to test the property fee_token_id
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property canDeposit (base name: "can_deposit")', function() {
-      // uncomment below and update the code to test the property canDeposit
+    it('should have the property can_deposit (base name: "can_deposit")', function() {
+      // uncomment below and update the code to test the property can_deposit
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });
 
-    it('should have the property canWithdraw (base name: "can_withdraw")', function() {
-      // uncomment below and update the code to test the property canWithdraw
+    it('should have the property can_withdraw (base name: "can_withdraw")', function() {
+      // uncomment below and update the code to test the property can_withdraw
       //var instance = new CoboWaas2JsApi.TransactionTokeApproval();
       //expect(instance).to.be();
     });

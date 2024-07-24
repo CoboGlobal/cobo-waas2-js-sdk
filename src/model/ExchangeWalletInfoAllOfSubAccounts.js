@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The ExchangeWalletInfoAllOfSubAccounts model module.
  * @module model/ExchangeWalletInfoAllOfSubAccounts
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ExchangeWalletInfoAllOfSubAccounts {
     /**
      * Constructs a new <code>ExchangeWalletInfoAllOfSubAccounts</code>.
      * @alias module:model/ExchangeWalletInfoAllOfSubAccounts
-     * @param walletId {String} The wallet ID of the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
-     * @param accountId {String} The Sub Account ID. It can be an email address, a user name, or a custom account ID. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
+     * @param wallet_id {String} The wallet ID of the Sub Account. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
+     * @param account_id {String} The Sub Account ID. It can be an email address, a user name, or a custom account ID. This property is returned only if you are creating or querying an Exchange Wallet (Main Account).
      */
-    constructor(walletId, accountId) { 
+    constructor(wallet_id, account_id) { 
         
-        ExchangeWalletInfoAllOfSubAccounts.initialize(this, walletId, accountId);
+        ExchangeWalletInfoAllOfSubAccounts.initialize(this, wallet_id, account_id);
     }
 
     /**
@@ -34,9 +34,9 @@ class ExchangeWalletInfoAllOfSubAccounts {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, accountId) { 
-        obj['wallet_id'] = walletId;
-        obj['account_id'] = accountId;
+    static initialize(obj, wallet_id, account_id) { 
+        obj['wallet_id'] = wallet_id;
+        obj['account_id'] = account_id;
     }
 
     /**

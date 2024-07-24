@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The WebhookEventDataType model module.
  * @module model/WebhookEventDataType
- * @version 0.4.5
+ * @version 0.4.4
  */
 class WebhookEventDataType {
     /**
      * Constructs a new <code>WebhookEventDataType</code>.
      * The event data type.
      * @alias module:model/WebhookEventDataType
-     * @param dataType {module:model/WebhookEventDataType.DataTypeEnum} The model of data.
+     * @param data_type {module:model/WebhookEventDataType.DataTypeEnum} The model of data.
      */
-    constructor(dataType) { 
+    constructor(data_type) { 
         
-        WebhookEventDataType.initialize(this, dataType);
+        WebhookEventDataType.initialize(this, data_type);
     }
 
     /**
@@ -34,8 +34,8 @@ class WebhookEventDataType {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, dataType) { 
-        obj['data_type'] = dataType;
+    static initialize(obj, data_type) { 
+        obj['data_type'] = data_type;
     }
 
     /**

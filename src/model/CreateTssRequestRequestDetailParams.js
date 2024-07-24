@@ -15,7 +15,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateTssRequestRequestDetailParams model module.
  * @module model/CreateTssRequestRequestDetailParams
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateTssRequestRequestDetailParams {
     /**

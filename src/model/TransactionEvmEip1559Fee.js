@@ -18,7 +18,7 @@ import FeeType from './FeeType';
 /**
  * The TransactionEvmEip1559Fee model module.
  * @module model/TransactionEvmEip1559Fee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionEvmEip1559Fee {
     /**
@@ -27,14 +27,14 @@ class TransactionEvmEip1559Fee {
      * @alias module:model/TransactionEvmEip1559Fee
      * @implements module:model/EvmEip1559FeeBasePrice
      * @implements module:model/FeeData
-     * @param maxPriorityFee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
-     * @param baseFee {String} The base fee price of the chain, in wei.
-     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
-     * @param feeType {module:model/FeeType} 
+     * @param max_priority_fee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
+     * @param base_fee {String} The base fee price of the chain, in wei.
+     * @param gas_limit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
+     * @param fee_type {module:model/FeeType} 
      */
-    constructor(maxPriorityFee, baseFee, gasLimit, feeType) { 
-        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);FeeData.initialize(this, gasLimit);
-        TransactionEvmEip1559Fee.initialize(this, maxPriorityFee, baseFee, gasLimit, feeType);
+    constructor(max_priority_fee, base_fee, gas_limit, fee_type) { 
+        EvmEip1559FeeBasePrice.initialize(this, max_priority_fee, base_fee);FeeData.initialize(this, gas_limit);
+        TransactionEvmEip1559Fee.initialize(this, max_priority_fee, base_fee, gas_limit, fee_type);
     }
 
     /**
@@ -42,11 +42,11 @@ class TransactionEvmEip1559Fee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxPriorityFee, baseFee, gasLimit, feeType) { 
-        obj['max_priority_fee'] = maxPriorityFee;
-        obj['base_fee'] = baseFee;
-        obj['gas_limit'] = gasLimit || '21000';
-        obj['fee_type'] = feeType;
+    static initialize(obj, max_priority_fee, base_fee, gas_limit, fee_type) { 
+        obj['max_priority_fee'] = max_priority_fee;
+        obj['base_fee'] = base_fee;
+        obj['gas_limit'] = gas_limit || '21000';
+        obj['fee_type'] = fee_type;
     }
 
     /**

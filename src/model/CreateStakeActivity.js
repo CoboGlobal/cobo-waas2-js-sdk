@@ -18,20 +18,20 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The CreateStakeActivity model module.
  * @module model/CreateStakeActivity
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateStakeActivity {
     /**
      * Constructs a new <code>CreateStakeActivity</code>.
      * @alias module:model/CreateStakeActivity
-     * @param poolId {String} The id of the staking pool
+     * @param pool_id {String} The id of the staking pool
      * @param amount {String} The amount to stake
      * @param fee {module:model/TransactionTransferFee} 
      * @param extra {module:model/CreateStakeActivityExtra} 
      */
-    constructor(poolId, amount, fee, extra) { 
+    constructor(pool_id, amount, fee, extra) { 
         
-        CreateStakeActivity.initialize(this, poolId, amount, fee, extra);
+        CreateStakeActivity.initialize(this, pool_id, amount, fee, extra);
     }
 
     /**
@@ -39,8 +39,8 @@ class CreateStakeActivity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolId, amount, fee, extra) { 
-        obj['pool_id'] = poolId;
+    static initialize(obj, pool_id, amount, fee, extra) { 
+        obj['pool_id'] = pool_id;
         obj['amount'] = amount;
         obj['fee'] = fee;
         obj['extra'] = extra;

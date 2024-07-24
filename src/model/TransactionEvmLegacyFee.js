@@ -18,7 +18,7 @@ import FeeType from './FeeType';
 /**
  * The TransactionEvmLegacyFee model module.
  * @module model/TransactionEvmLegacyFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionEvmLegacyFee {
     /**
@@ -27,13 +27,13 @@ class TransactionEvmLegacyFee {
      * @alias module:model/TransactionEvmLegacyFee
      * @implements module:model/EvmLegacyFeeBasePrice
      * @implements module:model/FeeData
-     * @param gasPrice {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
-     * @param gasLimit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
-     * @param feeType {module:model/FeeType} 
+     * @param gas_price {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gas_limit {String} The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
+     * @param fee_type {module:model/FeeType} 
      */
-    constructor(gasPrice, gasLimit, feeType) { 
-        EvmLegacyFeeBasePrice.initialize(this, gasPrice);FeeData.initialize(this, gasLimit);
-        TransactionEvmLegacyFee.initialize(this, gasPrice, gasLimit, feeType);
+    constructor(gas_price, gas_limit, fee_type) { 
+        EvmLegacyFeeBasePrice.initialize(this, gas_price);FeeData.initialize(this, gas_limit);
+        TransactionEvmLegacyFee.initialize(this, gas_price, gas_limit, fee_type);
     }
 
     /**
@@ -41,10 +41,10 @@ class TransactionEvmLegacyFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasPrice, gasLimit, feeType) { 
-        obj['gas_price'] = gasPrice;
-        obj['gas_limit'] = gasLimit || '21000';
-        obj['fee_type'] = feeType;
+    static initialize(obj, gas_price, gas_limit, fee_type) { 
+        obj['gas_price'] = gas_price;
+        obj['gas_limit'] = gas_limit || '21000';
+        obj['fee_type'] = fee_type;
     }
 
     /**

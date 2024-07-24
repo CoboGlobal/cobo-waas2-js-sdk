@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The wallet name. | 
-**walletType** | [**WalletType**](WalletType.md) |  | 
-**walletSubtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**exchangeId** | [**ExchangeId**](ExchangeId.md) |  | 
+**wallet_type** | [**WalletType**](WalletType.md) |  | 
+**wallet_subtype** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**exchange_id** | [**ExchangeId**](ExchangeId.md) |  | 
 **apikey** | **String** | The API key of your exchange account. | 
 **secret** | **String** | The API secret of your exchange account. | 
 **passphrase** | **String** | The passphrase of your exchange account. | [optional] 
 **memo** | **String** | The memo you use when applying for the API key of your exchange account. | [optional] 
-**accountIdentify** | **String** | The identifier of your exchange account. - For Binance, this is email address of your exchange account. - For OKX, this is the user name of your exchange account.  | [optional] 
-**gaCode** | **String** | The GA code for the exchange. | [optional] 
-**mainWalletId** | **String** | The ID of the Exchange Wallet (Main Account). | [optional] 
+**account_identify** | **String** | The identifier of your exchange account. - For Binance, this is email address of your exchange account. - For OKX, this is the user name of your exchange account.  | [optional] 
+**ga_code** | **String** | The GA code for the exchange. | [optional] 
+**main_wallet_id** | **String** | The ID of the Exchange Wallet (Main Account). | [optional] 
 
 

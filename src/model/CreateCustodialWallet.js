@@ -17,7 +17,7 @@ import WalletType from './WalletType';
 /**
  * The CreateCustodialWallet model module.
  * @module model/CreateCustodialWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateCustodialWallet {
     /**
@@ -25,12 +25,12 @@ class CreateCustodialWallet {
      * The information of Custodial Wallets.
      * @alias module:model/CreateCustodialWallet
      * @param name {String} The wallet name.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
      */
-    constructor(name, walletType, walletSubtype) { 
+    constructor(name, wallet_type, wallet_subtype) { 
         
-        CreateCustodialWallet.initialize(this, name, walletType, walletSubtype);
+        CreateCustodialWallet.initialize(this, name, wallet_type, wallet_subtype);
     }
 
     /**
@@ -38,10 +38,10 @@ class CreateCustodialWallet {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, walletType, walletSubtype) { 
+    static initialize(obj, name, wallet_type, wallet_subtype) { 
         obj['name'] = name;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
     }
 
     /**

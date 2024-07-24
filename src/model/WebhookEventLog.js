@@ -16,7 +16,7 @@ import WebhookEvent from './WebhookEvent';
 /**
  * The WebhookEventLog model module.
  * @module model/WebhookEventLog
- * @version 0.4.5
+ * @version 0.4.4
  */
 class WebhookEventLog {
     /**
@@ -24,14 +24,14 @@ class WebhookEventLog {
      * The webhook event log.
      * @alias module:model/WebhookEventLog
      * @param id {String} The event log ID.
-     * @param createdTimestamp {Number} The time when the log was created, in Unix timestamp format, measured in milliseconds.
-     * @param requestHeaders {Object} The request headers of the webhook event.
-     * @param requestBody {module:model/WebhookEvent} 
+     * @param created_timestamp {Number} The time when the log was created, in Unix timestamp format, measured in milliseconds.
+     * @param request_headers {Object} The request headers of the webhook event.
+     * @param request_body {module:model/WebhookEvent} 
      * @param success {Boolean} Whether the webhook event has been successfully delivered.
      */
-    constructor(id, createdTimestamp, requestHeaders, requestBody, success) { 
+    constructor(id, created_timestamp, request_headers, request_body, success) { 
         
-        WebhookEventLog.initialize(this, id, createdTimestamp, requestHeaders, requestBody, success);
+        WebhookEventLog.initialize(this, id, created_timestamp, request_headers, request_body, success);
     }
 
     /**
@@ -39,11 +39,11 @@ class WebhookEventLog {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, createdTimestamp, requestHeaders, requestBody, success) { 
+    static initialize(obj, id, created_timestamp, request_headers, request_body, success) { 
         obj['id'] = id;
-        obj['created_timestamp'] = createdTimestamp;
-        obj['request_headers'] = requestHeaders;
-        obj['request_body'] = requestBody;
+        obj['created_timestamp'] = created_timestamp;
+        obj['request_headers'] = request_headers;
+        obj['request_body'] = request_body;
         obj['success'] = success;
     }
 

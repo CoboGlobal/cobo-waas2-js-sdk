@@ -16,15 +16,15 @@ import CoboSafeDelegate from './CoboSafeDelegate';
 import ExchangeTransferSource from './ExchangeTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
 import MpcTransferSource from './MpcTransferSource';
+import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import SafeTransferSource from './SafeTransferSource';
-import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
-import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The TransferSource model module.
  * @module model/TransferSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransferSource {
     /**
@@ -40,12 +40,10 @@ class TransferSource {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "BaseTransferSource") {
+            if (instance instanceof BaseTransferSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(BaseTransferSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                BaseTransferSource.validateJSON(instance); // throw an exception if no match
                 // create BaseTransferSource from JS object
                 this.actualInstance = BaseTransferSource.constructFromObject(instance);
             }
@@ -56,12 +54,10 @@ class TransferSource {
         }
 
         try {
-            if (typeof instance === "MpcTransferSource") {
+            if (instance instanceof MpcTransferSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MpcTransferSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MpcTransferSource.validateJSON(instance); // throw an exception if no match
                 // create MpcTransferSource from JS object
                 this.actualInstance = MpcTransferSource.constructFromObject(instance);
             }
@@ -72,12 +68,10 @@ class TransferSource {
         }
 
         try {
-            if (typeof instance === "SafeTransferSource") {
+            if (instance instanceof SafeTransferSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(SafeTransferSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                SafeTransferSource.validateJSON(instance); // throw an exception if no match
                 // create SafeTransferSource from JS object
                 this.actualInstance = SafeTransferSource.constructFromObject(instance);
             }
@@ -88,12 +82,10 @@ class TransferSource {
         }
 
         try {
-            if (typeof instance === "ExchangeTransferSource") {
+            if (instance instanceof ExchangeTransferSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(ExchangeTransferSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                ExchangeTransferSource.validateJSON(instance); // throw an exception if no match
                 // create ExchangeTransferSource from JS object
                 this.actualInstance = ExchangeTransferSource.constructFromObject(instance);
             }
@@ -103,9 +95,10 @@ class TransferSource {
             errorMessages.push("Failed to construct ExchangeTransferSource: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `TransferSource` with oneOf schemas BaseTransferSource, ExchangeTransferSource, MpcTransferSource, SafeTransferSource. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `TransferSource` with oneOf schemas BaseTransferSource, ExchangeTransferSource, MpcTransferSource, SafeTransferSource. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `TransferSource` with oneOf schemas BaseTransferSource, ExchangeTransferSource, MpcTransferSource, SafeTransferSource. Details: " +
                             errorMessages.join(", "));
@@ -177,12 +170,12 @@ TransferSource.prototype['wallet_id'] = undefined;
 TransferSource.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
  */
 TransferSource.prototype['included_utxos'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
  */
 TransferSource.prototype['excluded_utxos'] = undefined;
 

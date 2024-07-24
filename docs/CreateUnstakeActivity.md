@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**stakingId** | **String** | The id of the related staking. | 
+**staking_id** | **String** | The id of the related staking. | 
 **amount** | **String** | The amount to stake | [optional] 
 **fee** | [**TransactionTransferFee**](TransactionTransferFee.md) |  | [optional] 
 

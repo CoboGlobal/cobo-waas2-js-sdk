@@ -20,7 +20,7 @@ import FeeType from './FeeType';
 /**
  * The EstimateFee model module.
  * @module model/EstimateFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EstimateFee {
     /**
@@ -36,12 +36,10 @@ class EstimateFee {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EstimateFeeTransfer") {
+            if (instance instanceof EstimateFeeTransfer) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EstimateFeeTransfer.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EstimateFeeTransfer.validateJSON(instance); // throw an exception if no match
                 // create EstimateFeeTransfer from JS object
                 this.actualInstance = EstimateFeeTransfer.constructFromObject(instance);
             }
@@ -52,12 +50,10 @@ class EstimateFee {
         }
 
         try {
-            if (typeof instance === "EstimateFeeContractCall") {
+            if (instance instanceof EstimateFeeContractCall) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EstimateFeeContractCall.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EstimateFeeContractCall.validateJSON(instance); // throw an exception if no match
                 // create EstimateFeeContractCall from JS object
                 this.actualInstance = EstimateFeeContractCall.constructFromObject(instance);
             }
@@ -67,9 +63,10 @@ class EstimateFee {
             errorMessages.push("Failed to construct EstimateFeeContractCall: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas EstimateFeeContractCall, EstimateFeeTransfer. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `EstimateFee` with oneOf schemas EstimateFeeContractCall, EstimateFeeTransfer. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `EstimateFee` with oneOf schemas EstimateFeeContractCall, EstimateFeeTransfer. Details: " +
                             errorMessages.join(", "));

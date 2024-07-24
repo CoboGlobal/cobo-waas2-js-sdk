@@ -16,18 +16,18 @@ import WebhookEventType from './WebhookEventType';
 /**
  * The CreateWebhookEndpointRequest model module.
  * @module model/CreateWebhookEndpointRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateWebhookEndpointRequest {
     /**
      * Constructs a new <code>CreateWebhookEndpointRequest</code>.
      * @alias module:model/CreateWebhookEndpointRequest
      * @param url {String} The webhook endpoint URL.
-     * @param subscribedEvents {Array.<module:model/WebhookEventType>} The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
+     * @param subscribed_events {Array.<module:model/WebhookEventType>} The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
      */
-    constructor(url, subscribedEvents) { 
+    constructor(url, subscribed_events) { 
         
-        CreateWebhookEndpointRequest.initialize(this, url, subscribedEvents);
+        CreateWebhookEndpointRequest.initialize(this, url, subscribed_events);
     }
 
     /**
@@ -35,9 +35,9 @@ class CreateWebhookEndpointRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, url, subscribedEvents) { 
+    static initialize(obj, url, subscribed_events) { 
         obj['url'] = url;
-        obj['subscribed_events'] = subscribedEvents;
+        obj['subscribed_events'] = subscribed_events;
     }
 
     /**

@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionRbfSource);
     });
 
-    it('should have the property sourceType (base name: "source_type")', function() {
-      // uncomment below and update the code to test the property sourceType
+    it('should have the property source_type (base name: "source_type")', function() {
+      // uncomment below and update the code to test the property source_type
       //var instance = new CoboWaas2JsApi.TransactionRbfSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.TransactionRbfSource();
       //expect(instance).to.be();
     });
@@ -71,20 +71,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property includedUtxos (base name: "included_utxos")', function() {
-      // uncomment below and update the code to test the property includedUtxos
+    it('should have the property included_utxos (base name: "included_utxos")', function() {
+      // uncomment below and update the code to test the property included_utxos
       //var instance = new CoboWaas2JsApi.TransactionRbfSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property excludedUtxos (base name: "excluded_utxos")', function() {
-      // uncomment below and update the code to test the property excludedUtxos
+    it('should have the property excluded_utxos (base name: "excluded_utxos")', function() {
+      // uncomment below and update the code to test the property excluded_utxos
       //var instance = new CoboWaas2JsApi.TransactionRbfSource();
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
+    it('should have the property mpc_used_key_share_holder_group (base name: "mpc_used_key_share_holder_group")', function() {
+      // uncomment below and update the code to test the property mpc_used_key_share_holder_group
       //var instance = new CoboWaas2JsApi.TransactionRbfSource();
       //expect(instance).to.be();
     });

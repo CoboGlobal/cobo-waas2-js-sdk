@@ -19,22 +19,22 @@ import WalletType from './WalletType';
 /**
  * The SafeWallet model module.
  * @module model/SafeWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class SafeWallet {
     /**
      * Constructs a new <code>SafeWallet</code>.
      * @alias module:model/SafeWallet
-     * @param walletId {String} The wallet ID.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
      * @param name {String} The wallet name.
-     * @param orgId {String} The ID of the owning organization.
-     * @param smartContractWalletType {module:model/SmartContractWalletType} 
+     * @param org_id {String} The ID of the owning organization.
+     * @param smart_contract_wallet_type {module:model/SmartContractWalletType} 
      */
-    constructor(walletId, walletType, walletSubtype, name, orgId, smartContractWalletType) { 
+    constructor(wallet_id, wallet_type, wallet_subtype, name, org_id, smart_contract_wallet_type) { 
         
-        SafeWallet.initialize(this, walletId, walletType, walletSubtype, name, orgId, smartContractWalletType);
+        SafeWallet.initialize(this, wallet_id, wallet_type, wallet_subtype, name, org_id, smart_contract_wallet_type);
     }
 
     /**
@@ -42,13 +42,13 @@ class SafeWallet {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, walletType, walletSubtype, name, orgId, smartContractWalletType) { 
-        obj['wallet_id'] = walletId;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
+    static initialize(obj, wallet_id, wallet_type, wallet_subtype, name, org_id, smart_contract_wallet_type) { 
+        obj['wallet_id'] = wallet_id;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
         obj['name'] = name;
-        obj['org_id'] = orgId;
-        obj['smart_contract_wallet_type'] = smartContractWalletType;
+        obj['org_id'] = org_id;
+        obj['smart_contract_wallet_type'] = smart_contract_wallet_type;
     }
 
     /**

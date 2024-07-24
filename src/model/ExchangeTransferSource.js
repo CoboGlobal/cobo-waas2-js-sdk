@@ -17,7 +17,7 @@ import WalletSubtype from './WalletSubtype';
 /**
  * The ExchangeTransferSource model module.
  * @module model/ExchangeTransferSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ExchangeTransferSource {
     /**
@@ -25,13 +25,13 @@ class ExchangeTransferSource {
      * The information about the transaction source. An Exchange Wallet (Sub Account) as the transaction source can only transfer tokens to another Exchange Wallet.
      * @alias module:model/ExchangeTransferSource
      * @implements module:model/BaseTransferSource
-     * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} The wallet ID.
-     * @param subWalletId {String} The exchange trading account or the sub-wallet ID.
+     * @param source_type {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
+     * @param sub_wallet_id {String} The exchange trading account or the sub-wallet ID.
      */
-    constructor(sourceType, walletId, subWalletId) { 
-        BaseTransferSource.initialize(this, sourceType, walletId);
-        ExchangeTransferSource.initialize(this, sourceType, walletId, subWalletId);
+    constructor(source_type, wallet_id, sub_wallet_id) { 
+        BaseTransferSource.initialize(this, source_type, wallet_id);
+        ExchangeTransferSource.initialize(this, source_type, wallet_id, sub_wallet_id);
     }
 
     /**
@@ -39,10 +39,10 @@ class ExchangeTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, subWalletId) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
-        obj['sub_wallet_id'] = subWalletId;
+    static initialize(obj, source_type, wallet_id, sub_wallet_id) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
+        obj['sub_wallet_id'] = sub_wallet_id;
     }
 
     /**

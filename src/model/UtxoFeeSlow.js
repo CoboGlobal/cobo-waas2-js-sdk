@@ -17,7 +17,7 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 /**
  * The UtxoFeeSlow model module.
  * @module model/UtxoFeeSlow
- * @version 0.4.5
+ * @version 0.4.4
  */
 class UtxoFeeSlow {
     /**
@@ -25,12 +25,12 @@ class UtxoFeeSlow {
      * @alias module:model/UtxoFeeSlow
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param fee_rate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
      */
-    constructor(feeRate, maxFeeAmount) { 
-        UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this, maxFeeAmount);
-        UtxoFeeSlow.initialize(this, feeRate, maxFeeAmount);
+    constructor(fee_rate, max_fee_amount) { 
+        UtxoFeeBasePrice.initialize(this, fee_rate);FeeAmount.initialize(this, max_fee_amount);
+        UtxoFeeSlow.initialize(this, fee_rate, max_fee_amount);
     }
 
     /**
@@ -38,9 +38,9 @@ class UtxoFeeSlow {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate, maxFeeAmount) { 
-        obj['fee_rate'] = feeRate;
-        obj['max_fee_amount'] = maxFeeAmount;
+    static initialize(obj, fee_rate, max_fee_amount) { 
+        obj['fee_rate'] = fee_rate;
+        obj['max_fee_amount'] = max_fee_amount;
     }
 
     /**

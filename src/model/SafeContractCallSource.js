@@ -18,21 +18,21 @@ import ContractCallSourceType from './ContractCallSourceType';
 /**
  * The SafeContractCallSource model module.
  * @module model/SafeContractCallSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class SafeContractCallSource {
     /**
      * Constructs a new <code>SafeContractCallSource</code>.
      * @alias module:model/SafeContractCallSource
      * @implements module:model/BaseContractCallSource
-     * @param sourceType {module:model/ContractCallSourceType} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/ContractCallSourceType} 
+     * @param wallet_id {String} The wallet ID.
      * @param address {String} The wallet address.
      * @param delegate {module:model/CoboSafeDelegate} 
      */
-    constructor(sourceType, walletId, address, delegate) { 
-        BaseContractCallSource.initialize(this, sourceType, walletId, address);
-        SafeContractCallSource.initialize(this, sourceType, walletId, address, delegate);
+    constructor(source_type, wallet_id, address, delegate) { 
+        BaseContractCallSource.initialize(this, source_type, wallet_id, address);
+        SafeContractCallSource.initialize(this, source_type, wallet_id, address, delegate);
     }
 
     /**
@@ -40,9 +40,9 @@ class SafeContractCallSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId, address, delegate) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, wallet_id, address, delegate) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
         obj['delegate'] = delegate;
     }

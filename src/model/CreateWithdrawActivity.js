@@ -16,18 +16,18 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The CreateWithdrawActivity model module.
  * @module model/CreateWithdrawActivity
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateWithdrawActivity {
     /**
      * Constructs a new <code>CreateWithdrawActivity</code>.
      * @alias module:model/CreateWithdrawActivity
-     * @param stakingId {String} The id of the related staking.
+     * @param staking_id {String} The id of the related staking.
      * @param fee {module:model/TransactionTransferFee} 
      */
-    constructor(stakingId, fee) { 
+    constructor(staking_id, fee) { 
         
-        CreateWithdrawActivity.initialize(this, stakingId, fee);
+        CreateWithdrawActivity.initialize(this, staking_id, fee);
     }
 
     /**
@@ -35,8 +35,8 @@ class CreateWithdrawActivity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, stakingId, fee) { 
-        obj['staking_id'] = stakingId;
+    static initialize(obj, staking_id, fee) { 
+        obj['staking_id'] = staking_id;
         obj['fee'] = fee;
     }
 

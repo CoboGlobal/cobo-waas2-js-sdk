@@ -17,7 +17,7 @@ import FeeType from './FeeType';
 /**
  * The FixedFee model module.
  * @module model/FixedFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class FixedFee {
     /**
@@ -25,13 +25,13 @@ class FixedFee {
      * The transaction fee that you are willing to pay based on the fixed fee model for come blockchains. The fee can vary between different chains.
      * @alias module:model/FixedFee
      * @implements module:model/FeeAmount
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
-     * @param feeType {module:model/FeeType} 
-     * @param tokenId {String} The token ID of the transaction fee.
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param fee_type {module:model/FeeType} 
+     * @param token_id {String} The token ID of the transaction fee.
      */
-    constructor(maxFeeAmount, feeType, tokenId) { 
-        FeeAmount.initialize(this, maxFeeAmount);
-        FixedFee.initialize(this, maxFeeAmount, feeType, tokenId);
+    constructor(max_fee_amount, fee_type, token_id) { 
+        FeeAmount.initialize(this, max_fee_amount);
+        FixedFee.initialize(this, max_fee_amount, fee_type, token_id);
     }
 
     /**
@@ -39,10 +39,10 @@ class FixedFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxFeeAmount, feeType, tokenId) { 
-        obj['max_fee_amount'] = maxFeeAmount;
-        obj['fee_type'] = feeType;
-        obj['token_id'] = tokenId;
+    static initialize(obj, max_fee_amount, fee_type, token_id) { 
+        obj['max_fee_amount'] = max_fee_amount;
+        obj['fee_type'] = fee_type;
+        obj['token_id'] = token_id;
     }
 
     /**

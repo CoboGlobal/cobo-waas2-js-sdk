@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MaxTransferableValue);
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.MaxTransferableValue();
       //expect(instance).to.be();
     });
 
-    it('should have the property maxTransferableValue (base name: "max_transferable_value")', function() {
-      // uncomment below and update the code to test the property maxTransferableValue
+    it('should have the property max_transferable_value (base name: "max_transferable_value")', function() {
+      // uncomment below and update the code to test the property max_transferable_value
       //var instance = new CoboWaas2JsApi.MaxTransferableValue();
       //expect(instance).to.be();
     });

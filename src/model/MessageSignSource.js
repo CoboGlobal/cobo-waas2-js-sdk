@@ -18,7 +18,7 @@ import MpcSigningGroup from './MpcSigningGroup';
 /**
  * The MessageSignSource model module.
  * @module model/MessageSignSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class MessageSignSource {
     /**
@@ -34,12 +34,10 @@ class MessageSignSource {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "MpcMessageSignSource") {
+            if (instance instanceof MpcMessageSignSource) {
                 this.actualInstance = instance;
-            } else {
+            } else if(MpcMessageSignSource.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                MpcMessageSignSource.validateJSON(instance); // throw an exception if no match
                 // create MpcMessageSignSource from JS object
                 this.actualInstance = MpcMessageSignSource.constructFromObject(instance);
             }
@@ -49,9 +47,10 @@ class MessageSignSource {
             errorMessages.push("Failed to construct MpcMessageSignSource: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `MessageSignSource` with oneOf schemas MpcMessageSignSource. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `MessageSignSource` with oneOf schemas MpcMessageSignSource. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `MessageSignSource` with oneOf schemas MpcMessageSignSource. Details: " +
                             errorMessages.join(", "));

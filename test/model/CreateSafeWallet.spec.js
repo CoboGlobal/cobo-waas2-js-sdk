@@ -59,32 +59,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletType (base name: "wallet_type")', function() {
-      // uncomment below and update the code to test the property walletType
+    it('should have the property wallet_type (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property wallet_type
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
-      // uncomment below and update the code to test the property walletSubtype
+    it('should have the property wallet_subtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property wallet_subtype
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property smartContractWalletType (base name: "smart_contract_wallet_type")', function() {
-      // uncomment below and update the code to test the property smartContractWalletType
+    it('should have the property smart_contract_wallet_type (base name: "smart_contract_wallet_type")', function() {
+      // uncomment below and update the code to test the property smart_contract_wallet_type
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property safeAddress (base name: "safe_address")', function() {
-      // uncomment below and update the code to test the property safeAddress
+    it('should have the property safe_address (base name: "safe_address")', function() {
+      // uncomment below and update the code to test the property safe_address
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });
@@ -101,8 +101,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property coboSafeAddress (base name: "cobo_safe_address")', function() {
-      // uncomment below and update the code to test the property coboSafeAddress
+    it('should have the property cobo_safe_address (base name: "cobo_safe_address")', function() {
+      // uncomment below and update the code to test the property cobo_safe_address
       //var instance = new CoboWaas2JsApi.CreateSafeWallet();
       //expect(instance).to.be();
     });

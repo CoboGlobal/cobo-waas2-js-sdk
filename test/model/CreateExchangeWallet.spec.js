@@ -59,20 +59,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property walletType (base name: "wallet_type")', function() {
-      // uncomment below and update the code to test the property walletType
+    it('should have the property wallet_type (base name: "wallet_type")', function() {
+      // uncomment below and update the code to test the property wallet_type
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletSubtype (base name: "wallet_subtype")', function() {
-      // uncomment below and update the code to test the property walletSubtype
+    it('should have the property wallet_subtype (base name: "wallet_subtype")', function() {
+      // uncomment below and update the code to test the property wallet_subtype
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property exchangeId (base name: "exchange_id")', function() {
-      // uncomment below and update the code to test the property exchangeId
+    it('should have the property exchange_id (base name: "exchange_id")', function() {
+      // uncomment below and update the code to test the property exchange_id
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });
@@ -101,20 +101,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property accountIdentify (base name: "account_identify")', function() {
-      // uncomment below and update the code to test the property accountIdentify
+    it('should have the property account_identify (base name: "account_identify")', function() {
+      // uncomment below and update the code to test the property account_identify
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property gaCode (base name: "ga_code")', function() {
-      // uncomment below and update the code to test the property gaCode
+    it('should have the property ga_code (base name: "ga_code")', function() {
+      // uncomment below and update the code to test the property ga_code
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });
 
-    it('should have the property mainWalletId (base name: "main_wallet_id")', function() {
-      // uncomment below and update the code to test the property mainWalletId
+    it('should have the property main_wallet_id (base name: "main_wallet_id")', function() {
+      // uncomment below and update the code to test the property main_wallet_id
       //var instance = new CoboWaas2JsApi.CreateExchangeWallet();
       //expect(instance).to.be();
     });

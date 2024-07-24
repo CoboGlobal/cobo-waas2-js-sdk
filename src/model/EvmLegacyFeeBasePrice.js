@@ -15,18 +15,18 @@ import ApiClient from '../ApiClient';
 /**
  * The EvmLegacyFeeBasePrice model module.
  * @module model/EvmLegacyFeeBasePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmLegacyFeeBasePrice {
     /**
      * Constructs a new <code>EvmLegacyFeeBasePrice</code>.
      * The transaction fee price based on the legacy fee model, which equals the gas price.
      * @alias module:model/EvmLegacyFeeBasePrice
-     * @param gasPrice {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
+     * @param gas_price {String} The gas price, in wei. The gas price represents the amount of ETH that must be paid to validators for processing transactions.
      */
-    constructor(gasPrice) { 
+    constructor(gas_price) { 
         
-        EvmLegacyFeeBasePrice.initialize(this, gasPrice);
+        EvmLegacyFeeBasePrice.initialize(this, gas_price);
     }
 
     /**
@@ -34,8 +34,8 @@ class EvmLegacyFeeBasePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, gasPrice) { 
-        obj['gas_price'] = gasPrice;
+    static initialize(obj, gas_price) { 
+        obj['gas_price'] = gas_price;
     }
 
     /**

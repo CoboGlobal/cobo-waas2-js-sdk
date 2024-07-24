@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.UpdateKeyShareHolderGroupByIdRequest);
     });
 
-    it('should have the property updateKeyShareHolderGroupAction (base name: "update_key_share_holder_group_action")', function() {
-      // uncomment below and update the code to test the property updateKeyShareHolderGroupAction
+    it('should have the property update_key_share_holder_group_action (base name: "update_key_share_holder_group_action")', function() {
+      // uncomment below and update the code to test the property update_key_share_holder_group_action
       //var instance = new CoboWaas2JsApi.UpdateKeyShareHolderGroupByIdRequest();
       //expect(instance).to.be();
     });

@@ -7,6 +7,6 @@ Name | Type | Description | Notes
 **action** | [**ActivityAction**](ActivityAction.md) |  | 
 **status** | **String** |  | [optional] 
 **timestamp** | **Number** |  | [optional] 
-**transactionId** | **String** | The transaction ID. | [optional] 
+**transaction_id** | **String** | The transaction ID. | [optional] 
 
 

@@ -16,18 +16,18 @@ import MPCVaultType from './MPCVaultType';
 /**
  * The CreateMpcVaultRequest model module.
  * @module model/CreateMpcVaultRequest
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateMpcVaultRequest {
     /**
      * Constructs a new <code>CreateMpcVaultRequest</code>.
      * @alias module:model/CreateMpcVaultRequest
      * @param name {String} The name of the new vault.
-     * @param vaultType {module:model/MPCVaultType} 
+     * @param vault_type {module:model/MPCVaultType} 
      */
-    constructor(name, vaultType) { 
+    constructor(name, vault_type) { 
         
-        CreateMpcVaultRequest.initialize(this, name, vaultType);
+        CreateMpcVaultRequest.initialize(this, name, vault_type);
     }
 
     /**
@@ -35,9 +35,9 @@ class CreateMpcVaultRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, vaultType) { 
+    static initialize(obj, name, vault_type) { 
         obj['name'] = name;
-        obj['vault_type'] = vaultType;
+        obj['vault_type'] = vault_type;
     }
 
     /**

@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MPCProject);
     });
 
-    it('should have the property projectId (base name: "project_id")', function() {
-      // uncomment below and update the code to test the property projectId
+    it('should have the property project_id (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property project_id
       //var instance = new CoboWaas2JsApi.MPCProject();
       //expect(instance).to.be();
     });
 
-    it('should have the property orgId (base name: "org_id")', function() {
-      // uncomment below and update the code to test the property orgId
+    it('should have the property org_id (base name: "org_id")', function() {
+      // uncomment below and update the code to test the property org_id
       //var instance = new CoboWaas2JsApi.MPCProject();
       //expect(instance).to.be();
     });
@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property nodeCount (base name: "node_count")', function() {
-      // uncomment below and update the code to test the property nodeCount
+    it('should have the property node_count (base name: "node_count")', function() {
+      // uncomment below and update the code to test the property node_count
       //var instance = new CoboWaas2JsApi.MPCProject();
       //expect(instance).to.be();
     });
@@ -83,8 +83,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property createTimestamp (base name: "create_timestamp")', function() {
-      // uncomment below and update the code to test the property createTimestamp
+    it('should have the property create_timestamp (base name: "create_timestamp")', function() {
+      // uncomment below and update the code to test the property create_timestamp
       //var instance = new CoboWaas2JsApi.MPCProject();
       //expect(instance).to.be();
     });

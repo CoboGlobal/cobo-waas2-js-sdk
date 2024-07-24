@@ -17,7 +17,7 @@ import EvmContractCallDestination from './EvmContractCallDestination';
 /**
  * The ContractCallDestination model module.
  * @module model/ContractCallDestination
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ContractCallDestination {
     /**
@@ -33,12 +33,10 @@ class ContractCallDestination {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "EvmContractCallDestination") {
+            if (instance instanceof EvmContractCallDestination) {
                 this.actualInstance = instance;
-            } else {
+            } else if(EvmContractCallDestination.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                EvmContractCallDestination.validateJSON(instance); // throw an exception if no match
                 // create EvmContractCallDestination from JS object
                 this.actualInstance = EvmContractCallDestination.constructFromObject(instance);
             }
@@ -48,9 +46,10 @@ class ContractCallDestination {
             errorMessages.push("Failed to construct EvmContractCallDestination: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination. Details: " +
                             errorMessages.join(", "));

@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tssNodeId (base name: "tss_node_id")', function() {
-      // uncomment below and update the code to test the property tssNodeId
+    it('should have the property tss_node_id (base name: "tss_node_id")', function() {
+      // uncomment below and update the code to test the property tss_node_id
       //var instance = new CoboWaas2JsApi.KeyShareHolder();
       //expect(instance).to.be();
     });

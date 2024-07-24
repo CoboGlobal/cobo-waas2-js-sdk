@@ -3,22 +3,16 @@
 ## Enum
 
 
-* `Asset` (value: `"Asset"`)
+* `Address` (value: `"Address"`)
 
-* `Org-Controlled` (value: `"Org-Controlled"`)
+* `CustodialWallet` (value: `"CustodialWallet"`)
 
-* `User-Controlled` (value: `"User-Controlled"`)
+* `MPCWallet` (value: `"MPCWallet"`)
 
-* `Safe{Wallet}` (value: `"Safe{Wallet}"`)
+* `SafeWallet` (value: `"SafeWallet"`)
 
-* `Main` (value: `"Main"`)
-
-* `Sub` (value: `"Sub"`)
+* `ExchangeWallet` (value: `"ExchangeWallet"`)
 
 * `FeeStation` (value: `"FeeStation"`)
-
-* `DepositFromAddress` (value: `"DepositFromAddress"`)
-
-* `DepositFromWallet` (value: `"DepositFromWallet"`)
 
 

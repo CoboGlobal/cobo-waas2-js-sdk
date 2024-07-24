@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MPCVault);
     });
 
-    it('should have the property vaultId (base name: "vault_id")', function() {
-      // uncomment below and update the code to test the property vaultId
+    it('should have the property vault_id (base name: "vault_id")', function() {
+      // uncomment below and update the code to test the property vault_id
       //var instance = new CoboWaas2JsApi.MPCVault();
       //expect(instance).to.be();
     });
 
-    it('should have the property projectId (base name: "project_id")', function() {
-      // uncomment below and update the code to test the property projectId
+    it('should have the property project_id (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property project_id
       //var instance = new CoboWaas2JsApi.MPCVault();
       //expect(instance).to.be();
     });
@@ -77,14 +77,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property rootPubkeys (base name: "root_pubkeys")', function() {
-      // uncomment below and update the code to test the property rootPubkeys
+    it('should have the property root_pubkeys (base name: "root_pubkeys")', function() {
+      // uncomment below and update the code to test the property root_pubkeys
       //var instance = new CoboWaas2JsApi.MPCVault();
       //expect(instance).to.be();
     });
 
-    it('should have the property createTimestamp (base name: "create_timestamp")', function() {
-      // uncomment below and update the code to test the property createTimestamp
+    it('should have the property create_timestamp (base name: "create_timestamp")', function() {
+      // uncomment below and update the code to test the property create_timestamp
       //var instance = new CoboWaas2JsApi.MPCVault();
       //expect(instance).to.be();
     });

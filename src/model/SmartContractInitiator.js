@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 /**
  * The SmartContractInitiator model module.
  * @module model/SmartContractInitiator
- * @version 0.4.5
+ * @version 0.4.4
  */
 class SmartContractInitiator {
     /**
      * Constructs a new <code>SmartContractInitiator</code>.
      * The information about the initiator.
      * @alias module:model/SmartContractInitiator
-     * @param walletId {String} The initiator's wallet ID.
+     * @param wallet_id {String} The initiator's wallet ID.
      * @param address {String} The initiator's wallet address. 
      */
-    constructor(walletId, address) { 
+    constructor(wallet_id, address) { 
         
-        SmartContractInitiator.initialize(this, walletId, address);
+        SmartContractInitiator.initialize(this, wallet_id, address);
     }
 
     /**
@@ -35,8 +35,8 @@ class SmartContractInitiator {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, address) { 
-        obj['wallet_id'] = walletId;
+    static initialize(obj, wallet_id, address) { 
+        obj['wallet_id'] = wallet_id;
         obj['address'] = address;
     }
 

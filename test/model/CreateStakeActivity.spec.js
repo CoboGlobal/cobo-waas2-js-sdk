@@ -59,8 +59,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property poolId (base name: "pool_id")', function() {
-      // uncomment below and update the code to test the property poolId
+    it('should have the property pool_id (base name: "pool_id")', function() {
+      // uncomment below and update the code to test the property pool_id
       //var instance = new CoboWaas2JsApi.CreateStakeActivity();
       //expect(instance).to.be();
     });

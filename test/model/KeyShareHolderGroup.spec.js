@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.KeyShareHolderGroup);
     });
 
-    it('should have the property keyShareHolderGroupId (base name: "key_share_holder_group_id")', function() {
-      // uncomment below and update the code to test the property keyShareHolderGroupId
+    it('should have the property key_share_holder_group_id (base name: "key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property key_share_holder_group_id
       //var instance = new CoboWaas2JsApi.KeyShareHolderGroup();
       //expect(instance).to.be();
     });
@@ -65,20 +65,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tssKeyShareGroups (base name: "tss_key_share_groups")', function() {
-      // uncomment below and update the code to test the property tssKeyShareGroups
+    it('should have the property tss_key_share_groups (base name: "tss_key_share_groups")', function() {
+      // uncomment below and update the code to test the property tss_key_share_groups
       //var instance = new CoboWaas2JsApi.KeyShareHolderGroup();
       //expect(instance).to.be();
     });
 
-    it('should have the property keyShareHolders (base name: "key_share_holders")', function() {
-      // uncomment below and update the code to test the property keyShareHolders
+    it('should have the property key_share_holders (base name: "key_share_holders")', function() {
+      // uncomment below and update the code to test the property key_share_holders
       //var instance = new CoboWaas2JsApi.KeyShareHolderGroup();
       //expect(instance).to.be();
     });
 
-    it('should have the property nodeCount (base name: "node_count")', function() {
-      // uncomment below and update the code to test the property nodeCount
+    it('should have the property node_count (base name: "node_count")', function() {
+      // uncomment below and update the code to test the property node_count
       //var instance = new CoboWaas2JsApi.KeyShareHolderGroup();
       //expect(instance).to.be();
     });
@@ -95,8 +95,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property createTimestamp (base name: "create_timestamp")', function() {
-      // uncomment below and update the code to test the property createTimestamp
+    it('should have the property create_timestamp (base name: "create_timestamp")', function() {
+      // uncomment below and update the code to test the property create_timestamp
       //var instance = new CoboWaas2JsApi.KeyShareHolderGroup();
       //expect(instance).to.be();
     });

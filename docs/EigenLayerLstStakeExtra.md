@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**poolType** | [**StakingPoolType**](StakingPoolType.md) |  | 
+**pool_type** | [**StakingPoolType**](StakingPoolType.md) |  | 
 **operator** | **String** | The operator address. | [optional] 
 
 

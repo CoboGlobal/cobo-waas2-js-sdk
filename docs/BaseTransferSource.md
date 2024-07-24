@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**WalletSubtype**](WalletSubtype.md) |  | 
-**walletId** | **String** | The wallet ID. | 
+**source_type** | [**WalletSubtype**](WalletSubtype.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
 
 

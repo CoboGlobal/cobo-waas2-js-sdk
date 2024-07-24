@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
-**walletId** | **String** | The Wallet ID. | 
+**source_type** | [**TransactionSourceType**](TransactionSourceType.md) |  | 
+**wallet_id** | **String** | The Wallet ID. | 
 
 

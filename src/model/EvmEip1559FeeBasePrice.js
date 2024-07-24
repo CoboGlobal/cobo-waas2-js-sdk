@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 /**
  * The EvmEip1559FeeBasePrice model module.
  * @module model/EvmEip1559FeeBasePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmEip1559FeeBasePrice {
     /**
      * Constructs a new <code>EvmEip1559FeeBasePrice</code>.
      * The transaction fee price based on the EIP-1559 fee model, which equals the base fee price plus the maximum priority fee.
      * @alias module:model/EvmEip1559FeeBasePrice
-     * @param maxPriorityFee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
-     * @param baseFee {String} The base fee price of the chain, in wei.
+     * @param max_priority_fee {String} The maximum priority fee, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
+     * @param base_fee {String} The base fee price of the chain, in wei.
      */
-    constructor(maxPriorityFee, baseFee) { 
+    constructor(max_priority_fee, base_fee) { 
         
-        EvmEip1559FeeBasePrice.initialize(this, maxPriorityFee, baseFee);
+        EvmEip1559FeeBasePrice.initialize(this, max_priority_fee, base_fee);
     }
 
     /**
@@ -35,9 +35,9 @@ class EvmEip1559FeeBasePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, maxPriorityFee, baseFee) { 
-        obj['max_priority_fee'] = maxPriorityFee;
-        obj['base_fee'] = baseFee;
+    static initialize(obj, max_priority_fee, base_fee) { 
+        obj['max_priority_fee'] = max_priority_fee;
+        obj['base_fee'] = base_fee;
     }
 
     /**

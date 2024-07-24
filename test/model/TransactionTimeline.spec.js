@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property finishedTime (base name: "finished_time")', function() {
-      // uncomment below and update the code to test the property finishedTime
+    it('should have the property finished_time (base name: "finished_time")', function() {
+      // uncomment below and update the code to test the property finished_time
       //var instance = new CoboWaas2JsApi.TransactionTimeline();
       //expect(instance).to.be();
     });

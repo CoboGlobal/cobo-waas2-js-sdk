@@ -53,50 +53,50 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransferDestination);
     });
 
-    it('should have the property destinationType (base name: "destination_type")', function() {
-      // uncomment below and update the code to test the property destinationType
+    it('should have the property destination_type (base name: "destination_type")', function() {
+      // uncomment below and update the code to test the property destination_type
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property accountOutput (base name: "account_output")', function() {
-      // uncomment below and update the code to test the property accountOutput
+    it('should have the property account_output (base name: "account_output")', function() {
+      // uncomment below and update the code to test the property account_output
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property utxoOutputs (base name: "utxo_outputs")', function() {
-      // uncomment below and update the code to test the property utxoOutputs
+    it('should have the property utxo_outputs (base name: "utxo_outputs")', function() {
+      // uncomment below and update the code to test the property utxo_outputs
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property changeAddress (base name: "change_address")', function() {
-      // uncomment below and update the code to test the property changeAddress
+    it('should have the property change_address (base name: "change_address")', function() {
+      // uncomment below and update the code to test the property change_address
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property forceInternal (base name: "force_internal")', function() {
-      // uncomment below and update the code to test the property forceInternal
+    it('should have the property force_internal (base name: "force_internal")', function() {
+      // uncomment below and update the code to test the property force_internal
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property forceExternal (base name: "force_external")', function() {
-      // uncomment below and update the code to test the property forceExternal
+    it('should have the property force_external (base name: "force_external")', function() {
+      // uncomment below and update the code to test the property force_external
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property walletId (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property walletId
+    it('should have the property wallet_id (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property wallet_id
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });
 
-    it('should have the property subWalletId (base name: "sub_wallet_id")', function() {
-      // uncomment below and update the code to test the property subWalletId
+    it('should have the property sub_wallet_id (base name: "sub_wallet_id")', function() {
+      // uncomment below and update the code to test the property sub_wallet_id
       //var instance = new CoboWaas2JsApi.TransferDestination();
       //expect(instance).to.be();
     });

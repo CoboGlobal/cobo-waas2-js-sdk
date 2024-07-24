@@ -17,19 +17,19 @@ import FeeType from './FeeType';
 /**
  * The EvmEip1559FeePrice model module.
  * @module model/EvmEip1559FeePrice
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EvmEip1559FeePrice {
     /**
      * Constructs a new <code>EvmEip1559FeePrice</code>.
      * The transaction fee price based on the EIP-1559 fee model.
      * @alias module:model/EvmEip1559FeePrice
-     * @param feeType {module:model/FeeType} 
+     * @param fee_type {module:model/FeeType} 
      * @param recommended {module:model/EvmEip1559FeeBasePrice} 
      */
-    constructor(feeType, recommended) { 
+    constructor(fee_type, recommended) { 
         
-        EvmEip1559FeePrice.initialize(this, feeType, recommended);
+        EvmEip1559FeePrice.initialize(this, fee_type, recommended);
     }
 
     /**
@@ -37,8 +37,8 @@ class EvmEip1559FeePrice {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeType, recommended) { 
-        obj['fee_type'] = feeType;
+    static initialize(obj, fee_type, recommended) { 
+        obj['fee_type'] = fee_type;
         obj['recommended'] = recommended;
     }
 

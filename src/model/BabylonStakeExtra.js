@@ -17,20 +17,20 @@ import StakingPoolType from './StakingPoolType';
 /**
  * The BabylonStakeExtra model module.
  * @module model/BabylonStakeExtra
- * @version 0.4.5
+ * @version 0.4.4
  */
 class BabylonStakeExtra {
     /**
      * Constructs a new <code>BabylonStakeExtra</code>.
      * @alias module:model/BabylonStakeExtra
      * @implements module:model/BaseStakeExtra
-     * @param poolType {module:model/StakingPoolType} 
-     * @param finalityProviderPublicKey {String} The public key of finality provider.
-     * @param stakeBlockTime {Number} The stake block time.
+     * @param pool_type {module:model/StakingPoolType} 
+     * @param finality_provider_public_key {String} The public key of finality provider.
+     * @param stake_block_time {Number} The stake block time.
      */
-    constructor(poolType, finalityProviderPublicKey, stakeBlockTime) { 
-        BaseStakeExtra.initialize(this, poolType);
-        BabylonStakeExtra.initialize(this, poolType, finalityProviderPublicKey, stakeBlockTime);
+    constructor(pool_type, finality_provider_public_key, stake_block_time) { 
+        BaseStakeExtra.initialize(this, pool_type);
+        BabylonStakeExtra.initialize(this, pool_type, finality_provider_public_key, stake_block_time);
     }
 
     /**
@@ -38,10 +38,10 @@ class BabylonStakeExtra {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, poolType, finalityProviderPublicKey, stakeBlockTime) { 
-        obj['pool_type'] = poolType;
-        obj['finality_provider_public_key'] = finalityProviderPublicKey;
-        obj['stake_block_time'] = stakeBlockTime;
+    static initialize(obj, pool_type, finality_provider_public_key, stake_block_time) { 
+        obj['pool_type'] = pool_type;
+        obj['finality_provider_public_key'] = finality_provider_public_key;
+        obj['stake_block_time'] = stake_block_time;
     }
 
     /**

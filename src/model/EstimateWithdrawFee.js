@@ -19,7 +19,7 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The EstimateWithdrawFee model module.
  * @module model/EstimateWithdrawFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EstimateWithdrawFee {
     /**
@@ -27,13 +27,13 @@ class EstimateWithdrawFee {
      * @alias module:model/EstimateWithdrawFee
      * @implements module:model/BaseEstimateStakingFee
      * @implements module:model/CreateWithdrawActivity
-     * @param activityType {module:model/ActivityType} 
-     * @param stakingId {String} The id of the related staking.
+     * @param activity_type {module:model/ActivityType} 
+     * @param staking_id {String} The id of the related staking.
      * @param fee {module:model/TransactionTransferFee} 
      */
-    constructor(activityType, stakingId, fee) { 
-        BaseEstimateStakingFee.initialize(this, activityType);CreateWithdrawActivity.initialize(this, stakingId, fee);
-        EstimateWithdrawFee.initialize(this, activityType, stakingId, fee);
+    constructor(activity_type, staking_id, fee) { 
+        BaseEstimateStakingFee.initialize(this, activity_type);CreateWithdrawActivity.initialize(this, staking_id, fee);
+        EstimateWithdrawFee.initialize(this, activity_type, staking_id, fee);
     }
 
     /**
@@ -41,9 +41,9 @@ class EstimateWithdrawFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, activityType, stakingId, fee) { 
-        obj['activity_type'] = activityType;
-        obj['staking_id'] = stakingId;
+    static initialize(obj, activity_type, staking_id, fee) { 
+        obj['activity_type'] = activity_type;
+        obj['staking_id'] = staking_id;
         obj['fee'] = fee;
     }
 

@@ -29,7 +29,7 @@ import WebhookEventType from '../model/WebhookEventType';
 /**
 * DevelopersWebhooks service.
 * @module api/DevelopersWebhooksApi
-* @version 0.4.5
+* @version 0.4.4
 */
 export default class DevelopersWebhooksApi {
 
@@ -50,12 +50,12 @@ export default class DevelopersWebhooksApi {
      * Register webhook endpoint
      * This operation registers a new webhook endpoint for your organization.
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateWebhookEndpointRequest} [createWebhookEndpointRequest] The request body to register a webhook endpoint.
+     * @param {module:model/CreateWebhookEndpointRequest} [CreateWebhookEndpointRequest] The request body to register a webhook endpoint.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Endpoint} and HTTP response
      */
     createWebhookEndpointWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['createWebhookEndpointRequest'];
+      let postBody = opts['CreateWebhookEndpointRequest'];
 
       let pathParams = {
       };
@@ -81,7 +81,7 @@ export default class DevelopersWebhooksApi {
      * Register webhook endpoint
      * This operation registers a new webhook endpoint for your organization.
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateWebhookEndpointRequest} opts.createWebhookEndpointRequest The request body to register a webhook endpoint.
+     * @param {module:model/CreateWebhookEndpointRequest} opts.CreateWebhookEndpointRequest The request body to register a webhook endpoint.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Endpoint}
      */
     createWebhookEndpoint(opts) {
@@ -95,18 +95,18 @@ export default class DevelopersWebhooksApi {
     /**
      * Get webhook endpoint information
      * This operation retrieves the information of a specified webhook endpoint.
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Endpoint} and HTTP response
      */
-    getWebhookEndpointByIdWithHttpInfo(endpointId) {
+    getWebhookEndpointByIdWithHttpInfo(endpoint_id) {
       let postBody = null;
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling getWebhookEndpointById");
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling getWebhookEndpointById");
       }
 
       let pathParams = {
-        'endpoint_id': endpointId
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
       };
@@ -129,11 +129,11 @@ export default class DevelopersWebhooksApi {
     /**
      * Get webhook endpoint information
      * This operation retrieves the information of a specified webhook endpoint.
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Endpoint}
      */
-    getWebhookEndpointById(endpointId) {
-      return this.getWebhookEndpointByIdWithHttpInfo(endpointId)
+    getWebhookEndpointById(endpoint_id) {
+      return this.getWebhookEndpointByIdWithHttpInfo(endpoint_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -143,24 +143,24 @@ export default class DevelopersWebhooksApi {
     /**
      * Retrieve event information
      * This operation retrieves the information of a webhook event by the event ID. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WebhookEvent} and HTTP response
      */
-    getWebhookEventByIdWithHttpInfo(eventId, endpointId) {
+    getWebhookEventByIdWithHttpInfo(event_id, endpoint_id) {
       let postBody = null;
-      // verify the required parameter 'eventId' is set
-      if (eventId === undefined || eventId === null) {
-        throw new Error("Missing the required parameter 'eventId' when calling getWebhookEventById");
+      // verify the required parameter 'event_id' is set
+      if (event_id === undefined || event_id === null) {
+        throw new Error("Missing the required parameter 'event_id' when calling getWebhookEventById");
       }
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling getWebhookEventById");
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling getWebhookEventById");
       }
 
       let pathParams = {
-        'event_id': eventId,
-        'endpoint_id': endpointId
+        'event_id': event_id,
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
       };
@@ -183,12 +183,12 @@ export default class DevelopersWebhooksApi {
     /**
      * Retrieve event information
      * This operation retrieves the information of a webhook event by the event ID. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WebhookEvent}
      */
-    getWebhookEventById(eventId, endpointId) {
-      return this.getWebhookEventByIdWithHttpInfo(eventId, endpointId)
+    getWebhookEventById(event_id, endpoint_id) {
+      return this.getWebhookEventByIdWithHttpInfo(event_id, endpoint_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -200,7 +200,7 @@ export default class DevelopersWebhooksApi {
      * This operation retrieves the information of all webhook endpoints registered under your organization. You can filter the result by endpoint status and the subscribed event type.
      * @param {Object} opts Optional parameters
      * @param {module:model/EndpointStatus} [status] 
-     * @param {module:model/WebhookEventType} [eventType] 
+     * @param {module:model/WebhookEventType} [event_type] 
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -214,7 +214,7 @@ export default class DevelopersWebhooksApi {
       };
       let queryParams = {
         'status': opts['status'],
-        'event_type': opts['eventType'],
+        'event_type': opts['event_type'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -240,7 +240,7 @@ export default class DevelopersWebhooksApi {
      * This operation retrieves the information of all webhook endpoints registered under your organization. You can filter the result by endpoint status and the subscribed event type.
      * @param {Object} opts Optional parameters
      * @param {module:model/EndpointStatus} opts.status 
-     * @param {module:model/WebhookEventType} opts.eventType 
+     * @param {module:model/WebhookEventType} opts.event_type 
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -298,29 +298,29 @@ export default class DevelopersWebhooksApi {
     /**
      * List webhook event logs
      * This operation retrieves a list of webhook event logs by event ID. Each retry will generate a separate event log. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWebhookEventLogs200Response} and HTTP response
      */
-    listWebhookEventLogsWithHttpInfo(eventId, endpointId, opts) {
+    listWebhookEventLogsWithHttpInfo(event_id, endpoint_id, opts) {
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'eventId' is set
-      if (eventId === undefined || eventId === null) {
-        throw new Error("Missing the required parameter 'eventId' when calling listWebhookEventLogs");
+      // verify the required parameter 'event_id' is set
+      if (event_id === undefined || event_id === null) {
+        throw new Error("Missing the required parameter 'event_id' when calling listWebhookEventLogs");
       }
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling listWebhookEventLogs");
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling listWebhookEventLogs");
       }
 
       let pathParams = {
-        'event_id': eventId,
-        'endpoint_id': endpointId
+        'event_id': event_id,
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
         'limit': opts['limit'],
@@ -346,16 +346,16 @@ export default class DevelopersWebhooksApi {
     /**
      * List webhook event logs
      * This operation retrieves a list of webhook event logs by event ID. Each retry will generate a separate event log. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWebhookEventLogs200Response}
      */
-    listWebhookEventLogs(eventId, endpointId, opts) {
-      return this.listWebhookEventLogsWithHttpInfo(eventId, endpointId, opts)
+    listWebhookEventLogs(event_id, endpoint_id, opts) {
+      return this.listWebhookEventLogsWithHttpInfo(event_id, endpoint_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -365,7 +365,7 @@ export default class DevelopersWebhooksApi {
     /**
      * List all webhook events
      * This operation retrieves a list of webhook events that have occurred within the last 30 days.  Note: The request will only return webhook events that have occurred to the wallets associated with your current API key. For example, if the current API key is only associated with Custodial Wallets, any webhook events that have occurred to an MPC Wallet will not be retrieved with the current API key. 
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
      * @param {module:model/WebhookEventStatus} [status] 
      * @param {module:model/WebhookEventType} [type] 
@@ -374,16 +374,16 @@ export default class DevelopersWebhooksApi {
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWebhookEvents200Response} and HTTP response
      */
-    listWebhookEventsWithHttpInfo(endpointId, opts) {
+    listWebhookEventsWithHttpInfo(endpoint_id, opts) {
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling listWebhookEvents");
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling listWebhookEvents");
       }
 
       let pathParams = {
-        'endpoint_id': endpointId
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
         'status': opts['status'],
@@ -411,7 +411,7 @@ export default class DevelopersWebhooksApi {
     /**
      * List all webhook events
      * This operation retrieves a list of webhook events that have occurred within the last 30 days.  Note: The request will only return webhook events that have occurred to the wallets associated with your current API key. For example, if the current API key is only associated with Custodial Wallets, any webhook events that have occurred to an MPC Wallet will not be retrieved with the current API key. 
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
      * @param {module:model/WebhookEventStatus} opts.status 
      * @param {module:model/WebhookEventType} opts.type 
@@ -420,8 +420,8 @@ export default class DevelopersWebhooksApi {
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWebhookEvents200Response}
      */
-    listWebhookEvents(endpointId, opts) {
-      return this.listWebhookEventsWithHttpInfo(endpointId, opts)
+    listWebhookEvents(endpoint_id, opts) {
+      return this.listWebhookEventsWithHttpInfo(endpoint_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -431,24 +431,24 @@ export default class DevelopersWebhooksApi {
     /**
      * Retry event
      * This operation retries delivering a webhook event with the specified event ID. You can only retry delivering a webhook event in the `Retrying` or `Failed` status. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/RetryWebhookEventById201Response} and HTTP response
      */
-    retryWebhookEventByIdWithHttpInfo(eventId, endpointId) {
+    retryWebhookEventByIdWithHttpInfo(event_id, endpoint_id) {
       let postBody = null;
-      // verify the required parameter 'eventId' is set
-      if (eventId === undefined || eventId === null) {
-        throw new Error("Missing the required parameter 'eventId' when calling retryWebhookEventById");
+      // verify the required parameter 'event_id' is set
+      if (event_id === undefined || event_id === null) {
+        throw new Error("Missing the required parameter 'event_id' when calling retryWebhookEventById");
       }
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling retryWebhookEventById");
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling retryWebhookEventById");
       }
 
       let pathParams = {
-        'event_id': eventId,
-        'endpoint_id': endpointId
+        'event_id': event_id,
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
       };
@@ -471,12 +471,12 @@ export default class DevelopersWebhooksApi {
     /**
      * Retry event
      * This operation retries delivering a webhook event with the specified event ID. You can only retry delivering a webhook event in the `Retrying` or `Failed` status. 
-     * @param {String} eventId The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} event_id The event ID. You can obtain a list of event IDs by calling [List all events](/v2/api-references/developers--webhooks/list-all-events).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RetryWebhookEventById201Response}
      */
-    retryWebhookEventById(eventId, endpointId) {
-      return this.retryWebhookEventByIdWithHttpInfo(eventId, endpointId)
+    retryWebhookEventById(event_id, endpoint_id) {
+      return this.retryWebhookEventByIdWithHttpInfo(event_id, endpoint_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -486,21 +486,21 @@ export default class DevelopersWebhooksApi {
     /**
      * Update webhook endpoint
      * This operation updates the information of a specified webhook endpoint.
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateWebhookEndpointByIdRequest} [updateWebhookEndpointByIdRequest] The request body to update a webhook endpoint.
+     * @param {module:model/UpdateWebhookEndpointByIdRequest} [UpdateWebhookEndpointByIdRequest] The request body to update a webhook endpoint.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Endpoint} and HTTP response
      */
-    updateWebhookEndpointByIdWithHttpInfo(endpointId, opts) {
+    updateWebhookEndpointByIdWithHttpInfo(endpoint_id, opts) {
       opts = opts || {};
-      let postBody = opts['updateWebhookEndpointByIdRequest'];
-      // verify the required parameter 'endpointId' is set
-      if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling updateWebhookEndpointById");
+      let postBody = opts['UpdateWebhookEndpointByIdRequest'];
+      // verify the required parameter 'endpoint_id' is set
+      if (endpoint_id === undefined || endpoint_id === null) {
+        throw new Error("Missing the required parameter 'endpoint_id' when calling updateWebhookEndpointById");
       }
 
       let pathParams = {
-        'endpoint_id': endpointId
+        'endpoint_id': endpoint_id
       };
       let queryParams = {
       };
@@ -523,13 +523,13 @@ export default class DevelopersWebhooksApi {
     /**
      * Update webhook endpoint
      * This operation updates the information of a specified webhook endpoint.
-     * @param {String} endpointId The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
+     * @param {String} endpoint_id The webhook endpoint ID. You can retrieve a list of webhook endpoint IDs by calling [List webhook endpoints](/v2/api-references/developers--webhooks/list-webhook-endpoints).
      * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateWebhookEndpointByIdRequest} opts.updateWebhookEndpointByIdRequest The request body to update a webhook endpoint.
+     * @param {module:model/UpdateWebhookEndpointByIdRequest} opts.UpdateWebhookEndpointByIdRequest The request body to update a webhook endpoint.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Endpoint}
      */
-    updateWebhookEndpointById(endpointId, opts) {
-      return this.updateWebhookEndpointByIdWithHttpInfo(endpointId, opts)
+    updateWebhookEndpointById(endpoint_id, opts) {
+      return this.updateWebhookEndpointByIdWithHttpInfo(endpoint_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

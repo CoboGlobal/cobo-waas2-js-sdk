@@ -18,7 +18,7 @@ import WebhookEventType from './WebhookEventType';
 /**
  * The WebhookEvent model module.
  * @module model/WebhookEvent
- * @version 0.4.5
+ * @version 0.4.4
  */
 class WebhookEvent {
     /**
@@ -26,13 +26,13 @@ class WebhookEvent {
      * The webhook event payload.
      * @alias module:model/WebhookEvent
      * @param url {String} The webhook endpoint URL.
-     * @param createdTimestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
+     * @param created_timestamp {Number} The time when the event occurred, in Unix timestamp format, measured in milliseconds.
      * @param type {module:model/WebhookEventType} 
      * @param data {module:model/WebhookEventData} 
      */
-    constructor(url, createdTimestamp, type, data) { 
+    constructor(url, created_timestamp, type, data) { 
         
-        WebhookEvent.initialize(this, url, createdTimestamp, type, data);
+        WebhookEvent.initialize(this, url, created_timestamp, type, data);
     }
 
     /**
@@ -40,9 +40,9 @@ class WebhookEvent {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, url, createdTimestamp, type, data) { 
+    static initialize(obj, url, created_timestamp, type, data) { 
         obj['url'] = url;
-        obj['created_timestamp'] = createdTimestamp;
+        obj['created_timestamp'] = created_timestamp;
         obj['type'] = type;
         obj['data'] = data;
     }

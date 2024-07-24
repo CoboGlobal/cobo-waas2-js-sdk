@@ -13,27 +13,27 @@
 import ApiClient from '../ApiClient';
 import BaseTransferSource from './BaseTransferSource';
 import MpcSigningGroup from './MpcSigningGroup';
-import TransactionMPCWalletSourceExcludedUtxosInner from './TransactionMPCWalletSourceExcludedUtxosInner';
-import TransactionMPCWalletSourceIncludedUtxosInner from './TransactionMPCWalletSourceIncludedUtxosInner';
+import MpcTransferSourceAllOfExcludedUtxos from './MpcTransferSourceAllOfExcludedUtxos';
+import MpcTransferSourceAllOfIncludedUtxos from './MpcTransferSourceAllOfIncludedUtxos';
 import WalletSubtype from './WalletSubtype';
 
 /**
  * The MpcTransferSource model module.
  * @module model/MpcTransferSource
- * @version 0.4.5
+ * @version 0.4.4
  */
 class MpcTransferSource {
     /**
      * Constructs a new <code>MpcTransferSource</code>.
-     * The information about the transaction source. If you specify both the &#x60;address&#x60; or &#x60;included_utxos&#x60; properties, the specified included UTXOs must belong to the address.
+     * The information about the transaction source. If both the &#x60;address&#x60; or &#x60;included_utxos&#x60; are specified, the &#x60;included_utxos&#x60; should belong to the &#x60;address&#x60;.
      * @alias module:model/MpcTransferSource
      * @implements module:model/BaseTransferSource
-     * @param sourceType {module:model/WalletSubtype} 
-     * @param walletId {String} The wallet ID.
+     * @param source_type {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
      */
-    constructor(sourceType, walletId) { 
-        BaseTransferSource.initialize(this, sourceType, walletId);
-        MpcTransferSource.initialize(this, sourceType, walletId);
+    constructor(source_type, wallet_id) { 
+        BaseTransferSource.initialize(this, source_type, wallet_id);
+        MpcTransferSource.initialize(this, source_type, wallet_id);
     }
 
     /**
@@ -41,9 +41,9 @@ class MpcTransferSource {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sourceType, walletId) { 
-        obj['source_type'] = sourceType;
-        obj['wallet_id'] = walletId;
+    static initialize(obj, source_type, wallet_id) { 
+        obj['source_type'] = source_type;
+        obj['wallet_id'] = wallet_id;
     }
 
     /**
@@ -68,10 +68,10 @@ class MpcTransferSource {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
             if (data.hasOwnProperty('included_utxos')) {
-                obj['included_utxos'] = ApiClient.convertToType(data['included_utxos'], [TransactionMPCWalletSourceIncludedUtxosInner]);
+                obj['included_utxos'] = ApiClient.convertToType(data['included_utxos'], [MpcTransferSourceAllOfIncludedUtxos]);
             }
             if (data.hasOwnProperty('excluded_utxos')) {
-                obj['excluded_utxos'] = ApiClient.convertToType(data['excluded_utxos'], [TransactionMPCWalletSourceExcludedUtxosInner]);
+                obj['excluded_utxos'] = ApiClient.convertToType(data['excluded_utxos'], [MpcTransferSourceAllOfExcludedUtxos]);
             }
             if (data.hasOwnProperty('mpc_used_key_share_holder_group')) {
                 obj['mpc_used_key_share_holder_group'] = MpcSigningGroup.constructFromObject(data['mpc_used_key_share_holder_group']);
@@ -107,7 +107,7 @@ class MpcTransferSource {
             }
             // validate the optional field `included_utxos` (array)
             for (const item of data['included_utxos']) {
-                TransactionMPCWalletSourceIncludedUtxosInner.validateJSON(item);
+                MpcTransferSourceAllOfIncludedUtxos.validateJSON(item);
             };
         }
         if (data['excluded_utxos']) { // data not null
@@ -117,7 +117,7 @@ class MpcTransferSource {
             }
             // validate the optional field `excluded_utxos` (array)
             for (const item of data['excluded_utxos']) {
-                TransactionMPCWalletSourceExcludedUtxosInner.validateJSON(item);
+                MpcTransferSourceAllOfExcludedUtxos.validateJSON(item);
             };
         }
         // validate the optional field `mpc_used_key_share_holder_group`
@@ -151,12 +151,12 @@ MpcTransferSource.prototype['wallet_id'] = undefined;
 MpcTransferSource.prototype['address'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceIncludedUtxosInner>} included_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfIncludedUtxos>} included_utxos
  */
 MpcTransferSource.prototype['included_utxos'] = undefined;
 
 /**
- * @member {Array.<module:model/TransactionMPCWalletSourceExcludedUtxosInner>} excluded_utxos
+ * @member {Array.<module:model/MpcTransferSourceAllOfExcludedUtxos>} excluded_utxos
  */
 MpcTransferSource.prototype['excluded_utxos'] = undefined;
 

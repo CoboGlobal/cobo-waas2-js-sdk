@@ -17,22 +17,22 @@ import WalletType from './WalletType';
 /**
  * The CustodialWalletInfo model module.
  * @module model/CustodialWalletInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CustodialWalletInfo {
     /**
      * Constructs a new <code>CustodialWalletInfo</code>.
      * The basic information of a wallet.
      * @alias module:model/CustodialWalletInfo
-     * @param walletId {String} The wallet ID.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
      * @param name {String} The wallet name.
-     * @param orgId {String} The ID of the owning organization.
+     * @param org_id {String} The ID of the owning organization.
      */
-    constructor(walletId, walletType, walletSubtype, name, orgId) { 
+    constructor(wallet_id, wallet_type, wallet_subtype, name, org_id) { 
         
-        CustodialWalletInfo.initialize(this, walletId, walletType, walletSubtype, name, orgId);
+        CustodialWalletInfo.initialize(this, wallet_id, wallet_type, wallet_subtype, name, org_id);
     }
 
     /**
@@ -40,12 +40,12 @@ class CustodialWalletInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, walletType, walletSubtype, name, orgId) { 
-        obj['wallet_id'] = walletId;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
+    static initialize(obj, wallet_id, wallet_type, wallet_subtype, name, org_id) { 
+        obj['wallet_id'] = wallet_id;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
         obj['name'] = name;
-        obj['org_id'] = orgId;
+        obj['org_id'] = org_id;
     }
 
     /**

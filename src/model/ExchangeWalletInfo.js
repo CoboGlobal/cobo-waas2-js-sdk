@@ -20,24 +20,24 @@ import WalletType from './WalletType';
 /**
  * The ExchangeWalletInfo model module.
  * @module model/ExchangeWalletInfo
- * @version 0.4.5
+ * @version 0.4.4
  */
 class ExchangeWalletInfo {
     /**
      * Constructs a new <code>ExchangeWalletInfo</code>.
      * @alias module:model/ExchangeWalletInfo
      * @implements module:model/CustodialWalletInfo
-     * @param walletId {String} The wallet ID.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
+     * @param wallet_id {String} The wallet ID.
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
      * @param name {String} The wallet name.
-     * @param orgId {String} The ID of the owning organization.
+     * @param org_id {String} The ID of the owning organization.
      * @param apikey {String} The API key of your exchange account.
-     * @param exchangeId {module:model/ExchangeId} 
+     * @param exchange_id {module:model/ExchangeId} 
      */
-    constructor(walletId, walletType, walletSubtype, name, orgId, apikey, exchangeId) { 
-        CustodialWalletInfo.initialize(this, walletId, walletType, walletSubtype, name, orgId);
-        ExchangeWalletInfo.initialize(this, walletId, walletType, walletSubtype, name, orgId, apikey, exchangeId);
+    constructor(wallet_id, wallet_type, wallet_subtype, name, org_id, apikey, exchange_id) { 
+        CustodialWalletInfo.initialize(this, wallet_id, wallet_type, wallet_subtype, name, org_id);
+        ExchangeWalletInfo.initialize(this, wallet_id, wallet_type, wallet_subtype, name, org_id, apikey, exchange_id);
     }
 
     /**
@@ -45,14 +45,14 @@ class ExchangeWalletInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, walletId, walletType, walletSubtype, name, orgId, apikey, exchangeId) { 
-        obj['wallet_id'] = walletId;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
+    static initialize(obj, wallet_id, wallet_type, wallet_subtype, name, org_id, apikey, exchange_id) { 
+        obj['wallet_id'] = wallet_id;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
         obj['name'] = name;
-        obj['org_id'] = orgId;
+        obj['org_id'] = org_id;
         obj['apikey'] = apikey;
-        obj['exchange_id'] = exchangeId;
+        obj['exchange_id'] = exchange_id;
     }
 
     /**

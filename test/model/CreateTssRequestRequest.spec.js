@@ -59,20 +59,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property targetKeyShareHolderGroupId (base name: "target_key_share_holder_group_id")', function() {
-      // uncomment below and update the code to test the property targetKeyShareHolderGroupId
+    it('should have the property target_key_share_holder_group_id (base name: "target_key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property target_key_share_holder_group_id
       //var instance = new CoboWaas2JsApi.CreateTssRequestRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property sourceKeyShareHolderGroupId (base name: "source_key_share_holder_group_id")', function() {
-      // uncomment below and update the code to test the property sourceKeyShareHolderGroupId
+    it('should have the property source_key_share_holder_group_id (base name: "source_key_share_holder_group_id")', function() {
+      // uncomment below and update the code to test the property source_key_share_holder_group_id
       //var instance = new CoboWaas2JsApi.CreateTssRequestRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property detailParams (base name: "detail_params")', function() {
-      // uncomment below and update the code to test the property detailParams
+    it('should have the property detail_params (base name: "detail_params")', function() {
+      // uncomment below and update the code to test the property detail_params
       //var instance = new CoboWaas2JsApi.CreateTssRequestRequest();
       //expect(instance).to.be();
     });

@@ -16,19 +16,19 @@ import TransactionStatus from './TransactionStatus';
 /**
  * The CreateTransferTransaction201Response model module.
  * @module model/CreateTransferTransaction201Response
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateTransferTransaction201Response {
     /**
      * Constructs a new <code>CreateTransferTransaction201Response</code>.
      * @alias module:model/CreateTransferTransaction201Response
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param transactionId {String} The transaction ID.
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param transaction_id {String} The transaction ID.
      * @param status {module:model/TransactionStatus} 
      */
-    constructor(requestId, transactionId, status) { 
+    constructor(request_id, transaction_id, status) { 
         
-        CreateTransferTransaction201Response.initialize(this, requestId, transactionId, status);
+        CreateTransferTransaction201Response.initialize(this, request_id, transaction_id, status);
     }
 
     /**
@@ -36,9 +36,9 @@ class CreateTransferTransaction201Response {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, transactionId, status) { 
-        obj['request_id'] = requestId;
-        obj['transaction_id'] = transactionId;
+    static initialize(obj, request_id, transaction_id, status) { 
+        obj['request_id'] = request_id;
+        obj['transaction_id'] = transaction_id;
         obj['status'] = status;
     }
 

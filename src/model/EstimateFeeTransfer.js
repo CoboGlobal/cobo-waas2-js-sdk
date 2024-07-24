@@ -18,22 +18,22 @@ import TransferSource from './TransferSource';
 /**
  * The EstimateFeeTransfer model module.
  * @module model/EstimateFeeTransfer
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EstimateFeeTransfer {
     /**
      * Constructs a new <code>EstimateFeeTransfer</code>.
      * The information about a token transfer.
      * @alias module:model/EstimateFeeTransfer
-     * @param requestId {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param requestType {module:model/EstimateFeeTransfer.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
+     * @param request_id {String} The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param request_type {module:model/EstimateFeeTransfer.RequestTypeEnum} The request type. Possible values include:   - `Transfer`: A request to transfer tokens.   - `ContractCall`: A request to interact with a smart contract. 
      * @param source {module:model/TransferSource} 
-     * @param tokenId {String} The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation.
+     * @param token_id {String} The token ID of the transaction fee. You can retrieve token IDs by using the [Get fee rates](/api-references/v2/transactions/get-fee-rates) operation.
      * @param destination {module:model/TransferDestination} 
      */
-    constructor(requestId, requestType, source, tokenId, destination) { 
+    constructor(request_id, request_type, source, token_id, destination) { 
         
-        EstimateFeeTransfer.initialize(this, requestId, requestType, source, tokenId, destination);
+        EstimateFeeTransfer.initialize(this, request_id, request_type, source, token_id, destination);
     }
 
     /**
@@ -41,11 +41,11 @@ class EstimateFeeTransfer {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, requestId, requestType, source, tokenId, destination) { 
-        obj['request_id'] = requestId;
-        obj['request_type'] = requestType;
+    static initialize(obj, request_id, request_type, source, token_id, destination) { 
+        obj['request_id'] = request_id;
+        obj['request_type'] = request_type;
         obj['source'] = source;
-        obj['token_id'] = tokenId;
+        obj['token_id'] = token_id;
         obj['destination'] = destination;
     }
 

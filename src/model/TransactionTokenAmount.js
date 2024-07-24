@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 /**
  * The TransactionTokenAmount model module.
  * @module model/TransactionTokenAmount
- * @version 0.4.5
+ * @version 0.4.4
  */
 class TransactionTokenAmount {
     /**
      * Constructs a new <code>TransactionTokenAmount</code>.
      * The data for transaction asset information.
      * @alias module:model/TransactionTokenAmount
-     * @param assetId {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+     * @param asset_id {String} (This concept applies to Exchange Wallets only) The asset ID. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
      * @param amount {Number} Transaction value (Note that this is an absolute value. If you trade 1.5 BTC, then the value is 1.5) 
      */
-    constructor(assetId, amount) { 
+    constructor(asset_id, amount) { 
         
-        TransactionTokenAmount.initialize(this, assetId, amount);
+        TransactionTokenAmount.initialize(this, asset_id, amount);
     }
 
     /**
@@ -35,8 +35,8 @@ class TransactionTokenAmount {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, assetId, amount) { 
-        obj['asset_id'] = assetId;
+    static initialize(obj, asset_id, amount) { 
+        obj['asset_id'] = asset_id;
         obj['amount'] = amount;
     }
 

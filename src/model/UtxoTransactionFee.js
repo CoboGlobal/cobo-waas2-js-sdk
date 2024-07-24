@@ -18,7 +18,7 @@ import UtxoFeeBasePrice from './UtxoFeeBasePrice';
 /**
  * The UtxoTransactionFee model module.
  * @module model/UtxoTransactionFee
- * @version 0.4.5
+ * @version 0.4.4
  */
 class UtxoTransactionFee {
     /**
@@ -27,14 +27,14 @@ class UtxoTransactionFee {
      * @alias module:model/UtxoTransactionFee
      * @implements module:model/UtxoFeeBasePrice
      * @implements module:model/FeeAmount
-     * @param feeRate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
-     * @param maxFeeAmount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
-     * @param feeType {module:model/FeeType} 
-     * @param tokenId {String} The token ID of the transaction fee.
+     * @param fee_rate {String} The fee rate in sat/vByte. The fee rate represents the satoshis you are willing to pay for each byte of data that your transaction will consume on the blockchain.
+     * @param max_fee_amount {String} The maximum fee that you are willing to pay for the transaction. The transaction will fail if the transaction fee exceeds the maximum fee.
+     * @param fee_type {module:model/FeeType} 
+     * @param token_id {String} The token ID of the transaction fee.
      */
-    constructor(feeRate, maxFeeAmount, feeType, tokenId) { 
-        UtxoFeeBasePrice.initialize(this, feeRate);FeeAmount.initialize(this, maxFeeAmount);
-        UtxoTransactionFee.initialize(this, feeRate, maxFeeAmount, feeType, tokenId);
+    constructor(fee_rate, max_fee_amount, fee_type, token_id) { 
+        UtxoFeeBasePrice.initialize(this, fee_rate);FeeAmount.initialize(this, max_fee_amount);
+        UtxoTransactionFee.initialize(this, fee_rate, max_fee_amount, fee_type, token_id);
     }
 
     /**
@@ -42,11 +42,11 @@ class UtxoTransactionFee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, feeRate, maxFeeAmount, feeType, tokenId) { 
-        obj['fee_rate'] = feeRate;
-        obj['max_fee_amount'] = maxFeeAmount;
-        obj['fee_type'] = feeType;
-        obj['token_id'] = tokenId;
+    static initialize(obj, fee_rate, max_fee_amount, fee_type, token_id) { 
+        obj['fee_rate'] = fee_rate;
+        obj['max_fee_amount'] = max_fee_amount;
+        obj['fee_type'] = fee_type;
+        obj['token_id'] = token_id;
     }
 
     /**

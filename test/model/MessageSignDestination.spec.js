@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.MessageSignDestination);
     });
 
-    it('should have the property destinationType (base name: "destination_type")', function() {
-      // uncomment below and update the code to test the property destinationType
+    it('should have the property destination_type (base name: "destination_type")', function() {
+      // uncomment below and update the code to test the property destination_type
       //var instance = new CoboWaas2JsApi.MessageSignDestination();
       //expect(instance).to.be();
     });
@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property structuredData (base name: "structured_data")', function() {
-      // uncomment below and update the code to test the property structuredData
+    it('should have the property structured_data (base name: "structured_data")', function() {
+      // uncomment below and update the code to test the property structured_data
       //var instance = new CoboWaas2JsApi.MessageSignDestination();
       //expect(instance).to.be();
     });

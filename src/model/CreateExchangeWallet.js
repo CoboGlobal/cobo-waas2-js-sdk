@@ -19,7 +19,7 @@ import WalletType from './WalletType';
 /**
  * The CreateExchangeWallet model module.
  * @module model/CreateExchangeWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateExchangeWallet {
     /**
@@ -27,15 +27,15 @@ class CreateExchangeWallet {
      * @alias module:model/CreateExchangeWallet
      * @implements module:model/CreateCustodialWallet
      * @param name {String} The wallet name.
-     * @param walletType {module:model/WalletType} 
-     * @param walletSubtype {module:model/WalletSubtype} 
-     * @param exchangeId {module:model/ExchangeId} 
+     * @param wallet_type {module:model/WalletType} 
+     * @param wallet_subtype {module:model/WalletSubtype} 
+     * @param exchange_id {module:model/ExchangeId} 
      * @param apikey {String} The API key of your exchange account.
      * @param secret {String} The API secret of your exchange account.
      */
-    constructor(name, walletType, walletSubtype, exchangeId, apikey, secret) { 
-        CreateCustodialWallet.initialize(this, name, walletType, walletSubtype);
-        CreateExchangeWallet.initialize(this, name, walletType, walletSubtype, exchangeId, apikey, secret);
+    constructor(name, wallet_type, wallet_subtype, exchange_id, apikey, secret) { 
+        CreateCustodialWallet.initialize(this, name, wallet_type, wallet_subtype);
+        CreateExchangeWallet.initialize(this, name, wallet_type, wallet_subtype, exchange_id, apikey, secret);
     }
 
     /**
@@ -43,11 +43,11 @@ class CreateExchangeWallet {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, walletType, walletSubtype, exchangeId, apikey, secret) { 
+    static initialize(obj, name, wallet_type, wallet_subtype, exchange_id, apikey, secret) { 
         obj['name'] = name;
-        obj['wallet_type'] = walletType;
-        obj['wallet_subtype'] = walletSubtype;
-        obj['exchange_id'] = exchangeId;
+        obj['wallet_type'] = wallet_type;
+        obj['wallet_subtype'] = wallet_subtype;
+        obj['exchange_id'] = exchange_id;
         obj['apikey'] = apikey;
         obj['secret'] = secret;
     }

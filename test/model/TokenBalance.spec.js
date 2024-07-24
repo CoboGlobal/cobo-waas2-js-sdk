@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TokenBalance);
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.TokenBalance();
       //expect(instance).to.be();
     });

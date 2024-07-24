@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**ContractCallSourceType**](ContractCallSourceType.md) |  | 
-**walletId** | **String** | The wallet ID. | 
+**source_type** | [**ContractCallSourceType**](ContractCallSourceType.md) |  | 
+**wallet_id** | **String** | The wallet ID. | 
 **address** | **String** | The wallet address. | 
 
 

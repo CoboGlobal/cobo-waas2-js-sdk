@@ -17,7 +17,6 @@ import CreateTransferTransaction201Response from '../model/CreateTransferTransac
 import ErrorResponse from '../model/ErrorResponse';
 import EstimateFee from '../model/EstimateFee';
 import EstimationFee from '../model/EstimationFee';
-import FeeRate from '../model/FeeRate';
 import ListTransactions200Response from '../model/ListTransactions200Response';
 import SignMessage from '../model/SignMessage';
 import TransactionDetail from '../model/TransactionDetail';
@@ -28,7 +27,7 @@ import Transfer from '../model/Transfer';
 /**
 * Transactions service.
 * @module api/TransactionsApi
-* @version 0.4.5
+* @version 0.4.4
 */
 export default class TransactionsApi {
 
@@ -48,18 +47,18 @@ export default class TransactionsApi {
     /**
      * Cancel transaction
      * This operation cancels a specified transaction. A transaction can be cancelled if its status is either of the following: - `Submitted` - `PendingScreening` - `PendingAuthorization` - `PendingSignature`   A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
-    cancelTransactionByIdWithHttpInfo(transactionId) {
+    cancelTransactionByIdWithHttpInfo(transaction_id) {
       let postBody = null;
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling cancelTransactionById");
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling cancelTransactionById");
       }
 
       let pathParams = {
-        'transaction_id': transactionId
+        'transaction_id': transaction_id
       };
       let queryParams = {
       };
@@ -82,11 +81,11 @@ export default class TransactionsApi {
     /**
      * Cancel transaction
      * This operation cancels a specified transaction. A transaction can be cancelled if its status is either of the following: - `Submitted` - `PendingScreening` - `PendingAuthorization` - `PendingSignature`   A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
-    cancelTransactionById(transactionId) {
-      return this.cancelTransactionByIdWithHttpInfo(transactionId)
+    cancelTransactionById(transaction_id) {
+      return this.cancelTransactionByIdWithHttpInfo(transaction_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -97,12 +96,12 @@ export default class TransactionsApi {
      * Call smart contract
      * This operation creates a transaction to interact with a smart contract on the blockchain.  You need to provide details such as the source address, destination address, and the calldata. You can specify the fee-related properties to limit the transaction fee. A transaction request for tracking is returned upon successful operation.  Currently, this operation only applies to blockchains that have a similar architecture to Ethereum. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/ContractCall} [contractCall] The request body for making a contract call.
+     * @param {module:model/ContractCall} [ContractCall] The request body for making a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
     createContractCallTransactionWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['contractCall'];
+      let postBody = opts['ContractCall'];
 
       let pathParams = {
       };
@@ -128,7 +127,7 @@ export default class TransactionsApi {
      * Call smart contract
      * This operation creates a transaction to interact with a smart contract on the blockchain.  You need to provide details such as the source address, destination address, and the calldata. You can specify the fee-related properties to limit the transaction fee. A transaction request for tracking is returned upon successful operation.  Currently, this operation only applies to blockchains that have a similar architecture to Ethereum. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/ContractCall} opts.contractCall The request body for making a contract call.
+     * @param {module:model/ContractCall} opts.ContractCall The request body for making a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
     createContractCallTransaction(opts) {
@@ -143,12 +142,12 @@ export default class TransactionsApi {
      * Sign message
      * This operation creates a transaction to sign the provided message using cryptographic techniques.  In some scenarios, you want to sign a message for identity authentication or transaction approval. You need to provide details such as the source address, destination address, and the message to be signed. A transaction request for tracking is returned upon successful operation.  Currently, only MPC Wallets support this type of transaction to sign a message. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/SignMessage} [signMessage] The request body to create a message sign transaction
+     * @param {module:model/SignMessage} [SignMessage] The request body to create a message sign transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
     createMessageSignTransactionWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['signMessage'];
+      let postBody = opts['SignMessage'];
 
       let pathParams = {
       };
@@ -174,7 +173,7 @@ export default class TransactionsApi {
      * Sign message
      * This operation creates a transaction to sign the provided message using cryptographic techniques.  In some scenarios, you want to sign a message for identity authentication or transaction approval. You need to provide details such as the source address, destination address, and the message to be signed. A transaction request for tracking is returned upon successful operation.  Currently, only MPC Wallets support this type of transaction to sign a message. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/SignMessage} opts.signMessage The request body to create a message sign transaction
+     * @param {module:model/SignMessage} opts.SignMessage The request body to create a message sign transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
     createMessageSignTransaction(opts) {
@@ -189,12 +188,12 @@ export default class TransactionsApi {
      * Transfer token
      * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the <code>utxo_outputs</code> property.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/Transfer} [transfer] The request body to create a transfer transaction
+     * @param {module:model/Transfer} [Transfer] The request body to create a transfer transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
     createTransferTransactionWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['transfer'];
+      let postBody = opts['Transfer'];
 
       let pathParams = {
       };
@@ -220,7 +219,7 @@ export default class TransactionsApi {
      * Transfer token
      * The operation transfers your assets from a wallet created on Cobo Protal to another address.  You need to specify details such as the sender address and recipient address, token ID, and the amount to transfer. You can specify the fee-related properties to limit the transaction fee.  A transaction request for tracking is returned upon successful operation.  <Note>Only MPC Wallets as the transaction source can transfer tokens to multiple addresses by using the <code>utxo_outputs</code> property.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/Transfer} opts.transfer The request body to create a transfer transaction
+     * @param {module:model/Transfer} opts.Transfer The request body to create a transfer transaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
     createTransferTransaction(opts) {
@@ -233,22 +232,22 @@ export default class TransactionsApi {
 
     /**
      * Drop transaction
-     * This operation drops a specified transaction.   Dropping a transaction will trigger an Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the original one. A transaction can be dropped if its status is `Broadcasting`.  <ul> <li>For EVM chains, this RBF transaction has a transfer amount of `0` and the sending address is the same as the receiving address.</li> <li>For UTXO chains, this RBF transaction has a transfer amount of `0` and the destination address is the same as the change address in the original transaction.</li> </ul> A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * This operation drops a specified transaction.   Dropping a transaction will trigger a Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the original one. A transaction can be dropped if its status is `Broadcasting`.  <ul> <li>For EVM chains, this RBF transaction has a transfer amount of `0` and the sending address is the same as the receiving address.</li> <li>For UTXO chains, this RBF transaction has a transfer amount of `0` and the destination address is the same as the change address in the original transaction.</li> </ul> A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionRbf} [transactionRbf] The request body to drop or to speed up transactions
+     * @param {module:model/TransactionRbf} [TransactionRbf] The request body to drop or to speed up transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
-    dropTransactionByIdWithHttpInfo(transactionId, opts) {
+    dropTransactionByIdWithHttpInfo(transaction_id, opts) {
       opts = opts || {};
-      let postBody = opts['transactionRbf'];
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling dropTransactionById");
+      let postBody = opts['TransactionRbf'];
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling dropTransactionById");
       }
 
       let pathParams = {
-        'transaction_id': transactionId
+        'transaction_id': transaction_id
       };
       let queryParams = {
       };
@@ -270,14 +269,14 @@ export default class TransactionsApi {
 
     /**
      * Drop transaction
-     * This operation drops a specified transaction.   Dropping a transaction will trigger an Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the original one. A transaction can be dropped if its status is `Broadcasting`.  <ul> <li>For EVM chains, this RBF transaction has a transfer amount of `0` and the sending address is the same as the receiving address.</li> <li>For UTXO chains, this RBF transaction has a transfer amount of `0` and the destination address is the same as the change address in the original transaction.</li> </ul> A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * This operation drops a specified transaction.   Dropping a transaction will trigger a Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It has a higher transaction fee to incentivize miners to prioritize its confirmation over the original one. A transaction can be dropped if its status is `Broadcasting`.  <ul> <li>For EVM chains, this RBF transaction has a transfer amount of `0` and the sending address is the same as the receiving address.</li> <li>For UTXO chains, this RBF transaction has a transfer amount of `0` and the destination address is the same as the change address in the original transaction.</li> </ul> A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionRbf} opts.transactionRbf The request body to drop or to speed up transactions
+     * @param {module:model/TransactionRbf} opts.TransactionRbf The request body to drop or to speed up transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
-    dropTransactionById(transactionId, opts) {
-      return this.dropTransactionByIdWithHttpInfo(transactionId, opts)
+    dropTransactionById(transaction_id, opts) {
+      return this.dropTransactionByIdWithHttpInfo(transaction_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -288,12 +287,12 @@ export default class TransactionsApi {
      * Estimate transaction fee
      * This operation estimates the transaction fee rates of a token transfer or a contract call for three different transaction speeds (slow, recommended, and fast), based on factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, and token ID of the transaction fee.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/EstimateFee} [estimateFee] The request body to estimate the transaction fee of a token transfer or a contract call.
+     * @param {module:model/EstimateFee} [EstimateFee] The request body to estimate the transaction fee of a token transfer or a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EstimationFee} and HTTP response
      */
     estimateFeeWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['estimateFee'];
+      let postBody = opts['EstimateFee'];
 
       let pathParams = {
       };
@@ -319,7 +318,7 @@ export default class TransactionsApi {
      * Estimate transaction fee
      * This operation estimates the transaction fee rates of a token transfer or a contract call for three different transaction speeds (slow, recommended, and fast), based on factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, and token ID of the transaction fee.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/EstimateFee} opts.estimateFee The request body to estimate the transaction fee of a token transfer or a contract call.
+     * @param {module:model/EstimateFee} opts.EstimateFee The request body to estimate the transaction fee of a token transfer or a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EstimationFee}
      */
     estimateFee(opts) {
@@ -333,18 +332,18 @@ export default class TransactionsApi {
     /**
      * Get transaction information
      * This operation retrieves detailed information about a specified transaction, such as the transaction status, source address, destination address, and timestamp. 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TransactionDetail} and HTTP response
      */
-    getTransactionByIdWithHttpInfo(transactionId) {
+    getTransactionByIdWithHttpInfo(transaction_id) {
       let postBody = null;
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling getTransactionById");
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling getTransactionById");
       }
 
       let pathParams = {
-        'transaction_id': transactionId
+        'transaction_id': transaction_id
       };
       let queryParams = {
       };
@@ -367,59 +366,11 @@ export default class TransactionsApi {
     /**
      * Get transaction information
      * This operation retrieves detailed information about a specified transaction, such as the transaction status, source address, destination address, and timestamp. 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TransactionDetail}
      */
-    getTransactionById(transactionId) {
-      return this.getTransactionByIdWithHttpInfo(transactionId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get fee rates
-     * This operation retrieves current transaction fee rates on the blockchain based on the specified chain ID.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
-     * @param {String} chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/FeeRate>} and HTTP response
-     */
-    listFeeRatesWithHttpInfo(chainId) {
-      let postBody = null;
-      // verify the required parameter 'chainId' is set
-      if (chainId === undefined || chainId === null) {
-        throw new Error("Missing the required parameter 'chainId' when calling listFeeRates");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'chain_id': chainId
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [FeeRate];
-      return this.apiClient.callApi(
-        '/transactions/fee_rates', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Get fee rates
-     * This operation retrieves current transaction fee rates on the blockchain based on the specified chain ID.  The response can contain different properties based on the transaction fee model used by the chain, including EIP-1559 fee model, legacy fee model, UTXO fee model, and fixed fee model. 
-     * @param {String} chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/FeeRate>}
-     */
-    listFeeRates(chainId) {
-      return this.listFeeRatesWithHttpInfo(chainId)
+    getTransactionById(transaction_id) {
+      return this.getTransactionByIdWithHttpInfo(transaction_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -430,20 +381,20 @@ export default class TransactionsApi {
      * List all transactions
      * This operation retrieves all the transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamps. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
-     * @param {String} [requestId] The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param {String} [coboIds] A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
-     * @param {String} [transactionIds] A list of transaction IDs, separated by comma.
-     * @param {String} [transactionHashes] A list of transaction hashes, separated by comma.
+     * @param {String} [request_id] The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param {String} [cobo_ids] A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
+     * @param {String} [transaction_ids] A list of transaction IDs, separated by comma.
+     * @param {String} [transaction_hashes] A list of transaction hashes, separated by comma.
      * @param {String} [types] A list of transaction types, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
      * @param {String} [statuses] A list of transaction statuses, separated by comma. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
-     * @param {String} [walletIds] A list of wallet IDs, separated by comma.
-     * @param {String} [chainIds] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-     * @param {String} [tokenIds] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
-     * @param {String} [assetIds] (This concept applies to Exchange Wallets only) A list of asset IDs, separated by comma. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
-     * @param {String} [vaultId] The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
-     * @param {String} [projectId] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
-     * @param {Number} [minCreatedTimestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
-     * @param {Number} [maxCreatedTimestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
+     * @param {String} [wallet_ids] A list of wallet IDs, separated by comma.
+     * @param {String} [chain_ids] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param {String} [token_ids] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param {String} [asset_ids] (This concept applies to Exchange Wallets only) A list of asset IDs, separated by comma. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+     * @param {String} [vault_id] The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
+     * @param {String} [project_id] The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
+     * @param {Number} [min_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
+     * @param {Number} [max_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} [after] An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -456,20 +407,20 @@ export default class TransactionsApi {
       let pathParams = {
       };
       let queryParams = {
-        'request_id': opts['requestId'],
-        'cobo_ids': opts['coboIds'],
-        'transaction_ids': opts['transactionIds'],
-        'transaction_hashes': opts['transactionHashes'],
+        'request_id': opts['request_id'],
+        'cobo_ids': opts['cobo_ids'],
+        'transaction_ids': opts['transaction_ids'],
+        'transaction_hashes': opts['transaction_hashes'],
         'types': opts['types'],
         'statuses': opts['statuses'],
-        'wallet_ids': opts['walletIds'],
-        'chain_ids': opts['chainIds'],
-        'token_ids': opts['tokenIds'],
-        'asset_ids': opts['assetIds'],
-        'vault_id': opts['vaultId'],
-        'project_id': opts['projectId'],
-        'min_created_timestamp': opts['minCreatedTimestamp'],
-        'max_created_timestamp': opts['maxCreatedTimestamp'],
+        'wallet_ids': opts['wallet_ids'],
+        'chain_ids': opts['chain_ids'],
+        'token_ids': opts['token_ids'],
+        'asset_ids': opts['asset_ids'],
+        'vault_id': opts['vault_id'],
+        'project_id': opts['project_id'],
+        'min_created_timestamp': opts['min_created_timestamp'],
+        'max_created_timestamp': opts['max_created_timestamp'],
         'limit': opts['limit'],
         'before': opts['before'],
         'after': opts['after']
@@ -494,20 +445,20 @@ export default class TransactionsApi {
      * List all transactions
      * This operation retrieves all the transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamps. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.requestId The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
-     * @param {String} opts.coboIds A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
-     * @param {String} opts.transactionIds A list of transaction IDs, separated by comma.
-     * @param {String} opts.transactionHashes A list of transaction hashes, separated by comma.
+     * @param {String} opts.request_id The request ID that is used to track a withdrawal request. The request ID is provided by you and must be unique within your organization.
+     * @param {String} opts.cobo_ids A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
+     * @param {String} opts.transaction_ids A list of transaction IDs, separated by comma.
+     * @param {String} opts.transaction_hashes A list of transaction hashes, separated by comma.
      * @param {String} opts.types A list of transaction types, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction.   - `TokenApproval`: A transaction that grants permission to access your tokens.    - `ContractCall`: A transaction that interacts with a smart contract.   - `TransactionFeePayment`: A transaction that is initiated by Fee Station to pay your transaction fee.   - `TransactionFeeRefund`: A transaction that refunds transaction fees to Fee Station.   - `MessageSign`: A transaction that signs a message.    - `MultiSig`: A transaction to a Smart Contract Wallet (Safe{Wallet}) that requires one or multiple signatures to be executed. 
      * @param {String} opts.statuses A list of transaction statuses, separated by comma. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is pending. 
-     * @param {String} opts.walletIds A list of wallet IDs, separated by comma.
-     * @param {String} opts.chainIds A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
-     * @param {String} opts.tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
-     * @param {String} opts.assetIds (This concept applies to Exchange Wallets only) A list of asset IDs, separated by comma. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
-     * @param {String} opts.vaultId The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
-     * @param {String} opts.projectId The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
-     * @param {Number} opts.minCreatedTimestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
-     * @param {Number} opts.maxCreatedTimestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
+     * @param {String} opts.wallet_ids A list of wallet IDs, separated by comma.
+     * @param {String} opts.chain_ids A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](/v2/api-references/wallets/list-enabled-chains).
+     * @param {String} opts.token_ids A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](/v2/api-references/wallets/list-enabled-tokens).
+     * @param {String} opts.asset_ids (This concept applies to Exchange Wallets only) A list of asset IDs, separated by comma. An asset is a digital representation of a valuable resource on a blockchain network. Exchange Wallets group your holdings by asset, even if the same asset exists on different blockchains. For example, if your Exchange Wallet has 1 USDT on Ethereum and 1 USDT on TRON, then your asset balance is 2 USDT.
+     * @param {String} opts.vault_id The vault ID, which you can retrieve by calling [List all vaults](/v2/api-references/wallets--mpc-wallets/list-all-vaults). This parameter is applicable to MPC Wallets only.
+     * @param {String} opts.project_id The project ID, which you can retrieve by calling [List all projects](/v2/api-references/wallets--mpc-wallets/list-all-projects). 
+     * @param {Number} opts.min_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
+     * @param {Number} opts.max_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before An object ID that serves as a starting point for retrieving data in reverse chronological order. For example, if you specify `before` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`, the request will retrieve a list of data objects that end before the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1`. You can set this parameter to the value of `pagination.before` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned.  - If you set `before` to `infinity`, the last page of data is returned. 
      * @param {String} opts.after An object ID that acts as a starting point for retrieving data in chronological order. For example, if you specify `after` as `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`, the request will retrieve a list of data objects that start after the object with the object ID `RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`. You can set this parameter to the value of `pagination.after` in the response of the previous request.  - If you set both `after` and `before`, an error will occur.  - If you leave both `before` and `after` empty, the first page of data is returned. 
@@ -524,21 +475,21 @@ export default class TransactionsApi {
     /**
      * Resend transaction
      * This operation resends a specified transaction.   Resending a transaction initiates a new attempt to process the transaction that failed previously. A transaction can be resent if its status is `failed`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions in the SOL token from MPC Wallets.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionResend} [transactionResend] The request body to resend transactions
+     * @param {module:model/TransactionResend} [TransactionResend] The request body to resend transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
-    resendTransactionByIdWithHttpInfo(transactionId, opts) {
+    resendTransactionByIdWithHttpInfo(transaction_id, opts) {
       opts = opts || {};
-      let postBody = opts['transactionResend'];
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling resendTransactionById");
+      let postBody = opts['TransactionResend'];
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling resendTransactionById");
       }
 
       let pathParams = {
-        'transaction_id': transactionId
+        'transaction_id': transaction_id
       };
       let queryParams = {
       };
@@ -561,13 +512,13 @@ export default class TransactionsApi {
     /**
      * Resend transaction
      * This operation resends a specified transaction.   Resending a transaction initiates a new attempt to process the transaction that failed previously. A transaction can be resent if its status is `failed`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions in the SOL token from MPC Wallets.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionResend} opts.transactionResend The request body to resend transactions
+     * @param {module:model/TransactionResend} opts.TransactionResend The request body to resend transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
-    resendTransactionById(transactionId, opts) {
-      return this.resendTransactionByIdWithHttpInfo(transactionId, opts)
+    resendTransactionById(transaction_id, opts) {
+      return this.resendTransactionByIdWithHttpInfo(transaction_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -576,22 +527,22 @@ export default class TransactionsApi {
 
     /**
      * Speed up transaction
-     * This operation accelerates a specified transaction.   Speeding up a transaction will trigger an Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either `Broadcasting`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * This operation accelerates a specified transaction.   Speeding up a transaction will trigger an RBF transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either `Broadcasting`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionRbf} [transactionRbf] The request body to drop or to speed up transactions
+     * @param {module:model/TransactionRbf} [TransactionRbf] The request body to drop or to speed up transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTransferTransaction201Response} and HTTP response
      */
-    speedupTransactionByIdWithHttpInfo(transactionId, opts) {
+    speedupTransactionByIdWithHttpInfo(transaction_id, opts) {
       opts = opts || {};
-      let postBody = opts['transactionRbf'];
-      // verify the required parameter 'transactionId' is set
-      if (transactionId === undefined || transactionId === null) {
-        throw new Error("Missing the required parameter 'transactionId' when calling speedupTransactionById");
+      let postBody = opts['TransactionRbf'];
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling speedupTransactionById");
       }
 
       let pathParams = {
-        'transaction_id': transactionId
+        'transaction_id': transaction_id
       };
       let queryParams = {
       };
@@ -613,14 +564,14 @@ export default class TransactionsApi {
 
     /**
      * Speed up transaction
-     * This operation accelerates a specified transaction.   Speeding up a transaction will trigger an Replace-By-Fee (RBF) transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either `Broadcasting`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
-     * @param {String} transactionId The transaction ID.
+     * This operation accelerates a specified transaction.   Speeding up a transaction will trigger an RBF transaction which is a new version of the original transaction. It shares the same inputs but has a higher transaction fee to incentivize miners to prioritize its confirmation over the previous one. A transaction can be accelerated if its status is either `Broadcasting`.  A transaction request for tracking is returned upon successful operation. <Note>This operation only applies to transactions from MPC Wallets, excluding transactions in the tokens VET, TRON, TVET, SOL, and TON.</Note> 
+     * @param {String} transaction_id The transaction ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/TransactionRbf} opts.transactionRbf The request body to drop or to speed up transactions
+     * @param {module:model/TransactionRbf} opts.TransactionRbf The request body to drop or to speed up transactions
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTransferTransaction201Response}
      */
-    speedupTransactionById(transactionId, opts) {
-      return this.speedupTransactionByIdWithHttpInfo(transactionId, opts)
+    speedupTransactionById(transaction_id, opts) {
+      return this.speedupTransactionByIdWithHttpInfo(transaction_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

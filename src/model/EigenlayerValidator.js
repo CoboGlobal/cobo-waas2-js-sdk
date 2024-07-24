@@ -15,20 +15,20 @@ import ApiClient from '../ApiClient';
 /**
  * The EigenlayerValidator model module.
  * @module model/EigenlayerValidator
- * @version 0.4.5
+ * @version 0.4.4
  */
 class EigenlayerValidator {
     /**
      * Constructs a new <code>EigenlayerValidator</code>.
      * The EigenLayer validator info.
      * @alias module:model/EigenlayerValidator
-     * @param iconUrl {String} The URL of the validator's icon.
+     * @param icon_url {String} The URL of the validator's icon.
      * @param name {String} The name of validator.
      * @param address {String} The address of validator.
      */
-    constructor(iconUrl, name, address) { 
+    constructor(icon_url, name, address) { 
         
-        EigenlayerValidator.initialize(this, iconUrl, name, address);
+        EigenlayerValidator.initialize(this, icon_url, name, address);
     }
 
     /**
@@ -36,8 +36,8 @@ class EigenlayerValidator {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, iconUrl, name, address) { 
-        obj['icon_url'] = iconUrl;
+    static initialize(obj, icon_url, name, address) { 
+        obj['icon_url'] = icon_url;
         obj['name'] = name;
         obj['address'] = address;
     }

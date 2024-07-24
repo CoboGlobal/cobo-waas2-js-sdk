@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.LockUtxosRequestUtxosInner);
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property tokenId
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2JsApi.LockUtxosRequestUtxosInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property txHash (base name: "tx_hash")', function() {
-      // uncomment below and update the code to test the property txHash
+    it('should have the property tx_hash (base name: "tx_hash")', function() {
+      // uncomment below and update the code to test the property tx_hash
       //var instance = new CoboWaas2JsApi.LockUtxosRequestUtxosInner();
       //expect(instance).to.be();
     });
 
-    it('should have the property voutN (base name: "vout_n")', function() {
-      // uncomment below and update the code to test the property voutN
+    it('should have the property vout_n (base name: "vout_n")', function() {
+      // uncomment below and update the code to test the property vout_n
       //var instance = new CoboWaas2JsApi.LockUtxosRequestUtxosInner();
       //expect(instance).to.be();
     });

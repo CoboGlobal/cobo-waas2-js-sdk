@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EigenlayerValidator);
     });
 
-    it('should have the property iconUrl (base name: "icon_url")', function() {
-      // uncomment below and update the code to test the property iconUrl
+    it('should have the property icon_url (base name: "icon_url")', function() {
+      // uncomment below and update the code to test the property icon_url
       //var instance = new CoboWaas2JsApi.EigenlayerValidator();
       //expect(instance).to.be();
     });
@@ -77,8 +77,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property commissionRate (base name: "commission_rate")', function() {
-      // uncomment below and update the code to test the property commissionRate
+    it('should have the property commission_rate (base name: "commission_rate")', function() {
+      // uncomment below and update the code to test the property commission_rate
       //var instance = new CoboWaas2JsApi.EigenlayerValidator();
       //expect(instance).to.be();
     });

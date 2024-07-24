@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateMpcVaultRequest);
     });
 
-    it('should have the property projectId (base name: "project_id")', function() {
-      // uncomment below and update the code to test the property projectId
+    it('should have the property project_id (base name: "project_id")', function() {
+      // uncomment below and update the code to test the property project_id
       //var instance = new CoboWaas2JsApi.CreateMpcVaultRequest();
       //expect(instance).to.be();
     });
@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property vaultType (base name: "vault_type")', function() {
-      // uncomment below and update the code to test the property vaultType
+    it('should have the property vault_type (base name: "vault_type")', function() {
+      // uncomment below and update the code to test the property vault_type
       //var instance = new CoboWaas2JsApi.CreateMpcVaultRequest();
       //expect(instance).to.be();
     });

@@ -20,7 +20,7 @@ import WalletType from './WalletType';
 /**
  * The CreateSmartContractWallet model module.
  * @module model/CreateSmartContractWallet
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateSmartContractWallet {
     /**
@@ -36,12 +36,10 @@ class CreateSmartContractWallet {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "CreateSafeWallet") {
+            if (instance instanceof CreateSafeWallet) {
                 this.actualInstance = instance;
-            } else {
+            } else if(CreateSafeWallet.validateJSON(instance)){
                 // plain JS object
-                // validate the object
-                CreateSafeWallet.validateJSON(instance); // throw an exception if no match
                 // create CreateSafeWallet from JS object
                 this.actualInstance = CreateSafeWallet.constructFromObject(instance);
             }
@@ -51,9 +49,10 @@ class CreateSmartContractWallet {
             errorMessages.push("Failed to construct CreateSafeWallet: " + err)
         }
 
-        if (match > 1) {
-            throw new Error("Multiple matches found constructing `CreateSmartContractWallet` with oneOf schemas CreateSafeWallet. Input: " + JSON.stringify(instance));
-        } else if (match === 0) {
+        // if (match > 1) {
+        //    throw new Error("Multiple matches found constructing `CreateSmartContractWallet` with oneOf schemas CreateSafeWallet. Input: " + JSON.stringify(instance));
+        // } else
+        if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
             throw new Error("No match found constructing `CreateSmartContractWallet` with oneOf schemas CreateSafeWallet. Details: " +
                             errorMessages.join(", "));

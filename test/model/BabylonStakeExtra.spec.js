@@ -53,20 +53,20 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.BabylonStakeExtra);
     });
 
-    it('should have the property poolType (base name: "pool_type")', function() {
-      // uncomment below and update the code to test the property poolType
+    it('should have the property pool_type (base name: "pool_type")', function() {
+      // uncomment below and update the code to test the property pool_type
       //var instance = new CoboWaas2JsApi.BabylonStakeExtra();
       //expect(instance).to.be();
     });
 
-    it('should have the property finalityProviderPublicKey (base name: "finality_provider_public_key")', function() {
-      // uncomment below and update the code to test the property finalityProviderPublicKey
+    it('should have the property finality_provider_public_key (base name: "finality_provider_public_key")', function() {
+      // uncomment below and update the code to test the property finality_provider_public_key
       //var instance = new CoboWaas2JsApi.BabylonStakeExtra();
       //expect(instance).to.be();
     });
 
-    it('should have the property stakeBlockTime (base name: "stake_block_time")', function() {
-      // uncomment below and update the code to test the property stakeBlockTime
+    it('should have the property stake_block_time (base name: "stake_block_time")', function() {
+      // uncomment below and update the code to test the property stake_block_time
       //var instance = new CoboWaas2JsApi.BabylonStakeExtra();
       //expect(instance).to.be();
     });

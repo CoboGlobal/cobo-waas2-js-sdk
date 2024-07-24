@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activityType** | [**ActivityType**](ActivityType.md) |  | 
+**activity_type** | [**ActivityType**](ActivityType.md) |  | 
 
 

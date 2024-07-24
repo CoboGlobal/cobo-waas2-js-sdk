@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.CreateKeyShareHolderGroupRequest);
     });
 
-    it('should have the property keyShareHolderGroupType (base name: "key_share_holder_group_type")', function() {
-      // uncomment below and update the code to test the property keyShareHolderGroupType
+    it('should have the property key_share_holder_group_type (base name: "key_share_holder_group_type")', function() {
+      // uncomment below and update the code to test the property key_share_holder_group_type
       //var instance = new CoboWaas2JsApi.CreateKeyShareHolderGroupRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property nodeCount (base name: "node_count")', function() {
-      // uncomment below and update the code to test the property nodeCount
+    it('should have the property node_count (base name: "node_count")', function() {
+      // uncomment below and update the code to test the property node_count
       //var instance = new CoboWaas2JsApi.CreateKeyShareHolderGroupRequest();
       //expect(instance).to.be();
     });
@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property keyShareHolders (base name: "key_share_holders")', function() {
-      // uncomment below and update the code to test the property keyShareHolders
+    it('should have the property key_share_holders (base name: "key_share_holders")', function() {
+      // uncomment below and update the code to test the property key_share_holders
       //var instance = new CoboWaas2JsApi.CreateKeyShareHolderGroupRequest();
       //expect(instance).to.be();
     });

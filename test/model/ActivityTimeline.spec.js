@@ -71,8 +71,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property transactionId (base name: "transaction_id")', function() {
-      // uncomment below and update the code to test the property transactionId
+    it('should have the property transaction_id (base name: "transaction_id")', function() {
+      // uncomment below and update the code to test the property transaction_id
       //var instance = new CoboWaas2JsApi.ActivityTimeline();
       //expect(instance).to.be();
     });

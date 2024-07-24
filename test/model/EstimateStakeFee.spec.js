@@ -53,8 +53,8 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.EstimateStakeFee);
     });
 
-    it('should have the property activityType (base name: "activity_type")', function() {
-      // uncomment below and update the code to test the property activityType
+    it('should have the property activity_type (base name: "activity_type")', function() {
+      // uncomment below and update the code to test the property activity_type
       //var instance = new CoboWaas2JsApi.EstimateStakeFee();
       //expect(instance).to.be();
     });
@@ -65,8 +65,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property poolId (base name: "pool_id")', function() {
-      // uncomment below and update the code to test the property poolId
+    it('should have the property pool_id (base name: "pool_id")', function() {
+      // uncomment below and update the code to test the property pool_id
       //var instance = new CoboWaas2JsApi.EstimateStakeFee();
       //expect(instance).to.be();
     });

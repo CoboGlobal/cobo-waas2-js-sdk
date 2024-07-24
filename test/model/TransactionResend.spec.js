@@ -53,14 +53,14 @@
       //expect(instance).to.be.a(CoboWaas2JsApi.TransactionResend);
     });
 
-    it('should have the property requestId (base name: "request_id")', function() {
-      // uncomment below and update the code to test the property requestId
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
       //var instance = new CoboWaas2JsApi.TransactionResend();
       //expect(instance).to.be();
     });
 
-    it('should have the property mpcUsedKeyShareHolderGroup (base name: "mpc_used_key_share_holder_group")', function() {
-      // uncomment below and update the code to test the property mpcUsedKeyShareHolderGroup
+    it('should have the property mpc_used_key_share_holder_group (base name: "mpc_used_key_share_holder_group")', function() {
+      // uncomment below and update the code to test the property mpc_used_key_share_holder_group
       //var instance = new CoboWaas2JsApi.TransactionResend();
       //expect(instance).to.be();
     });

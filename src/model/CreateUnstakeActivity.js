@@ -16,17 +16,17 @@ import TransactionTransferFee from './TransactionTransferFee';
 /**
  * The CreateUnstakeActivity model module.
  * @module model/CreateUnstakeActivity
- * @version 0.4.5
+ * @version 0.4.4
  */
 class CreateUnstakeActivity {
     /**
      * Constructs a new <code>CreateUnstakeActivity</code>.
      * @alias module:model/CreateUnstakeActivity
-     * @param stakingId {String} The id of the related staking.
+     * @param staking_id {String} The id of the related staking.
      */
-    constructor(stakingId) { 
+    constructor(staking_id) { 
         
-        CreateUnstakeActivity.initialize(this, stakingId);
+        CreateUnstakeActivity.initialize(this, staking_id);
     }
 
     /**
@@ -34,8 +34,8 @@ class CreateUnstakeActivity {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, stakingId) { 
-        obj['staking_id'] = stakingId;
+    static initialize(obj, staking_id) { 
+        obj['staking_id'] = staking_id;
     }
 
     /**
