@@ -1,4 +1,4 @@
-# CoboWaas2.MPCStakeSource
+# CoboWaas2.MpcStakeSource
 
 ## Properties
 

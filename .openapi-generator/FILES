@@ -25,6 +25,10 @@ docs/BaseContractCallSource.md
 docs/BaseEstimateStakingFee.md
 docs/BaseStakeExtra.md
 docs/BaseStakeSource.md
+docs/BookkeepingRecord.md
+docs/BookkeepingSummary.md
+docs/BroadcastSignedTransactions201ResponseInner.md
+docs/BroadcastSignedTransactionsRequest.md
 docs/ChainInfo.md
 docs/CheckAddressValidity200Response.md
 docs/CheckAddressesValidity200ResponseInner.md
@@ -47,13 +51,17 @@ docs/CreateMpcWalletParams.md
 docs/CreateSafeWalletParams.md
 docs/CreateSmartContractWalletParams.md
 docs/CreateStakeActivity.md
+docs/CreateStakeActivity201Response.md
 docs/CreateStakeActivityExtra.md
+docs/CreateStakeActivityRequest.md
 docs/CreateTransferTransaction201Response.md
 docs/CreateTssRequestRequest.md
 docs/CreateUnstakeActivity.md
+docs/CreateUnstakeActivityRequest.md
 docs/CreateWalletParams.md
 docs/CreateWebhookEndpointRequest.md
 docs/CreateWithdrawActivity.md
+docs/CreateWithdrawActivityRequest.md
 docs/CreatedWalletInfo.md
 docs/CurveType.md
 docs/CustodialTransferSource.md
@@ -97,6 +105,8 @@ docs/FeeGasLimit.md
 docs/FeeRate.md
 docs/FeeType.md
 docs/FixedFeeRate.md
+docs/GetStakingEstimationFee201Response.md
+docs/GetStakingEstimationFeeRequest.md
 docs/GetToken200Response.md
 docs/GetToken4XXResponse.md
 docs/KeyShareHolder.md
@@ -111,6 +121,9 @@ docs/ListExchanges200ResponseInner.md
 docs/ListKeyShareHolderGroups200Response.md
 docs/ListMpcProjects200Response.md
 docs/ListMpcVaults200Response.md
+docs/ListStakingActivities200Response.md
+docs/ListStakingPools200Response.md
+docs/ListStakings200Response.md
 docs/ListSupportedAssetsForExchange200Response.md
 docs/ListSupportedChains200Response.md
 docs/ListSupportedTokens200Response.md
@@ -128,7 +141,6 @@ docs/LockUtxosRequest.md
 docs/LockUtxosRequestUtxosInner.md
 docs/MPCDelegate.md
 docs/MPCProject.md
-docs/MPCStakeSource.md
 docs/MPCVault.md
 docs/MPCVaultType.md
 docs/MPCWalletInfo.md
@@ -142,6 +154,7 @@ docs/MessageSignSourceType.md
 docs/MpcContractCallSource.md
 docs/MpcMessageSignSource.md
 docs/MpcSigningGroup.md
+docs/MpcStakeSource.md
 docs/MpcTransferSource.md
 docs/OAuthApi.md
 docs/Pagination.md
@@ -166,6 +179,7 @@ docs/StakeSourceType.md
 docs/StakingPoolType.md
 docs/StakingSource.md
 docs/Stakings.md
+docs/StakingsApi.md
 docs/StakingsExtra.md
 docs/StakingsValidatorInfo.md
 docs/SubWalletAssetBalance.md
@@ -249,6 +263,8 @@ docs/UpdateWalletParams.md
 docs/UpdateWebhookEndpointByIdRequest.md
 docs/UtxoFeeBasePrice.md
 docs/UtxoFeeRate.md
+docs/WalletBalanceSnapshot.md
+docs/WalletBalanceSnapshotRecord.md
 docs/WalletInfo.md
 docs/WalletSubtype.md
 docs/WalletType.md
@@ -271,6 +287,7 @@ src/Env.js
 src/PreRequestScript.js
 src/api/DevelopersWebhooksApi.js
 src/api/OAuthApi.js
+src/api/StakingsApi.js
 src/api/TransactionsApi.js
 src/api/WalletsApi.js
 src/api/WalletsExchangeWalletApi.js
@@ -299,6 +316,10 @@ src/model/BaseContractCallSource.js
 src/model/BaseEstimateStakingFee.js
 src/model/BaseStakeExtra.js
 src/model/BaseStakeSource.js
+src/model/BookkeepingRecord.js
+src/model/BookkeepingSummary.js
+src/model/BroadcastSignedTransactions201ResponseInner.js
+src/model/BroadcastSignedTransactionsRequest.js
 src/model/ChainInfo.js
 src/model/CheckAddressValidity200Response.js
 src/model/CheckAddressesValidity200ResponseInner.js
@@ -321,13 +342,17 @@ src/model/CreateMpcWalletParams.js
 src/model/CreateSafeWalletParams.js
 src/model/CreateSmartContractWalletParams.js
 src/model/CreateStakeActivity.js
+src/model/CreateStakeActivity201Response.js
 src/model/CreateStakeActivityExtra.js
+src/model/CreateStakeActivityRequest.js
 src/model/CreateTransferTransaction201Response.js
 src/model/CreateTssRequestRequest.js
 src/model/CreateUnstakeActivity.js
+src/model/CreateUnstakeActivityRequest.js
 src/model/CreateWalletParams.js
 src/model/CreateWebhookEndpointRequest.js
 src/model/CreateWithdrawActivity.js
+src/model/CreateWithdrawActivityRequest.js
 src/model/CreatedWalletInfo.js
 src/model/CurveType.js
 src/model/CustodialTransferSource.js
@@ -370,6 +395,8 @@ src/model/FeeGasLimit.js
 src/model/FeeRate.js
 src/model/FeeType.js
 src/model/FixedFeeRate.js
+src/model/GetStakingEstimationFee201Response.js
+src/model/GetStakingEstimationFeeRequest.js
 src/model/GetToken200Response.js
 src/model/GetToken4XXResponse.js
 src/model/KeyShareHolder.js
@@ -384,6 +411,9 @@ src/model/ListExchanges200ResponseInner.js
 src/model/ListKeyShareHolderGroups200Response.js
 src/model/ListMpcProjects200Response.js
 src/model/ListMpcVaults200Response.js
+src/model/ListStakingActivities200Response.js
+src/model/ListStakingPools200Response.js
+src/model/ListStakings200Response.js
 src/model/ListSupportedAssetsForExchange200Response.js
 src/model/ListSupportedChains200Response.js
 src/model/ListSupportedTokens200Response.js
@@ -401,7 +431,6 @@ src/model/LockUtxosRequest.js
 src/model/LockUtxosRequestUtxosInner.js
 src/model/MPCDelegate.js
 src/model/MPCProject.js
-src/model/MPCStakeSource.js
 src/model/MPCVault.js
 src/model/MPCVaultType.js
 src/model/MPCWalletInfo.js
@@ -415,6 +444,7 @@ src/model/MessageSignSourceType.js
 src/model/MpcContractCallSource.js
 src/model/MpcMessageSignSource.js
 src/model/MpcSigningGroup.js
+src/model/MpcStakeSource.js
 src/model/MpcTransferSource.js
 src/model/Pagination.js
 src/model/PoolDetails.js
@@ -520,6 +550,8 @@ src/model/UpdateWalletParams.js
 src/model/UpdateWebhookEndpointByIdRequest.js
 src/model/UtxoFeeBasePrice.js
 src/model/UtxoFeeRate.js
+src/model/WalletBalanceSnapshot.js
+src/model/WalletBalanceSnapshotRecord.js
 src/model/WalletInfo.js
 src/model/WalletSubtype.js
 src/model/WalletType.js
@@ -533,6 +565,7 @@ src/model/WebhookEventStatus.js
 src/model/WebhookEventType.js
 test/api/DevelopersWebhooksApi.spec.js
 test/api/OAuthApi.spec.js
+test/api/StakingsApi.spec.js
 test/api/TransactionsApi.spec.js
 test/api/WalletsApi.spec.js
 test/api/WalletsExchangeWalletApi.spec.js
@@ -559,6 +592,10 @@ test/model/BaseContractCallSource.spec.js
 test/model/BaseEstimateStakingFee.spec.js
 test/model/BaseStakeExtra.spec.js
 test/model/BaseStakeSource.spec.js
+test/model/BookkeepingRecord.spec.js
+test/model/BookkeepingSummary.spec.js
+test/model/BroadcastSignedTransactions201ResponseInner.spec.js
+test/model/BroadcastSignedTransactionsRequest.spec.js
 test/model/ChainInfo.spec.js
 test/model/CheckAddressValidity200Response.spec.js
 test/model/CheckAddressesValidity200ResponseInner.spec.js
@@ -581,13 +618,17 @@ test/model/CreateMpcWalletParams.spec.js
 test/model/CreateSafeWalletParams.spec.js
 test/model/CreateSmartContractWalletParams.spec.js
 test/model/CreateStakeActivity.spec.js
+test/model/CreateStakeActivity201Response.spec.js
 test/model/CreateStakeActivityExtra.spec.js
+test/model/CreateStakeActivityRequest.spec.js
 test/model/CreateTransferTransaction201Response.spec.js
 test/model/CreateTssRequestRequest.spec.js
 test/model/CreateUnstakeActivity.spec.js
+test/model/CreateUnstakeActivityRequest.spec.js
 test/model/CreateWalletParams.spec.js
 test/model/CreateWebhookEndpointRequest.spec.js
 test/model/CreateWithdrawActivity.spec.js
+test/model/CreateWithdrawActivityRequest.spec.js
 test/model/CreatedWalletInfo.spec.js
 test/model/CurveType.spec.js
 test/model/CustodialTransferSource.spec.js
@@ -630,6 +671,8 @@ test/model/FeeGasLimit.spec.js
 test/model/FeeRate.spec.js
 test/model/FeeType.spec.js
 test/model/FixedFeeRate.spec.js
+test/model/GetStakingEstimationFee201Response.spec.js
+test/model/GetStakingEstimationFeeRequest.spec.js
 test/model/GetToken200Response.spec.js
 test/model/GetToken4XXResponse.spec.js
 test/model/KeyShareHolder.spec.js
@@ -644,6 +687,9 @@ test/model/ListExchanges200ResponseInner.spec.js
 test/model/ListKeyShareHolderGroups200Response.spec.js
 test/model/ListMpcProjects200Response.spec.js
 test/model/ListMpcVaults200Response.spec.js
+test/model/ListStakingActivities200Response.spec.js
+test/model/ListStakingPools200Response.spec.js
+test/model/ListStakings200Response.spec.js
 test/model/ListSupportedAssetsForExchange200Response.spec.js
 test/model/ListSupportedChains200Response.spec.js
 test/model/ListSupportedTokens200Response.spec.js
@@ -661,7 +707,6 @@ test/model/LockUtxosRequest.spec.js
 test/model/LockUtxosRequestUtxosInner.spec.js
 test/model/MPCDelegate.spec.js
 test/model/MPCProject.spec.js
-test/model/MPCStakeSource.spec.js
 test/model/MPCVault.spec.js
 test/model/MPCVaultType.spec.js
 test/model/MPCWalletInfo.spec.js
@@ -675,6 +720,7 @@ test/model/MessageSignSourceType.spec.js
 test/model/MpcContractCallSource.spec.js
 test/model/MpcMessageSignSource.spec.js
 test/model/MpcSigningGroup.spec.js
+test/model/MpcStakeSource.spec.js
 test/model/MpcTransferSource.spec.js
 test/model/Pagination.spec.js
 test/model/PoolDetails.spec.js
@@ -780,6 +826,8 @@ test/model/UpdateWalletParams.spec.js
 test/model/UpdateWebhookEndpointByIdRequest.spec.js
 test/model/UtxoFeeBasePrice.spec.js
 test/model/UtxoFeeRate.spec.js
+test/model/WalletBalanceSnapshot.spec.js
+test/model/WalletBalanceSnapshotRecord.spec.js
 test/model/WalletInfo.spec.js
 test/model/WalletSubtype.spec.js
 test/model/WalletType.spec.js
