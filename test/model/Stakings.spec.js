@@ -112,6 +112,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property validators (base name: "validators")', function() {
+      // uncomment below and update the code to test the property validators
+      //var instance = new CoboWaas2.Stakings();
+      //expect(instance).to.be();
+    });
+
     it('should have the property extra (base name: "extra")', function() {
       // uncomment below and update the code to test the property extra
       //var instance = new CoboWaas2.Stakings();

@@ -32,6 +32,13 @@ export default class TokenizationTokenStandard {
 
     
         /**
+         * value: "ERC20Wrapper"
+         * @const
+         */
+        "ERC20Wrapper" = "ERC20Wrapper";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

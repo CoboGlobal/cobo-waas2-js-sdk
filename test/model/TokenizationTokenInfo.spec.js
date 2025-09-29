@@ -82,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property token_standard (base name: "token_standard")', function() {
+      // uncomment below and update the code to test the property token_standard
+      //var instance = new CoboWaas2.TokenizationTokenInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property decimals (base name: "decimals")', function() {
       // uncomment below and update the code to test the property decimals
       //var instance = new CoboWaas2.TokenizationTokenInfo();

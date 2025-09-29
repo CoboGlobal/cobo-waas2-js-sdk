@@ -25,7 +25,7 @@ class ComplianceDispositionUpdateEventData {
      * @alias module:model/ComplianceDispositionUpdateEventData
      * @implements module:model/WebhookEventDataType
      * @implements module:model/DispositionEventData
-     * @param data_type {module:model/ComplianceDispositionUpdateEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+     * @param data_type {module:model/ComplianceDispositionUpdateEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
      * @param transaction_id {String} The transaction ID.
      * @param disposition_type {module:model/DispositionType} 
      * @param disposition_status {module:model/DispositionStatus} 
@@ -125,7 +125,7 @@ class ComplianceDispositionUpdateEventData {
 ComplianceDispositionUpdateEventData.RequiredProperties = ["data_type", "transaction_id", "disposition_type", "disposition_status", "updated_timestamp"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/ComplianceDispositionUpdateEventData.DataTypeEnum} data_type
  */
 ComplianceDispositionUpdateEventData.prototype['data_type'] = undefined;
@@ -147,13 +147,13 @@ ComplianceDispositionUpdateEventData.prototype['disposition_type'] = undefined;
 ComplianceDispositionUpdateEventData.prototype['disposition_status'] = undefined;
 
 /**
- * The blockchain address to receive the refunded/isolated funds.
+ * The blockchain address where the refund/isolated funds will be sent.
  * @member {String} destination_address
  */
 ComplianceDispositionUpdateEventData.prototype['destination_address'] = undefined;
 
 /**
- * The amount to be refunded/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
+ * The amount to be refund/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
  * @member {String} disposition_amount
  */
 ComplianceDispositionUpdateEventData.prototype['disposition_amount'] = undefined;
@@ -167,7 +167,7 @@ ComplianceDispositionUpdateEventData.prototype['updated_timestamp'] = undefined;
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -186,12 +186,12 @@ DispositionEventData.prototype['disposition_type'] = undefined;
  */
 DispositionEventData.prototype['disposition_status'] = undefined;
 /**
- * The blockchain address to receive the refunded/isolated funds.
+ * The blockchain address where the refund/isolated funds will be sent.
  * @member {String} destination_address
  */
 DispositionEventData.prototype['destination_address'] = undefined;
 /**
- * The amount to be refunded/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
+ * The amount to be refund/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
  * @member {String} disposition_amount
  */
 DispositionEventData.prototype['disposition_amount'] = undefined;
@@ -305,6 +305,12 @@ ComplianceDispositionUpdateEventData['DataTypeEnum'] = {
      * @const
      */
     "ComplianceDisposition": "ComplianceDisposition",
+
+    /**
+     * value: "ComplianceKytScreenings"
+     * @const
+     */
+    "ComplianceKytScreenings": "ComplianceKytScreenings",
 
     /**
      * value: "unknown_default_open_api"

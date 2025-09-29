@@ -13,6 +13,7 @@ import ApiClient from '../ApiClient';
 import TokenizationAddressPermission from './TokenizationAddressPermission';
 import TokenizationStatus from './TokenizationStatus';
 import TokenizationTokenInfo from './TokenizationTokenInfo';
+import TokenizationTokenStandard from './TokenizationTokenStandard';
 
 /**
  * The TokenizationTokenDetailInfo model module.
@@ -26,12 +27,13 @@ class TokenizationTokenDetailInfo {
      * @param token_id {String} The unique token identifier.
      * @param chain_id {String} The chain ID of the tokenization contract.
      * @param token_symbol {String} The unique token symbol.
+     * @param token_standard {module:model/TokenizationTokenStandard} 
      * @param decimals {Number} The number of decimals of the token.
      * @param status {module:model/TokenizationStatus} 
      */
-    constructor(token_id, chain_id, token_symbol, decimals, status) { 
-        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, decimals, status);
-        TokenizationTokenDetailInfo.initialize(this, token_id, chain_id, token_symbol, decimals, status);
+    constructor(token_id, chain_id, token_symbol, token_standard, decimals, status) { 
+        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status);
+        TokenizationTokenDetailInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status);
     }
 
     /**
@@ -39,10 +41,11 @@ class TokenizationTokenDetailInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_id, chain_id, token_symbol, decimals, status) { 
+    static initialize(obj, token_id, chain_id, token_symbol, token_standard, decimals, status) { 
         obj['token_id'] = token_id;
         obj['chain_id'] = chain_id;
         obj['token_symbol'] = token_symbol;
+        obj['token_standard'] = token_standard;
         obj['decimals'] = decimals;
         obj['status'] = status;
     }
@@ -73,6 +76,9 @@ class TokenizationTokenDetailInfo {
             }
             if (data.hasOwnProperty('token_symbol')) {
                 obj['token_symbol'] = ApiClient.convertToType(data['token_symbol'], 'String');
+            }
+            if (data.hasOwnProperty('token_standard')) {
+                obj['token_standard'] = TokenizationTokenStandard.constructFromObject(data['token_standard']);
             }
             if (data.hasOwnProperty('decimals')) {
                 obj['decimals'] = ApiClient.convertToType(data['decimals'], 'Number');
@@ -153,7 +159,7 @@ class TokenizationTokenDetailInfo {
 
 }
 
-TokenizationTokenDetailInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "decimals", "status"];
+TokenizationTokenDetailInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "token_standard", "decimals", "status"];
 
 /**
  * The unique token identifier.
@@ -184,6 +190,11 @@ TokenizationTokenDetailInfo.prototype['token_name'] = undefined;
  * @member {String} token_symbol
  */
 TokenizationTokenDetailInfo.prototype['token_symbol'] = undefined;
+
+/**
+ * @member {module:model/TokenizationTokenStandard} token_standard
+ */
+TokenizationTokenDetailInfo.prototype['token_standard'] = undefined;
 
 /**
  * The number of decimals of the token.
@@ -247,6 +258,10 @@ TokenizationTokenInfo.prototype['token_name'] = undefined;
  * @member {String} token_symbol
  */
 TokenizationTokenInfo.prototype['token_symbol'] = undefined;
+/**
+ * @member {module:model/TokenizationTokenStandard} token_standard
+ */
+TokenizationTokenInfo.prototype['token_standard'] = undefined;
 /**
  * The number of decimals of the token.
  * @member {Number} decimals

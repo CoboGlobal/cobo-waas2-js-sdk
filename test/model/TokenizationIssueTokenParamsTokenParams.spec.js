@@ -88,6 +88,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property underlying_token (base name: "underlying_token")', function() {
+      // uncomment below and update the code to test the property underlying_token
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

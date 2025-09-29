@@ -146,6 +146,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listTokenizationPermissions', function() {
+      it('should call listTokenizationPermissions successfully', function() {
+        //uncomment below and update the code to test listTokenizationPermissions
+        //instance.listTokenizationPermissions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listTokenizationSupportedChains', function() {
       it('should call listTokenizationSupportedChains successfully', function() {
         //uncomment below and update the code to test listTokenizationSupportedChains
@@ -220,6 +230,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call updateTokenizationBlocklistAddresses successfully', function() {
         //uncomment below and update the code to test updateTokenizationBlocklistAddresses
         //instance.updateTokenizationBlocklistAddresses().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('updateTokenizationPermissions', function() {
+      it('should call updateTokenizationPermissions successfully', function() {
+        //uncomment below and update the code to test updateTokenizationPermissions
+        //instance.updateTokenizationPermissions().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

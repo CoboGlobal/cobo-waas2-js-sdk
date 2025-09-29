@@ -46,6 +46,13 @@ export default class TokenizationTokenPermissionType {
 
     
         /**
+         * value: "WrapTokens"
+         * @const
+         */
+        "WrapTokens" = "WrapTokens";
+
+    
+        /**
          * value: "RecoverTokens"
          * @const
          */

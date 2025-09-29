@@ -85,6 +85,9 @@ class SupportedToken {
             if (data.hasOwnProperty('token_icon_url')) {
                 obj['token_icon_url'] = ApiClient.convertToType(data['token_icon_url'], 'String');
             }
+            if (data.hasOwnProperty('can_off_ramp')) {
+                obj['can_off_ramp'] = ApiClient.convertToType(data['can_off_ramp'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -195,6 +198,12 @@ SupportedToken.prototype['chain_icon_url'] = undefined;
  * @member {String} token_icon_url
  */
 SupportedToken.prototype['token_icon_url'] = undefined;
+
+/**
+ * Whether the token can by off ramp settlement
+ * @member {Boolean} can_off_ramp
+ */
+SupportedToken.prototype['can_off_ramp'] = undefined;
 
 
 

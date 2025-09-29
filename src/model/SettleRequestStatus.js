@@ -53,6 +53,13 @@ export default class SettleRequestStatus {
 
     
         /**
+         * value: "Canceled"
+         * @const
+         */
+        "Canceled" = "Canceled";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

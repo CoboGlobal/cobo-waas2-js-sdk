@@ -15,7 +15,11 @@ import DispositionQueryResponse from '../model/DispositionQueryResponse';
 import DispositionResponse from '../model/DispositionResponse';
 import ErrorResponse from '../model/ErrorResponse';
 import IsolateDisposition from '../model/IsolateDisposition';
+import KytScreeningsTransaction from '../model/KytScreeningsTransaction';
 import RefundDisposition from '../model/RefundDisposition';
+import SubmitKytResponse from '../model/SubmitKytResponse';
+import SubmitKytScreeningsDecisionsBody from '../model/SubmitKytScreeningsDecisionsBody';
+import SubmitKytScreeningsReviewBody from '../model/SubmitKytScreeningsReviewBody';
 import UnfreezeDisposition from '../model/UnfreezeDisposition';
 
 /**
@@ -38,9 +42,9 @@ export default class ComplianceApi {
 
 
     /**
-     * Get disposition status
+     * Query disposition status
      * This operation retrieves the current status of a disposition request for a specific transaction.  You can use this endpoint to check the status of any disposition operation (Refund, Isolate, or Unfreeze)  that has been initiated for a transaction. The response includes the disposition type, current status,  and the disposition transaction ID if applicable.  <Note>Use this endpoint to monitor the progress of disposition operations and verify their completion.</Note> 
-     * @param {String} transaction_id The UUID of the transaction to query for disposition status.
+     * @param {String} transaction_id The unique identifier (UUID) of the transaction to retrieve KYT screening status information for.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DispositionQueryResponse} and HTTP response
      */
     getDispositionStatusWithHttpInfo(transaction_id) {
@@ -75,9 +79,9 @@ export default class ComplianceApi {
     }
 
     /**
-     * Get disposition status
+     * Query disposition status
      * This operation retrieves the current status of a disposition request for a specific transaction.  You can use this endpoint to check the status of any disposition operation (Refund, Isolate, or Unfreeze)  that has been initiated for a transaction. The response includes the disposition type, current status,  and the disposition transaction ID if applicable.  <Note>Use this endpoint to monitor the progress of disposition operations and verify their completion.</Note> 
-     * @param {String} transaction_id The UUID of the transaction to query for disposition status.
+     * @param {String} transaction_id The unique identifier (UUID) of the transaction to retrieve KYT screening status information for.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DispositionQueryResponse}
      */
     getDispositionStatus(transaction_id) {
@@ -89,10 +93,61 @@ export default class ComplianceApi {
 
 
     /**
-     * Isolate funds
-     * This operation creates a request to isolate funds for a specific transaction. The funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The isolation will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.</Note> 
+     * Retrieve KYT screening status
+     * This operation retrieves the current KYT (Know Your Transaction) screening status and compliance information for a specific transaction.  Use this endpoint to monitor the real-time screening status, review decisions, and funds disposition status for transactions that have been processed through the KYT compliance system. The response includes detailed screening results, risk assessment outcomes, and current funds status.  <Note>This endpoint provides comprehensive compliance monitoring capabilities to help maintain AML (Anti-Money Laundering) regulatory compliance and audit trail requirements.</Note> 
+     * @param {String} transaction_id The unique identifier (UUID) of the transaction to retrieve KYT screening status information for.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KytScreeningsTransaction} and HTTP response
+     */
+    getKytScreeningStatusWithHttpInfo(transaction_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling getKytScreeningStatus");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'transaction_id': transaction_id
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = KytScreeningsTransaction;
+      return this.apiClient.callApi(
+        '/compliance/kyt/screenings/status', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve KYT screening status
+     * This operation retrieves the current KYT (Know Your Transaction) screening status and compliance information for a specific transaction.  Use this endpoint to monitor the real-time screening status, review decisions, and funds disposition status for transactions that have been processed through the KYT compliance system. The response includes detailed screening results, risk assessment outcomes, and current funds status.  <Note>This endpoint provides comprehensive compliance monitoring capabilities to help maintain AML (Anti-Money Laundering) regulatory compliance and audit trail requirements.</Note> 
+     * @param {String} transaction_id The unique identifier (UUID) of the transaction to retrieve KYT screening status information for.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KytScreeningsTransaction}
+     */
+    getKytScreeningStatus(transaction_id) {
+      return this.getKytScreeningStatusWithHttpInfo(transaction_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create fund isolate disposition
+     * This operation creates an isolate disposition request for a specific transaction.  The isolated funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The isolate process will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/IsolateDisposition} [IsolateDisposition] The request body to isolate funds.
+     * @param {module:model/IsolateDisposition} [IsolateDisposition] The request body to create an isolate disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DispositionResponse} and HTTP response
      */
     isolateFundsWithHttpInfo(opts) {
@@ -123,10 +178,10 @@ export default class ComplianceApi {
     }
 
     /**
-     * Isolate funds
-     * This operation creates a request to isolate funds for a specific transaction. The funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The isolation will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.</Note> 
+     * Create fund isolate disposition
+     * This operation creates an isolate disposition request for a specific transaction.  The isolated funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The isolate process will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/IsolateDisposition} opts.IsolateDisposition The request body to isolate funds.
+     * @param {module:model/IsolateDisposition} opts.IsolateDisposition The request body to create an isolate disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DispositionResponse}
      */
     isolateFunds(opts) {
@@ -138,10 +193,10 @@ export default class ComplianceApi {
 
 
     /**
-     * Refund funds
-     * This operation creates a request to refund funds for a specific transaction. The funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The refund will initiate a withdrawal transaction from the compliance-managed address to the specified destination.</Note> 
+     * Create fund refund disposition
+     * This operation creates a refund disposition request for a specific transaction.  The refunded funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The refund process will initiate a withdrawal transaction from the compliance-managed address to the specified destination.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/RefundDisposition} [RefundDisposition] The request body to refund funds.
+     * @param {module:model/RefundDisposition} [RefundDisposition] The request body to create a refund disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DispositionResponse} and HTTP response
      */
     refundFundsWithHttpInfo(opts) {
@@ -172,10 +227,10 @@ export default class ComplianceApi {
     }
 
     /**
-     * Refund funds
-     * This operation creates a request to refund funds for a specific transaction. The funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The refund will initiate a withdrawal transaction from the compliance-managed address to the specified destination.</Note> 
+     * Create fund refund disposition
+     * This operation creates a refund disposition request for a specific transaction.  The refunded funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  <Note>The refund process will initiate a withdrawal transaction from the compliance-managed address to the specified destination.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/RefundDisposition} opts.RefundDisposition The request body to refund funds.
+     * @param {module:model/RefundDisposition} opts.RefundDisposition The request body to create a refund disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DispositionResponse}
      */
     refundFunds(opts) {
@@ -187,10 +242,108 @@ export default class ComplianceApi {
 
 
     /**
-     * Unfreeze frozen funds
-     * This operation creates a request to unfreeze funds for a previously frozen transaction. It releases the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds will be available for normal operations.  <Note>The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.</Note> 
+     * Submit KYT manual review result
+     * This operation submits manual review results for KYT (Know Your Transaction) screening cases that require human intervention and analysis.  Use this endpoint when transactions flagged for manual review have been analyzed by compliance officers and require submission of review outcomes with detailed comments and justifications. This endpoint is specifically designed for submitting comprehensive manual review findings rather than automated screening decisions.  <Note>Submitting manual review results will update the KYT screening status and initiate appropriate compliance workflow actions based on the review outcome.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/UnfreezeDisposition} [UnfreezeDisposition] The request body to unfreeze funds.
+     * @param {module:model/SubmitKytScreeningsReviewBody} [SubmitKytScreeningsReviewBody] The request body to submit manual review results for KYT screening cases requiring human analysis
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SubmitKytResponse} and HTTP response
+     */
+    submitKytManualReviewWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['SubmitKytScreeningsReviewBody'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = SubmitKytResponse;
+      return this.apiClient.callApi(
+        '/compliance/kyt/screenings/manual_review', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Submit KYT manual review result
+     * This operation submits manual review results for KYT (Know Your Transaction) screening cases that require human intervention and analysis.  Use this endpoint when transactions flagged for manual review have been analyzed by compliance officers and require submission of review outcomes with detailed comments and justifications. This endpoint is specifically designed for submitting comprehensive manual review findings rather than automated screening decisions.  <Note>Submitting manual review results will update the KYT screening status and initiate appropriate compliance workflow actions based on the review outcome.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/SubmitKytScreeningsReviewBody} opts.SubmitKytScreeningsReviewBody The request body to submit manual review results for KYT screening cases requiring human analysis
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SubmitKytResponse}
+     */
+    submitKytManualReview(opts) {
+      return this.submitKytManualReviewWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Submit KYT screening decision
+     * This operation submits the final KYT (Know Your Transaction) screening decision for a specific transaction based on external compliance review results.  Use this endpoint to provide screening decisions (Approve, ApproveWithAlert, Reject, or ManualReview) after completing the external KYT screening process. The submitted decision will be recorded for compliance audit purposes and regulatory reporting requirements.  <Note>Submitting a screening decision will update the transaction's KYT status and may automatically trigger downstream compliance workflows or notifications based on the decision type.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/SubmitKytScreeningsDecisionsBody} [SubmitKytScreeningsDecisionsBody] The request body to submit a KYT screening decision result based on external compliance review
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SubmitKytResponse} and HTTP response
+     */
+    submitKytScreeningDecisionsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['SubmitKytScreeningsDecisionsBody'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = SubmitKytResponse;
+      return this.apiClient.callApi(
+        '/compliance/kyt/screenings/decisions', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Submit KYT screening decision
+     * This operation submits the final KYT (Know Your Transaction) screening decision for a specific transaction based on external compliance review results.  Use this endpoint to provide screening decisions (Approve, ApproveWithAlert, Reject, or ManualReview) after completing the external KYT screening process. The submitted decision will be recorded for compliance audit purposes and regulatory reporting requirements.  <Note>Submitting a screening decision will update the transaction's KYT status and may automatically trigger downstream compliance workflows or notifications based on the decision type.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/SubmitKytScreeningsDecisionsBody} opts.SubmitKytScreeningsDecisionsBody The request body to submit a KYT screening decision result based on external compliance review
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SubmitKytResponse}
+     */
+    submitKytScreeningDecisions(opts) {
+      return this.submitKytScreeningDecisionsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Unfreeze frozen funds
+     * This operation creates an unfreeze request for a previously frozen transaction.  The unfreeze operation will release the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds  will be available for normal operations.  <Note>The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/UnfreezeDisposition} [UnfreezeDisposition] The request body to create an unfreeze disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DispositionResponse} and HTTP response
      */
     unfreezeFundsWithHttpInfo(opts) {
@@ -222,9 +375,9 @@ export default class ComplianceApi {
 
     /**
      * Unfreeze frozen funds
-     * This operation creates a request to unfreeze funds for a previously frozen transaction. It releases the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds will be available for normal operations.  <Note>The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.</Note> 
+     * This operation creates an unfreeze request for a previously frozen transaction.  The unfreeze operation will release the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds  will be available for normal operations.  <Note>The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.</Note> 
      * @param {Object} opts Optional parameters
-     * @param {module:model/UnfreezeDisposition} opts.UnfreezeDisposition The request body to unfreeze funds.
+     * @param {module:model/UnfreezeDisposition} opts.UnfreezeDisposition The request body to create an unfreeze disposition
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DispositionResponse}
      */
     unfreezeFunds(opts) {

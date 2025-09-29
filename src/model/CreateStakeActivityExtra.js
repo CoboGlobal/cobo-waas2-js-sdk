@@ -201,6 +201,12 @@ CreateStakeActivityExtra.prototype['pool_type'] = undefined;
 CreateStakeActivityExtra.prototype['finality_provider_public_key'] = undefined;
 
 /**
+ * The public keys of the finality providers(each key for a BSN chain).
+ * @member {Array.<String>} finality_provider_public_keys
+ */
+CreateStakeActivityExtra.prototype['finality_provider_public_keys'] = undefined;
+
+/**
  * The number of blocks that need to be processed before the locked tokens are unlocked and become accessible.
  * @member {Number} stake_block_time
  */
@@ -216,6 +222,12 @@ CreateStakeActivityExtra.prototype['auto_broadcast'] = undefined;
  * @member {module:model/StakingSource} babylon_address
  */
 CreateStakeActivityExtra.prototype['babylon_address'] = undefined;
+
+/**
+ * The original staking ID to expand. Only set this when you want to expand existing staking.
+ * @member {String} original_staking_id
+ */
+CreateStakeActivityExtra.prototype['original_staking_id'] = undefined;
 
 /**
  * The name of the provider.

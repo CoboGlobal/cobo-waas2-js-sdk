@@ -106,6 +106,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property can_off_ramp (base name: "can_off_ramp")', function() {
+      // uncomment below and update the code to test the property can_off_ramp
+      //var instance = new CoboWaas2.SupportedToken();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

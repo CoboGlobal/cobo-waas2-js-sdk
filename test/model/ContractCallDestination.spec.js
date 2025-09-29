@@ -82,6 +82,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property address_lookup_table_accounts (base name: "address_lookup_table_accounts")', function() {
+      // uncomment below and update the code to test the property address_lookup_table_accounts
+      //var instance = new CoboWaas2.ContractCallDestination();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property contract_param (base name: "contract_param")', function() {
+      // uncomment below and update the code to test the property contract_param
+      //var instance = new CoboWaas2.ContractCallDestination();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

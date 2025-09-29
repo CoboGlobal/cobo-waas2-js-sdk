@@ -32,11 +32,10 @@ class Stakings {
      * @param token_id {String} The token ID.
      * @param created_timestamp {Number} The time when the staking position was created.
      * @param updated_timestamp {Number} The time when the staking position was last updated.
-     * @param validator_info {module:model/BabylonValidator} 
      */
-    constructor(id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp, validator_info) { 
+    constructor(id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp) { 
         
-        Stakings.initialize(this, id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp, validator_info);
+        Stakings.initialize(this, id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp);
     }
 
     /**
@@ -44,7 +43,7 @@ class Stakings {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp, validator_info) { 
+    static initialize(obj, id, wallet_id, address, amounts, pool_id, token_id, created_timestamp, updated_timestamp) { 
         obj['id'] = id;
         obj['wallet_id'] = wallet_id;
         obj['address'] = address;
@@ -53,7 +52,6 @@ class Stakings {
         obj['token_id'] = token_id;
         obj['created_timestamp'] = created_timestamp;
         obj['updated_timestamp'] = updated_timestamp;
-        obj['validator_info'] = validator_info;
     }
 
     /**
@@ -96,6 +94,9 @@ class Stakings {
             }
             if (data.hasOwnProperty('validator_info')) {
                 obj['validator_info'] = BabylonValidator.constructFromObject(data['validator_info']);
+            }
+            if (data.hasOwnProperty('validators')) {
+                obj['validators'] = ApiClient.convertToType(data['validators'], [BabylonValidator]);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = StakingsExtra.constructFromObject(data['extra']);
@@ -148,6 +149,16 @@ class Stakings {
             BabylonValidator.validateJSON(data['validator_info']);
           }
         }
+        if (data['validators']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['validators'])) {
+                throw new Error("Expected the field `validators` to be an array in the JSON data but got " + data['validators']);
+            }
+            // validate the optional field `validators` (array)
+            for (const item of data['validators']) {
+                BabylonValidator.validateJSON(item);
+            };
+        }
         // validate the optional field `extra`
         if (data['extra']) { // data not null
           if (!!StakingsExtra.validateJSON) {
@@ -161,7 +172,7 @@ class Stakings {
 
 }
 
-Stakings.RequiredProperties = ["id", "wallet_id", "address", "amounts", "pool_id", "token_id", "created_timestamp", "updated_timestamp", "validator_info"];
+Stakings.RequiredProperties = ["id", "wallet_id", "address", "amounts", "pool_id", "token_id", "created_timestamp", "updated_timestamp"];
 
 /**
  * The ID of the staking position.
@@ -220,6 +231,11 @@ Stakings.prototype['updated_timestamp'] = undefined;
  * @member {module:model/BabylonValidator} validator_info
  */
 Stakings.prototype['validator_info'] = undefined;
+
+/**
+ * @member {Array.<module:model/BabylonValidator>} validators
+ */
+Stakings.prototype['validators'] = undefined;
 
 /**
  * @member {module:model/StakingsExtra} extra

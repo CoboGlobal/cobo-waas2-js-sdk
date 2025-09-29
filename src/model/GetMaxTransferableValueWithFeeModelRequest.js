@@ -124,7 +124,7 @@ GetMaxTransferableValueWithFeeModelRequest.prototype['fee'] = undefined;
 GetMaxTransferableValueWithFeeModelRequest.prototype['to_address'] = undefined;
 
 /**
- * The sender's address. This property is required when using an EVM address in an MPC Wallet.
+ * The sender's address. For EVM addresses in MPC Wallets, this parameter is required.
  * @member {String} from_address
  */
 GetMaxTransferableValueWithFeeModelRequest.prototype['from_address'] = undefined;

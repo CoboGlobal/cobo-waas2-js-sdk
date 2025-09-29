@@ -46,6 +46,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createBankAccount', function() {
+      it('should call createBankAccount successfully', function() {
+        //uncomment below and update the code to test createBankAccount
+        //instance.createBankAccount().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createCryptoAddress', function() {
       it('should call createCryptoAddress successfully', function() {
         //uncomment below and update the code to test createCryptoAddress
@@ -100,6 +110,26 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call createSettlementRequest successfully', function() {
         //uncomment below and update the code to test createSettlementRequest
         //instance.createSettlementRequest().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('createSubscriptionAction', function() {
+      it('should call createSubscriptionAction successfully', function() {
+        //uncomment below and update the code to test createSubscriptionAction
+        //instance.createSubscriptionAction().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('createSubscriptionPlan', function() {
+      it('should call createSubscriptionPlan successfully', function() {
+        //uncomment below and update the code to test createSubscriptionPlan
+        //instance.createSubscriptionPlan().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -190,6 +220,26 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call getSettlementInfoByIds successfully', function() {
         //uncomment below and update the code to test getSettlementInfoByIds
         //instance.getSettlementInfoByIds().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getSubscriptionById', function() {
+      it('should call getSubscriptionById successfully', function() {
+        //uncomment below and update the code to test getSubscriptionById
+        //instance.getSubscriptionById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getSubscriptionPlanById', function() {
+      it('should call getSubscriptionPlanById successfully', function() {
+        //uncomment below and update the code to test getSubscriptionPlanById
+        //instance.getSubscriptionPlanById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -306,10 +356,70 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listSubscriptionActions', function() {
+      it('should call listSubscriptionActions successfully', function() {
+        //uncomment below and update the code to test listSubscriptionActions
+        //instance.listSubscriptionActions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listSubscriptionPlans', function() {
+      it('should call listSubscriptionPlans successfully', function() {
+        //uncomment below and update the code to test listSubscriptionPlans
+        //instance.listSubscriptionPlans().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listSubscriptions', function() {
+      it('should call listSubscriptions successfully', function() {
+        //uncomment below and update the code to test listSubscriptions
+        //instance.listSubscriptions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listTopUpPayerAccounts', function() {
+      it('should call listTopUpPayerAccounts successfully', function() {
+        //uncomment below and update the code to test listTopUpPayerAccounts
+        //instance.listTopUpPayerAccounts().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listTopUpPayers', function() {
       it('should call listTopUpPayers successfully', function() {
         //uncomment below and update the code to test listTopUpPayers
         //instance.listTopUpPayers().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('paymentEstimateFee', function() {
+      it('should call paymentEstimateFee successfully', function() {
+        //uncomment below and update the code to test paymentEstimateFee
+        //instance.paymentEstimateFee().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('updateBankAccountById', function() {
+      it('should call updateBankAccountById successfully', function() {
+        //uncomment below and update the code to test updateBankAccountById
+        //instance.updateBankAccountById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

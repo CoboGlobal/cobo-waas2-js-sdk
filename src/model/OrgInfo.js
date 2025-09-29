@@ -99,7 +99,7 @@ OrgInfo.RequiredProperties = ["org_id"];
 OrgInfo.prototype['org_id'] = undefined;
 
 /**
- * An internal business ID assigned by Cobo. Used mainly by Cobo's customer support to locate the organization.
+ * The organization biz ID.
  * @member {Number} biz_org_id
  */
 OrgInfo.prototype['biz_org_id'] = undefined;

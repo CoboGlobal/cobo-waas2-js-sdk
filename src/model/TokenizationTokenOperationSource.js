@@ -170,7 +170,7 @@ TokenizationTokenOperationSource.prototype['source_type'] = undefined;
 TokenizationTokenOperationSource.prototype['wallet_id'] = undefined;
 
 /**
- * The wallet address used to interact with the token contract.
+ * The wallet address to interact with the token contract from.
  * @member {String} address
  */
 TokenizationTokenOperationSource.prototype['address'] = undefined;

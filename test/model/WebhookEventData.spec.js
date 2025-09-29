@@ -502,6 +502,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property commission_fee (base name: "commission_fee")', function() {
+      // uncomment below and update the code to test the property commission_fee
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property settlement_request_id (base name: "settlement_request_id")', function() {
       // uncomment below and update the code to test the property settlement_request_id
       //var instance = new CoboWaas2.WebhookEventData();
@@ -532,6 +538,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property received_amount_fiat (base name: "received_amount_fiat")', function() {
+      // uncomment below and update the code to test the property received_amount_fiat
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_account (base name: "bank_account")', function() {
+      // uncomment below and update the code to test the property bank_account
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property payer_id (base name: "payer_id")', function() {
       // uncomment below and update the code to test the property payer_id
       //var instance = new CoboWaas2.WebhookEventData();
@@ -540,6 +558,12 @@
 
     it('should have the property custom_payer_id (base name: "custom_payer_id")', function() {
       // uncomment below and update the code to test the property custom_payer_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subscription_id (base name: "subscription_id")', function() {
+      // uncomment below and update the code to test the property subscription_id
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });
@@ -582,6 +606,24 @@
 
     it('should have the property disposition_amount (base name: "disposition_amount")', function() {
       // uncomment below and update the code to test the property disposition_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transaction_type (base name: "transaction_type")', function() {
+      // uncomment below and update the code to test the property transaction_type
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property review_status (base name: "review_status")', function() {
+      // uncomment below and update the code to test the property review_status
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property funds_status (base name: "funds_status")', function() {
+      // uncomment below and update the code to test the property funds_status
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });

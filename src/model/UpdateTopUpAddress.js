@@ -18,15 +18,14 @@ import ApiClient from '../ApiClient';
 class UpdateTopUpAddress {
     /**
      * Constructs a new <code>UpdateTopUpAddress</code>.
-     * The request body to update top-up address.
+     * The request body to update top up address.
      * @alias module:model/UpdateTopUpAddress
-     * @param merchant_id {String} The merchant ID.
-     * @param token_id {String} The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param custom_payer_id {String} A unique identifier assigned by the developer to track and identify individual payers in their system.
+     * @param token_id {String} The token ID, which identifies the cryptocurrency. Supported values:    - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * @param custom_payer_id {String} Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
      */
-    constructor(merchant_id, token_id, custom_payer_id) { 
+    constructor(token_id, custom_payer_id) { 
         
-        UpdateTopUpAddress.initialize(this, merchant_id, token_id, custom_payer_id);
+        UpdateTopUpAddress.initialize(this, token_id, custom_payer_id);
     }
 
     /**
@@ -34,8 +33,7 @@ class UpdateTopUpAddress {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, merchant_id, token_id, custom_payer_id) { 
-        obj['merchant_id'] = merchant_id;
+    static initialize(obj, token_id, custom_payer_id) { 
         obj['token_id'] = token_id;
         obj['custom_payer_id'] = custom_payer_id;
     }
@@ -95,7 +93,7 @@ class UpdateTopUpAddress {
 
 }
 
-UpdateTopUpAddress.RequiredProperties = ["merchant_id", "token_id", "custom_payer_id"];
+UpdateTopUpAddress.RequiredProperties = ["token_id", "custom_payer_id"];
 
 /**
  * The merchant ID.
@@ -104,13 +102,13 @@ UpdateTopUpAddress.RequiredProperties = ["merchant_id", "token_id", "custom_paye
 UpdateTopUpAddress.prototype['merchant_id'] = undefined;
 
 /**
- * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+ * The token ID, which identifies the cryptocurrency. Supported values:    - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
  * @member {String} token_id
  */
 UpdateTopUpAddress.prototype['token_id'] = undefined;
 
 /**
- * A unique identifier assigned by the developer to track and identify individual payers in their system.
+ * Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
  * @member {String} custom_payer_id
  */
 UpdateTopUpAddress.prototype['custom_payer_id'] = undefined;

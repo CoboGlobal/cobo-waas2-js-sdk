@@ -20,7 +20,7 @@ class PaymentWalletBalance {
      * Constructs a new <code>PaymentWalletBalance</code>.
      * @alias module:model/PaymentWalletBalance
      * @param wallet_id {String} The unique identifier of the wallet.
-     * @param token_id {String} The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+     * @param token_id {String} The ID of the cryptocurrency.
      */
     constructor(wallet_id, token_id) { 
         
@@ -122,31 +122,31 @@ PaymentWalletBalance.RequiredProperties = ["wallet_id", "token_id"];
 PaymentWalletBalance.prototype['wallet_id'] = undefined;
 
 /**
- * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+ * The ID of the cryptocurrency.
  * @member {String} token_id
  */
 PaymentWalletBalance.prototype['token_id'] = undefined;
 
 /**
- * The total amount of the token on the sweep-to address of the payment wallet.
+ * The payment wallet swept balance.
  * @member {String} swept_balance
  */
 PaymentWalletBalance.prototype['swept_balance'] = undefined;
 
 /**
- * The balance available for settlement or refund, in the specified cryptocurrency.
+ * The payment wallet available balance.
  * @member {String} available_balance
  */
 PaymentWalletBalance.prototype['available_balance'] = undefined;
 
 /**
- * The total balance of the token for the payment wallet.
+ * The payment wallet total balance.
  * @member {String} total_balance
  */
 PaymentWalletBalance.prototype['total_balance'] = undefined;
 
 /**
- * The total amount of funds that exceed the sweep threshold across all receiving addresses in the payment wallet. When the balance on a receiving address exceeds the sweep threshold, those funds become eligible for automatic sweeping and are included in this balance.
+ * The payment wallet above sweep threshold balance.
  * @member {String} above_sweep_threshold_balance
  */
 PaymentWalletBalance.prototype['above_sweep_threshold_balance'] = undefined;

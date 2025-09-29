@@ -19,7 +19,7 @@ class TokenizationAllowlistAddressNote {
     /**
      * Constructs a new <code>TokenizationAllowlistAddressNote</code>.
      * @alias module:model/TokenizationAllowlistAddressNote
-     * @param address {String} The address on the allowlist.
+     * @param address {String} The allowed address.
      */
     constructor(address) { 
         
@@ -89,19 +89,19 @@ class TokenizationAllowlistAddressNote {
 TokenizationAllowlistAddressNote.RequiredProperties = ["address"];
 
 /**
- * The address on the allowlist.
+ * The allowed address.
  * @member {String} address
  */
 TokenizationAllowlistAddressNote.prototype['address'] = undefined;
 
 /**
- * The note for the address on the allowlist.
+ * The note for the allowed address.
  * @member {String} note
  */
 TokenizationAllowlistAddressNote.prototype['note'] = undefined;
 
 /**
- * The time when the address was added to the allowlist, in Unix timestamp format, measured in milliseconds.
+ * The time when the allowlist address was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_timestamp
  */
 TokenizationAllowlistAddressNote.prototype['created_timestamp'] = undefined;

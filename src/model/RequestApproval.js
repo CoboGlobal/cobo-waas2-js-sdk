@@ -19,13 +19,13 @@ import AppWorkflowField from './AppWorkflowField';
 class RequestApproval {
     /**
      * Constructs a new <code>RequestApproval</code>.
-     * The information about a approval request.
+     * The information about a request that approve an operation.
      * @alias module:model/RequestApproval
-     * @param operation_id {String} The unique ID of the approval workflow.
-     * @param request_id {String} An identifier provided by you to track this request.
-     * @param initiator_email {String} The email of the user who requested the approval.
+     * @param operation_id {String} The operation id of workflow approval request.
+     * @param request_id {String} The request id of workflow approval request.
+     * @param initiator_email {String} The initiator email of workflow approval request.
      * @param fields {Array.<module:model/AppWorkflowField>} 
-     * @param guard_template {String} The template of a Cobo Guard message. Please connect [help@cobo.com](mailto:help@cobo.com) to get the template content.
+     * @param guard_template {String} The guard template content of workflow approval request, need to connect cobo.
      */
     constructor(operation_id, request_id, initiator_email, fields, guard_template) { 
         
@@ -123,19 +123,19 @@ class RequestApproval {
 RequestApproval.RequiredProperties = ["operation_id", "request_id", "initiator_email", "fields", "guard_template"];
 
 /**
- * The unique ID of the approval workflow.
+ * The operation id of workflow approval request.
  * @member {String} operation_id
  */
 RequestApproval.prototype['operation_id'] = undefined;
 
 /**
- * An identifier provided by you to track this request.
+ * The request id of workflow approval request.
  * @member {String} request_id
  */
 RequestApproval.prototype['request_id'] = undefined;
 
 /**
- * The email of the user who requested the approval.
+ * The initiator email of workflow approval request.
  * @member {String} initiator_email
  */
 RequestApproval.prototype['initiator_email'] = undefined;
@@ -146,7 +146,7 @@ RequestApproval.prototype['initiator_email'] = undefined;
 RequestApproval.prototype['fields'] = undefined;
 
 /**
- * The template of a Cobo Guard message. Please connect [help@cobo.com](mailto:help@cobo.com) to get the template content.
+ * The guard template content of workflow approval request, need to connect cobo.
  * @member {String} guard_template
  */
 RequestApproval.prototype['guard_template'] = undefined;

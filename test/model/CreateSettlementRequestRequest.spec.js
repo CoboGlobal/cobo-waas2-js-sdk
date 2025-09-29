@@ -82,6 +82,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property bank_account_id (base name: "bank_account_id")', function() {
+      // uncomment below and update the code to test the property bank_account_id
+      //var instance = new CoboWaas2.CreateSettlementRequestRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property currency (base name: "currency")', function() {
+      // uncomment below and update the code to test the property currency
+      //var instance = new CoboWaas2.CreateSettlementRequestRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

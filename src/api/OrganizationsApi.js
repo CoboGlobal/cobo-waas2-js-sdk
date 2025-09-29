@@ -35,7 +35,7 @@ export default class OrganizationsApi {
 
     /**
      * Get organization information
-     * This operation retrieves the detailed information about the organization associated with the current API key. 
+     * This operation retrieves the detailed information about the organization linked with current APIKey. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrgInfo} and HTTP response
      */
     getOrgInfoWithHttpInfo() {
@@ -66,7 +66,7 @@ export default class OrganizationsApi {
 
     /**
      * Get organization information
-     * This operation retrieves the detailed information about the organization associated with the current API key. 
+     * This operation retrieves the detailed information about the organization linked with current APIKey. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrgInfo}
      */
     getOrgInfo() {

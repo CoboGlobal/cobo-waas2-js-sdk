@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**org_id** | **String** | Organization ID. | 
-**entry_id** | **String** | Address Book entry ID. | 
-**address** | **String** | Wallet address. | 
-**memo** | **String** | Optional memo or tag required by some chains. | [optional] 
-**wallet_name** | **String** | Wallet name. | [optional] 
+**org_id** | **String** | The organization ID. | 
+**entry_id** | **String** | The entry ID. | 
+**address** | **String** | The wallet address. | 
+**memo** | **String** | The memo. | [optional] 
+**wallet_name** | **String** | The wallet name. | [optional] 
 **wallet_type** | [**WalletType**](WalletType.md) |  | [optional] 
 **wallet_subtype** | [**WalletSubtype**](WalletSubtype.md) |  | [optional] 
-**label** | **String** | A user-defined label for the address. | 
+**label** | **String** | The address label. | 
 **chain_ids** | **[String]** | A list of chain IDs. | [optional] 
-**email** | **String** | Email of the address owner. | [optional] 
+**email** | **String** | The email of the address owner. | [optional] 
 **encoding** | [**AddressEncoding**](AddressEncoding.md) |  | [optional] 
 
 

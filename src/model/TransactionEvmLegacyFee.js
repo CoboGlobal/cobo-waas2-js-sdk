@@ -142,13 +142,13 @@ TransactionEvmLegacyFee.prototype['gas_limit'] = undefined;
 TransactionEvmLegacyFee.prototype['fee_type'] = undefined;
 
 /**
- * The token used to pay the transaction fee.
+ * The token ID of the transaction fee.
  * @member {String} token_id
  */
 TransactionEvmLegacyFee.prototype['token_id'] = undefined;
 
 /**
- * The actually charged transaction fee.
+ * The transaction fee.
  * @member {String} fee_used
  */
 TransactionEvmLegacyFee.prototype['fee_used'] = undefined;

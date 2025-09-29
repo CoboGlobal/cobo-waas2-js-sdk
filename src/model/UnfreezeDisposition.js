@@ -18,9 +18,9 @@ import ApiClient from '../ApiClient';
 class UnfreezeDisposition {
     /**
      * Constructs a new <code>UnfreezeDisposition</code>.
-     * The information about a request to unfreeze funds.
+     * The information about a fund unfreeze disposition request.
      * @alias module:model/UnfreezeDisposition
-     * @param transaction_id {String} The UUID of the transaction whose funds are to be unfrozen.
+     * @param transaction_id {String} The UUID of the transaction to be unfrozen. This identifies the frozen transaction that needs to be released.
      */
     constructor(transaction_id) { 
         
@@ -80,7 +80,7 @@ class UnfreezeDisposition {
 UnfreezeDisposition.RequiredProperties = ["transaction_id"];
 
 /**
- * The UUID of the transaction whose funds are to be unfrozen.
+ * The UUID of the transaction to be unfrozen. This identifies the frozen transaction that needs to be released.
  * @member {String} transaction_id
  */
 UnfreezeDisposition.prototype['transaction_id'] = undefined;

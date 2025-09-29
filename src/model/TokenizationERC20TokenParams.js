@@ -10,7 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TokenizationTokenPermissionParams from './TokenizationTokenPermissionParams';
+import TokenizationERC20TokenPermissionParams from './TokenizationERC20TokenPermissionParams';
 import TokenizationTokenStandard from './TokenizationTokenStandard';
 
 /**
@@ -70,7 +70,7 @@ class TokenizationERC20TokenParams {
                 obj['token_access_activated'] = ApiClient.convertToType(data['token_access_activated'], 'Boolean');
             }
             if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = TokenizationTokenPermissionParams.constructFromObject(data['permissions']);
+                obj['permissions'] = TokenizationERC20TokenPermissionParams.constructFromObject(data['permissions']);
             }
         }
         return obj;
@@ -98,8 +98,8 @@ class TokenizationERC20TokenParams {
         }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
-          if (!!TokenizationTokenPermissionParams.validateJSON) {
-            TokenizationTokenPermissionParams.validateJSON(data['permissions']);
+          if (!!TokenizationERC20TokenPermissionParams.validateJSON) {
+            TokenizationERC20TokenPermissionParams.validateJSON(data['permissions']);
           }
         }
 
@@ -142,7 +142,7 @@ TokenizationERC20TokenParams.prototype['decimals'] = undefined;
 TokenizationERC20TokenParams.prototype['token_access_activated'] = false;
 
 /**
- * @member {module:model/TokenizationTokenPermissionParams} permissions
+ * @member {module:model/TokenizationERC20TokenPermissionParams} permissions
  */
 TokenizationERC20TokenParams.prototype['permissions'] = undefined;
 

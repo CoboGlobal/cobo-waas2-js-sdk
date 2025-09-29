@@ -53,6 +53,13 @@ export default class TransactionDestinationType {
 
     
         /**
+         * value: "STELLAR_Contract"
+         * @const
+         */
+        "STELLAR_Contract" = "STELLAR_Contract";
+
+    
+        /**
          * value: "COSMOS_Contract"
          * @const
          */

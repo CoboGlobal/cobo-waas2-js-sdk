@@ -32,6 +32,13 @@ export default class AcquiringType {
 
     
         /**
+         * value: "Subscription"
+         * @const
+         */
+        "Subscription" = "Subscription";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

@@ -39,10 +39,10 @@ export default class AutoSweepApi {
 
 
     /**
-     * Create auto-sweep task
-     * This operation creates an auto-sweep task for the specified wallet and token. The task triggers transactions to sweep the full balance of the specified token to the configured sweep-to address. 
+     * create auto sweep task
+     * This operation create a new auto sweep task. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateAutoSweepTask} [CreateAutoSweepTask] The request body to create an auto-sweep task.
+     * @param {module:model/CreateAutoSweepTask} [CreateAutoSweepTask] The request body to generates a new sweep to addresses within a specified wallet.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AutoSweepTask} and HTTP response
      */
     createAutoSweepTaskWithHttpInfo(opts) {
@@ -73,10 +73,10 @@ export default class AutoSweepApi {
     }
 
     /**
-     * Create auto-sweep task
-     * This operation creates an auto-sweep task for the specified wallet and token. The task triggers transactions to sweep the full balance of the specified token to the configured sweep-to address. 
+     * create auto sweep task
+     * This operation create a new auto sweep task. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateAutoSweepTask} opts.CreateAutoSweepTask The request body to create an auto-sweep task.
+     * @param {module:model/CreateAutoSweepTask} opts.CreateAutoSweepTask The request body to generates a new sweep to addresses within a specified wallet.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AutoSweepTask}
      */
     createAutoSweepTask(opts) {
@@ -88,10 +88,10 @@ export default class AutoSweepApi {
 
 
     /**
-     * create sweep-to address
-     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  <Note>Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.</Note> 
+     * create wallet sweep to addresses
+     * This operation create a new sweep to address for the wallet. The old sweep to address will become invalid. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateSweepToAddress} [CreateSweepToAddress] The request body to generates a new sweep-to address within a specified wallet.
+     * @param {module:model/CreateSweepToAddress} [CreateSweepToAddress] The request body to generates a new sweep to addresses within a specified wallet.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SweepToAddress} and HTTP response
      */
     createWalletSweepToAddressesWithHttpInfo(opts) {
@@ -122,10 +122,10 @@ export default class AutoSweepApi {
     }
 
     /**
-     * create sweep-to address
-     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  <Note>Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.</Note> 
+     * create wallet sweep to addresses
+     * This operation create a new sweep to address for the wallet. The old sweep to address will become invalid. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateSweepToAddress} opts.CreateSweepToAddress The request body to generates a new sweep-to address within a specified wallet.
+     * @param {module:model/CreateSweepToAddress} opts.CreateSweepToAddress The request body to generates a new sweep to addresses within a specified wallet.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SweepToAddress}
      */
     createWalletSweepToAddresses(opts) {
@@ -137,8 +137,8 @@ export default class AutoSweepApi {
 
 
     /**
-     * Get auto-sweep task details
-     * This operation retrieves detailed information about a specified auto-sweep task. 
+     * Get auto sweep task information
+     * This operation retrieves detailed information about a specified auto sweep task. 
      * @param {String} task_id The auto sweep task ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AutoSweepTask} and HTTP response
      */
@@ -174,8 +174,8 @@ export default class AutoSweepApi {
     }
 
     /**
-     * Get auto-sweep task details
-     * This operation retrieves detailed information about a specified auto-sweep task. 
+     * Get auto sweep task information
+     * This operation retrieves detailed information about a specified auto sweep task. 
      * @param {String} task_id The auto sweep task ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AutoSweepTask}
      */
@@ -188,17 +188,17 @@ export default class AutoSweepApi {
 
 
     /**
-     * List auto-sweep tasks
-     * This operation retrieves a list of auto-sweep tasks for the specified wallet. You can filter the results by token ID, task IDs, or a created-time range. 
+     * List wallet auto sweep task
+     * This operation retrieves a list of auto sweep task. 
      * @param {String} wallet_id The wallet ID.
      * @param {Object} opts Optional parameters
      * @param {String} [token_id] The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
-     * @param {String} [task_ids] A list of auto-sweep task IDs, separated by comma.
-     * @param {Number} [min_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.  If not provided, the default value is 90 days before the current time. This default value is subject to change. 
-     * @param {Number} [max_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.  If not provided, the default value is the current time. This default value is subject to change. 
+     * @param {String} [task_ids] A list of auto sweep task IDs, separated by comma.
+     * @param {Number} [min_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
+     * @param {Number} [max_created_timestamp] The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
-     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} [before] This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} [after] This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @param {module:model/String} [direction = 'ASC')] The sort direction. Possible values include:   - `ASC`: Sort the results in ascending order.   - `DESC`: Sort the results in descending order. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAutoSweepTask200Response} and HTTP response
      */
@@ -243,17 +243,17 @@ export default class AutoSweepApi {
     }
 
     /**
-     * List auto-sweep tasks
-     * This operation retrieves a list of auto-sweep tasks for the specified wallet. You can filter the results by token ID, task IDs, or a created-time range. 
+     * List wallet auto sweep task
+     * This operation retrieves a list of auto sweep task. 
      * @param {String} wallet_id The wallet ID.
      * @param {Object} opts Optional parameters
      * @param {String} opts.token_id The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
-     * @param {String} opts.task_ids A list of auto-sweep task IDs, separated by comma.
-     * @param {Number} opts.min_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.  If not provided, the default value is 90 days before the current time. This default value is subject to change. 
-     * @param {Number} opts.max_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.  If not provided, the default value is the current time. This default value is subject to change. 
+     * @param {String} opts.task_ids A list of auto sweep task IDs, separated by comma.
+     * @param {Number} opts.min_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.
+     * @param {Number} opts.max_created_timestamp The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
-     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} opts.before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} opts.after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @param {module:model/String} opts.direction The sort direction. Possible values include:   - `ASC`: Sort the results in ascending order.   - `DESC`: Sort the results in descending order.  (default to 'ASC')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAutoSweepTask200Response}
      */
@@ -266,8 +266,8 @@ export default class AutoSweepApi {
 
 
     /**
-     * List sweep-to addresses
-     * This operation retrieves a list of sweep-to addresses within your wallet. <Note>Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.</Note> 
+     * List wallet sweep to addresses
+     * This operation retrieves a list of sweep to addresses within your wallet. 
      * @param {String} wallet_id The wallet ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWalletSweepToAddresses200Response} and HTTP response
      */
@@ -303,8 +303,8 @@ export default class AutoSweepApi {
     }
 
     /**
-     * List sweep-to addresses
-     * This operation retrieves a list of sweep-to addresses within your wallet. <Note>Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.</Note> 
+     * List wallet sweep to addresses
+     * This operation retrieves a list of sweep to addresses within your wallet. 
      * @param {String} wallet_id The wallet ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWalletSweepToAddresses200Response}
      */

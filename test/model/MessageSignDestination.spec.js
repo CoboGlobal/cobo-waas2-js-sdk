@@ -70,12 +70,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property msg_hash (base name: "msg_hash")', function() {
-      // uncomment below and update the code to test the property msg_hash
-      //var instance = new CoboWaas2.MessageSignDestination();
-      //expect(instance).to.be();
-    });
-
     it('should have the property message_bip137 (base name: "message_bip137")', function() {
       // uncomment below and update the code to test the property message_bip137
       //var instance = new CoboWaas2.MessageSignDestination();

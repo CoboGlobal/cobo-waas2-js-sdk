@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import ContractCallDestinationType from './ContractCallDestinationType';
+import SolContractCallAddressLookupTableAccount from './SolContractCallAddressLookupTableAccount';
 import SolContractCallInstruction from './SolContractCallInstruction';
 
 /**
@@ -57,6 +58,9 @@ class SolContractCallDestination {
             if (data.hasOwnProperty('instructions')) {
                 obj['instructions'] = ApiClient.convertToType(data['instructions'], [SolContractCallInstruction]);
             }
+            if (data.hasOwnProperty('address_lookup_table_accounts')) {
+                obj['address_lookup_table_accounts'] = ApiClient.convertToType(data['address_lookup_table_accounts'], [SolContractCallAddressLookupTableAccount]);
+            }
         }
         return obj;
     }
@@ -83,6 +87,16 @@ class SolContractCallDestination {
                 SolContractCallInstruction.validateJSON(item);
             };
         }
+        if (data['address_lookup_table_accounts']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['address_lookup_table_accounts'])) {
+                throw new Error("Expected the field `address_lookup_table_accounts` to be an array in the JSON data but got " + data['address_lookup_table_accounts']);
+            }
+            // validate the optional field `address_lookup_table_accounts` (array)
+            for (const item of data['address_lookup_table_accounts']) {
+                SolContractCallAddressLookupTableAccount.validateJSON(item);
+            };
+        }
 
         return true;
     }
@@ -101,6 +115,11 @@ SolContractCallDestination.prototype['destination_type'] = undefined;
  * @member {Array.<module:model/SolContractCallInstruction>} instructions
  */
 SolContractCallDestination.prototype['instructions'] = undefined;
+
+/**
+ * @member {Array.<module:model/SolContractCallAddressLookupTableAccount>} address_lookup_table_accounts
+ */
+SolContractCallDestination.prototype['address_lookup_table_accounts'] = undefined;
 
 
 

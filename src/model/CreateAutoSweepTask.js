@@ -18,10 +18,10 @@ import ApiClient from '../ApiClient';
 class CreateAutoSweepTask {
     /**
      * Constructs a new <code>CreateAutoSweepTask</code>.
-     * Wallet and token information required to create an auto-sweep task.
+     * The sweep to address information.
      * @alias module:model/CreateAutoSweepTask
-     * @param wallet_id {String} ID of the wallet where the token will be swept.
-     * @param token_id {String} ID of the token to be swept. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param wallet_id {String} The wallet ID.
+     * @param token_id {String} The token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
      */
     constructor(wallet_id, token_id) { 
         
@@ -89,13 +89,13 @@ class CreateAutoSweepTask {
 CreateAutoSweepTask.RequiredProperties = ["wallet_id", "token_id"];
 
 /**
- * ID of the wallet where the token will be swept.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 CreateAutoSweepTask.prototype['wallet_id'] = undefined;
 
 /**
- * ID of the token to be swept. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 CreateAutoSweepTask.prototype['token_id'] = undefined;

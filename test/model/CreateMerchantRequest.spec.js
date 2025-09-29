@@ -70,6 +70,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property wallet_setup (base name: "wallet_setup")', function() {
+      // uncomment below and update the code to test the property wallet_setup
+      //var instance = new CoboWaas2.CreateMerchantRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

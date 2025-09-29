@@ -225,7 +225,7 @@ class FeeRate {
 FeeRate.prototype['fee_type'] = undefined;
 
 /**
- * The token used to pay the transaction fee.
+ * The token ID of the transaction fee.
  * @member {String} token_id
  */
 FeeRate.prototype['token_id'] = undefined;

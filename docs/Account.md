@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**token_id** | **String** | The ID of the cryptocurrency that this account is configured to handle. | 
-**address** | **String** | The top-up address corresponding to the account. | 
-**merchant_balance** | **String** | The amount of merchant funds under this account. | 
-**psp_balance** | **String** | The amount of developer funds under this account. | 
-**created_timestamp** | **Number** | The creation time of the account, in Unix timestamp format, measured in milliseconds. | [optional] 
-**updated_timestamp** | **Number** | The last update time of the account, in Unix timestamp format, measured in milliseconds. | [optional] 
+**token_id** | **String** | The ID of the cryptocurrency. | 
+**address** | **String** | The token receiving address of the account. | 
+**merchant_balance** | **String** | The merchant account balance, as a decimal string. | 
+**psp_balance** | **String** | The PSP account balance, as a decimal string. | 
+**created_timestamp** | **Number** | The time when the account was created, in Unix timestamp format, measured in milliseconds. | [optional] 
+**updated_timestamp** | **Number** | The time when the account was updated, in Unix timestamp format, measured in milliseconds. | [optional] 
 
 

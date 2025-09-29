@@ -20,7 +20,7 @@ import PolicyActionType from './PolicyActionType';
 class PolicyAction {
     /**
      * Constructs a new <code>PolicyAction</code>.
-     * The action to be executed when the policy conditions are satisfied.
+     * The information of an app workflow policy action, content is valuable when action_type is Quorum.
      * @alias module:model/PolicyAction
      * @param action_type {module:model/PolicyActionType} 
      */

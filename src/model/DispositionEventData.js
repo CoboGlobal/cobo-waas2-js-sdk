@@ -127,13 +127,13 @@ DispositionEventData.prototype['disposition_type'] = undefined;
 DispositionEventData.prototype['disposition_status'] = undefined;
 
 /**
- * The blockchain address to receive the refunded/isolated funds.
+ * The blockchain address where the refund/isolated funds will be sent.
  * @member {String} destination_address
  */
 DispositionEventData.prototype['destination_address'] = undefined;
 
 /**
- * The amount to be refunded/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
+ * The amount to be refund/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
  * @member {String} disposition_amount
  */
 DispositionEventData.prototype['disposition_amount'] = undefined;

@@ -18,7 +18,7 @@ import ApiClient from '../ApiClient';
 class UpdateAddressBookParam {
     /**
      * Constructs a new <code>UpdateAddressBookParam</code>.
-     * The request body to update Address Book.
+     * The request body to update address book.
      * @alias module:model/UpdateAddressBookParam
      * @param chain_ids {Array.<String>} A list of chain IDs.
      */
@@ -107,19 +107,19 @@ UpdateAddressBookParam.RequiredProperties = ["chain_ids"];
 UpdateAddressBookParam.prototype['chain_ids'] = undefined;
 
 /**
- * Optional memo or tag required by some chains.
+ * The memo.
  * @member {String} memo
  */
 UpdateAddressBookParam.prototype['memo'] = undefined;
 
 /**
- * A user-defined label for the address.
+ * The address label.
  * @member {String} label
  */
 UpdateAddressBookParam.prototype['label'] = undefined;
 
 /**
- * Email of the address owner.
+ * The email of the address owner.
  * @member {String} email
  */
 UpdateAddressBookParam.prototype['email'] = undefined;

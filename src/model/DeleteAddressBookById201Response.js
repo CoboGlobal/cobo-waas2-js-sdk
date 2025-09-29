@@ -19,7 +19,7 @@ class DeleteAddressBookById201Response {
     /**
      * Constructs a new <code>DeleteAddressBookById201Response</code>.
      * @alias module:model/DeleteAddressBookById201Response
-     * @param submitted {Boolean} Whether the request to delete the Address Book entry (record) has been successfully submitted. - `true`: The request has been successfully submitted. - `false`: The request has not been submitted. 
+     * @param submitted {Boolean} Whether the request to delete the address book has been successfully submitted. - `true`: The request to delete the address book has been successfully submitted. - `false`: The request to delete the address book has not been submitted. 
      */
     constructor(submitted) { 
         
@@ -75,7 +75,7 @@ class DeleteAddressBookById201Response {
 DeleteAddressBookById201Response.RequiredProperties = ["submitted"];
 
 /**
- * Whether the request to delete the Address Book entry (record) has been successfully submitted. - `true`: The request has been successfully submitted. - `false`: The request has not been submitted. 
+ * Whether the request to delete the address book has been successfully submitted. - `true`: The request to delete the address book has been successfully submitted. - `false`: The request to delete the address book has not been submitted. 
  * @member {Boolean} submitted
  */
 DeleteAddressBookById201Response.prototype['submitted'] = undefined;

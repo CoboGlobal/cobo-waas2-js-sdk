@@ -18,10 +18,10 @@ import ApiClient from '../ApiClient';
 class RefundDisposition {
     /**
      * Constructs a new <code>RefundDisposition</code>.
-     * The information about a request to refund funds.
+     * The information about a fund refund disposition request.
      * @alias module:model/RefundDisposition
-     * @param transaction_id {String} The UUID of the transaction whose funds are to be refunded. This identifies the original transaction that requires refund processing.
-     * @param destination_address {String} The blockchain address to receive the refunded funds.
+     * @param transaction_id {String} The UUID of the transaction to be refunded. This identifies the original transaction that requires refund processing.
+     * @param destination_address {String} The blockchain address where the refunded funds will be sent.
      * @param disposition_amount {String} The amount to be refunded from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
      */
     constructor(transaction_id, destination_address, disposition_amount) { 
@@ -112,13 +112,13 @@ class RefundDisposition {
 RefundDisposition.RequiredProperties = ["transaction_id", "destination_address", "disposition_amount"];
 
 /**
- * The UUID of the transaction whose funds are to be refunded. This identifies the original transaction that requires refund processing.
+ * The UUID of the transaction to be refunded. This identifies the original transaction that requires refund processing.
  * @member {String} transaction_id
  */
 RefundDisposition.prototype['transaction_id'] = undefined;
 
 /**
- * The blockchain address to receive the refunded funds.
+ * The blockchain address where the refunded funds will be sent.
  * @member {String} destination_address
  */
 RefundDisposition.prototype['destination_address'] = undefined;
@@ -136,7 +136,7 @@ RefundDisposition.prototype['disposition_amount'] = undefined;
 RefundDisposition.prototype['category_names'] = undefined;
 
 /**
- * Additional notes or description for the refund.
+ * Additional notes or description for this refund disposition.
  * @member {String} description
  */
 RefundDisposition.prototype['description'] = undefined;

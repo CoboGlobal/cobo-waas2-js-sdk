@@ -80,6 +80,9 @@ class AddressInfo {
             if (data.hasOwnProperty('taproot_internal_address')) {
                 obj['taproot_internal_address'] = ApiClient.convertToType(data['taproot_internal_address'], 'String');
             }
+            if (data.hasOwnProperty('stellar_trusted_token_ids')) {
+                obj['stellar_trusted_token_ids'] = ApiClient.convertToType(data['stellar_trusted_token_ids'], ['String']);
+            }
         }
         return obj;
     }
@@ -131,6 +134,10 @@ class AddressInfo {
         // ensure the json data is a string
         if (data['taproot_internal_address'] && !(typeof data['taproot_internal_address'] === 'string' || data['taproot_internal_address'] instanceof String)) {
             throw new Error("Expected the field `taproot_internal_address` to be a primitive type in the JSON string but got " + data['taproot_internal_address']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['stellar_trusted_token_ids'])) {
+            throw new Error("Expected the field `stellar_trusted_token_ids` to be an array in the JSON data but got " + data['stellar_trusted_token_ids']);
         }
 
         return true;
@@ -199,6 +206,12 @@ AddressInfo.prototype['taproot_script_tree_hash'] = undefined;
  * @member {String} taproot_internal_address
  */
 AddressInfo.prototype['taproot_internal_address'] = undefined;
+
+/**
+ * The list of token IDs for which this address has already established stellar trustline.
+ * @member {Array.<String>} stellar_trusted_token_ids
+ */
+AddressInfo.prototype['stellar_trusted_token_ids'] = undefined;
 
 
 

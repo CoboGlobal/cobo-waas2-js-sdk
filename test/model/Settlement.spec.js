@@ -112,6 +112,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property currency (base name: "currency")', function() {
+      // uncomment below and update the code to test the property currency
+      //var instance = new CoboWaas2.Settlement();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property received_amount_fiat (base name: "received_amount_fiat")', function() {
+      // uncomment below and update the code to test the property received_amount_fiat
+      //var instance = new CoboWaas2.Settlement();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_account (base name: "bank_account")', function() {
+      // uncomment below and update the code to test the property bank_account
+      //var instance = new CoboWaas2.Settlement();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

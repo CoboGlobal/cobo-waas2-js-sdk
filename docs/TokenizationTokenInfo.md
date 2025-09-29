@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **token_address** | **String** | The address of the token contract. | [optional] 
 **token_name** | **String** | The name of the token. | [optional] 
 **token_symbol** | **String** | The unique token symbol. | 
+**token_standard** | [**TokenizationTokenStandard**](TokenizationTokenStandard.md) |  | 
 **decimals** | **Number** | The number of decimals of the token. | 
 **token_access_activated** | **Boolean** | Whether the allowlist feature is activated for the token. | [optional] 
 **status** | [**TokenizationStatus**](TokenizationStatus.md) |  | 

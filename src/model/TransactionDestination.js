@@ -26,8 +26,11 @@ import TransactionEvmContractDestination from './TransactionEvmContractDestinati
 import TransactionMessageSignEIP191Destination from './TransactionMessageSignEIP191Destination';
 import TransactionMessageSignEIP712Destination from './TransactionMessageSignEIP712Destination';
 import TransactionRawMessageSignDestination from './TransactionRawMessageSignDestination';
+import TransactionSolContractAddressLookupTableAccount from './TransactionSolContractAddressLookupTableAccount';
 import TransactionSolContractDestination from './TransactionSolContractDestination';
 import TransactionSolContractInstruction from './TransactionSolContractInstruction';
+import TransactionStellarContractParam from './TransactionStellarContractParam';
+import TransactionStellarDestination from './TransactionStellarDestination';
 import TransactionTransferToAddressDestination from './TransactionTransferToAddressDestination';
 import TransactionTransferToAddressDestinationAccountOutput from './TransactionTransferToAddressDestinationAccountOutput';
 import TransactionTransferToAddressDestinationUtxoOutputsInner from './TransactionTransferToAddressDestinationUtxoOutputsInner';
@@ -43,7 +46,7 @@ class TransactionDestination {
     /**
      * Constructs a new <code>TransactionDestination</code>.
      * @alias module:model/TransactionDestination
-     * @param {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} instance The actual instance to initialize TransactionDestination.
+     * @param {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionStellarDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} instance The actual instance to initialize TransactionDestination.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -110,6 +113,10 @@ class TransactionDestination {
                     break;
                 case "SOL_Contract":
                     this.actualInstance = TransactionSolContractDestination.constructFromObject(instance);
+                    match++;
+                    break;
+                case "STELLAR_Contract":
+                    this.actualInstance = TransactionStellarDestination.constructFromObject(instance);
                     match++;
                     break;
                 default:
@@ -444,12 +451,37 @@ class TransactionDestination {
             errorMessages.push("Failed to construct TransactionCosmosAdr36Destination: " + err)
         }
 
+        try {
+            if (instance instanceof TransactionStellarDestination) {
+                this.actualInstance = instance;
+            } else if(!!TransactionStellarDestination.validateJSON && TransactionStellarDestination.validateJSON(instance)){
+                // plain JS object
+                // create TransactionStellarDestination from JS object
+                this.actualInstance = TransactionStellarDestination.constructFromObject(instance);
+            } else {
+                if(TransactionStellarDestination.constructFromObject(instance)) {
+                    if (!!TransactionStellarDestination.constructFromObject(instance).toJSON) {
+                        if (TransactionStellarDestination.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = TransactionStellarDestination.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = TransactionStellarDestination.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into TransactionStellarDestination
+            errorMessages.push("Failed to construct TransactionStellarDestination: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `TransactionDestination` with oneOf schemas TransactionBIP137Destination, TransactionBIP322Destination, TransactionCosmosAdr36Destination, TransactionCosmosContractDestination, TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionRawMessageSignDestination, TransactionSolContractDestination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `TransactionDestination` with oneOf schemas TransactionBIP137Destination, TransactionBIP322Destination, TransactionCosmosAdr36Destination, TransactionCosmosContractDestination, TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionRawMessageSignDestination, TransactionSolContractDestination, TransactionStellarDestination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `TransactionDestination` with oneOf schemas TransactionBIP137Destination, TransactionBIP322Destination, TransactionCosmosAdr36Destination, TransactionCosmosContractDestination, TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionRawMessageSignDestination, TransactionSolContractDestination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Details: " +
+        //    throw new Error("No match found constructing `TransactionDestination` with oneOf schemas TransactionBIP137Destination, TransactionBIP322Destination, TransactionCosmosAdr36Destination, TransactionCosmosContractDestination, TransactionDepositToAddressDestination, TransactionDepositToWalletDestination, TransactionEvmContractDestination, TransactionMessageSignEIP191Destination, TransactionMessageSignEIP712Destination, TransactionRawMessageSignDestination, TransactionSolContractDestination, TransactionStellarDestination, TransactionTransferToAddressDestination, TransactionTransferToWalletDestination. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -469,16 +501,16 @@ class TransactionDestination {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TransactionBIP137Destination</code>, <code>TransactionBIP322Destination</code>, <code>TransactionCosmosAdr36Destination</code>, <code>TransactionCosmosContractDestination</code>, <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionRawMessageSignDestination</code>, <code>TransactionSolContractDestination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
-     * @return {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} The actual instance.
+     * Gets the actual instance, which can be <code>TransactionBIP137Destination</code>, <code>TransactionBIP322Destination</code>, <code>TransactionCosmosAdr36Destination</code>, <code>TransactionCosmosContractDestination</code>, <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionRawMessageSignDestination</code>, <code>TransactionSolContractDestination</code>, <code>TransactionStellarDestination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
+     * @return {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionStellarDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TransactionBIP137Destination</code>, <code>TransactionBIP322Destination</code>, <code>TransactionCosmosAdr36Destination</code>, <code>TransactionCosmosContractDestination</code>, <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionRawMessageSignDestination</code>, <code>TransactionSolContractDestination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
-     * @param {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TransactionBIP137Destination</code>, <code>TransactionBIP322Destination</code>, <code>TransactionCosmosAdr36Destination</code>, <code>TransactionCosmosContractDestination</code>, <code>TransactionDepositToAddressDestination</code>, <code>TransactionDepositToWalletDestination</code>, <code>TransactionEvmContractDestination</code>, <code>TransactionMessageSignEIP191Destination</code>, <code>TransactionMessageSignEIP712Destination</code>, <code>TransactionRawMessageSignDestination</code>, <code>TransactionSolContractDestination</code>, <code>TransactionStellarDestination</code>, <code>TransactionTransferToAddressDestination</code>, <code>TransactionTransferToWalletDestination</code>.
+     * @param {(module:model/TransactionBIP137Destination|module:model/TransactionBIP322Destination|module:model/TransactionCosmosAdr36Destination|module:model/TransactionCosmosContractDestination|module:model/TransactionDepositToAddressDestination|module:model/TransactionDepositToWalletDestination|module:model/TransactionEvmContractDestination|module:model/TransactionMessageSignEIP191Destination|module:model/TransactionMessageSignEIP712Destination|module:model/TransactionRawMessageSignDestination|module:model/TransactionSolContractDestination|module:model/TransactionStellarDestination|module:model/TransactionTransferToAddressDestination|module:model/TransactionTransferToWalletDestination)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TransactionDestination.constructFromObject(obj).getActualInstance();
@@ -524,13 +556,13 @@ TransactionDestination.prototype['utxo_outputs'] = undefined;
 TransactionDestination.prototype['change_address'] = undefined;
 
 /**
- * Whether the transaction request must be executed as a [Cobo Loop](https://manuals.cobo.com/en/portal/custodial-wallets/cobo-loop) transfer.   - `true`: The transaction request must be executed as a Cobo Loop transfer.   - `false`: The transaction request may not be executed as a Cobo Loop transfer.  If both `force_internal` and `force_external` are set to `false`, the system uses Cobo Loop by default if possible; otherwise, it proceeds with an on-chain transfer. 
+ * Whether the transaction request must be executed as a [Cobo Loop](https://manuals.cobo.com/en/portal/custodial-wallets/cobo-loop) transfer.   - `true`: The transaction request must be executed as a Cobo Loop transfer.   - `false`: The transaction request may not be executed as a Cobo Loop transfer. 
  * @member {Boolean} force_internal
  */
 TransactionDestination.prototype['force_internal'] = undefined;
 
 /**
- * Whether the transaction request must not be executed as a [Cobo Loop](https://manuals.cobo.com/en/portal/custodial-wallets/cobo-loop) transfer.   - `true`: The transaction request must not be executed as a Cobo Loop transfer.   - `false`: The transaction request can be executed as a Cobo Loop transfer.  If both `force_internal` and `force_external` are set to `false`, the system uses Cobo Loop by default if possible; otherwise, it proceeds with an on-chain transfer. 
+ * Whether the transaction request must not be executed as a [Cobo Loop](https://manuals.cobo.com/en/portal/custodial-wallets/cobo-loop) transfer.   - `true`: The transaction request must not be executed as a Cobo Loop transfer.   - `false`: The transaction request can be executed as a Cobo Loop transfer. 
  * @member {Boolean} force_external
  */
 TransactionDestination.prototype['force_external'] = undefined;
@@ -571,7 +603,7 @@ TransactionDestination.prototype['address'] = undefined;
 TransactionDestination.prototype['value'] = undefined;
 
 /**
- * The data used to invoke a specific function or method within the specified contract at the destination address, with a maximum length of 65,000 characters. 
+ * The data that is used to invoke a specific function or method within the specified contract at the destination address. 
  * @member {String} calldata
  */
 TransactionDestination.prototype['calldata'] = undefined;
@@ -585,6 +617,11 @@ TransactionDestination.prototype['calldata_info'] = undefined;
  * @member {Array.<module:model/TransactionSolContractInstruction>} instructions
  */
 TransactionDestination.prototype['instructions'] = undefined;
+
+/**
+ * @member {Array.<module:model/TransactionSolContractAddressLookupTableAccount>} address_lookup_table_accounts
+ */
+TransactionDestination.prototype['address_lookup_table_accounts'] = undefined;
 
 /**
  * @member {Array.<module:model/TransactionCosmosMessage>} cosmos_messages
@@ -659,8 +696,13 @@ TransactionDestination.prototype['message_bip322'] = undefined;
  */
 TransactionDestination.prototype['message_cosmos_adr36'] = undefined;
 
+/**
+ * @member {module:model/TransactionStellarContractParam} contract_param
+ */
+TransactionDestination.prototype['contract_param'] = undefined;
 
-TransactionDestination.OneOf = ["TransactionBIP137Destination", "TransactionBIP322Destination", "TransactionCosmosAdr36Destination", "TransactionCosmosContractDestination", "TransactionDepositToAddressDestination", "TransactionDepositToWalletDestination", "TransactionEvmContractDestination", "TransactionMessageSignEIP191Destination", "TransactionMessageSignEIP712Destination", "TransactionRawMessageSignDestination", "TransactionSolContractDestination", "TransactionTransferToAddressDestination", "TransactionTransferToWalletDestination"];
+
+TransactionDestination.OneOf = ["TransactionBIP137Destination", "TransactionBIP322Destination", "TransactionCosmosAdr36Destination", "TransactionCosmosContractDestination", "TransactionDepositToAddressDestination", "TransactionDepositToWalletDestination", "TransactionEvmContractDestination", "TransactionMessageSignEIP191Destination", "TransactionMessageSignEIP712Destination", "TransactionRawMessageSignDestination", "TransactionSolContractDestination", "TransactionStellarDestination", "TransactionTransferToAddressDestination", "TransactionTransferToWalletDestination"];
 
 export default TransactionDestination;
 

@@ -19,11 +19,11 @@ import AutoSweepTaskStatus from './AutoSweepTaskStatus';
 class AutoSweepTask {
     /**
      * Constructs a new <code>AutoSweepTask</code>.
-     * Auto-sweep task information.
+     * The auto sweep task information.
      * @alias module:model/AutoSweepTask
-     * @param task_id {String} Auto-sweep task ID.
-     * @param wallet_id {String} Wallet ID.
-     * @param token_id {String} Token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param task_id {String} The auto sweep task ID.
+     * @param wallet_id {String} The wallet ID.
+     * @param token_id {String} The token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param status {module:model/AutoSweepTaskStatus} 
      * @param created_timestamp {Number} The time when the task was created, in Unix timestamp format, measured in milliseconds.
      */
@@ -126,19 +126,19 @@ class AutoSweepTask {
 AutoSweepTask.RequiredProperties = ["task_id", "wallet_id", "token_id", "status", "created_timestamp"];
 
 /**
- * Auto-sweep task ID.
+ * The auto sweep task ID.
  * @member {String} task_id
  */
 AutoSweepTask.prototype['task_id'] = undefined;
 
 /**
- * Wallet ID.
+ * The wallet ID.
  * @member {String} wallet_id
  */
 AutoSweepTask.prototype['wallet_id'] = undefined;
 
 /**
- * Token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+ * The token ID of the swept token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 AutoSweepTask.prototype['token_id'] = undefined;
@@ -149,13 +149,13 @@ AutoSweepTask.prototype['token_id'] = undefined;
 AutoSweepTask.prototype['status'] = undefined;
 
 /**
- * IDs of the transactions triggered by the task.
+ * The IDs of the corresponding transactions of the auto sweep task.
  * @member {Array.<String>} transaction_ids
  */
 AutoSweepTask.prototype['transaction_ids'] = undefined;
 
 /**
- * Reasons why the task creation failed.
+ * Failed reason of create auto sweep transaction.
  * @member {Array.<String>} failed_reasons
  */
 AutoSweepTask.prototype['failed_reasons'] = undefined;

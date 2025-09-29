@@ -19,7 +19,7 @@ class PspBalance {
     /**
      * Constructs a new <code>PspBalance</code>.
      * @alias module:model/PspBalance
-     * @param token_id {String} The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+     * @param token_id {String} The ID of the cryptocurrency.
      */
     constructor(token_id) { 
         
@@ -114,37 +114,37 @@ class PspBalance {
 PspBalance.RequiredProperties = ["token_id"];
 
 /**
- * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+ * The ID of the cryptocurrency.
  * @member {String} token_id
  */
 PspBalance.prototype['token_id'] = undefined;
 
 /**
- * The total amount of the token that has been received as developer fee.
+ * The psp developer fee amount.
  * @member {String} developer_fee_amount
  */
 PspBalance.prototype['developer_fee_amount'] = undefined;
 
 /**
- * The total amount of the token that has been settled from the developer's balance.
+ * The psp settled amount.
  * @member {String} settled_amount
  */
 PspBalance.prototype['settled_amount'] = undefined;
 
 /**
- * The total amount of the token that has been refunded from the developer's balance.
+ * The psp total refunded amount.
  * @member {String} refunded_amount
  */
 PspBalance.prototype['refunded_amount'] = undefined;
 
 /**
- * The total balance of the token for the developer.
+ * The psp total balance.
  * @member {String} total_balance
  */
 PspBalance.prototype['total_balance'] = undefined;
 
 /**
- * The balance available for settlement or refund, in the specified cryptocurrency.
+ * The psp available balance.
  * @member {String} available_balance
  */
 PspBalance.prototype['available_balance'] = undefined;
