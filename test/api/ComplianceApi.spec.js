@@ -46,6 +46,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('getKytScreeningStatus', function() {
+      it('should call getKytScreeningStatus successfully', function() {
+        //uncomment below and update the code to test getKytScreeningStatus
+        //instance.getKytScreeningStatus().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('isolateFunds', function() {
       it('should call isolateFunds successfully', function() {
         //uncomment below and update the code to test isolateFunds
@@ -60,6 +70,26 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call refundFunds successfully', function() {
         //uncomment below and update the code to test refundFunds
         //instance.refundFunds().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('submitKytManualReview', function() {
+      it('should call submitKytManualReview successfully', function() {
+        //uncomment below and update the code to test submitKytManualReview
+        //instance.submitKytManualReview().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('submitKytScreeningDecisions', function() {
+      it('should call submitKytScreeningDecisions successfully', function() {
+        //uncomment below and update the code to test submitKytScreeningDecisions
+        //instance.submitKytScreeningDecisions().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

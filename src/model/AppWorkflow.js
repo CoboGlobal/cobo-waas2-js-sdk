@@ -19,11 +19,11 @@ import AppWorkflowPolicy from './AppWorkflowPolicy';
 class AppWorkflow {
     /**
      * Constructs a new <code>AppWorkflow</code>.
-     * The information of an approval workflow
+     * The information of an app workflow approval user entry.
      * @alias module:model/AppWorkflow
-     * @param workflow_id {String} The unique ID distinguishing the approval workflow instance among organizations.
-     * @param operation_id {String} The unique ID of the approval workflow.
-     * @param operation_name {String} The name of the approval workflow.
+     * @param workflow_id {String} The workflow id.
+     * @param operation_id {String} The workflow operation id.
+     * @param operation_name {String} The workflow operation name.
      * @param current_policies {Array.<module:model/AppWorkflowPolicy>} 
      */
     constructor(workflow_id, operation_id, operation_name, current_policies) { 
@@ -114,19 +114,19 @@ class AppWorkflow {
 AppWorkflow.RequiredProperties = ["workflow_id", "operation_id", "operation_name", "current_policies"];
 
 /**
- * The unique ID distinguishing the approval workflow instance among organizations.
+ * The workflow id.
  * @member {String} workflow_id
  */
 AppWorkflow.prototype['workflow_id'] = undefined;
 
 /**
- * The unique ID of the approval workflow.
+ * The workflow operation id.
  * @member {String} operation_id
  */
 AppWorkflow.prototype['operation_id'] = undefined;
 
 /**
- * The name of the approval workflow.
+ * The workflow operation name.
  * @member {String} operation_name
  */
 AppWorkflow.prototype['operation_name'] = undefined;

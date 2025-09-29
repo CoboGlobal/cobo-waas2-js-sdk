@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property finality_provider_public_keys (base name: "finality_provider_public_keys")', function() {
+      // uncomment below and update the code to test the property finality_provider_public_keys
+      //var instance = new CoboWaas2.BabylonStakeExtra();
+      //expect(instance).to.be();
+    });
+
     it('should have the property stake_block_time (base name: "stake_block_time")', function() {
       // uncomment below and update the code to test the property stake_block_time
       //var instance = new CoboWaas2.BabylonStakeExtra();
@@ -78,6 +84,12 @@
 
     it('should have the property babylon_address (base name: "babylon_address")', function() {
       // uncomment below and update the code to test the property babylon_address
+      //var instance = new CoboWaas2.BabylonStakeExtra();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property original_staking_id (base name: "original_staking_id")', function() {
+      // uncomment below and update the code to test the property original_staking_id
       //var instance = new CoboWaas2.BabylonStakeExtra();
       //expect(instance).to.be();
     });

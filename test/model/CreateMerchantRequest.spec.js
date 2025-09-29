@@ -58,14 +58,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property wallet_id (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property wallet_id
+    it('should have the property developer_fee_rate (base name: "developer_fee_rate")', function() {
+      // uncomment below and update the code to test the property developer_fee_rate
       //var instance = new CoboWaas2.CreateMerchantRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property developer_fee_rate (base name: "developer_fee_rate")', function() {
-      // uncomment below and update the code to test the property developer_fee_rate
+    it('should have the property wallet_setup (base name: "wallet_setup")', function() {
+      // uncomment below and update the code to test the property wallet_setup
       //var instance = new CoboWaas2.CreateMerchantRequest();
       //expect(instance).to.be();
     });

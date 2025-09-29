@@ -18,6 +18,7 @@ import ApiClient from '../ApiClient';
 class SOLBase {
     /**
      * Constructs a new <code>SOLBase</code>.
+     * The transaction base fee based on the SOL fee model.
      * @alias module:model/SOLBase
      */
     constructor() { 
@@ -78,13 +79,13 @@ class SOLBase {
 
 
 /**
- * A fixed fee charged per signature. The default is 5,000 lamports per signature.
+ * The fundamental fee required for each transaction. It is charged to prevent spam transactions and network congestion, ensuring that only meaningful transactions consume network resources.
  * @member {String} base_fee
  */
 SOLBase.prototype['base_fee'] = undefined;
 
 /**
- * The rent fee charged by the network to store non–rent-exempt accounts on-chain. It is deducted periodically until the account maintains the minimum balance required for rent exemption.
+ * The fee charged as rent for maintaining the state of accounts on the blockchain. This rent ensures accounts are stored on-chain over the long term and that there's sufficient balance to sustain the account state.
  * @member {String} rent_amount
  */
 SOLBase.prototype['rent_amount'] = undefined;

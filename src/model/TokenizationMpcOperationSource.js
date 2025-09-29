@@ -22,7 +22,7 @@ class TokenizationMpcOperationSource {
      * @alias module:model/TokenizationMpcOperationSource
      * @param source_type {module:model/TokenizationOperationSourceType} 
      * @param wallet_id {String} The wallet ID.
-     * @param address {String} The wallet address used to interact with the token contract.
+     * @param address {String} The wallet address to interact with the token contract from.
      */
     constructor(source_type, wallet_id, address) { 
         
@@ -105,7 +105,7 @@ TokenizationMpcOperationSource.prototype['source_type'] = undefined;
 TokenizationMpcOperationSource.prototype['wallet_id'] = undefined;
 
 /**
- * The wallet address used to interact with the token contract.
+ * The wallet address to interact with the token contract from.
  * @member {String} address
  */
 TokenizationMpcOperationSource.prototype['address'] = undefined;

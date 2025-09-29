@@ -18,9 +18,9 @@ import ApiClient from '../ApiClient';
 class PolicyActionContent {
     /**
      * Constructs a new <code>PolicyActionContent</code>.
-     * The definition of the quorum action. This property is applicable only when &#x60;action_type&#x60; is &#x60;Quorum&#x60;.
+     * The information of an app workflow policy quorum action content.
      * @alias module:model/PolicyActionContent
-     * @param type {module:model/PolicyActionContent.TypeEnum} The quorum type. Possible values include:    - `FULL_APPROVAL`: Requires approval from all participants.   - `PART_APPROVAL`: Requires approval from a specified number of participants. 
+     * @param type {module:model/PolicyActionContent.TypeEnum} The quorum action content type. Possible values include:    - `FULL_APPROVAL`: The content type is approved by all persons.   - `PART_APPROVAL`: The content type is approved by some persons. 
      */
     constructor(type) { 
         
@@ -97,25 +97,23 @@ class PolicyActionContent {
 PolicyActionContent.RequiredProperties = ["type"];
 
 /**
- * The quorum type. Possible values include:    - `FULL_APPROVAL`: Requires approval from all participants.   - `PART_APPROVAL`: Requires approval from a specified number of participants. 
+ * The quorum action content type. Possible values include:    - `FULL_APPROVAL`: The content type is approved by all persons.   - `PART_APPROVAL`: The content type is approved by some persons. 
  * @member {module:model/PolicyActionContent.TypeEnum} type
  */
 PolicyActionContent.prototype['type'] = undefined;
 
 /**
- * The roles included in the quorum. Possible values include `admin`, `spender`, `operator`, and `approver`.
  * @member {Array.<String>} roles
  */
 PolicyActionContent.prototype['roles'] = undefined;
 
 /**
- * The ID of the users included in the quorum.
  * @member {Array.<String>} user_ids
  */
 PolicyActionContent.prototype['user_ids'] = undefined;
 
 /**
- * The number of approvers required to meet the quorum.
+ * The number of persons need approved, such as 2.
  * @member {Number} threshold
  */
 PolicyActionContent.prototype['threshold'] = undefined;

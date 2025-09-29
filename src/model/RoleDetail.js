@@ -20,7 +20,7 @@ import ApprovalUserDetail from './ApprovalUserDetail';
 class RoleDetail {
     /**
      * Constructs a new <code>RoleDetail</code>.
-     * Details of the role in a transaction approval.
+     * Transaction approval details response schema.
      * @alias module:model/RoleDetail
      */
     constructor() { 
@@ -108,7 +108,7 @@ class RoleDetail {
 RoleDetail.prototype['result'] = undefined;
 
 /**
- * Minimum number of approvals required for this role.
+ * The threshold for the transaction approval.
  * @member {Number} review_threshold
  */
 RoleDetail.prototype['review_threshold'] = undefined;
@@ -126,7 +126,7 @@ RoleDetail.prototype['initiator'] = undefined;
 RoleDetail.prototype['is_upgraded'] = undefined;
 
 /**
- * Time when the role completed the approval.
+ * Time to complete the review.
  * @member {String} complete_time
  */
 RoleDetail.prototype['complete_time'] = undefined;

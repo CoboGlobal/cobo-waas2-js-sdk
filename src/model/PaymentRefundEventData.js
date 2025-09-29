@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionFee from './CommissionFee';
 import PaymentTransaction from './PaymentTransaction';
 import Refund from './Refund';
 import RefundStatus from './RefundStatus';
@@ -26,7 +27,7 @@ class PaymentRefundEventData {
      * @alias module:model/PaymentRefundEventData
      * @implements module:model/WebhookEventDataType
      * @implements module:model/Refund
-     * @param data_type {module:model/PaymentRefundEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+     * @param data_type {module:model/PaymentRefundEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
      * @param refund_id {String} The refund order ID.
      * @param token_id {String} The ID of the cryptocurrency used for refund.
      * @param chain_id {String} The ID of the blockchain network on which the refund transaction occurs.
@@ -121,6 +122,9 @@ class PaymentRefundEventData {
             if (data.hasOwnProperty('merchant_fee_token_id')) {
                 obj['merchant_fee_token_id'] = ApiClient.convertToType(data['merchant_fee_token_id'], 'String');
             }
+            if (data.hasOwnProperty('commission_fee')) {
+                obj['commission_fee'] = CommissionFee.constructFromObject(data['commission_fee']);
+            }
         }
         return obj;
     }
@@ -195,6 +199,12 @@ class PaymentRefundEventData {
         if (data['merchant_fee_token_id'] && !(typeof data['merchant_fee_token_id'] === 'string' || data['merchant_fee_token_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_fee_token_id` to be a primitive type in the JSON string but got " + data['merchant_fee_token_id']);
         }
+        // validate the optional field `commission_fee`
+        if (data['commission_fee']) { // data not null
+          if (!!CommissionFee.validateJSON) {
+            CommissionFee.validateJSON(data['commission_fee']);
+          }
+        }
 
         return true;
     }
@@ -205,7 +215,7 @@ class PaymentRefundEventData {
 PaymentRefundEventData.RequiredProperties = ["data_type", "refund_id", "token_id", "chain_id", "amount", "to_address", "status"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/PaymentRefundEventData.DataTypeEnum} data_type
  */
 PaymentRefundEventData.prototype['data_type'] = undefined;
@@ -223,7 +233,7 @@ PaymentRefundEventData.prototype['request_id'] = undefined;
 PaymentRefundEventData.prototype['refund_id'] = undefined;
 
 /**
- * The ID of the pay-in order corresponding to this refund.
+ * The order ID corresponding to this refund.
  * @member {String} order_id
  */
 PaymentRefundEventData.prototype['order_id'] = undefined;
@@ -269,19 +279,19 @@ PaymentRefundEventData.prototype['status'] = undefined;
 PaymentRefundEventData.prototype['refund_type'] = undefined;
 
 /**
- * The creation time of the refund order, represented as a UNIX timestamp in seconds.
+ * The created time of the refund order, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp
  */
 PaymentRefundEventData.prototype['created_timestamp'] = undefined;
 
 /**
- * The last update time of the refund order, represented as a UNIX timestamp in seconds.
+ * The updated time of the refund order, represented as a UNIX timestamp in seconds.
  * @member {Number} updated_timestamp
  */
 PaymentRefundEventData.prototype['updated_timestamp'] = undefined;
 
 /**
- *  The initiator of this settlement request. Can return either an API key or the Payment Management App's ID.  - Format `api_key_<API_KEY>`: Indicates the settlement request was initiated via the Payment API using the API key. - Format `app_<APP_ID>`: Indicates the settlement request was initiated through the Payment Management App using the App ID. 
+ * The initiator of this refund order, usually the user's API key.
  * @member {String} initiator
  */
 PaymentRefundEventData.prototype['initiator'] = undefined;
@@ -293,27 +303,32 @@ PaymentRefundEventData.prototype['initiator'] = undefined;
 PaymentRefundEventData.prototype['transactions'] = undefined;
 
 /**
- * Whether to charge developer fee to the merchant for the refund.    - `true`: The fee amount (specified in `merchant_fee_amount`) will be deducted from the merchant's balance and added to the developer's balance    - `false`: The merchant is not charged any developer fee. 
+ * Whether to charge developer fee to the merchant.  - `true`: The fee amount (specified in `merchant_fee_amount`) will be deducted from the merchant's balance and added to the developer's balance - `false`: The merchant is not charged any developer fee. 
  * @member {Boolean} charge_merchant_fee
  */
 PaymentRefundEventData.prototype['charge_merchant_fee'] = undefined;
 
 /**
- * The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by `merchant_fee_token_id`. This is only applicable if `charge_merchant_fee` is set to `true`.
+ * The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by `merchant_fee_token_id`.
  * @member {String} merchant_fee_amount
  */
 PaymentRefundEventData.prototype['merchant_fee_amount'] = undefined;
 
 /**
- * The ID of the cryptocurrency used for the developer fee. This is only applicable if `charge_merchant_fee` is set to true.
+ * The ID of the cryptocurrency used for the developer fee.
  * @member {String} merchant_fee_token_id
  */
 PaymentRefundEventData.prototype['merchant_fee_token_id'] = undefined;
 
+/**
+ * @member {module:model/CommissionFee} commission_fee
+ */
+PaymentRefundEventData.prototype['commission_fee'] = undefined;
+
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -329,7 +344,7 @@ Refund.prototype['request_id'] = undefined;
  */
 Refund.prototype['refund_id'] = undefined;
 /**
- * The ID of the pay-in order corresponding to this refund.
+ * The order ID corresponding to this refund.
  * @member {String} order_id
  */
 Refund.prototype['order_id'] = undefined;
@@ -367,17 +382,17 @@ Refund.prototype['status'] = undefined;
  */
 Refund.prototype['refund_type'] = undefined;
 /**
- * The creation time of the refund order, represented as a UNIX timestamp in seconds.
+ * The created time of the refund order, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp
  */
 Refund.prototype['created_timestamp'] = undefined;
 /**
- * The last update time of the refund order, represented as a UNIX timestamp in seconds.
+ * The updated time of the refund order, represented as a UNIX timestamp in seconds.
  * @member {Number} updated_timestamp
  */
 Refund.prototype['updated_timestamp'] = undefined;
 /**
- *  The initiator of this settlement request. Can return either an API key or the Payment Management App's ID.  - Format `api_key_<API_KEY>`: Indicates the settlement request was initiated via the Payment API using the API key. - Format `app_<APP_ID>`: Indicates the settlement request was initiated through the Payment Management App using the App ID. 
+ * The initiator of this refund order, usually the user's API key.
  * @member {String} initiator
  */
 Refund.prototype['initiator'] = undefined;
@@ -387,20 +402,24 @@ Refund.prototype['initiator'] = undefined;
  */
 Refund.prototype['transactions'] = undefined;
 /**
- * Whether to charge developer fee to the merchant for the refund.    - `true`: The fee amount (specified in `merchant_fee_amount`) will be deducted from the merchant's balance and added to the developer's balance    - `false`: The merchant is not charged any developer fee. 
+ * Whether to charge developer fee to the merchant.  - `true`: The fee amount (specified in `merchant_fee_amount`) will be deducted from the merchant's balance and added to the developer's balance - `false`: The merchant is not charged any developer fee. 
  * @member {Boolean} charge_merchant_fee
  */
 Refund.prototype['charge_merchant_fee'] = undefined;
 /**
- * The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by `merchant_fee_token_id`. This is only applicable if `charge_merchant_fee` is set to `true`.
+ * The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by `merchant_fee_token_id`.
  * @member {String} merchant_fee_amount
  */
 Refund.prototype['merchant_fee_amount'] = undefined;
 /**
- * The ID of the cryptocurrency used for the developer fee. This is only applicable if `charge_merchant_fee` is set to true.
+ * The ID of the cryptocurrency used for the developer fee.
  * @member {String} merchant_fee_token_id
  */
 Refund.prototype['merchant_fee_token_id'] = undefined;
+/**
+ * @member {module:model/CommissionFee} commission_fee
+ */
+Refund.prototype['commission_fee'] = undefined;
 
 
 
@@ -506,6 +525,12 @@ PaymentRefundEventData['DataTypeEnum'] = {
      * @const
      */
     "ComplianceDisposition": "ComplianceDisposition",
+
+    /**
+     * value: "ComplianceKytScreenings"
+     * @const
+     */
+    "ComplianceKytScreenings": "ComplianceKytScreenings",
 
     /**
      * value: "unknown_default_open_api"

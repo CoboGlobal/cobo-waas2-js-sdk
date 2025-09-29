@@ -124,6 +124,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
+      //var instance = new CoboWaas2.TokenizationEstimateFeeRequestOperationParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property permissions (base name: "permissions")', function() {
+      // uncomment below and update the code to test the property permissions
+      //var instance = new CoboWaas2.TokenizationEstimateFeeRequestOperationParams();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

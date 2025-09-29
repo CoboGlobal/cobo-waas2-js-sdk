@@ -32,6 +32,13 @@ export default class ContractCallDestinationType {
 
     
         /**
+         * value: "STELLAR_Contract"
+         * @const
+         */
+        "STELLAR_Contract" = "STELLAR_Contract";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

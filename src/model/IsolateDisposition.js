@@ -18,10 +18,10 @@ import ApiClient from '../ApiClient';
 class IsolateDisposition {
     /**
      * Constructs a new <code>IsolateDisposition</code>.
-     * The information about a request to isolate funds.
+     * The information about a fund isolate disposition request.
      * @alias module:model/IsolateDisposition
-     * @param transaction_id {String} The UUID of the transaction whose funds are to be isolated. This identifies the original transaction that requires fund isolation.
-     * @param destination_address {String} The blockchain address to receive the isolated funds.
+     * @param transaction_id {String} The UUID of the transaction to be isolated. This identifies the original transaction that requires isolation processing.
+     * @param destination_address {String} The blockchain address where the isolated funds will be sent.
      * @param disposition_amount {String} The amount to be isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
      */
     constructor(transaction_id, destination_address, disposition_amount) { 
@@ -112,13 +112,13 @@ class IsolateDisposition {
 IsolateDisposition.RequiredProperties = ["transaction_id", "destination_address", "disposition_amount"];
 
 /**
- * The UUID of the transaction whose funds are to be isolated. This identifies the original transaction that requires fund isolation.
+ * The UUID of the transaction to be isolated. This identifies the original transaction that requires isolation processing.
  * @member {String} transaction_id
  */
 IsolateDisposition.prototype['transaction_id'] = undefined;
 
 /**
- * The blockchain address to receive the isolated funds.
+ * The blockchain address where the isolated funds will be sent.
  * @member {String} destination_address
  */
 IsolateDisposition.prototype['destination_address'] = undefined;
@@ -130,13 +130,13 @@ IsolateDisposition.prototype['destination_address'] = undefined;
 IsolateDisposition.prototype['disposition_amount'] = undefined;
 
 /**
- * Custom categories to identify and track this isolation transaction. Used for transaction classification and reporting.
+ * Custom categories to identify and track this isolate transaction. Used for transaction classification and reporting.
  * @member {Array.<String>} category_names
  */
 IsolateDisposition.prototype['category_names'] = undefined;
 
 /**
- * Additional notes or description for the isolation.
+ * Additional notes or description for this isolate disposition.
  * @member {String} description
  */
 IsolateDisposition.prototype['description'] = undefined;

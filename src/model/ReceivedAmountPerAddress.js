@@ -18,10 +18,10 @@ import ApiClient from '../ApiClient';
 class ReceivedAmountPerAddress {
     /**
      * Constructs a new <code>ReceivedAmountPerAddress</code>.
-     * The total amount of the token that has been received at a given address.
+     * Total amount of a specific token received at a given address.
      * @alias module:model/ReceivedAmountPerAddress
-     * @param address {String} The receiving address.
-     * @param total_received_amount {String} The total amount of the token that has been received at this address.
+     * @param address {String} Receiving address.
+     * @param total_received_amount {String} Total tokens received at this address, as a decimal string.
      */
     constructor(address, total_received_amount) { 
         
@@ -89,13 +89,13 @@ class ReceivedAmountPerAddress {
 ReceivedAmountPerAddress.RequiredProperties = ["address", "total_received_amount"];
 
 /**
- * The receiving address.
+ * Receiving address.
  * @member {String} address
  */
 ReceivedAmountPerAddress.prototype['address'] = undefined;
 
 /**
- * The total amount of the token that has been received at this address.
+ * Total tokens received at this address, as a decimal string.
  * @member {String} total_received_amount
  */
 ReceivedAmountPerAddress.prototype['total_received_amount'] = undefined;

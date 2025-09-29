@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field** | **String** | The field name. | 
+**field** | **String** | The app workflow field name. | 
 **value_type** | [**PolicyFieldValueType**](PolicyFieldValueType.md) |  | 
-**value** | **String** | The field value. | 
+**value** | **String** | The app workflow field value. | 
 **operator** | [**PolicyFieldOperator**](PolicyFieldOperator.md) |  | 
 
 

@@ -20,13 +20,15 @@ import TokenizationMintEstimateFeeParams from './TokenizationMintEstimateFeePara
 import TokenizationMintTokenParamsMintsInner from './TokenizationMintTokenParamsMintsInner';
 import TokenizationOperationType from './TokenizationOperationType';
 import TokenizationPauseEstimateFeeParams from './TokenizationPauseEstimateFeeParams';
+import TokenizationPermissionAction from './TokenizationPermissionAction';
 import TokenizationToggleAllowlistEstimateFeeParams from './TokenizationToggleAllowlistEstimateFeeParams';
 import TokenizationTokenOperationSource from './TokenizationTokenOperationSource';
+import TokenizationTokenPermissionType from './TokenizationTokenPermissionType';
 import TokenizationUnpauseEstimateFeeParams from './TokenizationUnpauseEstimateFeeParams';
-import TokenizationUpdateAddressAction from './TokenizationUpdateAddressAction';
 import TokenizationUpdateAllowlistAddressesEstimateFeeParams from './TokenizationUpdateAllowlistAddressesEstimateFeeParams';
 import TokenizationUpdateBlocklistAddressesEstimateFeeParams from './TokenizationUpdateBlocklistAddressesEstimateFeeParams';
 import TokenizationUpdateBlocklistAddressesParamsAddressesInner from './TokenizationUpdateBlocklistAddressesParamsAddressesInner';
+import TokenizationUpdatePermissionsEstimateFeeParams from './TokenizationUpdatePermissionsEstimateFeeParams';
 
 /**
  * The TokenizationEstimateFeeRequestOperationParams model module.
@@ -36,7 +38,7 @@ class TokenizationEstimateFeeRequestOperationParams {
     /**
      * Constructs a new <code>TokenizationEstimateFeeRequestOperationParams</code>.
      * @alias module:model/TokenizationEstimateFeeRequestOperationParams
-     * @param {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams)} instance The actual instance to initialize TokenizationEstimateFeeRequestOperationParams.
+     * @param {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams|module:model/TokenizationUpdatePermissionsEstimateFeeParams)} instance The actual instance to initialize TokenizationEstimateFeeRequestOperationParams.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -83,6 +85,10 @@ class TokenizationEstimateFeeRequestOperationParams {
                     break;
                 case "UpdateBlocklistAddresses":
                     this.actualInstance = TokenizationUpdateBlocklistAddressesEstimateFeeParams.constructFromObject(instance);
+                    match++;
+                    break;
+                case "UpdatePermissions":
+                    this.actualInstance = TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance);
                     match++;
                     break;
                 default:
@@ -317,12 +323,37 @@ class TokenizationEstimateFeeRequestOperationParams {
             errorMessages.push("Failed to construct TokenizationContractCallEstimateFeeParams: " + err)
         }
 
+        try {
+            if (instance instanceof TokenizationUpdatePermissionsEstimateFeeParams) {
+                this.actualInstance = instance;
+            } else if(!!TokenizationUpdatePermissionsEstimateFeeParams.validateJSON && TokenizationUpdatePermissionsEstimateFeeParams.validateJSON(instance)){
+                // plain JS object
+                // create TokenizationUpdatePermissionsEstimateFeeParams from JS object
+                this.actualInstance = TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance);
+            } else {
+                if(TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance)) {
+                    if (!!TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance).toJSON) {
+                        if (TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = TokenizationUpdatePermissionsEstimateFeeParams.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into TokenizationUpdatePermissionsEstimateFeeParams
+            errorMessages.push("Failed to construct TokenizationUpdatePermissionsEstimateFeeParams: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `TokenizationEstimateFeeRequestOperationParams` with oneOf schemas TokenizationBurnEstimateFeeParams, TokenizationContractCallEstimateFeeParams, TokenizationIssueEstimateFeeParams, TokenizationMintEstimateFeeParams, TokenizationPauseEstimateFeeParams, TokenizationToggleAllowlistEstimateFeeParams, TokenizationUnpauseEstimateFeeParams, TokenizationUpdateAllowlistAddressesEstimateFeeParams, TokenizationUpdateBlocklistAddressesEstimateFeeParams. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `TokenizationEstimateFeeRequestOperationParams` with oneOf schemas TokenizationBurnEstimateFeeParams, TokenizationContractCallEstimateFeeParams, TokenizationIssueEstimateFeeParams, TokenizationMintEstimateFeeParams, TokenizationPauseEstimateFeeParams, TokenizationToggleAllowlistEstimateFeeParams, TokenizationUnpauseEstimateFeeParams, TokenizationUpdateAllowlistAddressesEstimateFeeParams, TokenizationUpdateBlocklistAddressesEstimateFeeParams, TokenizationUpdatePermissionsEstimateFeeParams. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `TokenizationEstimateFeeRequestOperationParams` with oneOf schemas TokenizationBurnEstimateFeeParams, TokenizationContractCallEstimateFeeParams, TokenizationIssueEstimateFeeParams, TokenizationMintEstimateFeeParams, TokenizationPauseEstimateFeeParams, TokenizationToggleAllowlistEstimateFeeParams, TokenizationUnpauseEstimateFeeParams, TokenizationUpdateAllowlistAddressesEstimateFeeParams, TokenizationUpdateBlocklistAddressesEstimateFeeParams. Details: " +
+        //    throw new Error("No match found constructing `TokenizationEstimateFeeRequestOperationParams` with oneOf schemas TokenizationBurnEstimateFeeParams, TokenizationContractCallEstimateFeeParams, TokenizationIssueEstimateFeeParams, TokenizationMintEstimateFeeParams, TokenizationPauseEstimateFeeParams, TokenizationToggleAllowlistEstimateFeeParams, TokenizationUnpauseEstimateFeeParams, TokenizationUpdateAllowlistAddressesEstimateFeeParams, TokenizationUpdateBlocklistAddressesEstimateFeeParams, TokenizationUpdatePermissionsEstimateFeeParams. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -342,16 +373,16 @@ class TokenizationEstimateFeeRequestOperationParams {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TokenizationBurnEstimateFeeParams</code>, <code>TokenizationContractCallEstimateFeeParams</code>, <code>TokenizationIssueEstimateFeeParams</code>, <code>TokenizationMintEstimateFeeParams</code>, <code>TokenizationPauseEstimateFeeParams</code>, <code>TokenizationToggleAllowlistEstimateFeeParams</code>, <code>TokenizationUnpauseEstimateFeeParams</code>, <code>TokenizationUpdateAllowlistAddressesEstimateFeeParams</code>, <code>TokenizationUpdateBlocklistAddressesEstimateFeeParams</code>.
-     * @return {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams)} The actual instance.
+     * Gets the actual instance, which can be <code>TokenizationBurnEstimateFeeParams</code>, <code>TokenizationContractCallEstimateFeeParams</code>, <code>TokenizationIssueEstimateFeeParams</code>, <code>TokenizationMintEstimateFeeParams</code>, <code>TokenizationPauseEstimateFeeParams</code>, <code>TokenizationToggleAllowlistEstimateFeeParams</code>, <code>TokenizationUnpauseEstimateFeeParams</code>, <code>TokenizationUpdateAllowlistAddressesEstimateFeeParams</code>, <code>TokenizationUpdateBlocklistAddressesEstimateFeeParams</code>, <code>TokenizationUpdatePermissionsEstimateFeeParams</code>.
+     * @return {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams|module:model/TokenizationUpdatePermissionsEstimateFeeParams)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TokenizationBurnEstimateFeeParams</code>, <code>TokenizationContractCallEstimateFeeParams</code>, <code>TokenizationIssueEstimateFeeParams</code>, <code>TokenizationMintEstimateFeeParams</code>, <code>TokenizationPauseEstimateFeeParams</code>, <code>TokenizationToggleAllowlistEstimateFeeParams</code>, <code>TokenizationUnpauseEstimateFeeParams</code>, <code>TokenizationUpdateAllowlistAddressesEstimateFeeParams</code>, <code>TokenizationUpdateBlocklistAddressesEstimateFeeParams</code>.
-     * @param {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TokenizationBurnEstimateFeeParams</code>, <code>TokenizationContractCallEstimateFeeParams</code>, <code>TokenizationIssueEstimateFeeParams</code>, <code>TokenizationMintEstimateFeeParams</code>, <code>TokenizationPauseEstimateFeeParams</code>, <code>TokenizationToggleAllowlistEstimateFeeParams</code>, <code>TokenizationUnpauseEstimateFeeParams</code>, <code>TokenizationUpdateAllowlistAddressesEstimateFeeParams</code>, <code>TokenizationUpdateBlocklistAddressesEstimateFeeParams</code>, <code>TokenizationUpdatePermissionsEstimateFeeParams</code>.
+     * @param {(module:model/TokenizationBurnEstimateFeeParams|module:model/TokenizationContractCallEstimateFeeParams|module:model/TokenizationIssueEstimateFeeParams|module:model/TokenizationMintEstimateFeeParams|module:model/TokenizationPauseEstimateFeeParams|module:model/TokenizationToggleAllowlistEstimateFeeParams|module:model/TokenizationUnpauseEstimateFeeParams|module:model/TokenizationUpdateAllowlistAddressesEstimateFeeParams|module:model/TokenizationUpdateBlocklistAddressesEstimateFeeParams|module:model/TokenizationUpdatePermissionsEstimateFeeParams)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TokenizationEstimateFeeRequestOperationParams.constructFromObject(obj).getActualInstance();
@@ -421,7 +452,7 @@ TokenizationEstimateFeeRequestOperationParams.prototype['token_id'] = undefined;
 TokenizationEstimateFeeRequestOperationParams.prototype['burns'] = undefined;
 
 /**
- * @member {module:model/TokenizationUpdateAddressAction} action
+ * @member {module:model/TokenizationPermissionAction} action
  */
 TokenizationEstimateFeeRequestOperationParams.prototype['action'] = undefined;
 
@@ -442,8 +473,20 @@ TokenizationEstimateFeeRequestOperationParams.prototype['activation'] = undefine
  */
 TokenizationEstimateFeeRequestOperationParams.prototype['data'] = undefined;
 
+/**
+ * The address to manage permissions for.
+ * @member {String} address
+ */
+TokenizationEstimateFeeRequestOperationParams.prototype['address'] = undefined;
 
-TokenizationEstimateFeeRequestOperationParams.OneOf = ["TokenizationBurnEstimateFeeParams", "TokenizationContractCallEstimateFeeParams", "TokenizationIssueEstimateFeeParams", "TokenizationMintEstimateFeeParams", "TokenizationPauseEstimateFeeParams", "TokenizationToggleAllowlistEstimateFeeParams", "TokenizationUnpauseEstimateFeeParams", "TokenizationUpdateAllowlistAddressesEstimateFeeParams", "TokenizationUpdateBlocklistAddressesEstimateFeeParams"];
+/**
+ * The list of permissions to operate on.
+ * @member {Array.<module:model/TokenizationTokenPermissionType>} permissions
+ */
+TokenizationEstimateFeeRequestOperationParams.prototype['permissions'] = undefined;
+
+
+TokenizationEstimateFeeRequestOperationParams.OneOf = ["TokenizationBurnEstimateFeeParams", "TokenizationContractCallEstimateFeeParams", "TokenizationIssueEstimateFeeParams", "TokenizationMintEstimateFeeParams", "TokenizationPauseEstimateFeeParams", "TokenizationToggleAllowlistEstimateFeeParams", "TokenizationUnpauseEstimateFeeParams", "TokenizationUpdateAllowlistAddressesEstimateFeeParams", "TokenizationUpdateBlocklistAddressesEstimateFeeParams", "TokenizationUpdatePermissionsEstimateFeeParams"];
 
 export default TokenizationEstimateFeeRequestOperationParams;
 

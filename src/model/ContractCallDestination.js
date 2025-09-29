@@ -12,8 +12,11 @@
 import ApiClient from '../ApiClient';
 import ContractCallDestinationType from './ContractCallDestinationType';
 import EvmContractCallDestination from './EvmContractCallDestination';
+import SolContractCallAddressLookupTableAccount from './SolContractCallAddressLookupTableAccount';
 import SolContractCallDestination from './SolContractCallDestination';
 import SolContractCallInstruction from './SolContractCallInstruction';
+import StellarContractCallContractParam from './StellarContractCallContractParam';
+import StellarContractCallDestination from './StellarContractCallDestination';
 
 /**
  * The ContractCallDestination model module.
@@ -23,7 +26,7 @@ class ContractCallDestination {
     /**
      * Constructs a new <code>ContractCallDestination</code>.
      * @alias module:model/ContractCallDestination
-     * @param {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination)} instance The actual instance to initialize ContractCallDestination.
+     * @param {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination)} instance The actual instance to initialize ContractCallDestination.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -42,6 +45,10 @@ class ContractCallDestination {
                     break;
                 case "SOL_Contract":
                     this.actualInstance = SolContractCallDestination.constructFromObject(instance);
+                    match++;
+                    break;
+                case "STELLAR_Contract":
+                    this.actualInstance = StellarContractCallDestination.constructFromObject(instance);
                     match++;
                     break;
                 default:
@@ -101,12 +108,37 @@ class ContractCallDestination {
             errorMessages.push("Failed to construct SolContractCallDestination: " + err)
         }
 
+        try {
+            if (instance instanceof StellarContractCallDestination) {
+                this.actualInstance = instance;
+            } else if(!!StellarContractCallDestination.validateJSON && StellarContractCallDestination.validateJSON(instance)){
+                // plain JS object
+                // create StellarContractCallDestination from JS object
+                this.actualInstance = StellarContractCallDestination.constructFromObject(instance);
+            } else {
+                if(StellarContractCallDestination.constructFromObject(instance)) {
+                    if (!!StellarContractCallDestination.constructFromObject(instance).toJSON) {
+                        if (StellarContractCallDestination.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = StellarContractCallDestination.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = StellarContractCallDestination.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into StellarContractCallDestination
+            errorMessages.push("Failed to construct StellarContractCallDestination: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination, SolContractCallDestination. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination, SolContractCallDestination. Details: " +
+        //    throw new Error("No match found constructing `ContractCallDestination` with oneOf schemas EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -126,16 +158,16 @@ class ContractCallDestination {
     }
 
     /**
-     * Gets the actual instance, which can be <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>.
-     * @return {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination)} The actual instance.
+     * Gets the actual instance, which can be <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>.
+     * @return {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>.
-     * @param {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination)} obj The actual instance.
+     * Sets the actual instance, which can be <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>.
+     * @param {(module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = ContractCallDestination.constructFromObject(obj).getActualInstance();
@@ -177,7 +209,7 @@ ContractCallDestination.prototype['address'] = undefined;
 ContractCallDestination.prototype['value'] = undefined;
 
 /**
- * The data used to invoke a specific function or method within the specified contract at the destination address, with a maximum length of 65,000 characters. 
+ * The data that is used to invoke a specific function or method within the specified contract at the destination address. 
  * @member {String} calldata
  */
 ContractCallDestination.prototype['calldata'] = undefined;
@@ -187,8 +219,18 @@ ContractCallDestination.prototype['calldata'] = undefined;
  */
 ContractCallDestination.prototype['instructions'] = undefined;
 
+/**
+ * @member {Array.<module:model/SolContractCallAddressLookupTableAccount>} address_lookup_table_accounts
+ */
+ContractCallDestination.prototype['address_lookup_table_accounts'] = undefined;
 
-ContractCallDestination.OneOf = ["EvmContractCallDestination", "SolContractCallDestination"];
+/**
+ * @member {module:model/StellarContractCallContractParam} contract_param
+ */
+ContractCallDestination.prototype['contract_param'] = undefined;
+
+
+ContractCallDestination.OneOf = ["EvmContractCallDestination", "SolContractCallDestination", "StellarContractCallDestination"];
 
 export default ContractCallDestination;
 

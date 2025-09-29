@@ -20,10 +20,10 @@ class Account {
      * Constructs a new <code>Account</code>.
      * Details of a payment account used for top-up operations, including address and balance metadata.
      * @alias module:model/Account
-     * @param token_id {String} The ID of the cryptocurrency that this account is configured to handle.
-     * @param address {String} The top-up address corresponding to the account.
-     * @param merchant_balance {String} The amount of merchant funds under this account.
-     * @param psp_balance {String} The amount of developer funds under this account.
+     * @param token_id {String} The ID of the cryptocurrency.
+     * @param address {String} The token receiving address of the account.
+     * @param merchant_balance {String} The merchant account balance, as a decimal string.
+     * @param psp_balance {String} The PSP account balance, as a decimal string.
      */
     constructor(token_id, address, merchant_balance, psp_balance) { 
         
@@ -113,37 +113,37 @@ class Account {
 Account.RequiredProperties = ["token_id", "address", "merchant_balance", "psp_balance"];
 
 /**
- * The ID of the cryptocurrency that this account is configured to handle.
+ * The ID of the cryptocurrency.
  * @member {String} token_id
  */
 Account.prototype['token_id'] = undefined;
 
 /**
- * The top-up address corresponding to the account.
+ * The token receiving address of the account.
  * @member {String} address
  */
 Account.prototype['address'] = undefined;
 
 /**
- * The amount of merchant funds under this account.
+ * The merchant account balance, as a decimal string.
  * @member {String} merchant_balance
  */
 Account.prototype['merchant_balance'] = undefined;
 
 /**
- * The amount of developer funds under this account.
+ * The PSP account balance, as a decimal string.
  * @member {String} psp_balance
  */
 Account.prototype['psp_balance'] = undefined;
 
 /**
- * The creation time of the account, in Unix timestamp format, measured in milliseconds.
+ * The time when the account was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_timestamp
  */
 Account.prototype['created_timestamp'] = undefined;
 
 /**
- * The last update time of the account, in Unix timestamp format, measured in milliseconds.
+ * The time when the account was updated, in Unix timestamp format, measured in milliseconds.
  * @member {Number} updated_timestamp
  */
 Account.prototype['updated_timestamp'] = undefined;

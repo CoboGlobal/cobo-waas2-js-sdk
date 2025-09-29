@@ -21,12 +21,12 @@ import WalletType from './WalletType';
 class AddressBook {
     /**
      * Constructs a new <code>AddressBook</code>.
-     * The information of an Address Book entry.
+     * The information of an address book entry.
      * @alias module:model/AddressBook
-     * @param org_id {String} Organization ID.
-     * @param entry_id {String} Address Book entry ID.
-     * @param address {String} Wallet address.
-     * @param label {String} A user-defined label for the address.
+     * @param org_id {String} The organization ID.
+     * @param entry_id {String} The entry ID.
+     * @param address {String} The wallet address.
+     * @param label {String} The address label.
      */
     constructor(org_id, entry_id, address, label) { 
         
@@ -147,31 +147,31 @@ class AddressBook {
 AddressBook.RequiredProperties = ["org_id", "entry_id", "address", "label"];
 
 /**
- * Organization ID.
+ * The organization ID.
  * @member {String} org_id
  */
 AddressBook.prototype['org_id'] = undefined;
 
 /**
- * Address Book entry ID.
+ * The entry ID.
  * @member {String} entry_id
  */
 AddressBook.prototype['entry_id'] = undefined;
 
 /**
- * Wallet address.
+ * The wallet address.
  * @member {String} address
  */
 AddressBook.prototype['address'] = undefined;
 
 /**
- * Optional memo or tag required by some chains.
+ * The memo.
  * @member {String} memo
  */
 AddressBook.prototype['memo'] = undefined;
 
 /**
- * Wallet name.
+ * The wallet name.
  * @member {String} wallet_name
  */
 AddressBook.prototype['wallet_name'] = undefined;
@@ -187,7 +187,7 @@ AddressBook.prototype['wallet_type'] = undefined;
 AddressBook.prototype['wallet_subtype'] = undefined;
 
 /**
- * A user-defined label for the address.
+ * The address label.
  * @member {String} label
  */
 AddressBook.prototype['label'] = undefined;
@@ -199,7 +199,7 @@ AddressBook.prototype['label'] = undefined;
 AddressBook.prototype['chain_ids'] = undefined;
 
 /**
- * Email of the address owner.
+ * The email of the address owner.
  * @member {String} email
  */
 AddressBook.prototype['email'] = undefined;

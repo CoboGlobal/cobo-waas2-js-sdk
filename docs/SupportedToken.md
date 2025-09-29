@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **chain_symbol** | **String** | Symbol of the underlying blockchain | 
 **chain_icon_url** | **String** | URL to the blockchain&#39;s icon image | [optional] 
 **token_icon_url** | **String** | URL to the token&#39;s icon image | [optional] 
+**can_off_ramp** | **Boolean** | Whether the token can by off ramp settlement | [optional] 
 
 

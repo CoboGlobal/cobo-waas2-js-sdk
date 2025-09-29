@@ -46,6 +46,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createBabylonStakingExpansion', function() {
+      it('should call createBabylonStakingExpansion successfully', function() {
+        //uncomment below and update the code to test createBabylonStakingExpansion
+        //instance.createBabylonStakingExpansion().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createBabylonStakingRegistration', function() {
       it('should call createBabylonStakingRegistration successfully', function() {
         //uncomment below and update the code to test createBabylonStakingRegistration

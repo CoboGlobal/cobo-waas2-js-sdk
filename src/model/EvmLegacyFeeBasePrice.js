@@ -18,6 +18,7 @@ import ApiClient from '../ApiClient';
 class EvmLegacyFeeBasePrice {
     /**
      * Constructs a new <code>EvmLegacyFeeBasePrice</code>.
+     * The transaction gas price based on the legacy fee model.
      * @alias module:model/EvmLegacyFeeBasePrice
      */
     constructor() { 

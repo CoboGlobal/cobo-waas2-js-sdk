@@ -39,10 +39,10 @@ export default class AddressBooksApi {
 
 
     /**
-     * Create Address Book entries
-     * This operation adds new entries (records) to your Address Book. 
+     * Create address books
+     * This operation add addresses to your address book. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateAddressBooksParam} [CreateAddressBooksParam] The request body of the create Address Books operation.
+     * @param {module:model/CreateAddressBooksParam} [CreateAddressBooksParam] The request body of the create address books operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateAddressBooks201Response} and HTTP response
      */
     createAddressBooksWithHttpInfo(opts) {
@@ -73,10 +73,10 @@ export default class AddressBooksApi {
     }
 
     /**
-     * Create Address Book entries
-     * This operation adds new entries (records) to your Address Book. 
+     * Create address books
+     * This operation add addresses to your address book. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/CreateAddressBooksParam} opts.CreateAddressBooksParam The request body of the create Address Books operation.
+     * @param {module:model/CreateAddressBooksParam} opts.CreateAddressBooksParam The request body of the create address books operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateAddressBooks201Response}
      */
     createAddressBooks(opts) {
@@ -88,9 +88,9 @@ export default class AddressBooksApi {
 
 
     /**
-     * Delete Address Book entry
-     * This operation deletes a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Delete address book
+     * This operation deletes a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DeleteAddressBookById201Response} and HTTP response
      */
     deleteAddressBookByIdWithHttpInfo(entry_id) {
@@ -125,9 +125,9 @@ export default class AddressBooksApi {
     }
 
     /**
-     * Delete Address Book entry
-     * This operation deletes a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Delete address book
+     * This operation deletes a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeleteAddressBookById201Response}
      */
     deleteAddressBookById(entry_id) {
@@ -139,9 +139,9 @@ export default class AddressBooksApi {
 
 
     /**
-     * Get Address Book entry
-     * This operation retrieves the detailed information about a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Get address book information
+     * This operation retrieves the detailed information about a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AddressBook} and HTTP response
      */
     getAddressBookByIdWithHttpInfo(entry_id) {
@@ -176,9 +176,9 @@ export default class AddressBooksApi {
     }
 
     /**
-     * Get Address Book entry
-     * This operation retrieves the detailed information about a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Get address book information
+     * This operation retrieves the detailed information about a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AddressBook}
      */
     getAddressBookById(entry_id) {
@@ -190,15 +190,15 @@ export default class AddressBooksApi {
 
 
     /**
-     * List Address Book entries
-     * This operation retrieves all entries (records) from your Address Book. You can filter the entries by chain ID, address, and label. 
+     * List address book entries
+     * This operation retrieves a list of addresses from your address book. 
      * @param {Object} opts Optional parameters
      * @param {String} [chain_id] The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} [address] The wallet address.
-     * @param {String} [label] A user-defined label for the address.
+     * @param {String} [label] The address label.
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
-     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} [before] This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} [after] This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAddressBooks200Response} and HTTP response
      */
     listAddressBooksWithHttpInfo(opts) {
@@ -235,15 +235,15 @@ export default class AddressBooksApi {
     }
 
     /**
-     * List Address Book entries
-     * This operation retrieves all entries (records) from your Address Book. You can filter the entries by chain ID, address, and label. 
+     * List address book entries
+     * This operation retrieves a list of addresses from your address book. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.chain_id The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} opts.address The wallet address.
-     * @param {String} opts.label A user-defined label for the address.
+     * @param {String} opts.label The address label.
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
-     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} opts.before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} opts.after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAddressBooks200Response}
      */
     listAddressBooks(opts) {
@@ -255,11 +255,11 @@ export default class AddressBooksApi {
 
 
     /**
-     * Update Address Book entry
-     * This operation updates the information of a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Update address book
+     * This operation updates the information of a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateAddressBookParam} [UpdateAddressBookParam] The request body of the update Address Book operation.
+     * @param {module:model/UpdateAddressBookParam} [UpdateAddressBookParam] The request body of the update address book operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AddressBook} and HTTP response
      */
     updateAddressBookByIdWithHttpInfo(entry_id, opts) {
@@ -295,11 +295,11 @@ export default class AddressBooksApi {
     }
 
     /**
-     * Update Address Book entry
-     * This operation updates the information of a specified Address Book entry (record). 
-     * @param {String} entry_id The Address Book entry ID.
+     * Update address book
+     * This operation updates the information of a specified address book. 
+     * @param {String} entry_id The address book ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateAddressBookParam} opts.UpdateAddressBookParam The request body of the update Address Book operation.
+     * @param {module:model/UpdateAddressBookParam} opts.UpdateAddressBookParam The request body of the update address book operation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AddressBook}
      */
     updateAddressBookById(entry_id, opts) {

@@ -20,10 +20,10 @@ import ApprovalStatus from './ApprovalStatus';
 class ApprovalRequest {
     /**
      * Constructs a new <code>ApprovalRequest</code>.
-     * The information of an approval request.
+     * The information of an app workflow approval.
      * @alias module:model/ApprovalRequest
-     * @param approval_id {String} The system-generated unique ID of the approval request.
-     * @param request_id {String} An identifier provided by you when requesting the approval.
+     * @param approval_id {String} 
+     * @param request_id {String} 
      * @param fields {Array.<module:model/AppWorkflowField>} 
      * @param status {module:model/ApprovalStatus} 
      * @param initiated_timestamp {Number} The time when the approval was initiated, in Unix timestamp format, measured in milliseconds.
@@ -116,13 +116,11 @@ class ApprovalRequest {
 ApprovalRequest.RequiredProperties = ["approval_id", "request_id", "fields", "status", "initiated_timestamp"];
 
 /**
- * The system-generated unique ID of the approval request.
  * @member {String} approval_id
  */
 ApprovalRequest.prototype['approval_id'] = undefined;
 
 /**
- * An identifier provided by you when requesting the approval.
  * @member {String} request_id
  */
 ApprovalRequest.prototype['request_id'] = undefined;

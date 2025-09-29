@@ -15,6 +15,7 @@ import SwapActivityApprovers from './SwapActivityApprovers';
 import SwapActivitySigners from './SwapActivitySigners';
 import SwapActivityStatus from './SwapActivityStatus';
 import SwapActivityTimeline from './SwapActivityTimeline';
+import SwapReceivingTransaction from './SwapReceivingTransaction';
 import SwapType from './SwapType';
 import TransactionInitiatorType from './TransactionInitiatorType';
 import TransactionRequestFee from './TransactionRequestFee';
@@ -117,6 +118,9 @@ class SwapActivityDetail {
             if (data.hasOwnProperty('signers')) {
                 obj['signers'] = ApiClient.convertToType(data['signers'], [SwapActivitySigners]);
             }
+            if (data.hasOwnProperty('receiving_transaction')) {
+                obj['receiving_transaction'] = SwapReceivingTransaction.constructFromObject(data['receiving_transaction']);
+            }
         }
         return obj;
     }
@@ -210,6 +214,12 @@ class SwapActivityDetail {
             for (const item of data['signers']) {
                 SwapActivitySigners.validateJSON(item);
             };
+        }
+        // validate the optional field `receiving_transaction`
+        if (data['receiving_transaction']) { // data not null
+          if (!!SwapReceivingTransaction.validateJSON) {
+            SwapReceivingTransaction.validateJSON(data['receiving_transaction']);
+          }
         }
 
         return true;
@@ -338,6 +348,11 @@ SwapActivityDetail.prototype['approvers'] = undefined;
  * @member {Array.<module:model/SwapActivitySigners>} signers
  */
 SwapActivityDetail.prototype['signers'] = undefined;
+
+/**
+ * @member {module:model/SwapReceivingTransaction} receiving_transaction
+ */
+SwapActivityDetail.prototype['receiving_transaction'] = undefined;
 
 
 // Implement SwapActivity interface:

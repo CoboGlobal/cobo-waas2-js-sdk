@@ -13,6 +13,8 @@
 
 * `Failed` (value: `"Failed"`)
 
+* `Canceled` (value: `"Canceled"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

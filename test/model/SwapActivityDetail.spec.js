@@ -178,6 +178,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property receiving_transaction (base name: "receiving_transaction")', function() {
+      // uncomment below and update the code to test the property receiving_transaction
+      //var instance = new CoboWaas2.SwapActivityDetail();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

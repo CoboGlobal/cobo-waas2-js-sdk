@@ -25,5 +25,6 @@ Name | Type | Description | Notes
 **timeline** | [**[SwapActivityTimeline]**](SwapActivityTimeline.md) |  | [optional] 
 **approvers** | [**[SwapActivityApprovers]**](SwapActivityApprovers.md) |  | [optional] 
 **signers** | [**[SwapActivitySigners]**](SwapActivitySigners.md) |  | [optional] 
+**receiving_transaction** | [**SwapReceivingTransaction**](SwapReceivingTransaction.md) |  | [optional] 
 
 

@@ -112,6 +112,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property stellar_trusted_token_ids (base name: "stellar_trusted_token_ids")', function() {
+      // uncomment below and update the code to test the property stellar_trusted_token_ids
+      //var instance = new CoboWaas2.AddressInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

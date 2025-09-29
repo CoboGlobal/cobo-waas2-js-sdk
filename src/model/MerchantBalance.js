@@ -21,7 +21,7 @@ class MerchantBalance {
      * Constructs a new <code>MerchantBalance</code>.
      * @alias module:model/MerchantBalance
      * @param merchant_id {String} The merchant ID.
-     * @param token_id {String} The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+     * @param token_id {String} The ID of the cryptocurrency.
      * @param acquiring_type {module:model/AcquiringType} 
      */
     constructor(merchant_id, token_id, acquiring_type) { 
@@ -135,7 +135,7 @@ MerchantBalance.RequiredProperties = ["merchant_id", "token_id", "acquiring_type
 MerchantBalance.prototype['merchant_id'] = undefined;
 
 /**
- * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
+ * The ID of the cryptocurrency.
  * @member {String} token_id
  */
 MerchantBalance.prototype['token_id'] = undefined;
@@ -146,31 +146,31 @@ MerchantBalance.prototype['token_id'] = undefined;
 MerchantBalance.prototype['acquiring_type'] = undefined;
 
 /**
- * The total amount of the token that has been received by the merchant.
+ * The merchant total received amount.
  * @member {String} total_received_amount
  */
 MerchantBalance.prototype['total_received_amount'] = undefined;
 
 /**
- * The total amount of the token that has been settled from the merchant's balance.
+ * The merchant settled amount.
  * @member {String} settled_amount
  */
 MerchantBalance.prototype['settled_amount'] = undefined;
 
 /**
- * The total amount of the token that has been refunded from the merchant's balance.
+ * The merchant total refunded amount.
  * @member {String} refunded_amount
  */
 MerchantBalance.prototype['refunded_amount'] = undefined;
 
 /**
- * The total balance of the token for the merchant.
+ * The merchant total balance.
  * @member {String} total_balance
  */
 MerchantBalance.prototype['total_balance'] = undefined;
 
 /**
- * The balance available for settlement or refund, in the specified cryptocurrency.
+ * The merchant available balance.
  * @member {String} available_balance
  */
 MerchantBalance.prototype['available_balance'] = undefined;

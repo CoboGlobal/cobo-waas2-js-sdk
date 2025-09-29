@@ -19,7 +19,7 @@ import CreateAddressBookParam from './CreateAddressBookParam';
 class CreateAddressBooksParam {
     /**
      * Constructs a new <code>CreateAddressBooksParam</code>.
-     * The request body to add addresses in batches to your Address Book.
+     * The request body to batch create address book.
      * @alias module:model/CreateAddressBooksParam
      * @param address_books {Array.<module:model/CreateAddressBookParam>} 
      */

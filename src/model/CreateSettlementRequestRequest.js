@@ -67,6 +67,12 @@ class CreateSettlementRequestRequest {
             if (data.hasOwnProperty('settlements')) {
                 obj['settlements'] = ApiClient.convertToType(data['settlements'], [CreateSettlement]);
             }
+            if (data.hasOwnProperty('bank_account_id')) {
+                obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
+            }
+            if (data.hasOwnProperty('currency')) {
+                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
+            }
         }
         return obj;
     }
@@ -96,6 +102,14 @@ class CreateSettlementRequestRequest {
             for (const item of data['settlements']) {
                 CreateSettlement.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
+            throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
+        }
+        // ensure the json data is a string
+        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
+            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
         }
 
         return true;
@@ -131,6 +145,18 @@ CreateSettlementRequestRequest.prototype['settlement_type'] = undefined;
  * @member {Array.<module:model/CreateSettlement>} settlements
  */
 CreateSettlementRequestRequest.prototype['settlements'] = undefined;
+
+/**
+ * ｜ Only used in OffRamp payout channel. The ID of the bank account where the settled funds will be deposited.
+ * @member {String} bank_account_id
+ */
+CreateSettlementRequestRequest.prototype['bank_account_id'] = undefined;
+
+/**
+ * The fiat currency for the settlement request.
+ * @member {String} currency
+ */
+CreateSettlementRequestRequest.prototype['currency'] = undefined;
 
 
 

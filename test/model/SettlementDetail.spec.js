@@ -148,6 +148,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property commission_fee (base name: "commission_fee")', function() {
+      // uncomment below and update the code to test the property commission_fee
+      //var instance = new CoboWaas2.SettlementDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bridging_fee (base name: "bridging_fee")', function() {
+      // uncomment below and update the code to test the property bridging_fee
+      //var instance = new CoboWaas2.SettlementDetail();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

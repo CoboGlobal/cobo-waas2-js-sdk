@@ -36,7 +36,7 @@ class PaymentTransactionEventData {
      * @alias module:model/PaymentTransactionEventData
      * @implements module:model/WebhookEventDataType
      * @implements module:model/Transaction
-     * @param data_type {module:model/PaymentTransactionEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+     * @param data_type {module:model/PaymentTransactionEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
      * @param transaction_id {String} The transaction ID.
      * @param wallet_id {String} For deposit transactions, this property represents the wallet ID of the transaction destination. For transactions of other types, this property represents the wallet ID of the transaction source.
      * @param status {module:model/TransactionStatus} 
@@ -194,6 +194,9 @@ class PaymentTransactionEventData {
             if (data.hasOwnProperty('custom_payer_id')) {
                 obj['custom_payer_id'] = ApiClient.convertToType(data['custom_payer_id'], 'String');
             }
+            if (data.hasOwnProperty('subscription_id')) {
+                obj['subscription_id'] = ApiClient.convertToType(data['subscription_id'], 'String');
+            }
         }
         return obj;
     }
@@ -334,6 +337,10 @@ class PaymentTransactionEventData {
         if (data['custom_payer_id'] && !(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
             throw new Error("Expected the field `custom_payer_id` to be a primitive type in the JSON string but got " + data['custom_payer_id']);
         }
+        // ensure the json data is a string
+        if (data['subscription_id'] && !(typeof data['subscription_id'] === 'string' || data['subscription_id'] instanceof String)) {
+            throw new Error("Expected the field `subscription_id` to be a primitive type in the JSON string but got " + data['subscription_id']);
+        }
 
         return true;
     }
@@ -344,7 +351,7 @@ class PaymentTransactionEventData {
 PaymentTransactionEventData.RequiredProperties = ["data_type", "transaction_id", "wallet_id", "status", "source", "destination", "initiator_type", "created_timestamp", "updated_timestamp", "acquiring_type"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/PaymentTransactionEventData.DataTypeEnum} data_type
  */
 PaymentTransactionEventData.prototype['data_type'] = undefined;
@@ -501,7 +508,7 @@ PaymentTransactionEventData.prototype['is_loop'] = undefined;
 PaymentTransactionEventData.prototype['cobo_category'] = undefined;
 
 /**
- * A list of JSON-encoded strings containing structured, business-specific extra information for the transaction. Each item corresponds to a specific data type, indicated by the `extra_type` field in the JSON object (for example, \"BabylonBusinessInfo\", \"BtcAddressInfo\"). 
+ * The transaction extra information.
  * @member {Array.<String>} extra
  */
 PaymentTransactionEventData.prototype['extra'] = undefined;
@@ -529,7 +536,7 @@ PaymentTransactionEventData.prototype['updated_timestamp'] = undefined;
 PaymentTransactionEventData.prototype['acquiring_type'] = undefined;
 
 /**
- * The pay-in order ID.
+ * Unique identifier of a single order
  * @member {String} order_id
  */
 PaymentTransactionEventData.prototype['order_id'] = undefined;
@@ -541,21 +548,27 @@ PaymentTransactionEventData.prototype['order_id'] = undefined;
 PaymentTransactionEventData.prototype['psp_order_code'] = undefined;
 
 /**
- * A unique identifier assigned by Cobo to track and identify individual payers.
+ * Unique payer identifier on the Cobo side, auto-generated by the system. 
  * @member {String} payer_id
  */
 PaymentTransactionEventData.prototype['payer_id'] = undefined;
 
 /**
- * A unique identifier assigned by the developer to track and identify individual payers in their system.
+ * Unique user identifier on the merchant side, used to assign a dedicated deposit address. 
  * @member {String} custom_payer_id
  */
 PaymentTransactionEventData.prototype['custom_payer_id'] = undefined;
 
+/**
+ * A unique identifier assigned by Cobo to track and identify subscription.
+ * @member {String} subscription_id
+ */
+PaymentTransactionEventData.prototype['subscription_id'] = undefined;
+
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The payment address update event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The suspended token event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -685,7 +698,7 @@ Transaction.prototype['is_loop'] = undefined;
  */
 Transaction.prototype['cobo_category'] = undefined;
 /**
- * A list of JSON-encoded strings containing structured, business-specific extra information for the transaction. Each item corresponds to a specific data type, indicated by the `extra_type` field in the JSON object (for example, \"BabylonBusinessInfo\", \"BtcAddressInfo\"). 
+ * The transaction extra information.
  * @member {Array.<String>} extra
  */
 Transaction.prototype['extra'] = undefined;
@@ -808,6 +821,12 @@ PaymentTransactionEventData['DataTypeEnum'] = {
      * @const
      */
     "ComplianceDisposition": "ComplianceDisposition",
+
+    /**
+     * value: "ComplianceKytScreenings"
+     * @const
+     */
+    "ComplianceKytScreenings": "ComplianceKytScreenings",
 
     /**
      * value: "unknown_default_open_api"

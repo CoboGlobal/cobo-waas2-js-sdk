@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import WalletSetup from './WalletSetup';
 
 /**
  * The Merchant model module.
@@ -61,6 +62,9 @@ class Merchant {
             }
             if (data.hasOwnProperty('developer_fee_rate')) {
                 obj['developer_fee_rate'] = ApiClient.convertToType(data['developer_fee_rate'], 'String');
+            }
+            if (data.hasOwnProperty('wallet_setup')) {
+                obj['wallet_setup'] = WalletSetup.constructFromObject(data['wallet_setup']);
             }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
@@ -128,19 +132,24 @@ Merchant.prototype['name'] = undefined;
 Merchant.prototype['wallet_id'] = undefined;
 
 /**
- * The developer fee rate applied to this merchant. Expressed as a string in decimal format where \"0.1\" represents 10%. This fee is deducted from the payment amount and only applies to top-up transactions. If you are a merchant (directly serving the payer), you do not need to configure the developer fee rate.
+ * Developer fee rate for this token. For example, 0.01 represents a 1% fee. 
  * @member {String} developer_fee_rate
  */
 Merchant.prototype['developer_fee_rate'] = undefined;
 
 /**
- * The creation time of the merchant, represented as a UNIX timestamp in seconds.
+ * @member {module:model/WalletSetup} wallet_setup
+ */
+Merchant.prototype['wallet_setup'] = undefined;
+
+/**
+ * The created time of the merchant, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp
  */
 Merchant.prototype['created_timestamp'] = undefined;
 
 /**
- * The last update time of the merchant, represented as a UNIX timestamp in seconds.
+ * The updated time of the merchant, represented as a UNIX timestamp in seconds.
  * @member {Number} updated_timestamp
  */
 Merchant.prototype['updated_timestamp'] = undefined;

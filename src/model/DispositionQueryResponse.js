@@ -22,7 +22,7 @@ class DispositionQueryResponse {
      * Constructs a new <code>DispositionQueryResponse</code>.
      * The response for a disposition query request.
      * @alias module:model/DispositionQueryResponse
-     * @param transaction_id {String} The UUID of the transaction that the disposition applies to.
+     * @param transaction_id {String} The UUID of the transaction that was disposed.
      * @param disposition_type {module:model/DispositionType} 
      * @param disposition_status {module:model/DispositionStatus} 
      */
@@ -99,7 +99,7 @@ class DispositionQueryResponse {
 DispositionQueryResponse.RequiredProperties = ["transaction_id", "disposition_type", "disposition_status"];
 
 /**
- * The UUID of the transaction that the disposition applies to.
+ * The UUID of the transaction that was disposed.
  * @member {String} transaction_id
  */
 DispositionQueryResponse.prototype['transaction_id'] = undefined;

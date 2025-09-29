@@ -19,7 +19,7 @@ import ApprovalResult from './ApprovalResult';
 class ApprovalUserDetail {
     /**
      * Constructs a new <code>ApprovalUserDetail</code>.
-     * Details about a user involved in a transaction approval workflow. 
+     * The user detail for a transaction approval. This includes the user&#39;s email, public key, signature, statement UUID, result of the approval, creation time, template version, header title, whether it is for signing, and additional information to show. 
      * @alias module:model/ApprovalUserDetail
      */
     constructor() { 
@@ -162,31 +162,31 @@ class ApprovalUserDetail {
 
 
 /**
- * Name of the user who approved the transaction.
+ * The name of the user who approved the transaction.
  * @member {String} name
  */
 ApprovalUserDetail.prototype['name'] = undefined;
 
 /**
- * Email of the user.
+ * The email address of the user who approved the transaction.
  * @member {String} email
  */
 ApprovalUserDetail.prototype['email'] = undefined;
 
 /**
- * Public key of the user.
+ * The public key of the user who approved the transaction.
  * @member {String} pubkey
  */
 ApprovalUserDetail.prototype['pubkey'] = undefined;
 
 /**
- * Signature produced by the user for this approval.
+ * The signature of the transaction approval.
  * @member {String} signature
  */
 ApprovalUserDetail.prototype['signature'] = undefined;
 
 /**
- * UUID of the statement associated with this approval.
+ * The UUID of the statement associated with the transaction approval.
  * @member {String} statement_uuid
  */
 ApprovalUserDetail.prototype['statement_uuid'] = undefined;
@@ -197,31 +197,31 @@ ApprovalUserDetail.prototype['statement_uuid'] = undefined;
 ApprovalUserDetail.prototype['result'] = undefined;
 
 /**
- * Integer value representing the result of the approval.
+ * The integer value representing the result of the approval.
  * @member {Number} approval_result_code
  */
 ApprovalUserDetail.prototype['approval_result_code'] = undefined;
 
 /**
- * Timestamp when the approval was created.
+ * The timestamp when the approval was created.
  * @member {Number} created_time
  */
 ApprovalUserDetail.prototype['created_time'] = undefined;
 
 /**
- * Version of the template used for the transaction approval.
+ * The version of the template used for the transaction approval.
  * @member {String} template_version
  */
 ApprovalUserDetail.prototype['template_version'] = undefined;
 
 /**
- * Display title used in the transaction approval.
+ * The title of the header for the transaction approval.
  * @member {String} header_title
  */
 ApprovalUserDetail.prototype['header_title'] = undefined;
 
 /**
- * Indicates whether this approval requires signing: - `true`: The user must sign the transaction. - `false`: The user only needs to approve or reject without signing. 
+ * Indicates whether the approval is for signing.
  * @member {Boolean} is_for_sign
  */
 ApprovalUserDetail.prototype['is_for_sign'] = undefined;
@@ -233,19 +233,19 @@ ApprovalUserDetail.prototype['is_for_sign'] = undefined;
 ApprovalUserDetail.prototype['show_info'] = undefined;
 
 /**
- * Language used for the transaction approval.
+ * The language used for the transaction approval.
  * @member {String} language
  */
 ApprovalUserDetail.prototype['language'] = undefined;
 
 /**
- * Version of the message format used for the transaction approval.
+ * The version of the message format used for the transaction approval.
  * @member {String} message_version
  */
 ApprovalUserDetail.prototype['message_version'] = undefined;
 
 /**
- * Message associated with the transaction approval.
+ * The message associated with the transaction approval.
  * @member {String} message
  */
 ApprovalUserDetail.prototype['message'] = undefined;

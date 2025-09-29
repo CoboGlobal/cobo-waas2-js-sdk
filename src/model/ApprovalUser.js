@@ -19,9 +19,9 @@ import ApprovalStatus from './ApprovalStatus';
 class ApprovalUser {
     /**
      * Constructs a new <code>ApprovalUser</code>.
-     * The information of the user.
+     * The information of an app workflow approval user entry.
      * @alias module:model/ApprovalUser
-     * @param email {String} The user email.
+     * @param email {String} The approval user email.
      * @param status {module:model/ApprovalStatus} 
      * @param created_timestamp {Number} The time when the approval was created, in Unix timestamp format, measured in milliseconds.
      */
@@ -98,13 +98,13 @@ class ApprovalUser {
 ApprovalUser.RequiredProperties = ["email", "status", "created_timestamp"];
 
 /**
- * The user email.
+ * The approval user email.
  * @member {String} email
  */
 ApprovalUser.prototype['email'] = undefined;
 
 /**
- * The user name.
+ * The approval user name.
  * @member {String} name
  */
 ApprovalUser.prototype['name'] = undefined;

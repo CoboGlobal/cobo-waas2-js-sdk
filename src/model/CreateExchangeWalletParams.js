@@ -172,7 +172,7 @@ CreateExchangeWalletParams.prototype['wallet_type'] = undefined;
 CreateExchangeWalletParams.prototype['wallet_subtype'] = undefined;
 
 /**
- * Enable the auto-sweep feature for the wallet. This parameter only applies to MPC Wallets and Web3 Wallets.
+ * Enable the auto sweep feature for the wallet. This parameter only applies to MPC and Web3 wallets.
  * @member {Boolean} enable_auto_sweep
  */
 CreateExchangeWalletParams.prototype['enable_auto_sweep'] = undefined;
@@ -240,7 +240,7 @@ CreateCustodialWalletParams.prototype['wallet_type'] = undefined;
  */
 CreateCustodialWalletParams.prototype['wallet_subtype'] = undefined;
 /**
- * Enable the auto-sweep feature for the wallet. This parameter only applies to MPC Wallets and Web3 Wallets.
+ * Enable the auto sweep feature for the wallet. This parameter only applies to MPC and Web3 wallets.
  * @member {Boolean} enable_auto_sweep
  */
 CreateCustodialWalletParams.prototype['enable_auto_sweep'] = undefined;

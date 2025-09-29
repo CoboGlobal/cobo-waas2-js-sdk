@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property wallet_setup (base name: "wallet_setup")', function() {
+      // uncomment below and update the code to test the property wallet_setup
+      //var instance = new CoboWaas2.Merchant();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.Merchant();

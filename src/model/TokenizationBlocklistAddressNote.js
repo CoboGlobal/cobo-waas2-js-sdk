@@ -19,7 +19,7 @@ class TokenizationBlocklistAddressNote {
     /**
      * Constructs a new <code>TokenizationBlocklistAddressNote</code>.
      * @alias module:model/TokenizationBlocklistAddressNote
-     * @param address {String} The address on the blocklist.
+     * @param address {String} The allowed address.
      */
     constructor(address) { 
         
@@ -89,19 +89,19 @@ class TokenizationBlocklistAddressNote {
 TokenizationBlocklistAddressNote.RequiredProperties = ["address"];
 
 /**
- * The address on the blocklist.
+ * The allowed address.
  * @member {String} address
  */
 TokenizationBlocklistAddressNote.prototype['address'] = undefined;
 
 /**
- * The note for the address on the blocklist.
+ * The note for the allowed address.
  * @member {String} note
  */
 TokenizationBlocklistAddressNote.prototype['note'] = undefined;
 
 /**
- * The time when the address was added to the blocklist, in Unix timestamp format, measured in milliseconds.
+ * The time when the blocklist address was created, in Unix timestamp format, measured in milliseconds.
  * @member {Number} created_timestamp
  */
 TokenizationBlocklistAddressNote.prototype['created_timestamp'] = undefined;

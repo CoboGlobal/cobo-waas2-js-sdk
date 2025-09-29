@@ -19,7 +19,7 @@ import DispositionStatus from './DispositionStatus';
 class DispositionResponse {
     /**
      * Constructs a new <code>DispositionResponse</code>.
-     * The response for a disposition request.
+     * The response for a disposition creation request.
      * @alias module:model/DispositionResponse
      * @param transaction_id {String} The UUID of the transaction being processed for disposition.
      * @param status {module:model/DispositionStatus} 

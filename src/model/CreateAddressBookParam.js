@@ -18,7 +18,7 @@ import ApiClient from '../ApiClient';
 class CreateAddressBookParam {
     /**
      * Constructs a new <code>CreateAddressBookParam</code>.
-     * The request body to add an address to your Address Book.
+     * The request body to create address book.
      * @alias module:model/CreateAddressBookParam
      * @param chain_ids {Array.<String>} A list of chain IDs.
      * @param address {String} The wallet address.
@@ -122,13 +122,13 @@ CreateAddressBookParam.prototype['chain_ids'] = undefined;
 CreateAddressBookParam.prototype['address'] = undefined;
 
 /**
- * Optional memo or tag required by some chains.
+ * The memo.
  * @member {String} memo
  */
 CreateAddressBookParam.prototype['memo'] = undefined;
 
 /**
- * A user-defined label for the address.
+ * The address label.
  * @member {String} label
  */
 CreateAddressBookParam.prototype['label'] = undefined;

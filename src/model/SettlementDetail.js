@@ -12,6 +12,8 @@
 import ApiClient from '../ApiClient';
 import AcquiringType from './AcquiringType';
 import BankAccount from './BankAccount';
+import BridgingFee from './BridgingFee';
+import CommissionFee from './CommissionFee';
 import PaymentTransaction from './PaymentTransaction';
 import PayoutChannel from './PayoutChannel';
 import SettleStatus from './SettleStatus';
@@ -97,6 +99,12 @@ class SettlementDetail {
             if (data.hasOwnProperty('order_ids')) {
                 obj['order_ids'] = ApiClient.convertToType(data['order_ids'], ['String']);
             }
+            if (data.hasOwnProperty('commission_fee')) {
+                obj['commission_fee'] = CommissionFee.constructFromObject(data['commission_fee']);
+            }
+            if (data.hasOwnProperty('bridging_fee')) {
+                obj['bridging_fee'] = BridgingFee.constructFromObject(data['bridging_fee']);
+            }
         }
         return obj;
     }
@@ -159,6 +167,18 @@ class SettlementDetail {
         if (!Array.isArray(data['order_ids'])) {
             throw new Error("Expected the field `order_ids` to be an array in the JSON data but got " + data['order_ids']);
         }
+        // validate the optional field `commission_fee`
+        if (data['commission_fee']) { // data not null
+          if (!!CommissionFee.validateJSON) {
+            CommissionFee.validateJSON(data['commission_fee']);
+          }
+        }
+        // validate the optional field `bridging_fee`
+        if (data['bridging_fee']) { // data not null
+          if (!!BridgingFee.validateJSON) {
+            BridgingFee.validateJSON(data['bridging_fee']);
+          }
+        }
 
         return true;
     }
@@ -187,19 +207,19 @@ SettlementDetail.prototype['token_id'] = undefined;
 SettlementDetail.prototype['chain_id'] = undefined;
 
 /**
- * The ID of the merchant associated with this settlement.
+ * The Merchant ID associated with this settlement.
  * @member {String} merchant_id
  */
 SettlementDetail.prototype['merchant_id'] = undefined;
 
 /**
- * The settlement amount. - If `payout_channel` is set to `Crypto`, this represents the settlement amount in the specified cryptocurrency. - If `payout_channel` is set to `OffRamp`, this represents the settlement amount in the specified fiat currency. 
+ * The settlement amount.  - If `token_id` is specified, this represents the settlement amount in the specified cryptocurrency.  - If `token_id` is not specified, this represents the settlement amount in the specified fiat currency. 
  * @member {String} amount
  */
 SettlementDetail.prototype['amount'] = undefined;
 
 /**
- * The settled amount of this settlement detail.  - If `payout_channel` is set to `Crypto`, this represents the actual settled amount in the specified cryptocurrency.  - If `payout_channel` is set to `OffRamp`, this represents the actual settled amount in the specified fiat currency. 
+ * The settled amount of this settlement detail.  - If `token_id` is specified, this represents the actual settled amount in the specified cryptocurrency.  - If `token_id` is not specified, this represents the actual settled amount in the specified fiat currency. 
  * @member {String} settled_amount
  */
 SettlementDetail.prototype['settled_amount'] = undefined;
@@ -221,19 +241,19 @@ SettlementDetail.prototype['bank_account'] = undefined;
 SettlementDetail.prototype['transactions'] = undefined;
 
 /**
- * The creation time of the settlement, represented as a UNIX timestamp in seconds.
+ * The created time of the settlement, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp
  */
 SettlementDetail.prototype['created_timestamp'] = undefined;
 
 /**
- * The last update time of the settlement, represented as a UNIX timestamp in seconds.
+ * The updated time of the settlement, represented as a UNIX timestamp in seconds.
  * @member {Number} updated_timestamp
  */
 SettlementDetail.prototype['updated_timestamp'] = undefined;
 
 /**
- * The ID of the crypto address used for crypto withdrawal.
+ * Unique identifier for the pre-approved crypto address, used to reference the address securely in requests.
  * @member {String} crypto_address_id
  */
 SettlementDetail.prototype['crypto_address_id'] = undefined;
@@ -255,10 +275,20 @@ SettlementDetail.prototype['acquiring_type'] = undefined;
 SettlementDetail.prototype['settlement_request_id'] = undefined;
 
 /**
- * A list of unique order IDs to be included in this settlement.  - This field is only applicable when `settlement_type` is set to `Merchant`. - If provided, the settlement will only apply to the specified orders. 
+ * A list of unique order IDs to be included in this settlement.  - This field is only applicable when `settlement_type` is set to `Merchant`. - If provided, the settlement will only apply to the specified orders. - The settlement `amount` must exactly match the total eligible amount from these orders. - This ensures consistency between the declared amount and the actual order-level data being settled. 
  * @member {Array.<String>} order_ids
  */
 SettlementDetail.prototype['order_ids'] = undefined;
+
+/**
+ * @member {module:model/CommissionFee} commission_fee
+ */
+SettlementDetail.prototype['commission_fee'] = undefined;
+
+/**
+ * @member {module:model/BridgingFee} bridging_fee
+ */
+SettlementDetail.prototype['bridging_fee'] = undefined;
 
 
 

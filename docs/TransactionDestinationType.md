@@ -13,6 +13,8 @@
 
 * `SOL_Contract` (value: `"SOL_Contract"`)
 
+* `STELLAR_Contract` (value: `"STELLAR_Contract"`)
+
 * `COSMOS_Contract` (value: `"COSMOS_Contract"`)
 
 * `EVM_EIP_191_Signature` (value: `"EVM_EIP_191_Signature"`)

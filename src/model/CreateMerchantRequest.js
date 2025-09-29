@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import WalletSetup from './WalletSetup';
 
 /**
  * The CreateMerchantRequest model module.
@@ -20,11 +21,10 @@ class CreateMerchantRequest {
      * Constructs a new <code>CreateMerchantRequest</code>.
      * @alias module:model/CreateMerchantRequest
      * @param name {String} The merchant name.
-     * @param wallet_id {String} The ID of the wallet linked to the merchant.
      */
-    constructor(name, wallet_id) { 
+    constructor(name) { 
         
-        CreateMerchantRequest.initialize(this, name, wallet_id);
+        CreateMerchantRequest.initialize(this, name);
     }
 
     /**
@@ -32,9 +32,8 @@ class CreateMerchantRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, wallet_id) { 
+    static initialize(obj, name) { 
         obj['name'] = name;
-        obj['wallet_id'] = wallet_id;
     }
 
     /**
@@ -51,11 +50,11 @@ class CreateMerchantRequest {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
-            if (data.hasOwnProperty('wallet_id')) {
-                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
-            }
             if (data.hasOwnProperty('developer_fee_rate')) {
                 obj['developer_fee_rate'] = ApiClient.convertToType(data['developer_fee_rate'], 'String');
+            }
+            if (data.hasOwnProperty('wallet_setup')) {
+                obj['wallet_setup'] = WalletSetup.constructFromObject(data['wallet_setup']);
             }
         }
         return obj;
@@ -78,10 +77,6 @@ class CreateMerchantRequest {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
-            throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
-        }
-        // ensure the json data is a string
         if (data['developer_fee_rate'] && !(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
             throw new Error("Expected the field `developer_fee_rate` to be a primitive type in the JSON string but got " + data['developer_fee_rate']);
         }
@@ -92,7 +87,7 @@ class CreateMerchantRequest {
 
 }
 
-CreateMerchantRequest.RequiredProperties = ["name", "wallet_id"];
+CreateMerchantRequest.RequiredProperties = ["name"];
 
 /**
  * The merchant name.
@@ -101,16 +96,15 @@ CreateMerchantRequest.RequiredProperties = ["name", "wallet_id"];
 CreateMerchantRequest.prototype['name'] = undefined;
 
 /**
- * The ID of the wallet linked to the merchant.
- * @member {String} wallet_id
- */
-CreateMerchantRequest.prototype['wallet_id'] = undefined;
-
-/**
- * The developer fee rate applied to this merchant. Expressed as a string in decimal format where \"0.1\" represents 10%. This fee is deducted from the payment amount and only applies to top-up transactions. If you are a merchant (directly serving the payer), you do not need to configure the developer fee rate.
+ * The fee rate applied when topping up the merchant account. Represented as a string percentage (e.g., \"0.1\" means 10%).
  * @member {String} developer_fee_rate
  */
 CreateMerchantRequest.prototype['developer_fee_rate'] = undefined;
+
+/**
+ * @member {module:model/WalletSetup} wallet_setup
+ */
+CreateMerchantRequest.prototype['wallet_setup'] = undefined;
 
 
 

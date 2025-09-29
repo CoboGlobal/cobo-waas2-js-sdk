@@ -235,6 +235,13 @@ export default class TransactionCoboCategory {
 
     
         /**
+         * value: "StellarChangeTrust"
+         * @const
+         */
+        "StellarChangeTrust" = "StellarChangeTrust";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

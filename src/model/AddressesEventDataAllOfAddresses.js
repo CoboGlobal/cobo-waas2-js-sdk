@@ -84,6 +84,9 @@ class AddressesEventDataAllOfAddresses {
             if (data.hasOwnProperty('taproot_internal_address')) {
                 obj['taproot_internal_address'] = ApiClient.convertToType(data['taproot_internal_address'], 'String');
             }
+            if (data.hasOwnProperty('stellar_trusted_token_ids')) {
+                obj['stellar_trusted_token_ids'] = ApiClient.convertToType(data['stellar_trusted_token_ids'], ['String']);
+            }
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
             }
@@ -138,6 +141,10 @@ class AddressesEventDataAllOfAddresses {
         // ensure the json data is a string
         if (data['taproot_internal_address'] && !(typeof data['taproot_internal_address'] === 'string' || data['taproot_internal_address'] instanceof String)) {
             throw new Error("Expected the field `taproot_internal_address` to be a primitive type in the JSON string but got " + data['taproot_internal_address']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['stellar_trusted_token_ids'])) {
+            throw new Error("Expected the field `stellar_trusted_token_ids` to be an array in the JSON data but got " + data['stellar_trusted_token_ids']);
         }
         // ensure the json data is a string
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
@@ -212,6 +219,12 @@ AddressesEventDataAllOfAddresses.prototype['taproot_script_tree_hash'] = undefin
 AddressesEventDataAllOfAddresses.prototype['taproot_internal_address'] = undefined;
 
 /**
+ * The list of token IDs for which this address has already established stellar trustline.
+ * @member {Array.<String>} stellar_trusted_token_ids
+ */
+AddressesEventDataAllOfAddresses.prototype['stellar_trusted_token_ids'] = undefined;
+
+/**
  * The wallet ID.
  * @member {String} wallet_id
  */
@@ -268,6 +281,11 @@ AddressInfo.prototype['taproot_script_tree_hash'] = undefined;
  * @member {String} taproot_internal_address
  */
 AddressInfo.prototype['taproot_internal_address'] = undefined;
+/**
+ * The list of token IDs for which this address has already established stellar trustline.
+ * @member {Array.<String>} stellar_trusted_token_ids
+ */
+AddressInfo.prototype['stellar_trusted_token_ids'] = undefined;
 
 
 

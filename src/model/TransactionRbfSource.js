@@ -176,7 +176,7 @@ TransactionRbfSource.prototype['source_type'] = undefined;
 TransactionRbfSource.prototype['wallet_id'] = undefined;
 
 /**
- * Indicates the wallet address to be used as the source of funds. - For UTXO-based chains: both `address` and `included_utxos` are optional. If both `address` and `included_utxos` are provided, the UTXOs must belong to the specified address. If neither `address` nor `included_utxos` is provided, the system will select UTXOs from the wallet associated with `wallet_id`. - For account-based chains: You need to provide `address` otherwise the token transfer will fail. However, when estimating fees for a transfer, `address` is not required.  For detailed rules on `address` and `included_utxos` in both regular and RBF transactions, see [Address and included_utxos usage](https://www.cobo.com/developers/v2/guides/transactions/sources-and-destinations#address-and-included-utxos-usage). 
+ * The wallet address.  If you want to specify the UTXOs to be used, please provide the `included_utxos` property. If you specify both the `address` and `included_utxos` properties, the specified included UTXOs must belong to the address. It is recommended to specify no more than 100 included UTXOs to ensure optimal transaction processing.  You need to provide either the `address` or `included_utxos` property. If neither property is provided, the transfer will fail. 
  * @member {String} address
  */
 TransactionRbfSource.prototype['address'] = undefined;
