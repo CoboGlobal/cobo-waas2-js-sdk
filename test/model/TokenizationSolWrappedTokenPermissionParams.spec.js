@@ -64,6 +64,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property freezer (base name: "freezer")', function() {
+      // uncomment below and update the code to test the property freezer
+      //var instance = new CoboWaas2.TokenizationSolWrappedTokenPermissionParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updater (base name: "updater")', function() {
+      // uncomment below and update the code to test the property updater
+      //var instance = new CoboWaas2.TokenizationSolWrappedTokenPermissionParams();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

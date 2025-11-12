@@ -22,11 +22,12 @@ class PaymentBaseSubscriptionActionData {
      * @alias module:model/PaymentBaseSubscriptionActionData
      * @param action_type {module:model/PaymentSubscriptionActionType} 
      * @param subscription_id {String} The subscription id in cobo.
-     * @param signature {String} The signature for transaction.
+     * @param signature {String} The signature for transaction. charge action is not required.
+     * @param deadline {Number} The signature deadline for transaction. charge action is not required.
      */
-    constructor(action_type, subscription_id, signature) { 
+    constructor(action_type, subscription_id, signature, deadline) { 
         
-        PaymentBaseSubscriptionActionData.initialize(this, action_type, subscription_id, signature);
+        PaymentBaseSubscriptionActionData.initialize(this, action_type, subscription_id, signature, deadline);
     }
 
     /**
@@ -34,10 +35,11 @@ class PaymentBaseSubscriptionActionData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, action_type, subscription_id, signature) { 
+    static initialize(obj, action_type, subscription_id, signature, deadline) { 
         obj['action_type'] = action_type;
         obj['subscription_id'] = subscription_id;
         obj['signature'] = signature;
+        obj['deadline'] = deadline;
     }
 
     /**
@@ -59,6 +61,9 @@ class PaymentBaseSubscriptionActionData {
             }
             if (data.hasOwnProperty('signature')) {
                 obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
+            }
+            if (data.hasOwnProperty('deadline')) {
+                obj['deadline'] = ApiClient.convertToType(data['deadline'], 'Number');
             }
         }
         return obj;
@@ -91,7 +96,7 @@ class PaymentBaseSubscriptionActionData {
 
 }
 
-PaymentBaseSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id", "signature"];
+PaymentBaseSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id", "signature", "deadline"];
 
 /**
  * @member {module:model/PaymentSubscriptionActionType} action_type
@@ -105,10 +110,16 @@ PaymentBaseSubscriptionActionData.prototype['action_type'] = undefined;
 PaymentBaseSubscriptionActionData.prototype['subscription_id'] = undefined;
 
 /**
- * The signature for transaction.
+ * The signature for transaction. charge action is not required.
  * @member {String} signature
  */
 PaymentBaseSubscriptionActionData.prototype['signature'] = undefined;
+
+/**
+ * The signature deadline for transaction. charge action is not required.
+ * @member {Number} deadline
+ */
+PaymentBaseSubscriptionActionData.prototype['deadline'] = undefined;
 
 
 

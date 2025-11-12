@@ -67,6 +67,20 @@
 
 * `StellarChangeTrust` (value: `"StellarChangeTrust"`)
 
+* `Tokenization` (value: `"Tokenization"`)
+
+* `TokenizationGasSponsor` (value: `"TokenizationGasSponsor"`)
+
+* `TokenSwap` (value: `"TokenSwap"`)
+
+* `NonceAccountSign` (value: `"NonceAccountSign"`)
+
+* `FeePayerSign` (value: `"FeePayerSign"`)
+
+* `GasFeeSponsor` (value: `"GasFeeSponsor"`)
+
+* `GasFeeSponsorRefund` (value: `"GasFeeSponsorRefund"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

@@ -70,6 +70,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property deadline (base name: "deadline")', function() {
+      // uncomment below and update the code to test the property deadline
+      //var instance = new CoboWaas2.PaymentBaseSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

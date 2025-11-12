@@ -64,20 +64,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2.PaymentSubscriptionActionData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property token_id (base name: "token_id")', function() {
       // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2.PaymentSubscriptionActionData();
       //expect(instance).to.be();
     });
 
-    it('should have the property discount_rate (base name: "discount_rate")', function() {
-      // uncomment below and update the code to test the property discount_rate
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
       //var instance = new CoboWaas2.PaymentSubscriptionActionData();
       //expect(instance).to.be();
     });
@@ -88,14 +82,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property permit_data (base name: "permit_data")', function() {
-      // uncomment below and update the code to test the property permit_data
+    it('should have the property signature (base name: "signature")', function() {
+      // uncomment below and update the code to test the property signature
       //var instance = new CoboWaas2.PaymentSubscriptionActionData();
       //expect(instance).to.be();
     });
 
-    it('should have the property signature (base name: "signature")', function() {
-      // uncomment below and update the code to test the property signature
+    it('should have the property deadline (base name: "deadline")', function() {
+      // uncomment below and update the code to test the property deadline
       //var instance = new CoboWaas2.PaymentSubscriptionActionData();
       //expect(instance).to.be();
     });

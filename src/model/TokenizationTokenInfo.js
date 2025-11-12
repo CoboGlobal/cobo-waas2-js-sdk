@@ -27,10 +27,11 @@ class TokenizationTokenInfo {
      * @param token_standard {module:model/TokenizationTokenStandard} 
      * @param decimals {Number} The number of decimals of the token.
      * @param status {module:model/TokenizationStatus} 
+     * @param archived {Boolean} Whether the token is archived. If archived, no operations can be initiated on this token.
      */
-    constructor(token_id, chain_id, token_symbol, token_standard, decimals, status) { 
+    constructor(token_id, chain_id, token_symbol, token_standard, decimals, status, archived) { 
         
-        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status);
+        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status, archived);
     }
 
     /**
@@ -38,13 +39,14 @@ class TokenizationTokenInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_id, chain_id, token_symbol, token_standard, decimals, status) { 
+    static initialize(obj, token_id, chain_id, token_symbol, token_standard, decimals, status, archived) { 
         obj['token_id'] = token_id;
         obj['chain_id'] = chain_id;
         obj['token_symbol'] = token_symbol;
         obj['token_standard'] = token_standard;
         obj['decimals'] = decimals;
         obj['status'] = status;
+        obj['archived'] = archived;
     }
 
     /**
@@ -90,6 +92,9 @@ class TokenizationTokenInfo {
             }
             if (data.hasOwnProperty('holdings')) {
                 obj['holdings'] = ApiClient.convertToType(data['holdings'], 'String');
+            }
+            if (data.hasOwnProperty('archived')) {
+                obj['archived'] = ApiClient.convertToType(data['archived'], 'Boolean');
             }
         }
         return obj;
@@ -142,7 +147,7 @@ class TokenizationTokenInfo {
 
 }
 
-TokenizationTokenInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "token_standard", "decimals", "status"];
+TokenizationTokenInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "token_standard", "decimals", "status", "archived"];
 
 /**
  * The unique token identifier.
@@ -207,6 +212,12 @@ TokenizationTokenInfo.prototype['total_supply'] = undefined;
  * @member {String} holdings
  */
 TokenizationTokenInfo.prototype['holdings'] = undefined;
+
+/**
+ * Whether the token is archived. If archived, no operations can be initiated on this token.
+ * @member {Boolean} archived
+ */
+TokenizationTokenInfo.prototype['archived'] = undefined;
 
 
 

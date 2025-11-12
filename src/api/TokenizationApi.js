@@ -19,6 +19,7 @@ import TokenizationActivityInfo from '../model/TokenizationActivityInfo';
 import TokenizationActivityStatus from '../model/TokenizationActivityStatus';
 import TokenizationAllowlistActivationRequest from '../model/TokenizationAllowlistActivationRequest';
 import TokenizationAllowlistAddressesResponse from '../model/TokenizationAllowlistAddressesResponse';
+import TokenizationArchiveTokenRequest from '../model/TokenizationArchiveTokenRequest';
 import TokenizationBurnTokenRequest from '../model/TokenizationBurnTokenRequest';
 import TokenizationContractCallRequest from '../model/TokenizationContractCallRequest';
 import TokenizationEstimateFeeRequest from '../model/TokenizationEstimateFeeRequest';
@@ -35,6 +36,7 @@ import TokenizationPauseTokenRequest from '../model/TokenizationPauseTokenReques
 import TokenizationStatus from '../model/TokenizationStatus';
 import TokenizationTokenDetailInfo from '../model/TokenizationTokenDetailInfo';
 import TokenizationTokenStandard from '../model/TokenizationTokenStandard';
+import TokenizationUnarchiveTokenRequest from '../model/TokenizationUnarchiveTokenRequest';
 import TokenizationUnpauseTokenRequest from '../model/TokenizationUnpauseTokenRequest';
 import TokenizationUpdateAllowlistAddressesRequest from '../model/TokenizationUpdateAllowlistAddressesRequest';
 import TokenizationUpdateBlocklistAddressesRequest from '../model/TokenizationUpdateBlocklistAddressesRequest';
@@ -60,8 +62,64 @@ export default class TokenizationApi {
 
 
     /**
+     * Archive token
+     * This operation marks the token as archived. 
+     * @param {String} token_id The token ID, which is the unique identifier of a token.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationArchiveTokenRequest} [TokenizationArchiveTokenRequest] The request body for archiving tokens.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TokenizationTokenDetailInfo} and HTTP response
+     */
+    archiveTokenizationWithHttpInfo(token_id, opts) {
+      opts = opts || {};
+      let postBody = opts['TokenizationArchiveTokenRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'token_id' is set
+      if (token_id === undefined || token_id === null) {
+        throw new Error("Missing the required parameter 'token_id' when calling archiveTokenization");
+      }
+
+      let pathParams = {
+        'token_id': token_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = TokenizationTokenDetailInfo;
+      return this.apiClient.callApi(
+        '/tokenization/tokens/{token_id}/archive', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Archive token
+     * This operation marks the token as archived. 
+     * @param {String} token_id The token ID, which is the unique identifier of a token.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationArchiveTokenRequest} opts.TokenizationArchiveTokenRequest The request body for archiving tokens.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TokenizationTokenDetailInfo}
+     */
+    archiveTokenization(token_id, opts) {
+      return this.archiveTokenizationWithHttpInfo(token_id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Burn tokens
-     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {Object} opts Optional parameters
      * @param {module:model/TokenizationBurnTokenRequest} [TokenizationBurnTokenRequest] The request body for burning tokens.
@@ -101,7 +159,7 @@ export default class TokenizationApi {
 
     /**
      * Burn tokens
-     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {Object} opts Optional parameters
      * @param {module:model/TokenizationBurnTokenRequest} opts.TokenizationBurnTokenRequest The request body for burning tokens.
@@ -772,6 +830,7 @@ export default class TokenizationApi {
      * List supported chains for tokenization
      * This operation retrieves a list of tokenization supported chains. 
      * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationTokenStandard} [token_standard] Filter by token standard.
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [after] This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @param {String} [before] This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
@@ -787,6 +846,7 @@ export default class TokenizationApi {
       let pathParams = {
       };
       let queryParams = {
+        'token_standard': opts['token_standard'],
         'limit': opts['limit'],
         'after': opts['after'],
         'before': opts['before']
@@ -811,6 +871,7 @@ export default class TokenizationApi {
      * List supported chains for tokenization
      * This operation retrieves a list of tokenization supported chains. 
      * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationTokenStandard} opts.token_standard Filter by token standard.
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
      * @param {String} opts.before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
@@ -826,7 +887,7 @@ export default class TokenizationApi {
 
     /**
      * Mint tokens
-     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {module:model/TokenizationMintTokenRequest} TokenizationMintTokenRequest The request body for minting tokens.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TokenizationOperationResponse} and HTTP response
@@ -868,7 +929,7 @@ export default class TokenizationApi {
 
     /**
      * Mint tokens
-     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {module:model/TokenizationMintTokenRequest} TokenizationMintTokenRequest The request body for minting tokens.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TokenizationOperationResponse}
@@ -987,6 +1048,62 @@ export default class TokenizationApi {
      */
     tokenizationContractCall(token_id, opts) {
       return this.tokenizationContractCallWithHttpInfo(token_id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Unarchive token
+     * This operation removes the archived flag from the token. 
+     * @param {String} token_id The token ID, which is the unique identifier of a token.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationUnarchiveTokenRequest} [TokenizationUnarchiveTokenRequest] The request body for unarchiving tokens.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TokenizationTokenDetailInfo} and HTTP response
+     */
+    unarchiveTokenizationWithHttpInfo(token_id, opts) {
+      opts = opts || {};
+      let postBody = opts['TokenizationUnarchiveTokenRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'token_id' is set
+      if (token_id === undefined || token_id === null) {
+        throw new Error("Missing the required parameter 'token_id' when calling unarchiveTokenization");
+      }
+
+      let pathParams = {
+        'token_id': token_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = TokenizationTokenDetailInfo;
+      return this.apiClient.callApi(
+        '/tokenization/tokens/{token_id}/unarchive', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Unarchive token
+     * This operation removes the archived flag from the token. 
+     * @param {String} token_id The token ID, which is the unique identifier of a token.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TokenizationUnarchiveTokenRequest} opts.TokenizationUnarchiveTokenRequest The request body for unarchiving tokens.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TokenizationTokenDetailInfo}
+     */
+    unarchiveTokenization(token_id, opts) {
+      return this.unarchiveTokenizationWithHttpInfo(token_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1219,7 +1336,7 @@ export default class TokenizationApi {
 
     /**
      * Update permissions of the token
-     * This operation updates permissions for tokenization contracts.  **For Ethereum-based tokens:** Use `add` to grant permissions or `remove` to revoke permissions. Multiple permissions can be assigned to the same address.  **For Solana tokens:** Use `set` to define the complete list of permissions for an address. This replaces any existing permissions. 
+     * This operation updates permissions for tokenization contracts. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {module:model/TokenizationUpdatePermissionsRequest} TokenizationUpdatePermissionsRequest The request body for managing permissions.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TokenizationOperationResponse} and HTTP response
@@ -1261,7 +1378,7 @@ export default class TokenizationApi {
 
     /**
      * Update permissions of the token
-     * This operation updates permissions for tokenization contracts.  **For Ethereum-based tokens:** Use `add` to grant permissions or `remove` to revoke permissions. Multiple permissions can be assigned to the same address.  **For Solana tokens:** Use `set` to define the complete list of permissions for an address. This replaces any existing permissions. 
+     * This operation updates permissions for tokenization contracts. 
      * @param {String} token_id The token ID, which is the unique identifier of a token.
      * @param {module:model/TokenizationUpdatePermissionsRequest} TokenizationUpdatePermissionsRequest The request body for managing permissions.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TokenizationOperationResponse}

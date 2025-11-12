@@ -10,9 +10,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import TokenizationPermissionAction from './TokenizationPermissionAction';
 import TokenizationTokenOperationSource from './TokenizationTokenOperationSource';
-import TokenizationTokenPermissionType from './TokenizationTokenPermissionType';
+import TokenizationUpdateAddressPermissions from './TokenizationUpdateAddressPermissions';
 
 /**
  * The TokenizationUpdatePermissionsParams model module.
@@ -23,13 +22,11 @@ class TokenizationUpdatePermissionsParams {
      * Constructs a new <code>TokenizationUpdatePermissionsParams</code>.
      * @alias module:model/TokenizationUpdatePermissionsParams
      * @param source {module:model/TokenizationTokenOperationSource} 
-     * @param action {module:model/TokenizationPermissionAction} 
-     * @param address {String} The address to manage permissions for.
-     * @param permissions {Array.<module:model/TokenizationTokenPermissionType>} The list of permissions to operate on.
+     * @param addresses {Array.<module:model/TokenizationUpdateAddressPermissions>} 
      */
-    constructor(source, action, address, permissions) { 
+    constructor(source, addresses) { 
         
-        TokenizationUpdatePermissionsParams.initialize(this, source, action, address, permissions);
+        TokenizationUpdatePermissionsParams.initialize(this, source, addresses);
     }
 
     /**
@@ -37,11 +34,9 @@ class TokenizationUpdatePermissionsParams {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, source, action, address, permissions) { 
+    static initialize(obj, source, addresses) { 
         obj['source'] = source;
-        obj['action'] = action;
-        obj['address'] = address;
-        obj['permissions'] = permissions;
+        obj['addresses'] = addresses;
     }
 
     /**
@@ -58,14 +53,8 @@ class TokenizationUpdatePermissionsParams {
             if (data.hasOwnProperty('source')) {
                 obj['source'] = TokenizationTokenOperationSource.constructFromObject(data['source']);
             }
-            if (data.hasOwnProperty('action')) {
-                obj['action'] = TokenizationPermissionAction.constructFromObject(data['action']);
-            }
-            if (data.hasOwnProperty('address')) {
-                obj['address'] = ApiClient.convertToType(data['address'], 'String');
-            }
-            if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = ApiClient.convertToType(data['permissions'], [TokenizationTokenPermissionType]);
+            if (data.hasOwnProperty('addresses')) {
+                obj['addresses'] = ApiClient.convertToType(data['addresses'], [TokenizationUpdateAddressPermissions]);
             }
         }
         return obj;
@@ -89,13 +78,15 @@ class TokenizationUpdatePermissionsParams {
             TokenizationTokenOperationSource.validateJSON(data['source']);
           }
         }
-        // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
-            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['permissions'])) {
-            throw new Error("Expected the field `permissions` to be an array in the JSON data but got " + data['permissions']);
+        if (data['addresses']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['addresses'])) {
+                throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
+            }
+            // validate the optional field `addresses` (array)
+            for (const item of data['addresses']) {
+                TokenizationUpdateAddressPermissions.validateJSON(item);
+            };
         }
 
         return true;
@@ -104,7 +95,7 @@ class TokenizationUpdatePermissionsParams {
 
 }
 
-TokenizationUpdatePermissionsParams.RequiredProperties = ["source", "action", "address", "permissions"];
+TokenizationUpdatePermissionsParams.RequiredProperties = ["source", "addresses"];
 
 /**
  * @member {module:model/TokenizationTokenOperationSource} source
@@ -112,21 +103,9 @@ TokenizationUpdatePermissionsParams.RequiredProperties = ["source", "action", "a
 TokenizationUpdatePermissionsParams.prototype['source'] = undefined;
 
 /**
- * @member {module:model/TokenizationPermissionAction} action
+ * @member {Array.<module:model/TokenizationUpdateAddressPermissions>} addresses
  */
-TokenizationUpdatePermissionsParams.prototype['action'] = undefined;
-
-/**
- * The address to manage permissions for.
- * @member {String} address
- */
-TokenizationUpdatePermissionsParams.prototype['address'] = undefined;
-
-/**
- * The list of permissions to operate on.
- * @member {Array.<module:model/TokenizationTokenPermissionType>} permissions
- */
-TokenizationUpdatePermissionsParams.prototype['permissions'] = undefined;
+TokenizationUpdatePermissionsParams.prototype['addresses'] = undefined;
 
 
 

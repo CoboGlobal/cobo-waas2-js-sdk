@@ -72,6 +72,9 @@ class PaymentSubscriptionPlan {
             if (data.hasOwnProperty('interval')) {
                 obj['interval'] = ApiClient.convertToType(data['interval'], 'Number');
             }
+            if (data.hasOwnProperty('trial_period')) {
+                obj['trial_period'] = ApiClient.convertToType(data['trial_period'], 'Number');
+            }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
@@ -152,6 +155,12 @@ PaymentSubscriptionPlan.prototype['periods'] = undefined;
  * @member {Number} interval
  */
 PaymentSubscriptionPlan.prototype['interval'] = undefined;
+
+/**
+ * probation period
+ * @member {Number} trial_period
+ */
+PaymentSubscriptionPlan.prototype['trial_period'] = undefined;
 
 /**
  * The subscription plan amount.  - If `currency` is set, this represents the subscription amount in the specified fiat currency. - If `currency` isn't set, this represents the settlement amount in the specified cryptocurrency. 

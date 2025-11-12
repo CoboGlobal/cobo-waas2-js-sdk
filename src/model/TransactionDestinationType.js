@@ -67,6 +67,13 @@ export default class TransactionDestinationType {
 
     
         /**
+         * value: "TRON_Contract"
+         * @const
+         */
+        "TRON_Contract" = "TRON_Contract";
+
+    
+        /**
          * value: "EVM_EIP_191_Signature"
          * @const
          */

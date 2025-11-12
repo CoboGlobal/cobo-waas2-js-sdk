@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **updated_timestamp** | **Number** | The updated time of the order, represented as a UNIX timestamp in seconds. | [optional] 
 **transactions** | [**[PaymentTransaction]**](PaymentTransaction.md) | An array of transactions associated with this pay-in order. Each transaction represents a separate blockchain operation related to the settlement process. | [optional] 
 **settlement_status** | [**SettleStatus**](SettleStatus.md) |  | [optional] 
+**amount_tolerance** | **String** | Allowed amount deviation. | [optional] 
 
 
 
@@ -55,6 +56,10 @@ Name | Type | Description | Notes
 * `PaymentTransaction` (value: `"PaymentTransaction"`)
 
 * `PaymentAddressUpdate` (value: `"PaymentAddressUpdate"`)
+
+* `PaymentSubscriptionUpdate` (value: `"PaymentSubscriptionUpdate"`)
+
+* `PaymentChargeUpdate` (value: `"PaymentChargeUpdate"`)
 
 * `BalanceUpdateInfo` (value: `"BalanceUpdateInfo"`)
 

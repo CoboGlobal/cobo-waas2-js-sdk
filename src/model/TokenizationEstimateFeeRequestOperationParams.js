@@ -20,14 +20,13 @@ import TokenizationMintEstimateFeeParams from './TokenizationMintEstimateFeePara
 import TokenizationMintTokenParamsMintsInner from './TokenizationMintTokenParamsMintsInner';
 import TokenizationOperationType from './TokenizationOperationType';
 import TokenizationPauseEstimateFeeParams from './TokenizationPauseEstimateFeeParams';
-import TokenizationPermissionAction from './TokenizationPermissionAction';
 import TokenizationToggleAllowlistEstimateFeeParams from './TokenizationToggleAllowlistEstimateFeeParams';
 import TokenizationTokenOperationSource from './TokenizationTokenOperationSource';
-import TokenizationTokenPermissionType from './TokenizationTokenPermissionType';
 import TokenizationUnpauseEstimateFeeParams from './TokenizationUnpauseEstimateFeeParams';
+import TokenizationUpdateAddressAction from './TokenizationUpdateAddressAction';
+import TokenizationUpdateAddressPermissions from './TokenizationUpdateAddressPermissions';
 import TokenizationUpdateAllowlistAddressesEstimateFeeParams from './TokenizationUpdateAllowlistAddressesEstimateFeeParams';
 import TokenizationUpdateBlocklistAddressesEstimateFeeParams from './TokenizationUpdateBlocklistAddressesEstimateFeeParams';
-import TokenizationUpdateBlocklistAddressesParamsAddressesInner from './TokenizationUpdateBlocklistAddressesParamsAddressesInner';
 import TokenizationUpdatePermissionsEstimateFeeParams from './TokenizationUpdatePermissionsEstimateFeeParams';
 
 /**
@@ -452,13 +451,12 @@ TokenizationEstimateFeeRequestOperationParams.prototype['token_id'] = undefined;
 TokenizationEstimateFeeRequestOperationParams.prototype['burns'] = undefined;
 
 /**
- * @member {module:model/TokenizationPermissionAction} action
+ * @member {module:model/TokenizationUpdateAddressAction} action
  */
 TokenizationEstimateFeeRequestOperationParams.prototype['action'] = undefined;
 
 /**
- * A list of addresses to manage. For 'add' operations, notes can be provided. For 'remove' operations, notes are ignored.
- * @member {Array.<module:model/TokenizationUpdateBlocklistAddressesParamsAddressesInner>} addresses
+ * @member {Array.<module:model/TokenizationUpdateAddressPermissions>} addresses
  */
 TokenizationEstimateFeeRequestOperationParams.prototype['addresses'] = undefined;
 
@@ -472,18 +470,6 @@ TokenizationEstimateFeeRequestOperationParams.prototype['activation'] = undefine
  * @member {module:model/TokenizationContractCallParamsData} data
  */
 TokenizationEstimateFeeRequestOperationParams.prototype['data'] = undefined;
-
-/**
- * The address to manage permissions for.
- * @member {String} address
- */
-TokenizationEstimateFeeRequestOperationParams.prototype['address'] = undefined;
-
-/**
- * The list of permissions to operate on.
- * @member {Array.<module:model/TokenizationTokenPermissionType>} permissions
- */
-TokenizationEstimateFeeRequestOperationParams.prototype['permissions'] = undefined;
 
 
 TokenizationEstimateFeeRequestOperationParams.OneOf = ["TokenizationBurnEstimateFeeParams", "TokenizationContractCallEstimateFeeParams", "TokenizationIssueEstimateFeeParams", "TokenizationMintEstimateFeeParams", "TokenizationPauseEstimateFeeParams", "TokenizationToggleAllowlistEstimateFeeParams", "TokenizationUnpauseEstimateFeeParams", "TokenizationUpdateAllowlistAddressesEstimateFeeParams", "TokenizationUpdateBlocklistAddressesEstimateFeeParams", "TokenizationUpdatePermissionsEstimateFeeParams"];

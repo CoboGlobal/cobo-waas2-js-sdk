@@ -49,7 +49,13 @@ class TokenizationSolWrappedTokenPermissionParams {
                 obj['wrapper'] = ApiClient.convertToType(data['wrapper'], ['String']);
             }
             if (data.hasOwnProperty('pauser')) {
-                obj['pauser'] = ApiClient.convertToType(data['pauser'], ['String']);
+                obj['pauser'] = ApiClient.convertToType(data['pauser'], 'String');
+            }
+            if (data.hasOwnProperty('freezer')) {
+                obj['freezer'] = ApiClient.convertToType(data['freezer'], 'String');
+            }
+            if (data.hasOwnProperty('updater')) {
+                obj['updater'] = ApiClient.convertToType(data['updater'], 'String');
             }
         }
         return obj;
@@ -65,9 +71,17 @@ class TokenizationSolWrappedTokenPermissionParams {
         if (!Array.isArray(data['wrapper'])) {
             throw new Error("Expected the field `wrapper` to be an array in the JSON data but got " + data['wrapper']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['pauser'])) {
-            throw new Error("Expected the field `pauser` to be an array in the JSON data but got " + data['pauser']);
+        // ensure the json data is a string
+        if (data['pauser'] && !(typeof data['pauser'] === 'string' || data['pauser'] instanceof String)) {
+            throw new Error("Expected the field `pauser` to be a primitive type in the JSON string but got " + data['pauser']);
+        }
+        // ensure the json data is a string
+        if (data['freezer'] && !(typeof data['freezer'] === 'string' || data['freezer'] instanceof String)) {
+            throw new Error("Expected the field `freezer` to be a primitive type in the JSON string but got " + data['freezer']);
+        }
+        // ensure the json data is a string
+        if (data['updater'] && !(typeof data['updater'] === 'string' || data['updater'] instanceof String)) {
+            throw new Error("Expected the field `updater` to be a primitive type in the JSON string but got " + data['updater']);
         }
 
         return true;
@@ -85,10 +99,22 @@ class TokenizationSolWrappedTokenPermissionParams {
 TokenizationSolWrappedTokenPermissionParams.prototype['wrapper'] = undefined;
 
 /**
- * List of Solana wallet addresses that can pause/unpause the contract. Multiple addresses can be assigned this role.
- * @member {Array.<String>} pauser
+ * Solana wallet address that acts as a pauser authority for the token. This authority can pause token transfers.
+ * @member {String} pauser
  */
 TokenizationSolWrappedTokenPermissionParams.prototype['pauser'] = undefined;
+
+/**
+ * Solana wallet address that acts as a freezer authority for the token. This authority can freeze token accounts.
+ * @member {String} freezer
+ */
+TokenizationSolWrappedTokenPermissionParams.prototype['freezer'] = undefined;
+
+/**
+ * Solana wallet address that acts as an updater authority for the token. This authority can update token metadata.
+ * @member {String} updater
+ */
+TokenizationSolWrappedTokenPermissionParams.prototype['updater'] = undefined;
 
 
 

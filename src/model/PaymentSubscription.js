@@ -27,7 +27,6 @@ class PaymentSubscription {
      * @param merchant_address {String} The merchant address in cobo.
      * @param user_address {String} The user address in subscription.
      * @param token_id {String} The token_id in subscription.
-     * @param amount {String} The amount in subscription.
      * @param start_time {Number} The subscription start timestamp.
      * @param expiration_time {Number} The subscription expired timestamp.
      * @param charges_made {Number} The subscription charge times.
@@ -38,9 +37,9 @@ class PaymentSubscription {
      * @param created_timestamp {Number} The created time of the subscription, represented as a UNIX timestamp in seconds.
      * @param updated_timestamp {Number} The updated time of the subscription, represented as a UNIX timestamp in seconds.
      */
-    constructor(plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
+    constructor(plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
         
-        PaymentSubscription.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
+        PaymentSubscription.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
     }
 
     /**
@@ -48,14 +47,13 @@ class PaymentSubscription {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
+    static initialize(obj, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
         obj['plan_id'] = plan_id;
         obj['subscription_id'] = subscription_id;
         obj['merchant_id'] = merchant_id;
         obj['merchant_address'] = merchant_address;
         obj['user_address'] = user_address;
         obj['token_id'] = token_id;
-        obj['amount'] = amount;
         obj['start_time'] = start_time;
         obj['expiration_time'] = expiration_time;
         obj['charges_made'] = charges_made;
@@ -96,8 +94,8 @@ class PaymentSubscription {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
-            if (data.hasOwnProperty('amount')) {
-                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
+            if (data.hasOwnProperty('charge_amount')) {
+                obj['charge_amount'] = ApiClient.convertToType(data['charge_amount'], 'String');
             }
             if (data.hasOwnProperty('start_time')) {
                 obj['start_time'] = ApiClient.convertToType(data['start_time'], 'Number');
@@ -167,8 +165,8 @@ class PaymentSubscription {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
-            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        if (data['charge_amount'] && !(typeof data['charge_amount'] === 'string' || data['charge_amount'] instanceof String)) {
+            throw new Error("Expected the field `charge_amount` to be a primitive type in the JSON string but got " + data['charge_amount']);
         }
 
         return true;
@@ -177,7 +175,7 @@ class PaymentSubscription {
 
 }
 
-PaymentSubscription.RequiredProperties = ["plan_id", "subscription_id", "merchant_id", "merchant_address", "user_address", "token_id", "amount", "start_time", "expiration_time", "charges_made", "period_type", "periods", "interval", "status", "created_timestamp", "updated_timestamp"];
+PaymentSubscription.RequiredProperties = ["plan_id", "subscription_id", "merchant_id", "merchant_address", "user_address", "token_id", "start_time", "expiration_time", "charges_made", "period_type", "periods", "interval", "status", "created_timestamp", "updated_timestamp"];
 
 /**
  * The plan id in cobo.
@@ -216,10 +214,10 @@ PaymentSubscription.prototype['user_address'] = undefined;
 PaymentSubscription.prototype['token_id'] = undefined;
 
 /**
- * The amount in subscription.
- * @member {String} amount
+ * The charge amount in subscription.
+ * @member {String} charge_amount
  */
-PaymentSubscription.prototype['amount'] = undefined;
+PaymentSubscription.prototype['charge_amount'] = undefined;
 
 /**
  * The subscription start timestamp.

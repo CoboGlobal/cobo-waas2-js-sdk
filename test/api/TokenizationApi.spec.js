@@ -36,6 +36,16 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('TokenizationApi', function() {
+    describe('archiveTokenization', function() {
+      it('should call archiveTokenization successfully', function() {
+        //uncomment below and update the code to test archiveTokenization
+        //instance.archiveTokenization().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('burnTokenization', function() {
       it('should call burnTokenization successfully', function() {
         //uncomment below and update the code to test burnTokenization
@@ -190,6 +200,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call tokenizationContractCall successfully', function() {
         //uncomment below and update the code to test tokenizationContractCall
         //instance.tokenizationContractCall().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('unarchiveTokenization', function() {
+      it('should call unarchiveTokenization successfully', function() {
+        //uncomment below and update the code to test unarchiveTokenization
+        //instance.unarchiveTokenization().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

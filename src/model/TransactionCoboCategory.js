@@ -242,6 +242,55 @@ export default class TransactionCoboCategory {
 
     
         /**
+         * value: "Tokenization"
+         * @const
+         */
+        "Tokenization" = "Tokenization";
+
+    
+        /**
+         * value: "TokenizationGasSponsor"
+         * @const
+         */
+        "TokenizationGasSponsor" = "TokenizationGasSponsor";
+
+    
+        /**
+         * value: "TokenSwap"
+         * @const
+         */
+        "TokenSwap" = "TokenSwap";
+
+    
+        /**
+         * value: "NonceAccountSign"
+         * @const
+         */
+        "NonceAccountSign" = "NonceAccountSign";
+
+    
+        /**
+         * value: "FeePayerSign"
+         * @const
+         */
+        "FeePayerSign" = "FeePayerSign";
+
+    
+        /**
+         * value: "GasFeeSponsor"
+         * @const
+         */
+        "GasFeeSponsor" = "GasFeeSponsor";
+
+    
+        /**
+         * value: "GasFeeSponsorRefund"
+         * @const
+         */
+        "GasFeeSponsorRefund" = "GasFeeSponsorRefund";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

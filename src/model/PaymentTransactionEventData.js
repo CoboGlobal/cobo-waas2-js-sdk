@@ -197,6 +197,9 @@ class PaymentTransactionEventData {
             if (data.hasOwnProperty('subscription_id')) {
                 obj['subscription_id'] = ApiClient.convertToType(data['subscription_id'], 'String');
             }
+            if (data.hasOwnProperty('action_id')) {
+                obj['action_id'] = ApiClient.convertToType(data['action_id'], 'String');
+            }
         }
         return obj;
     }
@@ -340,6 +343,10 @@ class PaymentTransactionEventData {
         // ensure the json data is a string
         if (data['subscription_id'] && !(typeof data['subscription_id'] === 'string' || data['subscription_id'] instanceof String)) {
             throw new Error("Expected the field `subscription_id` to be a primitive type in the JSON string but got " + data['subscription_id']);
+        }
+        // ensure the json data is a string
+        if (data['action_id'] && !(typeof data['action_id'] === 'string' || data['action_id'] instanceof String)) {
+            throw new Error("Expected the field `action_id` to be a primitive type in the JSON string but got " + data['action_id']);
         }
 
         return true;
@@ -564,6 +571,12 @@ PaymentTransactionEventData.prototype['custom_payer_id'] = undefined;
  * @member {String} subscription_id
  */
 PaymentTransactionEventData.prototype['subscription_id'] = undefined;
+
+/**
+ * A unique identifier assigned by Cobo to track and identify subscription action.
+ * @member {String} action_id
+ */
+PaymentTransactionEventData.prototype['action_id'] = undefined;
 
 
 // Implement WebhookEventDataType interface:
@@ -803,6 +816,18 @@ PaymentTransactionEventData['DataTypeEnum'] = {
      * @const
      */
     "PaymentAddressUpdate": "PaymentAddressUpdate",
+
+    /**
+     * value: "PaymentSubscriptionUpdate"
+     * @const
+     */
+    "PaymentSubscriptionUpdate": "PaymentSubscriptionUpdate",
+
+    /**
+     * value: "PaymentChargeUpdate"
+     * @const
+     */
+    "PaymentChargeUpdate": "PaymentChargeUpdate",
 
     /**
      * value: "BalanceUpdateInfo"

@@ -52,12 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.PaymentExtendPeriodSubscriptionActionData);
     });
 
-    it('should have the property periods (base name: "periods")', function() {
-      // uncomment below and update the code to test the property periods
-      //var instance = new CoboWaas2.PaymentExtendPeriodSubscriptionActionData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property action_type (base name: "action_type")', function() {
       // uncomment below and update the code to test the property action_type
       //var instance = new CoboWaas2.PaymentExtendPeriodSubscriptionActionData();
@@ -72,6 +66,18 @@
 
     it('should have the property signature (base name: "signature")', function() {
       // uncomment below and update the code to test the property signature
+      //var instance = new CoboWaas2.PaymentExtendPeriodSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deadline (base name: "deadline")', function() {
+      // uncomment below and update the code to test the property deadline
+      //var instance = new CoboWaas2.PaymentExtendPeriodSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property periods (base name: "periods")', function() {
+      // uncomment below and update the code to test the property periods
       //var instance = new CoboWaas2.PaymentExtendPeriodSubscriptionActionData();
       //expect(instance).to.be();
     });

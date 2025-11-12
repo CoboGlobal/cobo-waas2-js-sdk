@@ -22,17 +22,17 @@ class FeeStationCheckFeeStationUsageResponse {
      * The fee station evaluation result for the transfer request.
      * @alias module:model/FeeStationCheckFeeStationUsageResponse
      * @param token_id {String} The token used to pay the gas fee for this specific transaction. You can retrieve the IDs of all supported tokens by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+     * @param balance {String} The current token balance available in the fee station.
      * @param gas_station_type {module:model/FeeStationGasStationType} 
      * @param is_fee_station_applicable {Boolean} Indicates whether the fee station is applied for this transfer request.
      * @param is_balance_sufficient {Boolean} If the fee station is used, indicates whether its balance is sufficient to cover the required gas fee.
-     * @param balance {String} The current token balance available in the fee station.
      * @param total_fee_amount {String} The total gas amount required for this transfer request.
      * @param is_sponsor_applicable {Boolean} Indicates whether USDT (U) sponsorship is applied when the fee station balance is insufficient.
      * @param sponsored_fee_amount {String} The amount of gas fee sponsored by USDT (U) when applicable.
      */
-    constructor(token_id, gas_station_type, is_fee_station_applicable, is_balance_sufficient, balance, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount) { 
+    constructor(token_id, balance, gas_station_type, is_fee_station_applicable, is_balance_sufficient, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount) { 
         
-        FeeStationCheckFeeStationUsageResponse.initialize(this, token_id, gas_station_type, is_fee_station_applicable, is_balance_sufficient, balance, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount);
+        FeeStationCheckFeeStationUsageResponse.initialize(this, token_id, balance, gas_station_type, is_fee_station_applicable, is_balance_sufficient, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount);
     }
 
     /**
@@ -40,12 +40,12 @@ class FeeStationCheckFeeStationUsageResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_id, gas_station_type, is_fee_station_applicable, is_balance_sufficient, balance, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount) { 
+    static initialize(obj, token_id, balance, gas_station_type, is_fee_station_applicable, is_balance_sufficient, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount) { 
         obj['token_id'] = token_id;
+        obj['balance'] = balance;
         obj['gas_station_type'] = gas_station_type;
         obj['is_fee_station_applicable'] = is_fee_station_applicable;
         obj['is_balance_sufficient'] = is_balance_sufficient;
-        obj['balance'] = balance;
         obj['total_fee_amount'] = total_fee_amount;
         obj['is_sponsor_applicable'] = is_sponsor_applicable;
         obj['sponsored_fee_amount'] = sponsored_fee_amount;
@@ -65,6 +65,9 @@ class FeeStationCheckFeeStationUsageResponse {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
+            if (data.hasOwnProperty('balance')) {
+                obj['balance'] = ApiClient.convertToType(data['balance'], 'String');
+            }
             if (data.hasOwnProperty('gas_station_type')) {
                 obj['gas_station_type'] = FeeStationGasStationType.constructFromObject(data['gas_station_type']);
             }
@@ -74,9 +77,6 @@ class FeeStationCheckFeeStationUsageResponse {
             if (data.hasOwnProperty('is_balance_sufficient')) {
                 obj['is_balance_sufficient'] = ApiClient.convertToType(data['is_balance_sufficient'], 'Boolean');
             }
-            if (data.hasOwnProperty('balance')) {
-                obj['balance'] = ApiClient.convertToType(data['balance'], 'String');
-            }
             if (data.hasOwnProperty('total_fee_amount')) {
                 obj['total_fee_amount'] = ApiClient.convertToType(data['total_fee_amount'], 'String');
             }
@@ -85,6 +85,9 @@ class FeeStationCheckFeeStationUsageResponse {
             }
             if (data.hasOwnProperty('sponsored_fee_amount')) {
                 obj['sponsored_fee_amount'] = ApiClient.convertToType(data['sponsored_fee_amount'], 'String');
+            }
+            if (data.hasOwnProperty('sponsored_token_id')) {
+                obj['sponsored_token_id'] = ApiClient.convertToType(data['sponsored_token_id'], 'String');
             }
         }
         return obj;
@@ -118,6 +121,10 @@ class FeeStationCheckFeeStationUsageResponse {
         if (data['sponsored_fee_amount'] && !(typeof data['sponsored_fee_amount'] === 'string' || data['sponsored_fee_amount'] instanceof String)) {
             throw new Error("Expected the field `sponsored_fee_amount` to be a primitive type in the JSON string but got " + data['sponsored_fee_amount']);
         }
+        // ensure the json data is a string
+        if (data['sponsored_token_id'] && !(typeof data['sponsored_token_id'] === 'string' || data['sponsored_token_id'] instanceof String)) {
+            throw new Error("Expected the field `sponsored_token_id` to be a primitive type in the JSON string but got " + data['sponsored_token_id']);
+        }
 
         return true;
     }
@@ -125,13 +132,19 @@ class FeeStationCheckFeeStationUsageResponse {
 
 }
 
-FeeStationCheckFeeStationUsageResponse.RequiredProperties = ["token_id", "gas_station_type", "is_fee_station_applicable", "is_balance_sufficient", "balance", "total_fee_amount", "is_sponsor_applicable", "sponsored_fee_amount"];
+FeeStationCheckFeeStationUsageResponse.RequiredProperties = ["token_id", "balance", "gas_station_type", "is_fee_station_applicable", "is_balance_sufficient", "total_fee_amount", "is_sponsor_applicable", "sponsored_fee_amount"];
 
 /**
  * The token used to pay the gas fee for this specific transaction. You can retrieve the IDs of all supported tokens by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
  * @member {String} token_id
  */
 FeeStationCheckFeeStationUsageResponse.prototype['token_id'] = undefined;
+
+/**
+ * The current token balance available in the fee station.
+ * @member {String} balance
+ */
+FeeStationCheckFeeStationUsageResponse.prototype['balance'] = undefined;
 
 /**
  * @member {module:model/FeeStationGasStationType} gas_station_type
@@ -151,12 +164,6 @@ FeeStationCheckFeeStationUsageResponse.prototype['is_fee_station_applicable'] = 
 FeeStationCheckFeeStationUsageResponse.prototype['is_balance_sufficient'] = undefined;
 
 /**
- * The current token balance available in the fee station.
- * @member {String} balance
- */
-FeeStationCheckFeeStationUsageResponse.prototype['balance'] = undefined;
-
-/**
  * The total gas amount required for this transfer request.
  * @member {String} total_fee_amount
  */
@@ -173,6 +180,12 @@ FeeStationCheckFeeStationUsageResponse.prototype['is_sponsor_applicable'] = unde
  * @member {String} sponsored_fee_amount
  */
 FeeStationCheckFeeStationUsageResponse.prototype['sponsored_fee_amount'] = undefined;
+
+/**
+ * The token ID used to sponsor the gas fee.
+ * @member {String} sponsored_token_id
+ */
+FeeStationCheckFeeStationUsageResponse.prototype['sponsored_token_id'] = undefined;
 
 
 

@@ -64,20 +64,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2.PaymentCreateSubscriptionActionData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property token_id (base name: "token_id")', function() {
       // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2.PaymentCreateSubscriptionActionData();
       //expect(instance).to.be();
     });
 
-    it('should have the property discount_rate (base name: "discount_rate")', function() {
-      // uncomment below and update the code to test the property discount_rate
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
       //var instance = new CoboWaas2.PaymentCreateSubscriptionActionData();
       //expect(instance).to.be();
     });

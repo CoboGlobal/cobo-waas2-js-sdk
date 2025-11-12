@@ -280,6 +280,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property action_id (base name: "action_id")', function() {
+      // uncomment below and update the code to test the property action_id
+      //var instance = new CoboWaas2.PaymentTransactionEventData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

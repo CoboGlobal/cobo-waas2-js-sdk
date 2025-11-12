@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**periods** | **Number** | The periods needed updated. | [optional] 
 **action_type** | [**PaymentSubscriptionActionType**](PaymentSubscriptionActionType.md) |  | 
 **subscription_id** | **String** | The subscription id in cobo. | 
-**signature** | **String** | The signature for transaction. | 
+**signature** | **String** | The signature for transaction. charge action is not required. | 
+**deadline** | **Number** | The signature deadline for transaction. charge action is not required. | 
+**periods** | **Number** | The periods needed updated. | 
 
 

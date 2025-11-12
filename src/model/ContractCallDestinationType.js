@@ -39,6 +39,13 @@ export default class ContractCallDestinationType {
 
     
         /**
+         * value: "TRON_Contract"
+         * @const
+         */
+        "TRON_Contract" = "TRON_Contract";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

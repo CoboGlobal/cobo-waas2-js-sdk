@@ -82,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property trial_period (base name: "trial_period")', function() {
+      // uncomment below and update the code to test the property trial_period
+      //var instance = new CoboWaas2.PaymentSubscriptionPlan();
+      //expect(instance).to.be();
+    });
+
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
       //var instance = new CoboWaas2.PaymentSubscriptionPlan();

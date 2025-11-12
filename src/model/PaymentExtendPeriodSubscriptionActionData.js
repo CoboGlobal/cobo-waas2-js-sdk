@@ -10,7 +10,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import PaymentBaseSubscriptionActionData from './PaymentBaseSubscriptionActionData';
 import PaymentSubscriptionActionType from './PaymentSubscriptionActionType';
 
 /**
@@ -21,14 +20,15 @@ class PaymentExtendPeriodSubscriptionActionData {
     /**
      * Constructs a new <code>PaymentExtendPeriodSubscriptionActionData</code>.
      * @alias module:model/PaymentExtendPeriodSubscriptionActionData
-     * @implements module:model/PaymentBaseSubscriptionActionData
      * @param action_type {module:model/PaymentSubscriptionActionType} 
      * @param subscription_id {String} The subscription id in cobo.
-     * @param signature {String} The signature for transaction.
+     * @param signature {String} The signature for transaction. charge action is not required.
+     * @param deadline {Number} The signature deadline for transaction. charge action is not required.
+     * @param periods {Number} The periods needed updated.
      */
-    constructor(action_type, subscription_id, signature) { 
-        PaymentBaseSubscriptionActionData.initialize(this, action_type, subscription_id, signature);
-        PaymentExtendPeriodSubscriptionActionData.initialize(this, action_type, subscription_id, signature);
+    constructor(action_type, subscription_id, signature, deadline, periods) { 
+        
+        PaymentExtendPeriodSubscriptionActionData.initialize(this, action_type, subscription_id, signature, deadline, periods);
     }
 
     /**
@@ -36,10 +36,12 @@ class PaymentExtendPeriodSubscriptionActionData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, action_type, subscription_id, signature) { 
+    static initialize(obj, action_type, subscription_id, signature, deadline, periods) { 
         obj['action_type'] = action_type;
         obj['subscription_id'] = subscription_id;
         obj['signature'] = signature;
+        obj['deadline'] = deadline;
+        obj['periods'] = periods;
     }
 
     /**
@@ -52,11 +54,7 @@ class PaymentExtendPeriodSubscriptionActionData {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new PaymentExtendPeriodSubscriptionActionData();
-            PaymentBaseSubscriptionActionData.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('periods')) {
-                obj['periods'] = ApiClient.convertToType(data['periods'], 'Number');
-            }
             if (data.hasOwnProperty('action_type')) {
                 obj['action_type'] = PaymentSubscriptionActionType.constructFromObject(data['action_type']);
             }
@@ -65,6 +63,12 @@ class PaymentExtendPeriodSubscriptionActionData {
             }
             if (data.hasOwnProperty('signature')) {
                 obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
+            }
+            if (data.hasOwnProperty('deadline')) {
+                obj['deadline'] = ApiClient.convertToType(data['deadline'], 'Number');
+            }
+            if (data.hasOwnProperty('periods')) {
+                obj['periods'] = ApiClient.convertToType(data['periods'], 'Number');
             }
         }
         return obj;
@@ -97,13 +101,7 @@ class PaymentExtendPeriodSubscriptionActionData {
 
 }
 
-PaymentExtendPeriodSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id", "signature"];
-
-/**
- * The periods needed updated.
- * @member {Number} periods
- */
-PaymentExtendPeriodSubscriptionActionData.prototype['periods'] = undefined;
+PaymentExtendPeriodSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id", "signature", "deadline", "periods"];
 
 /**
  * @member {module:model/PaymentSubscriptionActionType} action_type
@@ -117,27 +115,24 @@ PaymentExtendPeriodSubscriptionActionData.prototype['action_type'] = undefined;
 PaymentExtendPeriodSubscriptionActionData.prototype['subscription_id'] = undefined;
 
 /**
- * The signature for transaction.
+ * The signature for transaction. charge action is not required.
  * @member {String} signature
  */
 PaymentExtendPeriodSubscriptionActionData.prototype['signature'] = undefined;
 
+/**
+ * The signature deadline for transaction. charge action is not required.
+ * @member {Number} deadline
+ */
+PaymentExtendPeriodSubscriptionActionData.prototype['deadline'] = undefined;
 
-// Implement PaymentBaseSubscriptionActionData interface:
 /**
- * @member {module:model/PaymentSubscriptionActionType} action_type
+ * The periods needed updated.
+ * @member {Number} periods
  */
-PaymentBaseSubscriptionActionData.prototype['action_type'] = undefined;
-/**
- * The subscription id in cobo.
- * @member {String} subscription_id
- */
-PaymentBaseSubscriptionActionData.prototype['subscription_id'] = undefined;
-/**
- * The signature for transaction.
- * @member {String} signature
- */
-PaymentBaseSubscriptionActionData.prototype['signature'] = undefined;
+PaymentExtendPeriodSubscriptionActionData.prototype['periods'] = undefined;
+
+
 
 
 

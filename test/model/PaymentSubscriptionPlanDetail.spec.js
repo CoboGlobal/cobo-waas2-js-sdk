@@ -52,12 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.PaymentSubscriptionPlanDetail);
     });
 
-    it('should have the property blockchain_plan_id (base name: "blockchain_plan_id")', function() {
-      // uncomment below and update the code to test the property blockchain_plan_id
-      //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
-      //expect(instance).to.be();
-    });
-
     it('should have the property plan_id (base name: "plan_id")', function() {
       // uncomment below and update the code to test the property plan_id
       //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
@@ -88,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property trial_period (base name: "trial_period")', function() {
+      // uncomment below and update the code to test the property trial_period
+      //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
+      //expect(instance).to.be();
+    });
+
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
       //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
@@ -102,6 +102,18 @@
 
     it('should have the property currency (base name: "currency")', function() {
       // uncomment below and update the code to test the property currency
+      //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
+      //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property contract_address (base name: "contract_address")', function() {
+      // uncomment below and update the code to test the property contract_address
       //var instance = new CoboWaas2.PaymentSubscriptionPlanDetail();
       //expect(instance).to.be();
     });

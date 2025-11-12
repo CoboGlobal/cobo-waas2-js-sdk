@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property subscription_developer_fee_rate (base name: "subscription_developer_fee_rate")', function() {
+      // uncomment below and update the code to test the property subscription_developer_fee_rate
+      //var instance = new CoboWaas2.UpdateMerchantByIdRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

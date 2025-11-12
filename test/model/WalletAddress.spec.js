@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.PaymentApproveSubscriptionActionData();
+    instance = new CoboWaas2.WalletAddress();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,28 +45,34 @@
       object[property] = value;
   }
 
-  describe('PaymentApproveSubscriptionActionData', function() {
-    it('should create an instance of PaymentApproveSubscriptionActionData', function() {
-      // uncomment below and update the code to test PaymentApproveSubscriptionActionData
-      //var instance = new CoboWaas2.PaymentApproveSubscriptionActionData();
-      //expect(instance).to.be.a(CoboWaas2.PaymentApproveSubscriptionActionData);
+  describe('WalletAddress', function() {
+    it('should create an instance of WalletAddress', function() {
+      // uncomment below and update the code to test WalletAddress
+      //var instance = new CoboWaas2.WalletAddress();
+      //expect(instance).to.be.a(CoboWaas2.WalletAddress);
     });
 
-    it('should have the property action_type (base name: "action_type")', function() {
-      // uncomment below and update the code to test the property action_type
-      //var instance = new CoboWaas2.PaymentApproveSubscriptionActionData();
+    it('should have the property wallet_address_id (base name: "wallet_address_id")', function() {
+      // uncomment below and update the code to test the property wallet_address_id
+      //var instance = new CoboWaas2.WalletAddress();
       //expect(instance).to.be();
     });
 
-    it('should have the property subscription_id (base name: "subscription_id")', function() {
-      // uncomment below and update the code to test the property subscription_id
-      //var instance = new CoboWaas2.PaymentApproveSubscriptionActionData();
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
+      //var instance = new CoboWaas2.WalletAddress();
       //expect(instance).to.be();
     });
 
-    it('should have the property permit_data (base name: "permit_data")', function() {
-      // uncomment below and update the code to test the property permit_data
-      //var instance = new CoboWaas2.PaymentApproveSubscriptionActionData();
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
+      //var instance = new CoboWaas2.WalletAddress();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updated_timestamp (base name: "updated_timestamp")', function() {
+      // uncomment below and update the code to test the property updated_timestamp
+      //var instance = new CoboWaas2.WalletAddress();
       //expect(instance).to.be();
     });
 

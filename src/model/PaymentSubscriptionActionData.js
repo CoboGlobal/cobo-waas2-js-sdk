@@ -10,13 +10,15 @@
  */
 
 import ApiClient from '../ApiClient';
-import PaymentApproveSubscriptionActionData from './PaymentApproveSubscriptionActionData';
 import PaymentBaseSubscriptionActionData from './PaymentBaseSubscriptionActionData';
+import PaymentChargeSubscriptionActionData from './PaymentChargeSubscriptionActionData';
 import PaymentCreateSubscriptionActionData from './PaymentCreateSubscriptionActionData';
 import PaymentDeveloperSubscriptionActionData from './PaymentDeveloperSubscriptionActionData';
 import PaymentExtendPeriodSubscriptionActionData from './PaymentExtendPeriodSubscriptionActionData';
+import PaymentSubscribeAndChargeSubscriptionActionData from './PaymentSubscribeAndChargeSubscriptionActionData';
 import PaymentSubscriptionActionType from './PaymentSubscriptionActionType';
 import PaymentUpdateAmountSubscriptionActionData from './PaymentUpdateAmountSubscriptionActionData';
+import PaymentUpdateTokenIdSubscriptionActionData from './PaymentUpdateTokenIdSubscriptionActionData';
 
 /**
  * The PaymentSubscriptionActionData model module.
@@ -26,7 +28,7 @@ class PaymentSubscriptionActionData {
     /**
      * Constructs a new <code>PaymentSubscriptionActionData</code>.
      * @alias module:model/PaymentSubscriptionActionData
-     * @param {(module:model/PaymentApproveSubscriptionActionData|module:model/PaymentBaseSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData)} instance The actual instance to initialize PaymentSubscriptionActionData.
+     * @param {(module:model/PaymentBaseSubscriptionActionData|module:model/PaymentChargeSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentSubscribeAndChargeSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData|module:model/PaymentUpdateTokenIdSubscriptionActionData)} instance The actual instance to initialize PaymentSubscriptionActionData.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -43,8 +45,12 @@ class PaymentSubscriptionActionData {
                     this.actualInstance = PaymentBaseSubscriptionActionData.constructFromObject(instance);
                     match++;
                     break;
-                case "Charge":
+                case "Cancel":
                     this.actualInstance = PaymentBaseSubscriptionActionData.constructFromObject(instance);
+                    match++;
+                    break;
+                case "Charge":
+                    this.actualInstance = PaymentChargeSubscriptionActionData.constructFromObject(instance);
                     match++;
                     break;
                 case "Create":
@@ -72,7 +78,11 @@ class PaymentSubscriptionActionData {
                     match++;
                     break;
                 case "SubscribeAndCharge":
-                    this.actualInstance = PaymentBaseSubscriptionActionData.constructFromObject(instance);
+                    this.actualInstance = PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance);
+                    match++;
+                    break;
+                case "UpdateTokenId":
+                    this.actualInstance = PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance);
                     match++;
                     break;
                 case "Upgrade":
@@ -112,31 +122,6 @@ class PaymentSubscriptionActionData {
         }
 
         try {
-            if (instance instanceof PaymentApproveSubscriptionActionData) {
-                this.actualInstance = instance;
-            } else if(!!PaymentApproveSubscriptionActionData.validateJSON && PaymentApproveSubscriptionActionData.validateJSON(instance)){
-                // plain JS object
-                // create PaymentApproveSubscriptionActionData from JS object
-                this.actualInstance = PaymentApproveSubscriptionActionData.constructFromObject(instance);
-            } else {
-                if(PaymentApproveSubscriptionActionData.constructFromObject(instance)) {
-                    if (!!PaymentApproveSubscriptionActionData.constructFromObject(instance).toJSON) {
-                        if (PaymentApproveSubscriptionActionData.constructFromObject(instance).toJSON()) {
-                            this.actualInstance = PaymentApproveSubscriptionActionData.constructFromObject(instance);
-                        }
-                    } else {
-                        this.actualInstance = PaymentApproveSubscriptionActionData.constructFromObject(instance);
-                    }
-                }
-
-            }
-            match++;
-        } catch(err) {
-            // json data failed to deserialize into PaymentApproveSubscriptionActionData
-            errorMessages.push("Failed to construct PaymentApproveSubscriptionActionData: " + err)
-        }
-
-        try {
             if (instance instanceof PaymentBaseSubscriptionActionData) {
                 this.actualInstance = instance;
             } else if(!!PaymentBaseSubscriptionActionData.validateJSON && PaymentBaseSubscriptionActionData.validateJSON(instance)){
@@ -162,28 +147,53 @@ class PaymentSubscriptionActionData {
         }
 
         try {
-            if (instance instanceof PaymentDeveloperSubscriptionActionData) {
+            if (instance instanceof PaymentSubscribeAndChargeSubscriptionActionData) {
                 this.actualInstance = instance;
-            } else if(!!PaymentDeveloperSubscriptionActionData.validateJSON && PaymentDeveloperSubscriptionActionData.validateJSON(instance)){
+            } else if(!!PaymentSubscribeAndChargeSubscriptionActionData.validateJSON && PaymentSubscribeAndChargeSubscriptionActionData.validateJSON(instance)){
                 // plain JS object
-                // create PaymentDeveloperSubscriptionActionData from JS object
-                this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+                // create PaymentSubscribeAndChargeSubscriptionActionData from JS object
+                this.actualInstance = PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance);
             } else {
-                if(PaymentDeveloperSubscriptionActionData.constructFromObject(instance)) {
-                    if (!!PaymentDeveloperSubscriptionActionData.constructFromObject(instance).toJSON) {
-                        if (PaymentDeveloperSubscriptionActionData.constructFromObject(instance).toJSON()) {
-                            this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+                if(PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance)) {
+                    if (!!PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance).toJSON) {
+                        if (PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance);
                         }
                     } else {
-                        this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+                        this.actualInstance = PaymentSubscribeAndChargeSubscriptionActionData.constructFromObject(instance);
                     }
                 }
 
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into PaymentDeveloperSubscriptionActionData
-            errorMessages.push("Failed to construct PaymentDeveloperSubscriptionActionData: " + err)
+            // json data failed to deserialize into PaymentSubscribeAndChargeSubscriptionActionData
+            errorMessages.push("Failed to construct PaymentSubscribeAndChargeSubscriptionActionData: " + err)
+        }
+
+        try {
+            if (instance instanceof PaymentChargeSubscriptionActionData) {
+                this.actualInstance = instance;
+            } else if(!!PaymentChargeSubscriptionActionData.validateJSON && PaymentChargeSubscriptionActionData.validateJSON(instance)){
+                // plain JS object
+                // create PaymentChargeSubscriptionActionData from JS object
+                this.actualInstance = PaymentChargeSubscriptionActionData.constructFromObject(instance);
+            } else {
+                if(PaymentChargeSubscriptionActionData.constructFromObject(instance)) {
+                    if (!!PaymentChargeSubscriptionActionData.constructFromObject(instance).toJSON) {
+                        if (PaymentChargeSubscriptionActionData.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = PaymentChargeSubscriptionActionData.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = PaymentChargeSubscriptionActionData.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into PaymentChargeSubscriptionActionData
+            errorMessages.push("Failed to construct PaymentChargeSubscriptionActionData: " + err)
         }
 
         try {
@@ -236,12 +246,62 @@ class PaymentSubscriptionActionData {
             errorMessages.push("Failed to construct PaymentUpdateAmountSubscriptionActionData: " + err)
         }
 
+        try {
+            if (instance instanceof PaymentUpdateTokenIdSubscriptionActionData) {
+                this.actualInstance = instance;
+            } else if(!!PaymentUpdateTokenIdSubscriptionActionData.validateJSON && PaymentUpdateTokenIdSubscriptionActionData.validateJSON(instance)){
+                // plain JS object
+                // create PaymentUpdateTokenIdSubscriptionActionData from JS object
+                this.actualInstance = PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance);
+            } else {
+                if(PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance)) {
+                    if (!!PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance).toJSON) {
+                        if (PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = PaymentUpdateTokenIdSubscriptionActionData.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into PaymentUpdateTokenIdSubscriptionActionData
+            errorMessages.push("Failed to construct PaymentUpdateTokenIdSubscriptionActionData: " + err)
+        }
+
+        try {
+            if (instance instanceof PaymentDeveloperSubscriptionActionData) {
+                this.actualInstance = instance;
+            } else if(!!PaymentDeveloperSubscriptionActionData.validateJSON && PaymentDeveloperSubscriptionActionData.validateJSON(instance)){
+                // plain JS object
+                // create PaymentDeveloperSubscriptionActionData from JS object
+                this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+            } else {
+                if(PaymentDeveloperSubscriptionActionData.constructFromObject(instance)) {
+                    if (!!PaymentDeveloperSubscriptionActionData.constructFromObject(instance).toJSON) {
+                        if (PaymentDeveloperSubscriptionActionData.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = PaymentDeveloperSubscriptionActionData.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into PaymentDeveloperSubscriptionActionData
+            errorMessages.push("Failed to construct PaymentDeveloperSubscriptionActionData: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `PaymentSubscriptionActionData` with oneOf schemas PaymentApproveSubscriptionActionData, PaymentBaseSubscriptionActionData, PaymentCreateSubscriptionActionData, PaymentDeveloperSubscriptionActionData, PaymentExtendPeriodSubscriptionActionData, PaymentUpdateAmountSubscriptionActionData. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `PaymentSubscriptionActionData` with oneOf schemas PaymentBaseSubscriptionActionData, PaymentChargeSubscriptionActionData, PaymentCreateSubscriptionActionData, PaymentDeveloperSubscriptionActionData, PaymentExtendPeriodSubscriptionActionData, PaymentSubscribeAndChargeSubscriptionActionData, PaymentUpdateAmountSubscriptionActionData, PaymentUpdateTokenIdSubscriptionActionData. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `PaymentSubscriptionActionData` with oneOf schemas PaymentApproveSubscriptionActionData, PaymentBaseSubscriptionActionData, PaymentCreateSubscriptionActionData, PaymentDeveloperSubscriptionActionData, PaymentExtendPeriodSubscriptionActionData, PaymentUpdateAmountSubscriptionActionData. Details: " +
+        //    throw new Error("No match found constructing `PaymentSubscriptionActionData` with oneOf schemas PaymentBaseSubscriptionActionData, PaymentChargeSubscriptionActionData, PaymentCreateSubscriptionActionData, PaymentDeveloperSubscriptionActionData, PaymentExtendPeriodSubscriptionActionData, PaymentSubscribeAndChargeSubscriptionActionData, PaymentUpdateAmountSubscriptionActionData, PaymentUpdateTokenIdSubscriptionActionData. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -261,16 +321,16 @@ class PaymentSubscriptionActionData {
     }
 
     /**
-     * Gets the actual instance, which can be <code>PaymentApproveSubscriptionActionData</code>, <code>PaymentBaseSubscriptionActionData</code>, <code>PaymentCreateSubscriptionActionData</code>, <code>PaymentDeveloperSubscriptionActionData</code>, <code>PaymentExtendPeriodSubscriptionActionData</code>, <code>PaymentUpdateAmountSubscriptionActionData</code>.
-     * @return {(module:model/PaymentApproveSubscriptionActionData|module:model/PaymentBaseSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData)} The actual instance.
+     * Gets the actual instance, which can be <code>PaymentBaseSubscriptionActionData</code>, <code>PaymentChargeSubscriptionActionData</code>, <code>PaymentCreateSubscriptionActionData</code>, <code>PaymentDeveloperSubscriptionActionData</code>, <code>PaymentExtendPeriodSubscriptionActionData</code>, <code>PaymentSubscribeAndChargeSubscriptionActionData</code>, <code>PaymentUpdateAmountSubscriptionActionData</code>, <code>PaymentUpdateTokenIdSubscriptionActionData</code>.
+     * @return {(module:model/PaymentBaseSubscriptionActionData|module:model/PaymentChargeSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentSubscribeAndChargeSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData|module:model/PaymentUpdateTokenIdSubscriptionActionData)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>PaymentApproveSubscriptionActionData</code>, <code>PaymentBaseSubscriptionActionData</code>, <code>PaymentCreateSubscriptionActionData</code>, <code>PaymentDeveloperSubscriptionActionData</code>, <code>PaymentExtendPeriodSubscriptionActionData</code>, <code>PaymentUpdateAmountSubscriptionActionData</code>.
-     * @param {(module:model/PaymentApproveSubscriptionActionData|module:model/PaymentBaseSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData)} obj The actual instance.
+     * Sets the actual instance, which can be <code>PaymentBaseSubscriptionActionData</code>, <code>PaymentChargeSubscriptionActionData</code>, <code>PaymentCreateSubscriptionActionData</code>, <code>PaymentDeveloperSubscriptionActionData</code>, <code>PaymentExtendPeriodSubscriptionActionData</code>, <code>PaymentSubscribeAndChargeSubscriptionActionData</code>, <code>PaymentUpdateAmountSubscriptionActionData</code>, <code>PaymentUpdateTokenIdSubscriptionActionData</code>.
+     * @param {(module:model/PaymentBaseSubscriptionActionData|module:model/PaymentChargeSubscriptionActionData|module:model/PaymentCreateSubscriptionActionData|module:model/PaymentDeveloperSubscriptionActionData|module:model/PaymentExtendPeriodSubscriptionActionData|module:model/PaymentSubscribeAndChargeSubscriptionActionData|module:model/PaymentUpdateAmountSubscriptionActionData|module:model/PaymentUpdateTokenIdSubscriptionActionData)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = PaymentSubscriptionActionData.constructFromObject(obj).getActualInstance();
@@ -306,22 +366,16 @@ PaymentSubscriptionActionData.prototype['action_type'] = undefined;
 PaymentSubscriptionActionData.prototype['user_address'] = undefined;
 
 /**
- * The subscription crypto amount. 
- * @member {String} amount
- */
-PaymentSubscriptionActionData.prototype['amount'] = undefined;
-
-/**
  * The ID of the cryptocurrency you want to subscription. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC` - USDT: `ETH_USDT`, `ARBITRUM_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
  * @member {String} token_id
  */
 PaymentSubscriptionActionData.prototype['token_id'] = undefined;
 
 /**
- * the discount rate, discount_rate/10000
- * @member {Number} discount_rate
+ * The subscription plan crypto amount with input token_id. 
+ * @member {String} charge_amount
  */
-PaymentSubscriptionActionData.prototype['discount_rate'] = undefined;
+PaymentSubscriptionActionData.prototype['charge_amount'] = undefined;
 
 /**
  * The subscription id in cobo.
@@ -330,16 +384,16 @@ PaymentSubscriptionActionData.prototype['discount_rate'] = undefined;
 PaymentSubscriptionActionData.prototype['subscription_id'] = undefined;
 
 /**
- * The signature of permit.
- * @member {String} permit_data
- */
-PaymentSubscriptionActionData.prototype['permit_data'] = undefined;
-
-/**
- * The signature for transaction.
+ * The signature for transaction. charge action is not required.
  * @member {String} signature
  */
 PaymentSubscriptionActionData.prototype['signature'] = undefined;
+
+/**
+ * The signature deadline for transaction. charge action is not required.
+ * @member {Number} deadline
+ */
+PaymentSubscriptionActionData.prototype['deadline'] = undefined;
 
 /**
  * The periods needed updated.
@@ -354,7 +408,7 @@ PaymentSubscriptionActionData.prototype['periods'] = undefined;
 PaymentSubscriptionActionData.prototype['new_plan_id'] = undefined;
 
 
-PaymentSubscriptionActionData.OneOf = ["PaymentApproveSubscriptionActionData", "PaymentBaseSubscriptionActionData", "PaymentCreateSubscriptionActionData", "PaymentDeveloperSubscriptionActionData", "PaymentExtendPeriodSubscriptionActionData", "PaymentUpdateAmountSubscriptionActionData"];
+PaymentSubscriptionActionData.OneOf = ["PaymentBaseSubscriptionActionData", "PaymentChargeSubscriptionActionData", "PaymentCreateSubscriptionActionData", "PaymentDeveloperSubscriptionActionData", "PaymentExtendPeriodSubscriptionActionData", "PaymentSubscribeAndChargeSubscriptionActionData", "PaymentUpdateAmountSubscriptionActionData", "PaymentUpdateTokenIdSubscriptionActionData"];
 
 export default PaymentSubscriptionActionData;
 

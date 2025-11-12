@@ -83,6 +83,9 @@ class PaymentSubscriptionAction {
             if (data.hasOwnProperty('data')) {
                 obj['data'] = PaymentSubscriptionActionData.constructFromObject(data['data']);
             }
+            if (data.hasOwnProperty('transaction_ids')) {
+                obj['transaction_ids'] = ApiClient.convertToType(data['transaction_ids'], ['String']);
+            }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = PaymentSubscriptionActionStatus.constructFromObject(data['status']);
             }
@@ -138,6 +141,10 @@ class PaymentSubscriptionAction {
             PaymentSubscriptionActionData.validateJSON(data['data']);
           }
         }
+        // ensure the json data is an array
+        if (!Array.isArray(data['transaction_ids'])) {
+            throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+        }
 
         return true;
     }
@@ -187,6 +194,11 @@ PaymentSubscriptionAction.prototype['merchant_address'] = undefined;
  * @member {module:model/PaymentSubscriptionActionData} data
  */
 PaymentSubscriptionAction.prototype['data'] = undefined;
+
+/**
+ * @member {Array.<String>} transaction_ids
+ */
+PaymentSubscriptionAction.prototype['transaction_ids'] = undefined;
 
 /**
  * @member {module:model/PaymentSubscriptionActionStatus} status

@@ -13,19 +13,20 @@ import ApiClient from '../ApiClient';
 import PaymentSubscriptionActionType from './PaymentSubscriptionActionType';
 
 /**
- * The PaymentApproveSubscriptionActionData model module.
- * @module model/PaymentApproveSubscriptionActionData
+ * The PaymentChargeSubscriptionActionData model module.
+ * @module model/PaymentChargeSubscriptionActionData
  */
-class PaymentApproveSubscriptionActionData {
+class PaymentChargeSubscriptionActionData {
     /**
-     * Constructs a new <code>PaymentApproveSubscriptionActionData</code>.
-     * @alias module:model/PaymentApproveSubscriptionActionData
+     * Constructs a new <code>PaymentChargeSubscriptionActionData</code>.
+     * @alias module:model/PaymentChargeSubscriptionActionData
      * @param action_type {module:model/PaymentSubscriptionActionType} 
      * @param subscription_id {String} The subscription id in cobo.
+     * @param charge_amount {String} The subscription crypto amount, less than subscription plan amount. 
      */
-    constructor(action_type, subscription_id) { 
+    constructor(action_type, subscription_id, charge_amount) { 
         
-        PaymentApproveSubscriptionActionData.initialize(this, action_type, subscription_id);
+        PaymentChargeSubscriptionActionData.initialize(this, action_type, subscription_id, charge_amount);
     }
 
     /**
@@ -33,21 +34,22 @@ class PaymentApproveSubscriptionActionData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, action_type, subscription_id) { 
+    static initialize(obj, action_type, subscription_id, charge_amount) { 
         obj['action_type'] = action_type;
         obj['subscription_id'] = subscription_id;
+        obj['charge_amount'] = charge_amount;
     }
 
     /**
-     * Constructs a <code>PaymentApproveSubscriptionActionData</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>PaymentChargeSubscriptionActionData</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/PaymentApproveSubscriptionActionData} obj Optional instance to populate.
-     * @return {module:model/PaymentApproveSubscriptionActionData} The populated <code>PaymentApproveSubscriptionActionData</code> instance.
+     * @param {module:model/PaymentChargeSubscriptionActionData} obj Optional instance to populate.
+     * @return {module:model/PaymentChargeSubscriptionActionData} The populated <code>PaymentChargeSubscriptionActionData</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new PaymentApproveSubscriptionActionData();
+            obj = obj || new PaymentChargeSubscriptionActionData();
 
             if (data.hasOwnProperty('action_type')) {
                 obj['action_type'] = PaymentSubscriptionActionType.constructFromObject(data['action_type']);
@@ -55,21 +57,21 @@ class PaymentApproveSubscriptionActionData {
             if (data.hasOwnProperty('subscription_id')) {
                 obj['subscription_id'] = ApiClient.convertToType(data['subscription_id'], 'String');
             }
-            if (data.hasOwnProperty('permit_data')) {
-                obj['permit_data'] = ApiClient.convertToType(data['permit_data'], 'String');
+            if (data.hasOwnProperty('charge_amount')) {
+                obj['charge_amount'] = ApiClient.convertToType(data['charge_amount'], 'String');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>PaymentApproveSubscriptionActionData</code>.
+     * Validates the JSON data with respect to <code>PaymentChargeSubscriptionActionData</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PaymentApproveSubscriptionActionData</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PaymentChargeSubscriptionActionData</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of PaymentApproveSubscriptionActionData.RequiredProperties) {
+        for (const property of PaymentChargeSubscriptionActionData.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -79,8 +81,8 @@ class PaymentApproveSubscriptionActionData {
             throw new Error("Expected the field `subscription_id` to be a primitive type in the JSON string but got " + data['subscription_id']);
         }
         // ensure the json data is a string
-        if (data['permit_data'] && !(typeof data['permit_data'] === 'string' || data['permit_data'] instanceof String)) {
-            throw new Error("Expected the field `permit_data` to be a primitive type in the JSON string but got " + data['permit_data']);
+        if (data['charge_amount'] && !(typeof data['charge_amount'] === 'string' || data['charge_amount'] instanceof String)) {
+            throw new Error("Expected the field `charge_amount` to be a primitive type in the JSON string but got " + data['charge_amount']);
         }
 
         return true;
@@ -89,29 +91,29 @@ class PaymentApproveSubscriptionActionData {
 
 }
 
-PaymentApproveSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id"];
+PaymentChargeSubscriptionActionData.RequiredProperties = ["action_type", "subscription_id", "charge_amount"];
 
 /**
  * @member {module:model/PaymentSubscriptionActionType} action_type
  */
-PaymentApproveSubscriptionActionData.prototype['action_type'] = undefined;
+PaymentChargeSubscriptionActionData.prototype['action_type'] = undefined;
 
 /**
  * The subscription id in cobo.
  * @member {String} subscription_id
  */
-PaymentApproveSubscriptionActionData.prototype['subscription_id'] = undefined;
+PaymentChargeSubscriptionActionData.prototype['subscription_id'] = undefined;
 
 /**
- * The signature of permit.
- * @member {String} permit_data
+ * The subscription crypto amount, less than subscription plan amount. 
+ * @member {String} charge_amount
  */
-PaymentApproveSubscriptionActionData.prototype['permit_data'] = undefined;
+PaymentChargeSubscriptionActionData.prototype['charge_amount'] = undefined;
 
 
 
 
 
 
-export default PaymentApproveSubscriptionActionData;
+export default PaymentChargeSubscriptionActionData;
 

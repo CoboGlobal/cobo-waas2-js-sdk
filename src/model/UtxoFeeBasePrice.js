@@ -48,6 +48,9 @@ class UtxoFeeBasePrice {
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
+            if (data.hasOwnProperty('fallback')) {
+                obj['fallback'] = ApiClient.convertToType(data['fallback'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -76,6 +79,12 @@ class UtxoFeeBasePrice {
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
+
+/**
+ * Indicates whether the estimated fee is generated from Cobo’s fallback mechanism. When the estimated transaction belongs to a UTXO-based chain and the specified address does not have sufficient balance to cover the on-chain fee, this field will be set to `true`. In this case, the returned fee value is estimated by Cobo’s internal fallback strategy, which is typically higher than the actual on-chain fee. When `fallback` is `true`, please use the estimated fee value with caution.
+ * @member {Boolean} fallback
+ */
+UtxoFeeBasePrice.prototype['fallback'] = undefined;
 
 
 

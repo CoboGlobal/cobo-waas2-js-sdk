@@ -31,7 +31,6 @@ class PaymentSubscriptionDetail {
      * @param merchant_address {String} The merchant address in cobo.
      * @param user_address {String} The user address in subscription.
      * @param token_id {String} The token_id in subscription.
-     * @param amount {String} The amount in subscription.
      * @param start_time {Number} The subscription start timestamp.
      * @param expiration_time {Number} The subscription expired timestamp.
      * @param charges_made {Number} The subscription charge times.
@@ -42,9 +41,9 @@ class PaymentSubscriptionDetail {
      * @param created_timestamp {Number} The created time of the subscription, represented as a UNIX timestamp in seconds.
      * @param updated_timestamp {Number} The updated time of the subscription, represented as a UNIX timestamp in seconds.
      */
-    constructor(plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
-        PaymentSubscription.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
-        PaymentSubscriptionDetail.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
+    constructor(plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
+        PaymentSubscription.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
+        PaymentSubscriptionDetail.initialize(this, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp);
     }
 
     /**
@@ -52,14 +51,13 @@ class PaymentSubscriptionDetail {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, amount, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
+    static initialize(obj, plan_id, subscription_id, merchant_id, merchant_address, user_address, token_id, start_time, expiration_time, charges_made, period_type, periods, interval, status, created_timestamp, updated_timestamp) { 
         obj['plan_id'] = plan_id;
         obj['subscription_id'] = subscription_id;
         obj['merchant_id'] = merchant_id;
         obj['merchant_address'] = merchant_address;
         obj['user_address'] = user_address;
         obj['token_id'] = token_id;
-        obj['amount'] = amount;
         obj['start_time'] = start_time;
         obj['expiration_time'] = expiration_time;
         obj['charges_made'] = charges_made;
@@ -83,12 +81,6 @@ class PaymentSubscriptionDetail {
             obj = obj || new PaymentSubscriptionDetail();
             PaymentSubscription.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('actions')) {
-                obj['actions'] = ApiClient.convertToType(data['actions'], [PaymentSubscriptionAction]);
-            }
-            if (data.hasOwnProperty('transactions')) {
-                obj['transactions'] = ApiClient.convertToType(data['transactions'], [Transaction]);
-            }
             if (data.hasOwnProperty('plan_id')) {
                 obj['plan_id'] = ApiClient.convertToType(data['plan_id'], 'String');
             }
@@ -107,8 +99,8 @@ class PaymentSubscriptionDetail {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
-            if (data.hasOwnProperty('amount')) {
-                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
+            if (data.hasOwnProperty('charge_amount')) {
+                obj['charge_amount'] = ApiClient.convertToType(data['charge_amount'], 'String');
             }
             if (data.hasOwnProperty('start_time')) {
                 obj['start_time'] = ApiClient.convertToType(data['start_time'], 'Number');
@@ -137,6 +129,12 @@ class PaymentSubscriptionDetail {
             if (data.hasOwnProperty('updated_timestamp')) {
                 obj['updated_timestamp'] = ApiClient.convertToType(data['updated_timestamp'], 'Number');
             }
+            if (data.hasOwnProperty('actions')) {
+                obj['actions'] = ApiClient.convertToType(data['actions'], [PaymentSubscriptionAction]);
+            }
+            if (data.hasOwnProperty('transactions')) {
+                obj['transactions'] = ApiClient.convertToType(data['transactions'], [Transaction]);
+            }
         }
         return obj;
     }
@@ -152,26 +150,6 @@ class PaymentSubscriptionDetail {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        if (data['actions']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['actions'])) {
-                throw new Error("Expected the field `actions` to be an array in the JSON data but got " + data['actions']);
-            }
-            // validate the optional field `actions` (array)
-            for (const item of data['actions']) {
-                PaymentSubscriptionAction.validateJSON(item);
-            };
-        }
-        if (data['transactions']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['transactions'])) {
-                throw new Error("Expected the field `transactions` to be an array in the JSON data but got " + data['transactions']);
-            }
-            // validate the optional field `transactions` (array)
-            for (const item of data['transactions']) {
-                Transaction.validateJSON(item);
-            };
         }
         // ensure the json data is a string
         if (data['plan_id'] && !(typeof data['plan_id'] === 'string' || data['plan_id'] instanceof String)) {
@@ -198,8 +176,28 @@ class PaymentSubscriptionDetail {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
-            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        if (data['charge_amount'] && !(typeof data['charge_amount'] === 'string' || data['charge_amount'] instanceof String)) {
+            throw new Error("Expected the field `charge_amount` to be a primitive type in the JSON string but got " + data['charge_amount']);
+        }
+        if (data['actions']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['actions'])) {
+                throw new Error("Expected the field `actions` to be an array in the JSON data but got " + data['actions']);
+            }
+            // validate the optional field `actions` (array)
+            for (const item of data['actions']) {
+                PaymentSubscriptionAction.validateJSON(item);
+            };
+        }
+        if (data['transactions']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['transactions'])) {
+                throw new Error("Expected the field `transactions` to be an array in the JSON data but got " + data['transactions']);
+            }
+            // validate the optional field `transactions` (array)
+            for (const item of data['transactions']) {
+                Transaction.validateJSON(item);
+            };
         }
 
         return true;
@@ -208,19 +206,7 @@ class PaymentSubscriptionDetail {
 
 }
 
-PaymentSubscriptionDetail.RequiredProperties = ["plan_id", "subscription_id", "merchant_id", "merchant_address", "user_address", "token_id", "amount", "start_time", "expiration_time", "charges_made", "period_type", "periods", "interval", "status", "created_timestamp", "updated_timestamp"];
-
-/**
- * An array of subscription actions.
- * @member {Array.<module:model/PaymentSubscriptionAction>} actions
- */
-PaymentSubscriptionDetail.prototype['actions'] = undefined;
-
-/**
- * An array of subscription transactions.
- * @member {Array.<module:model/Transaction>} transactions
- */
-PaymentSubscriptionDetail.prototype['transactions'] = undefined;
+PaymentSubscriptionDetail.RequiredProperties = ["plan_id", "subscription_id", "merchant_id", "merchant_address", "user_address", "token_id", "start_time", "expiration_time", "charges_made", "period_type", "periods", "interval", "status", "created_timestamp", "updated_timestamp"];
 
 /**
  * The plan id in cobo.
@@ -259,10 +245,10 @@ PaymentSubscriptionDetail.prototype['user_address'] = undefined;
 PaymentSubscriptionDetail.prototype['token_id'] = undefined;
 
 /**
- * The amount in subscription.
- * @member {String} amount
+ * The charge amount in subscription.
+ * @member {String} charge_amount
  */
-PaymentSubscriptionDetail.prototype['amount'] = undefined;
+PaymentSubscriptionDetail.prototype['charge_amount'] = undefined;
 
 /**
  * The subscription start timestamp.
@@ -315,6 +301,18 @@ PaymentSubscriptionDetail.prototype['created_timestamp'] = undefined;
  */
 PaymentSubscriptionDetail.prototype['updated_timestamp'] = undefined;
 
+/**
+ * An array of subscription actions.
+ * @member {Array.<module:model/PaymentSubscriptionAction>} actions
+ */
+PaymentSubscriptionDetail.prototype['actions'] = undefined;
+
+/**
+ * An array of subscription transactions.
+ * @member {Array.<module:model/Transaction>} transactions
+ */
+PaymentSubscriptionDetail.prototype['transactions'] = undefined;
+
 
 // Implement PaymentSubscription interface:
 /**
@@ -348,10 +346,10 @@ PaymentSubscription.prototype['user_address'] = undefined;
  */
 PaymentSubscription.prototype['token_id'] = undefined;
 /**
- * The amount in subscription.
- * @member {String} amount
+ * The charge amount in subscription.
+ * @member {String} charge_amount
  */
-PaymentSubscription.prototype['amount'] = undefined;
+PaymentSubscription.prototype['charge_amount'] = undefined;
 /**
  * The subscription start timestamp.
  * @member {Number} start_time

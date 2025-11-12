@@ -58,6 +58,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property balance (base name: "balance")', function() {
+      // uncomment below and update the code to test the property balance
+      //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
+      //expect(instance).to.be();
+    });
+
     it('should have the property gas_station_type (base name: "gas_station_type")', function() {
       // uncomment below and update the code to test the property gas_station_type
       //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
@@ -76,12 +82,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property balance (base name: "balance")', function() {
-      // uncomment below and update the code to test the property balance
-      //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
-      //expect(instance).to.be();
-    });
-
     it('should have the property total_fee_amount (base name: "total_fee_amount")', function() {
       // uncomment below and update the code to test the property total_fee_amount
       //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
@@ -96,6 +96,12 @@
 
     it('should have the property sponsored_fee_amount (base name: "sponsored_fee_amount")', function() {
       // uncomment below and update the code to test the property sponsored_fee_amount
+      //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property sponsored_token_id (base name: "sponsored_token_id")', function() {
+      // uncomment below and update the code to test the property sponsored_token_id
       //var instance = new CoboWaas2.FeeStationCheckFeeStationUsageResponse();
       //expect(instance).to.be();
     });

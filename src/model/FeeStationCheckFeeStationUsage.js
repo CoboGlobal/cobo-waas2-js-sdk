@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AutoFuelType from './AutoFuelType';
 
 /**
  * The FeeStationCheckFeeStationUsage model module.
@@ -21,15 +22,13 @@ class FeeStationCheckFeeStationUsage {
      * The information about a check fee station usage.
      * @alias module:model/FeeStationCheckFeeStationUsage
      * @param request_id {String} The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
-     * @param amount {String} The amount of tokens to be transferred in this request.
-     * @param token_id {String} The token ID of the transferred token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param estimated_fee_amount {String} The estimated transaction fee required for this transfer, before applying any fee station rules.
      * @param from_address {String} The blockchain address that initiates the transfer.
      * @param from_wallet_id {String} The wallet ID.
      */
-    constructor(request_id, amount, token_id, estimated_fee_amount, from_address, from_wallet_id) { 
+    constructor(request_id, estimated_fee_amount, from_address, from_wallet_id) { 
         
-        FeeStationCheckFeeStationUsage.initialize(this, request_id, amount, token_id, estimated_fee_amount, from_address, from_wallet_id);
+        FeeStationCheckFeeStationUsage.initialize(this, request_id, estimated_fee_amount, from_address, from_wallet_id);
     }
 
     /**
@@ -37,10 +36,8 @@ class FeeStationCheckFeeStationUsage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, request_id, amount, token_id, estimated_fee_amount, from_address, from_wallet_id) { 
+    static initialize(obj, request_id, estimated_fee_amount, from_address, from_wallet_id) { 
         obj['request_id'] = request_id;
-        obj['amount'] = amount;
-        obj['token_id'] = token_id;
         obj['estimated_fee_amount'] = estimated_fee_amount;
         obj['from_address'] = from_address;
         obj['from_wallet_id'] = from_wallet_id;
@@ -66,6 +63,9 @@ class FeeStationCheckFeeStationUsage {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
+            if (data.hasOwnProperty('fee_token_id')) {
+                obj['fee_token_id'] = ApiClient.convertToType(data['fee_token_id'], 'String');
+            }
             if (data.hasOwnProperty('estimated_fee_amount')) {
                 obj['estimated_fee_amount'] = ApiClient.convertToType(data['estimated_fee_amount'], 'String');
             }
@@ -74,6 +74,9 @@ class FeeStationCheckFeeStationUsage {
             }
             if (data.hasOwnProperty('from_wallet_id')) {
                 obj['from_wallet_id'] = ApiClient.convertToType(data['from_wallet_id'], 'String');
+            }
+            if (data.hasOwnProperty('auto_fuel')) {
+                obj['auto_fuel'] = AutoFuelType.constructFromObject(data['auto_fuel']);
             }
         }
         return obj;
@@ -104,6 +107,10 @@ class FeeStationCheckFeeStationUsage {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
+        if (data['fee_token_id'] && !(typeof data['fee_token_id'] === 'string' || data['fee_token_id'] instanceof String)) {
+            throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
+        }
+        // ensure the json data is a string
         if (data['estimated_fee_amount'] && !(typeof data['estimated_fee_amount'] === 'string' || data['estimated_fee_amount'] instanceof String)) {
             throw new Error("Expected the field `estimated_fee_amount` to be a primitive type in the JSON string but got " + data['estimated_fee_amount']);
         }
@@ -122,7 +129,7 @@ class FeeStationCheckFeeStationUsage {
 
 }
 
-FeeStationCheckFeeStationUsage.RequiredProperties = ["request_id", "amount", "token_id", "estimated_fee_amount", "from_address", "from_wallet_id"];
+FeeStationCheckFeeStationUsage.RequiredProperties = ["request_id", "estimated_fee_amount", "from_address", "from_wallet_id"];
 
 /**
  * The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
@@ -131,16 +138,22 @@ FeeStationCheckFeeStationUsage.RequiredProperties = ["request_id", "amount", "to
 FeeStationCheckFeeStationUsage.prototype['request_id'] = undefined;
 
 /**
- * The amount of tokens to be transferred in this request.
+ * Applicable to transfer requests only. The amount of tokens to be transferred in this request.
  * @member {String} amount
  */
 FeeStationCheckFeeStationUsage.prototype['amount'] = undefined;
 
 /**
- * The token ID of the transferred token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+ * Applicable to transfer requests only. The token ID of the asset to be transferred.   You can retrieve available token IDs by calling   [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens). 
  * @member {String} token_id
  */
 FeeStationCheckFeeStationUsage.prototype['token_id'] = undefined;
+
+/**
+ * The token ID used to pay the gas fee for the main transaction. You can retrieve available token IDs by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+ * @member {String} fee_token_id
+ */
+FeeStationCheckFeeStationUsage.prototype['fee_token_id'] = undefined;
 
 /**
  * The estimated transaction fee required for this transfer, before applying any fee station rules.
@@ -159,6 +172,11 @@ FeeStationCheckFeeStationUsage.prototype['from_address'] = undefined;
  * @member {String} from_wallet_id
  */
 FeeStationCheckFeeStationUsage.prototype['from_wallet_id'] = undefined;
+
+/**
+ * @member {module:model/AutoFuelType} auto_fuel
+ */
+FeeStationCheckFeeStationUsage.prototype['auto_fuel'] = undefined;
 
 
 

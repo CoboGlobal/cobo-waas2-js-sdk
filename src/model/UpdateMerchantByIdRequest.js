@@ -50,6 +50,9 @@ class UpdateMerchantByIdRequest {
             if (data.hasOwnProperty('developer_fee_rate')) {
                 obj['developer_fee_rate'] = ApiClient.convertToType(data['developer_fee_rate'], 'String');
             }
+            if (data.hasOwnProperty('subscription_developer_fee_rate')) {
+                obj['subscription_developer_fee_rate'] = ApiClient.convertToType(data['subscription_developer_fee_rate'], 'String');
+            }
         }
         return obj;
     }
@@ -67,6 +70,10 @@ class UpdateMerchantByIdRequest {
         // ensure the json data is a string
         if (data['developer_fee_rate'] && !(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
             throw new Error("Expected the field `developer_fee_rate` to be a primitive type in the JSON string but got " + data['developer_fee_rate']);
+        }
+        // ensure the json data is a string
+        if (data['subscription_developer_fee_rate'] && !(typeof data['subscription_developer_fee_rate'] === 'string' || data['subscription_developer_fee_rate'] instanceof String)) {
+            throw new Error("Expected the field `subscription_developer_fee_rate` to be a primitive type in the JSON string but got " + data['subscription_developer_fee_rate']);
         }
 
         return true;
@@ -88,6 +95,12 @@ UpdateMerchantByIdRequest.prototype['name'] = undefined;
  * @member {String} developer_fee_rate
  */
 UpdateMerchantByIdRequest.prototype['developer_fee_rate'] = undefined;
+
+/**
+ * The fee rate applied when subscribe the merchant account. Represented as a string percentage (e.g., \"0.1\" means 10%).
+ * @member {String} subscription_developer_fee_rate
+ */
+UpdateMerchantByIdRequest.prototype['subscription_developer_fee_rate'] = undefined;
 
 
 

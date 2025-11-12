@@ -1,4 +1,4 @@
-# CoboWaas2.GetExchangeRate200Response
+# CoboWaas2.ExchangeRate
 
 ## Properties
 

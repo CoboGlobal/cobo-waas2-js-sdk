@@ -40,6 +40,10 @@ Name | Type | Description | Notes
 
 * `PaymentAddressUpdate` (value: `"PaymentAddressUpdate"`)
 
+* `PaymentSubscriptionUpdate` (value: `"PaymentSubscriptionUpdate"`)
+
+* `PaymentChargeUpdate` (value: `"PaymentChargeUpdate"`)
+
 * `BalanceUpdateInfo` (value: `"BalanceUpdateInfo"`)
 
 * `SuspendedToken` (value: `"SuspendedToken"`)

@@ -12,20 +12,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The GetExchangeRate200Response model module.
- * @module model/GetExchangeRate200Response
+ * The ExchangeRate model module.
+ * @module model/ExchangeRate
  */
-class GetExchangeRate200Response {
+class ExchangeRate {
     /**
-     * Constructs a new <code>GetExchangeRate200Response</code>.
-     * @alias module:model/GetExchangeRate200Response
+     * Constructs a new <code>ExchangeRate</code>.
+     * @alias module:model/ExchangeRate
      * @param token_id {String} The token ID, which identifies the cryptocurrency.
      * @param currency {String} The fiat currency.
      * @param rate {String} The current exchange rate between the specified currency pair. Expressed as the amount of fiat currency per one unit of cryptocurrency. For example, if the cryptocurrency is USDT and the fiat currency is USD, a rate of \"0.99\" means 1 USDT = 0.99 USD.
      */
     constructor(token_id, currency, rate) { 
         
-        GetExchangeRate200Response.initialize(this, token_id, currency, rate);
+        ExchangeRate.initialize(this, token_id, currency, rate);
     }
 
     /**
@@ -40,15 +40,15 @@ class GetExchangeRate200Response {
     }
 
     /**
-     * Constructs a <code>GetExchangeRate200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ExchangeRate</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GetExchangeRate200Response} obj Optional instance to populate.
-     * @return {module:model/GetExchangeRate200Response} The populated <code>GetExchangeRate200Response</code> instance.
+     * @param {module:model/ExchangeRate} obj Optional instance to populate.
+     * @return {module:model/ExchangeRate} The populated <code>ExchangeRate</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new GetExchangeRate200Response();
+            obj = obj || new ExchangeRate();
 
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -64,13 +64,13 @@ class GetExchangeRate200Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>GetExchangeRate200Response</code>.
+     * Validates the JSON data with respect to <code>ExchangeRate</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GetExchangeRate200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExchangeRate</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of GetExchangeRate200Response.RequiredProperties) {
+        for (const property of ExchangeRate.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -94,30 +94,30 @@ class GetExchangeRate200Response {
 
 }
 
-GetExchangeRate200Response.RequiredProperties = ["token_id", "currency", "rate"];
+ExchangeRate.RequiredProperties = ["token_id", "currency", "rate"];
 
 /**
  * The token ID, which identifies the cryptocurrency.
  * @member {String} token_id
  */
-GetExchangeRate200Response.prototype['token_id'] = undefined;
+ExchangeRate.prototype['token_id'] = undefined;
 
 /**
  * The fiat currency.
  * @member {String} currency
  */
-GetExchangeRate200Response.prototype['currency'] = undefined;
+ExchangeRate.prototype['currency'] = undefined;
 
 /**
  * The current exchange rate between the specified currency pair. Expressed as the amount of fiat currency per one unit of cryptocurrency. For example, if the cryptocurrency is USDT and the fiat currency is USD, a rate of \"0.99\" means 1 USDT = 0.99 USD.
  * @member {String} rate
  */
-GetExchangeRate200Response.prototype['rate'] = undefined;
+ExchangeRate.prototype['rate'] = undefined;
 
 
 
 
 
 
-export default GetExchangeRate200Response;
+export default ExchangeRate;
 

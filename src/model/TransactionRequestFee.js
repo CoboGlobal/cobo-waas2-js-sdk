@@ -326,6 +326,12 @@ TransactionRequestFee.prototype['gas_price'] = undefined;
 TransactionRequestFee.prototype['fee_rate'] = undefined;
 
 /**
+ * Indicates whether the estimated fee is generated from Cobo’s fallback mechanism. When the estimated transaction belongs to a UTXO-based chain and the specified address does not have sufficient balance to cover the on-chain fee, this field will be set to `true`. In this case, the returned fee value is estimated by Cobo’s internal fallback strategy, which is typically higher than the actual on-chain fee. When `fallback` is `true`, please use the estimated fee value with caution.
+ * @member {Boolean} fallback
+ */
+TransactionRequestFee.prototype['fallback'] = undefined;
+
+/**
  * The cost per compute unit. Transactions consume computational resources measured in compute units, and this price helps determine the cost of executing transactions, especially complex ones involving smart contracts.
  * @member {String} compute_unit_price
  */

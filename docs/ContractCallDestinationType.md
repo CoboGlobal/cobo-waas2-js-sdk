@@ -9,6 +9,8 @@
 
 * `STELLAR_Contract` (value: `"STELLAR_Contract"`)
 
+* `TRON_Contract` (value: `"TRON_Contract"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

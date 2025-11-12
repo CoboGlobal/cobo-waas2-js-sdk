@@ -100,6 +100,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fallback (base name: "fallback")', function() {
+      // uncomment below and update the code to test the property fallback
+      //var instance = new CoboWaas2.TransactionRequestFee();
+      //expect(instance).to.be();
+    });
+
     it('should have the property compute_unit_price (base name: "compute_unit_price")', function() {
       // uncomment below and update the code to test the property compute_unit_price
       //var instance = new CoboWaas2.TransactionRequestFee();

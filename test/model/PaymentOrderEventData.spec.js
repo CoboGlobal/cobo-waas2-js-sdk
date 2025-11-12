@@ -172,6 +172,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
+      // uncomment below and update the code to test the property amount_tolerance
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

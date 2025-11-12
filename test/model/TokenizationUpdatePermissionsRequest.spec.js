@@ -58,20 +58,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property action (base name: "action")', function() {
-      // uncomment below and update the code to test the property action
-      //var instance = new CoboWaas2.TokenizationUpdatePermissionsRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
-      //var instance = new CoboWaas2.TokenizationUpdatePermissionsRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property permissions (base name: "permissions")', function() {
-      // uncomment below and update the code to test the property permissions
+    it('should have the property addresses (base name: "addresses")', function() {
+      // uncomment below and update the code to test the property addresses
       //var instance = new CoboWaas2.TokenizationUpdatePermissionsRequest();
       //expect(instance).to.be();
     });

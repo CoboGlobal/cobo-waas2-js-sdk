@@ -71,6 +71,9 @@ class PaymentCreateSubscriptionPlan {
             if (data.hasOwnProperty('currency')) {
                 obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
             }
+            if (data.hasOwnProperty('trial_period')) {
+                obj['trial_period'] = ApiClient.convertToType(data['trial_period'], 'Number');
+            }
         }
         return obj;
     }
@@ -145,6 +148,12 @@ PaymentCreateSubscriptionPlan.prototype['token_id'] = undefined;
  * @member {String} currency
  */
 PaymentCreateSubscriptionPlan.prototype['currency'] = undefined;
+
+/**
+ * probation period
+ * @member {Number} trial_period
+ */
+PaymentCreateSubscriptionPlan.prototype['trial_period'] = undefined;
 
 
 

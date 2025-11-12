@@ -52,12 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.PaymentUpdateAmountSubscriptionActionData);
     });
 
-    it('should have the property new_plan_id (base name: "new_plan_id")', function() {
-      // uncomment below and update the code to test the property new_plan_id
-      //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property action_type (base name: "action_type")', function() {
       // uncomment below and update the code to test the property action_type
       //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
@@ -70,8 +64,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property new_plan_id (base name: "new_plan_id")', function() {
+      // uncomment below and update the code to test the property new_plan_id
+      //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
+      //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property signature (base name: "signature")', function() {
       // uncomment below and update the code to test the property signature
+      //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deadline (base name: "deadline")', function() {
+      // uncomment below and update the code to test the property deadline
       //var instance = new CoboWaas2.PaymentUpdateAmountSubscriptionActionData();
       //expect(instance).to.be();
     });

@@ -4,6 +4,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**archiveTokenization**](TokenizationApi.md#archiveTokenization) | **POST** /tokenization/tokens/{token_id}/archive | Archive token
 [**burnTokenization**](TokenizationApi.md#burnTokenization) | **POST** /tokenization/tokens/{token_id}/burn | Burn tokens
 [**estimateTokenizationFee**](TokenizationApi.md#estimateTokenizationFee) | **POST** /tokenization/estimate_fee | Estimate tokenization operation fee
 [**getTokenizationActivity**](TokenizationApi.md#getTokenizationActivity) | **GET** /tokenization/activities/{activity_id} | Get tokenization activity details
@@ -20,6 +21,7 @@ Method | HTTP request | Description
 [**mintTokenization**](TokenizationApi.md#mintTokenization) | **POST** /tokenization/tokens/{token_id}/mint | Mint tokens
 [**pauseTokenization**](TokenizationApi.md#pauseTokenization) | **POST** /tokenization/tokens/{token_id}/pause | Pause token contract
 [**tokenizationContractCall**](TokenizationApi.md#tokenizationContractCall) | **POST** /tokenization/tokens/{token_id}/contract_call | Call token contract
+[**unarchiveTokenization**](TokenizationApi.md#unarchiveTokenization) | **POST** /tokenization/tokens/{token_id}/unarchive | Unarchive token
 [**unpauseTokenization**](TokenizationApi.md#unpauseTokenization) | **POST** /tokenization/tokens/{token_id}/unpause | Unpause token contract
 [**updateTokenizationAllowlistActivation**](TokenizationApi.md#updateTokenizationAllowlistActivation) | **POST** /tokenization/tokens/{token_id}/allowlist/activation | Activate or deactivate the allowlist
 [**updateTokenizationAllowlistAddresses**](TokenizationApi.md#updateTokenizationAllowlistAddresses) | **POST** /tokenization/tokens/{token_id}/allowlist/addresses | Update allowlist addresses
@@ -28,13 +30,67 @@ Method | HTTP request | Description
 
 
 
+## archiveTokenization
+
+> TokenizationTokenDetailInfo archiveTokenization(token_id, opts)
+
+Archive token
+
+This operation marks the token as archived. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.TokenizationApi();
+const token_id = "ETH_USDT";
+const opts = {
+  'TokenizationArchiveTokenRequest': new CoboWaas2.TokenizationArchiveTokenRequest()
+};
+apiInstance.archiveTokenization(token_id, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_id** | **String**| The token ID, which is the unique identifier of a token. | 
+ **TokenizationArchiveTokenRequest** | [**TokenizationArchiveTokenRequest**](TokenizationArchiveTokenRequest.md)| The request body for archiving tokens. | [optional] 
+
+### Return type
+
+[**TokenizationTokenDetailInfo**](TokenizationTokenDetailInfo.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## burnTokenization
 
 > TokenizationOperationResponse burnTokenization(token_id, opts)
 
 Burn tokens
 
-This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
 
 ### Example
 
@@ -721,6 +777,7 @@ apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
 // Call the API
 const apiInstance = new CoboWaas2.TokenizationApi();
 const opts = {
+  'token_standard': new CoboWaas2.TokenizationTokenStandard(),
   'limit': 10,
   'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk",
   'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1"
@@ -738,6 +795,7 @@ apiInstance.listTokenizationSupportedChains(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **token_standard** | [**TokenizationTokenStandard**](.md)| Filter by token standard. | [optional] 
  **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
  **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] 
  **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] 
@@ -762,7 +820,7 @@ Name | Type | Description  | Notes
 
 Mint tokens
 
-This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
 
 ### Example
 
@@ -905,6 +963,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TokenizationOperationResponse**](TokenizationOperationResponse.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## unarchiveTokenization
+
+> TokenizationTokenDetailInfo unarchiveTokenization(token_id, opts)
+
+Unarchive token
+
+This operation removes the archived flag from the token. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.TokenizationApi();
+const token_id = "ETH_USDT";
+const opts = {
+  'TokenizationUnarchiveTokenRequest': new CoboWaas2.TokenizationUnarchiveTokenRequest()
+};
+apiInstance.unarchiveTokenization(token_id, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_id** | **String**| The token ID, which is the unique identifier of a token. | 
+ **TokenizationUnarchiveTokenRequest** | [**TokenizationUnarchiveTokenRequest**](TokenizationUnarchiveTokenRequest.md)| The request body for unarchiving tokens. | [optional] 
+
+### Return type
+
+[**TokenizationTokenDetailInfo**](TokenizationTokenDetailInfo.md)
 
 ### Authorization
 
@@ -1138,7 +1250,7 @@ Name | Type | Description  | Notes
 
 Update permissions of the token
 
-This operation updates permissions for tokenization contracts.  **For Ethereum-based tokens:** Use &#x60;add&#x60; to grant permissions or &#x60;remove&#x60; to revoke permissions. Multiple permissions can be assigned to the same address.  **For Solana tokens:** Use &#x60;set&#x60; to define the complete list of permissions for an address. This replaces any existing permissions. 
+This operation updates permissions for tokenization contracts. 
 
 ### Example
 

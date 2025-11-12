@@ -139,6 +139,9 @@ class PaymentOrderEventData {
             if (data.hasOwnProperty('settlement_status')) {
                 obj['settlement_status'] = SettleStatus.constructFromObject(data['settlement_status']);
             }
+            if (data.hasOwnProperty('amount_tolerance')) {
+                obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
+            }
         }
         return obj;
     }
@@ -220,6 +223,10 @@ class PaymentOrderEventData {
             for (const item of data['transactions']) {
                 PaymentTransaction.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
+            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
         }
 
         return true;
@@ -348,6 +355,12 @@ PaymentOrderEventData.prototype['transactions'] = undefined;
  */
 PaymentOrderEventData.prototype['settlement_status'] = undefined;
 
+/**
+ * Allowed amount deviation.
+ * @member {String} amount_tolerance
+ */
+PaymentOrderEventData.prototype['amount_tolerance'] = undefined;
+
 
 // Implement WebhookEventDataType interface:
 /**
@@ -449,6 +462,11 @@ Order.prototype['transactions'] = undefined;
  * @member {module:model/SettleStatus} settlement_status
  */
 Order.prototype['settlement_status'] = undefined;
+/**
+ * Allowed amount deviation.
+ * @member {String} amount_tolerance
+ */
+Order.prototype['amount_tolerance'] = undefined;
 
 
 
@@ -536,6 +554,18 @@ PaymentOrderEventData['DataTypeEnum'] = {
      * @const
      */
     "PaymentAddressUpdate": "PaymentAddressUpdate",
+
+    /**
+     * value: "PaymentSubscriptionUpdate"
+     * @const
+     */
+    "PaymentSubscriptionUpdate": "PaymentSubscriptionUpdate",
+
+    /**
+     * value: "PaymentChargeUpdate"
+     * @const
+     */
+    "PaymentChargeUpdate": "PaymentChargeUpdate",
 
     /**
      * value: "BalanceUpdateInfo"

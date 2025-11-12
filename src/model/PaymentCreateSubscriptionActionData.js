@@ -22,12 +22,12 @@ class PaymentCreateSubscriptionActionData {
      * @alias module:model/PaymentCreateSubscriptionActionData
      * @param action_type {module:model/PaymentSubscriptionActionType} 
      * @param user_address {String} The subscription user address.
-     * @param amount {String} The subscription crypto amount. 
      * @param token_id {String} The ID of the cryptocurrency you want to subscription. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC` - USDT: `ETH_USDT`, `ARBITRUM_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * @param charge_amount {String} 
      */
-    constructor(action_type, user_address, amount, token_id) { 
+    constructor(action_type, user_address, token_id, charge_amount) { 
         
-        PaymentCreateSubscriptionActionData.initialize(this, action_type, user_address, amount, token_id);
+        PaymentCreateSubscriptionActionData.initialize(this, action_type, user_address, token_id, charge_amount);
     }
 
     /**
@@ -35,11 +35,11 @@ class PaymentCreateSubscriptionActionData {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, action_type, user_address, amount, token_id) { 
+    static initialize(obj, action_type, user_address, token_id, charge_amount) { 
         obj['action_type'] = action_type;
         obj['user_address'] = user_address;
-        obj['amount'] = amount;
         obj['token_id'] = token_id;
+        obj['charge_amount'] = charge_amount;
     }
 
     /**
@@ -59,14 +59,11 @@ class PaymentCreateSubscriptionActionData {
             if (data.hasOwnProperty('user_address')) {
                 obj['user_address'] = ApiClient.convertToType(data['user_address'], 'String');
             }
-            if (data.hasOwnProperty('amount')) {
-                obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
-            }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
-            if (data.hasOwnProperty('discount_rate')) {
-                obj['discount_rate'] = ApiClient.convertToType(data['discount_rate'], 'Number');
+            if (data.hasOwnProperty('charge_amount')) {
+                obj['charge_amount'] = ApiClient.convertToType(data['charge_amount'], 'String');
             }
         }
         return obj;
@@ -89,12 +86,12 @@ class PaymentCreateSubscriptionActionData {
             throw new Error("Expected the field `user_address` to be a primitive type in the JSON string but got " + data['user_address']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
-            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
-        }
-        // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
+        if (data['charge_amount'] && !(typeof data['charge_amount'] === 'string' || data['charge_amount'] instanceof String)) {
+            throw new Error("Expected the field `charge_amount` to be a primitive type in the JSON string but got " + data['charge_amount']);
         }
 
         return true;
@@ -103,7 +100,7 @@ class PaymentCreateSubscriptionActionData {
 
 }
 
-PaymentCreateSubscriptionActionData.RequiredProperties = ["action_type", "user_address", "amount", "token_id"];
+PaymentCreateSubscriptionActionData.RequiredProperties = ["action_type", "user_address", "token_id", "charge_amount"];
 
 /**
  * @member {module:model/PaymentSubscriptionActionType} action_type
@@ -117,22 +114,15 @@ PaymentCreateSubscriptionActionData.prototype['action_type'] = undefined;
 PaymentCreateSubscriptionActionData.prototype['user_address'] = undefined;
 
 /**
- * The subscription crypto amount. 
- * @member {String} amount
- */
-PaymentCreateSubscriptionActionData.prototype['amount'] = undefined;
-
-/**
  * The ID of the cryptocurrency you want to subscription. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC` - USDT: `ETH_USDT`, `ARBITRUM_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
  * @member {String} token_id
  */
 PaymentCreateSubscriptionActionData.prototype['token_id'] = undefined;
 
 /**
- * the discount rate, discount_rate/10000
- * @member {Number} discount_rate
+ * @member {String} charge_amount
  */
-PaymentCreateSubscriptionActionData.prototype['discount_rate'] = undefined;
+PaymentCreateSubscriptionActionData.prototype['charge_amount'] = undefined;
 
 
 

@@ -63,11 +63,14 @@ class TokenizationSOLWrappedTokenParams {
             if (data.hasOwnProperty('symbol')) {
                 obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
-            if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = TokenizationSolWrappedTokenPermissionParams.constructFromObject(data['permissions']);
-            }
             if (data.hasOwnProperty('underlying_token')) {
                 obj['underlying_token'] = ApiClient.convertToType(data['underlying_token'], 'String');
+            }
+            if (data.hasOwnProperty('token_access_activated')) {
+                obj['token_access_activated'] = ApiClient.convertToType(data['token_access_activated'], 'Boolean');
+            }
+            if (data.hasOwnProperty('permissions')) {
+                obj['permissions'] = TokenizationSolWrappedTokenPermissionParams.constructFromObject(data['permissions']);
             }
         }
         return obj;
@@ -93,15 +96,15 @@ class TokenizationSOLWrappedTokenParams {
         if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
             throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
         }
+        // ensure the json data is a string
+        if (data['underlying_token'] && !(typeof data['underlying_token'] === 'string' || data['underlying_token'] instanceof String)) {
+            throw new Error("Expected the field `underlying_token` to be a primitive type in the JSON string but got " + data['underlying_token']);
+        }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
           if (!!TokenizationSolWrappedTokenPermissionParams.validateJSON) {
             TokenizationSolWrappedTokenPermissionParams.validateJSON(data['permissions']);
           }
-        }
-        // ensure the json data is a string
-        if (data['underlying_token'] && !(typeof data['underlying_token'] === 'string' || data['underlying_token'] instanceof String)) {
-            throw new Error("Expected the field `underlying_token` to be a primitive type in the JSON string but got " + data['underlying_token']);
         }
 
         return true;
@@ -130,15 +133,22 @@ TokenizationSOLWrappedTokenParams.prototype['name'] = undefined;
 TokenizationSOLWrappedTokenParams.prototype['symbol'] = undefined;
 
 /**
- * @member {module:model/TokenizationSolWrappedTokenPermissionParams} permissions
- */
-TokenizationSOLWrappedTokenParams.prototype['permissions'] = undefined;
-
-/**
  * The address of the underlying token that this tokenized asset represents.
  * @member {String} underlying_token
  */
 TokenizationSOLWrappedTokenParams.prototype['underlying_token'] = undefined;
+
+/**
+ * Whether the allowlist feature is activated for the token. When activated, only addresses in the allowlist can perform token operations.
+ * @member {Boolean} token_access_activated
+ * @default false
+ */
+TokenizationSOLWrappedTokenParams.prototype['token_access_activated'] = false;
+
+/**
+ * @member {module:model/TokenizationSolWrappedTokenPermissionParams} permissions
+ */
+TokenizationSOLWrappedTokenParams.prototype['permissions'] = undefined;
 
 
 

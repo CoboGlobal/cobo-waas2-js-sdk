@@ -30,10 +30,11 @@ class TokenizationTokenDetailInfo {
      * @param token_standard {module:model/TokenizationTokenStandard} 
      * @param decimals {Number} The number of decimals of the token.
      * @param status {module:model/TokenizationStatus} 
+     * @param archived {Boolean} Whether the token is archived. If archived, no operations can be initiated on this token.
      */
-    constructor(token_id, chain_id, token_symbol, token_standard, decimals, status) { 
-        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status);
-        TokenizationTokenDetailInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status);
+    constructor(token_id, chain_id, token_symbol, token_standard, decimals, status, archived) { 
+        TokenizationTokenInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status, archived);
+        TokenizationTokenDetailInfo.initialize(this, token_id, chain_id, token_symbol, token_standard, decimals, status, archived);
     }
 
     /**
@@ -41,13 +42,14 @@ class TokenizationTokenDetailInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_id, chain_id, token_symbol, token_standard, decimals, status) { 
+    static initialize(obj, token_id, chain_id, token_symbol, token_standard, decimals, status, archived) { 
         obj['token_id'] = token_id;
         obj['chain_id'] = chain_id;
         obj['token_symbol'] = token_symbol;
         obj['token_standard'] = token_standard;
         obj['decimals'] = decimals;
         obj['status'] = status;
+        obj['archived'] = archived;
     }
 
     /**
@@ -95,8 +97,14 @@ class TokenizationTokenDetailInfo {
             if (data.hasOwnProperty('holdings')) {
                 obj['holdings'] = ApiClient.convertToType(data['holdings'], 'String');
             }
+            if (data.hasOwnProperty('archived')) {
+                obj['archived'] = ApiClient.convertToType(data['archived'], 'Boolean');
+            }
             if (data.hasOwnProperty('permissions')) {
                 obj['permissions'] = ApiClient.convertToType(data['permissions'], [TokenizationAddressPermission]);
+            }
+            if (data.hasOwnProperty('underlying_token')) {
+                obj['underlying_token'] = TokenizationTokenInfo.constructFromObject(data['underlying_token']);
             }
         }
         return obj;
@@ -152,6 +160,12 @@ class TokenizationTokenDetailInfo {
                 TokenizationAddressPermission.validateJSON(item);
             };
         }
+        // validate the optional field `underlying_token`
+        if (data['underlying_token']) { // data not null
+          if (!!TokenizationTokenInfo.validateJSON) {
+            TokenizationTokenInfo.validateJSON(data['underlying_token']);
+          }
+        }
 
         return true;
     }
@@ -159,7 +173,7 @@ class TokenizationTokenDetailInfo {
 
 }
 
-TokenizationTokenDetailInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "token_standard", "decimals", "status"];
+TokenizationTokenDetailInfo.RequiredProperties = ["token_id", "chain_id", "token_symbol", "token_standard", "decimals", "status", "archived"];
 
 /**
  * The unique token identifier.
@@ -226,10 +240,21 @@ TokenizationTokenDetailInfo.prototype['total_supply'] = undefined;
 TokenizationTokenDetailInfo.prototype['holdings'] = undefined;
 
 /**
+ * Whether the token is archived. If archived, no operations can be initiated on this token.
+ * @member {Boolean} archived
+ */
+TokenizationTokenDetailInfo.prototype['archived'] = undefined;
+
+/**
  * List of execution addresses and their permissions.
  * @member {Array.<module:model/TokenizationAddressPermission>} permissions
  */
 TokenizationTokenDetailInfo.prototype['permissions'] = undefined;
+
+/**
+ * @member {module:model/TokenizationTokenInfo} underlying_token
+ */
+TokenizationTokenDetailInfo.prototype['underlying_token'] = undefined;
 
 
 // Implement TokenizationTokenInfo interface:
@@ -286,6 +311,11 @@ TokenizationTokenInfo.prototype['total_supply'] = undefined;
  * @member {String} holdings
  */
 TokenizationTokenInfo.prototype['holdings'] = undefined;
+/**
+ * Whether the token is archived. If archived, no operations can be initiated on this token.
+ * @member {Boolean} archived
+ */
+TokenizationTokenInfo.prototype['archived'] = undefined;
 
 
 

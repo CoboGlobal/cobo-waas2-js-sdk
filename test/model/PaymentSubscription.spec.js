@@ -88,8 +88,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
       //var instance = new CoboWaas2.PaymentSubscription();
       //expect(instance).to.be();
     });

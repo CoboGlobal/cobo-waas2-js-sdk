@@ -70,6 +70,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fee_token_id (base name: "fee_token_id")', function() {
+      // uncomment below and update the code to test the property fee_token_id
+      //var instance = new CoboWaas2.FeeStationCheckFeeStationUsage();
+      //expect(instance).to.be();
+    });
+
     it('should have the property estimated_fee_amount (base name: "estimated_fee_amount")', function() {
       // uncomment below and update the code to test the property estimated_fee_amount
       //var instance = new CoboWaas2.FeeStationCheckFeeStationUsage();
@@ -84,6 +90,12 @@
 
     it('should have the property from_wallet_id (base name: "from_wallet_id")', function() {
       // uncomment below and update the code to test the property from_wallet_id
+      //var instance = new CoboWaas2.FeeStationCheckFeeStationUsage();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property auto_fuel (base name: "auto_fuel")', function() {
+      // uncomment below and update the code to test the property auto_fuel
       //var instance = new CoboWaas2.FeeStationCheckFeeStationUsage();
       //expect(instance).to.be();
     });

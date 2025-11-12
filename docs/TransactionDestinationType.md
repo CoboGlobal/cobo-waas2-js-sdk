@@ -17,6 +17,8 @@
 
 * `COSMOS_Contract` (value: `"COSMOS_Contract"`)
 
+* `TRON_Contract` (value: `"TRON_Contract"`)
+
 * `EVM_EIP_191_Signature` (value: `"EVM_EIP_191_Signature"`)
 
 * `EVM_EIP_712_Signature` (value: `"EVM_EIP_712_Signature"`)

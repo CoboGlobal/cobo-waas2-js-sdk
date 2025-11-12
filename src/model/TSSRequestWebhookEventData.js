@@ -300,6 +300,18 @@ TSSRequestWebhookEventData['DataTypeEnum'] = {
     "PaymentAddressUpdate": "PaymentAddressUpdate",
 
     /**
+     * value: "PaymentSubscriptionUpdate"
+     * @const
+     */
+    "PaymentSubscriptionUpdate": "PaymentSubscriptionUpdate",
+
+    /**
+     * value: "PaymentChargeUpdate"
+     * @const
+     */
+    "PaymentChargeUpdate": "PaymentChargeUpdate",
+
+    /**
      * value: "BalanceUpdateInfo"
      * @const
      */

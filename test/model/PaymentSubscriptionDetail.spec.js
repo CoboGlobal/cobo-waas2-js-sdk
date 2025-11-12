@@ -52,18 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.PaymentSubscriptionDetail);
     });
 
-    it('should have the property actions (base name: "actions")', function() {
-      // uncomment below and update the code to test the property actions
-      //var instance = new CoboWaas2.PaymentSubscriptionDetail();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property transactions (base name: "transactions")', function() {
-      // uncomment below and update the code to test the property transactions
-      //var instance = new CoboWaas2.PaymentSubscriptionDetail();
-      //expect(instance).to.be();
-    });
-
     it('should have the property plan_id (base name: "plan_id")', function() {
       // uncomment below and update the code to test the property plan_id
       //var instance = new CoboWaas2.PaymentSubscriptionDetail();
@@ -100,8 +88,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
+    it('should have the property charge_amount (base name: "charge_amount")', function() {
+      // uncomment below and update the code to test the property charge_amount
       //var instance = new CoboWaas2.PaymentSubscriptionDetail();
       //expect(instance).to.be();
     });
@@ -156,6 +144,18 @@
 
     it('should have the property updated_timestamp (base name: "updated_timestamp")', function() {
       // uncomment below and update the code to test the property updated_timestamp
+      //var instance = new CoboWaas2.PaymentSubscriptionDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property actions (base name: "actions")', function() {
+      // uncomment below and update the code to test the property actions
+      //var instance = new CoboWaas2.PaymentSubscriptionDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transactions (base name: "transactions")', function() {
+      // uncomment below and update the code to test the property transactions
       //var instance = new CoboWaas2.PaymentSubscriptionDetail();
       //expect(instance).to.be();
     });

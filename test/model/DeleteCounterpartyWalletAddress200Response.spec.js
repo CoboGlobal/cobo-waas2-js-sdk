@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.GetExchangeRate200Response();
+    instance = new CoboWaas2.DeleteCounterpartyWalletAddress200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,28 +45,16 @@
       object[property] = value;
   }
 
-  describe('GetExchangeRate200Response', function() {
-    it('should create an instance of GetExchangeRate200Response', function() {
-      // uncomment below and update the code to test GetExchangeRate200Response
-      //var instance = new CoboWaas2.GetExchangeRate200Response();
-      //expect(instance).to.be.a(CoboWaas2.GetExchangeRate200Response);
+  describe('DeleteCounterpartyWalletAddress200Response', function() {
+    it('should create an instance of DeleteCounterpartyWalletAddress200Response', function() {
+      // uncomment below and update the code to test DeleteCounterpartyWalletAddress200Response
+      //var instance = new CoboWaas2.DeleteCounterpartyWalletAddress200Response();
+      //expect(instance).to.be.a(CoboWaas2.DeleteCounterpartyWalletAddress200Response);
     });
 
-    it('should have the property token_id (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property token_id
-      //var instance = new CoboWaas2.GetExchangeRate200Response();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property currency (base name: "currency")', function() {
-      // uncomment below and update the code to test the property currency
-      //var instance = new CoboWaas2.GetExchangeRate200Response();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property rate (base name: "rate")', function() {
-      // uncomment below and update the code to test the property rate
-      //var instance = new CoboWaas2.GetExchangeRate200Response();
+    it('should have the property wallet_address_id (base name: "wallet_address_id")', function() {
+      // uncomment below and update the code to test the property wallet_address_id
+      //var instance = new CoboWaas2.DeleteCounterpartyWalletAddress200Response();
       //expect(instance).to.be();
     });
 

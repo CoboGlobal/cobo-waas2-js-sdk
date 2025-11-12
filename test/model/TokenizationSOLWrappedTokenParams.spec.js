@@ -70,14 +70,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property permissions (base name: "permissions")', function() {
-      // uncomment below and update the code to test the property permissions
+    it('should have the property underlying_token (base name: "underlying_token")', function() {
+      // uncomment below and update the code to test the property underlying_token
       //var instance = new CoboWaas2.TokenizationSOLWrappedTokenParams();
       //expect(instance).to.be();
     });
 
-    it('should have the property underlying_token (base name: "underlying_token")', function() {
-      // uncomment below and update the code to test the property underlying_token
+    it('should have the property token_access_activated (base name: "token_access_activated")', function() {
+      // uncomment below and update the code to test the property token_access_activated
+      //var instance = new CoboWaas2.TokenizationSOLWrappedTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property permissions (base name: "permissions")', function() {
+      // uncomment below and update the code to test the property permissions
       //var instance = new CoboWaas2.TokenizationSOLWrappedTokenParams();
       //expect(instance).to.be();
     });

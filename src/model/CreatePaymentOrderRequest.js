@@ -84,6 +84,9 @@ class CreatePaymentOrderRequest {
             if (data.hasOwnProperty('custom_exchange_rate')) {
                 obj['custom_exchange_rate'] = ApiClient.convertToType(data['custom_exchange_rate'], 'String');
             }
+            if (data.hasOwnProperty('amount_tolerance')) {
+                obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
+            }
         }
         return obj;
     }
@@ -131,6 +134,10 @@ class CreatePaymentOrderRequest {
         // ensure the json data is a string
         if (data['custom_exchange_rate'] && !(typeof data['custom_exchange_rate'] === 'string' || data['custom_exchange_rate'] instanceof String)) {
             throw new Error("Expected the field `custom_exchange_rate` to be a primitive type in the JSON string but got " + data['custom_exchange_rate']);
+        }
+        // ensure the json data is a string
+        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
+            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
         }
 
         return true;
@@ -201,6 +208,12 @@ CreatePaymentOrderRequest.prototype['use_dedicated_address'] = undefined;
  * @member {String} custom_exchange_rate
  */
 CreatePaymentOrderRequest.prototype['custom_exchange_rate'] = undefined;
+
+/**
+ * Allowed amount deviation, precision to 1 decimal place.
+ * @member {String} amount_tolerance
+ */
+CreatePaymentOrderRequest.prototype['amount_tolerance'] = undefined;
 
 
 

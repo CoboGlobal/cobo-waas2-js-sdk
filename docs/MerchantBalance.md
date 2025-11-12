@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **refunded_amount** | **String** | The merchant total refunded amount. | [optional] 
 **total_balance** | **String** | The merchant total balance. | [optional] 
 **available_balance** | **String** | The merchant available balance. | [optional] 
+**locked_balance** | **String** | The merchant locked balance. | [optional] 
 
 

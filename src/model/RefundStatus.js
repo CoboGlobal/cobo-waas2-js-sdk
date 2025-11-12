@@ -18,6 +18,20 @@ import ApiClient from '../ApiClient';
 export default class RefundStatus {
     
         /**
+         * value: "AddressPending"
+         * @const
+         */
+        "AddressPending" = "AddressPending";
+
+    
+        /**
+         * value: "AddressSubmitted"
+         * @const
+         */
+        "AddressSubmitted" = "AddressSubmitted";
+
+    
+        /**
          * value: "Pending"
          * @const
          */

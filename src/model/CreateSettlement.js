@@ -52,14 +52,8 @@ class CreateSettlement {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
-            if (data.hasOwnProperty('currency')) {
-                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
-            }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
-            }
-            if (data.hasOwnProperty('bank_account_id')) {
-                obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
             }
             if (data.hasOwnProperty('crypto_address_id')) {
                 obj['crypto_address_id'] = ApiClient.convertToType(data['crypto_address_id'], 'String');
@@ -92,16 +86,8 @@ class CreateSettlement {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
-            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
-        }
-        // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
-        }
-        // ensure the json data is a string
-        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
-            throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
         }
         // ensure the json data is a string
         if (data['crypto_address_id'] && !(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
@@ -133,22 +119,10 @@ CreateSettlement.prototype['merchant_id'] = undefined;
 CreateSettlement.prototype['token_id'] = undefined;
 
 /**
- * Only used in OffRamp payout channel. The fiat currency for settling the cryptocurrency. Currently, only `USD` is supported. 
- * @member {String} currency
- */
-CreateSettlement.prototype['currency'] = undefined;
-
-/**
  * The settlement amount. - In Crypto payout channel, this represents the settlement amount in the specified cryptocurrency. - In OffRamp payout channel, this represents the settlement amount in the specified fiat currency. 
  * @member {String} amount
  */
 CreateSettlement.prototype['amount'] = undefined;
-
-/**
- * ｜ Only used in OffRamp payout channel. The ID of the bank account where the settled funds will be deposited.
- * @member {String} bank_account_id
- */
-CreateSettlement.prototype['bank_account_id'] = undefined;
 
 /**
  * Only used in Crypto payout channel. The ID of the pre-approved crypto address used for Crypto settlements. - The value must refer to a valid address that has been pre-configured and approved for the given token. 

@@ -64,6 +64,9 @@ class PspBalance {
             if (data.hasOwnProperty('available_balance')) {
                 obj['available_balance'] = ApiClient.convertToType(data['available_balance'], 'String');
             }
+            if (data.hasOwnProperty('locked_balance')) {
+                obj['locked_balance'] = ApiClient.convertToType(data['locked_balance'], 'String');
+            }
         }
         return obj;
     }
@@ -103,6 +106,10 @@ class PspBalance {
         // ensure the json data is a string
         if (data['available_balance'] && !(typeof data['available_balance'] === 'string' || data['available_balance'] instanceof String)) {
             throw new Error("Expected the field `available_balance` to be a primitive type in the JSON string but got " + data['available_balance']);
+        }
+        // ensure the json data is a string
+        if (data['locked_balance'] && !(typeof data['locked_balance'] === 'string' || data['locked_balance'] instanceof String)) {
+            throw new Error("Expected the field `locked_balance` to be a primitive type in the JSON string but got " + data['locked_balance']);
         }
 
         return true;
@@ -148,6 +155,12 @@ PspBalance.prototype['total_balance'] = undefined;
  * @member {String} available_balance
  */
 PspBalance.prototype['available_balance'] = undefined;
+
+/**
+ * The psp locked balance.
+ * @member {String} locked_balance
+ */
+PspBalance.prototype['locked_balance'] = undefined;
 
 
 

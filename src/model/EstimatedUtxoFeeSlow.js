@@ -57,6 +57,9 @@ class EstimatedUtxoFeeSlow {
             if (data.hasOwnProperty('fee_rate')) {
                 obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
             }
+            if (data.hasOwnProperty('fallback')) {
+                obj['fallback'] = ApiClient.convertToType(data['fallback'], 'Boolean');
+            }
             if (data.hasOwnProperty('fee_amount')) {
                 obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
             }
@@ -100,6 +103,12 @@ EstimatedUtxoFeeSlow.RequiredProperties = ["fee_rate", "fee_amount"];
 EstimatedUtxoFeeSlow.prototype['fee_rate'] = undefined;
 
 /**
+ * Indicates whether the estimated fee is generated from Cobo’s fallback mechanism. When the estimated transaction belongs to a UTXO-based chain and the specified address does not have sufficient balance to cover the on-chain fee, this field will be set to `true`. In this case, the returned fee value is estimated by Cobo’s internal fallback strategy, which is typically higher than the actual on-chain fee. When `fallback` is `true`, please use the estimated fee value with caution.
+ * @member {Boolean} fallback
+ */
+EstimatedUtxoFeeSlow.prototype['fallback'] = undefined;
+
+/**
  * The transaction fee that you need to pay for the transaction.
  * @member {String} fee_amount
  */
@@ -112,6 +121,11 @@ EstimatedUtxoFeeSlow.prototype['fee_amount'] = undefined;
  * @member {String} fee_rate
  */
 UtxoFeeBasePrice.prototype['fee_rate'] = undefined;
+/**
+ * Indicates whether the estimated fee is generated from Cobo’s fallback mechanism. When the estimated transaction belongs to a UTXO-based chain and the specified address does not have sufficient balance to cover the on-chain fee, this field will be set to `true`. In this case, the returned fee value is estimated by Cobo’s internal fallback strategy, which is typically higher than the actual on-chain fee. When `fallback` is `true`, please use the estimated fee value with caution.
+ * @member {Boolean} fallback
+ */
+UtxoFeeBasePrice.prototype['fallback'] = undefined;
 // Implement FeeAmount interface:
 /**
  * The transaction fee that you need to pay for the transaction.

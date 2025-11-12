@@ -21,14 +21,15 @@ class OrderLinkBusinessInfo {
      * Constructs a new <code>OrderLinkBusinessInfo</code>.
      * @alias module:model/OrderLinkBusinessInfo
      * @param token_ids {Array.<String>} List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
+     * @param currency {String} The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
      * @param fee_amount {String} The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\"  - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
      * @param merchant_id {String} The merchant ID.
      * @param order_amount {String} The base amount of the order, excluding the developer fee (specified in `fee_amount`), in the currency specified by `currency`. If `currency` is not specified, the amount is in the cryptocurrency specified by `token_id`.   Values must be greater than `0` and contain two decimal places.  
      * @param psp_order_code {String} A unique reference code assigned by you as a developer to identify this order in your system. This code must be unique across all orders in your system. The code should have a maximum length of 128 characters. 
      */
-    constructor(token_ids, fee_amount, merchant_id, order_amount, psp_order_code) { 
+    constructor(token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code) { 
         
-        OrderLinkBusinessInfo.initialize(this, token_ids, fee_amount, merchant_id, order_amount, psp_order_code);
+        OrderLinkBusinessInfo.initialize(this, token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code);
     }
 
     /**
@@ -36,8 +37,9 @@ class OrderLinkBusinessInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_ids, fee_amount, merchant_id, order_amount, psp_order_code) { 
+    static initialize(obj, token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code) { 
         obj['token_ids'] = token_ids;
+        obj['currency'] = currency;
         obj['fee_amount'] = fee_amount;
         obj['merchant_id'] = merchant_id;
         obj['order_amount'] = order_amount;
@@ -84,6 +86,9 @@ class OrderLinkBusinessInfo {
             }
             if (data.hasOwnProperty('use_dedicated_address')) {
                 obj['use_dedicated_address'] = ApiClient.convertToType(data['use_dedicated_address'], 'Boolean');
+            }
+            if (data.hasOwnProperty('amount_tolerance')) {
+                obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
             }
         }
         return obj;
@@ -139,6 +144,10 @@ class OrderLinkBusinessInfo {
         if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
             throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
         }
+        // ensure the json data is a string
+        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
+            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
+        }
 
         return true;
     }
@@ -146,7 +155,7 @@ class OrderLinkBusinessInfo {
 
 }
 
-OrderLinkBusinessInfo.RequiredProperties = ["token_ids", "fee_amount", "merchant_id", "order_amount", "psp_order_code"];
+OrderLinkBusinessInfo.RequiredProperties = ["token_ids", "currency", "fee_amount", "merchant_id", "order_amount", "psp_order_code"];
 
 /**
  * List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
@@ -161,11 +170,10 @@ OrderLinkBusinessInfo.prototype['token_ids'] = undefined;
 OrderLinkBusinessInfo.prototype['custom_exchange_rates'] = undefined;
 
 /**
- * The fiat currency for the base order amount and the developer fee. Currently, only `USD` is supported.  If left empty, both `order_amount` and `fee_amount` will be denominated in the cryptocurrency specified by `token_id` 
+ * The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
  * @member {String} currency
- * @default ''
  */
-OrderLinkBusinessInfo.prototype['currency'] = '';
+OrderLinkBusinessInfo.prototype['currency'] = undefined;
 
 /**
  * The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\"  - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
@@ -209,6 +217,12 @@ OrderLinkBusinessInfo.prototype['expired_in'] = 1800;
  * @member {Boolean} use_dedicated_address
  */
 OrderLinkBusinessInfo.prototype['use_dedicated_address'] = undefined;
+
+/**
+ * Allowed amount deviation, precision to 1 decimal place.
+ * @member {String} amount_tolerance
+ */
+OrderLinkBusinessInfo.prototype['amount_tolerance'] = undefined;
 
 
 

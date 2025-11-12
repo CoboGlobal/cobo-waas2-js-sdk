@@ -60,9 +60,6 @@ class PaymentSubscriptionPlanDetail {
             obj = obj || new PaymentSubscriptionPlanDetail();
             PaymentSubscriptionPlan.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('blockchain_plan_id')) {
-                obj['blockchain_plan_id'] = ApiClient.convertToType(data['blockchain_plan_id'], 'String');
-            }
             if (data.hasOwnProperty('plan_id')) {
                 obj['plan_id'] = ApiClient.convertToType(data['plan_id'], 'String');
             }
@@ -78,6 +75,9 @@ class PaymentSubscriptionPlanDetail {
             if (data.hasOwnProperty('interval')) {
                 obj['interval'] = ApiClient.convertToType(data['interval'], 'Number');
             }
+            if (data.hasOwnProperty('trial_period')) {
+                obj['trial_period'] = ApiClient.convertToType(data['trial_period'], 'Number');
+            }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
@@ -86,6 +86,12 @@ class PaymentSubscriptionPlanDetail {
             }
             if (data.hasOwnProperty('currency')) {
                 obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
+            }
+            if (data.hasOwnProperty('charge_amount')) {
+                obj['charge_amount'] = ApiClient.convertToType(data['charge_amount'], 'String');
+            }
+            if (data.hasOwnProperty('contract_address')) {
+                obj['contract_address'] = ApiClient.convertToType(data['contract_address'], 'String');
             }
         }
         return obj;
@@ -102,10 +108,6 @@ class PaymentSubscriptionPlanDetail {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        // ensure the json data is a string
-        if (data['blockchain_plan_id'] && !(typeof data['blockchain_plan_id'] === 'string' || data['blockchain_plan_id'] instanceof String)) {
-            throw new Error("Expected the field `blockchain_plan_id` to be a primitive type in the JSON string but got " + data['blockchain_plan_id']);
         }
         // ensure the json data is a string
         if (data['plan_id'] && !(typeof data['plan_id'] === 'string' || data['plan_id'] instanceof String)) {
@@ -127,6 +129,14 @@ class PaymentSubscriptionPlanDetail {
         if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
             throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
         }
+        // ensure the json data is a string
+        if (data['charge_amount'] && !(typeof data['charge_amount'] === 'string' || data['charge_amount'] instanceof String)) {
+            throw new Error("Expected the field `charge_amount` to be a primitive type in the JSON string but got " + data['charge_amount']);
+        }
+        // ensure the json data is a string
+        if (data['contract_address'] && !(typeof data['contract_address'] === 'string' || data['contract_address'] instanceof String)) {
+            throw new Error("Expected the field `contract_address` to be a primitive type in the JSON string but got " + data['contract_address']);
+        }
 
         return true;
     }
@@ -135,12 +145,6 @@ class PaymentSubscriptionPlanDetail {
 }
 
 PaymentSubscriptionPlanDetail.RequiredProperties = ["plan_id", "developer_plan_id", "period_type", "periods", "interval", "amount"];
-
-/**
- * The subscription plan id in blockchain.
- * @member {String} blockchain_plan_id
- */
-PaymentSubscriptionPlanDetail.prototype['blockchain_plan_id'] = undefined;
 
 /**
  * The plan id in cobo.
@@ -170,6 +174,12 @@ PaymentSubscriptionPlanDetail.prototype['periods'] = undefined;
 PaymentSubscriptionPlanDetail.prototype['interval'] = undefined;
 
 /**
+ * probation period
+ * @member {Number} trial_period
+ */
+PaymentSubscriptionPlanDetail.prototype['trial_period'] = undefined;
+
+/**
  * The subscription plan amount.  - If `currency` is set, this represents the subscription amount in the specified fiat currency. - If `currency` isn't set, this represents the settlement amount in the specified cryptocurrency. 
  * @member {String} amount
  */
@@ -186,6 +196,18 @@ PaymentSubscriptionPlanDetail.prototype['token_id'] = undefined;
  * @member {String} currency
  */
 PaymentSubscriptionPlanDetail.prototype['currency'] = undefined;
+
+/**
+ * The subscription plan crypto amount with input token_id. 
+ * @member {String} charge_amount
+ */
+PaymentSubscriptionPlanDetail.prototype['charge_amount'] = undefined;
+
+/**
+ * The subscription contract address in cobo.
+ * @member {String} contract_address
+ */
+PaymentSubscriptionPlanDetail.prototype['contract_address'] = undefined;
 
 
 // Implement PaymentSubscriptionPlan interface:
@@ -211,6 +233,11 @@ PaymentSubscriptionPlan.prototype['periods'] = undefined;
  * @member {Number} interval
  */
 PaymentSubscriptionPlan.prototype['interval'] = undefined;
+/**
+ * probation period
+ * @member {Number} trial_period
+ */
+PaymentSubscriptionPlan.prototype['trial_period'] = undefined;
 /**
  * The subscription plan amount.  - If `currency` is set, this represents the subscription amount in the specified fiat currency. - If `currency` isn't set, this represents the settlement amount in the specified cryptocurrency. 
  * @member {String} amount

@@ -11,9 +11,8 @@
 
 import ApiClient from '../ApiClient';
 import TokenizationOperationType from './TokenizationOperationType';
-import TokenizationPermissionAction from './TokenizationPermissionAction';
 import TokenizationTokenOperationSource from './TokenizationTokenOperationSource';
-import TokenizationTokenPermissionType from './TokenizationTokenPermissionType';
+import TokenizationUpdateAddressPermissions from './TokenizationUpdateAddressPermissions';
 import TokenizationUpdatePermissionsParams from './TokenizationUpdatePermissionsParams';
 
 /**
@@ -26,15 +25,13 @@ class TokenizationUpdatePermissionsEstimateFeeParams {
      * @alias module:model/TokenizationUpdatePermissionsEstimateFeeParams
      * @implements module:model/TokenizationUpdatePermissionsParams
      * @param source {module:model/TokenizationTokenOperationSource} 
-     * @param action {module:model/TokenizationPermissionAction} 
-     * @param address {String} The address to manage permissions for.
-     * @param permissions {Array.<module:model/TokenizationTokenPermissionType>} The list of permissions to operate on.
+     * @param addresses {Array.<module:model/TokenizationUpdateAddressPermissions>} 
      * @param operation_type {module:model/TokenizationOperationType} 
      * @param token_id {String} The ID of the token.
      */
-    constructor(source, action, address, permissions, operation_type, token_id) { 
-        TokenizationUpdatePermissionsParams.initialize(this, source, action, address, permissions);
-        TokenizationUpdatePermissionsEstimateFeeParams.initialize(this, source, action, address, permissions, operation_type, token_id);
+    constructor(source, addresses, operation_type, token_id) { 
+        TokenizationUpdatePermissionsParams.initialize(this, source, addresses);
+        TokenizationUpdatePermissionsEstimateFeeParams.initialize(this, source, addresses, operation_type, token_id);
     }
 
     /**
@@ -42,11 +39,9 @@ class TokenizationUpdatePermissionsEstimateFeeParams {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, source, action, address, permissions, operation_type, token_id) { 
+    static initialize(obj, source, addresses, operation_type, token_id) { 
         obj['source'] = source;
-        obj['action'] = action;
-        obj['address'] = address;
-        obj['permissions'] = permissions;
+        obj['addresses'] = addresses;
         obj['operation_type'] = operation_type;
         obj['token_id'] = token_id;
     }
@@ -66,14 +61,8 @@ class TokenizationUpdatePermissionsEstimateFeeParams {
             if (data.hasOwnProperty('source')) {
                 obj['source'] = TokenizationTokenOperationSource.constructFromObject(data['source']);
             }
-            if (data.hasOwnProperty('action')) {
-                obj['action'] = TokenizationPermissionAction.constructFromObject(data['action']);
-            }
-            if (data.hasOwnProperty('address')) {
-                obj['address'] = ApiClient.convertToType(data['address'], 'String');
-            }
-            if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = ApiClient.convertToType(data['permissions'], [TokenizationTokenPermissionType]);
+            if (data.hasOwnProperty('addresses')) {
+                obj['addresses'] = ApiClient.convertToType(data['addresses'], [TokenizationUpdateAddressPermissions]);
             }
             if (data.hasOwnProperty('operation_type')) {
                 obj['operation_type'] = TokenizationOperationType.constructFromObject(data['operation_type']);
@@ -106,13 +95,15 @@ class TokenizationUpdatePermissionsEstimateFeeParams {
             TokenizationTokenOperationSource.validateJSON(data['source']);
           }
         }
-        // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
-            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['permissions'])) {
-            throw new Error("Expected the field `permissions` to be an array in the JSON data but got " + data['permissions']);
+        if (data['addresses']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['addresses'])) {
+                throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
+            }
+            // validate the optional field `addresses` (array)
+            for (const item of data['addresses']) {
+                TokenizationUpdateAddressPermissions.validateJSON(item);
+            };
         }
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
@@ -129,7 +120,7 @@ class TokenizationUpdatePermissionsEstimateFeeParams {
 
 }
 
-TokenizationUpdatePermissionsEstimateFeeParams.RequiredProperties = ["source", "action", "address", "permissions", "operation_type", "token_id"];
+TokenizationUpdatePermissionsEstimateFeeParams.RequiredProperties = ["source", "addresses", "operation_type", "token_id"];
 
 /**
  * @member {module:model/TokenizationTokenOperationSource} source
@@ -137,21 +128,9 @@ TokenizationUpdatePermissionsEstimateFeeParams.RequiredProperties = ["source", "
 TokenizationUpdatePermissionsEstimateFeeParams.prototype['source'] = undefined;
 
 /**
- * @member {module:model/TokenizationPermissionAction} action
+ * @member {Array.<module:model/TokenizationUpdateAddressPermissions>} addresses
  */
-TokenizationUpdatePermissionsEstimateFeeParams.prototype['action'] = undefined;
-
-/**
- * The address to manage permissions for.
- * @member {String} address
- */
-TokenizationUpdatePermissionsEstimateFeeParams.prototype['address'] = undefined;
-
-/**
- * The list of permissions to operate on.
- * @member {Array.<module:model/TokenizationTokenPermissionType>} permissions
- */
-TokenizationUpdatePermissionsEstimateFeeParams.prototype['permissions'] = undefined;
+TokenizationUpdatePermissionsEstimateFeeParams.prototype['addresses'] = undefined;
 
 /**
  * @member {module:model/TokenizationOperationType} operation_type
@@ -177,19 +156,9 @@ TokenizationUpdatePermissionsEstimateFeeParams.prototype['request_id'] = undefin
  */
 TokenizationUpdatePermissionsParams.prototype['source'] = undefined;
 /**
- * @member {module:model/TokenizationPermissionAction} action
+ * @member {Array.<module:model/TokenizationUpdateAddressPermissions>} addresses
  */
-TokenizationUpdatePermissionsParams.prototype['action'] = undefined;
-/**
- * The address to manage permissions for.
- * @member {String} address
- */
-TokenizationUpdatePermissionsParams.prototype['address'] = undefined;
-/**
- * The list of permissions to operate on.
- * @member {Array.<module:model/TokenizationTokenPermissionType>} permissions
- */
-TokenizationUpdatePermissionsParams.prototype['permissions'] = undefined;
+TokenizationUpdatePermissionsParams.prototype['addresses'] = undefined;
 
 
 

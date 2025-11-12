@@ -39,6 +39,13 @@ export default class AutoFuelType {
 
     
         /**
+         * value: "DisableAutoFuel"
+         * @const
+         */
+        "DisableAutoFuel" = "DisableAutoFuel";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */
