@@ -58,8 +58,56 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property token_id (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property token_id
+    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
+      // uncomment below and update the code to test the property merchant_order_code
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
+      // uncomment below and update the code to test the property psp_order_code
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_currency (base name: "pricing_currency")', function() {
+      // uncomment below and update the code to test the property pricing_currency
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_amount (base name: "pricing_amount")', function() {
+      // uncomment below and update the code to test the property pricing_amount
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee_amount (base name: "fee_amount")', function() {
+      // uncomment below and update the code to test the property fee_amount
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_currency (base name: "payable_currency")', function() {
+      // uncomment below and update the code to test the property payable_currency
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_amount (base name: "payable_amount")', function() {
+      // uncomment below and update the code to test the property payable_amount
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property expired_in (base name: "expired_in")', function() {
+      // uncomment below and update the code to test the property expired_in
+      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
+      // uncomment below and update the code to test the property amount_tolerance
       //var instance = new CoboWaas2.CreatePaymentOrderRequest();
       //expect(instance).to.be();
     });
@@ -76,26 +124,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property fee_amount (base name: "fee_amount")', function() {
-      // uncomment below and update the code to test the property fee_amount
-      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
-      // uncomment below and update the code to test the property merchant_order_code
-      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
-      // uncomment below and update the code to test the property psp_order_code
-      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property expired_in (base name: "expired_in")', function() {
-      // uncomment below and update the code to test the property expired_in
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2.CreatePaymentOrderRequest();
       //expect(instance).to.be();
     });
@@ -108,12 +138,6 @@
 
     it('should have the property custom_exchange_rate (base name: "custom_exchange_rate")', function() {
       // uncomment below and update the code to test the property custom_exchange_rate
-      //var instance = new CoboWaas2.CreatePaymentOrderRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
-      // uncomment below and update the code to test the property amount_tolerance
       //var instance = new CoboWaas2.CreatePaymentOrderRequest();
       //expect(instance).to.be();
     });

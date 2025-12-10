@@ -82,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property payout_amount (base name: "payout_amount")', function() {
+      // uncomment below and update the code to test the property payout_amount
+      //var instance = new CoboWaas2.MerchantBalance();
+      //expect(instance).to.be();
+    });
+
     it('should have the property refunded_amount (base name: "refunded_amount")', function() {
       // uncomment below and update the code to test the property refunded_amount
       //var instance = new CoboWaas2.MerchantBalance();

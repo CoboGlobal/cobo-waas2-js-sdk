@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import OrderLinkBusinessInfoCustomExchangeRatesInner from './OrderLinkBusinessInfoCustomExchangeRatesInner';
+import OrderLinkBusinessInfoPayableAmountsInner from './OrderLinkBusinessInfoPayableAmountsInner';
 
 /**
  * The OrderLinkBusinessInfo model module.
@@ -20,16 +21,13 @@ class OrderLinkBusinessInfo {
     /**
      * Constructs a new <code>OrderLinkBusinessInfo</code>.
      * @alias module:model/OrderLinkBusinessInfo
-     * @param token_ids {Array.<String>} List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
-     * @param currency {String} The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
-     * @param fee_amount {String} The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\"  - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
      * @param merchant_id {String} The merchant ID.
-     * @param order_amount {String} The base amount of the order, excluding the developer fee (specified in `fee_amount`), in the currency specified by `currency`. If `currency` is not specified, the amount is in the cryptocurrency specified by `token_id`.   Values must be greater than `0` and contain two decimal places.  
      * @param psp_order_code {String} A unique reference code assigned by you as a developer to identify this order in your system. This code must be unique across all orders in your system. The code should have a maximum length of 128 characters. 
+     * @param fee_amount {String} The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\" - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
      */
-    constructor(token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code) { 
+    constructor(merchant_id, psp_order_code, fee_amount) { 
         
-        OrderLinkBusinessInfo.initialize(this, token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code);
+        OrderLinkBusinessInfo.initialize(this, merchant_id, psp_order_code, fee_amount);
     }
 
     /**
@@ -37,13 +35,10 @@ class OrderLinkBusinessInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, token_ids, currency, fee_amount, merchant_id, order_amount, psp_order_code) { 
-        obj['token_ids'] = token_ids;
-        obj['currency'] = currency;
-        obj['fee_amount'] = fee_amount;
+    static initialize(obj, merchant_id, psp_order_code, fee_amount) { 
         obj['merchant_id'] = merchant_id;
-        obj['order_amount'] = order_amount;
         obj['psp_order_code'] = psp_order_code;
+        obj['fee_amount'] = fee_amount;
     }
 
     /**
@@ -57,23 +52,8 @@ class OrderLinkBusinessInfo {
         if (data) {
             obj = obj || new OrderLinkBusinessInfo();
 
-            if (data.hasOwnProperty('token_ids')) {
-                obj['token_ids'] = ApiClient.convertToType(data['token_ids'], ['String']);
-            }
-            if (data.hasOwnProperty('custom_exchange_rates')) {
-                obj['custom_exchange_rates'] = ApiClient.convertToType(data['custom_exchange_rates'], [OrderLinkBusinessInfoCustomExchangeRatesInner]);
-            }
-            if (data.hasOwnProperty('currency')) {
-                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
-            }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
-            }
             if (data.hasOwnProperty('merchant_id')) {
                 obj['merchant_id'] = ApiClient.convertToType(data['merchant_id'], 'String');
-            }
-            if (data.hasOwnProperty('order_amount')) {
-                obj['order_amount'] = ApiClient.convertToType(data['order_amount'], 'String');
             }
             if (data.hasOwnProperty('merchant_order_code')) {
                 obj['merchant_order_code'] = ApiClient.convertToType(data['merchant_order_code'], 'String');
@@ -81,14 +61,41 @@ class OrderLinkBusinessInfo {
             if (data.hasOwnProperty('psp_order_code')) {
                 obj['psp_order_code'] = ApiClient.convertToType(data['psp_order_code'], 'String');
             }
+            if (data.hasOwnProperty('pricing_currency')) {
+                obj['pricing_currency'] = ApiClient.convertToType(data['pricing_currency'], 'String');
+            }
+            if (data.hasOwnProperty('pricing_amount')) {
+                obj['pricing_amount'] = ApiClient.convertToType(data['pricing_amount'], 'String');
+            }
+            if (data.hasOwnProperty('fee_amount')) {
+                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            }
+            if (data.hasOwnProperty('payable_currencies')) {
+                obj['payable_currencies'] = ApiClient.convertToType(data['payable_currencies'], ['String']);
+            }
+            if (data.hasOwnProperty('payable_amounts')) {
+                obj['payable_amounts'] = ApiClient.convertToType(data['payable_amounts'], [OrderLinkBusinessInfoPayableAmountsInner]);
+            }
             if (data.hasOwnProperty('expired_in')) {
                 obj['expired_in'] = ApiClient.convertToType(data['expired_in'], 'Number');
             }
-            if (data.hasOwnProperty('use_dedicated_address')) {
-                obj['use_dedicated_address'] = ApiClient.convertToType(data['use_dedicated_address'], 'Boolean');
-            }
             if (data.hasOwnProperty('amount_tolerance')) {
                 obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
+            }
+            if (data.hasOwnProperty('currency')) {
+                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
+            }
+            if (data.hasOwnProperty('order_amount')) {
+                obj['order_amount'] = ApiClient.convertToType(data['order_amount'], 'String');
+            }
+            if (data.hasOwnProperty('token_ids')) {
+                obj['token_ids'] = ApiClient.convertToType(data['token_ids'], ['String']);
+            }
+            if (data.hasOwnProperty('custom_exchange_rates')) {
+                obj['custom_exchange_rates'] = ApiClient.convertToType(data['custom_exchange_rates'], [OrderLinkBusinessInfoCustomExchangeRatesInner]);
+            }
+            if (data.hasOwnProperty('use_dedicated_address')) {
+                obj['use_dedicated_address'] = ApiClient.convertToType(data['use_dedicated_address'], 'Boolean');
             }
         }
         return obj;
@@ -106,6 +113,56 @@ class OrderLinkBusinessInfo {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+            throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
+        }
+        // ensure the json data is a string
+        if (data['merchant_order_code'] && !(typeof data['merchant_order_code'] === 'string' || data['merchant_order_code'] instanceof String)) {
+            throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
+        }
+        // ensure the json data is a string
+        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+            throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
+        }
+        // ensure the json data is a string
+        if (data['pricing_currency'] && !(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
+            throw new Error("Expected the field `pricing_currency` to be a primitive type in the JSON string but got " + data['pricing_currency']);
+        }
+        // ensure the json data is a string
+        if (data['pricing_amount'] && !(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
+            throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
+        }
+        // ensure the json data is a string
+        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['payable_currencies'])) {
+            throw new Error("Expected the field `payable_currencies` to be an array in the JSON data but got " + data['payable_currencies']);
+        }
+        if (data['payable_amounts']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['payable_amounts'])) {
+                throw new Error("Expected the field `payable_amounts` to be an array in the JSON data but got " + data['payable_amounts']);
+            }
+            // validate the optional field `payable_amounts` (array)
+            for (const item of data['payable_amounts']) {
+                OrderLinkBusinessInfoPayableAmountsInner.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
+            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
+        }
+        // ensure the json data is a string
+        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
+            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
+        }
+        // ensure the json data is a string
+        if (data['order_amount'] && !(typeof data['order_amount'] === 'string' || data['order_amount'] instanceof String)) {
+            throw new Error("Expected the field `order_amount` to be a primitive type in the JSON string but got " + data['order_amount']);
+        }
         // ensure the json data is an array
         if (!Array.isArray(data['token_ids'])) {
             throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
@@ -120,34 +177,6 @@ class OrderLinkBusinessInfo {
                 OrderLinkBusinessInfoCustomExchangeRatesInner.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
-            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
-        }
-        // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
-        // ensure the json data is a string
-        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
-            throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
-        }
-        // ensure the json data is a string
-        if (data['order_amount'] && !(typeof data['order_amount'] === 'string' || data['order_amount'] instanceof String)) {
-            throw new Error("Expected the field `order_amount` to be a primitive type in the JSON string but got " + data['order_amount']);
-        }
-        // ensure the json data is a string
-        if (data['merchant_order_code'] && !(typeof data['merchant_order_code'] === 'string' || data['merchant_order_code'] instanceof String)) {
-            throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
-        }
-        // ensure the json data is a string
-        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
-            throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
-        }
-        // ensure the json data is a string
-        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
-            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
-        }
 
         return true;
     }
@@ -155,43 +184,13 @@ class OrderLinkBusinessInfo {
 
 }
 
-OrderLinkBusinessInfo.RequiredProperties = ["token_ids", "currency", "fee_amount", "merchant_id", "order_amount", "psp_order_code"];
-
-/**
- * List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
- * @member {Array.<String>} token_ids
- */
-OrderLinkBusinessInfo.prototype['token_ids'] = undefined;
-
-/**
- * Optional list of final exchange rates for different tokens. If provided, these rates will be used instead of real-time market rates. 
- * @member {Array.<module:model/OrderLinkBusinessInfoCustomExchangeRatesInner>} custom_exchange_rates
- */
-OrderLinkBusinessInfo.prototype['custom_exchange_rates'] = undefined;
-
-/**
- * The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
- * @member {String} currency
- */
-OrderLinkBusinessInfo.prototype['currency'] = undefined;
-
-/**
- * The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\"  - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
- * @member {String} fee_amount
- */
-OrderLinkBusinessInfo.prototype['fee_amount'] = undefined;
+OrderLinkBusinessInfo.RequiredProperties = ["merchant_id", "psp_order_code", "fee_amount"];
 
 /**
  * The merchant ID.
  * @member {String} merchant_id
  */
 OrderLinkBusinessInfo.prototype['merchant_id'] = undefined;
-
-/**
- * The base amount of the order, excluding the developer fee (specified in `fee_amount`), in the currency specified by `currency`. If `currency` is not specified, the amount is in the cryptocurrency specified by `token_id`.   Values must be greater than `0` and contain two decimal places.  
- * @member {String} order_amount
- */
-OrderLinkBusinessInfo.prototype['order_amount'] = undefined;
 
 /**
  * A unique reference code assigned by the merchant to identify this order in their system. The code should have a maximum length of 128 characters.
@@ -206,6 +205,36 @@ OrderLinkBusinessInfo.prototype['merchant_order_code'] = undefined;
 OrderLinkBusinessInfo.prototype['psp_order_code'] = undefined;
 
 /**
+ * The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
+ * @member {String} pricing_currency
+ */
+OrderLinkBusinessInfo.prototype['pricing_currency'] = undefined;
+
+/**
+ * The base amount of the order, excluding the developer fee (specified in `fee_amount`), in the currency specified by `currency`. If `currency` is not specified, the amount is in the cryptocurrency specified by `token_id`.  Values must be greater than `0` and contain two decimal places. 
+ * @member {String} pricing_amount
+ */
+OrderLinkBusinessInfo.prototype['pricing_amount'] = undefined;
+
+/**
+ * The developer fee for the order, in the currency specified by `currency`. If `currency` is not specified, the fee is in the cryptocurrency specified by `token_id`.  If you are a merchant directly serving payers, set this field to `0`. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (`order_amount`) to determine the final charge. For example: - Base amount (`order_amount`): \"100.00\" - Developer fee (`fee_amount`): \"2.00\" - Total charged to customer: \"102.00\"  Values can contain up to two decimal places. 
+ * @member {String} fee_amount
+ */
+OrderLinkBusinessInfo.prototype['fee_amount'] = undefined;
+
+/**
+ * List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
+ * @member {Array.<String>} payable_currencies
+ */
+OrderLinkBusinessInfo.prototype['payable_currencies'] = undefined;
+
+/**
+ * Optional list of payable amounts for different tokens. If provided, these amounts will be used instead of calculating the amounts based on the exchange rate. 
+ * @member {Array.<module:model/OrderLinkBusinessInfoPayableAmountsInner>} payable_amounts
+ */
+OrderLinkBusinessInfo.prototype['payable_amounts'] = undefined;
+
+/**
  * The number of seconds until the pay-in order expires, counted from when the request is sent. For example, if set to `1800`, the order will expire in 30 minutes. Must be greater than zero and cannot exceed 3 hours (10800 seconds). After expiration:  - The order status becomes final and cannot be changed - The `received_token_amount` field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a `transactionLate` webhook event. 
  * @member {Number} expired_in
  * @default 1800
@@ -213,16 +242,40 @@ OrderLinkBusinessInfo.prototype['psp_order_code'] = undefined;
 OrderLinkBusinessInfo.prototype['expired_in'] = 1800;
 
 /**
- * Whether to allocate a dedicated address for this order.  - `true`: A dedicated address will be allocated for this order. - `false`: A shared address from the address pool will be used. 
- * @member {Boolean} use_dedicated_address
- */
-OrderLinkBusinessInfo.prototype['use_dedicated_address'] = undefined;
-
-/**
  * Allowed amount deviation, precision to 1 decimal place.
  * @member {String} amount_tolerance
  */
 OrderLinkBusinessInfo.prototype['amount_tolerance'] = undefined;
+
+/**
+ * The currency for the base order amount and the developer fee. Currently, only `USD`/`USDT`/`USDC` are supported. 
+ * @member {String} currency
+ */
+OrderLinkBusinessInfo.prototype['currency'] = undefined;
+
+/**
+ * The base amount of the order, excluding the developer fee (specified in `fee_amount`), in the currency specified by `currency`. If `currency` is not specified, the amount is in the cryptocurrency specified by `token_id`.  Values must be greater than `0` and contain two decimal places. 
+ * @member {String} order_amount
+ */
+OrderLinkBusinessInfo.prototype['order_amount'] = undefined;
+
+/**
+ * List of supported cryptocurrency token IDs for this payment. Each token ID must be from the supported values. 
+ * @member {Array.<String>} token_ids
+ */
+OrderLinkBusinessInfo.prototype['token_ids'] = undefined;
+
+/**
+ * Optional list of final exchange rates for different tokens. If provided, these rates will be used instead of real-time market rates. 
+ * @member {Array.<module:model/OrderLinkBusinessInfoCustomExchangeRatesInner>} custom_exchange_rates
+ */
+OrderLinkBusinessInfo.prototype['custom_exchange_rates'] = undefined;
+
+/**
+ * Whether to allocate a dedicated address for this order.  - `true`: A dedicated address will be allocated for this order. - `false`: A shared address from the address pool will be used. 
+ * @member {Boolean} use_dedicated_address
+ */
+OrderLinkBusinessInfo.prototype['use_dedicated_address'] = undefined;
 
 
 

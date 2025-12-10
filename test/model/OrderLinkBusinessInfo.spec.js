@@ -52,38 +52,8 @@
       //expect(instance).to.be.a(CoboWaas2.OrderLinkBusinessInfo);
     });
 
-    it('should have the property token_ids (base name: "token_ids")', function() {
-      // uncomment below and update the code to test the property token_ids
-      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property custom_exchange_rates (base name: "custom_exchange_rates")', function() {
-      // uncomment below and update the code to test the property custom_exchange_rates
-      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property currency (base name: "currency")', function() {
-      // uncomment below and update the code to test the property currency
-      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fee_amount (base name: "fee_amount")', function() {
-      // uncomment below and update the code to test the property fee_amount
-      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
-      //expect(instance).to.be();
-    });
-
     it('should have the property merchant_id (base name: "merchant_id")', function() {
       // uncomment below and update the code to test the property merchant_id
-      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property order_amount (base name: "order_amount")', function() {
-      // uncomment below and update the code to test the property order_amount
       //var instance = new CoboWaas2.OrderLinkBusinessInfo();
       //expect(instance).to.be();
     });
@@ -100,20 +70,74 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property pricing_currency (base name: "pricing_currency")', function() {
+      // uncomment below and update the code to test the property pricing_currency
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_amount (base name: "pricing_amount")', function() {
+      // uncomment below and update the code to test the property pricing_amount
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee_amount (base name: "fee_amount")', function() {
+      // uncomment below and update the code to test the property fee_amount
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_currencies (base name: "payable_currencies")', function() {
+      // uncomment below and update the code to test the property payable_currencies
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_amounts (base name: "payable_amounts")', function() {
+      // uncomment below and update the code to test the property payable_amounts
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property expired_in (base name: "expired_in")', function() {
       // uncomment below and update the code to test the property expired_in
       //var instance = new CoboWaas2.OrderLinkBusinessInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property use_dedicated_address (base name: "use_dedicated_address")', function() {
-      // uncomment below and update the code to test the property use_dedicated_address
+    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
+      // uncomment below and update the code to test the property amount_tolerance
       //var instance = new CoboWaas2.OrderLinkBusinessInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
-      // uncomment below and update the code to test the property amount_tolerance
+    it('should have the property currency (base name: "currency")', function() {
+      // uncomment below and update the code to test the property currency
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property order_amount (base name: "order_amount")', function() {
+      // uncomment below and update the code to test the property order_amount
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property token_ids (base name: "token_ids")', function() {
+      // uncomment below and update the code to test the property token_ids
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property custom_exchange_rates (base name: "custom_exchange_rates")', function() {
+      // uncomment below and update the code to test the property custom_exchange_rates
+      //var instance = new CoboWaas2.OrderLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property use_dedicated_address (base name: "use_dedicated_address")', function() {
+      // uncomment below and update the code to test the property use_dedicated_address
       //var instance = new CoboWaas2.OrderLinkBusinessInfo();
       //expect(instance).to.be();
     });

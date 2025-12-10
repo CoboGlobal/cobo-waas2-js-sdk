@@ -5,11 +5,9 @@
 
 * `Pending` (value: `"Pending"`)
 
-* `Verified` (value: `"Verified"`)
+* `Approved` (value: `"Approved"`)
 
 * `Rejected` (value: `"Rejected"`)
-
-* `Deleted` (value: `"Deleted"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **acquiring_type** | [**AcquiringType**](AcquiringType.md) |  | 
 **total_received_amount** | **String** | The merchant total received amount. | [optional] 
 **settled_amount** | **String** | The merchant settled amount. | [optional] 
+**payout_amount** | **String** | The merchant payout amount. | [optional] 
 **refunded_amount** | **String** | The merchant total refunded amount. | [optional] 
 **total_balance** | **String** | The merchant total balance. | [optional] 
 **available_balance** | **String** | The merchant available balance. | [optional] 

@@ -36,10 +36,30 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('ComplianceApi', function() {
+    describe('createKyaScreenings', function() {
+      it('should call createKyaScreenings successfully', function() {
+        //uncomment below and update the code to test createKyaScreenings
+        //instance.createKyaScreenings().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getDispositionStatus', function() {
       it('should call getDispositionStatus successfully', function() {
         //uncomment below and update the code to test getDispositionStatus
         //instance.getDispositionStatus().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getKyaScreening', function() {
+      it('should call getKyaScreening successfully', function() {
+        //uncomment below and update the code to test getKyaScreening
+        //instance.getKyaScreening().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -60,6 +80,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call isolateFunds successfully', function() {
         //uncomment below and update the code to test isolateFunds
         //instance.isolateFunds().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listKyaScreenings', function() {
+      it('should call listKyaScreenings successfully', function() {
+        //uncomment below and update the code to test listKyaScreenings
+        //instance.listKyaScreenings().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

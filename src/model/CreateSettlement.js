@@ -58,6 +58,9 @@ class CreateSettlement {
             if (data.hasOwnProperty('crypto_address_id')) {
                 obj['crypto_address_id'] = ApiClient.convertToType(data['crypto_address_id'], 'String');
             }
+            if (data.hasOwnProperty('crypto_address')) {
+                obj['crypto_address'] = ApiClient.convertToType(data['crypto_address'], 'String');
+            }
             if (data.hasOwnProperty('order_ids')) {
                 obj['order_ids'] = ApiClient.convertToType(data['order_ids'], ['String']);
             }
@@ -92,6 +95,10 @@ class CreateSettlement {
         // ensure the json data is a string
         if (data['crypto_address_id'] && !(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
             throw new Error("Expected the field `crypto_address_id` to be a primitive type in the JSON string but got " + data['crypto_address_id']);
+        }
+        // ensure the json data is a string
+        if (data['crypto_address'] && !(typeof data['crypto_address'] === 'string' || data['crypto_address'] instanceof String)) {
+            throw new Error("Expected the field `crypto_address` to be a primitive type in the JSON string but got " + data['crypto_address']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['order_ids'])) {
@@ -129,6 +136,12 @@ CreateSettlement.prototype['amount'] = undefined;
  * @member {String} crypto_address_id
  */
 CreateSettlement.prototype['crypto_address_id'] = undefined;
+
+/**
+ * Only used in Crypto payout channel. The actual blockchain address to which funds will be transferred. If enable destination whitelist, this address must be associated with a destination. 
+ * @member {String} crypto_address
+ */
+CreateSettlement.prototype['crypto_address'] = undefined;
 
 /**
  * A list of unique order IDs to be included in this settlement.  - This field is only applicable when `settlement_type` is set to `Merchant`. - If provided, the settlement will only apply to the specified orders. - The settlement `amount` must exactly match the total eligible amount from these orders. - This ensures consistency between the declared amount and the actual order-level data being settled. 

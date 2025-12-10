@@ -66,6 +66,9 @@ class MerchantBalance {
             if (data.hasOwnProperty('settled_amount')) {
                 obj['settled_amount'] = ApiClient.convertToType(data['settled_amount'], 'String');
             }
+            if (data.hasOwnProperty('payout_amount')) {
+                obj['payout_amount'] = ApiClient.convertToType(data['payout_amount'], 'String');
+            }
             if (data.hasOwnProperty('refunded_amount')) {
                 obj['refunded_amount'] = ApiClient.convertToType(data['refunded_amount'], 'String');
             }
@@ -109,6 +112,10 @@ class MerchantBalance {
         // ensure the json data is a string
         if (data['settled_amount'] && !(typeof data['settled_amount'] === 'string' || data['settled_amount'] instanceof String)) {
             throw new Error("Expected the field `settled_amount` to be a primitive type in the JSON string but got " + data['settled_amount']);
+        }
+        // ensure the json data is a string
+        if (data['payout_amount'] && !(typeof data['payout_amount'] === 'string' || data['payout_amount'] instanceof String)) {
+            throw new Error("Expected the field `payout_amount` to be a primitive type in the JSON string but got " + data['payout_amount']);
         }
         // ensure the json data is a string
         if (data['refunded_amount'] && !(typeof data['refunded_amount'] === 'string' || data['refunded_amount'] instanceof String)) {
@@ -163,6 +170,12 @@ MerchantBalance.prototype['total_received_amount'] = undefined;
  * @member {String} settled_amount
  */
 MerchantBalance.prototype['settled_amount'] = undefined;
+
+/**
+ * The merchant payout amount.
+ * @member {String} payout_amount
+ */
+MerchantBalance.prototype['payout_amount'] = undefined;
 
 /**
  * The merchant total refunded amount.

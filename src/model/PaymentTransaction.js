@@ -10,6 +10,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import Counterparty from './Counterparty';
+import Destination from './Destination';
 import TransactionStatus from './TransactionStatus';
 
 /**
@@ -80,6 +82,12 @@ class PaymentTransaction {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = TransactionStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('counterparty')) {
+                obj['counterparty'] = Counterparty.constructFromObject(data['counterparty']);
+            }
+            if (data.hasOwnProperty('destination')) {
+                obj['destination'] = Destination.constructFromObject(data['destination']);
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -125,6 +133,18 @@ class PaymentTransaction {
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        }
+        // validate the optional field `counterparty`
+        if (data['counterparty']) { // data not null
+          if (!!Counterparty.validateJSON) {
+            Counterparty.validateJSON(data['counterparty']);
+          }
+        }
+        // validate the optional field `destination`
+        if (data['destination']) { // data not null
+          if (!!Destination.validateJSON) {
+            Destination.validateJSON(data['destination']);
+          }
         }
 
         return true;
@@ -175,6 +195,16 @@ PaymentTransaction.prototype['amount'] = undefined;
  * @member {module:model/TransactionStatus} status
  */
 PaymentTransaction.prototype['status'] = undefined;
+
+/**
+ * @member {module:model/Counterparty} counterparty
+ */
+PaymentTransaction.prototype['counterparty'] = undefined;
+
+/**
+ * @member {module:model/Destination} destination
+ */
+PaymentTransaction.prototype['destination'] = undefined;
 
 /**
  * The time when the transaction was created, in Unix timestamp format, measured in milliseconds.

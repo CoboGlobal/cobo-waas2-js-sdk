@@ -50,6 +50,9 @@ class LinkDisplayInfo {
             if (data.hasOwnProperty('logo')) {
                 obj['logo'] = ApiClient.convertToType(data['logo'], 'String');
             }
+            if (data.hasOwnProperty('return_url')) {
+                obj['return_url'] = ApiClient.convertToType(data['return_url'], 'String');
+            }
         }
         return obj;
     }
@@ -67,6 +70,10 @@ class LinkDisplayInfo {
         // ensure the json data is a string
         if (data['logo'] && !(typeof data['logo'] === 'string' || data['logo'] instanceof String)) {
             throw new Error("Expected the field `logo` to be a primitive type in the JSON string but got " + data['logo']);
+        }
+        // ensure the json data is a string
+        if (data['return_url'] && !(typeof data['return_url'] === 'string' || data['return_url'] instanceof String)) {
+            throw new Error("Expected the field `return_url` to be a primitive type in the JSON string but got " + data['return_url']);
         }
 
         return true;
@@ -88,6 +95,12 @@ LinkDisplayInfo.prototype['developer_name'] = undefined;
  * @member {String} logo
  */
 LinkDisplayInfo.prototype['logo'] = undefined;
+
+/**
+ * The URL to redirect to after the operation completes.
+ * @member {String} return_url
+ */
+LinkDisplayInfo.prototype['return_url'] = undefined;
 
 
 

@@ -242,6 +242,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.payout.status.updated"
+         * @const
+         */
+        "payment.payout.status.updated" = "payment.payout.status.updated";
+
+    
+        /**
          * value: "payment.address.updated"
          * @const
          */
@@ -274,6 +281,13 @@ export default class WebhookEventType {
          * @const
          */
         "compliance.kyt.screenings.status.updated" = "compliance.kyt.screenings.status.updated";
+
+    
+        /**
+         * value: "compliance.kya.screenings.status.updated"
+         * @const
+         */
+        "compliance.kya.screenings.status.updated" = "compliance.kya.screenings.status.updated";
 
     
         /**

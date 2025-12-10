@@ -7,6 +7,8 @@
 
 * `SOL_Contract` (value: `"SOL_Contract"`)
 
+* `COSMOS_Contract` (value: `"COSMOS_Contract"`)
+
 * `STELLAR_Contract` (value: `"STELLAR_Contract"`)
 
 * `TRON_Contract` (value: `"TRON_Contract"`)

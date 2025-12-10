@@ -42,7 +42,7 @@ class ContractCallDestination {
 
         if (discriminatorValue) {
             switch(discriminatorValue) {
-                case "Cosmos_Contract":
+                case "COSMOS_Contract":
                     this.actualInstance = CosmosContractCallDestination.constructFromObject(instance);
                     match++;
                     break;

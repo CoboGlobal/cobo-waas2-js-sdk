@@ -31,6 +31,8 @@ import AddressTransferDestinationAccountOutput from './model/AddressTransferDest
 import AddressTransferDestinationUtxoOutputsInner from './model/AddressTransferDestinationUtxoOutputsInner';
 import AddressesEventData from './model/AddressesEventData';
 import AddressesEventDataAllOfAddresses from './model/AddressesEventDataAllOfAddresses';
+import AllocationRecord from './model/AllocationRecord';
+import AllocationRequest from './model/AllocationRequest';
 import AmountDetailsInner from './model/AmountDetailsInner';
 import AmountStatus from './model/AmountStatus';
 import ApiLogDetails from './model/ApiLogDetails';
@@ -77,6 +79,8 @@ import BaseContractCallSource from './model/BaseContractCallSource';
 import BaseEstimateStakingFee from './model/BaseEstimateStakingFee';
 import BaseStakeExtra from './model/BaseStakeExtra';
 import BaseStakeSource from './model/BaseStakeSource';
+import BatchAllocation from './model/BatchAllocation';
+import BatchAllocationDetail from './model/BatchAllocationDetail';
 import BatchCheckUtxo201Response from './model/BatchCheckUtxo201Response';
 import BatchCheckUtxoRequest from './model/BatchCheckUtxoRequest';
 import BatchUTXOParam from './model/BatchUTXOParam';
@@ -84,6 +88,7 @@ import BridgingFee from './model/BridgingFee';
 import BroadcastSignedTransactions201ResponseInner from './model/BroadcastSignedTransactions201ResponseInner';
 import BroadcastSignedTransactionsRequest from './model/BroadcastSignedTransactionsRequest';
 import CallbackMessage from './model/CallbackMessage';
+import CancelPayoutBody from './model/CancelPayoutBody';
 import ChainInfo from './model/ChainInfo';
 import ChainsEventData from './model/ChainsEventData';
 import ChangeGuardPubkey200Response from './model/ChangeGuardPubkey200Response';
@@ -94,7 +99,10 @@ import CheckLoopTransfers200ResponseInner from './model/CheckLoopTransfers200Res
 import CoboSafeDelegate from './model/CoboSafeDelegate';
 import CoboSafeDelegateType from './model/CoboSafeDelegateType';
 import CommissionFee from './model/CommissionFee';
+import CommissionFeeDetail from './model/CommissionFeeDetail';
+import CommissionFeeDetailNormalizedAmount from './model/CommissionFeeDetailNormalizedAmount';
 import ComplianceDispositionUpdateEventData from './model/ComplianceDispositionUpdateEventData';
+import ComplianceKyaScreeningsUpdateEventData from './model/ComplianceKyaScreeningsUpdateEventData';
 import ComplianceKytScreeningsUpdateEventData from './model/ComplianceKytScreeningsUpdateEventData';
 import ContractCallDestination from './model/ContractCallDestination';
 import ContractCallDestinationType from './model/ContractCallDestinationType';
@@ -110,6 +118,7 @@ import CosmosContractCallMessage from './model/CosmosContractCallMessage';
 import Counterparty from './model/Counterparty';
 import CounterpartyDetail from './model/CounterpartyDetail';
 import CounterpartyType from './model/CounterpartyType';
+import CounterpartyWalletAddressDetail from './model/CounterpartyWalletAddressDetail';
 import CreateAddressBookParam from './model/CreateAddressBookParam';
 import CreateAddressBooks201Response from './model/CreateAddressBooks201Response';
 import CreateAddressBooksParam from './model/CreateAddressBooksParam';
@@ -121,6 +130,9 @@ import CreateBabylonAirdropRegistrationRequest from './model/CreateBabylonAirdro
 import CreateBabylonStakingRegistration201Response from './model/CreateBabylonStakingRegistration201Response';
 import CreateBabylonStakingRegistrationRequest from './model/CreateBabylonStakingRegistrationRequest';
 import CreateBankAccountRequest from './model/CreateBankAccountRequest';
+import CreateBatchAllocationRequest from './model/CreateBatchAllocationRequest';
+import CreateBatchPayout201Response from './model/CreateBatchPayout201Response';
+import CreateBatchPayoutRequest from './model/CreateBatchPayoutRequest';
 import CreateClaimActivity from './model/CreateClaimActivity';
 import CreateClaimActivityRequest from './model/CreateClaimActivityRequest';
 import CreateCounterpartyRequest from './model/CreateCounterpartyRequest';
@@ -134,16 +146,19 @@ import CreateDestinationWalletAddressRequest from './model/CreateDestinationWall
 import CreateExchangeWalletParams from './model/CreateExchangeWalletParams';
 import CreateKeyShareHolder from './model/CreateKeyShareHolder';
 import CreateKeyShareHolderGroupRequest from './model/CreateKeyShareHolderGroupRequest';
+import CreateKyaScreeningsBody from './model/CreateKyaScreeningsBody';
 import CreateMerchantRequest from './model/CreateMerchantRequest';
 import CreateMpcProjectRequest from './model/CreateMpcProjectRequest';
 import CreateMpcVaultRequest from './model/CreateMpcVaultRequest';
 import CreateMpcWalletParams from './model/CreateMpcWalletParams';
 import CreateOrderLinkRequest from './model/CreateOrderLinkRequest';
 import CreatePaymentOrderRequest from './model/CreatePaymentOrderRequest';
+import CreatePayoutRequest from './model/CreatePayoutRequest';
 import CreatePrimeBrokerAddress201Response from './model/CreatePrimeBrokerAddress201Response';
 import CreatePrimeBrokerAddressRequest from './model/CreatePrimeBrokerAddressRequest';
 import CreateRefundLinkRequest from './model/CreateRefundLinkRequest';
 import CreateRefundRequest from './model/CreateRefundRequest';
+import CreateReportRequest from './model/CreateReportRequest';
 import CreateSafeWalletParams from './model/CreateSafeWalletParams';
 import CreateSettlement from './model/CreateSettlement';
 import CreateSettlementRequestRequest from './model/CreateSettlementRequestRequest';
@@ -164,6 +179,8 @@ import CreateUnstakeActivityRequest from './model/CreateUnstakeActivityRequest';
 import CreateWalletAddress from './model/CreateWalletAddress';
 import CreateWalletParams from './model/CreateWalletParams';
 import CreateWebhookEndpointRequest from './model/CreateWebhookEndpointRequest';
+import CreateWebhookEventInfo from './model/CreateWebhookEventInfo';
+import CreateWebhookEventParams from './model/CreateWebhookEventParams';
 import CreateWithdrawActivity from './model/CreateWithdrawActivity';
 import CreateWithdrawActivityRequest from './model/CreateWithdrawActivityRequest';
 import CreatedWalletInfo from './model/CreatedWalletInfo';
@@ -187,8 +204,10 @@ import DeleteKeyShareHolderGroupById201Response from './model/DeleteKeyShareHold
 import DeleteWalletById201Response from './model/DeleteWalletById201Response';
 import Destination from './model/Destination';
 import DestinationBankAccount from './model/DestinationBankAccount';
+import DestinationBankAccountDetail from './model/DestinationBankAccountDetail';
 import DestinationDetail from './model/DestinationDetail';
 import DestinationType from './model/DestinationType';
+import DestinationWalletAddressDetail from './model/DestinationWalletAddressDetail';
 import DestinationWalletType from './model/DestinationWalletType';
 import DispositionEventData from './model/DispositionEventData';
 import DispositionQueryResponse from './model/DispositionQueryResponse';
@@ -200,6 +219,7 @@ import EigenLayerNativeStakeExtra from './model/EigenLayerNativeStakeExtra';
 import EigenlayerValidator from './model/EigenlayerValidator';
 import EnableDestinationWhitelistRequest from './model/EnableDestinationWhitelistRequest';
 import ErrorResponse from './model/ErrorResponse';
+import EstimateBatchPayoutFeeRequest from './model/EstimateBatchPayoutFeeRequest';
 import EstimateClaimFee from './model/EstimateClaimFee';
 import EstimateContractCallFeeParams from './model/EstimateContractCallFeeParams';
 import EstimateFeeParams from './model/EstimateFeeParams';
@@ -261,9 +281,10 @@ import ForcedSweepRequest from './model/ForcedSweepRequest';
 import ForcedSweepStatus from './model/ForcedSweepStatus';
 import FundsStatusType from './model/FundsStatusType';
 import GetApiKeyInfo200Response from './model/GetApiKeyInfo200Response';
-import GetDestinationBankAccountDetailById200Response from './model/GetDestinationBankAccountDetailById200Response';
+import GetExchangeRate200Response from './model/GetExchangeRate200Response';
 import GetMaxTransferableValueWithFeeModelRequest from './model/GetMaxTransferableValueWithFeeModelRequest';
 import GetRefunds200Response from './model/GetRefunds200Response';
+import GetReports200Response from './model/GetReports200Response';
 import GetSettlementInfoByIds200Response from './model/GetSettlementInfoByIds200Response';
 import GetStakingEstimationFee201Response from './model/GetStakingEstimationFee201Response';
 import GetStakingEstimationFeeRequest from './model/GetStakingEstimationFeeRequest';
@@ -284,6 +305,14 @@ import KeyShareHolderGroupStatus from './model/KeyShareHolderGroupStatus';
 import KeyShareHolderGroupType from './model/KeyShareHolderGroupType';
 import KeyShareHolderStatus from './model/KeyShareHolderStatus';
 import KeyShareHolderType from './model/KeyShareHolderType';
+import KyaRiskAssessment from './model/KyaRiskAssessment';
+import KyaRiskDetail from './model/KyaRiskDetail';
+import KyaRiskLevel from './model/KyaRiskLevel';
+import KyaScreeningRequest from './model/KyaScreeningRequest';
+import KyaScreeningResult from './model/KyaScreeningResult';
+import KyaScreeningResultRiskAssessment from './model/KyaScreeningResultRiskAssessment';
+import KyaScreeningStatus from './model/KyaScreeningStatus';
+import KyaScreeningsEventData from './model/KyaScreeningsEventData';
 import KytScreeningsDecisionsType from './model/KytScreeningsDecisionsType';
 import KytScreeningsEventData from './model/KytScreeningsEventData';
 import KytScreeningsReviewType from './model/KytScreeningsReviewType';
@@ -294,6 +323,7 @@ import LinkDisplayInfo from './model/LinkDisplayInfo';
 import ListAddressBalancesByToken200Response from './model/ListAddressBalancesByToken200Response';
 import ListAddressBooks200Response from './model/ListAddressBooks200Response';
 import ListAddresses200Response from './model/ListAddresses200Response';
+import ListAllocations200Response from './model/ListAllocations200Response';
 import ListApprovalRequests200Response from './model/ListApprovalRequests200Response';
 import ListAssetBalancesForExchangeWallet200Response from './model/ListAssetBalancesForExchangeWallet200Response';
 import ListAutoSweepTask200Response from './model/ListAutoSweepTask200Response';
@@ -302,19 +332,27 @@ import ListBabylonEligibleAirdrops200Response from './model/ListBabylonEligibleA
 import ListBabylonEligibleStakings200Response from './model/ListBabylonEligibleStakings200Response';
 import ListBabylonEligibleStakings200ResponseDataInner from './model/ListBabylonEligibleStakings200ResponseDataInner';
 import ListBabylonStakingRegistrations200Response from './model/ListBabylonStakingRegistrations200Response';
+import ListBatchAllocations200Response from './model/ListBatchAllocations200Response';
+import ListBatchPayouts200Response from './model/ListBatchPayouts200Response';
 import ListCallbackMessages200Response from './model/ListCallbackMessages200Response';
 import ListCounterparties200Response from './model/ListCounterparties200Response';
+import ListCounterpartyWalletAddress200Response from './model/ListCounterpartyWalletAddress200Response';
+import ListDestinationBankAccounts200Response from './model/ListDestinationBankAccounts200Response';
+import ListDestinationWalletAddresses200Response from './model/ListDestinationWalletAddresses200Response';
 import ListDestinations200Response from './model/ListDestinations200Response';
 import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
 import ListForcedSweepRequests200Response from './model/ListForcedSweepRequests200Response';
 import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
 import ListKeyShareHolders200Response from './model/ListKeyShareHolders200Response';
+import ListKyaScreenings200Response from './model/ListKyaScreenings200Response';
 import ListMerchantBalances200Response from './model/ListMerchantBalances200Response';
 import ListMerchants200Response from './model/ListMerchants200Response';
 import ListMpcProjects200Response from './model/ListMpcProjects200Response';
 import ListMpcVaults200Response from './model/ListMpcVaults200Response';
 import ListPaymentOrders200Response from './model/ListPaymentOrders200Response';
 import ListPaymentWalletBalances200Response from './model/ListPaymentWalletBalances200Response';
+import ListPayoutItems200Response from './model/ListPayoutItems200Response';
+import ListPayouts200Response from './model/ListPayouts200Response';
 import ListSettlementDetails200Response from './model/ListSettlementDetails200Response';
 import ListSettlementRequests200Response from './model/ListSettlementRequests200Response';
 import ListStakingActivities200Response from './model/ListStakingActivities200Response';
@@ -373,12 +411,14 @@ import MpcTransferSource from './model/MpcTransferSource';
 import Order from './model/Order';
 import OrderLinkBusinessInfo from './model/OrderLinkBusinessInfo';
 import OrderLinkBusinessInfoCustomExchangeRatesInner from './model/OrderLinkBusinessInfoCustomExchangeRatesInner';
+import OrderLinkBusinessInfoPayableAmountsInner from './model/OrderLinkBusinessInfoPayableAmountsInner';
 import OrderStatus from './model/OrderStatus';
 import OrgInfo from './model/OrgInfo';
 import OtcFee from './model/OtcFee';
 import Pagination from './model/Pagination';
 import PayerAccount from './model/PayerAccount';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
+import PaymentAllocationAmount from './model/PaymentAllocationAmount';
 import PaymentBaseSubscriptionActionData from './model/PaymentBaseSubscriptionActionData';
 import PaymentChargeSubscriptionActionData from './model/PaymentChargeSubscriptionActionData';
 import PaymentChargeUpdateEventData from './model/PaymentChargeUpdateEventData';
@@ -393,8 +433,17 @@ import PaymentEstimatedFee from './model/PaymentEstimatedFee';
 import PaymentExtendPeriodSubscriptionActionData from './model/PaymentExtendPeriodSubscriptionActionData';
 import PaymentFeeType from './model/PaymentFeeType';
 import PaymentOrderEventData from './model/PaymentOrderEventData';
+import PaymentPayout from './model/PaymentPayout';
+import PaymentPayoutDetail from './model/PaymentPayoutDetail';
+import PaymentPayoutEvent from './model/PaymentPayoutEvent';
+import PaymentPayoutItem from './model/PaymentPayoutItem';
+import PaymentPayoutItemDetail from './model/PaymentPayoutItemDetail';
+import PaymentPayoutItemStatus from './model/PaymentPayoutItemStatus';
+import PaymentPayoutParam from './model/PaymentPayoutParam';
+import PaymentPayoutStatus from './model/PaymentPayoutStatus';
 import PaymentRefundEventData from './model/PaymentRefundEventData';
 import PaymentSettlementEvent from './model/PaymentSettlementEvent';
+import PaymentSourceType from './model/PaymentSourceType';
 import PaymentSubscribeAndChargeSubscriptionActionData from './model/PaymentSubscribeAndChargeSubscriptionActionData';
 import PaymentSubscription from './model/PaymentSubscription';
 import PaymentSubscriptionAction from './model/PaymentSubscriptionAction';
@@ -413,7 +462,19 @@ import PaymentTransactionEventData from './model/PaymentTransactionEventData';
 import PaymentUpdateAmountSubscriptionActionData from './model/PaymentUpdateAmountSubscriptionActionData';
 import PaymentUpdateTokenIdSubscriptionActionData from './model/PaymentUpdateTokenIdSubscriptionActionData';
 import PaymentWalletBalance from './model/PaymentWalletBalance';
+import Payout from './model/Payout';
 import PayoutChannel from './model/PayoutChannel';
+import PayoutDestination from './model/PayoutDestination';
+import PayoutDestinationDetail from './model/PayoutDestinationDetail';
+import PayoutDetail from './model/PayoutDetail';
+import PayoutEstimatedFee from './model/PayoutEstimatedFee';
+import PayoutFeeData from './model/PayoutFeeData';
+import PayoutMode from './model/PayoutMode';
+import PayoutRbfBody from './model/PayoutRbfBody';
+import PayoutRbfType from './model/PayoutRbfType';
+import PayoutSource from './model/PayoutSource';
+import PayoutStatus from './model/PayoutStatus';
+import PayoutTransactionStatus from './model/PayoutTransactionStatus';
 import PolicyAction from './model/PolicyAction';
 import PolicyActionContent from './model/PolicyActionContent';
 import PolicyActionType from './model/PolicyActionType';
@@ -428,7 +489,6 @@ import QueryApprovalStatement200Response from './model/QueryApprovalStatement200
 import QueryDestinationWhitelistEnabled200Response from './model/QueryDestinationWhitelistEnabled200Response';
 import QueryGuardPubkey200Response from './model/QueryGuardPubkey200Response';
 import QueryGuardPubkey200ResponseAddressesInner from './model/QueryGuardPubkey200ResponseAddressesInner';
-import ReceivedAmountPerAddress from './model/ReceivedAmountPerAddress';
 import RefreshAddressBalancesByToken200Response from './model/RefreshAddressBalancesByToken200Response';
 import RefreshAddressBalancesByTokenRequest from './model/RefreshAddressBalancesByTokenRequest';
 import RefreshPermissionTokenRequest from './model/RefreshPermissionTokenRequest';
@@ -440,6 +500,10 @@ import RefundLinkBusinessInfo from './model/RefundLinkBusinessInfo';
 import RefundStatus from './model/RefundStatus';
 import RefundType from './model/RefundType';
 import ReplaceType from './model/ReplaceType';
+import Report from './model/Report';
+import ReportExportFormat from './model/ReportExportFormat';
+import ReportStatus from './model/ReportStatus';
+import ReportType from './model/ReportType';
 import RequestApproval from './model/RequestApproval';
 import RetryCallbackMessage201Response from './model/RetryCallbackMessage201Response';
 import RetryWebhookEventById201Response from './model/RetryWebhookEventById201Response';
@@ -466,6 +530,7 @@ import SelectedEntityType from './model/SelectedEntityType';
 import SelfCustodyWallet from './model/SelfCustodyWallet';
 import SettleRequestStatus from './model/SettleRequestStatus';
 import SettleStatus from './model/SettleStatus';
+import SettleType from './model/SettleType';
 import Settlement from './model/Settlement';
 import SettlementDetail from './model/SettlementDetail';
 import SettlementInfo from './model/SettlementInfo';
@@ -490,6 +555,7 @@ import StellarContractCallContractType from './model/StellarContractCallContract
 import StellarContractCallDestination from './model/StellarContractCallDestination';
 import StellarContractCallTrustLineOperationType from './model/StellarContractCallTrustLineOperationType';
 import StellarContractCallTrustLineParam from './model/StellarContractCallTrustLineParam';
+import StrategyParams from './model/StrategyParams';
 import SubWalletAssetBalance from './model/SubWalletAssetBalance';
 import SubmitDepositTravelRuleInfo201Response from './model/SubmitDepositTravelRuleInfo201Response';
 import SubmitKytResponse from './model/SubmitKytResponse';
@@ -697,6 +763,7 @@ import TransactionRequestFILFee from './model/TransactionRequestFILFee';
 import TransactionRequestFee from './model/TransactionRequestFee';
 import TransactionRequestFixedFee from './model/TransactionRequestFixedFee';
 import TransactionRequestSOLFee from './model/TransactionRequestSOLFee';
+import TransactionRequestTypeParams from './model/TransactionRequestTypeParams';
 import TransactionRequestUtxoFee from './model/TransactionRequestUtxoFee';
 import TransactionResend from './model/TransactionResend';
 import TransactionResult from './model/TransactionResult';
@@ -788,17 +855,21 @@ import WebhookEndpointStatus from './model/WebhookEndpointStatus';
 import WebhookEvent from './model/WebhookEvent';
 import WebhookEventData from './model/WebhookEventData';
 import WebhookEventDataType from './model/WebhookEventDataType';
+import WebhookEventInternalStatus from './model/WebhookEventInternalStatus';
 import WebhookEventLog from './model/WebhookEventLog';
 import WebhookEventStatus from './model/WebhookEventStatus';
 import WebhookEventType from './model/WebhookEventType';
 import AddressBooksApi from './api/AddressBooksApi';
 import AppWorkflowsApi from './api/AppWorkflowsApi';
 import AutoSweepApi from './api/AutoSweepApi';
+import BatchPayoutsApi from './api/BatchPayoutsApi';
 import ComplianceApi from './api/ComplianceApi';
 import DevelopersApi from './api/DevelopersApi';
 import DevelopersWebhooksApi from './api/DevelopersWebhooksApi';
 import FeeStationApi from './api/FeeStationApi';
 import GraphQLApi from './api/GraphQLApi';
+import InternalFeeEngineApi from './api/InternalFeeEngineApi';
+import InternalWebhooksApi from './api/InternalWebhooksApi';
 import OAuthApi from './api/OAuthApi';
 import OrganizationsApi from './api/OrganizationsApi';
 import PaymentApi from './api/PaymentApi';
@@ -844,7 +915,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.26.0
+* @version 1.27.0
 */
 export {
     Env,
@@ -963,6 +1034,18 @@ export {
      * @property {module:model/AddressesEventDataAllOfAddresses}
      */
     AddressesEventDataAllOfAddresses,
+
+    /**
+     * The AllocationRecord model constructor.
+     * @property {module:model/AllocationRecord}
+     */
+    AllocationRecord,
+
+    /**
+     * The AllocationRequest model constructor.
+     * @property {module:model/AllocationRequest}
+     */
+    AllocationRequest,
 
     /**
      * The AmountDetailsInner model constructor.
@@ -1241,6 +1324,18 @@ export {
     BaseStakeSource,
 
     /**
+     * The BatchAllocation model constructor.
+     * @property {module:model/BatchAllocation}
+     */
+    BatchAllocation,
+
+    /**
+     * The BatchAllocationDetail model constructor.
+     * @property {module:model/BatchAllocationDetail}
+     */
+    BatchAllocationDetail,
+
+    /**
      * The BatchCheckUtxo201Response model constructor.
      * @property {module:model/BatchCheckUtxo201Response}
      */
@@ -1281,6 +1376,12 @@ export {
      * @property {module:model/CallbackMessage}
      */
     CallbackMessage,
+
+    /**
+     * The CancelPayoutBody model constructor.
+     * @property {module:model/CancelPayoutBody}
+     */
+    CancelPayoutBody,
 
     /**
      * The ChainInfo model constructor.
@@ -1343,10 +1444,28 @@ export {
     CommissionFee,
 
     /**
+     * The CommissionFeeDetail model constructor.
+     * @property {module:model/CommissionFeeDetail}
+     */
+    CommissionFeeDetail,
+
+    /**
+     * The CommissionFeeDetailNormalizedAmount model constructor.
+     * @property {module:model/CommissionFeeDetailNormalizedAmount}
+     */
+    CommissionFeeDetailNormalizedAmount,
+
+    /**
      * The ComplianceDispositionUpdateEventData model constructor.
      * @property {module:model/ComplianceDispositionUpdateEventData}
      */
     ComplianceDispositionUpdateEventData,
+
+    /**
+     * The ComplianceKyaScreeningsUpdateEventData model constructor.
+     * @property {module:model/ComplianceKyaScreeningsUpdateEventData}
+     */
+    ComplianceKyaScreeningsUpdateEventData,
 
     /**
      * The ComplianceKytScreeningsUpdateEventData model constructor.
@@ -1439,6 +1558,12 @@ export {
     CounterpartyType,
 
     /**
+     * The CounterpartyWalletAddressDetail model constructor.
+     * @property {module:model/CounterpartyWalletAddressDetail}
+     */
+    CounterpartyWalletAddressDetail,
+
+    /**
      * The CreateAddressBookParam model constructor.
      * @property {module:model/CreateAddressBookParam}
      */
@@ -1503,6 +1628,24 @@ export {
      * @property {module:model/CreateBankAccountRequest}
      */
     CreateBankAccountRequest,
+
+    /**
+     * The CreateBatchAllocationRequest model constructor.
+     * @property {module:model/CreateBatchAllocationRequest}
+     */
+    CreateBatchAllocationRequest,
+
+    /**
+     * The CreateBatchPayout201Response model constructor.
+     * @property {module:model/CreateBatchPayout201Response}
+     */
+    CreateBatchPayout201Response,
+
+    /**
+     * The CreateBatchPayoutRequest model constructor.
+     * @property {module:model/CreateBatchPayoutRequest}
+     */
+    CreateBatchPayoutRequest,
 
     /**
      * The CreateClaimActivity model constructor.
@@ -1583,6 +1726,12 @@ export {
     CreateKeyShareHolderGroupRequest,
 
     /**
+     * The CreateKyaScreeningsBody model constructor.
+     * @property {module:model/CreateKyaScreeningsBody}
+     */
+    CreateKyaScreeningsBody,
+
+    /**
      * The CreateMerchantRequest model constructor.
      * @property {module:model/CreateMerchantRequest}
      */
@@ -1619,6 +1768,12 @@ export {
     CreatePaymentOrderRequest,
 
     /**
+     * The CreatePayoutRequest model constructor.
+     * @property {module:model/CreatePayoutRequest}
+     */
+    CreatePayoutRequest,
+
+    /**
      * The CreatePrimeBrokerAddress201Response model constructor.
      * @property {module:model/CreatePrimeBrokerAddress201Response}
      */
@@ -1641,6 +1796,12 @@ export {
      * @property {module:model/CreateRefundRequest}
      */
     CreateRefundRequest,
+
+    /**
+     * The CreateReportRequest model constructor.
+     * @property {module:model/CreateReportRequest}
+     */
+    CreateReportRequest,
 
     /**
      * The CreateSafeWalletParams model constructor.
@@ -1761,6 +1922,18 @@ export {
      * @property {module:model/CreateWebhookEndpointRequest}
      */
     CreateWebhookEndpointRequest,
+
+    /**
+     * The CreateWebhookEventInfo model constructor.
+     * @property {module:model/CreateWebhookEventInfo}
+     */
+    CreateWebhookEventInfo,
+
+    /**
+     * The CreateWebhookEventParams model constructor.
+     * @property {module:model/CreateWebhookEventParams}
+     */
+    CreateWebhookEventParams,
 
     /**
      * The CreateWithdrawActivity model constructor.
@@ -1901,6 +2074,12 @@ export {
     DestinationBankAccount,
 
     /**
+     * The DestinationBankAccountDetail model constructor.
+     * @property {module:model/DestinationBankAccountDetail}
+     */
+    DestinationBankAccountDetail,
+
+    /**
      * The DestinationDetail model constructor.
      * @property {module:model/DestinationDetail}
      */
@@ -1911,6 +2090,12 @@ export {
      * @property {module:model/DestinationType}
      */
     DestinationType,
+
+    /**
+     * The DestinationWalletAddressDetail model constructor.
+     * @property {module:model/DestinationWalletAddressDetail}
+     */
+    DestinationWalletAddressDetail,
 
     /**
      * The DestinationWalletType model constructor.
@@ -1977,6 +2162,12 @@ export {
      * @property {module:model/ErrorResponse}
      */
     ErrorResponse,
+
+    /**
+     * The EstimateBatchPayoutFeeRequest model constructor.
+     * @property {module:model/EstimateBatchPayoutFeeRequest}
+     */
+    EstimateBatchPayoutFeeRequest,
 
     /**
      * The EstimateClaimFee model constructor.
@@ -2345,10 +2536,10 @@ export {
     GetApiKeyInfo200Response,
 
     /**
-     * The GetDestinationBankAccountDetailById200Response model constructor.
-     * @property {module:model/GetDestinationBankAccountDetailById200Response}
+     * The GetExchangeRate200Response model constructor.
+     * @property {module:model/GetExchangeRate200Response}
      */
-    GetDestinationBankAccountDetailById200Response,
+    GetExchangeRate200Response,
 
     /**
      * The GetMaxTransferableValueWithFeeModelRequest model constructor.
@@ -2361,6 +2552,12 @@ export {
      * @property {module:model/GetRefunds200Response}
      */
     GetRefunds200Response,
+
+    /**
+     * The GetReports200Response model constructor.
+     * @property {module:model/GetReports200Response}
+     */
+    GetReports200Response,
 
     /**
      * The GetSettlementInfoByIds200Response model constructor.
@@ -2483,6 +2680,54 @@ export {
     KeyShareHolderType,
 
     /**
+     * The KyaRiskAssessment model constructor.
+     * @property {module:model/KyaRiskAssessment}
+     */
+    KyaRiskAssessment,
+
+    /**
+     * The KyaRiskDetail model constructor.
+     * @property {module:model/KyaRiskDetail}
+     */
+    KyaRiskDetail,
+
+    /**
+     * The KyaRiskLevel model constructor.
+     * @property {module:model/KyaRiskLevel}
+     */
+    KyaRiskLevel,
+
+    /**
+     * The KyaScreeningRequest model constructor.
+     * @property {module:model/KyaScreeningRequest}
+     */
+    KyaScreeningRequest,
+
+    /**
+     * The KyaScreeningResult model constructor.
+     * @property {module:model/KyaScreeningResult}
+     */
+    KyaScreeningResult,
+
+    /**
+     * The KyaScreeningResultRiskAssessment model constructor.
+     * @property {module:model/KyaScreeningResultRiskAssessment}
+     */
+    KyaScreeningResultRiskAssessment,
+
+    /**
+     * The KyaScreeningStatus model constructor.
+     * @property {module:model/KyaScreeningStatus}
+     */
+    KyaScreeningStatus,
+
+    /**
+     * The KyaScreeningsEventData model constructor.
+     * @property {module:model/KyaScreeningsEventData}
+     */
+    KyaScreeningsEventData,
+
+    /**
      * The KytScreeningsDecisionsType model constructor.
      * @property {module:model/KytScreeningsDecisionsType}
      */
@@ -2543,6 +2788,12 @@ export {
     ListAddresses200Response,
 
     /**
+     * The ListAllocations200Response model constructor.
+     * @property {module:model/ListAllocations200Response}
+     */
+    ListAllocations200Response,
+
+    /**
      * The ListApprovalRequests200Response model constructor.
      * @property {module:model/ListApprovalRequests200Response}
      */
@@ -2591,6 +2842,18 @@ export {
     ListBabylonStakingRegistrations200Response,
 
     /**
+     * The ListBatchAllocations200Response model constructor.
+     * @property {module:model/ListBatchAllocations200Response}
+     */
+    ListBatchAllocations200Response,
+
+    /**
+     * The ListBatchPayouts200Response model constructor.
+     * @property {module:model/ListBatchPayouts200Response}
+     */
+    ListBatchPayouts200Response,
+
+    /**
      * The ListCallbackMessages200Response model constructor.
      * @property {module:model/ListCallbackMessages200Response}
      */
@@ -2601,6 +2864,24 @@ export {
      * @property {module:model/ListCounterparties200Response}
      */
     ListCounterparties200Response,
+
+    /**
+     * The ListCounterpartyWalletAddress200Response model constructor.
+     * @property {module:model/ListCounterpartyWalletAddress200Response}
+     */
+    ListCounterpartyWalletAddress200Response,
+
+    /**
+     * The ListDestinationBankAccounts200Response model constructor.
+     * @property {module:model/ListDestinationBankAccounts200Response}
+     */
+    ListDestinationBankAccounts200Response,
+
+    /**
+     * The ListDestinationWalletAddresses200Response model constructor.
+     * @property {module:model/ListDestinationWalletAddresses200Response}
+     */
+    ListDestinationWalletAddresses200Response,
 
     /**
      * The ListDestinations200Response model constructor.
@@ -2631,6 +2912,12 @@ export {
      * @property {module:model/ListKeyShareHolders200Response}
      */
     ListKeyShareHolders200Response,
+
+    /**
+     * The ListKyaScreenings200Response model constructor.
+     * @property {module:model/ListKyaScreenings200Response}
+     */
+    ListKyaScreenings200Response,
 
     /**
      * The ListMerchantBalances200Response model constructor.
@@ -2667,6 +2954,18 @@ export {
      * @property {module:model/ListPaymentWalletBalances200Response}
      */
     ListPaymentWalletBalances200Response,
+
+    /**
+     * The ListPayoutItems200Response model constructor.
+     * @property {module:model/ListPayoutItems200Response}
+     */
+    ListPayoutItems200Response,
+
+    /**
+     * The ListPayouts200Response model constructor.
+     * @property {module:model/ListPayouts200Response}
+     */
+    ListPayouts200Response,
 
     /**
      * The ListSettlementDetails200Response model constructor.
@@ -3017,6 +3316,12 @@ export {
     OrderLinkBusinessInfoCustomExchangeRatesInner,
 
     /**
+     * The OrderLinkBusinessInfoPayableAmountsInner model constructor.
+     * @property {module:model/OrderLinkBusinessInfoPayableAmountsInner}
+     */
+    OrderLinkBusinessInfoPayableAmountsInner,
+
+    /**
      * The OrderStatus model constructor.
      * @property {module:model/OrderStatus}
      */
@@ -3051,6 +3356,12 @@ export {
      * @property {module:model/PaymentAddressUpdateEventData}
      */
     PaymentAddressUpdateEventData,
+
+    /**
+     * The PaymentAllocationAmount model constructor.
+     * @property {module:model/PaymentAllocationAmount}
+     */
+    PaymentAllocationAmount,
 
     /**
      * The PaymentBaseSubscriptionActionData model constructor.
@@ -3137,6 +3448,54 @@ export {
     PaymentOrderEventData,
 
     /**
+     * The PaymentPayout model constructor.
+     * @property {module:model/PaymentPayout}
+     */
+    PaymentPayout,
+
+    /**
+     * The PaymentPayoutDetail model constructor.
+     * @property {module:model/PaymentPayoutDetail}
+     */
+    PaymentPayoutDetail,
+
+    /**
+     * The PaymentPayoutEvent model constructor.
+     * @property {module:model/PaymentPayoutEvent}
+     */
+    PaymentPayoutEvent,
+
+    /**
+     * The PaymentPayoutItem model constructor.
+     * @property {module:model/PaymentPayoutItem}
+     */
+    PaymentPayoutItem,
+
+    /**
+     * The PaymentPayoutItemDetail model constructor.
+     * @property {module:model/PaymentPayoutItemDetail}
+     */
+    PaymentPayoutItemDetail,
+
+    /**
+     * The PaymentPayoutItemStatus model constructor.
+     * @property {module:model/PaymentPayoutItemStatus}
+     */
+    PaymentPayoutItemStatus,
+
+    /**
+     * The PaymentPayoutParam model constructor.
+     * @property {module:model/PaymentPayoutParam}
+     */
+    PaymentPayoutParam,
+
+    /**
+     * The PaymentPayoutStatus model constructor.
+     * @property {module:model/PaymentPayoutStatus}
+     */
+    PaymentPayoutStatus,
+
+    /**
      * The PaymentRefundEventData model constructor.
      * @property {module:model/PaymentRefundEventData}
      */
@@ -3147,6 +3506,12 @@ export {
      * @property {module:model/PaymentSettlementEvent}
      */
     PaymentSettlementEvent,
+
+    /**
+     * The PaymentSourceType model constructor.
+     * @property {module:model/PaymentSourceType}
+     */
+    PaymentSourceType,
 
     /**
      * The PaymentSubscribeAndChargeSubscriptionActionData model constructor.
@@ -3257,10 +3622,82 @@ export {
     PaymentWalletBalance,
 
     /**
+     * The Payout model constructor.
+     * @property {module:model/Payout}
+     */
+    Payout,
+
+    /**
      * The PayoutChannel model constructor.
      * @property {module:model/PayoutChannel}
      */
     PayoutChannel,
+
+    /**
+     * The PayoutDestination model constructor.
+     * @property {module:model/PayoutDestination}
+     */
+    PayoutDestination,
+
+    /**
+     * The PayoutDestinationDetail model constructor.
+     * @property {module:model/PayoutDestinationDetail}
+     */
+    PayoutDestinationDetail,
+
+    /**
+     * The PayoutDetail model constructor.
+     * @property {module:model/PayoutDetail}
+     */
+    PayoutDetail,
+
+    /**
+     * The PayoutEstimatedFee model constructor.
+     * @property {module:model/PayoutEstimatedFee}
+     */
+    PayoutEstimatedFee,
+
+    /**
+     * The PayoutFeeData model constructor.
+     * @property {module:model/PayoutFeeData}
+     */
+    PayoutFeeData,
+
+    /**
+     * The PayoutMode model constructor.
+     * @property {module:model/PayoutMode}
+     */
+    PayoutMode,
+
+    /**
+     * The PayoutRbfBody model constructor.
+     * @property {module:model/PayoutRbfBody}
+     */
+    PayoutRbfBody,
+
+    /**
+     * The PayoutRbfType model constructor.
+     * @property {module:model/PayoutRbfType}
+     */
+    PayoutRbfType,
+
+    /**
+     * The PayoutSource model constructor.
+     * @property {module:model/PayoutSource}
+     */
+    PayoutSource,
+
+    /**
+     * The PayoutStatus model constructor.
+     * @property {module:model/PayoutStatus}
+     */
+    PayoutStatus,
+
+    /**
+     * The PayoutTransactionStatus model constructor.
+     * @property {module:model/PayoutTransactionStatus}
+     */
+    PayoutTransactionStatus,
 
     /**
      * The PolicyAction model constructor.
@@ -3347,12 +3784,6 @@ export {
     QueryGuardPubkey200ResponseAddressesInner,
 
     /**
-     * The ReceivedAmountPerAddress model constructor.
-     * @property {module:model/ReceivedAmountPerAddress}
-     */
-    ReceivedAmountPerAddress,
-
-    /**
      * The RefreshAddressBalancesByToken200Response model constructor.
      * @property {module:model/RefreshAddressBalancesByToken200Response}
      */
@@ -3417,6 +3848,30 @@ export {
      * @property {module:model/ReplaceType}
      */
     ReplaceType,
+
+    /**
+     * The Report model constructor.
+     * @property {module:model/Report}
+     */
+    Report,
+
+    /**
+     * The ReportExportFormat model constructor.
+     * @property {module:model/ReportExportFormat}
+     */
+    ReportExportFormat,
+
+    /**
+     * The ReportStatus model constructor.
+     * @property {module:model/ReportStatus}
+     */
+    ReportStatus,
+
+    /**
+     * The ReportType model constructor.
+     * @property {module:model/ReportType}
+     */
+    ReportType,
 
     /**
      * The RequestApproval model constructor.
@@ -3575,6 +4030,12 @@ export {
     SettleStatus,
 
     /**
+     * The SettleType model constructor.
+     * @property {module:model/SettleType}
+     */
+    SettleType,
+
+    /**
      * The Settlement model constructor.
      * @property {module:model/Settlement}
      */
@@ -3717,6 +4178,12 @@ export {
      * @property {module:model/StellarContractCallTrustLineParam}
      */
     StellarContractCallTrustLineParam,
+
+    /**
+     * The StrategyParams model constructor.
+     * @property {module:model/StrategyParams}
+     */
+    StrategyParams,
 
     /**
      * The SubWalletAssetBalance model constructor.
@@ -4961,6 +5428,12 @@ export {
     TransactionRequestSOLFee,
 
     /**
+     * The TransactionRequestTypeParams model constructor.
+     * @property {module:model/TransactionRequestTypeParams}
+     */
+    TransactionRequestTypeParams,
+
+    /**
      * The TransactionRequestUtxoFee model constructor.
      * @property {module:model/TransactionRequestUtxoFee}
      */
@@ -5507,6 +5980,12 @@ export {
     WebhookEventDataType,
 
     /**
+     * The WebhookEventInternalStatus model constructor.
+     * @property {module:model/WebhookEventInternalStatus}
+     */
+    WebhookEventInternalStatus,
+
+    /**
      * The WebhookEventLog model constructor.
      * @property {module:model/WebhookEventLog}
      */
@@ -5543,6 +6022,12 @@ export {
     AutoSweepApi,
 
     /**
+    * The BatchPayoutsApi service constructor.
+    * @property {module:api/BatchPayoutsApi}
+    */
+    BatchPayoutsApi,
+
+    /**
     * The ComplianceApi service constructor.
     * @property {module:api/ComplianceApi}
     */
@@ -5571,6 +6056,18 @@ export {
     * @property {module:api/GraphQLApi}
     */
     GraphQLApi,
+
+    /**
+    * The InternalFeeEngineApi service constructor.
+    * @property {module:api/InternalFeeEngineApi}
+    */
+    InternalFeeEngineApi,
+
+    /**
+    * The InternalWebhooksApi service constructor.
+    * @property {module:api/InternalWebhooksApi}
+    */
+    InternalWebhooksApi,
 
     /**
     * The OAuthApi service constructor.

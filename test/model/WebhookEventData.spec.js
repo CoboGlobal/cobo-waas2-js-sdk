@@ -388,14 +388,80 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
+      // uncomment below and update the code to test the property merchant_order_code
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
+      // uncomment below and update the code to test the property psp_order_code
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_currency (base name: "pricing_currency")', function() {
+      // uncomment below and update the code to test the property pricing_currency
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_amount (base name: "pricing_amount")', function() {
+      // uncomment below and update the code to test the property pricing_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee_amount (base name: "fee_amount")', function() {
+      // uncomment below and update the code to test the property fee_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_currency (base name: "payable_currency")', function() {
+      // uncomment below and update the code to test the property payable_currency
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property payable_amount (base name: "payable_amount")', function() {
       // uncomment below and update the code to test the property payable_amount
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });
 
+    it('should have the property exchange_rate (base name: "exchange_rate")', function() {
+      // uncomment below and update the code to test the property exchange_rate
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
+      // uncomment below and update the code to test the property amount_tolerance
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property receive_address (base name: "receive_address")', function() {
       // uncomment below and update the code to test the property receive_address
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property received_token_amount (base name: "received_token_amount")', function() {
+      // uncomment below and update the code to test the property received_token_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property expired_at (base name: "expired_at")', function() {
+      // uncomment below and update the code to test the property expired_at
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transactions (base name: "transactions")', function() {
+      // uncomment below and update the code to test the property transactions
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });
@@ -412,56 +478,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property fee_amount (base name: "fee_amount")', function() {
-      // uncomment below and update the code to test the property fee_amount
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property exchange_rate (base name: "exchange_rate")', function() {
-      // uncomment below and update the code to test the property exchange_rate
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property expired_at (base name: "expired_at")', function() {
-      // uncomment below and update the code to test the property expired_at
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
-      // uncomment below and update the code to test the property merchant_order_code
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
-      // uncomment below and update the code to test the property psp_order_code
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property received_token_amount (base name: "received_token_amount")', function() {
-      // uncomment below and update the code to test the property received_token_amount
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property transactions (base name: "transactions")', function() {
-      // uncomment below and update the code to test the property transactions
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property settlement_status (base name: "settlement_status")', function() {
       // uncomment below and update the code to test the property settlement_status
-      //var instance = new CoboWaas2.WebhookEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
-      // uncomment below and update the code to test the property amount_tolerance
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });
@@ -670,6 +688,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property payout_id (base name: "payout_id")', function() {
+      // uncomment below and update the code to test the property payout_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payout_item_details (base name: "payout_item_details")', function() {
+      // uncomment below and update the code to test the property payout_item_details
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property source_type (base name: "source_type")', function() {
+      // uncomment below and update the code to test the property source_type
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property actual_payout_amount (base name: "actual_payout_amount")', function() {
+      // uncomment below and update the code to test the property actual_payout_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property disposition_type (base name: "disposition_type")', function() {
       // uncomment below and update the code to test the property disposition_type
       //var instance = new CoboWaas2.WebhookEventData();
@@ -708,6 +750,12 @@
 
     it('should have the property funds_status (base name: "funds_status")', function() {
       // uncomment below and update the code to test the property funds_status
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property screening_id (base name: "screening_id")', function() {
+      // uncomment below and update the code to test the property screening_id
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });

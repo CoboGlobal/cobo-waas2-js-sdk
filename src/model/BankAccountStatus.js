@@ -25,10 +25,10 @@ export default class BankAccountStatus {
 
     
         /**
-         * value: "Verified"
+         * value: "Approved"
          * @const
          */
-        "Verified" = "Verified";
+        "Approved" = "Approved";
 
     
         /**
@@ -36,13 +36,6 @@ export default class BankAccountStatus {
          * @const
          */
         "Rejected" = "Rejected";
-
-    
-        /**
-         * value: "Deleted"
-         * @const
-         */
-        "Deleted" = "Deleted";
 
     
         /**

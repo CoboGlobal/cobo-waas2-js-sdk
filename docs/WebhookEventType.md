@@ -67,6 +67,8 @@
 
 * `payment.settlement.status.updated` (value: `"payment.settlement.status.updated"`)
 
+* `payment.payout.status.updated` (value: `"payment.payout.status.updated"`)
+
 * `payment.address.updated` (value: `"payment.address.updated"`)
 
 * `payment.subscription.status.updated` (value: `"payment.subscription.status.updated"`)
@@ -76,6 +78,8 @@
 * `compliance.disposition.status.updated` (value: `"compliance.disposition.status.updated"`)
 
 * `compliance.kyt.screenings.status.updated` (value: `"compliance.kyt.screenings.status.updated"`)
+
+* `compliance.kya.screenings.status.updated` (value: `"compliance.kya.screenings.status.updated"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

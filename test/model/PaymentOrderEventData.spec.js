@@ -70,8 +70,38 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property token_id (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property token_id
+    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
+      // uncomment below and update the code to test the property merchant_order_code
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
+      // uncomment below and update the code to test the property psp_order_code
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_currency (base name: "pricing_currency")', function() {
+      // uncomment below and update the code to test the property pricing_currency
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pricing_amount (base name: "pricing_amount")', function() {
+      // uncomment below and update the code to test the property pricing_amount
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee_amount (base name: "fee_amount")', function() {
+      // uncomment below and update the code to test the property fee_amount
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payable_currency (base name: "payable_currency")', function() {
+      // uncomment below and update the code to test the property payable_currency
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
@@ -88,50 +118,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property receive_address (base name: "receive_address")', function() {
-      // uncomment below and update the code to test the property receive_address
-      //var instance = new CoboWaas2.PaymentOrderEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property currency (base name: "currency")', function() {
-      // uncomment below and update the code to test the property currency
-      //var instance = new CoboWaas2.PaymentOrderEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property order_amount (base name: "order_amount")', function() {
-      // uncomment below and update the code to test the property order_amount
-      //var instance = new CoboWaas2.PaymentOrderEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fee_amount (base name: "fee_amount")', function() {
-      // uncomment below and update the code to test the property fee_amount
-      //var instance = new CoboWaas2.PaymentOrderEventData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property exchange_rate (base name: "exchange_rate")', function() {
       // uncomment below and update the code to test the property exchange_rate
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
 
-    it('should have the property expired_at (base name: "expired_at")', function() {
-      // uncomment below and update the code to test the property expired_at
+    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
+      // uncomment below and update the code to test the property amount_tolerance
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
 
-    it('should have the property merchant_order_code (base name: "merchant_order_code")', function() {
-      // uncomment below and update the code to test the property merchant_order_code
-      //var instance = new CoboWaas2.PaymentOrderEventData();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property psp_order_code (base name: "psp_order_code")', function() {
-      // uncomment below and update the code to test the property psp_order_code
+    it('should have the property receive_address (base name: "receive_address")', function() {
+      // uncomment below and update the code to test the property receive_address
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
@@ -144,6 +144,12 @@
 
     it('should have the property received_token_amount (base name: "received_token_amount")', function() {
       // uncomment below and update the code to test the property received_token_amount
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property expired_at (base name: "expired_at")', function() {
+      // uncomment below and update the code to test the property expired_at
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
@@ -166,14 +172,26 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property settlement_status (base name: "settlement_status")', function() {
-      // uncomment below and update the code to test the property settlement_status
+    it('should have the property currency (base name: "currency")', function() {
+      // uncomment below and update the code to test the property currency
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });
 
-    it('should have the property amount_tolerance (base name: "amount_tolerance")', function() {
-      // uncomment below and update the code to test the property amount_tolerance
+    it('should have the property order_amount (base name: "order_amount")', function() {
+      // uncomment below and update the code to test the property order_amount
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
+      //var instance = new CoboWaas2.PaymentOrderEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property settlement_status (base name: "settlement_status")', function() {
+      // uncomment below and update the code to test the property settlement_status
       //var instance = new CoboWaas2.PaymentOrderEventData();
       //expect(instance).to.be();
     });

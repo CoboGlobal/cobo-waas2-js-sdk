@@ -94,6 +94,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property counterparty (base name: "counterparty")', function() {
+      // uncomment below and update the code to test the property counterparty
+      //var instance = new CoboWaas2.PaymentTransaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property destination (base name: "destination")', function() {
+      // uncomment below and update the code to test the property destination
+      //var instance = new CoboWaas2.PaymentTransaction();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.PaymentTransaction();

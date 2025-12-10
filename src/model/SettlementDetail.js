@@ -87,6 +87,9 @@ class SettlementDetail {
             if (data.hasOwnProperty('crypto_address_id')) {
                 obj['crypto_address_id'] = ApiClient.convertToType(data['crypto_address_id'], 'String');
             }
+            if (data.hasOwnProperty('crypto_address')) {
+                obj['crypto_address'] = ApiClient.convertToType(data['crypto_address'], 'String');
+            }
             if (data.hasOwnProperty('payout_channel')) {
                 obj['payout_channel'] = PayoutChannel.constructFromObject(data['payout_channel']);
             }
@@ -158,6 +161,10 @@ class SettlementDetail {
         // ensure the json data is a string
         if (data['crypto_address_id'] && !(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
             throw new Error("Expected the field `crypto_address_id` to be a primitive type in the JSON string but got " + data['crypto_address_id']);
+        }
+        // ensure the json data is a string
+        if (data['crypto_address'] && !(typeof data['crypto_address'] === 'string' || data['crypto_address'] instanceof String)) {
+            throw new Error("Expected the field `crypto_address` to be a primitive type in the JSON string but got " + data['crypto_address']);
         }
         // ensure the json data is a string
         if (data['settlement_request_id'] && !(typeof data['settlement_request_id'] === 'string' || data['settlement_request_id'] instanceof String)) {
@@ -257,6 +264,12 @@ SettlementDetail.prototype['updated_timestamp'] = undefined;
  * @member {String} crypto_address_id
  */
 SettlementDetail.prototype['crypto_address_id'] = undefined;
+
+/**
+ * The actual blockchain address to which funds were transferred.
+ * @member {String} crypto_address
+ */
+SettlementDetail.prototype['crypto_address'] = undefined;
 
 /**
  * @member {module:model/PayoutChannel} payout_channel

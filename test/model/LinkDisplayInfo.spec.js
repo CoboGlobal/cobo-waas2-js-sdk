@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property return_url (base name: "return_url")', function() {
+      // uncomment below and update the code to test the property return_url
+      //var instance = new CoboWaas2.LinkDisplayInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

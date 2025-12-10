@@ -11,11 +11,14 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateKyaScreeningsBody from '../model/CreateKyaScreeningsBody';
 import DispositionQueryResponse from '../model/DispositionQueryResponse';
 import DispositionResponse from '../model/DispositionResponse';
 import ErrorResponse from '../model/ErrorResponse';
 import IsolateDisposition from '../model/IsolateDisposition';
+import KyaScreeningResult from '../model/KyaScreeningResult';
 import KytScreeningsTransaction from '../model/KytScreeningsTransaction';
+import ListKyaScreenings200Response from '../model/ListKyaScreenings200Response';
 import RefundDisposition from '../model/RefundDisposition';
 import SubmitKytResponse from '../model/SubmitKytResponse';
 import SubmitKytScreeningsDecisionsBody from '../model/SubmitKytScreeningsDecisionsBody';
@@ -39,6 +42,55 @@ export default class ComplianceApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Batch create KYA address screening requests
+     * This operation submits batch address screening requests to detect address compliance and risk levels. Up to 50 addresses can be submitted in a single request.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateKyaScreeningsBody} [CreateKyaScreeningsBody] The request body to batch create KYA address screening requests
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/KyaScreeningResult>} and HTTP response
+     */
+    createKyaScreeningsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CreateKyaScreeningsBody'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = [KyaScreeningResult];
+      return this.apiClient.callApi(
+        '/compliance/kya/screenings', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Batch create KYA address screening requests
+     * This operation submits batch address screening requests to detect address compliance and risk levels. Up to 50 addresses can be submitted in a single request.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateKyaScreeningsBody} opts.CreateKyaScreeningsBody The request body to batch create KYA address screening requests
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/KyaScreeningResult>}
+     */
+    createKyaScreenings(opts) {
+      return this.createKyaScreeningsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -86,6 +138,57 @@ export default class ComplianceApi {
      */
     getDispositionStatus(transaction_id) {
       return this.getDispositionStatusWithHttpInfo(transaction_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieve single KYA address screening result
+     * This operation retrieves a specific address screening result by screening_id, including complete risk assessment information.  <Note>This endpoint returns the full screening details including risk level, summary, and detailed risk category exposures.</Note> 
+     * @param {String} screening_id The unique identifier (UUID) of the address screening request.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/KyaScreeningResult} and HTTP response
+     */
+    getKyaScreeningWithHttpInfo(screening_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'screening_id' is set
+      if (screening_id === undefined || screening_id === null) {
+        throw new Error("Missing the required parameter 'screening_id' when calling getKyaScreening");
+      }
+
+      let pathParams = {
+        'screening_id': screening_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = KyaScreeningResult;
+      return this.apiClient.callApi(
+        '/compliance/kya/screenings/{screening_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve single KYA address screening result
+     * This operation retrieves a specific address screening result by screening_id, including complete risk assessment information.  <Note>This endpoint returns the full screening details including risk level, summary, and detailed risk category exposures.</Note> 
+     * @param {String} screening_id The unique identifier (UUID) of the address screening request.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/KyaScreeningResult}
+     */
+    getKyaScreening(screening_id) {
+      return this.getKyaScreeningWithHttpInfo(screening_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -186,6 +289,65 @@ export default class ComplianceApi {
      */
     isolateFunds(opts) {
       return this.isolateFundsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Query KYA address screening results
+     * This operation queries the results of specified screening requests with pagination support. You can filter specific screening requests using screening_ids (up to 50 IDs).  <Note>For large-scale queries exceeding 50 screening results, use pagination parameters (limit, before, after) for multiple queries.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {String} [screening_ids] A comma-separated list of screening request IDs to filter specific screening results. Maximum 50 IDs allowed to ensure URL length stays within standard web server limits (typically 8KB).  Each ID must be in standard UUID format (36 characters fixed length).  Example: `f47ac10b-58cc-4372-a567-0e02b2c3d479,a1b2c3d4-e5f6-4321-8765-fedcba987654` 
+     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
+     * @param {String} [before] This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} [after] This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListKyaScreenings200Response} and HTTP response
+     */
+    listKyaScreeningsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'screening_ids': opts['screening_ids'],
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListKyaScreenings200Response;
+      return this.apiClient.callApi(
+        '/compliance/kya/screenings', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Query KYA address screening results
+     * This operation queries the results of specified screening requests with pagination support. You can filter specific screening requests using screening_ids (up to 50 IDs).  <Note>For large-scale queries exceeding 50 screening results, use pagination parameters (limit, before, after) for multiple queries.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.screening_ids A comma-separated list of screening request IDs to filter specific screening results. Maximum 50 IDs allowed to ensure URL length stays within standard web server limits (typically 8KB).  Each ID must be in standard UUID format (36 characters fixed length).  Example: `f47ac10b-58cc-4372-a567-0e02b2c3d479,a1b2c3d4-e5f6-4321-8765-fedcba987654` 
+     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
+     * @param {String} opts.before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set `before` to the ID of Object C (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object A.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. - If you set it to `infinity`, the last page of data is returned. 
+     * @param {String} opts.after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set `after` to the ID of Object A (`RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk`), the response will include Object B and Object C.    **Notes**:   - If you set both `after` and `before`, an error will occur. - If you leave both `before` and `after` empty, the first page of data is returned. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListKyaScreenings200Response}
+     */
+    listKyaScreenings(opts) {
+      return this.listKyaScreeningsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

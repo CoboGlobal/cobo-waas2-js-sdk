@@ -20,14 +20,12 @@ class CreatePaymentOrderRequest {
      * Constructs a new <code>CreatePaymentOrderRequest</code>.
      * @alias module:model/CreatePaymentOrderRequest
      * @param merchant_id {String} The merchant ID.
-     * @param token_id {String} The ID of the cryptocurrency used for payment. Supported values:    - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param order_amount {String} The base amount of the order in fiat currency, excluding the developer fee (specified in `fee_amount`). Values must be greater than `0` and contain two decimal places.
-     * @param fee_amount {String} The developer fee for the order in fiat currency. It is added to the base amount (`order_amount`) to determine the final charge. For example, if order_amount is \"100.00\" and fee_amount is \"2.00\", the customer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant and \"2.00\" settled to the developer. Values must be greater than 0 and contain two decimal places.
      * @param psp_order_code {String} A unique reference code assigned by the developer to identify this order in their system.
+     * @param fee_amount {String} The developer fee for the order in fiat currency. It is added to the base amount (`order_amount`) to determine the final charge. For example, if order_amount is \"100.00\" and fee_amount is \"2.00\", the customer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant and \"2.00\" settled to the developer. Values must be greater than 0 and contain two decimal places.
      */
-    constructor(merchant_id, token_id, order_amount, fee_amount, psp_order_code) { 
+    constructor(merchant_id, psp_order_code, fee_amount) { 
         
-        CreatePaymentOrderRequest.initialize(this, merchant_id, token_id, order_amount, fee_amount, psp_order_code);
+        CreatePaymentOrderRequest.initialize(this, merchant_id, psp_order_code, fee_amount);
     }
 
     /**
@@ -35,12 +33,10 @@ class CreatePaymentOrderRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, merchant_id, token_id, order_amount, fee_amount, psp_order_code) { 
+    static initialize(obj, merchant_id, psp_order_code, fee_amount) { 
         obj['merchant_id'] = merchant_id;
-        obj['token_id'] = token_id;
-        obj['order_amount'] = order_amount;
-        obj['fee_amount'] = fee_amount;
         obj['psp_order_code'] = psp_order_code;
+        obj['fee_amount'] = fee_amount;
     }
 
     /**
@@ -57,8 +53,32 @@ class CreatePaymentOrderRequest {
             if (data.hasOwnProperty('merchant_id')) {
                 obj['merchant_id'] = ApiClient.convertToType(data['merchant_id'], 'String');
             }
-            if (data.hasOwnProperty('token_id')) {
-                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            if (data.hasOwnProperty('merchant_order_code')) {
+                obj['merchant_order_code'] = ApiClient.convertToType(data['merchant_order_code'], 'String');
+            }
+            if (data.hasOwnProperty('psp_order_code')) {
+                obj['psp_order_code'] = ApiClient.convertToType(data['psp_order_code'], 'String');
+            }
+            if (data.hasOwnProperty('pricing_currency')) {
+                obj['pricing_currency'] = ApiClient.convertToType(data['pricing_currency'], 'String');
+            }
+            if (data.hasOwnProperty('pricing_amount')) {
+                obj['pricing_amount'] = ApiClient.convertToType(data['pricing_amount'], 'String');
+            }
+            if (data.hasOwnProperty('fee_amount')) {
+                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
+            }
+            if (data.hasOwnProperty('payable_currency')) {
+                obj['payable_currency'] = ApiClient.convertToType(data['payable_currency'], 'String');
+            }
+            if (data.hasOwnProperty('payable_amount')) {
+                obj['payable_amount'] = ApiClient.convertToType(data['payable_amount'], 'String');
+            }
+            if (data.hasOwnProperty('expired_in')) {
+                obj['expired_in'] = ApiClient.convertToType(data['expired_in'], 'Number');
+            }
+            if (data.hasOwnProperty('amount_tolerance')) {
+                obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
             }
             if (data.hasOwnProperty('currency')) {
                 obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
@@ -66,26 +86,14 @@ class CreatePaymentOrderRequest {
             if (data.hasOwnProperty('order_amount')) {
                 obj['order_amount'] = ApiClient.convertToType(data['order_amount'], 'String');
             }
-            if (data.hasOwnProperty('fee_amount')) {
-                obj['fee_amount'] = ApiClient.convertToType(data['fee_amount'], 'String');
-            }
-            if (data.hasOwnProperty('merchant_order_code')) {
-                obj['merchant_order_code'] = ApiClient.convertToType(data['merchant_order_code'], 'String');
-            }
-            if (data.hasOwnProperty('psp_order_code')) {
-                obj['psp_order_code'] = ApiClient.convertToType(data['psp_order_code'], 'String');
-            }
-            if (data.hasOwnProperty('expired_in')) {
-                obj['expired_in'] = ApiClient.convertToType(data['expired_in'], 'Number');
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
             if (data.hasOwnProperty('use_dedicated_address')) {
                 obj['use_dedicated_address'] = ApiClient.convertToType(data['use_dedicated_address'], 'Boolean');
             }
             if (data.hasOwnProperty('custom_exchange_rate')) {
                 obj['custom_exchange_rate'] = ApiClient.convertToType(data['custom_exchange_rate'], 'String');
-            }
-            if (data.hasOwnProperty('amount_tolerance')) {
-                obj['amount_tolerance'] = ApiClient.convertToType(data['amount_tolerance'], 'String');
             }
         }
         return obj;
@@ -108,8 +116,36 @@ class CreatePaymentOrderRequest {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
-            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        if (data['merchant_order_code'] && !(typeof data['merchant_order_code'] === 'string' || data['merchant_order_code'] instanceof String)) {
+            throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
+        }
+        // ensure the json data is a string
+        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+            throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
+        }
+        // ensure the json data is a string
+        if (data['pricing_currency'] && !(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
+            throw new Error("Expected the field `pricing_currency` to be a primitive type in the JSON string but got " + data['pricing_currency']);
+        }
+        // ensure the json data is a string
+        if (data['pricing_amount'] && !(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
+            throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
+        }
+        // ensure the json data is a string
+        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
+        }
+        // ensure the json data is a string
+        if (data['payable_currency'] && !(typeof data['payable_currency'] === 'string' || data['payable_currency'] instanceof String)) {
+            throw new Error("Expected the field `payable_currency` to be a primitive type in the JSON string but got " + data['payable_currency']);
+        }
+        // ensure the json data is a string
+        if (data['payable_amount'] && !(typeof data['payable_amount'] === 'string' || data['payable_amount'] instanceof String)) {
+            throw new Error("Expected the field `payable_amount` to be a primitive type in the JSON string but got " + data['payable_amount']);
+        }
+        // ensure the json data is a string
+        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
+            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
         }
         // ensure the json data is a string
         if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
@@ -120,24 +156,12 @@ class CreatePaymentOrderRequest {
             throw new Error("Expected the field `order_amount` to be a primitive type in the JSON string but got " + data['order_amount']);
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
-            throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
-        }
-        // ensure the json data is a string
-        if (data['merchant_order_code'] && !(typeof data['merchant_order_code'] === 'string' || data['merchant_order_code'] instanceof String)) {
-            throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
-        }
-        // ensure the json data is a string
-        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
-            throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
         if (data['custom_exchange_rate'] && !(typeof data['custom_exchange_rate'] === 'string' || data['custom_exchange_rate'] instanceof String)) {
             throw new Error("Expected the field `custom_exchange_rate` to be a primitive type in the JSON string but got " + data['custom_exchange_rate']);
-        }
-        // ensure the json data is a string
-        if (data['amount_tolerance'] && !(typeof data['amount_tolerance'] === 'string' || data['amount_tolerance'] instanceof String)) {
-            throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
         }
 
         return true;
@@ -146,7 +170,7 @@ class CreatePaymentOrderRequest {
 
 }
 
-CreatePaymentOrderRequest.RequiredProperties = ["merchant_id", "token_id", "order_amount", "fee_amount", "psp_order_code"];
+CreatePaymentOrderRequest.RequiredProperties = ["merchant_id", "psp_order_code", "fee_amount"];
 
 /**
  * The merchant ID.
@@ -155,10 +179,58 @@ CreatePaymentOrderRequest.RequiredProperties = ["merchant_id", "token_id", "orde
 CreatePaymentOrderRequest.prototype['merchant_id'] = undefined;
 
 /**
- * The ID of the cryptocurrency used for payment. Supported values:    - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
- * @member {String} token_id
+ * A unique reference code assigned by the merchant to identify this order in their system.
+ * @member {String} merchant_order_code
  */
-CreatePaymentOrderRequest.prototype['token_id'] = undefined;
+CreatePaymentOrderRequest.prototype['merchant_order_code'] = undefined;
+
+/**
+ * A unique reference code assigned by the developer to identify this order in their system.
+ * @member {String} psp_order_code
+ */
+CreatePaymentOrderRequest.prototype['psp_order_code'] = undefined;
+
+/**
+ * The ID of the cryptocurrency used for payment. Supported values:   - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+ * @member {String} pricing_currency
+ */
+CreatePaymentOrderRequest.prototype['pricing_currency'] = undefined;
+
+/**
+ * The base amount of the order in fiat currency, excluding the developer fee (specified in `fee_amount`). Values must be greater than `0` and contain two decimal places.
+ * @member {String} pricing_amount
+ */
+CreatePaymentOrderRequest.prototype['pricing_amount'] = undefined;
+
+/**
+ * The developer fee for the order in fiat currency. It is added to the base amount (`order_amount`) to determine the final charge. For example, if order_amount is \"100.00\" and fee_amount is \"2.00\", the customer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant and \"2.00\" settled to the developer. Values must be greater than 0 and contain two decimal places.
+ * @member {String} fee_amount
+ */
+CreatePaymentOrderRequest.prototype['fee_amount'] = undefined;
+
+/**
+ * The ID of the cryptocurrency used for payment. Supported values:   - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+ * @member {String} payable_currency
+ */
+CreatePaymentOrderRequest.prototype['payable_currency'] = undefined;
+
+/**
+ * The actual payable amount of the order in the cryptocurrency.
+ * @member {String} payable_amount
+ */
+CreatePaymentOrderRequest.prototype['payable_amount'] = undefined;
+
+/**
+ * The pay-in order will expire after approximately a certain number of seconds: - The order status becomes final and cannot be changed - The `received_token_amount` field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a `transactionLate` webhook event. 
+ * @member {Number} expired_in
+ */
+CreatePaymentOrderRequest.prototype['expired_in'] = undefined;
+
+/**
+ * Allowed amount deviation, precision to 1 decimal place.
+ * @member {String} amount_tolerance
+ */
+CreatePaymentOrderRequest.prototype['amount_tolerance'] = undefined;
 
 /**
  * The fiat currency of the order.
@@ -174,28 +246,10 @@ CreatePaymentOrderRequest.prototype['currency'] = '';
 CreatePaymentOrderRequest.prototype['order_amount'] = undefined;
 
 /**
- * The developer fee for the order in fiat currency. It is added to the base amount (`order_amount`) to determine the final charge. For example, if order_amount is \"100.00\" and fee_amount is \"2.00\", the customer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant and \"2.00\" settled to the developer. Values must be greater than 0 and contain two decimal places.
- * @member {String} fee_amount
+ * The ID of the cryptocurrency used for payment. Supported values:   - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+ * @member {String} token_id
  */
-CreatePaymentOrderRequest.prototype['fee_amount'] = undefined;
-
-/**
- * A unique reference code assigned by the merchant to identify this order in their system.
- * @member {String} merchant_order_code
- */
-CreatePaymentOrderRequest.prototype['merchant_order_code'] = undefined;
-
-/**
- * A unique reference code assigned by the developer to identify this order in their system.
- * @member {String} psp_order_code
- */
-CreatePaymentOrderRequest.prototype['psp_order_code'] = undefined;
-
-/**
- * The pay-in order will expire after approximately a certain number of seconds: - The order status becomes final and cannot be changed - The `received_token_amount` field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a `transactionLate` webhook event. 
- * @member {Number} expired_in
- */
-CreatePaymentOrderRequest.prototype['expired_in'] = undefined;
+CreatePaymentOrderRequest.prototype['token_id'] = undefined;
 
 /**
  * Indicates whether to allocate a dedicated address for this order.  If false, a shared address from the address pool will be used. 
@@ -208,12 +262,6 @@ CreatePaymentOrderRequest.prototype['use_dedicated_address'] = undefined;
  * @member {String} custom_exchange_rate
  */
 CreatePaymentOrderRequest.prototype['custom_exchange_rate'] = undefined;
-
-/**
- * Allowed amount deviation, precision to 1 decimal place.
- * @member {String} amount_tolerance
- */
-CreatePaymentOrderRequest.prototype['amount_tolerance'] = undefined;
 
 
 

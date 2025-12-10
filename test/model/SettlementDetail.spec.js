@@ -124,6 +124,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property crypto_address (base name: "crypto_address")', function() {
+      // uncomment below and update the code to test the property crypto_address
+      //var instance = new CoboWaas2.SettlementDetail();
+      //expect(instance).to.be();
+    });
+
     it('should have the property payout_channel (base name: "payout_channel")', function() {
       // uncomment below and update the code to test the property payout_channel
       //var instance = new CoboWaas2.SettlementDetail();

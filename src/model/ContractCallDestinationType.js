@@ -32,6 +32,13 @@ export default class ContractCallDestinationType {
 
     
         /**
+         * value: "COSMOS_Contract"
+         * @const
+         */
+        "COSMOS_Contract" = "COSMOS_Contract";
+
+    
+        /**
          * value: "STELLAR_Contract"
          * @const
          */

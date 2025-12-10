@@ -57,9 +57,6 @@ class TransactionCosmosContractDestination {
             if (data.hasOwnProperty('cosmos_messages')) {
                 obj['cosmos_messages'] = ApiClient.convertToType(data['cosmos_messages'], [TransactionCosmosMessage]);
             }
-            if (data.hasOwnProperty('value')) {
-                obj['value'] = ApiClient.convertToType(data['value'], 'String');
-            }
         }
         return obj;
     }
@@ -86,10 +83,6 @@ class TransactionCosmosContractDestination {
                 TransactionCosmosMessage.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
-            throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
-        }
 
         return true;
     }
@@ -108,12 +101,6 @@ TransactionCosmosContractDestination.prototype['destination_type'] = undefined;
  * @member {Array.<module:model/TransactionCosmosMessage>} cosmos_messages
  */
 TransactionCosmosContractDestination.prototype['cosmos_messages'] = undefined;
-
-/**
- * The transfer amount. For example, if you trade 1.5 ETH, then the value is `1.5`. 
- * @member {String} value
- */
-TransactionCosmosContractDestination.prototype['value'] = undefined;
 
 
 
