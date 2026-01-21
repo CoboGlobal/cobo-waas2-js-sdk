@@ -10,7 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import AllocationRequest from './AllocationRequest';
+import AllocationParam from './AllocationParam';
 
 /**
  * The CreateBatchAllocationRequest model module.
@@ -21,11 +21,11 @@ class CreateBatchAllocationRequest {
      * Constructs a new <code>CreateBatchAllocationRequest</code>.
      * @alias module:model/CreateBatchAllocationRequest
      * @param request_id {String} The request ID that is used to track a batch allocation request. The request ID is provided by you and must be unique.
-     * @param allocation_requests {Array.<module:model/AllocationRequest>} 
+     * @param allocation_params {Array.<module:model/AllocationParam>} 
      */
-    constructor(request_id, allocation_requests) { 
+    constructor(request_id, allocation_params) { 
         
-        CreateBatchAllocationRequest.initialize(this, request_id, allocation_requests);
+        CreateBatchAllocationRequest.initialize(this, request_id, allocation_params);
     }
 
     /**
@@ -33,9 +33,9 @@ class CreateBatchAllocationRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, request_id, allocation_requests) { 
+    static initialize(obj, request_id, allocation_params) { 
         obj['request_id'] = request_id;
-        obj['allocation_requests'] = allocation_requests;
+        obj['allocation_params'] = allocation_params;
     }
 
     /**
@@ -52,8 +52,8 @@ class CreateBatchAllocationRequest {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
-            if (data.hasOwnProperty('allocation_requests')) {
-                obj['allocation_requests'] = ApiClient.convertToType(data['allocation_requests'], [AllocationRequest]);
+            if (data.hasOwnProperty('allocation_params')) {
+                obj['allocation_params'] = ApiClient.convertToType(data['allocation_params'], [AllocationParam]);
             }
         }
         return obj;
@@ -75,14 +75,14 @@ class CreateBatchAllocationRequest {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        if (data['allocation_requests']) { // data not null
+        if (data['allocation_params']) { // data not null
             // ensure the json data is an array
-            if (!Array.isArray(data['allocation_requests'])) {
-                throw new Error("Expected the field `allocation_requests` to be an array in the JSON data but got " + data['allocation_requests']);
+            if (!Array.isArray(data['allocation_params'])) {
+                throw new Error("Expected the field `allocation_params` to be an array in the JSON data but got " + data['allocation_params']);
             }
-            // validate the optional field `allocation_requests` (array)
-            for (const item of data['allocation_requests']) {
-                AllocationRequest.validateJSON(item);
+            // validate the optional field `allocation_params` (array)
+            for (const item of data['allocation_params']) {
+                AllocationParam.validateJSON(item);
             };
         }
 
@@ -92,7 +92,7 @@ class CreateBatchAllocationRequest {
 
 }
 
-CreateBatchAllocationRequest.RequiredProperties = ["request_id", "allocation_requests"];
+CreateBatchAllocationRequest.RequiredProperties = ["request_id", "allocation_params"];
 
 /**
  * The request ID that is used to track a batch allocation request. The request ID is provided by you and must be unique.
@@ -101,9 +101,9 @@ CreateBatchAllocationRequest.RequiredProperties = ["request_id", "allocation_req
 CreateBatchAllocationRequest.prototype['request_id'] = undefined;
 
 /**
- * @member {Array.<module:model/AllocationRequest>} allocation_requests
+ * @member {Array.<module:model/AllocationParam>} allocation_params
  */
-CreateBatchAllocationRequest.prototype['allocation_requests'] = undefined;
+CreateBatchAllocationRequest.prototype['allocation_params'] = undefined;
 
 
 

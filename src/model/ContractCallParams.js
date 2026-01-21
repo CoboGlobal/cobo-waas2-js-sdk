@@ -167,7 +167,7 @@ ContractCallParams.prototype['source'] = undefined;
 ContractCallParams.prototype['destination'] = undefined;
 
 /**
- * The description of the contract call transaction.
+ * The description of the contract call transaction. Maximum length is 2048 characters for MPC Wallets and Custodial Wallets (Web3 Wallets), and 1000 characters for Custodial Wallets (Asset Wallets).
  * @member {String} description
  */
 ContractCallParams.prototype['description'] = undefined;

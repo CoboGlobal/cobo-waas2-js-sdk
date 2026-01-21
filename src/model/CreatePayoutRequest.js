@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import PaymentPayoutParam from './PaymentPayoutParam';
+import PaymentPayoutRecipientInfo from './PaymentPayoutRecipientInfo';
 import PayoutChannel from './PayoutChannel';
 
 /**
@@ -22,12 +23,14 @@ class CreatePayoutRequest {
      * Constructs a new <code>CreatePayoutRequest</code>.
      * @alias module:model/CreatePayoutRequest
      * @param request_id {String} The request ID that is used to track a payout request. The request ID is provided by you and must be unique.
+     * @param source_account {String} The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
      * @param payout_channel {module:model/PayoutChannel} 
      * @param payout_params {Array.<module:model/PaymentPayoutParam>} 
+     * @param recipient_info {module:model/PaymentPayoutRecipientInfo} 
      */
-    constructor(request_id, payout_channel, payout_params) { 
+    constructor(request_id, source_account, payout_channel, payout_params, recipient_info) { 
         
-        CreatePayoutRequest.initialize(this, request_id, payout_channel, payout_params);
+        CreatePayoutRequest.initialize(this, request_id, source_account, payout_channel, payout_params, recipient_info);
     }
 
     /**
@@ -35,10 +38,12 @@ class CreatePayoutRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, request_id, payout_channel, payout_params) { 
+    static initialize(obj, request_id, source_account, payout_channel, payout_params, recipient_info) { 
         obj['request_id'] = request_id;
+        obj['source_account'] = source_account;
         obj['payout_channel'] = payout_channel;
         obj['payout_params'] = payout_params;
+        obj['recipient_info'] = recipient_info;
     }
 
     /**
@@ -55,17 +60,17 @@ class CreatePayoutRequest {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
+            if (data.hasOwnProperty('source_account')) {
+                obj['source_account'] = ApiClient.convertToType(data['source_account'], 'String');
+            }
             if (data.hasOwnProperty('payout_channel')) {
                 obj['payout_channel'] = PayoutChannel.constructFromObject(data['payout_channel']);
             }
             if (data.hasOwnProperty('payout_params')) {
                 obj['payout_params'] = ApiClient.convertToType(data['payout_params'], [PaymentPayoutParam]);
             }
-            if (data.hasOwnProperty('bank_account_id')) {
-                obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
-            }
-            if (data.hasOwnProperty('currency')) {
-                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
+            if (data.hasOwnProperty('recipient_info')) {
+                obj['recipient_info'] = PaymentPayoutRecipientInfo.constructFromObject(data['recipient_info']);
             }
             if (data.hasOwnProperty('remark')) {
                 obj['remark'] = ApiClient.convertToType(data['remark'], 'String');
@@ -90,6 +95,10 @@ class CreatePayoutRequest {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
+        // ensure the json data is a string
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+            throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
+        }
         if (data['payout_params']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['payout_params'])) {
@@ -100,13 +109,11 @@ class CreatePayoutRequest {
                 PaymentPayoutParam.validateJSON(item);
             };
         }
-        // ensure the json data is a string
-        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
-            throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
-        }
-        // ensure the json data is a string
-        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
-            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
+        // validate the optional field `recipient_info`
+        if (data['recipient_info']) { // data not null
+          if (!!PaymentPayoutRecipientInfo.validateJSON) {
+            PaymentPayoutRecipientInfo.validateJSON(data['recipient_info']);
+          }
         }
         // ensure the json data is a string
         if (data['remark'] && !(typeof data['remark'] === 'string' || data['remark'] instanceof String)) {
@@ -119,13 +126,19 @@ class CreatePayoutRequest {
 
 }
 
-CreatePayoutRequest.RequiredProperties = ["request_id", "payout_channel", "payout_params"];
+CreatePayoutRequest.RequiredProperties = ["request_id", "source_account", "payout_channel", "payout_params", "recipient_info"];
 
 /**
  * The request ID that is used to track a payout request. The request ID is provided by you and must be unique.
  * @member {String} request_id
  */
 CreatePayoutRequest.prototype['request_id'] = undefined;
+
+/**
+ * The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
+ * @member {String} source_account
+ */
+CreatePayoutRequest.prototype['source_account'] = undefined;
 
 /**
  * @member {module:model/PayoutChannel} payout_channel
@@ -138,19 +151,12 @@ CreatePayoutRequest.prototype['payout_channel'] = undefined;
 CreatePayoutRequest.prototype['payout_params'] = undefined;
 
 /**
- * The ID of the bank account where the funds will be deposited. Specify this field when `payout_channel` is set to `OffRamp`.  You can call [List all bank accounts](https://www.cobo.com/payments/en/api-references/payment/list-all-bank-accounts) to retrieve the IDs of registered bank accounts. To add a new bank account, refer to [Destinations](https://www.cobo.com/payments/en/guides/destinations). 
- * @member {String} bank_account_id
+ * @member {module:model/PaymentPayoutRecipientInfo} recipient_info
  */
-CreatePayoutRequest.prototype['bank_account_id'] = undefined;
+CreatePayoutRequest.prototype['recipient_info'] = undefined;
 
 /**
- * The fiat currency you will receive from the payout. - Required when `payout_channel` is set to `OffRamp`. - Currently, only `USD` is supported. 
- * @member {String} currency
- */
-CreatePayoutRequest.prototype['currency'] = undefined;
-
-/**
- * The remark for the payout.
+ * An optional note or comment about the payout for your internal reference.
  * @member {String} remark
  */
 CreatePayoutRequest.prototype['remark'] = undefined;

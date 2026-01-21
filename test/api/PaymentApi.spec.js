@@ -66,6 +66,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createBulkSend', function() {
+      it('should call createBulkSend successfully', function() {
+        //uncomment below and update the code to test createBulkSend
+        //instance.createBulkSend().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createCounterparty', function() {
       it('should call createCounterparty successfully', function() {
         //uncomment below and update the code to test createCounterparty
@@ -236,6 +246,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createTopUpAddresses', function() {
+      it('should call createTopUpAddresses successfully', function() {
+        //uncomment below and update the code to test createTopUpAddresses
+        //instance.createTopUpAddresses().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('deleteCounterparty', function() {
       it('should call deleteCounterparty successfully', function() {
         //uncomment below and update the code to test deleteCounterparty
@@ -360,6 +380,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call getBatchAllocationById successfully', function() {
         //uncomment below and update the code to test getBatchAllocationById
         //instance.getBatchAllocationById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getBulkSendById', function() {
+      it('should call getBulkSendById successfully', function() {
+        //uncomment below and update the code to test getBulkSendById
+        //instance.getBulkSendById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -536,10 +566,10 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('listAllocations', function() {
-      it('should call listAllocations successfully', function() {
-        //uncomment below and update the code to test listAllocations
-        //instance.listAllocations().then(function(data) {
+    describe('listAllocationItems', function() {
+      it('should call listAllocationItems successfully', function() {
+        //uncomment below and update the code to test listAllocationItems
+        //instance.listAllocationItems().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -560,6 +590,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call listBatchAllocations successfully', function() {
         //uncomment below and update the code to test listBatchAllocations
         //instance.listBatchAllocations().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listBulkSendItems', function() {
+      it('should call listBulkSendItems successfully', function() {
+        //uncomment below and update the code to test listBulkSendItems
+        //instance.listBulkSendItems().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -700,16 +740,6 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call listPaymentWalletBalances successfully', function() {
         //uncomment below and update the code to test listPaymentWalletBalances
         //instance.listPaymentWalletBalances().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('listPayoutItems', function() {
-      it('should call listPayoutItems successfully', function() {
-        //uncomment below and update the code to test listPayoutItems
-        //instance.listPayoutItems().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

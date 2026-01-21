@@ -20,6 +20,7 @@ import Counterparty from '../model/Counterparty';
 import CounterpartyDetail from '../model/CounterpartyDetail';
 import CounterpartyType from '../model/CounterpartyType';
 import CreateBatchAllocationRequest from '../model/CreateBatchAllocationRequest';
+import CreateBulkSendRequest from '../model/CreateBulkSendRequest';
 import CreateCounterpartyEntry201Response from '../model/CreateCounterpartyEntry201Response';
 import CreateCounterpartyEntryRequest from '../model/CreateCounterpartyEntryRequest';
 import CreateCounterpartyRequest from '../model/CreateCounterpartyRequest';
@@ -38,6 +39,8 @@ import CreateRefundLinkRequest from '../model/CreateRefundLinkRequest';
 import CreateRefundRequest from '../model/CreateRefundRequest';
 import CreateReportRequest from '../model/CreateReportRequest';
 import CreateSettlementRequestRequest from '../model/CreateSettlementRequestRequest';
+import CreateTopUpAddresses from '../model/CreateTopUpAddresses';
+import CreateTopUpAddresses201Response from '../model/CreateTopUpAddresses201Response';
 import CryptoAddress from '../model/CryptoAddress';
 import DeleteCounterparty200Response from '../model/DeleteCounterparty200Response';
 import DeleteCounterpartyById200Response from '../model/DeleteCounterpartyById200Response';
@@ -67,8 +70,9 @@ import GetRefunds200Response from '../model/GetRefunds200Response';
 import GetReports200Response from '../model/GetReports200Response';
 import GetSettlementInfoByIds200Response from '../model/GetSettlementInfoByIds200Response';
 import Link from '../model/Link';
-import ListAllocations200Response from '../model/ListAllocations200Response';
+import ListAllocationItems200Response from '../model/ListAllocationItems200Response';
 import ListBatchAllocations200Response from '../model/ListBatchAllocations200Response';
+import ListBulkSendItems200Response from '../model/ListBulkSendItems200Response';
 import ListCounterparties200Response from '../model/ListCounterparties200Response';
 import ListCounterpartyEntries200Response from '../model/ListCounterpartyEntries200Response';
 import ListCounterpartyWalletAddress200Response from '../model/ListCounterpartyWalletAddress200Response';
@@ -81,7 +85,6 @@ import ListMerchantBalances200Response from '../model/ListMerchantBalances200Res
 import ListMerchants200Response from '../model/ListMerchants200Response';
 import ListPaymentOrders200Response from '../model/ListPaymentOrders200Response';
 import ListPaymentWalletBalances200Response from '../model/ListPaymentWalletBalances200Response';
-import ListPayoutItems200Response from '../model/ListPayoutItems200Response';
 import ListPayouts200Response from '../model/ListPayouts200Response';
 import ListSettlementDetails200Response from '../model/ListSettlementDetails200Response';
 import ListSettlementRequests200Response from '../model/ListSettlementRequests200Response';
@@ -90,6 +93,7 @@ import ListTopUpPayers200Response from '../model/ListTopUpPayers200Response';
 import Merchant from '../model/Merchant';
 import Order from '../model/Order';
 import PaymentAllocationAmount from '../model/PaymentAllocationAmount';
+import PaymentBulkSend from '../model/PaymentBulkSend';
 import PaymentEstimateFee201Response from '../model/PaymentEstimateFee201Response';
 import PaymentEstimateFeeRequest from '../model/PaymentEstimateFeeRequest';
 import PaymentPayout from '../model/PaymentPayout';
@@ -289,6 +293,55 @@ export default class PaymentApi {
      */
     createBatchAllocation(opts) {
       return this.createBatchAllocationWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create bulk send
+     * This operation creates a bulk send to transfer funds to multiple recipients in a single request. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateBulkSendRequest} [CreateBulkSendRequest] The request body to create a bulk send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentBulkSend} and HTTP response
+     */
+    createBulkSendWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CreateBulkSendRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PaymentBulkSend;
+      return this.apiClient.callApi(
+        '/payments/bulk_sends', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create bulk send
+     * This operation creates a bulk send to transfer funds to multiple recipients in a single request. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateBulkSendRequest} opts.CreateBulkSendRequest The request body to create a bulk send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentBulkSend}
+     */
+    createBulkSend(opts) {
+      return this.createBulkSendWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -885,7 +938,7 @@ export default class PaymentApi {
 
     /**
      * Create payout
-     * This operation initiates a payout, distributing funds either to cryptocurrency addresses or to bank accounts as fiat currency. 
+     * This operation creates a payout to withdraw available balances. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreatePayoutRequest} [CreatePayoutRequest] The request body to create a payout.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentPayout} and HTTP response
@@ -919,7 +972,7 @@ export default class PaymentApi {
 
     /**
      * Create payout
-     * This operation initiates a payout, distributing funds either to cryptocurrency addresses or to bank accounts as fiat currency. 
+     * This operation creates a payout to withdraw available balances. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreatePayoutRequest} opts.CreatePayoutRequest The request body to create a payout.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentPayout}
@@ -1081,7 +1134,7 @@ export default class PaymentApi {
 
     /**
      * Create settlement request
-     * This operation creates a settlement request to withdraw available balances. 
+     * <Note>This operation has been deprecated. Please use [Create payout](https://www.cobo.com/payments/en/api-references/payment/create-payout) instead.</Note>  You can include multiple merchants and cryptocurrencies in a single settlement request. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateSettlementRequestRequest} [CreateSettlementRequestRequest] The request body to create a settlement request.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Settlement} and HTTP response
@@ -1115,13 +1168,62 @@ export default class PaymentApi {
 
     /**
      * Create settlement request
-     * This operation creates a settlement request to withdraw available balances. 
+     * <Note>This operation has been deprecated. Please use [Create payout](https://www.cobo.com/payments/en/api-references/payment/create-payout) instead.</Note>  You can include multiple merchants and cryptocurrencies in a single settlement request. 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateSettlementRequestRequest} opts.CreateSettlementRequestRequest The request body to create a settlement request.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Settlement}
      */
     createSettlementRequest(opts) {
       return this.createSettlementRequestWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Batch create top-up addresses
+     * This operation creates top-up addresses for multiple payers under a specific merchant and token in a single request.  <Note>This operation supports batch processing of up to 50 payers per request.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateTopUpAddresses} [CreateTopUpAddresses] The request body of the create top-up addresses operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CreateTopUpAddresses201Response} and HTTP response
+     */
+    createTopUpAddressesWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CreateTopUpAddresses'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CreateTopUpAddresses201Response;
+      return this.apiClient.callApi(
+        '/payments/topup/address', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Batch create top-up addresses
+     * This operation creates top-up addresses for multiple payers under a specific merchant and token in a single request.  <Note>This operation supports batch processing of up to 50 payers per request.</Note> 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateTopUpAddresses} opts.CreateTopUpAddresses The request body of the create top-up addresses operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CreateTopUpAddresses201Response}
+     */
+    createTopUpAddresses(opts) {
+      return this.createTopUpAddressesWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1824,6 +1926,57 @@ export default class PaymentApi {
      */
     getBatchAllocationById(batch_allocation_id) {
       return this.getBatchAllocationByIdWithHttpInfo(batch_allocation_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get bulk send information
+     * This operation retrieves the information of a specific bulk send. 
+     * @param {String} bulk_send_id The bulk send ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentBulkSend} and HTTP response
+     */
+    getBulkSendByIdWithHttpInfo(bulk_send_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'bulk_send_id' is set
+      if (bulk_send_id === undefined || bulk_send_id === null) {
+        throw new Error("Missing the required parameter 'bulk_send_id' when calling getBulkSendById");
+      }
+
+      let pathParams = {
+        'bulk_send_id': bulk_send_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = PaymentBulkSend;
+      return this.apiClient.callApi(
+        '/payments/bulk_sends/{bulk_send_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get bulk send information
+     * This operation retrieves the information of a specific bulk send. 
+     * @param {String} bulk_send_id The bulk send ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentBulkSend}
+     */
+    getBulkSendById(bulk_send_id) {
+      return this.getBulkSendByIdWithHttpInfo(bulk_send_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -2591,7 +2744,7 @@ export default class PaymentApi {
 
     /**
      * Get settlement request information
-     * This operation retrieves the information of a specific settlement request. 
+     * <Note>This operation has been deprecated. Please use [Get payout information](https://www.cobo.com/payments/en/api-references/payment/get-payout-information) instead.</Note>  This operation retrieves the information of a specific settlement request. 
      * @param {String} settlement_request_id The settlement request ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Settlement} and HTTP response
      */
@@ -2628,7 +2781,7 @@ export default class PaymentApi {
 
     /**
      * Get settlement request information
-     * This operation retrieves the information of a specific settlement request. 
+     * <Note>This operation has been deprecated. Please use [Get payout information](https://www.cobo.com/payments/en/api-references/payment/get-payout-information) instead.</Note>  This operation retrieves the information of a specific settlement request. 
      * @param {String} settlement_request_id The settlement request ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Settlement}
      */
@@ -2646,7 +2799,7 @@ export default class PaymentApi {
      * @param {Object} opts Optional parameters
      * @param {String} [merchant_ids] A list of merchant IDs to query.
      * @param {String} [currency = 'USD')] The currency for the operation. Currently, only `USD` is supported.
-     * @param {module:model/AcquiringType} [acquiring_type] 
+     * @param {module:model/AcquiringType} [acquiring_type] This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetSettlementInfoByIds200Response} and HTTP response
      */
     getSettlementInfoByIdsWithHttpInfo(opts) {
@@ -2685,7 +2838,7 @@ export default class PaymentApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.merchant_ids A list of merchant IDs to query.
      * @param {String} opts.currency The currency for the operation. Currently, only `USD` is supported. (default to 'USD')
-     * @param {module:model/AcquiringType} opts.acquiring_type 
+     * @param {module:model/AcquiringType} opts.acquiring_type This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetSettlementInfoByIds200Response}
      */
     getSettlementInfoByIds(opts) {
@@ -2761,8 +2914,8 @@ export default class PaymentApi {
 
 
     /**
-     * List all allocation records
-     * This operation retrieves the information of all allocation records.   One allocation record corresponds to one allocation request in a batch allocation. 
+     * List all allocation items
+     * This operation retrieves the information of all allocations. 
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -2771,9 +2924,9 @@ export default class PaymentApi {
      * @param {String} [destination_account] The destination account.  - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
      * @param {String} [token_id] The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      * @param {String} [batch_allocation_id] The batch allocation ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAllocations200Response} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAllocationItems200Response} and HTTP response
      */
-    listAllocationsWithHttpInfo(opts) {
+    listAllocationItemsWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
       if (postBody && postBody.toJSON) {
@@ -2799,17 +2952,17 @@ export default class PaymentApi {
       let authNames = ['OAuth2', 'CoboAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = ListAllocations200Response;
+      let returnType = ListAllocationItems200Response;
       return this.apiClient.callApi(
-        '/payments/allocation_records', 'GET',
+        '/payments/allocation_items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * List all allocation records
-     * This operation retrieves the information of all allocation records.   One allocation record corresponds to one allocation request in a batch allocation. 
+     * List all allocation items
+     * This operation retrieves the information of all allocations. 
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -2818,10 +2971,10 @@ export default class PaymentApi {
      * @param {String} opts.destination_account The destination account.  - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
      * @param {String} opts.token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      * @param {String} opts.batch_allocation_id The batch allocation ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAllocations200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAllocationItems200Response}
      */
-    listAllocations(opts) {
-      return this.listAllocationsWithHttpInfo(opts)
+    listAllocationItems(opts) {
+      return this.listAllocationItemsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -2830,7 +2983,7 @@ export default class PaymentApi {
 
     /**
      * List all bank accounts
-     *  <Note>This operation has been deprecated.</Note> This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
+     * <Note>This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.</Note> This operation retrieves the information of all bank accounts registered. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/BankAccount>} and HTTP response
      */
     listBankAccountsWithHttpInfo() {
@@ -2861,7 +3014,7 @@ export default class PaymentApi {
 
     /**
      * List all bank accounts
-     *  <Note>This operation has been deprecated.</Note> This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
+     * <Note>This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.</Note> This operation retrieves the information of all bank accounts registered. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/BankAccount>}
      */
     listBankAccounts() {
@@ -2925,6 +3078,69 @@ export default class PaymentApi {
      */
     listBatchAllocations(opts) {
       return this.listBatchAllocationsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List bulk send items
+     * This operation retrieves the list of items for a specific bulk send. 
+     * @param {String} bulk_send_id The bulk send ID.
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
+     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListBulkSendItems200Response} and HTTP response
+     */
+    listBulkSendItemsWithHttpInfo(bulk_send_id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'bulk_send_id' is set
+      if (bulk_send_id === undefined || bulk_send_id === null) {
+        throw new Error("Missing the required parameter 'bulk_send_id' when calling listBulkSendItems");
+      }
+
+      let pathParams = {
+        'bulk_send_id': bulk_send_id
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListBulkSendItems200Response;
+      return this.apiClient.callApi(
+        '/payments/bulk_sends/{bulk_send_id}/items', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List bulk send items
+     * This operation retrieves the list of items for a specific bulk send. 
+     * @param {String} bulk_send_id The bulk send ID.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
+     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListBulkSendItems200Response}
+     */
+    listBulkSendItems(bulk_send_id, opts) {
+      return this.listBulkSendItemsWithHttpInfo(bulk_send_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -3520,7 +3736,7 @@ export default class PaymentApi {
      * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      * @param {Object} opts Optional parameters
      * @param {String} [merchant_ids] A list of merchant IDs to query.
-     * @param {module:model/AcquiringType} [acquiring_type] 
+     * @param {module:model/AcquiringType} [acquiring_type] This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListMerchantBalances200Response} and HTTP response
      */
     listMerchantBalancesWithHttpInfo(token_id, opts) {
@@ -3563,7 +3779,7 @@ export default class PaymentApi {
      * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      * @param {Object} opts Optional parameters
      * @param {String} opts.merchant_ids A list of merchant IDs to query.
-     * @param {module:model/AcquiringType} opts.acquiring_type 
+     * @param {module:model/AcquiringType} opts.acquiring_type This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListMerchantBalances200Response}
      */
     listMerchantBalances(token_id, opts) {
@@ -3806,68 +4022,6 @@ export default class PaymentApi {
 
 
     /**
-     * List all payout items
-     * This operation retrieves the information of all payout items. You can filter the result by source account or status. 
-     * @param {Object} opts Optional parameters
-     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
-     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
-     * @param {String} [source_account] The source account.  - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
-     * @param {String} [statuses] A list of order, refund or payout item statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all payout items](https://www.cobo.com/payments/en/api-references/payment/list-all-payout-items) 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListPayoutItems200Response} and HTTP response
-     */
-    listPayoutItemsWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = null;
-      if (postBody && postBody.toJSON) {
-          postBody = postBody.toJSON()
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'limit': opts['limit'],
-        'before': opts['before'],
-        'after': opts['after'],
-        'source_account': opts['source_account'],
-        'statuses': opts['statuses']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['OAuth2', 'CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = ListPayoutItems200Response;
-      return this.apiClient.callApi(
-        '/payments/payout_items', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * List all payout items
-     * This operation retrieves the information of all payout items. You can filter the result by source account or status. 
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
-     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
-     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
-     * @param {String} opts.source_account The source account.  - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
-     * @param {String} opts.statuses A list of order, refund or payout item statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all payout items](https://www.cobo.com/payments/en/api-references/payment/list-all-payout-items) 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListPayoutItems200Response}
-     */
-    listPayoutItems(opts) {
-      return this.listPayoutItemsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * List all payouts
      * This operation retrieves the information of all payouts. 
      * @param {Object} opts Optional parameters
@@ -3928,7 +4082,7 @@ export default class PaymentApi {
 
     /**
      * List all settlement details
-     * This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
+     * <Note>This operation has been deprecated.</Note>  This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -3971,7 +4125,7 @@ export default class PaymentApi {
 
     /**
      * List all settlement details
-     * This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
+     * <Note>This operation has been deprecated.</Note>  This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -3990,7 +4144,7 @@ export default class PaymentApi {
 
     /**
      * List all settlement requests
-     * This operation retrieves the information of all settlement requests. 
+     * <Note>This operation has been deprecated. Please use [List all payouts](https://www.cobo.com/payments/en/api-references/payment/list-all-payouts) instead.</Note>  This operation retrieves the information of all settlement requests. 
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -4031,7 +4185,7 @@ export default class PaymentApi {
 
     /**
      * List all settlement requests
-     * This operation retrieves the information of all settlement requests. 
+     * <Note>This operation has been deprecated. Please use [List all payouts](https://www.cobo.com/payments/en/api-references/payment/list-all-payouts) instead.</Note>  This operation retrieves the information of all settlement requests. 
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 

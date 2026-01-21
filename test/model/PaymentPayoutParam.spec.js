@@ -52,12 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.PaymentPayoutParam);
     });
 
-    it('should have the property source_account (base name: "source_account")', function() {
-      // uncomment below and update the code to test the property source_account
-      //var instance = new CoboWaas2.PaymentPayoutParam();
-      //expect(instance).to.be();
-    });
-
     it('should have the property token_id (base name: "token_id")', function() {
       // uncomment below and update the code to test the property token_id
       //var instance = new CoboWaas2.PaymentPayoutParam();
@@ -66,18 +60,6 @@
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2.PaymentPayoutParam();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property crypto_address_id (base name: "crypto_address_id")', function() {
-      // uncomment below and update the code to test the property crypto_address_id
-      //var instance = new CoboWaas2.PaymentPayoutParam();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property crypto_address (base name: "crypto_address")', function() {
-      // uncomment below and update the code to test the property crypto_address
       //var instance = new CoboWaas2.PaymentPayoutParam();
       //expect(instance).to.be();
     });

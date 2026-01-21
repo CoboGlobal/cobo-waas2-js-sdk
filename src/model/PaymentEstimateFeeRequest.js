@@ -54,6 +54,9 @@ class PaymentEstimateFeeRequest {
             if (data.hasOwnProperty('estimate_fees')) {
                 obj['estimate_fees'] = ApiClient.convertToType(data['estimate_fees'], [PaymentEstimateFee]);
             }
+            if (data.hasOwnProperty('recipient_token_id')) {
+                obj['recipient_token_id'] = ApiClient.convertToType(data['recipient_token_id'], 'String');
+            }
         }
         return obj;
     }
@@ -80,6 +83,10 @@ class PaymentEstimateFeeRequest {
                 PaymentEstimateFee.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['recipient_token_id'] && !(typeof data['recipient_token_id'] === 'string' || data['recipient_token_id'] instanceof String)) {
+            throw new Error("Expected the field `recipient_token_id` to be a primitive type in the JSON string but got " + data['recipient_token_id']);
+        }
 
         return true;
     }
@@ -99,6 +106,12 @@ PaymentEstimateFeeRequest.prototype['fee_type'] = undefined;
  * @member {Array.<module:model/PaymentEstimateFee>} estimate_fees
  */
 PaymentEstimateFeeRequest.prototype['estimate_fees'] = undefined;
+
+/**
+ * The token ID that the recipient will receive. Required only when `fee_type` is `CryptoPayoutBridge`.
+ * @member {String} recipient_token_id
+ */
+PaymentEstimateFeeRequest.prototype['recipient_token_id'] = undefined;
 
 
 

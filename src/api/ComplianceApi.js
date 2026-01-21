@@ -46,7 +46,7 @@ export default class ComplianceApi {
 
     /**
      * Create KYA address screening requests
-     * This operation submits up to 50 address screening requests in one request to assess address compliance and risk levels.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
+     * This operation submits up to 50 address screening requests in one call to assess address compliance and risk levels.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKyaScreeningsBody} [CreateKyaScreeningsBody] The request body to create KYA address screening requests.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/KyaScreeningResult>} and HTTP response
@@ -80,7 +80,7 @@ export default class ComplianceApi {
 
     /**
      * Create KYA address screening requests
-     * This operation submits up to 50 address screening requests in one request to assess address compliance and risk levels.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
+     * This operation submits up to 50 address screening requests in one call to assess address compliance and risk levels.  <Note>This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateKyaScreeningsBody} opts.CreateKyaScreeningsBody The request body to create KYA address screening requests.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/KyaScreeningResult>}

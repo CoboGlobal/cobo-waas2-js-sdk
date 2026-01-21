@@ -1,11 +1,13 @@
-# CoboWaas2.PaymentPayoutItemStatus
+# CoboWaas2.PaymentBulkSendStatus
 
 ## Enum
 
 
 * `Pending` (value: `"Pending"`)
 
-* `Processing` (value: `"Processing"`)
+* `Validating` (value: `"Validating"`)
+
+* `Transferring` (value: `"Transferring"`)
 
 * `Completed` (value: `"Completed"`)
 

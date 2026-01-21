@@ -23,11 +23,14 @@ class OrderLinkBusinessInfo {
      * @alias module:model/OrderLinkBusinessInfo
      * @param merchant_id {String} The merchant ID.
      * @param psp_order_code {String} A unique reference code assigned by you as a developer to identify this order in your system. This code must be unique across all orders in your system. The code should have a maximum length of 128 characters. 
+     * @param pricing_currency {String} The pricing currency that denominates `pricing_amount` and `fee_amount`. Currently, only `USD`/`USDT`/`USDC` are supported. This field is required. 
+     * @param pricing_amount {String} The base amount of the order, excluding the developer fee (specified in `fee_amount`). Values must be greater than `0` and contain two decimal places. 
      * @param fee_amount {String} The developer fee for the order. It is added to the base amount (`pricing_amount`) to determine the final charge. For example, if `pricing_amount` is \"100.00\" and `fee_amount` is \"2.00\", the payer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant account and \"2.00\" settled to the developer account. Values must be greater than 0 and contain two decimal places. 
+     * @param payable_currencies {Array.<String>} The IDs of the cryptocurrencies used for payment. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`  - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      */
-    constructor(merchant_id, psp_order_code, fee_amount) { 
+    constructor(merchant_id, psp_order_code, pricing_currency, pricing_amount, fee_amount, payable_currencies) { 
         
-        OrderLinkBusinessInfo.initialize(this, merchant_id, psp_order_code, fee_amount);
+        OrderLinkBusinessInfo.initialize(this, merchant_id, psp_order_code, pricing_currency, pricing_amount, fee_amount, payable_currencies);
     }
 
     /**
@@ -35,10 +38,13 @@ class OrderLinkBusinessInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, merchant_id, psp_order_code, fee_amount) { 
+    static initialize(obj, merchant_id, psp_order_code, pricing_currency, pricing_amount, fee_amount, payable_currencies) { 
         obj['merchant_id'] = merchant_id;
         obj['psp_order_code'] = psp_order_code;
+        obj['pricing_currency'] = pricing_currency;
+        obj['pricing_amount'] = pricing_amount;
         obj['fee_amount'] = fee_amount;
+        obj['payable_currencies'] = payable_currencies;
     }
 
     /**
@@ -184,7 +190,7 @@ class OrderLinkBusinessInfo {
 
 }
 
-OrderLinkBusinessInfo.RequiredProperties = ["merchant_id", "psp_order_code", "fee_amount"];
+OrderLinkBusinessInfo.RequiredProperties = ["merchant_id", "psp_order_code", "pricing_currency", "pricing_amount", "fee_amount", "payable_currencies"];
 
 /**
  * The merchant ID.

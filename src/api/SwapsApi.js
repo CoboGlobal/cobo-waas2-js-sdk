@@ -270,6 +270,7 @@ export default class SwapsApi {
      * List swap activities
      * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      * @param {Object} opts Optional parameters
+     * @param {String} [request_id] The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
      * @param {module:model/SwapType} [type] 
      * @param {module:model/SwapActivityStatus} [status] 
      * @param {Number} [min_updated_timestamp] The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds.
@@ -292,6 +293,7 @@ export default class SwapsApi {
       let pathParams = {
       };
       let queryParams = {
+        'request_id': opts['request_id'],
         'type': opts['type'],
         'status': opts['status'],
         'min_updated_timestamp': opts['min_updated_timestamp'],
@@ -323,6 +325,7 @@ export default class SwapsApi {
      * List swap activities
      * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      * @param {Object} opts Optional parameters
+     * @param {String} opts.request_id The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
      * @param {module:model/SwapType} opts.type 
      * @param {module:model/SwapActivityStatus} opts.status 
      * @param {Number} opts.min_updated_timestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds.

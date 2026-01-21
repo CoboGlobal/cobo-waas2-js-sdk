@@ -46,6 +46,27 @@ export default class PaymentFeeType {
 
     
         /**
+         * value: "CryptoPayout"
+         * @const
+         */
+        "CryptoPayout" = "CryptoPayout";
+
+    
+        /**
+         * value: "CryptoPayoutBridge"
+         * @const
+         */
+        "CryptoPayoutBridge" = "CryptoPayoutBridge";
+
+    
+        /**
+         * value: "OffRampPayout"
+         * @const
+         */
+        "OffRampPayout" = "OffRampPayout";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

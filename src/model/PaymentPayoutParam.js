@@ -19,13 +19,12 @@ class PaymentPayoutParam {
     /**
      * Constructs a new <code>PaymentPayoutParam</code>.
      * @alias module:model/PaymentPayoutParam
-     * @param source_account {String} The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
      * @param token_id {String} The ID of the cryptocurrency you want to pay out. Specify this field when `payout_channel` is set to `Crypto`. Supported values: - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param amount {String} The amount of the cryptocurrency to pay out. 
+     * @param amount {String} The payout cryptocurrency amount. 
      */
-    constructor(source_account, token_id, amount) { 
+    constructor(token_id, amount) { 
         
-        PaymentPayoutParam.initialize(this, source_account, token_id, amount);
+        PaymentPayoutParam.initialize(this, token_id, amount);
     }
 
     /**
@@ -33,8 +32,7 @@ class PaymentPayoutParam {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, source_account, token_id, amount) { 
-        obj['source_account'] = source_account;
+    static initialize(obj, token_id, amount) { 
         obj['token_id'] = token_id;
         obj['amount'] = amount;
     }
@@ -50,20 +48,11 @@ class PaymentPayoutParam {
         if (data) {
             obj = obj || new PaymentPayoutParam();
 
-            if (data.hasOwnProperty('source_account')) {
-                obj['source_account'] = ApiClient.convertToType(data['source_account'], 'String');
-            }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
-            }
-            if (data.hasOwnProperty('crypto_address_id')) {
-                obj['crypto_address_id'] = ApiClient.convertToType(data['crypto_address_id'], 'String');
-            }
-            if (data.hasOwnProperty('crypto_address')) {
-                obj['crypto_address'] = ApiClient.convertToType(data['crypto_address'], 'String');
             }
         }
         return obj;
@@ -82,24 +71,12 @@ class PaymentPayoutParam {
             }
         }
         // ensure the json data is a string
-        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
-            throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
-        }
-        // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
-        }
-        // ensure the json data is a string
-        if (data['crypto_address_id'] && !(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
-            throw new Error("Expected the field `crypto_address_id` to be a primitive type in the JSON string but got " + data['crypto_address_id']);
-        }
-        // ensure the json data is a string
-        if (data['crypto_address'] && !(typeof data['crypto_address'] === 'string' || data['crypto_address'] instanceof String)) {
-            throw new Error("Expected the field `crypto_address` to be a primitive type in the JSON string but got " + data['crypto_address']);
         }
 
         return true;
@@ -108,13 +85,7 @@ class PaymentPayoutParam {
 
 }
 
-PaymentPayoutParam.RequiredProperties = ["source_account", "token_id", "amount"];
-
-/**
- * The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
- * @member {String} source_account
- */
-PaymentPayoutParam.prototype['source_account'] = undefined;
+PaymentPayoutParam.RequiredProperties = ["token_id", "amount"];
 
 /**
  * The ID of the cryptocurrency you want to pay out. Specify this field when `payout_channel` is set to `Crypto`. Supported values: - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
@@ -123,22 +94,10 @@ PaymentPayoutParam.prototype['source_account'] = undefined;
 PaymentPayoutParam.prototype['token_id'] = undefined;
 
 /**
- * The amount of the cryptocurrency to pay out. 
+ * The payout cryptocurrency amount. 
  * @member {String} amount
  */
 PaymentPayoutParam.prototype['amount'] = undefined;
-
-/**
- * The ID of the crypto address used for crypto payouts. Specify this field when `payout_channel` is set to `Crypto`.  Call [List crypto addresses](https://www.cobo.com/payments/en/api-references/payment/list-crypto-addresses) to retrieve registered crypto addresses. 
- * @member {String} crypto_address_id
- */
-PaymentPayoutParam.prototype['crypto_address_id'] = undefined;
-
-/**
- * The actual blockchain address to which funds will be transferred. Specify this field when `payout_channel` is set to `Crypto`. <Note>   If you have enabled the *Use Destinations as Payout Whitelist* toggle in *Destinations*, you can only transfer to registered destinations. For more details, see [Destinations](https://www.cobo.com/payments/en/guides/destinations). </Note> 
- * @member {String} crypto_address
- */
-PaymentPayoutParam.prototype['crypto_address'] = undefined;
 
 
 

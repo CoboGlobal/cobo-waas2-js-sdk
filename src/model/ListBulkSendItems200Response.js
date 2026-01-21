@@ -10,21 +10,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import AllocationRecord from './AllocationRecord';
 import Pagination from './Pagination';
+import PaymentBulkSendItem from './PaymentBulkSendItem';
 
 /**
- * The ListAllocations200Response model module.
- * @module model/ListAllocations200Response
+ * The ListBulkSendItems200Response model module.
+ * @module model/ListBulkSendItems200Response
  */
-class ListAllocations200Response {
+class ListBulkSendItems200Response {
     /**
-     * Constructs a new <code>ListAllocations200Response</code>.
-     * @alias module:model/ListAllocations200Response
+     * Constructs a new <code>ListBulkSendItems200Response</code>.
+     * @alias module:model/ListBulkSendItems200Response
      */
     constructor() { 
         
-        ListAllocations200Response.initialize(this);
+        ListBulkSendItems200Response.initialize(this);
     }
 
     /**
@@ -36,18 +36,18 @@ class ListAllocations200Response {
     }
 
     /**
-     * Constructs a <code>ListAllocations200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ListBulkSendItems200Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ListAllocations200Response} obj Optional instance to populate.
-     * @return {module:model/ListAllocations200Response} The populated <code>ListAllocations200Response</code> instance.
+     * @param {module:model/ListBulkSendItems200Response} obj Optional instance to populate.
+     * @return {module:model/ListBulkSendItems200Response} The populated <code>ListBulkSendItems200Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ListAllocations200Response();
+            obj = obj || new ListBulkSendItems200Response();
 
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], [AllocationRecord]);
+                obj['data'] = ApiClient.convertToType(data['data'], [PaymentBulkSendItem]);
             }
             if (data.hasOwnProperty('pagination')) {
                 obj['pagination'] = Pagination.constructFromObject(data['pagination']);
@@ -57,9 +57,9 @@ class ListAllocations200Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>ListAllocations200Response</code>.
+     * Validates the JSON data with respect to <code>ListBulkSendItems200Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListAllocations200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListBulkSendItems200Response</code>.
      */
     static validateJSON(data) {
         if (data['data']) { // data not null
@@ -69,7 +69,7 @@ class ListAllocations200Response {
             }
             // validate the optional field `data` (array)
             for (const item of data['data']) {
-                AllocationRecord.validateJSON(item);
+                PaymentBulkSendItem.validateJSON(item);
             };
         }
         // validate the optional field `pagination`
@@ -88,19 +88,19 @@ class ListAllocations200Response {
 
 
 /**
- * @member {Array.<module:model/AllocationRecord>} data
+ * @member {Array.<module:model/PaymentBulkSendItem>} data
  */
-ListAllocations200Response.prototype['data'] = undefined;
+ListBulkSendItems200Response.prototype['data'] = undefined;
 
 /**
  * @member {module:model/Pagination} pagination
  */
-ListAllocations200Response.prototype['pagination'] = undefined;
+ListBulkSendItems200Response.prototype['pagination'] = undefined;
 
 
 
 
 
 
-export default ListAllocations200Response;
+export default ListBulkSendItems200Response;
 

@@ -39,6 +39,13 @@ export default class TransactionExtraType {
 
     
         /**
+         * value: "WalletConnectInfo"
+         * @const
+         */
+        "WalletConnectInfo" = "WalletConnectInfo";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

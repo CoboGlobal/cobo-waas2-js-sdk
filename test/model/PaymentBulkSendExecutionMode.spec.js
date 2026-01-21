@@ -26,7 +26,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.ListPayoutItems200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,23 +44,11 @@
       object[property] = value;
   }
 
-  describe('ListPayoutItems200Response', function() {
-    it('should create an instance of ListPayoutItems200Response', function() {
-      // uncomment below and update the code to test ListPayoutItems200Response
-      //var instance = new CoboWaas2.ListPayoutItems200Response();
-      //expect(instance).to.be.a(CoboWaas2.ListPayoutItems200Response);
-    });
-
-    it('should have the property data (base name: "data")', function() {
-      // uncomment below and update the code to test the property data
-      //var instance = new CoboWaas2.ListPayoutItems200Response();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pagination (base name: "pagination")', function() {
-      // uncomment below and update the code to test the property pagination
-      //var instance = new CoboWaas2.ListPayoutItems200Response();
-      //expect(instance).to.be();
+  describe('PaymentBulkSendExecutionMode', function() {
+    it('should create an instance of PaymentBulkSendExecutionMode', function() {
+      // uncomment below and update the code to test PaymentBulkSendExecutionMode
+      //var instance = new CoboWaas2.PaymentBulkSendExecutionMode();
+      //expect(instance).to.be.a(CoboWaas2.PaymentBulkSendExecutionMode);
     });
 
   });

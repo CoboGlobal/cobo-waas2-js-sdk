@@ -10,21 +10,21 @@
  */
 
 import ApiClient from '../ApiClient';
+import AllocationItem from './AllocationItem';
 import Pagination from './Pagination';
-import PaymentPayoutItem from './PaymentPayoutItem';
 
 /**
- * The ListPayoutItems200Response model module.
- * @module model/ListPayoutItems200Response
+ * The ListAllocationItems200Response model module.
+ * @module model/ListAllocationItems200Response
  */
-class ListPayoutItems200Response {
+class ListAllocationItems200Response {
     /**
-     * Constructs a new <code>ListPayoutItems200Response</code>.
-     * @alias module:model/ListPayoutItems200Response
+     * Constructs a new <code>ListAllocationItems200Response</code>.
+     * @alias module:model/ListAllocationItems200Response
      */
     constructor() { 
         
-        ListPayoutItems200Response.initialize(this);
+        ListAllocationItems200Response.initialize(this);
     }
 
     /**
@@ -36,18 +36,18 @@ class ListPayoutItems200Response {
     }
 
     /**
-     * Constructs a <code>ListPayoutItems200Response</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ListAllocationItems200Response</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ListPayoutItems200Response} obj Optional instance to populate.
-     * @return {module:model/ListPayoutItems200Response} The populated <code>ListPayoutItems200Response</code> instance.
+     * @param {module:model/ListAllocationItems200Response} obj Optional instance to populate.
+     * @return {module:model/ListAllocationItems200Response} The populated <code>ListAllocationItems200Response</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ListPayoutItems200Response();
+            obj = obj || new ListAllocationItems200Response();
 
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], [PaymentPayoutItem]);
+                obj['data'] = ApiClient.convertToType(data['data'], [AllocationItem]);
             }
             if (data.hasOwnProperty('pagination')) {
                 obj['pagination'] = Pagination.constructFromObject(data['pagination']);
@@ -57,9 +57,9 @@ class ListPayoutItems200Response {
     }
 
     /**
-     * Validates the JSON data with respect to <code>ListPayoutItems200Response</code>.
+     * Validates the JSON data with respect to <code>ListAllocationItems200Response</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListPayoutItems200Response</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListAllocationItems200Response</code>.
      */
     static validateJSON(data) {
         if (data['data']) { // data not null
@@ -69,7 +69,7 @@ class ListPayoutItems200Response {
             }
             // validate the optional field `data` (array)
             for (const item of data['data']) {
-                PaymentPayoutItem.validateJSON(item);
+                AllocationItem.validateJSON(item);
             };
         }
         // validate the optional field `pagination`
@@ -88,19 +88,19 @@ class ListPayoutItems200Response {
 
 
 /**
- * @member {Array.<module:model/PaymentPayoutItem>} data
+ * @member {Array.<module:model/AllocationItem>} data
  */
-ListPayoutItems200Response.prototype['data'] = undefined;
+ListAllocationItems200Response.prototype['data'] = undefined;
 
 /**
  * @member {module:model/Pagination} pagination
  */
-ListPayoutItems200Response.prototype['pagination'] = undefined;
+ListAllocationItems200Response.prototype['pagination'] = undefined;
 
 
 
 
 
 
-export default ListPayoutItems200Response;
+export default ListAllocationItems200Response;
 

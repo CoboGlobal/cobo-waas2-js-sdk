@@ -64,8 +64,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property allocation_requests (base name: "allocation_requests")', function() {
-      // uncomment below and update the code to test the property allocation_requests
+    it('should have the property allocation_params (base name: "allocation_params")', function() {
+      // uncomment below and update the code to test the property allocation_params
       //var instance = new CoboWaas2.BatchAllocation();
       //expect(instance).to.be();
     });

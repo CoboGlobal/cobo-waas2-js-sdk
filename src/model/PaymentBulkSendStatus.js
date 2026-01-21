@@ -11,11 +11,11 @@
 
 import ApiClient from '../ApiClient';
 /**
-* Enum class PaymentPayoutItemStatus.
+* Enum class PaymentBulkSendStatus.
 * @enum {}
 * @readonly
 */
-export default class PaymentPayoutItemStatus {
+export default class PaymentBulkSendStatus {
     
         /**
          * value: "Pending"
@@ -25,10 +25,17 @@ export default class PaymentPayoutItemStatus {
 
     
         /**
-         * value: "Processing"
+         * value: "Validating"
          * @const
          */
-        "Processing" = "Processing";
+        "Validating" = "Validating";
+
+    
+        /**
+         * value: "Transferring"
+         * @const
+         */
+        "Transferring" = "Transferring";
 
     
         /**
@@ -61,9 +68,9 @@ export default class PaymentPayoutItemStatus {
     
 
     /**
-    * Returns a <code>PaymentPayoutItemStatus</code> enum value from a Javascript object name.
+    * Returns a <code>PaymentBulkSendStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/PaymentPayoutItemStatus} The enum <code>PaymentPayoutItemStatus</code> value.
+    * @return {module:model/PaymentBulkSendStatus} The enum <code>PaymentBulkSendStatus</code> value.
     */
     static constructFromObject(object) {
         return object;

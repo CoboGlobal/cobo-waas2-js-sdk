@@ -291,6 +291,13 @@ export default class TransactionCoboCategory {
 
     
         /**
+         * value: "WalletConnect"
+         * @const
+         */
+        "WalletConnect" = "WalletConnect";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

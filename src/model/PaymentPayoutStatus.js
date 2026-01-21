@@ -25,10 +25,17 @@ export default class PaymentPayoutStatus {
 
     
         /**
-         * value: "Processing"
+         * value: "Preparing"
          * @const
          */
-        "Processing" = "Processing";
+        "Preparing" = "Preparing";
+
+    
+        /**
+         * value: "Transferring"
+         * @const
+         */
+        "Transferring" = "Transferring";
 
     
         /**
@@ -53,10 +60,10 @@ export default class PaymentPayoutStatus {
 
     
         /**
-         * value: "Canceled"
+         * value: "RejectedByBank"
          * @const
          */
-        "Canceled" = "Canceled";
+        "RejectedByBank" = "RejectedByBank";
 
     
         /**

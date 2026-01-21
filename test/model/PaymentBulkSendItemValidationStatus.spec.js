@@ -44,11 +44,11 @@
       object[property] = value;
   }
 
-  describe('PaymentPayoutItemStatus', function() {
-    it('should create an instance of PaymentPayoutItemStatus', function() {
-      // uncomment below and update the code to test PaymentPayoutItemStatus
-      //var instance = new CoboWaas2.PaymentPayoutItemStatus();
-      //expect(instance).to.be.a(CoboWaas2.PaymentPayoutItemStatus);
+  describe('PaymentBulkSendItemValidationStatus', function() {
+    it('should create an instance of PaymentBulkSendItemValidationStatus', function() {
+      // uncomment below and update the code to test PaymentBulkSendItemValidationStatus
+      //var instance = new CoboWaas2.PaymentBulkSendItemValidationStatus();
+      //expect(instance).to.be.a(CoboWaas2.PaymentBulkSendItemValidationStatus);
     });
 
   });

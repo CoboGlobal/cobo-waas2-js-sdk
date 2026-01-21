@@ -610,14 +610,44 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property payout_item_details (base name: "payout_item_details")', function() {
-      // uncomment below and update the code to test the property payout_item_details
+    it('should have the property source_account (base name: "source_account")', function() {
+      // uncomment below and update the code to test the property source_account
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property payout_items (base name: "payout_items")', function() {
+      // uncomment below and update the code to test the property payout_items
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property recipient_info (base name: "recipient_info")', function() {
+      // uncomment below and update the code to test the property recipient_info
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });
 
     it('should have the property actual_payout_amount (base name: "actual_payout_amount")', function() {
       // uncomment below and update the code to test the property actual_payout_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property remark (base name: "remark")', function() {
+      // uncomment below and update the code to test the property remark
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bulk_send_id (base name: "bulk_send_id")', function() {
+      // uncomment below and update the code to test the property bulk_send_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property execution_mode (base name: "execution_mode")', function() {
+      // uncomment below and update the code to test the property execution_mode
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });

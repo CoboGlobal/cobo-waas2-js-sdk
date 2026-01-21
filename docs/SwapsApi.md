@@ -244,6 +244,7 @@ apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
 // Call the API
 const apiInstance = new CoboWaas2.SwapsApi();
 const opts = {
+  'request_id': "web_send_by_user_327_1610444045047",
   'type': new CoboWaas2.SwapType(),
   'status': new CoboWaas2.SwapActivityStatus(),
   'min_updated_timestamp': 1635744000000,
@@ -268,6 +269,7 @@ apiInstance.listSwapActivities(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **request_id** | **String**| The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. | [optional] 
  **type** | [**SwapType**](.md)|  | [optional] 
  **status** | [**SwapActivityStatus**](.md)|  | [optional] 
  **min_updated_timestamp** | **Number**| The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. | [optional] 

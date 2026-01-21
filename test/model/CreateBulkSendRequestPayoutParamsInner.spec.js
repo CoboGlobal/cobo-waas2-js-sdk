@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.AllocationRequest();
+    instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,40 +45,34 @@
       object[property] = value;
   }
 
-  describe('AllocationRequest', function() {
-    it('should create an instance of AllocationRequest', function() {
-      // uncomment below and update the code to test AllocationRequest
-      //var instance = new CoboWaas2.AllocationRequest();
-      //expect(instance).to.be.a(CoboWaas2.AllocationRequest);
+  describe('CreateBulkSendRequestPayoutParamsInner', function() {
+    it('should create an instance of CreateBulkSendRequestPayoutParamsInner', function() {
+      // uncomment below and update the code to test CreateBulkSendRequestPayoutParamsInner
+      //var instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
+      //expect(instance).to.be.a(CoboWaas2.CreateBulkSendRequestPayoutParamsInner);
     });
 
     it('should have the property token_id (base name: "token_id")', function() {
       // uncomment below and update the code to test the property token_id
-      //var instance = new CoboWaas2.AllocationRequest();
+      //var instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property receiving_address (base name: "receiving_address")', function() {
+      // uncomment below and update the code to test the property receiving_address
+      //var instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new CoboWaas2.AllocationRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property source_account (base name: "source_account")', function() {
-      // uncomment below and update the code to test the property source_account
-      //var instance = new CoboWaas2.AllocationRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property destination_account (base name: "destination_account")', function() {
-      // uncomment below and update the code to test the property destination_account
-      //var instance = new CoboWaas2.AllocationRequest();
+      //var instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new CoboWaas2.AllocationRequest();
+      //var instance = new CoboWaas2.CreateBulkSendRequestPayoutParamsInner();
       //expect(instance).to.be();
     });
 

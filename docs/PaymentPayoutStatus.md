@@ -5,7 +5,9 @@
 
 * `Pending` (value: `"Pending"`)
 
-* `Processing` (value: `"Processing"`)
+* `Preparing` (value: `"Preparing"`)
+
+* `Transferring` (value: `"Transferring"`)
 
 * `Completed` (value: `"Completed"`)
 
@@ -13,7 +15,7 @@
 
 * `Failed` (value: `"Failed"`)
 
-* `Canceled` (value: `"Canceled"`)
+* `RejectedByBank` (value: `"RejectedByBank"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

@@ -24,8 +24,8 @@ docs/AddressTransferDestinationAccountOutput.md
 docs/AddressTransferDestinationUtxoOutputsInner.md
 docs/AddressesEventData.md
 docs/AddressesEventDataAllOfAddresses.md
-docs/AllocationRecord.md
-docs/AllocationRequest.md
+docs/AllocationItem.md
+docs/AllocationParam.md
 docs/AmountDetailsInner.md
 docs/AmountStatus.md
 docs/ApiLogDetails.md
@@ -123,6 +123,8 @@ docs/CreateBabylonAirdropRegistrationRequest.md
 docs/CreateBabylonStakingRegistration201Response.md
 docs/CreateBabylonStakingRegistrationRequest.md
 docs/CreateBatchAllocationRequest.md
+docs/CreateBulkSendRequest.md
+docs/CreateBulkSendRequestPayoutParamsInner.md
 docs/CreateClaimActivity.md
 docs/CreateClaimActivityRequest.md
 docs/CreateCounterpartyEntry201Response.md
@@ -165,6 +167,8 @@ docs/CreateSwapActivityRequest.md
 docs/CreateSweepToAddress.md
 docs/CreateTokenListingRequest201Response.md
 docs/CreateTokenListingRequestRequest.md
+docs/CreateTopUpAddresses.md
+docs/CreateTopUpAddresses201Response.md
 docs/CreateTransferTransaction201Response.md
 docs/CreateTssRequestRequest.md
 docs/CreateUnstakeActivity.md
@@ -293,6 +297,7 @@ docs/GetToken2XXResponse.md
 docs/GetToken4XXResponse.md
 docs/GetTokenizationAllowlistActivation200Response.md
 docs/GetTransactionLimitation200Response.md
+docs/GraphQLApi.md
 docs/GraphQLError.md
 docs/GraphQLErrorLocationsInner.md
 docs/GraphQLRequest.md
@@ -324,7 +329,7 @@ docs/LinkDisplayInfo.md
 docs/ListAddressBalancesByToken200Response.md
 docs/ListAddressBooks200Response.md
 docs/ListAddresses200Response.md
-docs/ListAllocations200Response.md
+docs/ListAllocationItems200Response.md
 docs/ListApprovalRequests200Response.md
 docs/ListAssetBalancesForExchangeWallet200Response.md
 docs/ListAutoSweepTask200Response.md
@@ -334,6 +339,7 @@ docs/ListBabylonEligibleStakings200Response.md
 docs/ListBabylonEligibleStakings200ResponseDataInner.md
 docs/ListBabylonStakingRegistrations200Response.md
 docs/ListBatchAllocations200Response.md
+docs/ListBulkSendItems200Response.md
 docs/ListCallbackMessages200Response.md
 docs/ListCounterparties200Response.md
 docs/ListCounterpartyEntries200Response.md
@@ -353,7 +359,6 @@ docs/ListMpcProjects200Response.md
 docs/ListMpcVaults200Response.md
 docs/ListPaymentOrders200Response.md
 docs/ListPaymentWalletBalances200Response.md
-docs/ListPayoutItems200Response.md
 docs/ListPayouts200Response.md
 docs/ListSettlementDetails200Response.md
 docs/ListSettlementRequests200Response.md
@@ -421,6 +426,13 @@ docs/PayerAccount.md
 docs/PaymentAddressUpdateEventData.md
 docs/PaymentAllocationAmount.md
 docs/PaymentApi.md
+docs/PaymentBulkSend.md
+docs/PaymentBulkSendEvent.md
+docs/PaymentBulkSendExecutionMode.md
+docs/PaymentBulkSendItem.md
+docs/PaymentBulkSendItemStatus.md
+docs/PaymentBulkSendItemValidationStatus.md
+docs/PaymentBulkSendStatus.md
 docs/PaymentEstimateFee.md
 docs/PaymentEstimateFee201Response.md
 docs/PaymentEstimateFeeRequest.md
@@ -431,9 +443,8 @@ docs/PaymentPayout.md
 docs/PaymentPayoutDetail.md
 docs/PaymentPayoutEvent.md
 docs/PaymentPayoutItem.md
-docs/PaymentPayoutItemDetail.md
-docs/PaymentPayoutItemStatus.md
 docs/PaymentPayoutParam.md
+docs/PaymentPayoutRecipientInfo.md
 docs/PaymentPayoutStatus.md
 docs/PaymentRefundEventData.md
 docs/PaymentSettlementEvent.md
@@ -766,6 +777,7 @@ docs/TransactionUserApprovalDetail.md
 docs/TransactionUtxo.md
 docs/TransactionUtxoChange.md
 docs/TransactionUtxoFee.md
+docs/TransactionWalletConnectInfo.md
 docs/TransactionWebhookEventData.md
 docs/TransactionsApi.md
 docs/TransferDestination.md
@@ -848,6 +860,7 @@ src/api/ComplianceApi.js
 src/api/DevelopersApi.js
 src/api/DevelopersWebhooksApi.js
 src/api/FeeStationApi.js
+src/api/GraphQLApi.js
 src/api/OAuthApi.js
 src/api/OrganizationsApi.js
 src/api/PaymentApi.js
@@ -884,8 +897,8 @@ src/model/AddressTransferDestinationAccountOutput.js
 src/model/AddressTransferDestinationUtxoOutputsInner.js
 src/model/AddressesEventData.js
 src/model/AddressesEventDataAllOfAddresses.js
-src/model/AllocationRecord.js
-src/model/AllocationRequest.js
+src/model/AllocationItem.js
+src/model/AllocationParam.js
 src/model/AmountDetailsInner.js
 src/model/AmountStatus.js
 src/model/ApiLogDetails.js
@@ -980,6 +993,8 @@ src/model/CreateBabylonAirdropRegistrationRequest.js
 src/model/CreateBabylonStakingRegistration201Response.js
 src/model/CreateBabylonStakingRegistrationRequest.js
 src/model/CreateBatchAllocationRequest.js
+src/model/CreateBulkSendRequest.js
+src/model/CreateBulkSendRequestPayoutParamsInner.js
 src/model/CreateClaimActivity.js
 src/model/CreateClaimActivityRequest.js
 src/model/CreateCounterpartyEntry201Response.js
@@ -1022,6 +1037,8 @@ src/model/CreateSwapActivityRequest.js
 src/model/CreateSweepToAddress.js
 src/model/CreateTokenListingRequest201Response.js
 src/model/CreateTokenListingRequestRequest.js
+src/model/CreateTopUpAddresses.js
+src/model/CreateTopUpAddresses201Response.js
 src/model/CreateTransferTransaction201Response.js
 src/model/CreateTssRequestRequest.js
 src/model/CreateUnstakeActivity.js
@@ -1178,7 +1195,7 @@ src/model/LinkDisplayInfo.js
 src/model/ListAddressBalancesByToken200Response.js
 src/model/ListAddressBooks200Response.js
 src/model/ListAddresses200Response.js
-src/model/ListAllocations200Response.js
+src/model/ListAllocationItems200Response.js
 src/model/ListApprovalRequests200Response.js
 src/model/ListAssetBalancesForExchangeWallet200Response.js
 src/model/ListAutoSweepTask200Response.js
@@ -1188,6 +1205,7 @@ src/model/ListBabylonEligibleStakings200Response.js
 src/model/ListBabylonEligibleStakings200ResponseDataInner.js
 src/model/ListBabylonStakingRegistrations200Response.js
 src/model/ListBatchAllocations200Response.js
+src/model/ListBulkSendItems200Response.js
 src/model/ListCallbackMessages200Response.js
 src/model/ListCounterparties200Response.js
 src/model/ListCounterpartyEntries200Response.js
@@ -1207,7 +1225,6 @@ src/model/ListMpcProjects200Response.js
 src/model/ListMpcVaults200Response.js
 src/model/ListPaymentOrders200Response.js
 src/model/ListPaymentWalletBalances200Response.js
-src/model/ListPayoutItems200Response.js
 src/model/ListPayouts200Response.js
 src/model/ListSettlementDetails200Response.js
 src/model/ListSettlementRequests200Response.js
@@ -1272,6 +1289,13 @@ src/model/Pagination.js
 src/model/PayerAccount.js
 src/model/PaymentAddressUpdateEventData.js
 src/model/PaymentAllocationAmount.js
+src/model/PaymentBulkSend.js
+src/model/PaymentBulkSendEvent.js
+src/model/PaymentBulkSendExecutionMode.js
+src/model/PaymentBulkSendItem.js
+src/model/PaymentBulkSendItemStatus.js
+src/model/PaymentBulkSendItemValidationStatus.js
+src/model/PaymentBulkSendStatus.js
 src/model/PaymentEstimateFee.js
 src/model/PaymentEstimateFee201Response.js
 src/model/PaymentEstimateFeeRequest.js
@@ -1282,9 +1306,8 @@ src/model/PaymentPayout.js
 src/model/PaymentPayoutDetail.js
 src/model/PaymentPayoutEvent.js
 src/model/PaymentPayoutItem.js
-src/model/PaymentPayoutItemDetail.js
-src/model/PaymentPayoutItemStatus.js
 src/model/PaymentPayoutParam.js
+src/model/PaymentPayoutRecipientInfo.js
 src/model/PaymentPayoutStatus.js
 src/model/PaymentRefundEventData.js
 src/model/PaymentSettlementEvent.js
@@ -1613,6 +1636,7 @@ src/model/TransactionUserApprovalDetail.js
 src/model/TransactionUtxo.js
 src/model/TransactionUtxoChange.js
 src/model/TransactionUtxoFee.js
+src/model/TransactionWalletConnectInfo.js
 src/model/TransactionWebhookEventData.js
 src/model/TransferDestination.js
 src/model/TransferDestinationType.js
@@ -1682,6 +1706,7 @@ test/api/ComplianceApi.spec.js
 test/api/DevelopersApi.spec.js
 test/api/DevelopersWebhooksApi.spec.js
 test/api/FeeStationApi.spec.js
+test/api/GraphQLApi.spec.js
 test/api/OAuthApi.spec.js
 test/api/OrganizationsApi.spec.js
 test/api/PaymentApi.spec.js
@@ -1714,8 +1739,8 @@ test/model/AddressTransferDestinationAccountOutput.spec.js
 test/model/AddressTransferDestinationUtxoOutputsInner.spec.js
 test/model/AddressesEventData.spec.js
 test/model/AddressesEventDataAllOfAddresses.spec.js
-test/model/AllocationRecord.spec.js
-test/model/AllocationRequest.spec.js
+test/model/AllocationItem.spec.js
+test/model/AllocationParam.spec.js
 test/model/AmountDetailsInner.spec.js
 test/model/AmountStatus.spec.js
 test/model/ApiLogDetails.spec.js
@@ -1810,6 +1835,8 @@ test/model/CreateBabylonAirdropRegistrationRequest.spec.js
 test/model/CreateBabylonStakingRegistration201Response.spec.js
 test/model/CreateBabylonStakingRegistrationRequest.spec.js
 test/model/CreateBatchAllocationRequest.spec.js
+test/model/CreateBulkSendRequest.spec.js
+test/model/CreateBulkSendRequestPayoutParamsInner.spec.js
 test/model/CreateClaimActivity.spec.js
 test/model/CreateClaimActivityRequest.spec.js
 test/model/CreateCounterpartyEntry201Response.spec.js
@@ -1852,6 +1879,8 @@ test/model/CreateSwapActivityRequest.spec.js
 test/model/CreateSweepToAddress.spec.js
 test/model/CreateTokenListingRequest201Response.spec.js
 test/model/CreateTokenListingRequestRequest.spec.js
+test/model/CreateTopUpAddresses.spec.js
+test/model/CreateTopUpAddresses201Response.spec.js
 test/model/CreateTransferTransaction201Response.spec.js
 test/model/CreateTssRequestRequest.spec.js
 test/model/CreateUnstakeActivity.spec.js
@@ -2008,7 +2037,7 @@ test/model/LinkDisplayInfo.spec.js
 test/model/ListAddressBalancesByToken200Response.spec.js
 test/model/ListAddressBooks200Response.spec.js
 test/model/ListAddresses200Response.spec.js
-test/model/ListAllocations200Response.spec.js
+test/model/ListAllocationItems200Response.spec.js
 test/model/ListApprovalRequests200Response.spec.js
 test/model/ListAssetBalancesForExchangeWallet200Response.spec.js
 test/model/ListAutoSweepTask200Response.spec.js
@@ -2018,6 +2047,7 @@ test/model/ListBabylonEligibleStakings200Response.spec.js
 test/model/ListBabylonEligibleStakings200ResponseDataInner.spec.js
 test/model/ListBabylonStakingRegistrations200Response.spec.js
 test/model/ListBatchAllocations200Response.spec.js
+test/model/ListBulkSendItems200Response.spec.js
 test/model/ListCallbackMessages200Response.spec.js
 test/model/ListCounterparties200Response.spec.js
 test/model/ListCounterpartyEntries200Response.spec.js
@@ -2037,7 +2067,6 @@ test/model/ListMpcProjects200Response.spec.js
 test/model/ListMpcVaults200Response.spec.js
 test/model/ListPaymentOrders200Response.spec.js
 test/model/ListPaymentWalletBalances200Response.spec.js
-test/model/ListPayoutItems200Response.spec.js
 test/model/ListPayouts200Response.spec.js
 test/model/ListSettlementDetails200Response.spec.js
 test/model/ListSettlementRequests200Response.spec.js
@@ -2102,6 +2131,13 @@ test/model/Pagination.spec.js
 test/model/PayerAccount.spec.js
 test/model/PaymentAddressUpdateEventData.spec.js
 test/model/PaymentAllocationAmount.spec.js
+test/model/PaymentBulkSend.spec.js
+test/model/PaymentBulkSendEvent.spec.js
+test/model/PaymentBulkSendExecutionMode.spec.js
+test/model/PaymentBulkSendItem.spec.js
+test/model/PaymentBulkSendItemStatus.spec.js
+test/model/PaymentBulkSendItemValidationStatus.spec.js
+test/model/PaymentBulkSendStatus.spec.js
 test/model/PaymentEstimateFee.spec.js
 test/model/PaymentEstimateFee201Response.spec.js
 test/model/PaymentEstimateFeeRequest.spec.js
@@ -2112,9 +2148,8 @@ test/model/PaymentPayout.spec.js
 test/model/PaymentPayoutDetail.spec.js
 test/model/PaymentPayoutEvent.spec.js
 test/model/PaymentPayoutItem.spec.js
-test/model/PaymentPayoutItemDetail.spec.js
-test/model/PaymentPayoutItemStatus.spec.js
 test/model/PaymentPayoutParam.spec.js
+test/model/PaymentPayoutRecipientInfo.spec.js
 test/model/PaymentPayoutStatus.spec.js
 test/model/PaymentRefundEventData.spec.js
 test/model/PaymentSettlementEvent.spec.js
@@ -2443,6 +2478,7 @@ test/model/TransactionUserApprovalDetail.spec.js
 test/model/TransactionUtxo.spec.js
 test/model/TransactionUtxoChange.spec.js
 test/model/TransactionUtxoFee.spec.js
+test/model/TransactionWalletConnectInfo.spec.js
 test/model/TransactionWebhookEventData.spec.js
 test/model/TransferDestination.spec.js
 test/model/TransferDestinationType.spec.js

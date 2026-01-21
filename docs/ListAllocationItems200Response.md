@@ -1,10 +1,10 @@
-# CoboWaas2.ListAllocations200Response
+# CoboWaas2.ListAllocationItems200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[AllocationRecord]**](AllocationRecord.md) |  | [optional] 
+**data** | [**[AllocationItem]**](AllocationItem.md) |  | [optional] 
 **pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

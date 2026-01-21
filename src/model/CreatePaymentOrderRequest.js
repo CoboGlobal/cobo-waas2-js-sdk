@@ -22,10 +22,11 @@ class CreatePaymentOrderRequest {
      * @param merchant_id {String} The merchant ID.
      * @param psp_order_code {String} A unique reference code assigned by the developer to identify this order in their system.
      * @param fee_amount {String} The developer fee for the order. It is added to the base amount (`pricing_amount`) to determine the final charge. For example, if `pricing_amount` is \"100.00\" and `fee_amount` is \"2.00\", the payer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant account and \"2.00\" settled to the developer account. Values must be greater than 0 and contain two decimal places.
+     * @param payable_currency {String} The ID of the cryptocurrency used for payment. Supported values:   - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
      */
-    constructor(merchant_id, psp_order_code, fee_amount) { 
+    constructor(merchant_id, psp_order_code, fee_amount, payable_currency) { 
         
-        CreatePaymentOrderRequest.initialize(this, merchant_id, psp_order_code, fee_amount);
+        CreatePaymentOrderRequest.initialize(this, merchant_id, psp_order_code, fee_amount, payable_currency);
     }
 
     /**
@@ -33,10 +34,11 @@ class CreatePaymentOrderRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, merchant_id, psp_order_code, fee_amount) { 
+    static initialize(obj, merchant_id, psp_order_code, fee_amount, payable_currency) { 
         obj['merchant_id'] = merchant_id;
         obj['psp_order_code'] = psp_order_code;
         obj['fee_amount'] = fee_amount;
+        obj['payable_currency'] = payable_currency;
     }
 
     /**
@@ -170,7 +172,7 @@ class CreatePaymentOrderRequest {
 
 }
 
-CreatePaymentOrderRequest.RequiredProperties = ["merchant_id", "psp_order_code", "fee_amount"];
+CreatePaymentOrderRequest.RequiredProperties = ["merchant_id", "psp_order_code", "fee_amount", "payable_currency"];
 
 /**
  * The merchant ID.
@@ -191,7 +193,7 @@ CreatePaymentOrderRequest.prototype['merchant_order_code'] = undefined;
 CreatePaymentOrderRequest.prototype['psp_order_code'] = undefined;
 
 /**
- * The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`. Currently, only `USD` is supported.
+ * The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com/developers/v2/guides/overview/supported-chains-and-tokens). 
  * @member {String} pricing_currency
  */
 CreatePaymentOrderRequest.prototype['pricing_currency'] = undefined;

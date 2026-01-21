@@ -19,9 +19,9 @@ import KyaScreeningRequest from './KyaScreeningRequest';
 class CreateKyaScreeningsBody {
     /**
      * Constructs a new <code>CreateKyaScreeningsBody</code>.
-     * Request body for batch creating address screening requests.
+     * Information about address screening requests.
      * @alias module:model/CreateKyaScreeningsBody
-     * @param screenings {Array.<module:model/KyaScreeningRequest>} List of address screening requests. Maximum 50 addresses per request.
+     * @param screenings {Array.<module:model/KyaScreeningRequest>} List of address screening requests. Maximum 50 addresses per call.
      */
     constructor(screenings) { 
         
@@ -87,7 +87,7 @@ class CreateKyaScreeningsBody {
 CreateKyaScreeningsBody.RequiredProperties = ["screenings"];
 
 /**
- * List of address screening requests. Maximum 50 addresses per request.
+ * List of address screening requests. Maximum 50 addresses per call.
  * @member {Array.<module:model/KyaScreeningRequest>} screenings
  */
 CreateKyaScreeningsBody.prototype['screenings'] = undefined;

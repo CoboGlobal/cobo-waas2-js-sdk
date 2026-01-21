@@ -29,9 +29,12 @@ import KyaScreeningStatus from './KyaScreeningStatus';
 import KytScreeningsTransactionType from './KytScreeningsTransactionType';
 import MPCVaultEventData from './MPCVaultEventData';
 import PaymentAddressUpdateEventData from './PaymentAddressUpdateEventData';
+import PaymentBulkSendEvent from './PaymentBulkSendEvent';
+import PaymentBulkSendExecutionMode from './PaymentBulkSendExecutionMode';
 import PaymentOrderEventData from './PaymentOrderEventData';
 import PaymentPayoutEvent from './PaymentPayoutEvent';
-import PaymentPayoutItemDetail from './PaymentPayoutItemDetail';
+import PaymentPayoutItem from './PaymentPayoutItem';
+import PaymentPayoutRecipientInfo from './PaymentPayoutRecipientInfo';
 import PaymentRefundEventData from './PaymentRefundEventData';
 import PaymentSettlementEvent from './PaymentSettlementEvent';
 import PaymentTransaction from './PaymentTransaction';
@@ -75,7 +78,7 @@ class WebhookEventData {
     /**
      * Constructs a new <code>WebhookEventData</code>.
      * @alias module:model/WebhookEventData
-     * @param {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} instance The actual instance to initialize WebhookEventData.
+     * @param {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentBulkSendEvent|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} instance The actual instance to initialize WebhookEventData.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -118,6 +121,10 @@ class WebhookEventData {
                     break;
                 case "PaymentAddressUpdate":
                     this.actualInstance = PaymentAddressUpdateEventData.constructFromObject(instance);
+                    match++;
+                    break;
+                case "PaymentBulkSend":
+                    this.actualInstance = PaymentBulkSendEvent.constructFromObject(instance);
                     match++;
                     break;
                 case "PaymentOrder":
@@ -572,6 +579,31 @@ class WebhookEventData {
         }
 
         try {
+            if (instance instanceof PaymentBulkSendEvent) {
+                this.actualInstance = instance;
+            } else if(!!PaymentBulkSendEvent.validateJSON && PaymentBulkSendEvent.validateJSON(instance)){
+                // plain JS object
+                // create PaymentBulkSendEvent from JS object
+                this.actualInstance = PaymentBulkSendEvent.constructFromObject(instance);
+            } else {
+                if(PaymentBulkSendEvent.constructFromObject(instance)) {
+                    if (!!PaymentBulkSendEvent.constructFromObject(instance).toJSON) {
+                        if (PaymentBulkSendEvent.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = PaymentBulkSendEvent.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = PaymentBulkSendEvent.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into PaymentBulkSendEvent
+            errorMessages.push("Failed to construct PaymentBulkSendEvent: " + err)
+        }
+
+        try {
             if (instance instanceof ComplianceDispositionUpdateEventData) {
                 this.actualInstance = instance;
             } else if(!!ComplianceDispositionUpdateEventData.validateJSON && ComplianceDispositionUpdateEventData.validateJSON(instance)){
@@ -647,11 +679,11 @@ class WebhookEventData {
         }
 
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `WebhookEventData` with oneOf schemas AddressesEventData, BalanceUpdateInfoEventData, ChainsEventData, ComplianceDispositionUpdateEventData, ComplianceKyaScreeningsUpdateEventData, ComplianceKytScreeningsUpdateEventData, MPCVaultEventData, PaymentAddressUpdateEventData, PaymentOrderEventData, PaymentPayoutEvent, PaymentRefundEventData, PaymentSettlementEvent, PaymentTransactionEventData, SuspendedTokenEventData, TSSRequestWebhookEventData, TokenListingEventData, TokensEventData, TransactionWebhookEventData, WalletInfoEventData. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `WebhookEventData` with oneOf schemas AddressesEventData, BalanceUpdateInfoEventData, ChainsEventData, ComplianceDispositionUpdateEventData, ComplianceKyaScreeningsUpdateEventData, ComplianceKytScreeningsUpdateEventData, MPCVaultEventData, PaymentAddressUpdateEventData, PaymentBulkSendEvent, PaymentOrderEventData, PaymentPayoutEvent, PaymentRefundEventData, PaymentSettlementEvent, PaymentTransactionEventData, SuspendedTokenEventData, TSSRequestWebhookEventData, TokenListingEventData, TokensEventData, TransactionWebhookEventData, WalletInfoEventData. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `WebhookEventData` with oneOf schemas AddressesEventData, BalanceUpdateInfoEventData, ChainsEventData, ComplianceDispositionUpdateEventData, ComplianceKyaScreeningsUpdateEventData, ComplianceKytScreeningsUpdateEventData, MPCVaultEventData, PaymentAddressUpdateEventData, PaymentOrderEventData, PaymentPayoutEvent, PaymentRefundEventData, PaymentSettlementEvent, PaymentTransactionEventData, SuspendedTokenEventData, TSSRequestWebhookEventData, TokenListingEventData, TokensEventData, TransactionWebhookEventData, WalletInfoEventData. Details: " +
+        //    throw new Error("No match found constructing `WebhookEventData` with oneOf schemas AddressesEventData, BalanceUpdateInfoEventData, ChainsEventData, ComplianceDispositionUpdateEventData, ComplianceKyaScreeningsUpdateEventData, ComplianceKytScreeningsUpdateEventData, MPCVaultEventData, PaymentAddressUpdateEventData, PaymentBulkSendEvent, PaymentOrderEventData, PaymentPayoutEvent, PaymentRefundEventData, PaymentSettlementEvent, PaymentTransactionEventData, SuspendedTokenEventData, TSSRequestWebhookEventData, TokenListingEventData, TokensEventData, TransactionWebhookEventData, WalletInfoEventData. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -671,16 +703,16 @@ class WebhookEventData {
     }
 
     /**
-     * Gets the actual instance, which can be <code>AddressesEventData</code>, <code>BalanceUpdateInfoEventData</code>, <code>ChainsEventData</code>, <code>ComplianceDispositionUpdateEventData</code>, <code>ComplianceKyaScreeningsUpdateEventData</code>, <code>ComplianceKytScreeningsUpdateEventData</code>, <code>MPCVaultEventData</code>, <code>PaymentAddressUpdateEventData</code>, <code>PaymentOrderEventData</code>, <code>PaymentPayoutEvent</code>, <code>PaymentRefundEventData</code>, <code>PaymentSettlementEvent</code>, <code>PaymentTransactionEventData</code>, <code>SuspendedTokenEventData</code>, <code>TSSRequestWebhookEventData</code>, <code>TokenListingEventData</code>, <code>TokensEventData</code>, <code>TransactionWebhookEventData</code>, <code>WalletInfoEventData</code>.
-     * @return {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} The actual instance.
+     * Gets the actual instance, which can be <code>AddressesEventData</code>, <code>BalanceUpdateInfoEventData</code>, <code>ChainsEventData</code>, <code>ComplianceDispositionUpdateEventData</code>, <code>ComplianceKyaScreeningsUpdateEventData</code>, <code>ComplianceKytScreeningsUpdateEventData</code>, <code>MPCVaultEventData</code>, <code>PaymentAddressUpdateEventData</code>, <code>PaymentBulkSendEvent</code>, <code>PaymentOrderEventData</code>, <code>PaymentPayoutEvent</code>, <code>PaymentRefundEventData</code>, <code>PaymentSettlementEvent</code>, <code>PaymentTransactionEventData</code>, <code>SuspendedTokenEventData</code>, <code>TSSRequestWebhookEventData</code>, <code>TokenListingEventData</code>, <code>TokensEventData</code>, <code>TransactionWebhookEventData</code>, <code>WalletInfoEventData</code>.
+     * @return {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentBulkSendEvent|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>AddressesEventData</code>, <code>BalanceUpdateInfoEventData</code>, <code>ChainsEventData</code>, <code>ComplianceDispositionUpdateEventData</code>, <code>ComplianceKyaScreeningsUpdateEventData</code>, <code>ComplianceKytScreeningsUpdateEventData</code>, <code>MPCVaultEventData</code>, <code>PaymentAddressUpdateEventData</code>, <code>PaymentOrderEventData</code>, <code>PaymentPayoutEvent</code>, <code>PaymentRefundEventData</code>, <code>PaymentSettlementEvent</code>, <code>PaymentTransactionEventData</code>, <code>SuspendedTokenEventData</code>, <code>TSSRequestWebhookEventData</code>, <code>TokenListingEventData</code>, <code>TokensEventData</code>, <code>TransactionWebhookEventData</code>, <code>WalletInfoEventData</code>.
-     * @param {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} obj The actual instance.
+     * Sets the actual instance, which can be <code>AddressesEventData</code>, <code>BalanceUpdateInfoEventData</code>, <code>ChainsEventData</code>, <code>ComplianceDispositionUpdateEventData</code>, <code>ComplianceKyaScreeningsUpdateEventData</code>, <code>ComplianceKytScreeningsUpdateEventData</code>, <code>MPCVaultEventData</code>, <code>PaymentAddressUpdateEventData</code>, <code>PaymentBulkSendEvent</code>, <code>PaymentOrderEventData</code>, <code>PaymentPayoutEvent</code>, <code>PaymentRefundEventData</code>, <code>PaymentSettlementEvent</code>, <code>PaymentTransactionEventData</code>, <code>SuspendedTokenEventData</code>, <code>TSSRequestWebhookEventData</code>, <code>TokenListingEventData</code>, <code>TokensEventData</code>, <code>TransactionWebhookEventData</code>, <code>WalletInfoEventData</code>.
+     * @param {(module:model/AddressesEventData|module:model/BalanceUpdateInfoEventData|module:model/ChainsEventData|module:model/ComplianceDispositionUpdateEventData|module:model/ComplianceKyaScreeningsUpdateEventData|module:model/ComplianceKytScreeningsUpdateEventData|module:model/MPCVaultEventData|module:model/PaymentAddressUpdateEventData|module:model/PaymentBulkSendEvent|module:model/PaymentOrderEventData|module:model/PaymentPayoutEvent|module:model/PaymentRefundEventData|module:model/PaymentSettlementEvent|module:model/PaymentTransactionEventData|module:model/SuspendedTokenEventData|module:model/TSSRequestWebhookEventData|module:model/TokenListingEventData|module:model/TokensEventData|module:model/TransactionWebhookEventData|module:model/WalletInfoEventData)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = WebhookEventData.constructFromObject(obj).getActualInstance();
@@ -705,7 +737,7 @@ class WebhookEventData {
 }
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data.
  * @member {module:model/WebhookEventData.DataTypeEnum} data_type
  */
 WebhookEventData.prototype['data_type'] = undefined;
@@ -794,7 +826,7 @@ WebhookEventData.prototype['result'] = undefined;
 WebhookEventData.prototype['fee'] = undefined;
 
 /**
- * The initiator of this payout, usually the API key used to create the payout.
+ * The initiator of this payout, usually the user's API key.
  * @member {String} initiator
  */
 WebhookEventData.prototype['initiator'] = undefined;
@@ -844,7 +876,7 @@ WebhookEventData.prototype['replacement'] = undefined;
 WebhookEventData.prototype['category'] = undefined;
 
 /**
- * The description for your transaction.
+ * The description for the entire bulk send batch.
  * @member {String} description
  */
 WebhookEventData.prototype['description'] = undefined;
@@ -1092,13 +1124,13 @@ WebhookEventData.prototype['received_token_amount'] = undefined;
 WebhookEventData.prototype['expired_at'] = undefined;
 
 /**
- * An array of transactions associated with this refund order. Each transaction represents a separate blockchain operation related to the refund process.
+ * An array of payout transactions.
  * @member {Array.<module:model/PaymentTransaction>} transactions
  */
 WebhookEventData.prototype['transactions'] = undefined;
 
 /**
- * The fiat currency you will receive from the payout.
+ * The fiat currency for the off-ramp.
  * @member {String} currency
  */
 WebhookEventData.prototype['currency'] = undefined;
@@ -1234,15 +1266,44 @@ WebhookEventData.prototype['updated_address'] = undefined;
 WebhookEventData.prototype['payout_id'] = undefined;
 
 /**
- * @member {Array.<module:model/PaymentPayoutItemDetail>} payout_item_details
+ * The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
+ * @member {String} source_account
  */
-WebhookEventData.prototype['payout_item_details'] = undefined;
+WebhookEventData.prototype['source_account'] = undefined;
 
 /**
- * The total amount of cryptocurrency actually paid out for this payout. 
+ * required
+ * @member {Array.<module:model/PaymentPayoutItem>} payout_items
+ */
+WebhookEventData.prototype['payout_items'] = undefined;
+
+/**
+ * @member {module:model/PaymentPayoutRecipientInfo} recipient_info
+ */
+WebhookEventData.prototype['recipient_info'] = undefined;
+
+/**
+ * - For `Crypto` payouts: The amount of cryptocurrency sent to the recipient's address, denominated in the token specified in `recipient_info.token_id`. - For `OffRamp` payouts: The amount of fiat currency sent to the recipient's bank account, denominated in the currency specified in `recipient_info.currency`. (Note: The actual amount received may be lower due to additional bank transfer fees.) 
  * @member {String} actual_payout_amount
  */
 WebhookEventData.prototype['actual_payout_amount'] = undefined;
+
+/**
+ * A note or comment about the payout.
+ * @member {String} remark
+ */
+WebhookEventData.prototype['remark'] = undefined;
+
+/**
+ * The bulk send ID.
+ * @member {String} bulk_send_id
+ */
+WebhookEventData.prototype['bulk_send_id'] = undefined;
+
+/**
+ * @member {module:model/PaymentBulkSendExecutionMode} execution_mode
+ */
+WebhookEventData.prototype['execution_mode'] = undefined;
 
 /**
  * @member {module:model/DispositionType} disposition_type
@@ -1288,7 +1349,7 @@ WebhookEventData.prototype['funds_status'] = undefined;
 WebhookEventData.prototype['screening_id'] = undefined;
 
 
-WebhookEventData.OneOf = ["AddressesEventData", "BalanceUpdateInfoEventData", "ChainsEventData", "ComplianceDispositionUpdateEventData", "ComplianceKyaScreeningsUpdateEventData", "ComplianceKytScreeningsUpdateEventData", "MPCVaultEventData", "PaymentAddressUpdateEventData", "PaymentOrderEventData", "PaymentPayoutEvent", "PaymentRefundEventData", "PaymentSettlementEvent", "PaymentTransactionEventData", "SuspendedTokenEventData", "TSSRequestWebhookEventData", "TokenListingEventData", "TokensEventData", "TransactionWebhookEventData", "WalletInfoEventData"];
+WebhookEventData.OneOf = ["AddressesEventData", "BalanceUpdateInfoEventData", "ChainsEventData", "ComplianceDispositionUpdateEventData", "ComplianceKyaScreeningsUpdateEventData", "ComplianceKytScreeningsUpdateEventData", "MPCVaultEventData", "PaymentAddressUpdateEventData", "PaymentBulkSendEvent", "PaymentOrderEventData", "PaymentPayoutEvent", "PaymentRefundEventData", "PaymentSettlementEvent", "PaymentTransactionEventData", "SuspendedTokenEventData", "TSSRequestWebhookEventData", "TokenListingEventData", "TokensEventData", "TransactionWebhookEventData", "WalletInfoEventData"];
 
 export default WebhookEventData;
 

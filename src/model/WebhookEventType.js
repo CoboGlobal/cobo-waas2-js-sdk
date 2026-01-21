@@ -270,6 +270,20 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.charge.status.updated"
+         * @const
+         */
+        "payment.charge.status.updated" = "payment.charge.status.updated";
+
+    
+        /**
+         * value: "payment.bulk_send.status.updated"
+         * @const
+         */
+        "payment.bulk_send.status.updated" = "payment.bulk_send.status.updated";
+
+    
+        /**
          * value: "compliance.disposition.status.updated"
          * @const
          */

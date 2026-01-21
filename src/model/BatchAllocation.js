@@ -10,7 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import AllocationRequest from './AllocationRequest';
+import AllocationParam from './AllocationParam';
 
 /**
  * The BatchAllocation model module.
@@ -59,8 +59,8 @@ class BatchAllocation {
             if (data.hasOwnProperty('request_id')) {
                 obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
             }
-            if (data.hasOwnProperty('allocation_requests')) {
-                obj['allocation_requests'] = ApiClient.convertToType(data['allocation_requests'], [AllocationRequest]);
+            if (data.hasOwnProperty('allocation_params')) {
+                obj['allocation_params'] = ApiClient.convertToType(data['allocation_params'], [AllocationParam]);
             }
             if (data.hasOwnProperty('initiator')) {
                 obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
@@ -95,14 +95,14 @@ class BatchAllocation {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        if (data['allocation_requests']) { // data not null
+        if (data['allocation_params']) { // data not null
             // ensure the json data is an array
-            if (!Array.isArray(data['allocation_requests'])) {
-                throw new Error("Expected the field `allocation_requests` to be an array in the JSON data but got " + data['allocation_requests']);
+            if (!Array.isArray(data['allocation_params'])) {
+                throw new Error("Expected the field `allocation_params` to be an array in the JSON data but got " + data['allocation_params']);
             }
-            // validate the optional field `allocation_requests` (array)
-            for (const item of data['allocation_requests']) {
-                AllocationRequest.validateJSON(item);
+            // validate the optional field `allocation_params` (array)
+            for (const item of data['allocation_params']) {
+                AllocationParam.validateJSON(item);
             };
         }
         // ensure the json data is a string
@@ -131,9 +131,9 @@ BatchAllocation.prototype['batch_allocation_id'] = undefined;
 BatchAllocation.prototype['request_id'] = undefined;
 
 /**
- * @member {Array.<module:model/AllocationRequest>} allocation_requests
+ * @member {Array.<module:model/AllocationParam>} allocation_params
  */
-BatchAllocation.prototype['allocation_requests'] = undefined;
+BatchAllocation.prototype['allocation_params'] = undefined;
 
 /**
  * The initiator of this batch allocation, usually the API key you used to create the batch allocation.

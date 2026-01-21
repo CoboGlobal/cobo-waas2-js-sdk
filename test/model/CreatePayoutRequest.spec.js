@@ -58,6 +58,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property source_account (base name: "source_account")', function() {
+      // uncomment below and update the code to test the property source_account
+      //var instance = new CoboWaas2.CreatePayoutRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property payout_channel (base name: "payout_channel")', function() {
       // uncomment below and update the code to test the property payout_channel
       //var instance = new CoboWaas2.CreatePayoutRequest();
@@ -70,14 +76,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property bank_account_id (base name: "bank_account_id")', function() {
-      // uncomment below and update the code to test the property bank_account_id
-      //var instance = new CoboWaas2.CreatePayoutRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property currency (base name: "currency")', function() {
-      // uncomment below and update the code to test the property currency
+    it('should have the property recipient_info (base name: "recipient_info")', function() {
+      // uncomment below and update the code to test the property recipient_info
       //var instance = new CoboWaas2.CreatePayoutRequest();
       //expect(instance).to.be();
     });

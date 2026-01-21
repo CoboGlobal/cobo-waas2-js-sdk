@@ -12,22 +12,22 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The AllocationRequest model module.
- * @module model/AllocationRequest
+ * The AllocationParam model module.
+ * @module model/AllocationParam
  */
-class AllocationRequest {
+class AllocationParam {
     /**
-     * Constructs a new <code>AllocationRequest</code>.
-     * @alias module:model/AllocationRequest
-     * @param token_id {String} The ID of the cryptocurrency you want to allocate. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param amount {String} The amount of the cryptocurrency you want to allocate. 
-     * @param source_account {String} The source account.  - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
-     * @param destination_account {String} The destination account.  - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
-     * @param description {String} The description of the allocation request.
+     * Constructs a new <code>AllocationParam</code>.
+     * @alias module:model/AllocationParam
+     * @param token_id {String} The ID of the cryptocurrency you want to allocation. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * @param amount {String} The allocation amount. 
+     * @param source_account {String} The source account from which the allocation will be deducted. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
+     * @param destination_account {String} The destination account to which the allocation will be credited. - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
+     * @param description {String} The description of the allocation.
      */
     constructor(token_id, amount, source_account, destination_account, description) { 
         
-        AllocationRequest.initialize(this, token_id, amount, source_account, destination_account, description);
+        AllocationParam.initialize(this, token_id, amount, source_account, destination_account, description);
     }
 
     /**
@@ -44,15 +44,15 @@ class AllocationRequest {
     }
 
     /**
-     * Constructs a <code>AllocationRequest</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>AllocationParam</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/AllocationRequest} obj Optional instance to populate.
-     * @return {module:model/AllocationRequest} The populated <code>AllocationRequest</code> instance.
+     * @param {module:model/AllocationParam} obj Optional instance to populate.
+     * @return {module:model/AllocationParam} The populated <code>AllocationParam</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new AllocationRequest();
+            obj = obj || new AllocationParam();
 
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -74,13 +74,13 @@ class AllocationRequest {
     }
 
     /**
-     * Validates the JSON data with respect to <code>AllocationRequest</code>.
+     * Validates the JSON data with respect to <code>AllocationParam</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AllocationRequest</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AllocationParam</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of AllocationRequest.RequiredProperties) {
+        for (const property of AllocationParam.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -112,42 +112,42 @@ class AllocationRequest {
 
 }
 
-AllocationRequest.RequiredProperties = ["token_id", "amount", "source_account", "destination_account", "description"];
+AllocationParam.RequiredProperties = ["token_id", "amount", "source_account", "destination_account", "description"];
 
 /**
- * The ID of the cryptocurrency you want to allocate. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+ * The ID of the cryptocurrency you want to allocation. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
  * @member {String} token_id
  */
-AllocationRequest.prototype['token_id'] = undefined;
+AllocationParam.prototype['token_id'] = undefined;
 
 /**
- * The amount of the cryptocurrency you want to allocate. 
+ * The allocation amount. 
  * @member {String} amount
  */
-AllocationRequest.prototype['amount'] = undefined;
+AllocationParam.prototype['amount'] = undefined;
 
 /**
- * The source account.  - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
+ * The source account from which the allocation will be deducted. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
  * @member {String} source_account
  */
-AllocationRequest.prototype['source_account'] = undefined;
+AllocationParam.prototype['source_account'] = undefined;
 
 /**
- * The destination account.  - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
+ * The destination account to which the allocation will be credited. - If the destination account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the destination account is the developer account, use the string `\"developer\"`. 
  * @member {String} destination_account
  */
-AllocationRequest.prototype['destination_account'] = undefined;
+AllocationParam.prototype['destination_account'] = undefined;
 
 /**
- * The description of the allocation request.
+ * The description of the allocation.
  * @member {String} description
  */
-AllocationRequest.prototype['description'] = undefined;
+AllocationParam.prototype['description'] = undefined;
 
 
 
 
 
 
-export default AllocationRequest;
+export default AllocationParam;
 

@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property recipient_token_id (base name: "recipient_token_id")', function() {
+      // uncomment below and update the code to test the property recipient_token_id
+      //var instance = new CoboWaas2.PaymentEstimateFeeRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

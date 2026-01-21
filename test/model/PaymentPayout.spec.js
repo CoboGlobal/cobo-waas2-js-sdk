@@ -70,14 +70,44 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property source_account (base name: "source_account")', function() {
+      // uncomment below and update the code to test the property source_account
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
     it('should have the property payout_items (base name: "payout_items")', function() {
       // uncomment below and update the code to test the property payout_items
       //var instance = new CoboWaas2.PaymentPayout();
       //expect(instance).to.be();
     });
 
+    it('should have the property recipient_info (base name: "recipient_info")', function() {
+      // uncomment below and update the code to test the property recipient_info
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property initiator (base name: "initiator")', function() {
+      // uncomment below and update the code to test the property initiator
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property actual_payout_amount (base name: "actual_payout_amount")', function() {
+      // uncomment below and update the code to test the property actual_payout_amount
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property remark (base name: "remark")', function() {
+      // uncomment below and update the code to test the property remark
       //var instance = new CoboWaas2.PaymentPayout();
       //expect(instance).to.be();
     });
@@ -90,30 +120,6 @@
 
     it('should have the property updated_timestamp (base name: "updated_timestamp")', function() {
       // uncomment below and update the code to test the property updated_timestamp
-      //var instance = new CoboWaas2.PaymentPayout();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property initiator (base name: "initiator")', function() {
-      // uncomment below and update the code to test the property initiator
-      //var instance = new CoboWaas2.PaymentPayout();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property currency (base name: "currency")', function() {
-      // uncomment below and update the code to test the property currency
-      //var instance = new CoboWaas2.PaymentPayout();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property actual_payout_amount (base name: "actual_payout_amount")', function() {
-      // uncomment below and update the code to test the property actual_payout_amount
-      //var instance = new CoboWaas2.PaymentPayout();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property bank_account (base name: "bank_account")', function() {
-      // uncomment below and update the code to test the property bank_account
       //var instance = new CoboWaas2.PaymentPayout();
       //expect(instance).to.be();
     });

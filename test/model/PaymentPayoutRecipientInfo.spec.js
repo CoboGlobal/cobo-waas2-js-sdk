@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.ListAllocations200Response();
+    instance = new CoboWaas2.PaymentPayoutRecipientInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,22 +45,34 @@
       object[property] = value;
   }
 
-  describe('ListAllocations200Response', function() {
-    it('should create an instance of ListAllocations200Response', function() {
-      // uncomment below and update the code to test ListAllocations200Response
-      //var instance = new CoboWaas2.ListAllocations200Response();
-      //expect(instance).to.be.a(CoboWaas2.ListAllocations200Response);
+  describe('PaymentPayoutRecipientInfo', function() {
+    it('should create an instance of PaymentPayoutRecipientInfo', function() {
+      // uncomment below and update the code to test PaymentPayoutRecipientInfo
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
+      //expect(instance).to.be.a(CoboWaas2.PaymentPayoutRecipientInfo);
     });
 
-    it('should have the property data (base name: "data")', function() {
-      // uncomment below and update the code to test the property data
-      //var instance = new CoboWaas2.ListAllocations200Response();
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
-      // uncomment below and update the code to test the property pagination
-      //var instance = new CoboWaas2.ListAllocations200Response();
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property currency (base name: "currency")', function() {
+      // uncomment below and update the code to test the property currency
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_account_id (base name: "bank_account_id")', function() {
+      // uncomment below and update the code to test the property bank_account_id
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
       //expect(instance).to.be();
     });
 

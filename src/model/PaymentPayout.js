@@ -10,8 +10,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import BankAccount from './BankAccount';
 import PaymentPayoutItem from './PaymentPayoutItem';
+import PaymentPayoutRecipientInfo from './PaymentPayoutRecipientInfo';
 import PaymentPayoutStatus from './PaymentPayoutStatus';
 import PayoutChannel from './PayoutChannel';
 
@@ -27,10 +27,12 @@ class PaymentPayout {
      * @param request_id {String} The request ID provided by you when creating the payout.
      * @param payout_channel {module:model/PayoutChannel} 
      * @param status {module:model/PaymentPayoutStatus} 
+     * @param created_timestamp {Number} The created time of the payout, represented as a UNIX timestamp in seconds.
+     * @param updated_timestamp {Number} The updated time of the payout, represented as a UNIX timestamp in seconds.
      */
-    constructor(payout_id, request_id, payout_channel, status) { 
+    constructor(payout_id, request_id, payout_channel, status, created_timestamp, updated_timestamp) { 
         
-        PaymentPayout.initialize(this, payout_id, request_id, payout_channel, status);
+        PaymentPayout.initialize(this, payout_id, request_id, payout_channel, status, created_timestamp, updated_timestamp);
     }
 
     /**
@@ -38,11 +40,13 @@ class PaymentPayout {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, payout_id, request_id, payout_channel, status) { 
+    static initialize(obj, payout_id, request_id, payout_channel, status, created_timestamp, updated_timestamp) { 
         obj['payout_id'] = payout_id;
         obj['request_id'] = request_id;
         obj['payout_channel'] = payout_channel;
         obj['status'] = status;
+        obj['created_timestamp'] = created_timestamp;
+        obj['updated_timestamp'] = updated_timestamp;
     }
 
     /**
@@ -65,29 +69,32 @@ class PaymentPayout {
             if (data.hasOwnProperty('payout_channel')) {
                 obj['payout_channel'] = PayoutChannel.constructFromObject(data['payout_channel']);
             }
+            if (data.hasOwnProperty('source_account')) {
+                obj['source_account'] = ApiClient.convertToType(data['source_account'], 'String');
+            }
             if (data.hasOwnProperty('payout_items')) {
                 obj['payout_items'] = ApiClient.convertToType(data['payout_items'], [PaymentPayoutItem]);
             }
+            if (data.hasOwnProperty('recipient_info')) {
+                obj['recipient_info'] = PaymentPayoutRecipientInfo.constructFromObject(data['recipient_info']);
+            }
+            if (data.hasOwnProperty('initiator')) {
+                obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
+            }
+            if (data.hasOwnProperty('actual_payout_amount')) {
+                obj['actual_payout_amount'] = ApiClient.convertToType(data['actual_payout_amount'], 'String');
+            }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = PaymentPayoutStatus.constructFromObject(data['status']);
+            }
+            if (data.hasOwnProperty('remark')) {
+                obj['remark'] = ApiClient.convertToType(data['remark'], 'String');
             }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
             if (data.hasOwnProperty('updated_timestamp')) {
                 obj['updated_timestamp'] = ApiClient.convertToType(data['updated_timestamp'], 'Number');
-            }
-            if (data.hasOwnProperty('initiator')) {
-                obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
-            }
-            if (data.hasOwnProperty('currency')) {
-                obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
-            }
-            if (data.hasOwnProperty('actual_payout_amount')) {
-                obj['actual_payout_amount'] = ApiClient.convertToType(data['actual_payout_amount'], 'String');
-            }
-            if (data.hasOwnProperty('bank_account')) {
-                obj['bank_account'] = BankAccount.constructFromObject(data['bank_account']);
             }
         }
         return obj;
@@ -113,6 +120,10 @@ class PaymentPayout {
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
+        // ensure the json data is a string
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+            throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
+        }
         if (data['payout_items']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['payout_items'])) {
@@ -123,23 +134,23 @@ class PaymentPayout {
                 PaymentPayoutItem.validateJSON(item);
             };
         }
+        // validate the optional field `recipient_info`
+        if (data['recipient_info']) { // data not null
+          if (!!PaymentPayoutRecipientInfo.validateJSON) {
+            PaymentPayoutRecipientInfo.validateJSON(data['recipient_info']);
+          }
+        }
         // ensure the json data is a string
         if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
             throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);
         }
         // ensure the json data is a string
-        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
-            throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
-        }
-        // ensure the json data is a string
         if (data['actual_payout_amount'] && !(typeof data['actual_payout_amount'] === 'string' || data['actual_payout_amount'] instanceof String)) {
             throw new Error("Expected the field `actual_payout_amount` to be a primitive type in the JSON string but got " + data['actual_payout_amount']);
         }
-        // validate the optional field `bank_account`
-        if (data['bank_account']) { // data not null
-          if (!!BankAccount.validateJSON) {
-            BankAccount.validateJSON(data['bank_account']);
-          }
+        // ensure the json data is a string
+        if (data['remark'] && !(typeof data['remark'] === 'string' || data['remark'] instanceof String)) {
+            throw new Error("Expected the field `remark` to be a primitive type in the JSON string but got " + data['remark']);
         }
 
         return true;
@@ -148,7 +159,7 @@ class PaymentPayout {
 
 }
 
-PaymentPayout.RequiredProperties = ["payout_id", "request_id", "payout_channel", "status"];
+PaymentPayout.RequiredProperties = ["payout_id", "request_id", "payout_channel", "status", "created_timestamp", "updated_timestamp"];
 
 /**
  * The payout ID generated by Cobo.
@@ -168,14 +179,44 @@ PaymentPayout.prototype['request_id'] = undefined;
 PaymentPayout.prototype['payout_channel'] = undefined;
 
 /**
+ * The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
+ * @member {String} source_account
+ */
+PaymentPayout.prototype['source_account'] = undefined;
+
+/**
+ * required
  * @member {Array.<module:model/PaymentPayoutItem>} payout_items
  */
 PaymentPayout.prototype['payout_items'] = undefined;
 
 /**
+ * @member {module:model/PaymentPayoutRecipientInfo} recipient_info
+ */
+PaymentPayout.prototype['recipient_info'] = undefined;
+
+/**
+ * The initiator of this payout, usually the user's API key.
+ * @member {String} initiator
+ */
+PaymentPayout.prototype['initiator'] = undefined;
+
+/**
+ * - For `Crypto` payouts: The amount of cryptocurrency sent to the recipient's address, denominated in the token specified in `recipient_info.token_id`. - For `OffRamp` payouts: The amount of fiat currency sent to the recipient's bank account, denominated in the currency specified in `recipient_info.currency`. (Note: The actual amount received may be lower due to additional bank transfer fees.) 
+ * @member {String} actual_payout_amount
+ */
+PaymentPayout.prototype['actual_payout_amount'] = undefined;
+
+/**
  * @member {module:model/PaymentPayoutStatus} status
  */
 PaymentPayout.prototype['status'] = undefined;
+
+/**
+ * A note or comment about the payout.
+ * @member {String} remark
+ */
+PaymentPayout.prototype['remark'] = undefined;
 
 /**
  * The created time of the payout, represented as a UNIX timestamp in seconds.
@@ -188,29 +229,6 @@ PaymentPayout.prototype['created_timestamp'] = undefined;
  * @member {Number} updated_timestamp
  */
 PaymentPayout.prototype['updated_timestamp'] = undefined;
-
-/**
- * The initiator of this payout, usually the API key used to create the payout.
- * @member {String} initiator
- */
-PaymentPayout.prototype['initiator'] = undefined;
-
-/**
- * The fiat currency you will receive from the payout.
- * @member {String} currency
- */
-PaymentPayout.prototype['currency'] = undefined;
-
-/**
- * The total amount of cryptocurrency actually paid out for this payout. 
- * @member {String} actual_payout_amount
- */
-PaymentPayout.prototype['actual_payout_amount'] = undefined;
-
-/**
- * @member {module:model/BankAccount} bank_account
- */
-PaymentPayout.prototype['bank_account'] = undefined;
 
 
 

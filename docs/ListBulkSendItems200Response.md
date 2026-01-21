@@ -1,10 +1,10 @@
-# CoboWaas2.ListPayoutItems200Response
+# CoboWaas2.ListBulkSendItems200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[PaymentPayoutItem]**](PaymentPayoutItem.md) |  | [optional] 
+**data** | [**[PaymentBulkSendItem]**](PaymentBulkSendItem.md) |  | [optional] 
 **pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 
