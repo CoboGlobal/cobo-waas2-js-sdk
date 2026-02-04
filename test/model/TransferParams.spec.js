@@ -106,6 +106,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property pre_check (base name: "pre_check")', function() {
+      // uncomment below and update the code to test the property pre_check
+      //var instance = new CoboWaas2.TransferParams();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

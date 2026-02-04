@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.DeleteDestinationWalletAddress200Response();
+    instance = new CoboWaas2.PreCheck();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,16 +45,16 @@
       object[property] = value;
   }
 
-  describe('DeleteDestinationWalletAddress200Response', function() {
-    it('should create an instance of DeleteDestinationWalletAddress200Response', function() {
-      // uncomment below and update the code to test DeleteDestinationWalletAddress200Response
-      //var instance = new CoboWaas2.DeleteDestinationWalletAddress200Response();
-      //expect(instance).to.be.a(CoboWaas2.DeleteDestinationWalletAddress200Response);
+  describe('PreCheck', function() {
+    it('should create an instance of PreCheck', function() {
+      // uncomment below and update the code to test PreCheck
+      //var instance = new CoboWaas2.PreCheck();
+      //expect(instance).to.be.a(CoboWaas2.PreCheck);
     });
 
-    it('should have the property wallet_address_id (base name: "wallet_address_id")', function() {
-      // uncomment below and update the code to test the property wallet_address_id
-      //var instance = new CoboWaas2.DeleteDestinationWalletAddress200Response();
+    it('should have the property skip_checks (base name: "skip_checks")', function() {
+      // uncomment below and update the code to test the property skip_checks
+      //var instance = new CoboWaas2.PreCheck();
       //expect(instance).to.be();
     });
 

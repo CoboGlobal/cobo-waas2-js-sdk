@@ -70,6 +70,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property bridge_status (base name: "bridge_status")', function() {
+      // uncomment below and update the code to test the property bridge_status
+      //var instance = new CoboWaas2.BridgingFee();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

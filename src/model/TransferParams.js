@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import AutoFuelType from './AutoFuelType';
+import PreCheck from './PreCheck';
 import TransactionProcessType from './TransactionProcessType';
 import TransactionRequestFee from './TransactionRequestFee';
 import TransferDestination from './TransferDestination';
@@ -85,6 +86,9 @@ class TransferParams {
             if (data.hasOwnProperty('auto_fuel')) {
                 obj['auto_fuel'] = AutoFuelType.constructFromObject(data['auto_fuel']);
             }
+            if (data.hasOwnProperty('pre_check')) {
+                obj['pre_check'] = PreCheck.constructFromObject(data['pre_check']);
+            }
         }
         return obj;
     }
@@ -133,6 +137,12 @@ class TransferParams {
         if (data['fee']) { // data not null
           if (!!TransactionRequestFee.validateJSON) {
             TransactionRequestFee.validateJSON(data['fee']);
+          }
+        }
+        // validate the optional field `pre_check`
+        if (data['pre_check']) { // data not null
+          if (!!PreCheck.validateJSON) {
+            PreCheck.validateJSON(data['pre_check']);
           }
         }
 
@@ -192,6 +202,11 @@ TransferParams.prototype['transaction_process_type'] = undefined;
  * @member {module:model/AutoFuelType} auto_fuel
  */
 TransferParams.prototype['auto_fuel'] = undefined;
+
+/**
+ * @member {module:model/PreCheck} pre_check
+ */
+TransferParams.prototype['pre_check'] = undefined;
 
 
 

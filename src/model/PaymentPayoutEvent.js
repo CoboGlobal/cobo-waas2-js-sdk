@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionFee from './CommissionFee';
 import PaymentPayoutDetail from './PaymentPayoutDetail';
 import PaymentPayoutItem from './PaymentPayoutItem';
 import PaymentPayoutRecipientInfo from './PaymentPayoutRecipientInfo';
@@ -96,11 +97,14 @@ class PaymentPayoutEvent {
             if (data.hasOwnProperty('actual_payout_amount')) {
                 obj['actual_payout_amount'] = ApiClient.convertToType(data['actual_payout_amount'], 'String');
             }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = PaymentPayoutStatus.constructFromObject(data['status']);
+            if (data.hasOwnProperty('commission_fees')) {
+                obj['commission_fees'] = ApiClient.convertToType(data['commission_fees'], [CommissionFee]);
             }
             if (data.hasOwnProperty('remark')) {
                 obj['remark'] = ApiClient.convertToType(data['remark'], 'String');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = PaymentPayoutStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
@@ -166,6 +170,16 @@ class PaymentPayoutEvent {
         // ensure the json data is a string
         if (data['actual_payout_amount'] && !(typeof data['actual_payout_amount'] === 'string' || data['actual_payout_amount'] instanceof String)) {
             throw new Error("Expected the field `actual_payout_amount` to be a primitive type in the JSON string but got " + data['actual_payout_amount']);
+        }
+        if (data['commission_fees']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['commission_fees'])) {
+                throw new Error("Expected the field `commission_fees` to be an array in the JSON data but got " + data['commission_fees']);
+            }
+            // validate the optional field `commission_fees` (array)
+            for (const item of data['commission_fees']) {
+                CommissionFee.validateJSON(item);
+            };
         }
         // ensure the json data is a string
         if (data['remark'] && !(typeof data['remark'] === 'string' || data['remark'] instanceof String)) {
@@ -243,15 +257,21 @@ PaymentPayoutEvent.prototype['initiator'] = undefined;
 PaymentPayoutEvent.prototype['actual_payout_amount'] = undefined;
 
 /**
- * @member {module:model/PaymentPayoutStatus} status
+ * The commission fees of the payout.
+ * @member {Array.<module:model/CommissionFee>} commission_fees
  */
-PaymentPayoutEvent.prototype['status'] = undefined;
+PaymentPayoutEvent.prototype['commission_fees'] = undefined;
 
 /**
  * A note or comment about the payout.
  * @member {String} remark
  */
 PaymentPayoutEvent.prototype['remark'] = undefined;
+
+/**
+ * @member {module:model/PaymentPayoutStatus} status
+ */
+PaymentPayoutEvent.prototype['status'] = undefined;
 
 /**
  * The created time of the payout, represented as a UNIX timestamp in seconds.
@@ -318,14 +338,19 @@ PaymentPayoutDetail.prototype['initiator'] = undefined;
  */
 PaymentPayoutDetail.prototype['actual_payout_amount'] = undefined;
 /**
- * @member {module:model/PaymentPayoutStatus} status
+ * The commission fees of the payout.
+ * @member {Array.<module:model/CommissionFee>} commission_fees
  */
-PaymentPayoutDetail.prototype['status'] = undefined;
+PaymentPayoutDetail.prototype['commission_fees'] = undefined;
 /**
  * A note or comment about the payout.
  * @member {String} remark
  */
 PaymentPayoutDetail.prototype['remark'] = undefined;
+/**
+ * @member {module:model/PaymentPayoutStatus} status
+ */
+PaymentPayoutDetail.prototype['status'] = undefined;
 /**
  * The created time of the payout, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp

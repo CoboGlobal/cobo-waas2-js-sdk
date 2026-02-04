@@ -634,6 +634,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property commission_fees (base name: "commission_fees")', function() {
+      // uncomment below and update the code to test the property commission_fees
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property remark (base name: "remark")', function() {
       // uncomment below and update the code to test the property remark
       //var instance = new CoboWaas2.WebhookEventData();

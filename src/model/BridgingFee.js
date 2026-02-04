@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import PaymentBridgeStatus from './PaymentBridgeStatus';
 
 /**
  * The BridgingFee model module.
@@ -54,6 +55,9 @@ class BridgingFee {
             }
             if (data.hasOwnProperty('received_amount')) {
                 obj['received_amount'] = ApiClient.convertToType(data['received_amount'], 'String');
+            }
+            if (data.hasOwnProperty('bridge_status')) {
+                obj['bridge_status'] = PaymentBridgeStatus.constructFromObject(data['bridge_status']);
             }
         }
         return obj;
@@ -109,6 +113,11 @@ BridgingFee.prototype['received_token_id'] = undefined;
  * @member {String} received_amount
  */
 BridgingFee.prototype['received_amount'] = undefined;
+
+/**
+ * @member {module:model/PaymentBridgeStatus} bridge_status
+ */
+BridgingFee.prototype['bridge_status'] = undefined;
 
 
 

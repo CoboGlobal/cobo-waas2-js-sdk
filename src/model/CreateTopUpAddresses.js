@@ -21,7 +21,7 @@ class CreateTopUpAddresses {
      * The request body to batch create top-up addresses.
      * @alias module:model/CreateTopUpAddresses
      * @param token_id {String} The token ID, which identifies the cryptocurrency. 
-     * @param custom_payer_ids {Array.<String>} A list of unique custom payer IDs required to create top-up addresses. The maximum number of items is 50. 
+     * @param custom_payer_ids {Array.<String>} A list of unique custom payer IDs required to create top-up addresses. 
      */
     constructor(token_id, custom_payer_ids) { 
         
@@ -108,7 +108,7 @@ CreateTopUpAddresses.prototype['merchant_id'] = undefined;
 CreateTopUpAddresses.prototype['token_id'] = undefined;
 
 /**
- * A list of unique custom payer IDs required to create top-up addresses. The maximum number of items is 50. 
+ * A list of unique custom payer IDs required to create top-up addresses. 
  * @member {Array.<String>} custom_payer_ids
  */
 CreateTopUpAddresses.prototype['custom_payer_ids'] = undefined;

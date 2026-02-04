@@ -193,7 +193,7 @@ CreatePaymentOrderRequest.prototype['merchant_order_code'] = undefined;
 CreatePaymentOrderRequest.prototype['psp_order_code'] = undefined;
 
 /**
- * The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com/developers/v2/guides/overview/supported-chains-and-tokens). 
+ * The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com//payments/en/guides/supported-chains-and-tokens#pricing-currency). 
  * @member {String} pricing_currency
  */
 CreatePaymentOrderRequest.prototype['pricing_currency'] = undefined;
@@ -223,10 +223,11 @@ CreatePaymentOrderRequest.prototype['payable_currency'] = undefined;
 CreatePaymentOrderRequest.prototype['payable_amount'] = undefined;
 
 /**
- * The pay-in order will expire after approximately a certain number of seconds: - The order status becomes final and cannot be changed - The `received_token_amount` field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a `transactionLate` webhook event. 
+ * The number of seconds until the pay-in order expires, counted from when the request is sent. For example, if set to `1800`, the order will expire in 30 minutes. Must be greater than zero and cannot exceed 3 hours (10800 seconds). After expiration:  - The order status becomes final and cannot be changed - The `received_token_amount` field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a `transactionLate` webhook event. 
  * @member {Number} expired_in
+ * @default 1800
  */
-CreatePaymentOrderRequest.prototype['expired_in'] = undefined;
+CreatePaymentOrderRequest.prototype['expired_in'] = 1800;
 
 /**
  * The allowed amount deviation, with precision up to 1 decimal place.  For example, if `payable_amount` is `100.00` and `amount_tolerance` is `0.50`: - Payer pays 99.55 → Success (difference of 0.45 ≤ 0.5) - Payer pays 99.40 → Underpaid (difference of 0.60 > 0.5) 

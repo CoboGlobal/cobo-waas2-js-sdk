@@ -235,6 +235,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.order.status.updated"
+         * @const
+         */
+        "payment.order.status.updated" = "payment.order.status.updated";
+
+    
+        /**
          * value: "payment.refund.status.updated"
          * @const
          */
@@ -281,6 +288,20 @@ export default class WebhookEventType {
          * @const
          */
         "payment.bulk_send.status.updated" = "payment.bulk_send.status.updated";
+
+    
+        /**
+         * value: "payment.transaction.external.created"
+         * @const
+         */
+        "payment.transaction.external.created" = "payment.transaction.external.created";
+
+    
+        /**
+         * value: "payment.transaction.external.completed"
+         * @const
+         */
+        "payment.transaction.external.completed" = "payment.transaction.external.completed";
 
     
         /**

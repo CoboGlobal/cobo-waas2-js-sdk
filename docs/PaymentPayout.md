@@ -12,8 +12,9 @@ Name | Type | Description | Notes
 **recipient_info** | [**PaymentPayoutRecipientInfo**](PaymentPayoutRecipientInfo.md) |  | [optional] 
 **initiator** | **String** | The initiator of this payout, usually the user&#39;s API key. | [optional] 
 **actual_payout_amount** | **String** | - For &#x60;Crypto&#x60; payouts: The amount of cryptocurrency sent to the recipient&#39;s address, denominated in the token specified in &#x60;recipient_info.token_id&#x60;. - For &#x60;OffRamp&#x60; payouts: The amount of fiat currency sent to the recipient&#39;s bank account, denominated in the currency specified in &#x60;recipient_info.currency&#x60;. (Note: The actual amount received may be lower due to additional bank transfer fees.)  | [optional] 
-**status** | [**PaymentPayoutStatus**](PaymentPayoutStatus.md) |  | 
+**commission_fees** | [**[CommissionFee]**](CommissionFee.md) | The commission fees of the payout. | [optional] 
 **remark** | **String** | A note or comment about the payout. | [optional] 
+**status** | [**PaymentPayoutStatus**](PaymentPayoutStatus.md) |  | 
 **created_timestamp** | **Number** | The created time of the payout, represented as a UNIX timestamp in seconds. | 
 **updated_timestamp** | **Number** | The updated time of the payout, represented as a UNIX timestamp in seconds. | 
 

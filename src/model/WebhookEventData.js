@@ -1289,6 +1289,12 @@ WebhookEventData.prototype['recipient_info'] = undefined;
 WebhookEventData.prototype['actual_payout_amount'] = undefined;
 
 /**
+ * The commission fees of the payout.
+ * @member {Array.<module:model/CommissionFee>} commission_fees
+ */
+WebhookEventData.prototype['commission_fees'] = undefined;
+
+/**
  * A note or comment about the payout.
  * @member {String} remark
  */

@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property frozen (base name: "frozen")', function() {
+      // uncomment below and update the code to test the property frozen
+      //var instance = new CoboWaas2.Balance();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

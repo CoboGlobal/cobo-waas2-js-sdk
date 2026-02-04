@@ -135,15 +135,12 @@ import CreateClaimActivityRequest from './model/CreateClaimActivityRequest';
 import CreateCounterpartyEntry201Response from './model/CreateCounterpartyEntry201Response';
 import CreateCounterpartyEntryRequest from './model/CreateCounterpartyEntryRequest';
 import CreateCounterpartyRequest from './model/CreateCounterpartyRequest';
-import CreateCounterpartyWalletAddressRequest from './model/CreateCounterpartyWalletAddressRequest';
 import CreateCryptoAddressRequest from './model/CreateCryptoAddressRequest';
 import CreateCustodialWalletParams from './model/CreateCustodialWalletParams';
 import CreateDestinationBankAccount from './model/CreateDestinationBankAccount';
-import CreateDestinationBankAccountRequest from './model/CreateDestinationBankAccountRequest';
 import CreateDestinationEntry201Response from './model/CreateDestinationEntry201Response';
 import CreateDestinationEntryRequest from './model/CreateDestinationEntryRequest';
 import CreateDestinationRequest from './model/CreateDestinationRequest';
-import CreateDestinationWalletAddressRequest from './model/CreateDestinationWalletAddressRequest';
 import CreateExchangeWalletParams from './model/CreateExchangeWalletParams';
 import CreateKeyShareHolder from './model/CreateKeyShareHolder';
 import CreateKeyShareHolderGroupRequest from './model/CreateKeyShareHolderGroupRequest';
@@ -194,16 +191,11 @@ import CustodialWeb3ContractCallSource from './model/CustodialWeb3ContractCallSo
 import CustodialWeb3MessageSignSource from './model/CustodialWeb3MessageSignSource';
 import CustodialWeb3TransferSource from './model/CustodialWeb3TransferSource';
 import DeleteAddressBookById201Response from './model/DeleteAddressBookById201Response';
-import DeleteCounterparty200Response from './model/DeleteCounterparty200Response';
 import DeleteCounterpartyById200Response from './model/DeleteCounterpartyById200Response';
 import DeleteCounterpartyEntry200Response from './model/DeleteCounterpartyEntry200Response';
-import DeleteCounterpartyWalletAddress200Response from './model/DeleteCounterpartyWalletAddress200Response';
 import DeleteCryptoAddress201Response from './model/DeleteCryptoAddress201Response';
-import DeleteDestination200Response from './model/DeleteDestination200Response';
-import DeleteDestinationBankAccount200Response from './model/DeleteDestinationBankAccount200Response';
 import DeleteDestinationById200Response from './model/DeleteDestinationById200Response';
 import DeleteDestinationEntry200Response from './model/DeleteDestinationEntry200Response';
-import DeleteDestinationWalletAddress200Response from './model/DeleteDestinationWalletAddress200Response';
 import DeleteGuardPubkey201Response from './model/DeleteGuardPubkey201Response';
 import DeleteKeyShareHolderGroupById201Response from './model/DeleteKeyShareHolderGroupById201Response';
 import DeleteWalletById201Response from './model/DeleteWalletById201Response';
@@ -222,7 +214,6 @@ import DispositionType from './model/DispositionType';
 import EigenLayerLstStakeExtra from './model/EigenLayerLstStakeExtra';
 import EigenLayerNativeStakeExtra from './model/EigenLayerNativeStakeExtra';
 import EigenlayerValidator from './model/EigenlayerValidator';
-import EnableDestinationWhitelistRequest from './model/EnableDestinationWhitelistRequest';
 import EntryType from './model/EntryType';
 import ErrorResponse from './model/ErrorResponse';
 import EstimateClaimFee from './model/EstimateClaimFee';
@@ -344,10 +335,7 @@ import ListBulkSendItems200Response from './model/ListBulkSendItems200Response';
 import ListCallbackMessages200Response from './model/ListCallbackMessages200Response';
 import ListCounterparties200Response from './model/ListCounterparties200Response';
 import ListCounterpartyEntries200Response from './model/ListCounterpartyEntries200Response';
-import ListCounterpartyWalletAddress200Response from './model/ListCounterpartyWalletAddress200Response';
-import ListDestinationBankAccounts200Response from './model/ListDestinationBankAccounts200Response';
 import ListDestinationEntries200Response from './model/ListDestinationEntries200Response';
-import ListDestinationWalletAddresses200Response from './model/ListDestinationWalletAddresses200Response';
 import ListDestinations200Response from './model/ListDestinations200Response';
 import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
 import ListForcedSweepRequests200Response from './model/ListForcedSweepRequests200Response';
@@ -424,6 +412,7 @@ import Pagination from './model/Pagination';
 import PayerAccount from './model/PayerAccount';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
 import PaymentAllocationAmount from './model/PaymentAllocationAmount';
+import PaymentBridgeStatus from './model/PaymentBridgeStatus';
 import PaymentBulkSend from './model/PaymentBulkSend';
 import PaymentBulkSendEvent from './model/PaymentBulkSendEvent';
 import PaymentBulkSendExecutionMode from './model/PaymentBulkSendExecutionMode';
@@ -460,9 +449,9 @@ import PolicyFieldValueType from './model/PolicyFieldValueType';
 import PoolDetails from './model/PoolDetails';
 import PoolDetailsAllOfValidatorsInfo from './model/PoolDetailsAllOfValidatorsInfo';
 import PoolSummary from './model/PoolSummary';
+import PreCheck from './model/PreCheck';
 import PspBalance from './model/PspBalance';
 import QueryApprovalStatement200Response from './model/QueryApprovalStatement200Response';
-import QueryDestinationWhitelistEnabled200Response from './model/QueryDestinationWhitelistEnabled200Response';
 import QueryGuardPubkey200Response from './model/QueryGuardPubkey200Response';
 import QueryGuardPubkey200ResponseAddressesInner from './model/QueryGuardPubkey200ResponseAddressesInner';
 import RefreshAddressBalancesByToken200Response from './model/RefreshAddressBalancesByToken200Response';
@@ -510,6 +499,7 @@ import Settlement from './model/Settlement';
 import SettlementDetail from './model/SettlementDetail';
 import SettlementInfo from './model/SettlementInfo';
 import SettlementType from './model/SettlementType';
+import SkipCheckType from './model/SkipCheckType';
 import SmartContractInitiator from './model/SmartContractInitiator';
 import SmartContractWalletInfo from './model/SmartContractWalletInfo';
 import SmartContractWalletOperationType from './model/SmartContractWalletOperationType';
@@ -796,11 +786,9 @@ import UTXO from './model/UTXO';
 import UnfreezeDisposition from './model/UnfreezeDisposition';
 import UpdateAddressBookParam from './model/UpdateAddressBookParam';
 import UpdateBankAccountByIdRequest from './model/UpdateBankAccountByIdRequest';
-import UpdateCounterpartyByIdRequest from './model/UpdateCounterpartyByIdRequest';
 import UpdateCounterpartyRequest from './model/UpdateCounterpartyRequest';
 import UpdateCustodialWalletParams from './model/UpdateCustodialWalletParams';
 import UpdateDestinationBankAccount from './model/UpdateDestinationBankAccount';
-import UpdateDestinationByIdRequest from './model/UpdateDestinationByIdRequest';
 import UpdateDestinationEntry200Response from './model/UpdateDestinationEntry200Response';
 import UpdateDestinationEntryRequest from './model/UpdateDestinationEntryRequest';
 import UpdateDestinationRequest from './model/UpdateDestinationRequest';
@@ -887,7 +875,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.30.0
+* @version 1.31.0
 */
 export {
     Env,
@@ -1632,12 +1620,6 @@ export {
     CreateCounterpartyRequest,
 
     /**
-     * The CreateCounterpartyWalletAddressRequest model constructor.
-     * @property {module:model/CreateCounterpartyWalletAddressRequest}
-     */
-    CreateCounterpartyWalletAddressRequest,
-
-    /**
      * The CreateCryptoAddressRequest model constructor.
      * @property {module:model/CreateCryptoAddressRequest}
      */
@@ -1656,12 +1638,6 @@ export {
     CreateDestinationBankAccount,
 
     /**
-     * The CreateDestinationBankAccountRequest model constructor.
-     * @property {module:model/CreateDestinationBankAccountRequest}
-     */
-    CreateDestinationBankAccountRequest,
-
-    /**
      * The CreateDestinationEntry201Response model constructor.
      * @property {module:model/CreateDestinationEntry201Response}
      */
@@ -1678,12 +1654,6 @@ export {
      * @property {module:model/CreateDestinationRequest}
      */
     CreateDestinationRequest,
-
-    /**
-     * The CreateDestinationWalletAddressRequest model constructor.
-     * @property {module:model/CreateDestinationWalletAddressRequest}
-     */
-    CreateDestinationWalletAddressRequest,
 
     /**
      * The CreateExchangeWalletParams model constructor.
@@ -1986,12 +1956,6 @@ export {
     DeleteAddressBookById201Response,
 
     /**
-     * The DeleteCounterparty200Response model constructor.
-     * @property {module:model/DeleteCounterparty200Response}
-     */
-    DeleteCounterparty200Response,
-
-    /**
      * The DeleteCounterpartyById200Response model constructor.
      * @property {module:model/DeleteCounterpartyById200Response}
      */
@@ -2004,28 +1968,10 @@ export {
     DeleteCounterpartyEntry200Response,
 
     /**
-     * The DeleteCounterpartyWalletAddress200Response model constructor.
-     * @property {module:model/DeleteCounterpartyWalletAddress200Response}
-     */
-    DeleteCounterpartyWalletAddress200Response,
-
-    /**
      * The DeleteCryptoAddress201Response model constructor.
      * @property {module:model/DeleteCryptoAddress201Response}
      */
     DeleteCryptoAddress201Response,
-
-    /**
-     * The DeleteDestination200Response model constructor.
-     * @property {module:model/DeleteDestination200Response}
-     */
-    DeleteDestination200Response,
-
-    /**
-     * The DeleteDestinationBankAccount200Response model constructor.
-     * @property {module:model/DeleteDestinationBankAccount200Response}
-     */
-    DeleteDestinationBankAccount200Response,
 
     /**
      * The DeleteDestinationById200Response model constructor.
@@ -2038,12 +1984,6 @@ export {
      * @property {module:model/DeleteDestinationEntry200Response}
      */
     DeleteDestinationEntry200Response,
-
-    /**
-     * The DeleteDestinationWalletAddress200Response model constructor.
-     * @property {module:model/DeleteDestinationWalletAddress200Response}
-     */
-    DeleteDestinationWalletAddress200Response,
 
     /**
      * The DeleteGuardPubkey201Response model constructor.
@@ -2152,12 +2092,6 @@ export {
      * @property {module:model/EigenlayerValidator}
      */
     EigenlayerValidator,
-
-    /**
-     * The EnableDestinationWhitelistRequest model constructor.
-     * @property {module:model/EnableDestinationWhitelistRequest}
-     */
-    EnableDestinationWhitelistRequest,
 
     /**
      * The EntryType model constructor.
@@ -2886,28 +2820,10 @@ export {
     ListCounterpartyEntries200Response,
 
     /**
-     * The ListCounterpartyWalletAddress200Response model constructor.
-     * @property {module:model/ListCounterpartyWalletAddress200Response}
-     */
-    ListCounterpartyWalletAddress200Response,
-
-    /**
-     * The ListDestinationBankAccounts200Response model constructor.
-     * @property {module:model/ListDestinationBankAccounts200Response}
-     */
-    ListDestinationBankAccounts200Response,
-
-    /**
      * The ListDestinationEntries200Response model constructor.
      * @property {module:model/ListDestinationEntries200Response}
      */
     ListDestinationEntries200Response,
-
-    /**
-     * The ListDestinationWalletAddresses200Response model constructor.
-     * @property {module:model/ListDestinationWalletAddresses200Response}
-     */
-    ListDestinationWalletAddresses200Response,
 
     /**
      * The ListDestinations200Response model constructor.
@@ -3366,6 +3282,12 @@ export {
     PaymentAllocationAmount,
 
     /**
+     * The PaymentBridgeStatus model constructor.
+     * @property {module:model/PaymentBridgeStatus}
+     */
+    PaymentBridgeStatus,
+
+    /**
      * The PaymentBulkSend model constructor.
      * @property {module:model/PaymentBulkSend}
      */
@@ -3582,6 +3504,12 @@ export {
     PoolSummary,
 
     /**
+     * The PreCheck model constructor.
+     * @property {module:model/PreCheck}
+     */
+    PreCheck,
+
+    /**
      * The PspBalance model constructor.
      * @property {module:model/PspBalance}
      */
@@ -3592,12 +3520,6 @@ export {
      * @property {module:model/QueryApprovalStatement200Response}
      */
     QueryApprovalStatement200Response,
-
-    /**
-     * The QueryDestinationWhitelistEnabled200Response model constructor.
-     * @property {module:model/QueryDestinationWhitelistEnabled200Response}
-     */
-    QueryDestinationWhitelistEnabled200Response,
 
     /**
      * The QueryGuardPubkey200Response model constructor.
@@ -3880,6 +3802,12 @@ export {
      * @property {module:model/SettlementType}
      */
     SettlementType,
+
+    /**
+     * The SkipCheckType model constructor.
+     * @property {module:model/SkipCheckType}
+     */
+    SkipCheckType,
 
     /**
      * The SmartContractInitiator model constructor.
@@ -5598,12 +5526,6 @@ export {
     UpdateBankAccountByIdRequest,
 
     /**
-     * The UpdateCounterpartyByIdRequest model constructor.
-     * @property {module:model/UpdateCounterpartyByIdRequest}
-     */
-    UpdateCounterpartyByIdRequest,
-
-    /**
      * The UpdateCounterpartyRequest model constructor.
      * @property {module:model/UpdateCounterpartyRequest}
      */
@@ -5620,12 +5542,6 @@ export {
      * @property {module:model/UpdateDestinationBankAccount}
      */
     UpdateDestinationBankAccount,
-
-    /**
-     * The UpdateDestinationByIdRequest model constructor.
-     * @property {module:model/UpdateDestinationByIdRequest}
-     */
-    UpdateDestinationByIdRequest,
 
     /**
      * The UpdateDestinationEntry200Response model constructor.

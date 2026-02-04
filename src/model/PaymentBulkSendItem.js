@@ -21,10 +21,10 @@ class PaymentBulkSendItem {
     /**
      * Constructs a new <code>PaymentBulkSendItem</code>.
      * @alias module:model/PaymentBulkSendItem
-     * @param bulk_send_item_id {String} The payout item ID.
-     * @param token_id {String} The token ID of the payout item.
-     * @param receiving_address {String} The receiving address of the payout item.
-     * @param amount {String} The amount of the payout item.
+     * @param bulk_send_item_id {String} The bulk send item ID.
+     * @param token_id {String} The token ID of the cryptocurrency to be sent to the recipient.
+     * @param receiving_address {String} The receiving address.
+     * @param amount {String} The amount of the cryptocurrency to be sent to the recipient.
      * @param status {module:model/PaymentBulkSendItemStatus} 
      * @param validation_status {module:model/PaymentBulkSendItemValidationStatus} 
      */
@@ -125,31 +125,31 @@ class PaymentBulkSendItem {
 PaymentBulkSendItem.RequiredProperties = ["bulk_send_item_id", "token_id", "receiving_address", "amount", "status", "validation_status"];
 
 /**
- * The payout item ID.
+ * The bulk send item ID.
  * @member {String} bulk_send_item_id
  */
 PaymentBulkSendItem.prototype['bulk_send_item_id'] = undefined;
 
 /**
- * The token ID of the payout item.
+ * The token ID of the cryptocurrency to be sent to the recipient.
  * @member {String} token_id
  */
 PaymentBulkSendItem.prototype['token_id'] = undefined;
 
 /**
- * The receiving address of the payout item.
+ * The receiving address.
  * @member {String} receiving_address
  */
 PaymentBulkSendItem.prototype['receiving_address'] = undefined;
 
 /**
- * The amount of the payout item.
+ * The amount of the cryptocurrency to be sent to the recipient.
  * @member {String} amount
  */
 PaymentBulkSendItem.prototype['amount'] = undefined;
 
 /**
- * The note of the payout item.
+ * A note or comment about the bulk send item.
  * @member {String} description
  */
 PaymentBulkSendItem.prototype['description'] = undefined;

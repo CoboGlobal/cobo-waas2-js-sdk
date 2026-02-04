@@ -61,6 +61,9 @@ class Balance {
             if (data.hasOwnProperty('locked')) {
                 obj['locked'] = ApiClient.convertToType(data['locked'], 'String');
             }
+            if (data.hasOwnProperty('frozen')) {
+                obj['frozen'] = ApiClient.convertToType(data['frozen'], 'String');
+            }
         }
         return obj;
     }
@@ -92,6 +95,10 @@ class Balance {
         // ensure the json data is a string
         if (data['locked'] && !(typeof data['locked'] === 'string' || data['locked'] instanceof String)) {
             throw new Error("Expected the field `locked` to be a primitive type in the JSON string but got " + data['locked']);
+        }
+        // ensure the json data is a string
+        if (data['frozen'] && !(typeof data['frozen'] === 'string' || data['frozen'] instanceof String)) {
+            throw new Error("Expected the field `frozen` to be a primitive type in the JSON string but got " + data['frozen']);
         }
 
         return true;
@@ -127,6 +134,13 @@ Balance.prototype['pending'] = '0';
  * @default '0'
  */
 Balance.prototype['locked'] = '0';
+
+/**
+ * Amount frozen due to compliance inspection. To learn more, see [Balances and transaction amounts for MPC Wallets](https://www.cobo.com/developers/v2/guides/mpc-wallets/balance-amounts) for more details.
+ * @member {String} frozen
+ * @default '0'
+ */
+Balance.prototype['frozen'] = '0';
 
 
 

@@ -26,7 +26,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.DeleteDestination200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,17 +44,11 @@
       object[property] = value;
   }
 
-  describe('DeleteDestination200Response', function() {
-    it('should create an instance of DeleteDestination200Response', function() {
-      // uncomment below and update the code to test DeleteDestination200Response
-      //var instance = new CoboWaas2.DeleteDestination200Response();
-      //expect(instance).to.be.a(CoboWaas2.DeleteDestination200Response);
-    });
-
-    it('should have the property destination_id (base name: "destination_id")', function() {
-      // uncomment below and update the code to test the property destination_id
-      //var instance = new CoboWaas2.DeleteDestination200Response();
-      //expect(instance).to.be();
+  describe('PaymentBridgeStatus', function() {
+    it('should create an instance of PaymentBridgeStatus', function() {
+      // uncomment below and update the code to test PaymentBridgeStatus
+      //var instance = new CoboWaas2.PaymentBridgeStatus();
+      //expect(instance).to.be.a(CoboWaas2.PaymentBridgeStatus);
     });
 
   });

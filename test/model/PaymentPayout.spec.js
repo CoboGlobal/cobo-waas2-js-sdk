@@ -100,14 +100,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
+    it('should have the property commission_fees (base name: "commission_fees")', function() {
+      // uncomment below and update the code to test the property commission_fees
       //var instance = new CoboWaas2.PaymentPayout();
       //expect(instance).to.be();
     });
 
     it('should have the property remark (base name: "remark")', function() {
       // uncomment below and update the code to test the property remark
+      //var instance = new CoboWaas2.PaymentPayout();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
       //var instance = new CoboWaas2.PaymentPayout();
       //expect(instance).to.be();
     });

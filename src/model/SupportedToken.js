@@ -19,13 +19,13 @@ class SupportedToken {
     /**
      * Constructs a new <code>SupportedToken</code>.
      * @alias module:model/SupportedToken
-     * @param token_id {String} Unique identifier of the token
-     * @param name {String} Full name of the token
-     * @param symbol {String} Symbol representation of the token
-     * @param decimal {Number} Number of decimal places for the token
-     * @param token_address {String} Contract address of the token (may be null for native coins)
-     * @param chain_id {String} Identifier of the blockchain where the token exists
-     * @param chain_symbol {String} Symbol of the underlying blockchain
+     * @param token_id {String} The unique identifier of the token, in the format of `{chain_id}_{token_symbol}`.
+     * @param name {String} The full name of the token.
+     * @param symbol {String} The symbol of the token.
+     * @param decimal {Number} The number of decimal places for the token. This value is used to convert  between the token's smallest unit and its display value. 
+     * @param token_address {String} The contract address of the token. This is `null` for native coins (e.g., ETH on Ethereum). 
+     * @param chain_id {String} The ID of the chain on which the token exists.
+     * @param chain_symbol {String} The symbol of the chain on which the token exists.
      */
     constructor(token_id, name, symbol, decimal, token_address, chain_id, chain_symbol) { 
         
@@ -146,61 +146,61 @@ class SupportedToken {
 SupportedToken.RequiredProperties = ["token_id", "name", "symbol", "decimal", "token_address", "chain_id", "chain_symbol"];
 
 /**
- * Unique identifier of the token
+ * The unique identifier of the token, in the format of `{chain_id}_{token_symbol}`.
  * @member {String} token_id
  */
 SupportedToken.prototype['token_id'] = undefined;
 
 /**
- * Full name of the token
+ * The full name of the token.
  * @member {String} name
  */
 SupportedToken.prototype['name'] = undefined;
 
 /**
- * Symbol representation of the token
+ * The symbol of the token.
  * @member {String} symbol
  */
 SupportedToken.prototype['symbol'] = undefined;
 
 /**
- * Number of decimal places for the token
+ * The number of decimal places for the token. This value is used to convert  between the token's smallest unit and its display value. 
  * @member {Number} decimal
  */
 SupportedToken.prototype['decimal'] = undefined;
 
 /**
- * Contract address of the token (may be null for native coins)
+ * The contract address of the token. This is `null` for native coins (e.g., ETH on Ethereum). 
  * @member {String} token_address
  */
 SupportedToken.prototype['token_address'] = undefined;
 
 /**
- * Identifier of the blockchain where the token exists
+ * The ID of the chain on which the token exists.
  * @member {String} chain_id
  */
 SupportedToken.prototype['chain_id'] = undefined;
 
 /**
- * Symbol of the underlying blockchain
+ * The symbol of the chain on which the token exists.
  * @member {String} chain_symbol
  */
 SupportedToken.prototype['chain_symbol'] = undefined;
 
 /**
- * URL to the blockchain's icon image
+ * The URL of the chain icon image.
  * @member {String} chain_icon_url
  */
 SupportedToken.prototype['chain_icon_url'] = undefined;
 
 /**
- * URL to the token's icon image
+ * The URL of the token icon image.
  * @member {String} token_icon_url
  */
 SupportedToken.prototype['token_icon_url'] = undefined;
 
 /**
- * Whether the token is supported by the off-ramp service.
+ * Whether the token supports fiat off-ramp. - `true`: The token can be used for fiat off-ramp. - `false`: The token cannot be used for fiat off-ramp. 
  * @member {Boolean} can_off_ramp
  */
 SupportedToken.prototype['can_off_ramp'] = undefined;
