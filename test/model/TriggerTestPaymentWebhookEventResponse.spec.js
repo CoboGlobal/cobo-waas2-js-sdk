@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
+    instance = new CoboWaas2.TriggerTestPaymentWebhookEventResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,28 +45,16 @@
       object[property] = value;
   }
 
-  describe('TransactionDepositToAddressDestinationTxInfo', function() {
-    it('should create an instance of TransactionDepositToAddressDestinationTxInfo', function() {
-      // uncomment below and update the code to test TransactionDepositToAddressDestinationTxInfo
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
-      //expect(instance).to.be.a(CoboWaas2.TransactionDepositToAddressDestinationTxInfo);
+  describe('TriggerTestPaymentWebhookEventResponse', function() {
+    it('should create an instance of TriggerTestPaymentWebhookEventResponse', function() {
+      // uncomment below and update the code to test TriggerTestPaymentWebhookEventResponse
+      //var instance = new CoboWaas2.TriggerTestPaymentWebhookEventResponse();
+      //expect(instance).to.be.a(CoboWaas2.TriggerTestPaymentWebhookEventResponse);
     });
 
-    it('should have the property vout_n (base name: "vout_n")', function() {
-      // uncomment below and update the code to test the property vout_n
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property object_id (base name: "object_id")', function() {
-      // uncomment below and update the code to test the property object_id
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property version (base name: "version")', function() {
-      // uncomment below and update the code to test the property version
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
+    it('should have the property triggered (base name: "triggered")', function() {
+      // uncomment below and update the code to test the property triggered
+      //var instance = new CoboWaas2.TriggerTestPaymentWebhookEventResponse();
       //expect(instance).to.be();
     });
 

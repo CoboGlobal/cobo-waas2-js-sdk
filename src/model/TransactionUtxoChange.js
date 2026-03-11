@@ -51,6 +51,9 @@ class TransactionUtxoChange {
             if (data.hasOwnProperty('value')) {
                 obj['value'] = ApiClient.convertToType(data['value'], 'String');
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
         }
         return obj;
     }
@@ -68,6 +71,10 @@ class TransactionUtxoChange {
         // ensure the json data is a string
         if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
+        }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
 
         return true;
@@ -89,6 +96,12 @@ TransactionUtxoChange.prototype['address'] = undefined;
  * @member {String} value
  */
 TransactionUtxoChange.prototype['value'] = undefined;
+
+/**
+ * The token ID of the UTXO change output.
+ * @member {String} token_id
+ */
+TransactionUtxoChange.prototype['token_id'] = undefined;
 
 
 

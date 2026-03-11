@@ -305,6 +305,20 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.transaction.settlement_network.created"
+         * @const
+         */
+        "payment.transaction.settlement_network.created" = "payment.transaction.settlement_network.created";
+
+    
+        /**
+         * value: "payment.transaction.settlement_network.completed"
+         * @const
+         */
+        "payment.transaction.settlement_network.completed" = "payment.transaction.settlement_network.completed";
+
+    
+        /**
          * value: "compliance.disposition.status.updated"
          * @const
          */

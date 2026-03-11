@@ -94,6 +94,12 @@ class CreateDestinationBankAccount {
             if (data.hasOwnProperty('intermediary_bank_info')) {
                 obj['intermediary_bank_info'] = IntermediaryBankInfo.constructFromObject(data['intermediary_bank_info']);
             }
+            if (data.hasOwnProperty('country')) {
+                obj['country'] = ApiClient.convertToType(data['country'], 'String');
+            }
+            if (data.hasOwnProperty('city')) {
+                obj['city'] = ApiClient.convertToType(data['city'], 'String');
+            }
         }
         return obj;
     }
@@ -155,6 +161,14 @@ class CreateDestinationBankAccount {
           if (!!IntermediaryBankInfo.validateJSON) {
             IntermediaryBankInfo.validateJSON(data['intermediary_bank_info']);
           }
+        }
+        // ensure the json data is a string
+        if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
+            throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
+        }
+        // ensure the json data is a string
+        if (data['city'] && !(typeof data['city'] === 'string' || data['city'] instanceof String)) {
+            throw new Error("Expected the field `city` to be a primitive type in the JSON string but got " + data['city']);
         }
 
         return true;
@@ -229,6 +243,18 @@ CreateDestinationBankAccount.prototype['further_credit'] = undefined;
  * @member {module:model/IntermediaryBankInfo} intermediary_bank_info
  */
 CreateDestinationBankAccount.prototype['intermediary_bank_info'] = undefined;
+
+/**
+ * Beneficiary's country, in ISO 3166-1 alpha-3 format.
+ * @member {String} country
+ */
+CreateDestinationBankAccount.prototype['country'] = undefined;
+
+/**
+ * Beneficiary's city.
+ * @member {String} city
+ */
+CreateDestinationBankAccount.prototype['city'] = undefined;
 
 
 

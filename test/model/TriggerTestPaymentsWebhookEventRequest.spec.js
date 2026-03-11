@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
+    instance = new CoboWaas2.TriggerTestPaymentsWebhookEventRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,28 +45,22 @@
       object[property] = value;
   }
 
-  describe('TransactionDepositToAddressDestinationTxInfo', function() {
-    it('should create an instance of TransactionDepositToAddressDestinationTxInfo', function() {
-      // uncomment below and update the code to test TransactionDepositToAddressDestinationTxInfo
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
-      //expect(instance).to.be.a(CoboWaas2.TransactionDepositToAddressDestinationTxInfo);
+  describe('TriggerTestPaymentsWebhookEventRequest', function() {
+    it('should create an instance of TriggerTestPaymentsWebhookEventRequest', function() {
+      // uncomment below and update the code to test TriggerTestPaymentsWebhookEventRequest
+      //var instance = new CoboWaas2.TriggerTestPaymentsWebhookEventRequest();
+      //expect(instance).to.be.a(CoboWaas2.TriggerTestPaymentsWebhookEventRequest);
     });
 
-    it('should have the property vout_n (base name: "vout_n")', function() {
-      // uncomment below and update the code to test the property vout_n
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
+    it('should have the property event_type (base name: "event_type")', function() {
+      // uncomment below and update the code to test the property event_type
+      //var instance = new CoboWaas2.TriggerTestPaymentsWebhookEventRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property object_id (base name: "object_id")', function() {
-      // uncomment below and update the code to test the property object_id
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property version (base name: "version")', function() {
-      // uncomment below and update the code to test the property version
-      //var instance = new CoboWaas2.TransactionDepositToAddressDestinationTxInfo();
+    it('should have the property override_data (base name: "override_data")', function() {
+      // uncomment below and update the code to test the property override_data
+      //var instance = new CoboWaas2.TriggerTestPaymentsWebhookEventRequest();
       //expect(instance).to.be();
     });
 

@@ -92,6 +92,8 @@ import ReportType from '../model/ReportType';
 import Settlement from '../model/Settlement';
 import SupportedToken from '../model/SupportedToken';
 import TopUpAddress from '../model/TopUpAddress';
+import TriggerTestPaymentWebhookEventResponse from '../model/TriggerTestPaymentWebhookEventResponse';
+import TriggerTestPaymentsWebhookEventRequest from '../model/TriggerTestPaymentsWebhookEventRequest';
 import UpdateBankAccountByIdRequest from '../model/UpdateBankAccountByIdRequest';
 import UpdateCounterpartyRequest from '../model/UpdateCounterpartyRequest';
 import UpdateDestinationEntry200Response from '../model/UpdateDestinationEntry200Response';
@@ -2914,29 +2916,25 @@ export default class PaymentApi {
 
     /**
      * List merchant balances
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the `merchant_ids` parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
-     * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * This operation retrieves merchant balance information.  You need to specify at least one of `merchant_ids` or `token_id` to filter the results.  <Note>Do not pass `acquiring_type` for this operation.</Note>  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
      * @param {Object} opts Optional parameters
-     * @param {String} [merchant_ids] A list of merchant IDs to query.
+     * @param {String} [merchant_ids] The comma-separated list of merchant IDs to filter by.  At least one of `merchant_ids` or `token_id` must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param {String} [token_id] The token ID that identifies the cryptocurrency.  At least one of `merchant_ids` or `token_id` must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
      * @param {module:model/AcquiringType} [acquiring_type] This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListMerchantBalances200Response} and HTTP response
      */
-    listMerchantBalancesWithHttpInfo(token_id, opts) {
+    listMerchantBalancesWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // verify the required parameter 'token_id' is set
-      if (token_id === undefined || token_id === null) {
-        throw new Error("Missing the required parameter 'token_id' when calling listMerchantBalances");
       }
 
       let pathParams = {
       };
       let queryParams = {
         'merchant_ids': opts['merchant_ids'],
-        'token_id': token_id,
+        'token_id': opts['token_id'],
         'acquiring_type': opts['acquiring_type']
       };
       let headerParams = {
@@ -2957,15 +2955,15 @@ export default class PaymentApi {
 
     /**
      * List merchant balances
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the `merchant_ids` parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
-     * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * This operation retrieves merchant balance information.  You need to specify at least one of `merchant_ids` or `token_id` to filter the results.  <Note>Do not pass `acquiring_type` for this operation.</Note>  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.merchant_ids A list of merchant IDs to query.
+     * @param {String} opts.merchant_ids The comma-separated list of merchant IDs to filter by.  At least one of `merchant_ids` or `token_id` must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param {String} opts.token_id The token ID that identifies the cryptocurrency.  At least one of `merchant_ids` or `token_id` must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
      * @param {module:model/AcquiringType} opts.acquiring_type This parameter has been deprecated
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListMerchantBalances200Response}
      */
-    listMerchantBalances(token_id, opts) {
-      return this.listMerchantBalancesWithHttpInfo(token_id, opts)
+    listMerchantBalances(opts) {
+      return this.listMerchantBalancesWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -3550,6 +3548,55 @@ export default class PaymentApi {
      */
     paymentEstimateFee(opts) {
       return this.paymentEstimateFeeWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Trigger test webhook event
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the `override_data` property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TriggerTestPaymentsWebhookEventRequest} [TriggerTestPaymentsWebhookEventRequest] The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the `override_data` property to customize the payload. The provided fields must match the webhook event data structure for the specified event type. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TriggerTestPaymentWebhookEventResponse} and HTTP response
+     */
+    triggerTestPaymentsWebhookEventWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['TriggerTestPaymentsWebhookEventRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = TriggerTestPaymentWebhookEventResponse;
+      return this.apiClient.callApi(
+        '/payments/webhooks/trigger', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Trigger test webhook event
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the `override_data` property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/TriggerTestPaymentsWebhookEventRequest} opts.TriggerTestPaymentsWebhookEventRequest The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the `override_data` property to customize the payload. The provided fields must match the webhook event data structure for the specified event type. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TriggerTestPaymentWebhookEventResponse}
+     */
+    triggerTestPaymentsWebhookEvent(opts) {
+      return this.triggerTestPaymentsWebhookEventWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

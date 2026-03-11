@@ -13,5 +13,9 @@ Name | Type | Description | Notes
 **is_locked** | **Boolean** | Whether the UTXO is locked. | [optional] 
 **confirmed_number** | **Number** | The number of confirmations for the UTXO. | [optional] 
 **is_frozen** | **Boolean** | Whether the UTXO is frozen. | [optional] 
+**is_change** | **Boolean** | Whether the UTXO is a change output of a transaction. | [optional] 
+**chain_id** | **String** | The chain ID, which is the unique identifier of a blockchain. | [optional] 
+**object_id** | **String** | The ID of the blockchain object to spend (e.g., SUI Coin object). | [optional] 
+**version** | **String** | Object version number. | [optional] 
 
 

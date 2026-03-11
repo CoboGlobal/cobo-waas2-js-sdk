@@ -20,12 +20,11 @@ class IntermediaryBankInfo {
      * Constructs a new <code>IntermediaryBankInfo</code>.
      * @alias module:model/IntermediaryBankInfo
      * @param bank_name {String} The name of the intermediary bank.
-     * @param bank_address {String} The address of the intermediary bank.
      * @param bank_swift_code {String} The SWIFT or BIC code of the intermediary bank.
      */
-    constructor(bank_name, bank_address, bank_swift_code) { 
+    constructor(bank_name, bank_swift_code) { 
         
-        IntermediaryBankInfo.initialize(this, bank_name, bank_address, bank_swift_code);
+        IntermediaryBankInfo.initialize(this, bank_name, bank_swift_code);
     }
 
     /**
@@ -33,9 +32,8 @@ class IntermediaryBankInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, bank_name, bank_address, bank_swift_code) { 
+    static initialize(obj, bank_name, bank_swift_code) { 
         obj['bank_name'] = bank_name;
-        obj['bank_address'] = bank_address;
         obj['bank_swift_code'] = bank_swift_code;
     }
 
@@ -94,7 +92,7 @@ class IntermediaryBankInfo {
 
 }
 
-IntermediaryBankInfo.RequiredProperties = ["bank_name", "bank_address", "bank_swift_code"];
+IntermediaryBankInfo.RequiredProperties = ["bank_name", "bank_swift_code"];
 
 /**
  * The name of the intermediary bank.

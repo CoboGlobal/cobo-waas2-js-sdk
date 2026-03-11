@@ -51,6 +51,9 @@ class TransactionSelectedUtxo {
             if (data.hasOwnProperty('vout_n')) {
                 obj['vout_n'] = ApiClient.convertToType(data['vout_n'], 'Number');
             }
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
+            }
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
@@ -62,6 +65,12 @@ class TransactionSelectedUtxo {
             }
             if (data.hasOwnProperty('revealed_script')) {
                 obj['revealed_script'] = ApiClient.convertToType(data['revealed_script'], 'String');
+            }
+            if (data.hasOwnProperty('object_id')) {
+                obj['object_id'] = ApiClient.convertToType(data['object_id'], 'String');
+            }
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
             }
         }
         return obj;
@@ -78,6 +87,10 @@ class TransactionSelectedUtxo {
             throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
         }
         // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
@@ -92,6 +105,14 @@ class TransactionSelectedUtxo {
         // ensure the json data is a string
         if (data['revealed_script'] && !(typeof data['revealed_script'] === 'string' || data['revealed_script'] instanceof String)) {
             throw new Error("Expected the field `revealed_script` to be a primitive type in the JSON string but got " + data['revealed_script']);
+        }
+        // ensure the json data is a string
+        if (data['object_id'] && !(typeof data['object_id'] === 'string' || data['object_id'] instanceof String)) {
+            throw new Error("Expected the field `object_id` to be a primitive type in the JSON string but got " + data['object_id']);
+        }
+        // ensure the json data is a string
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
         }
 
         return true;
@@ -113,6 +134,12 @@ TransactionSelectedUtxo.prototype['tx_hash'] = undefined;
  * @member {Number} vout_n
  */
 TransactionSelectedUtxo.prototype['vout_n'] = undefined;
+
+/**
+ * The token ID of the UTXO.
+ * @member {String} token_id
+ */
+TransactionSelectedUtxo.prototype['token_id'] = undefined;
 
 /**
  * The address of the UTXO.
@@ -137,6 +164,18 @@ TransactionSelectedUtxo.prototype['redeem_script'] = undefined;
  * @member {String} revealed_script
  */
 TransactionSelectedUtxo.prototype['revealed_script'] = undefined;
+
+/**
+ * The ID of the blockchain object to spend (e.g., SUI Coin object).
+ * @member {String} object_id
+ */
+TransactionSelectedUtxo.prototype['object_id'] = undefined;
+
+/**
+ * Object version number.
+ * @member {String} version
+ */
+TransactionSelectedUtxo.prototype['version'] = undefined;
 
 
 

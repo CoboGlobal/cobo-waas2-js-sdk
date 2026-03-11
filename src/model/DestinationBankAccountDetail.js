@@ -133,6 +133,12 @@ class DestinationBankAccountDetail {
             if (data.hasOwnProperty('bank_account_status')) {
                 obj['bank_account_status'] = BankAccountStatus.constructFromObject(data['bank_account_status']);
             }
+            if (data.hasOwnProperty('country')) {
+                obj['country'] = ApiClient.convertToType(data['country'], 'String');
+            }
+            if (data.hasOwnProperty('city')) {
+                obj['city'] = ApiClient.convertToType(data['city'], 'String');
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -228,6 +234,14 @@ class DestinationBankAccountDetail {
           if (!!IntermediaryBankInfo.validateJSON) {
             IntermediaryBankInfo.validateJSON(data['intermediary_bank_info']);
           }
+        }
+        // ensure the json data is a string
+        if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
+            throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
+        }
+        // ensure the json data is a string
+        if (data['city'] && !(typeof data['city'] === 'string' || data['city'] instanceof String)) {
+            throw new Error("Expected the field `city` to be a primitive type in the JSON string but got " + data['city']);
         }
 
         return true;
@@ -354,6 +368,18 @@ DestinationBankAccountDetail.prototype['intermediary_bank_info'] = undefined;
  * @member {module:model/BankAccountStatus} bank_account_status
  */
 DestinationBankAccountDetail.prototype['bank_account_status'] = undefined;
+
+/**
+ * Beneficiary's country, in ISO 3166-1 alpha-3 format.
+ * @member {String} country
+ */
+DestinationBankAccountDetail.prototype['country'] = undefined;
+
+/**
+ * Beneficiary's city.
+ * @member {String} city
+ */
+DestinationBankAccountDetail.prototype['city'] = undefined;
 
 /**
  * The created time of the bank account, represented as a UNIX timestamp in seconds.

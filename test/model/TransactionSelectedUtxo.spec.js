@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
+      //var instance = new CoboWaas2.TransactionSelectedUtxo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
       //var instance = new CoboWaas2.TransactionSelectedUtxo();
@@ -84,6 +90,18 @@
 
     it('should have the property revealed_script (base name: "revealed_script")', function() {
       // uncomment below and update the code to test the property revealed_script
+      //var instance = new CoboWaas2.TransactionSelectedUtxo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property object_id (base name: "object_id")', function() {
+      // uncomment below and update the code to test the property object_id
+      //var instance = new CoboWaas2.TransactionSelectedUtxo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
       //var instance = new CoboWaas2.TransactionSelectedUtxo();
       //expect(instance).to.be();
     });

@@ -142,6 +142,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property country (base name: "country")', function() {
+      // uncomment below and update the code to test the property country
+      //var instance = new CoboWaas2.DestinationBankAccount();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property city (base name: "city")', function() {
+      // uncomment below and update the code to test the property city
+      //var instance = new CoboWaas2.DestinationBankAccount();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
