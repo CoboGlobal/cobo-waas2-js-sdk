@@ -656,6 +656,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('triggerTestPaymentsWebhookEvent', function() {
+      it('should call triggerTestPaymentsWebhookEvent successfully', function() {
+        //uncomment below and update the code to test triggerTestPaymentsWebhookEvent
+        //instance.triggerTestPaymentsWebhookEvent().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('updateBankAccountById', function() {
       it('should call updateBankAccountById successfully', function() {
         //uncomment below and update the code to test updateBankAccountById

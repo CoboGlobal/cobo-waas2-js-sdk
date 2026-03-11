@@ -15,5 +15,7 @@ Name | Type | Description | Notes
 **iban_code** | **String** | The IBAN code of the bank account. | [optional] 
 **further_credit** | **String** | The further credit of the bank account. | [optional] 
 **intermediary_bank_info** | [**IntermediaryBankInfo**](IntermediaryBankInfo.md) |  | [optional] 
+**country** | **String** | Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format. | [optional] 
+**city** | **String** | Beneficiary&#39;s city. | [optional] 
 
 

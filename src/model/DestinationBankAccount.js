@@ -111,6 +111,12 @@ class DestinationBankAccount {
             if (data.hasOwnProperty('updated_timestamp')) {
                 obj['updated_timestamp'] = ApiClient.convertToType(data['updated_timestamp'], 'Number');
             }
+            if (data.hasOwnProperty('country')) {
+                obj['country'] = ApiClient.convertToType(data['country'], 'String');
+            }
+            if (data.hasOwnProperty('city')) {
+                obj['city'] = ApiClient.convertToType(data['city'], 'String');
+            }
         }
         return obj;
     }
@@ -176,6 +182,14 @@ class DestinationBankAccount {
           if (!!IntermediaryBankInfo.validateJSON) {
             IntermediaryBankInfo.validateJSON(data['intermediary_bank_info']);
           }
+        }
+        // ensure the json data is a string
+        if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
+            throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
+        }
+        // ensure the json data is a string
+        if (data['city'] && !(typeof data['city'] === 'string' || data['city'] instanceof String)) {
+            throw new Error("Expected the field `city` to be a primitive type in the JSON string but got " + data['city']);
         }
 
         return true;
@@ -273,6 +287,18 @@ DestinationBankAccount.prototype['created_timestamp'] = undefined;
  * @member {Number} updated_timestamp
  */
 DestinationBankAccount.prototype['updated_timestamp'] = undefined;
+
+/**
+ * Beneficiary's country, in ISO 3166-1 alpha-3 format.
+ * @member {String} country
+ */
+DestinationBankAccount.prototype['country'] = undefined;
+
+/**
+ * Beneficiary's city.
+ * @member {String} city
+ */
+DestinationBankAccount.prototype['city'] = undefined;
 
 
 

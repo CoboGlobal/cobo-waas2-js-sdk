@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property token_id (base name: "token_id")', function() {
+      // uncomment below and update the code to test the property token_id
+      //var instance = new CoboWaas2.TransactionUtxoChange();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

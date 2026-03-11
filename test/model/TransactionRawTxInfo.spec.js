@@ -82,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property utxo_changes (base name: "utxo_changes")', function() {
+      // uncomment below and update the code to test the property utxo_changes
+      //var instance = new CoboWaas2.TransactionRawTxInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

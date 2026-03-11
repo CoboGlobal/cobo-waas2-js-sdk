@@ -72,6 +72,18 @@ class UTXO {
             if (data.hasOwnProperty('is_frozen')) {
                 obj['is_frozen'] = ApiClient.convertToType(data['is_frozen'], 'Boolean');
             }
+            if (data.hasOwnProperty('is_change')) {
+                obj['is_change'] = ApiClient.convertToType(data['is_change'], 'Boolean');
+            }
+            if (data.hasOwnProperty('chain_id')) {
+                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
+            }
+            if (data.hasOwnProperty('object_id')) {
+                obj['object_id'] = ApiClient.convertToType(data['object_id'], 'String');
+            }
+            if (data.hasOwnProperty('version')) {
+                obj['version'] = ApiClient.convertToType(data['version'], 'String');
+            }
         }
         return obj;
     }
@@ -97,6 +109,18 @@ class UTXO {
         // ensure the json data is a string
         if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
+        }
+        // ensure the json data is a string
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
+        }
+        // ensure the json data is a string
+        if (data['object_id'] && !(typeof data['object_id'] === 'string' || data['object_id'] instanceof String)) {
+            throw new Error("Expected the field `object_id` to be a primitive type in the JSON string but got " + data['object_id']);
+        }
+        // ensure the json data is a string
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
         }
 
         return true;
@@ -160,6 +184,30 @@ UTXO.prototype['confirmed_number'] = undefined;
  * @member {Boolean} is_frozen
  */
 UTXO.prototype['is_frozen'] = undefined;
+
+/**
+ * Whether the UTXO is a change output of a transaction.
+ * @member {Boolean} is_change
+ */
+UTXO.prototype['is_change'] = undefined;
+
+/**
+ * The chain ID, which is the unique identifier of a blockchain.
+ * @member {String} chain_id
+ */
+UTXO.prototype['chain_id'] = undefined;
+
+/**
+ * The ID of the blockchain object to spend (e.g., SUI Coin object).
+ * @member {String} object_id
+ */
+UTXO.prototype['object_id'] = undefined;
+
+/**
+ * Object version number.
+ * @member {String} version
+ */
+UTXO.prototype['version'] = undefined;
 
 
 

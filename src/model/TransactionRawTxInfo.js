@@ -60,7 +60,10 @@ class TransactionRawTxInfo {
                 obj['unsigned_raw_tx'] = ApiClient.convertToType(data['unsigned_raw_tx'], 'String');
             }
             if (data.hasOwnProperty('utxo_change')) {
-                obj['utxo_change'] = TransactionUtxoChange.constructFromObject(data['utxo_change']);
+                obj['utxo_change'] = ApiClient.convertToType(data['utxo_change'], TransactionUtxoChange);
+            }
+            if (data.hasOwnProperty('utxo_changes')) {
+                obj['utxo_changes'] = ApiClient.convertToType(data['utxo_changes'], [TransactionUtxoChange]);
             }
         }
         return obj;
@@ -96,6 +99,16 @@ class TransactionRawTxInfo {
             TransactionUtxoChange.validateJSON(data['utxo_change']);
           }
         }
+        if (data['utxo_changes']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['utxo_changes'])) {
+                throw new Error("Expected the field `utxo_changes` to be an array in the JSON data but got " + data['utxo_changes']);
+            }
+            // validate the optional field `utxo_changes` (array)
+            for (const item of data['utxo_changes']) {
+                TransactionUtxoChange.validateJSON(item);
+            };
+        }
 
         return true;
     }
@@ -130,9 +143,16 @@ TransactionRawTxInfo.prototype['raw_tx'] = undefined;
 TransactionRawTxInfo.prototype['unsigned_raw_tx'] = undefined;
 
 /**
+ * Deprecated. Use `utxo_changes` instead.
  * @member {module:model/TransactionUtxoChange} utxo_change
  */
 TransactionRawTxInfo.prototype['utxo_change'] = undefined;
+
+/**
+ * The UTXO change outputs in the transaction.
+ * @member {Array.<module:model/TransactionUtxoChange>} utxo_changes
+ */
+TransactionRawTxInfo.prototype['utxo_changes'] = undefined;
 
 
 

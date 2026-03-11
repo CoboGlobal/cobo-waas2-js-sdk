@@ -22,11 +22,10 @@ class MerchantBalance {
      * @alias module:model/MerchantBalance
      * @param merchant_id {String} The merchant ID.
      * @param token_id {String} The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`.
-     * @param acquiring_type {module:model/AcquiringType} 
      */
-    constructor(merchant_id, token_id, acquiring_type) { 
+    constructor(merchant_id, token_id) { 
         
-        MerchantBalance.initialize(this, merchant_id, token_id, acquiring_type);
+        MerchantBalance.initialize(this, merchant_id, token_id);
     }
 
     /**
@@ -34,10 +33,9 @@ class MerchantBalance {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, merchant_id, token_id, acquiring_type) { 
+    static initialize(obj, merchant_id, token_id) { 
         obj['merchant_id'] = merchant_id;
         obj['token_id'] = token_id;
-        obj['acquiring_type'] = acquiring_type;
     }
 
     /**
@@ -140,7 +138,7 @@ class MerchantBalance {
 
 }
 
-MerchantBalance.RequiredProperties = ["merchant_id", "token_id", "acquiring_type"];
+MerchantBalance.RequiredProperties = ["merchant_id", "token_id"];
 
 /**
  * The merchant ID.

@@ -106,6 +106,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property is_change (base name: "is_change")', function() {
+      // uncomment below and update the code to test the property is_change
+      //var instance = new CoboWaas2.UTXO();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property chain_id (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chain_id
+      //var instance = new CoboWaas2.UTXO();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property object_id (base name: "object_id")', function() {
+      // uncomment below and update the code to test the property object_id
+      //var instance = new CoboWaas2.UTXO();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
+      //var instance = new CoboWaas2.UTXO();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

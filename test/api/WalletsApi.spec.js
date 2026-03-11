@@ -266,6 +266,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listTransactionUtxos', function() {
+      it('should call listTransactionUtxos successfully', function() {
+        //uncomment below and update the code to test listTransactionUtxos
+        //instance.listTransactionUtxos().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listUtxos', function() {
       it('should call listUtxos successfully', function() {
         //uncomment below and update the code to test listUtxos

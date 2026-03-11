@@ -116,6 +116,13 @@ export default class ReportType {
 
     
         /**
+         * value: "BulkSend"
+         * @const
+         */
+        "BulkSend" = "BulkSend";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

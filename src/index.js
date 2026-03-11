@@ -779,6 +779,8 @@ import TravelRuleWithdrawLegalEntity from './model/TravelRuleWithdrawLegalEntity
 import TravelRuleWithdrawNaturalEntity from './model/TravelRuleWithdrawNaturalEntity';
 import TravelRuleWithdrawRequest from './model/TravelRuleWithdrawRequest';
 import TravelRuleWithdrawRequestTravelRuleInfo from './model/TravelRuleWithdrawRequestTravelRuleInfo';
+import TriggerTestPaymentWebhookEventResponse from './model/TriggerTestPaymentWebhookEventResponse';
+import TriggerTestPaymentsWebhookEventRequest from './model/TriggerTestPaymentsWebhookEventRequest';
 import TriggerTestWebhookEvent201Response from './model/TriggerTestWebhookEvent201Response';
 import TriggerTestWebhookEventRequest from './model/TriggerTestWebhookEventRequest';
 import TronContractCallDestination from './model/TronContractCallDestination';
@@ -875,7 +877,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.31.0
+* @version 1.32.0
 */
 export {
     Env,
@@ -5482,6 +5484,18 @@ export {
      * @property {module:model/TravelRuleWithdrawRequestTravelRuleInfo}
      */
     TravelRuleWithdrawRequestTravelRuleInfo,
+
+    /**
+     * The TriggerTestPaymentWebhookEventResponse model constructor.
+     * @property {module:model/TriggerTestPaymentWebhookEventResponse}
+     */
+    TriggerTestPaymentWebhookEventResponse,
+
+    /**
+     * The TriggerTestPaymentsWebhookEventRequest model constructor.
+     * @property {module:model/TriggerTestPaymentsWebhookEventRequest}
+     */
+    TriggerTestPaymentsWebhookEventRequest,
 
     /**
      * The TriggerTestWebhookEvent201Response model constructor.

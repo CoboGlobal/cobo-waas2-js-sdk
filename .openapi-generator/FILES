@@ -787,6 +787,8 @@ docs/TravelRuleWithdrawLegalEntity.md
 docs/TravelRuleWithdrawNaturalEntity.md
 docs/TravelRuleWithdrawRequest.md
 docs/TravelRuleWithdrawRequestTravelRuleInfo.md
+docs/TriggerTestPaymentWebhookEventResponse.md
+docs/TriggerTestPaymentsWebhookEventRequest.md
 docs/TriggerTestWebhookEvent201Response.md
 docs/TriggerTestWebhookEventRequest.md
 docs/TronContractCallDestination.md
@@ -1632,6 +1634,8 @@ src/model/TravelRuleWithdrawLegalEntity.js
 src/model/TravelRuleWithdrawNaturalEntity.js
 src/model/TravelRuleWithdrawRequest.js
 src/model/TravelRuleWithdrawRequestTravelRuleInfo.js
+src/model/TriggerTestPaymentWebhookEventResponse.js
+src/model/TriggerTestPaymentsWebhookEventRequest.js
 src/model/TriggerTestWebhookEvent201Response.js
 src/model/TriggerTestWebhookEventRequest.js
 src/model/TronContractCallDestination.js
@@ -2462,6 +2466,8 @@ test/model/TravelRuleWithdrawLegalEntity.spec.js
 test/model/TravelRuleWithdrawNaturalEntity.spec.js
 test/model/TravelRuleWithdrawRequest.spec.js
 test/model/TravelRuleWithdrawRequestTravelRuleInfo.spec.js
+test/model/TriggerTestPaymentWebhookEventResponse.spec.js
+test/model/TriggerTestPaymentsWebhookEventRequest.spec.js
 test/model/TriggerTestWebhookEvent201Response.spec.js
 test/model/TriggerTestWebhookEventRequest.spec.js
 test/model/TronContractCallDestination.spec.js

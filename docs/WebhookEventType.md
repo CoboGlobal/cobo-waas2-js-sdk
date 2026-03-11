@@ -85,6 +85,10 @@
 
 * `payment.transaction.external.completed` (value: `"payment.transaction.external.completed"`)
 
+* `payment.transaction.settlement_network.created` (value: `"payment.transaction.settlement_network.created"`)
+
+* `payment.transaction.settlement_network.completed` (value: `"payment.transaction.settlement_network.completed"`)
+
 * `compliance.disposition.status.updated` (value: `"compliance.disposition.status.updated"`)
 
 * `compliance.kyt.screenings.status.updated` (value: `"compliance.kyt.screenings.status.updated"`)
