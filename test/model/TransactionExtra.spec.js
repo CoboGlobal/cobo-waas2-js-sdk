@@ -130,6 +130,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property dapp_name (base name: "dapp_name")', function() {
+      // uncomment below and update the code to test the property dapp_name
+      //var instance = new CoboWaas2.TransactionExtra();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dapp_domain (base name: "dapp_domain")', function() {
+      // uncomment below and update the code to test the property dapp_domain
+      //var instance = new CoboWaas2.TransactionExtra();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property session_id (base name: "session_id")', function() {
+      // uncomment below and update the code to test the property session_id
+      //var instance = new CoboWaas2.TransactionExtra();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
