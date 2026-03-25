@@ -206,6 +206,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createSdkLink', function() {
+      it('should call createSdkLink successfully', function() {
+        //uncomment below and update the code to test createSdkLink
+        //instance.createSdkLink().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createSettlementRequest', function() {
       it('should call createSettlementRequest successfully', function() {
         //uncomment below and update the code to test createSettlementRequest
