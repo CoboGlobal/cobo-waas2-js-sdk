@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.CreateAutoSweepTask();
+    instance = new CoboWaas2.ListFeeStationFiatTransactions200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,28 +45,22 @@
       object[property] = value;
   }
 
-  describe('CreateAutoSweepTask', function() {
-    it('should create an instance of CreateAutoSweepTask', function() {
-      // uncomment below and update the code to test CreateAutoSweepTask
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be.a(CoboWaas2.CreateAutoSweepTask);
+  describe('ListFeeStationFiatTransactions200Response', function() {
+    it('should create an instance of ListFeeStationFiatTransactions200Response', function() {
+      // uncomment below and update the code to test ListFeeStationFiatTransactions200Response
+      //var instance = new CoboWaas2.ListFeeStationFiatTransactions200Response();
+      //expect(instance).to.be.a(CoboWaas2.ListFeeStationFiatTransactions200Response);
     });
 
-    it('should have the property wallet_id (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property wallet_id
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
+    it('should have the property data (base name: "data")', function() {
+      // uncomment below and update the code to test the property data
+      //var instance = new CoboWaas2.ListFeeStationFiatTransactions200Response();
       //expect(instance).to.be();
     });
 
-    it('should have the property token_id (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property token_id
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property min_balance_threshold (base name: "min_balance_threshold")', function() {
-      // uncomment below and update the code to test the property min_balance_threshold
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
+    it('should have the property pagination (base name: "pagination")', function() {
+      // uncomment below and update the code to test the property pagination
+      //var instance = new CoboWaas2.ListFeeStationFiatTransactions200Response();
       //expect(instance).to.be();
     });
 

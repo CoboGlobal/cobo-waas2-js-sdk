@@ -4,12 +4,63 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelAutoSweepTaskById**](AutoSweepApi.md#cancelAutoSweepTaskById) | **POST** /auto_sweep/tasks/{task_id}/cancel | Cancel auto sweep task
 [**createAutoSweepTask**](AutoSweepApi.md#createAutoSweepTask) | **POST** /auto_sweep/tasks | Create auto-sweep task
 [**createWalletSweepToAddresses**](AutoSweepApi.md#createWalletSweepToAddresses) | **POST** /auto_sweep/sweep_to_addresses | Create sweep-to address
 [**getAutoSweepTaskById**](AutoSweepApi.md#getAutoSweepTaskById) | **GET** /auto_sweep/tasks/{task_id} | Get auto-sweep task details
 [**listAutoSweepTask**](AutoSweepApi.md#listAutoSweepTask) | **GET** /auto_sweep/tasks | List auto-sweep tasks
 [**listWalletSweepToAddresses**](AutoSweepApi.md#listWalletSweepToAddresses) | **GET** /auto_sweep/sweep_to_addresses | List sweep-to addresses
 
+
+
+## cancelAutoSweepTaskById
+
+> AutoSweepTask cancelAutoSweepTaskById(task_id)
+
+Cancel auto sweep task
+
+This operation cancels an in-progress auto sweep task by its ID.  Only tasks with the &#x60;Submitted&#x60; status can be cancelled. Tasks that have already been processed (status &#x60;TransactionCreated&#x60;) cannot be cancelled. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.AutoSweepApi();
+const task_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
+apiInstance.cancelAutoSweepTaskById(task_id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **task_id** | **String**| The auto sweep task ID. | 
+
+### Return type
+
+[**AutoSweepTask**](AutoSweepTask.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## createAutoSweepTask

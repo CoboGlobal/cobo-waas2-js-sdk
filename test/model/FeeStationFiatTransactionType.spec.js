@@ -26,7 +26,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.CreateAutoSweepTask();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,29 +44,11 @@
       object[property] = value;
   }
 
-  describe('CreateAutoSweepTask', function() {
-    it('should create an instance of CreateAutoSweepTask', function() {
-      // uncomment below and update the code to test CreateAutoSweepTask
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be.a(CoboWaas2.CreateAutoSweepTask);
-    });
-
-    it('should have the property wallet_id (base name: "wallet_id")', function() {
-      // uncomment below and update the code to test the property wallet_id
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property token_id (base name: "token_id")', function() {
-      // uncomment below and update the code to test the property token_id
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property min_balance_threshold (base name: "min_balance_threshold")', function() {
-      // uncomment below and update the code to test the property min_balance_threshold
-      //var instance = new CoboWaas2.CreateAutoSweepTask();
-      //expect(instance).to.be();
+  describe('FeeStationFiatTransactionType', function() {
+    it('should create an instance of FeeStationFiatTransactionType', function() {
+      // uncomment below and update the code to test FeeStationFiatTransactionType
+      //var instance = new CoboWaas2.FeeStationFiatTransactionType();
+      //expect(instance).to.be.a(CoboWaas2.FeeStationFiatTransactionType);
     });
 
   });

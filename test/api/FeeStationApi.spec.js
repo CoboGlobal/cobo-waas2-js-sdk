@@ -76,6 +76,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listFeeStationFiatTransactions', function() {
+      it('should call listFeeStationFiatTransactions successfully', function() {
+        //uncomment below and update the code to test listFeeStationFiatTransactions
+        //instance.listFeeStationFiatTransactions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listFeeStationTransactions', function() {
       it('should call listFeeStationTransactions successfully', function() {
         //uncomment below and update the code to test listFeeStationTransactions

@@ -266,6 +266,8 @@ import FeeReserved from './model/FeeReserved';
 import FeeStationCheckFeeStationUsage from './model/FeeStationCheckFeeStationUsage';
 import FeeStationCheckFeeStationUsageResponse from './model/FeeStationCheckFeeStationUsageResponse';
 import FeeStationDestination from './model/FeeStationDestination';
+import FeeStationFiatTransaction from './model/FeeStationFiatTransaction';
+import FeeStationFiatTransactionType from './model/FeeStationFiatTransactionType';
 import FeeStationGasStationType from './model/FeeStationGasStationType';
 import FeeStationSponsorTransactionDescription from './model/FeeStationSponsorTransactionDescription';
 import FeeStationTransactionType from './model/FeeStationTransactionType';
@@ -338,6 +340,7 @@ import ListCounterpartyEntries200Response from './model/ListCounterpartyEntries2
 import ListDestinationEntries200Response from './model/ListDestinationEntries200Response';
 import ListDestinations200Response from './model/ListDestinations200Response';
 import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
+import ListFeeStationFiatTransactions200Response from './model/ListFeeStationFiatTransactions200Response';
 import ListForcedSweepRequests200Response from './model/ListForcedSweepRequests200Response';
 import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
 import ListKeyShareHolders200Response from './model/ListKeyShareHolders200Response';
@@ -877,7 +880,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.33.0
+* @version 1.34.0
 */
 export {
     Env,
@@ -2408,6 +2411,18 @@ export {
     FeeStationDestination,
 
     /**
+     * The FeeStationFiatTransaction model constructor.
+     * @property {module:model/FeeStationFiatTransaction}
+     */
+    FeeStationFiatTransaction,
+
+    /**
+     * The FeeStationFiatTransactionType model constructor.
+     * @property {module:model/FeeStationFiatTransactionType}
+     */
+    FeeStationFiatTransactionType,
+
+    /**
      * The FeeStationGasStationType model constructor.
      * @property {module:model/FeeStationGasStationType}
      */
@@ -2838,6 +2853,12 @@ export {
      * @property {module:model/ListExchanges200ResponseInner}
      */
     ListExchanges200ResponseInner,
+
+    /**
+     * The ListFeeStationFiatTransactions200Response model constructor.
+     * @property {module:model/ListFeeStationFiatTransactions200Response}
+     */
+    ListFeeStationFiatTransactions200Response,
 
     /**
      * The ListForcedSweepRequests200Response model constructor.

@@ -52,6 +52,12 @@
       //expect(instance).to.be.a(CoboWaas2.RefundLinkBusinessInfo);
     });
 
+    it('should have the property order_id (base name: "order_id")', function() {
+      // uncomment below and update the code to test the property order_id
+      //var instance = new CoboWaas2.RefundLinkBusinessInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property transaction_id (base name: "transaction_id")', function() {
       // uncomment below and update the code to test the property transaction_id
       //var instance = new CoboWaas2.RefundLinkBusinessInfo();
