@@ -264,6 +264,8 @@ docs/FeeStationApi.md
 docs/FeeStationCheckFeeStationUsage.md
 docs/FeeStationCheckFeeStationUsageResponse.md
 docs/FeeStationDestination.md
+docs/FeeStationFiatTransaction.md
+docs/FeeStationFiatTransactionType.md
 docs/FeeStationGasStationType.md
 docs/FeeStationSponsorTransactionDescription.md
 docs/FeeStationTransactionType.md
@@ -337,6 +339,7 @@ docs/ListCounterpartyEntries200Response.md
 docs/ListDestinationEntries200Response.md
 docs/ListDestinations200Response.md
 docs/ListExchanges200ResponseInner.md
+docs/ListFeeStationFiatTransactions200Response.md
 docs/ListForcedSweepRequests200Response.md
 docs/ListKeyShareHolderGroups200Response.md
 docs/ListKeyShareHolders200Response.md
@@ -1121,6 +1124,8 @@ src/model/FeeReserved.js
 src/model/FeeStationCheckFeeStationUsage.js
 src/model/FeeStationCheckFeeStationUsageResponse.js
 src/model/FeeStationDestination.js
+src/model/FeeStationFiatTransaction.js
+src/model/FeeStationFiatTransactionType.js
 src/model/FeeStationGasStationType.js
 src/model/FeeStationSponsorTransactionDescription.js
 src/model/FeeStationTransactionType.js
@@ -1193,6 +1198,7 @@ src/model/ListCounterpartyEntries200Response.js
 src/model/ListDestinationEntries200Response.js
 src/model/ListDestinations200Response.js
 src/model/ListExchanges200ResponseInner.js
+src/model/ListFeeStationFiatTransactions200Response.js
 src/model/ListForcedSweepRequests200Response.js
 src/model/ListKeyShareHolderGroups200Response.js
 src/model/ListKeyShareHolders200Response.js
@@ -1953,6 +1959,8 @@ test/model/FeeReserved.spec.js
 test/model/FeeStationCheckFeeStationUsage.spec.js
 test/model/FeeStationCheckFeeStationUsageResponse.spec.js
 test/model/FeeStationDestination.spec.js
+test/model/FeeStationFiatTransaction.spec.js
+test/model/FeeStationFiatTransactionType.spec.js
 test/model/FeeStationGasStationType.spec.js
 test/model/FeeStationSponsorTransactionDescription.spec.js
 test/model/FeeStationTransactionType.spec.js
@@ -2025,6 +2033,7 @@ test/model/ListCounterpartyEntries200Response.spec.js
 test/model/ListDestinationEntries200Response.spec.js
 test/model/ListDestinations200Response.spec.js
 test/model/ListExchanges200ResponseInner.spec.js
+test/model/ListFeeStationFiatTransactions200Response.spec.js
 test/model/ListForcedSweepRequests200Response.spec.js
 test/model/ListKeyShareHolderGroups200Response.spec.js
 test/model/ListKeyShareHolders200Response.spec.js

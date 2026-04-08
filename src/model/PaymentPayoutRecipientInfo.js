@@ -56,6 +56,9 @@ class PaymentPayoutRecipientInfo {
             if (data.hasOwnProperty('bank_account_id')) {
                 obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
             }
+            if (data.hasOwnProperty('transfer_via_va')) {
+                obj['transfer_via_va'] = ApiClient.convertToType(data['transfer_via_va'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -114,6 +117,12 @@ PaymentPayoutRecipientInfo.prototype['currency'] = undefined;
  * @member {String} bank_account_id
  */
 PaymentPayoutRecipientInfo.prototype['bank_account_id'] = undefined;
+
+/**
+ * For OffRamp payout, whether the payout is transferred to a registered bank account via a virtual account (VA) or directly. - `true`: The payout is transferred to a registered bank account via a VA (virtual account). - `false`: The payout is transferred directly to a registered bank account. 
+ * @member {Boolean} transfer_via_va
+ */
+PaymentPayoutRecipientInfo.prototype['transfer_via_va'] = undefined;
 
 
 

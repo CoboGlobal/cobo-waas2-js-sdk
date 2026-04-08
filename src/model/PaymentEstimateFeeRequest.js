@@ -57,6 +57,9 @@ class PaymentEstimateFeeRequest {
             if (data.hasOwnProperty('recipient_token_id')) {
                 obj['recipient_token_id'] = ApiClient.convertToType(data['recipient_token_id'], 'String');
             }
+            if (data.hasOwnProperty('transfer_via_va')) {
+                obj['transfer_via_va'] = ApiClient.convertToType(data['transfer_via_va'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -112,6 +115,12 @@ PaymentEstimateFeeRequest.prototype['estimate_fees'] = undefined;
  * @member {String} recipient_token_id
  */
 PaymentEstimateFeeRequest.prototype['recipient_token_id'] = undefined;
+
+/**
+ * For OffRamp payout, whether the payout is transferred to a registered bank account via a virtual account (VA) or directly. - `true`: The payout is transferred to a registered bank account via a VA (virtual account). - `false`: The payout is transferred directly to a registered bank account. 
+ * @member {Boolean} transfer_via_va
+ */
+PaymentEstimateFeeRequest.prototype['transfer_via_va'] = undefined;
 
 
 

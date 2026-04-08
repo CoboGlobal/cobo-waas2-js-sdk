@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property transfer_via_va (base name: "transfer_via_va")', function() {
+      // uncomment below and update the code to test the property transfer_via_va
+      //var instance = new CoboWaas2.PaymentPayoutRecipientInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

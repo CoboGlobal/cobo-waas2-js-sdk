@@ -39,6 +39,57 @@ export default class AutoSweepApi {
 
 
     /**
+     * Cancel auto sweep task
+     * This operation cancels an in-progress auto sweep task by its ID.  Only tasks with the `Submitted` status can be cancelled. Tasks that have already been processed (status `TransactionCreated`) cannot be cancelled. 
+     * @param {String} task_id The auto sweep task ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AutoSweepTask} and HTTP response
+     */
+    cancelAutoSweepTaskByIdWithHttpInfo(task_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'task_id' is set
+      if (task_id === undefined || task_id === null) {
+        throw new Error("Missing the required parameter 'task_id' when calling cancelAutoSweepTaskById");
+      }
+
+      let pathParams = {
+        'task_id': task_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AutoSweepTask;
+      return this.apiClient.callApi(
+        '/auto_sweep/tasks/{task_id}/cancel', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Cancel auto sweep task
+     * This operation cancels an in-progress auto sweep task by its ID.  Only tasks with the `Submitted` status can be cancelled. Tasks that have already been processed (status `TransactionCreated`) cannot be cancelled. 
+     * @param {String} task_id The auto sweep task ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AutoSweepTask}
+     */
+    cancelAutoSweepTaskById(task_id) {
+      return this.cancelAutoSweepTaskByIdWithHttpInfo(task_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create auto-sweep task
      * This operation creates an auto-sweep task for the specified wallet and token. The task triggers transactions to sweep the full balance of the specified token to the configured sweep-to address. 
      * @param {Object} opts Optional parameters

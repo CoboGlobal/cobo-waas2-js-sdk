@@ -36,6 +36,16 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('AutoSweepApi', function() {
+    describe('cancelAutoSweepTaskById', function() {
+      it('should call cancelAutoSweepTaskById successfully', function() {
+        //uncomment below and update the code to test cancelAutoSweepTaskById
+        //instance.cancelAutoSweepTaskById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createAutoSweepTask', function() {
       it('should call createAutoSweepTask successfully', function() {
         //uncomment below and update the code to test createAutoSweepTask

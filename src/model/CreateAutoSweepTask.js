@@ -55,6 +55,9 @@ class CreateAutoSweepTask {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
+            if (data.hasOwnProperty('min_balance_threshold')) {
+                obj['min_balance_threshold'] = ApiClient.convertToType(data['min_balance_threshold'], 'String');
+            }
         }
         return obj;
     }
@@ -79,6 +82,10 @@ class CreateAutoSweepTask {
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
+        // ensure the json data is a string
+        if (data['min_balance_threshold'] && !(typeof data['min_balance_threshold'] === 'string' || data['min_balance_threshold'] instanceof String)) {
+            throw new Error("Expected the field `min_balance_threshold` to be a primitive type in the JSON string but got " + data['min_balance_threshold']);
+        }
 
         return true;
     }
@@ -99,6 +106,12 @@ CreateAutoSweepTask.prototype['wallet_id'] = undefined;
  * @member {String} token_id
  */
 CreateAutoSweepTask.prototype['token_id'] = undefined;
+
+/**
+ * The minimum token balance threshold for auto sweep. If the token balance of an address is less than this threshold, the address will not be swept. 
+ * @member {String} min_balance_threshold
+ */
+CreateAutoSweepTask.prototype['min_balance_threshold'] = undefined;
 
 
 

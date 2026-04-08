@@ -20,13 +20,12 @@ class RefundLinkBusinessInfo {
     /**
      * Constructs a new <code>RefundLinkBusinessInfo</code>.
      * @alias module:model/RefundLinkBusinessInfo
-     * @param transaction_id {String} The transaction ID of the original order payment or top-up.  On the refund page, the from address of this transaction will be pre-filled as the default refund address.  The refund will be processed in the same token and on the same blockchain as this transaction. 
      * @param amount {String} The amount to refund, denominated in the cryptocurrency of the original payment transaction. The amount must be a positive number and can have up to two decimal places.
      * @param refund_source {module:model/RefundType} 
      */
-    constructor(transaction_id, amount, refund_source) { 
+    constructor(amount, refund_source) { 
         
-        RefundLinkBusinessInfo.initialize(this, transaction_id, amount, refund_source);
+        RefundLinkBusinessInfo.initialize(this, amount, refund_source);
     }
 
     /**
@@ -34,8 +33,7 @@ class RefundLinkBusinessInfo {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, transaction_id, amount, refund_source) { 
-        obj['transaction_id'] = transaction_id;
+    static initialize(obj, amount, refund_source) { 
         obj['amount'] = amount;
         obj['refund_source'] = refund_source;
     }
@@ -51,6 +49,9 @@ class RefundLinkBusinessInfo {
         if (data) {
             obj = obj || new RefundLinkBusinessInfo();
 
+            if (data.hasOwnProperty('order_id')) {
+                obj['order_id'] = ApiClient.convertToType(data['order_id'], 'String');
+            }
             if (data.hasOwnProperty('transaction_id')) {
                 obj['transaction_id'] = ApiClient.convertToType(data['transaction_id'], 'String');
             }
@@ -83,6 +84,10 @@ class RefundLinkBusinessInfo {
             }
         }
         // ensure the json data is a string
+        if (data['order_id'] && !(typeof data['order_id'] === 'string' || data['order_id'] instanceof String)) {
+            throw new Error("Expected the field `order_id` to be a primitive type in the JSON string but got " + data['order_id']);
+        }
+        // ensure the json data is a string
         if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
@@ -105,10 +110,16 @@ class RefundLinkBusinessInfo {
 
 }
 
-RefundLinkBusinessInfo.RequiredProperties = ["transaction_id", "amount", "refund_source"];
+RefundLinkBusinessInfo.RequiredProperties = ["amount", "refund_source"];
 
 /**
- * The transaction ID of the original order payment or top-up.  On the refund page, the from address of this transaction will be pre-filled as the default refund address.  The refund will be processed in the same token and on the same blockchain as this transaction. 
+ * The id of the order to refund. Specify either `order_id` or `transaction_id`, but not both. 
+ * @member {String} order_id
+ */
+RefundLinkBusinessInfo.prototype['order_id'] = undefined;
+
+/**
+ * The transaction ID of the original order payment or top-up. Specify either `order_id` or `transaction_id`, but not both. On the refund page, the from address of this transaction will be pre-filled as the default refund address. The refund will be processed in the same token and on the same blockchain as this transaction. 
  * @member {String} transaction_id
  */
 RefundLinkBusinessInfo.prototype['transaction_id'] = undefined;
