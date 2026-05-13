@@ -111,7 +111,7 @@ class PaymentTransaction {
             }
         }
         // ensure the json data is a string
-        if (data['tx_id'] && !(typeof data['tx_id'] === 'string' || data['tx_id'] instanceof String)) {
+        if (!(typeof data['tx_id'] === 'string' || data['tx_id'] instanceof String)) {
             throw new Error("Expected the field `tx_id` to be a primitive type in the JSON string but got " + data['tx_id']);
         }
         // ensure the json data is a string
@@ -123,15 +123,15 @@ class PaymentTransaction {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['from_address'] && !(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
+        if (!(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
             throw new Error("Expected the field `from_address` to be a primitive type in the JSON string but got " + data['from_address']);
         }
         // ensure the json data is a string
-        if (data['to_address'] && !(typeof data['to_address'] === 'string' || data['to_address'] instanceof String)) {
+        if (!(typeof data['to_address'] === 'string' || data['to_address'] instanceof String)) {
             throw new Error("Expected the field `to_address` to be a primitive type in the JSON string but got " + data['to_address']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // validate the optional field `counterparty`

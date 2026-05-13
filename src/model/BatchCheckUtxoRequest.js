@@ -72,19 +72,17 @@ class BatchCheckUtxoRequest {
             }
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        if (data['utxos']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['utxos'])) {
-                throw new Error("Expected the field `utxos` to be an array in the JSON data but got " + data['utxos']);
-            }
-            // validate the optional field `utxos` (array)
-            for (const item of data['utxos']) {
-                BatchUTXOParam.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['utxos'])) {
+            throw new Error("Expected the field `utxos` to be an array in the JSON data but got " + data['utxos']);
         }
+        // validate the required field `utxos` (array)
+        for (const item of data['utxos']) {
+            BatchUTXOParam.validateJSON(item);
+        };
 
         return true;
     }

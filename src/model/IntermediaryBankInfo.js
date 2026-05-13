@@ -74,7 +74,7 @@ class IntermediaryBankInfo {
             }
         }
         // ensure the json data is a string
-        if (data['bank_name'] && !(typeof data['bank_name'] === 'string' || data['bank_name'] instanceof String)) {
+        if (!(typeof data['bank_name'] === 'string' || data['bank_name'] instanceof String)) {
             throw new Error("Expected the field `bank_name` to be a primitive type in the JSON string but got " + data['bank_name']);
         }
         // ensure the json data is a string
@@ -82,7 +82,7 @@ class IntermediaryBankInfo {
             throw new Error("Expected the field `bank_address` to be a primitive type in the JSON string but got " + data['bank_address']);
         }
         // ensure the json data is a string
-        if (data['bank_swift_code'] && !(typeof data['bank_swift_code'] === 'string' || data['bank_swift_code'] instanceof String)) {
+        if (!(typeof data['bank_swift_code'] === 'string' || data['bank_swift_code'] instanceof String)) {
             throw new Error("Expected the field `bank_swift_code` to be a primitive type in the JSON string but got " + data['bank_swift_code']);
         }
 

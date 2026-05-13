@@ -19,6 +19,17 @@ import ErrorResponse from '../model/ErrorResponse';
 import QueryApprovalStatement200Response from '../model/QueryApprovalStatement200Response';
 import QueryGuardPubkey200Response from '../model/QueryGuardPubkey200Response';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ChangeGuardPubkey200Response': ChangeGuardPubkey200Response,
+  'CreatePrimeBrokerAddress201Response': CreatePrimeBrokerAddress201Response,
+  'CreatePrimeBrokerAddressRequest': CreatePrimeBrokerAddressRequest,
+  'DeleteGuardPubkey201Response': DeleteGuardPubkey201Response,
+  'ErrorResponse': ErrorResponse,
+  'QueryApprovalStatement200Response': QueryApprovalStatement200Response,
+  'QueryGuardPubkey200Response': QueryGuardPubkey200Response,
+};
+
 /**
 * PrimeBroker service.
 * @module api/PrimeBrokerApi
@@ -157,6 +168,22 @@ export default class PrimeBrokerApi {
       // verify the required parameter 'user_id' is set
       if (user_id === undefined || user_id === null) {
         throw new Error("Missing the required parameter 'user_id' when calling createPrimeBrokerAddress");
+      }
+      // Validate opts key — must be exactly 'CreatePrimeBrokerAddressRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createPrimeBrokerAddress(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreatePrimeBrokerAddressRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreatePrimeBrokerAddressRequest'] && typeof _modelClasses['CreatePrimeBrokerAddressRequest'].validateJSON === 'function') {
+          _modelClasses['CreatePrimeBrokerAddressRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

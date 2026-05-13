@@ -71,11 +71,11 @@ class TokenizationBurnTokenParamsBurnsInner {
             }
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is a string
-        if (data['from_address'] && !(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
+        if (!(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
             throw new Error("Expected the field `from_address` to be a primitive type in the JSON string but got " + data['from_address']);
         }
 

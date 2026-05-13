@@ -95,19 +95,19 @@ class CoreStakingExtra {
             }
         }
         // ensure the json data is a string
-        if (data['pos_chain'] && !(typeof data['pos_chain'] === 'string' || data['pos_chain'] instanceof String)) {
+        if (!(typeof data['pos_chain'] === 'string' || data['pos_chain'] instanceof String)) {
             throw new Error("Expected the field `pos_chain` to be a primitive type in the JSON string but got " + data['pos_chain']);
         }
         // ensure the json data is a string
-        if (data['staker_address'] && !(typeof data['staker_address'] === 'string' || data['staker_address'] instanceof String)) {
+        if (!(typeof data['staker_address'] === 'string' || data['staker_address'] instanceof String)) {
             throw new Error("Expected the field `staker_address` to be a primitive type in the JSON string but got " + data['staker_address']);
         }
         // ensure the json data is a string
-        if (data['validator_address'] && !(typeof data['validator_address'] === 'string' || data['validator_address'] instanceof String)) {
+        if (!(typeof data['validator_address'] === 'string' || data['validator_address'] instanceof String)) {
             throw new Error("Expected the field `validator_address` to be a primitive type in the JSON string but got " + data['validator_address']);
         }
         // ensure the json data is a string
-        if (data['reward_address'] && !(typeof data['reward_address'] === 'string' || data['reward_address'] instanceof String)) {
+        if (!(typeof data['reward_address'] === 'string' || data['reward_address'] instanceof String)) {
             throw new Error("Expected the field `reward_address` to be a primitive type in the JSON string but got " + data['reward_address']);
         }
 

@@ -111,15 +111,11 @@ class EstimateStakeFee {
           }
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
-        // validate the optional field `fee`
-        if (data['fee']) { // data not null
-          if (!!TransactionRequestFee.validateJSON) {
-            TransactionRequestFee.validateJSON(data['fee']);
-          }
-        }
+        // validate the required field `fee`
+        TransactionRequestFee.validateJSON(data['fee']);
         // validate the optional field `extra`
         if (data['extra']) { // data not null
           if (!!CreateStakeActivityExtra.validateJSON) {

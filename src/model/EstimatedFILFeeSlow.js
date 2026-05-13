@@ -87,19 +87,19 @@ class EstimatedFILFeeSlow {
             }
         }
         // ensure the json data is a string
-        if (data['gas_premium'] && !(typeof data['gas_premium'] === 'string' || data['gas_premium'] instanceof String)) {
+        if (!(typeof data['gas_premium'] === 'string' || data['gas_premium'] instanceof String)) {
             throw new Error("Expected the field `gas_premium` to be a primitive type in the JSON string but got " + data['gas_premium']);
         }
         // ensure the json data is a string
-        if (data['gas_fee_cap'] && !(typeof data['gas_fee_cap'] === 'string' || data['gas_fee_cap'] instanceof String)) {
+        if (!(typeof data['gas_fee_cap'] === 'string' || data['gas_fee_cap'] instanceof String)) {
             throw new Error("Expected the field `gas_fee_cap` to be a primitive type in the JSON string but got " + data['gas_fee_cap']);
         }
         // ensure the json data is a string
-        if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
+        if (!(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
         // ensure the json data is a string
-        if (data['gas_base'] && !(typeof data['gas_base'] === 'string' || data['gas_base'] instanceof String)) {
+        if (!(typeof data['gas_base'] === 'string' || data['gas_base'] instanceof String)) {
             throw new Error("Expected the field `gas_base` to be a primitive type in the JSON string but got " + data['gas_base']);
         }
 

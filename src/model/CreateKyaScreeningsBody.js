@@ -67,16 +67,14 @@ class CreateKyaScreeningsBody {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['screenings']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['screenings'])) {
-                throw new Error("Expected the field `screenings` to be an array in the JSON data but got " + data['screenings']);
-            }
-            // validate the optional field `screenings` (array)
-            for (const item of data['screenings']) {
-                KyaScreeningRequest.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['screenings'])) {
+            throw new Error("Expected the field `screenings` to be an array in the JSON data but got " + data['screenings']);
         }
+        // validate the required field `screenings` (array)
+        for (const item of data['screenings']) {
+            KyaScreeningRequest.validateJSON(item);
+        };
 
         return true;
     }

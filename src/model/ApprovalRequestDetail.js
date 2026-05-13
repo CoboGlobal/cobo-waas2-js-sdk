@@ -87,12 +87,8 @@ class ApprovalRequestDetail {
         if (data['approval_id'] && !(typeof data['approval_id'] === 'string' || data['approval_id'] instanceof String)) {
             throw new Error("Expected the field `approval_id` to be a primitive type in the JSON string but got " + data['approval_id']);
         }
-        // validate the optional field `initiator`
-        if (data['initiator']) { // data not null
-          if (!!ApprovalUser.validateJSON) {
-            ApprovalUser.validateJSON(data['initiator']);
-          }
-        }
+        // validate the required field `initiator`
+        ApprovalUser.validateJSON(data['initiator']);
         if (data['approved_list']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['approved_list'])) {

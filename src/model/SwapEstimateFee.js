@@ -78,7 +78,7 @@ class SwapEstimateFee {
             }
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
@@ -86,7 +86,7 @@ class SwapEstimateFee {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['quote_id'] && !(typeof data['quote_id'] === 'string' || data['quote_id'] instanceof String)) {
+        if (!(typeof data['quote_id'] === 'string' || data['quote_id'] instanceof String)) {
             throw new Error("Expected the field `quote_id` to be a primitive type in the JSON string but got " + data['quote_id']);
         }
 

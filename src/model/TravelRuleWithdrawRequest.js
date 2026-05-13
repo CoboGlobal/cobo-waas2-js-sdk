@@ -72,15 +72,11 @@ class TravelRuleWithdrawRequest {
             }
         }
         // ensure the json data is a string
-        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
-        // validate the optional field `travel_rule_info`
-        if (data['travel_rule_info']) { // data not null
-          if (!!TravelRuleWithdrawRequestTravelRuleInfo.validateJSON) {
-            TravelRuleWithdrawRequestTravelRuleInfo.validateJSON(data['travel_rule_info']);
-          }
-        }
+        // validate the required field `travel_rule_info`
+        TravelRuleWithdrawRequestTravelRuleInfo.validateJSON(data['travel_rule_info']);
 
         return true;
     }

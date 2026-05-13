@@ -81,23 +81,21 @@ class CreateBulkSendRequest {
             }
         }
         // ensure the json data is a string
-        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+        if (!(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
             throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
-        if (data['payout_params']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['payout_params'])) {
-                throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
-            }
-            // validate the optional field `payout_params` (array)
-            for (const item of data['payout_params']) {
-                CreateBulkSendRequestPayoutParamsInner.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['payout_params'])) {
+            throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
         }
+        // validate the required field `payout_params` (array)
+        for (const item of data['payout_params']) {
+            CreateBulkSendRequestPayoutParamsInner.validateJSON(item);
+        };
 
         return true;
     }

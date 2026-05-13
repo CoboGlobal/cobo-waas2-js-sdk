@@ -64,6 +64,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property custom_payer_id (base name: "custom_payer_id")', function() {
+      // uncomment below and update the code to test the property custom_payer_id
+      //var instance = new CoboWaas2.ListTopUpPayers200ResponseDataInner();
+      //expect(instance).to.be();
+    });
+
     it('should have the property developer_fee_rate (base name: "developer_fee_rate")', function() {
       // uncomment below and update the code to test the property developer_fee_rate
       //var instance = new CoboWaas2.ListTopUpPayers200ResponseDataInner();

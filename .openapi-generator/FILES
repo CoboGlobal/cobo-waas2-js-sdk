@@ -348,6 +348,7 @@ docs/ListMerchantBalances200Response.md
 docs/ListMerchants200Response.md
 docs/ListMpcProjects200Response.md
 docs/ListMpcVaults200Response.md
+docs/ListPayerTransactions200Response.md
 docs/ListPaymentOrders200Response.md
 docs/ListPaymentWalletBalances200Response.md
 docs/ListPayouts200Response.md
@@ -411,6 +412,7 @@ docs/OrderLinkBusinessInfoPayableAmountsInner.md
 docs/OrderStatus.md
 docs/OrgInfo.md
 docs/OrganizationsApi.md
+docs/OriginalMainGroupHandling.md
 docs/OtcFee.md
 docs/Pagination.md
 docs/PayerAccount.md
@@ -798,7 +800,6 @@ docs/TronContractCallDestination.md
 docs/UTXO.md
 docs/UnfreezeDisposition.md
 docs/UpdateAddressBookParam.md
-docs/UpdateBankAccountByIdRequest.md
 docs/UpdateCounterpartyRequest.md
 docs/UpdateCustodialWalletParams.md
 docs/UpdateDestinationBankAccount.md
@@ -1207,6 +1208,7 @@ src/model/ListMerchantBalances200Response.js
 src/model/ListMerchants200Response.js
 src/model/ListMpcProjects200Response.js
 src/model/ListMpcVaults200Response.js
+src/model/ListPayerTransactions200Response.js
 src/model/ListPaymentOrders200Response.js
 src/model/ListPaymentWalletBalances200Response.js
 src/model/ListPayouts200Response.js
@@ -1268,6 +1270,7 @@ src/model/OrderLinkBusinessInfoCustomExchangeRatesInner.js
 src/model/OrderLinkBusinessInfoPayableAmountsInner.js
 src/model/OrderStatus.js
 src/model/OrgInfo.js
+src/model/OriginalMainGroupHandling.js
 src/model/OtcFee.js
 src/model/Pagination.js
 src/model/PayerAccount.js
@@ -1648,7 +1651,6 @@ src/model/TronContractCallDestination.js
 src/model/UTXO.js
 src/model/UnfreezeDisposition.js
 src/model/UpdateAddressBookParam.js
-src/model/UpdateBankAccountByIdRequest.js
 src/model/UpdateCounterpartyRequest.js
 src/model/UpdateCustodialWalletParams.js
 src/model/UpdateDestinationBankAccount.js
@@ -2042,6 +2044,7 @@ test/model/ListMerchantBalances200Response.spec.js
 test/model/ListMerchants200Response.spec.js
 test/model/ListMpcProjects200Response.spec.js
 test/model/ListMpcVaults200Response.spec.js
+test/model/ListPayerTransactions200Response.spec.js
 test/model/ListPaymentOrders200Response.spec.js
 test/model/ListPaymentWalletBalances200Response.spec.js
 test/model/ListPayouts200Response.spec.js
@@ -2103,6 +2106,7 @@ test/model/OrderLinkBusinessInfoCustomExchangeRatesInner.spec.js
 test/model/OrderLinkBusinessInfoPayableAmountsInner.spec.js
 test/model/OrderStatus.spec.js
 test/model/OrgInfo.spec.js
+test/model/OriginalMainGroupHandling.spec.js
 test/model/OtcFee.spec.js
 test/model/Pagination.spec.js
 test/model/PayerAccount.spec.js
@@ -2483,7 +2487,6 @@ test/model/TronContractCallDestination.spec.js
 test/model/UTXO.spec.js
 test/model/UnfreezeDisposition.spec.js
 test/model/UpdateAddressBookParam.spec.js
-test/model/UpdateBankAccountByIdRequest.spec.js
 test/model/UpdateCounterpartyRequest.spec.js
 test/model/UpdateCustodialWalletParams.spec.js
 test/model/UpdateDestinationBankAccount.spec.js

@@ -73,12 +73,8 @@ class TransactionStellarDestination {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `contract_param`
-        if (data['contract_param']) { // data not null
-          if (!!TransactionStellarContractParam.validateJSON) {
-            TransactionStellarContractParam.validateJSON(data['contract_param']);
-          }
-        }
+        // validate the required field `contract_param`
+        TransactionStellarContractParam.validateJSON(data['contract_param']);
 
         return true;
     }

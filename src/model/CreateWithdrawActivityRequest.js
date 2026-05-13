@@ -91,19 +91,15 @@ class CreateWithdrawActivityRequest {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['staking_id'] && !(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
+        if (!(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
             throw new Error("Expected the field `staking_id` to be a primitive type in the JSON string but got " + data['staking_id']);
         }
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
-        // validate the optional field `fee`
-        if (data['fee']) { // data not null
-          if (!!TransactionRequestFee.validateJSON) {
-            TransactionRequestFee.validateJSON(data['fee']);
-          }
-        }
+        // validate the required field `fee`
+        TransactionRequestFee.validateJSON(data['fee']);
         // ensure the json data is a string
         if (data['app_initiator'] && !(typeof data['app_initiator'] === 'string' || data['app_initiator'] instanceof String)) {
             throw new Error("Expected the field `app_initiator` to be a primitive type in the JSON string but got " + data['app_initiator']);

@@ -57,6 +57,9 @@ class ListTopUpPayers200ResponseDataInner {
             if (data.hasOwnProperty('payer_id')) {
                 obj['payer_id'] = ApiClient.convertToType(data['payer_id'], 'String');
             }
+            if (data.hasOwnProperty('custom_payer_id')) {
+                obj['custom_payer_id'] = ApiClient.convertToType(data['custom_payer_id'], 'String');
+            }
             if (data.hasOwnProperty('developer_fee_rate')) {
                 obj['developer_fee_rate'] = ApiClient.convertToType(data['developer_fee_rate'], 'String');
             }
@@ -86,15 +89,19 @@ class ListTopUpPayers200ResponseDataInner {
             }
         }
         // ensure the json data is a string
-        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (data['payer_id'] && !(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
+        if (!(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
             throw new Error("Expected the field `payer_id` to be a primitive type in the JSON string but got " + data['payer_id']);
         }
         // ensure the json data is a string
-        if (data['developer_fee_rate'] && !(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
+        if (data['custom_payer_id'] && !(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
+            throw new Error("Expected the field `custom_payer_id` to be a primitive type in the JSON string but got " + data['custom_payer_id']);
+        }
+        // ensure the json data is a string
+        if (!(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
             throw new Error("Expected the field `developer_fee_rate` to be a primitive type in the JSON string but got " + data['developer_fee_rate']);
         }
         if (data['transactions']) { // data not null
@@ -129,6 +136,12 @@ ListTopUpPayers200ResponseDataInner.prototype['merchant_id'] = undefined;
 ListTopUpPayers200ResponseDataInner.prototype['payer_id'] = undefined;
 
 /**
+ * Unique user identifier on the merchant side, used to assign a dedicated deposit address. 
+ * @member {String} custom_payer_id
+ */
+ListTopUpPayers200ResponseDataInner.prototype['custom_payer_id'] = undefined;
+
+/**
  * The developer fee rate applied to top-up transactions made by this payer. Expressed as a decimal string where \"0.1\" represents 10%.
  * @member {String} developer_fee_rate
  */
@@ -147,7 +160,7 @@ ListTopUpPayers200ResponseDataInner.prototype['created_timestamp'] = undefined;
 ListTopUpPayers200ResponseDataInner.prototype['updated_timestamp'] = undefined;
 
 /**
- * An array of top-up transactions associated with this payer.
+ * An array of transactions associated with this payer.  <Note>This field returns up to the latest 200 transactions only and will be removed in a future version. Use the dedicated payer transactions API to paginate through transactions.</Note> 
  * @member {Array.<module:model/PaymentTransaction>} transactions
  */
 ListTopUpPayers200ResponseDataInner.prototype['transactions'] = undefined;

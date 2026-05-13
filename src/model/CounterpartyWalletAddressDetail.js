@@ -97,23 +97,23 @@ class CounterpartyWalletAddressDetail {
             }
         }
         // ensure the json data is a string
-        if (data['counterparty_id'] && !(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
+        if (!(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
             throw new Error("Expected the field `counterparty_id` to be a primitive type in the JSON string but got " + data['counterparty_id']);
         }
         // ensure the json data is a string
-        if (data['counterparty_name'] && !(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
+        if (!(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
             throw new Error("Expected the field `counterparty_name` to be a primitive type in the JSON string but got " + data['counterparty_name']);
         }
         // ensure the json data is a string
-        if (data['wallet_address_id'] && !(typeof data['wallet_address_id'] === 'string' || data['wallet_address_id'] instanceof String)) {
+        if (!(typeof data['wallet_address_id'] === 'string' || data['wallet_address_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_address_id` to be a primitive type in the JSON string but got " + data['wallet_address_id']);
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
 

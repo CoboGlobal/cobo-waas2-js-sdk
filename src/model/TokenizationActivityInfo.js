@@ -115,21 +115,17 @@ class TokenizationActivityInfo {
             }
         }
         // ensure the json data is a string
-        if (data['activity_id'] && !(typeof data['activity_id'] === 'string' || data['activity_id'] instanceof String)) {
+        if (!(typeof data['activity_id'] === 'string' || data['activity_id'] instanceof String)) {
             throw new Error("Expected the field `activity_id` to be a primitive type in the JSON string but got " + data['activity_id']);
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // validate the optional field `source`
-        if (data['source']) { // data not null
-          if (!!TokenizationTokenOperationSource.validateJSON) {
-            TokenizationTokenOperationSource.validateJSON(data['source']);
-          }
-        }
+        // validate the required field `source`
+        TokenizationTokenOperationSource.validateJSON(data['source']);
         // ensure the json data is a string
-        if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
+        if (!(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
             throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);
         }
         // ensure the json data is an array

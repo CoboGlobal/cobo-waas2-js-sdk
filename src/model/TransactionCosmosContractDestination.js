@@ -73,16 +73,14 @@ class TransactionCosmosContractDestination {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['cosmos_messages']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['cosmos_messages'])) {
-                throw new Error("Expected the field `cosmos_messages` to be an array in the JSON data but got " + data['cosmos_messages']);
-            }
-            // validate the optional field `cosmos_messages` (array)
-            for (const item of data['cosmos_messages']) {
-                TransactionCosmosMessage.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['cosmos_messages'])) {
+            throw new Error("Expected the field `cosmos_messages` to be an array in the JSON data but got " + data['cosmos_messages']);
         }
+        // validate the required field `cosmos_messages` (array)
+        for (const item of data['cosmos_messages']) {
+            TransactionCosmosMessage.validateJSON(item);
+        };
 
         return true;
     }

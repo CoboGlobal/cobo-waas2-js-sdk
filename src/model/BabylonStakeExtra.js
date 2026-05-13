@@ -93,12 +93,14 @@ class BabylonStakeExtra {
             }
         }
         // ensure the json data is a string
-        if (data['finality_provider_public_key'] && !(typeof data['finality_provider_public_key'] === 'string' || data['finality_provider_public_key'] instanceof String)) {
+        if (!(typeof data['finality_provider_public_key'] === 'string' || data['finality_provider_public_key'] instanceof String)) {
             throw new Error("Expected the field `finality_provider_public_key` to be a primitive type in the JSON string but got " + data['finality_provider_public_key']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['finality_provider_public_keys'])) {
-            throw new Error("Expected the field `finality_provider_public_keys` to be an array in the JSON data but got " + data['finality_provider_public_keys']);
+        if (data['finality_provider_public_keys']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['finality_provider_public_keys'])) {
+                throw new Error("Expected the field `finality_provider_public_keys` to be an array in the JSON data but got " + data['finality_provider_public_keys']);
+            }
         }
         // validate the optional field `babylon_address`
         if (data['babylon_address']) { // data not null

@@ -106,6 +106,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property caip2_chain_id (base name: "caip2_chain_id")', function() {
+      // uncomment below and update the code to test the property caip2_chain_id
+      //var instance = new CoboWaas2.ChainInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

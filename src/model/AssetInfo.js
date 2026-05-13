@@ -76,7 +76,7 @@ class AssetInfo {
             }
         }
         // ensure the json data is a string
-        if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
+        if (!(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
             throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
         }
         // ensure the json data is a string

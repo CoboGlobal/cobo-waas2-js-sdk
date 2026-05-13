@@ -70,9 +70,11 @@ class TSSKeyGenRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TSSKeyGenRequest</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is an array
-        if (!Array.isArray(data['node_ids'])) {
-            throw new Error("Expected the field `node_ids` to be an array in the JSON data but got " + data['node_ids']);
+        if (data['node_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['node_ids'])) {
+                throw new Error("Expected the field `node_ids` to be an array in the JSON data but got " + data['node_ids']);
+            }
         }
         // ensure the json data is a string
         if (data['task_id'] && !(typeof data['task_id'] === 'string' || data['task_id'] instanceof String)) {

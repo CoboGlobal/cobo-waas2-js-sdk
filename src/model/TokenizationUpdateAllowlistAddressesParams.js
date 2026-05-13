@@ -78,22 +78,16 @@ class TokenizationUpdateAllowlistAddressesParams {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `source`
-        if (data['source']) { // data not null
-          if (!!TokenizationTokenOperationSource.validateJSON) {
-            TokenizationTokenOperationSource.validateJSON(data['source']);
-          }
+        // validate the required field `source`
+        TokenizationTokenOperationSource.validateJSON(data['source']);
+        // ensure the json data is an array
+        if (!Array.isArray(data['addresses'])) {
+            throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
         }
-        if (data['addresses']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['addresses'])) {
-                throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
-            }
-            // validate the optional field `addresses` (array)
-            for (const item of data['addresses']) {
-                TokenizationUpdateAllowlistAddressesParamsAddressesInner.validateJSON(item);
-            };
-        }
+        // validate the required field `addresses` (array)
+        for (const item of data['addresses']) {
+            TokenizationUpdateAllowlistAddressesParamsAddressesInner.validateJSON(item);
+        };
 
         return true;
     }

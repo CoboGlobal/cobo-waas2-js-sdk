@@ -40,6 +40,38 @@ import ListStakings200Response from '../model/ListStakings200Response';
 import PoolDetails from '../model/PoolDetails';
 import Stakings from '../model/Stakings';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'Activity': Activity,
+  'ActivityStatus': ActivityStatus,
+  'ActivityType': ActivityType,
+  'BabylonAirdropRegistration': BabylonAirdropRegistration,
+  'BabylonCreateStakingExpansion': BabylonCreateStakingExpansion,
+  'BabylonStakingRegistration': BabylonStakingRegistration,
+  'CreateBabylonAirdropRegistration201Response': CreateBabylonAirdropRegistration201Response,
+  'CreateBabylonAirdropRegistrationRequest': CreateBabylonAirdropRegistrationRequest,
+  'CreateBabylonStakingRegistration201Response': CreateBabylonStakingRegistration201Response,
+  'CreateBabylonStakingRegistrationRequest': CreateBabylonStakingRegistrationRequest,
+  'CreateClaimActivityRequest': CreateClaimActivityRequest,
+  'CreateStakeActivity201Response': CreateStakeActivity201Response,
+  'CreateStakeActivityRequest': CreateStakeActivityRequest,
+  'CreateUnstakeActivityRequest': CreateUnstakeActivityRequest,
+  'CreateWithdrawActivityRequest': CreateWithdrawActivityRequest,
+  'ErrorResponse': ErrorResponse,
+  'EthStakeEstimatedFee': EthStakeEstimatedFee,
+  'GetStakingEstimationFee201Response': GetStakingEstimationFee201Response,
+  'GetStakingEstimationFeeRequest': GetStakingEstimationFeeRequest,
+  'ListBabylonAirdropRegistrations200Response': ListBabylonAirdropRegistrations200Response,
+  'ListBabylonEligibleAirdrops200Response': ListBabylonEligibleAirdrops200Response,
+  'ListBabylonEligibleStakings200Response': ListBabylonEligibleStakings200Response,
+  'ListBabylonStakingRegistrations200Response': ListBabylonStakingRegistrations200Response,
+  'ListStakingActivities200Response': ListStakingActivities200Response,
+  'ListStakingPools200Response': ListStakingPools200Response,
+  'ListStakings200Response': ListStakings200Response,
+  'PoolDetails': PoolDetails,
+  'Stakings': Stakings,
+};
+
 /**
 * Stakings service.
 * @module api/StakingsApi
@@ -71,6 +103,22 @@ export default class StakingsApi {
       let postBody = opts['CreateBabylonAirdropRegistrationRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateBabylonAirdropRegistrationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createBabylonAirdropRegistration(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateBabylonAirdropRegistrationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateBabylonAirdropRegistrationRequest'] && typeof _modelClasses['CreateBabylonAirdropRegistrationRequest'].validateJSON === 'function') {
+          _modelClasses['CreateBabylonAirdropRegistrationRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -121,6 +169,22 @@ export default class StakingsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'BabylonCreateStakingExpansion'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createBabylonStakingExpansion(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "BabylonCreateStakingExpansion".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['BabylonCreateStakingExpansion'] && typeof _modelClasses['BabylonCreateStakingExpansion'].validateJSON === 'function') {
+          _modelClasses['BabylonCreateStakingExpansion'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -169,6 +233,22 @@ export default class StakingsApi {
       let postBody = opts['CreateBabylonStakingRegistrationRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateBabylonStakingRegistrationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createBabylonStakingRegistration(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateBabylonStakingRegistrationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateBabylonStakingRegistrationRequest'] && typeof _modelClasses['CreateBabylonStakingRegistrationRequest'].validateJSON === 'function') {
+          _modelClasses['CreateBabylonStakingRegistrationRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -219,6 +299,22 @@ export default class StakingsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateClaimActivityRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createClaimActivity(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateClaimActivityRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateClaimActivityRequest'] && typeof _modelClasses['CreateClaimActivityRequest'].validateJSON === 'function') {
+          _modelClasses['CreateClaimActivityRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -267,6 +363,22 @@ export default class StakingsApi {
       let postBody = opts['CreateStakeActivityRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateStakeActivityRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createStakeActivity(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateStakeActivityRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateStakeActivityRequest'] && typeof _modelClasses['CreateStakeActivityRequest'].validateJSON === 'function') {
+          _modelClasses['CreateStakeActivityRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -317,6 +429,22 @@ export default class StakingsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateUnstakeActivityRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createUnstakeActivity(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateUnstakeActivityRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateUnstakeActivityRequest'] && typeof _modelClasses['CreateUnstakeActivityRequest'].validateJSON === 'function') {
+          _modelClasses['CreateUnstakeActivityRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -365,6 +493,22 @@ export default class StakingsApi {
       let postBody = opts['CreateWithdrawActivityRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateWithdrawActivityRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createWithdrawActivity(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateWithdrawActivityRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateWithdrawActivityRequest'] && typeof _modelClasses['CreateWithdrawActivityRequest'].validateJSON === 'function') {
+          _modelClasses['CreateWithdrawActivityRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -619,6 +763,22 @@ export default class StakingsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'GetStakingEstimationFeeRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'getStakingEstimationFee(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "GetStakingEstimationFeeRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['GetStakingEstimationFeeRequest'] && typeof _modelClasses['GetStakingEstimationFeeRequest'].validateJSON === 'function') {
+          _modelClasses['GetStakingEstimationFeeRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -667,6 +827,22 @@ export default class StakingsApi {
       let postBody = opts['GetStakingEstimationFeeRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'GetStakingEstimationFeeRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'getStakingEstimationFeeV2(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "GetStakingEstimationFeeRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['GetStakingEstimationFeeRequest'] && typeof _modelClasses['GetStakingEstimationFeeRequest'].validateJSON === 'function') {
+          _modelClasses['GetStakingEstimationFeeRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

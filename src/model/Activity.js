@@ -147,24 +147,28 @@ class Activity {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
         if (data['staking_id'] && !(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
             throw new Error("Expected the field `staking_id` to be a primitive type in the JSON string but got " + data['staking_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['request_ids'])) {
-            throw new Error("Expected the field `request_ids` to be an array in the JSON data but got " + data['request_ids']);
+        if (data['request_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['request_ids'])) {
+                throw new Error("Expected the field `request_ids` to be an array in the JSON data but got " + data['request_ids']);
+            }
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['transaction_ids'])) {
-            throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+        if (data['transaction_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['transaction_ids'])) {
+                throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+            }
         }
         if (data['timeline']) { // data not null
             // ensure the json data is an array

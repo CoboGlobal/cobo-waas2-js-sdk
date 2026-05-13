@@ -40,6 +40,38 @@ import TokenizationUpdateAllowlistAddressesRequest from '../model/TokenizationUp
 import TokenizationUpdateBlocklistAddressesRequest from '../model/TokenizationUpdateBlocklistAddressesRequest';
 import TokenizationUpdatePermissionsRequest from '../model/TokenizationUpdatePermissionsRequest';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'EstimatedFee': EstimatedFee,
+  'GetTokenizationAllowlistActivation200Response': GetTokenizationAllowlistActivation200Response,
+  'ListTokenizationBlocklistAddresses200Response': ListTokenizationBlocklistAddresses200Response,
+  'TokenizationActivityInfo': TokenizationActivityInfo,
+  'TokenizationActivityStatus': TokenizationActivityStatus,
+  'TokenizationAllowlistActivationRequest': TokenizationAllowlistActivationRequest,
+  'TokenizationAllowlistAddressesResponse': TokenizationAllowlistAddressesResponse,
+  'TokenizationBurnTokenRequest': TokenizationBurnTokenRequest,
+  'TokenizationContractCallRequest': TokenizationContractCallRequest,
+  'TokenizationEstimateFeeRequest': TokenizationEstimateFeeRequest,
+  'TokenizationIssuedTokenRequest': TokenizationIssuedTokenRequest,
+  'TokenizationListActivitiesResponse': TokenizationListActivitiesResponse,
+  'TokenizationListEnabledChainsResponse': TokenizationListEnabledChainsResponse,
+  'TokenizationListHoldingsResponse': TokenizationListHoldingsResponse,
+  'TokenizationListPermissionsResponse': TokenizationListPermissionsResponse,
+  'TokenizationListTokenInfoResponse': TokenizationListTokenInfoResponse,
+  'TokenizationMintTokenRequest': TokenizationMintTokenRequest,
+  'TokenizationOperationResponse': TokenizationOperationResponse,
+  'TokenizationOperationType': TokenizationOperationType,
+  'TokenizationPauseTokenRequest': TokenizationPauseTokenRequest,
+  'TokenizationStatus': TokenizationStatus,
+  'TokenizationTokenDetailInfo': TokenizationTokenDetailInfo,
+  'TokenizationTokenStandard': TokenizationTokenStandard,
+  'TokenizationUnpauseTokenRequest': TokenizationUnpauseTokenRequest,
+  'TokenizationUpdateAllowlistAddressesRequest': TokenizationUpdateAllowlistAddressesRequest,
+  'TokenizationUpdateBlocklistAddressesRequest': TokenizationUpdateBlocklistAddressesRequest,
+  'TokenizationUpdatePermissionsRequest': TokenizationUpdatePermissionsRequest,
+};
+
 /**
 * Tokenization service.
 * @module api/TokenizationApi
@@ -76,6 +108,22 @@ export default class TokenizationApi {
       // verify the required parameter 'token_id' is set
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling burnTokenization");
+      }
+      // Validate opts key — must be exactly 'TokenizationBurnTokenRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'burnTokenization(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationBurnTokenRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationBurnTokenRequest'] && typeof _modelClasses['TokenizationBurnTokenRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationBurnTokenRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -129,6 +177,12 @@ export default class TokenizationApi {
       // verify the required parameter 'TokenizationEstimateFeeRequest' is set
       if (TokenizationEstimateFeeRequest === undefined || TokenizationEstimateFeeRequest === null) {
         throw new Error("Missing the required parameter 'TokenizationEstimateFeeRequest' when calling estimateTokenizationFee");
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationEstimateFeeRequest'] && typeof _modelClasses['TokenizationEstimateFeeRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationEstimateFeeRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -332,6 +386,12 @@ export default class TokenizationApi {
       // verify the required parameter 'TokenizationIssuedTokenRequest' is set
       if (TokenizationIssuedTokenRequest === undefined || TokenizationIssuedTokenRequest === null) {
         throw new Error("Missing the required parameter 'TokenizationIssuedTokenRequest' when calling issueToken");
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationIssuedTokenRequest'] && typeof _modelClasses['TokenizationIssuedTokenRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationIssuedTokenRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -847,6 +907,12 @@ export default class TokenizationApi {
       if (TokenizationMintTokenRequest === undefined || TokenizationMintTokenRequest === null) {
         throw new Error("Missing the required parameter 'TokenizationMintTokenRequest' when calling mintTokenization");
       }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationMintTokenRequest'] && typeof _modelClasses['TokenizationMintTokenRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationMintTokenRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'token_id': token_id
@@ -901,6 +967,22 @@ export default class TokenizationApi {
       // verify the required parameter 'token_id' is set
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling pauseTokenization");
+      }
+      // Validate opts key — must be exactly 'TokenizationPauseTokenRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'pauseTokenization(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationPauseTokenRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationPauseTokenRequest'] && typeof _modelClasses['TokenizationPauseTokenRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationPauseTokenRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -958,6 +1040,22 @@ export default class TokenizationApi {
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling tokenizationContractCall");
       }
+      // Validate opts key — must be exactly 'TokenizationContractCallRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'tokenizationContractCall(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationContractCallRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationContractCallRequest'] && typeof _modelClasses['TokenizationContractCallRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationContractCallRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'token_id': token_id
@@ -1013,6 +1111,22 @@ export default class TokenizationApi {
       // verify the required parameter 'token_id' is set
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling unpauseTokenization");
+      }
+      // Validate opts key — must be exactly 'TokenizationUnpauseTokenRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'unpauseTokenization(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationUnpauseTokenRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationUnpauseTokenRequest'] && typeof _modelClasses['TokenizationUnpauseTokenRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationUnpauseTokenRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -1070,6 +1184,22 @@ export default class TokenizationApi {
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling updateTokenizationAllowlistActivation");
       }
+      // Validate opts key — must be exactly 'TokenizationAllowlistActivationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateTokenizationAllowlistActivation(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationAllowlistActivationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationAllowlistActivationRequest'] && typeof _modelClasses['TokenizationAllowlistActivationRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationAllowlistActivationRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'token_id': token_id
@@ -1126,6 +1256,22 @@ export default class TokenizationApi {
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling updateTokenizationAllowlistAddresses");
       }
+      // Validate opts key — must be exactly 'TokenizationUpdateAllowlistAddressesRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateTokenizationAllowlistAddresses(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationUpdateAllowlistAddressesRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationUpdateAllowlistAddressesRequest'] && typeof _modelClasses['TokenizationUpdateAllowlistAddressesRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationUpdateAllowlistAddressesRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'token_id': token_id
@@ -1181,6 +1327,22 @@ export default class TokenizationApi {
       // verify the required parameter 'token_id' is set
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling updateTokenizationBlocklistAddresses");
+      }
+      // Validate opts key — must be exactly 'TokenizationUpdateBlocklistAddressesRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateTokenizationBlocklistAddresses(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TokenizationUpdateBlocklistAddressesRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationUpdateBlocklistAddressesRequest'] && typeof _modelClasses['TokenizationUpdateBlocklistAddressesRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationUpdateBlocklistAddressesRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -1239,6 +1401,12 @@ export default class TokenizationApi {
       // verify the required parameter 'TokenizationUpdatePermissionsRequest' is set
       if (TokenizationUpdatePermissionsRequest === undefined || TokenizationUpdatePermissionsRequest === null) {
         throw new Error("Missing the required parameter 'TokenizationUpdatePermissionsRequest' when calling updateTokenizationPermissions");
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TokenizationUpdatePermissionsRequest'] && typeof _modelClasses['TokenizationUpdatePermissionsRequest'].validateJSON === 'function') {
+          _modelClasses['TokenizationUpdatePermissionsRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

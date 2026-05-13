@@ -12,7 +12,6 @@
 
 import ApiClient from "../ApiClient";
 import AcquiringType from '../model/AcquiringType';
-import BankAccount from '../model/BankAccount';
 import BankAccountStatus from '../model/BankAccountStatus';
 import BatchAllocation from '../model/BatchAllocation';
 import BatchAllocationDetail from '../model/BatchAllocationDetail';
@@ -69,6 +68,7 @@ import ListDestinations200Response from '../model/ListDestinations200Response';
 import ListForcedSweepRequests200Response from '../model/ListForcedSweepRequests200Response';
 import ListMerchantBalances200Response from '../model/ListMerchantBalances200Response';
 import ListMerchants200Response from '../model/ListMerchants200Response';
+import ListPayerTransactions200Response from '../model/ListPayerTransactions200Response';
 import ListPaymentOrders200Response from '../model/ListPaymentOrders200Response';
 import ListPaymentWalletBalances200Response from '../model/ListPaymentWalletBalances200Response';
 import ListPayouts200Response from '../model/ListPayouts200Response';
@@ -94,7 +94,6 @@ import SupportedToken from '../model/SupportedToken';
 import TopUpAddress from '../model/TopUpAddress';
 import TriggerTestPaymentWebhookEventResponse from '../model/TriggerTestPaymentWebhookEventResponse';
 import TriggerTestPaymentsWebhookEventRequest from '../model/TriggerTestPaymentsWebhookEventRequest';
-import UpdateBankAccountByIdRequest from '../model/UpdateBankAccountByIdRequest';
 import UpdateCounterpartyRequest from '../model/UpdateCounterpartyRequest';
 import UpdateDestinationEntry200Response from '../model/UpdateDestinationEntry200Response';
 import UpdateDestinationEntryRequest from '../model/UpdateDestinationEntryRequest';
@@ -104,6 +103,102 @@ import UpdatePaymentOrderRequest from '../model/UpdatePaymentOrderRequest';
 import UpdateRefundByIdRequest from '../model/UpdateRefundByIdRequest';
 import UpdateTopUpAddress from '../model/UpdateTopUpAddress';
 import WalletSetup from '../model/WalletSetup';
+
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'AcquiringType': AcquiringType,
+  'BankAccountStatus': BankAccountStatus,
+  'BatchAllocation': BatchAllocation,
+  'BatchAllocationDetail': BatchAllocationDetail,
+  'Counterparty': Counterparty,
+  'CounterpartyDetail': CounterpartyDetail,
+  'CounterpartyType': CounterpartyType,
+  'CreateBatchAllocationRequest': CreateBatchAllocationRequest,
+  'CreateBulkSendRequest': CreateBulkSendRequest,
+  'CreateCounterpartyEntry201Response': CreateCounterpartyEntry201Response,
+  'CreateCounterpartyEntryRequest': CreateCounterpartyEntryRequest,
+  'CreateCounterpartyRequest': CreateCounterpartyRequest,
+  'CreateCryptoAddressRequest': CreateCryptoAddressRequest,
+  'CreateDestinationEntry201Response': CreateDestinationEntry201Response,
+  'CreateDestinationEntryRequest': CreateDestinationEntryRequest,
+  'CreateDestinationRequest': CreateDestinationRequest,
+  'CreateMerchantRequest': CreateMerchantRequest,
+  'CreateOrderLinkRequest': CreateOrderLinkRequest,
+  'CreatePaymentOrderRequest': CreatePaymentOrderRequest,
+  'CreatePayoutRequest': CreatePayoutRequest,
+  'CreateRefundLinkRequest': CreateRefundLinkRequest,
+  'CreateRefundRequest': CreateRefundRequest,
+  'CreateReportRequest': CreateReportRequest,
+  'CreateSettlementRequestRequest': CreateSettlementRequestRequest,
+  'CreateTopUpAddresses': CreateTopUpAddresses,
+  'CreateTopUpAddresses201Response': CreateTopUpAddresses201Response,
+  'CryptoAddress': CryptoAddress,
+  'DeleteCounterpartyById200Response': DeleteCounterpartyById200Response,
+  'DeleteCounterpartyEntry200Response': DeleteCounterpartyEntry200Response,
+  'DeleteCryptoAddress201Response': DeleteCryptoAddress201Response,
+  'DeleteDestinationById200Response': DeleteDestinationById200Response,
+  'DeleteDestinationEntry200Response': DeleteDestinationEntry200Response,
+  'Destination': Destination,
+  'DestinationDetail': DestinationDetail,
+  'DestinationType': DestinationType,
+  'EntryType': EntryType,
+  'ErrorResponse': ErrorResponse,
+  'ExchangeRate': ExchangeRate,
+  'ForcedSweep': ForcedSweep,
+  'ForcedSweepRequest': ForcedSweepRequest,
+  'GetCounterpartyEntry200Response': GetCounterpartyEntry200Response,
+  'GetDestinationEntry200Response': GetDestinationEntry200Response,
+  'GetExchangeRate200Response': GetExchangeRate200Response,
+  'GetRefunds200Response': GetRefunds200Response,
+  'GetReports200Response': GetReports200Response,
+  'GetSettlementInfoByIds200Response': GetSettlementInfoByIds200Response,
+  'Link': Link,
+  'ListAllocationItems200Response': ListAllocationItems200Response,
+  'ListBatchAllocations200Response': ListBatchAllocations200Response,
+  'ListBulkSendItems200Response': ListBulkSendItems200Response,
+  'ListCounterparties200Response': ListCounterparties200Response,
+  'ListCounterpartyEntries200Response': ListCounterpartyEntries200Response,
+  'ListDestinationEntries200Response': ListDestinationEntries200Response,
+  'ListDestinations200Response': ListDestinations200Response,
+  'ListForcedSweepRequests200Response': ListForcedSweepRequests200Response,
+  'ListMerchantBalances200Response': ListMerchantBalances200Response,
+  'ListMerchants200Response': ListMerchants200Response,
+  'ListPayerTransactions200Response': ListPayerTransactions200Response,
+  'ListPaymentOrders200Response': ListPaymentOrders200Response,
+  'ListPaymentWalletBalances200Response': ListPaymentWalletBalances200Response,
+  'ListPayouts200Response': ListPayouts200Response,
+  'ListSettlementDetails200Response': ListSettlementDetails200Response,
+  'ListSettlementRequests200Response': ListSettlementRequests200Response,
+  'ListTopUpPayerAccounts200Response': ListTopUpPayerAccounts200Response,
+  'ListTopUpPayers200Response': ListTopUpPayers200Response,
+  'Merchant': Merchant,
+  'Order': Order,
+  'PaymentAllocationAmount': PaymentAllocationAmount,
+  'PaymentBulkSend': PaymentBulkSend,
+  'PaymentEstimateFee201Response': PaymentEstimateFee201Response,
+  'PaymentEstimateFeeRequest': PaymentEstimateFeeRequest,
+  'PaymentPayout': PaymentPayout,
+  'PaymentPayoutDetail': PaymentPayoutDetail,
+  'PspBalance': PspBalance,
+  'Refund': Refund,
+  'Report': Report,
+  'ReportStatus': ReportStatus,
+  'ReportType': ReportType,
+  'Settlement': Settlement,
+  'SupportedToken': SupportedToken,
+  'TopUpAddress': TopUpAddress,
+  'TriggerTestPaymentWebhookEventResponse': TriggerTestPaymentWebhookEventResponse,
+  'TriggerTestPaymentsWebhookEventRequest': TriggerTestPaymentsWebhookEventRequest,
+  'UpdateCounterpartyRequest': UpdateCounterpartyRequest,
+  'UpdateDestinationEntry200Response': UpdateDestinationEntry200Response,
+  'UpdateDestinationEntryRequest': UpdateDestinationEntryRequest,
+  'UpdateDestinationRequest': UpdateDestinationRequest,
+  'UpdateMerchantByIdRequest': UpdateMerchantByIdRequest,
+  'UpdatePaymentOrderRequest': UpdatePaymentOrderRequest,
+  'UpdateRefundByIdRequest': UpdateRefundByIdRequest,
+  'UpdateTopUpAddress': UpdateTopUpAddress,
+  'WalletSetup': WalletSetup,
+};
 
 /**
 * Payment service.
@@ -246,6 +341,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateBatchAllocationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createBatchAllocation(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateBatchAllocationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateBatchAllocationRequest'] && typeof _modelClasses['CreateBatchAllocationRequest'].validateJSON === 'function') {
+          _modelClasses['CreateBatchAllocationRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -294,6 +405,22 @@ export default class PaymentApi {
       let postBody = opts['CreateBulkSendRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateBulkSendRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createBulkSend(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateBulkSendRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateBulkSendRequest'] && typeof _modelClasses['CreateBulkSendRequest'].validateJSON === 'function') {
+          _modelClasses['CreateBulkSendRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -344,6 +471,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateCounterpartyRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createCounterparty(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateCounterpartyRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateCounterpartyRequest'] && typeof _modelClasses['CreateCounterpartyRequest'].validateJSON === 'function') {
+          _modelClasses['CreateCounterpartyRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -392,6 +535,22 @@ export default class PaymentApi {
       let postBody = opts['CreateCounterpartyEntryRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateCounterpartyEntryRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createCounterpartyEntry(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateCounterpartyEntryRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateCounterpartyEntryRequest'] && typeof _modelClasses['CreateCounterpartyEntryRequest'].validateJSON === 'function') {
+          _modelClasses['CreateCounterpartyEntryRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -442,6 +601,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateCryptoAddressRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createCryptoAddress(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateCryptoAddressRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateCryptoAddressRequest'] && typeof _modelClasses['CreateCryptoAddressRequest'].validateJSON === 'function') {
+          _modelClasses['CreateCryptoAddressRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -490,6 +665,22 @@ export default class PaymentApi {
       let postBody = opts['CreateDestinationRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateDestinationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createDestination(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateDestinationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateDestinationRequest'] && typeof _modelClasses['CreateDestinationRequest'].validateJSON === 'function') {
+          _modelClasses['CreateDestinationRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -540,6 +731,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateDestinationEntryRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createDestinationEntry(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateDestinationEntryRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateDestinationEntryRequest'] && typeof _modelClasses['CreateDestinationEntryRequest'].validateJSON === 'function') {
+          _modelClasses['CreateDestinationEntryRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -588,6 +795,22 @@ export default class PaymentApi {
       let postBody = opts['ForcedSweepRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'ForcedSweepRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createForcedSweepRequest(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "ForcedSweepRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['ForcedSweepRequest'] && typeof _modelClasses['ForcedSweepRequest'].validateJSON === 'function') {
+          _modelClasses['ForcedSweepRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -638,6 +861,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateMerchantRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createMerchant(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateMerchantRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateMerchantRequest'] && typeof _modelClasses['CreateMerchantRequest'].validateJSON === 'function') {
+          _modelClasses['CreateMerchantRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -686,6 +925,22 @@ export default class PaymentApi {
       let postBody = opts['CreateOrderLinkRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateOrderLinkRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createOrderLink(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateOrderLinkRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateOrderLinkRequest'] && typeof _modelClasses['CreateOrderLinkRequest'].validateJSON === 'function') {
+          _modelClasses['CreateOrderLinkRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -736,6 +991,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreatePaymentOrderRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createPaymentOrder(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreatePaymentOrderRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreatePaymentOrderRequest'] && typeof _modelClasses['CreatePaymentOrderRequest'].validateJSON === 'function') {
+          _modelClasses['CreatePaymentOrderRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -784,6 +1055,22 @@ export default class PaymentApi {
       let postBody = opts['CreatePayoutRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreatePayoutRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createPayout(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreatePayoutRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreatePayoutRequest'] && typeof _modelClasses['CreatePayoutRequest'].validateJSON === 'function') {
+          _modelClasses['CreatePayoutRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -834,6 +1121,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateRefundRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createRefund(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateRefundRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateRefundRequest'] && typeof _modelClasses['CreateRefundRequest'].validateJSON === 'function') {
+          _modelClasses['CreateRefundRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -883,6 +1186,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateRefundLinkRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createRefundLink(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateRefundLinkRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateRefundLinkRequest'] && typeof _modelClasses['CreateRefundLinkRequest'].validateJSON === 'function') {
+          _modelClasses['CreateRefundLinkRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -931,6 +1250,22 @@ export default class PaymentApi {
       let postBody = opts['CreateReportRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateReportRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createReport(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateReportRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateReportRequest'] && typeof _modelClasses['CreateReportRequest'].validateJSON === 'function') {
+          _modelClasses['CreateReportRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -1025,6 +1360,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'CreateSettlementRequestRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createSettlementRequest(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateSettlementRequestRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateSettlementRequestRequest'] && typeof _modelClasses['CreateSettlementRequestRequest'].validateJSON === 'function') {
+          _modelClasses['CreateSettlementRequestRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -1073,6 +1424,22 @@ export default class PaymentApi {
       let postBody = opts['CreateTopUpAddresses'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateTopUpAddresses'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createTopUpAddresses(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateTopUpAddresses".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateTopUpAddresses'] && typeof _modelClasses['CreateTopUpAddresses'].validateJSON === 'function') {
+          _modelClasses['CreateTopUpAddresses'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -2276,7 +2643,7 @@ export default class PaymentApi {
      * Create/Get top-up address
      * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the `custom_payer_id` parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the `merchant_id` parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param {String} custom_payer_id A unique identifier to track and identify individual payers in your system.
+     * @param {String} custom_payer_id Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
      * @param {Object} opts Optional parameters
      * @param {String} [merchant_id] The merchant ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TopUpAddress} and HTTP response
@@ -2323,7 +2690,7 @@ export default class PaymentApi {
      * Create/Get top-up address
      * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the `custom_payer_id` parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the `merchant_id` parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      * @param {String} token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param {String} custom_payer_id A unique identifier to track and identify individual payers in your system.
+     * @param {String} custom_payer_id Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
      * @param {Object} opts Optional parameters
      * @param {String} opts.merchant_id The merchant ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TopUpAddress}
@@ -2398,50 +2765,6 @@ export default class PaymentApi {
      */
     listAllocationItems(opts) {
       return this.listAllocationItemsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * List all bank accounts
-     * <Note>This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.</Note> This operation retrieves the information of all bank accounts registered. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/BankAccount>} and HTTP response
-     */
-    listBankAccountsWithHttpInfo() {
-      let postBody = null;
-      if (postBody && postBody.toJSON) {
-          postBody = postBody.toJSON()
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['OAuth2', 'CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [BankAccount];
-      return this.apiClient.callApi(
-        '/payments/bank_accounts', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * List all bank accounts
-     * <Note>This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.</Note> This operation retrieves the information of all bank accounts registered. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/BankAccount>}
-     */
-    listBankAccounts() {
-      return this.listBankAccountsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -3080,6 +3403,81 @@ export default class PaymentApi {
 
 
     /**
+     * List payer transactions
+     * This operation retrieves on-chain transactions related to a specific top-up payer.  You need to specify `custom_payer_id`, which is the merchant-defined customer identifier used when creating top-up addresses.  <Note>This operation is applicable to the top-up scenario only.</Note>  For more information, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param {String} custom_payer_id Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
+     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} [merchant_id] The merchant ID.
+     * @param {String} [token_id] The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * @param {String} [transaction_hashes] A list of transaction hashes, separated by comma.
+     * @param {String} [transaction_ids] A list of transaction IDs, separated by comma.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListPayerTransactions200Response} and HTTP response
+     */
+    listPayerTransactionsWithHttpInfo(custom_payer_id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'custom_payer_id' is set
+      if (custom_payer_id === undefined || custom_payer_id === null) {
+        throw new Error("Missing the required parameter 'custom_payer_id' when calling listPayerTransactions");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after'],
+        'merchant_id': opts['merchant_id'],
+        'custom_payer_id': custom_payer_id,
+        'token_id': opts['token_id'],
+        'transaction_hashes': opts['transaction_hashes'],
+        'transaction_ids': opts['transaction_ids']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListPayerTransactions200Response;
+      return this.apiClient.callApi(
+        '/payments/topup/payers/transactions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List payer transactions
+     * This operation retrieves on-chain transactions related to a specific top-up payer.  You need to specify `custom_payer_id`, which is the merchant-defined customer identifier used when creating top-up addresses.  <Note>This operation is applicable to the top-up scenario only.</Note>  For more information, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param {String} custom_payer_id Unique customer identifier on the merchant side, used to allocate a dedicated top-up address 
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
+     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} opts.merchant_id The merchant ID.
+     * @param {String} opts.token_id The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format `{CHAIN}_{TOKEN}`. Supported values include:   - USDC: `ETH_USDC`, `ARBITRUM_USDCOIN`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC2`, `BSC_USDC`   - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
+     * @param {String} opts.transaction_hashes A list of transaction hashes, separated by comma.
+     * @param {String} opts.transaction_ids A list of transaction IDs, separated by comma.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListPayerTransactions200Response}
+     */
+    listPayerTransactions(custom_payer_id, opts) {
+      return this.listPayerTransactionsWithHttpInfo(custom_payer_id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List all pay-in orders
      * This operation retrieves the information of all pay-in orders. You can filter the result by merchant ID. 
      * @param {Object} opts Optional parameters
@@ -3489,7 +3887,7 @@ export default class PaymentApi {
 
     /**
      * List payers
-     * This operation retrieves the information of all payers under a merchant.   You can filter the result by the payer ID. 
+     * This operation retrieves the information of all payers. You can filter the result by merchant ID and payer_id.  <Note>The `transactions` field in the response returns up to the latest 200 transactions only. This field will be removed in a future version. To paginate through payer transactions, use [List payer transactions](https://www.cobo.com/payments/en/guides/overview).</Note> 
      * @param {Object} opts Optional parameters
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
      * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -3532,7 +3930,7 @@ export default class PaymentApi {
 
     /**
      * List payers
-     * This operation retrieves the information of all payers under a merchant.   You can filter the result by the payer ID. 
+     * This operation retrieves the information of all payers. You can filter the result by merchant ID and payer_id.  <Note>The `transactions` field in the response returns up to the latest 200 transactions only. This field will be removed in a future version. To paginate through payer transactions, use [List payer transactions](https://www.cobo.com/payments/en/guides/overview).</Note> 
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
      * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
@@ -3561,6 +3959,22 @@ export default class PaymentApi {
       let postBody = opts['PaymentEstimateFeeRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'PaymentEstimateFeeRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'paymentEstimateFee(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "PaymentEstimateFeeRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['PaymentEstimateFeeRequest'] && typeof _modelClasses['PaymentEstimateFeeRequest'].validateJSON === 'function') {
+          _modelClasses['PaymentEstimateFeeRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -3611,6 +4025,22 @@ export default class PaymentApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'TriggerTestPaymentsWebhookEventRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'triggerTestPaymentsWebhookEvent(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TriggerTestPaymentsWebhookEventRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TriggerTestPaymentsWebhookEventRequest'] && typeof _modelClasses['TriggerTestPaymentsWebhookEventRequest'].validateJSON === 'function') {
+          _modelClasses['TriggerTestPaymentsWebhookEventRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -3648,62 +4078,6 @@ export default class PaymentApi {
 
 
     /**
-     * Update bank account
-     * <Note>This operation has been deprecated.</Note> This operation updates the information of an existing bank account. 
-     * @param {String} bank_account_id The bank account ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateBankAccountByIdRequest} [UpdateBankAccountByIdRequest] The request body for updating an existing bank account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BankAccount} and HTTP response
-     */
-    updateBankAccountByIdWithHttpInfo(bank_account_id, opts) {
-      opts = opts || {};
-      let postBody = opts['UpdateBankAccountByIdRequest'];
-      if (postBody && postBody.toJSON) {
-          postBody = postBody.toJSON()
-      }
-      // verify the required parameter 'bank_account_id' is set
-      if (bank_account_id === undefined || bank_account_id === null) {
-        throw new Error("Missing the required parameter 'bank_account_id' when calling updateBankAccountById");
-      }
-
-      let pathParams = {
-        'bank_account_id': bank_account_id
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['OAuth2', 'CoboAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = BankAccount;
-      return this.apiClient.callApi(
-        '/payments/bank_accounts/{bank_account_id}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Update bank account
-     * <Note>This operation has been deprecated.</Note> This operation updates the information of an existing bank account. 
-     * @param {String} bank_account_id The bank account ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/UpdateBankAccountByIdRequest} opts.UpdateBankAccountByIdRequest The request body for updating an existing bank account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BankAccount}
-     */
-    updateBankAccountById(bank_account_id, opts) {
-      return this.updateBankAccountByIdWithHttpInfo(bank_account_id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Update counterparty
      * This operation updates the information of a specified counterparty. 
      * @param {String} counterparty_id The counterparty ID.
@@ -3720,6 +4094,22 @@ export default class PaymentApi {
       // verify the required parameter 'counterparty_id' is set
       if (counterparty_id === undefined || counterparty_id === null) {
         throw new Error("Missing the required parameter 'counterparty_id' when calling updateCounterparty");
+      }
+      // Validate opts key — must be exactly 'UpdateCounterpartyRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateCounterparty(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateCounterpartyRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateCounterpartyRequest'] && typeof _modelClasses['UpdateCounterpartyRequest'].validateJSON === 'function') {
+          _modelClasses['UpdateCounterpartyRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -3777,6 +4167,22 @@ export default class PaymentApi {
       if (destination_id === undefined || destination_id === null) {
         throw new Error("Missing the required parameter 'destination_id' when calling updateDestination");
       }
+      // Validate opts key — must be exactly 'UpdateDestinationRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateDestination(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateDestinationRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateDestinationRequest'] && typeof _modelClasses['UpdateDestinationRequest'].validateJSON === 'function') {
+          _modelClasses['UpdateDestinationRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'destination_id': destination_id
@@ -3832,6 +4238,22 @@ export default class PaymentApi {
       // verify the required parameter 'destination_entry_id' is set
       if (destination_entry_id === undefined || destination_entry_id === null) {
         throw new Error("Missing the required parameter 'destination_entry_id' when calling updateDestinationEntry");
+      }
+      // Validate opts key — must be exactly 'UpdateDestinationEntryRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateDestinationEntry(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateDestinationEntryRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateDestinationEntryRequest'] && typeof _modelClasses['UpdateDestinationEntryRequest'].validateJSON === 'function') {
+          _modelClasses['UpdateDestinationEntryRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -3889,6 +4311,22 @@ export default class PaymentApi {
       if (merchant_id === undefined || merchant_id === null) {
         throw new Error("Missing the required parameter 'merchant_id' when calling updateMerchantById");
       }
+      // Validate opts key — must be exactly 'UpdateMerchantByIdRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateMerchantById(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateMerchantByIdRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateMerchantByIdRequest'] && typeof _modelClasses['UpdateMerchantByIdRequest'].validateJSON === 'function') {
+          _modelClasses['UpdateMerchantByIdRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'merchant_id': merchant_id
@@ -3944,6 +4382,22 @@ export default class PaymentApi {
       // verify the required parameter 'order_id' is set
       if (order_id === undefined || order_id === null) {
         throw new Error("Missing the required parameter 'order_id' when calling updatePaymentOrder");
+      }
+      // Validate opts key — must be exactly 'UpdatePaymentOrderRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updatePaymentOrder(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdatePaymentOrderRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdatePaymentOrderRequest'] && typeof _modelClasses['UpdatePaymentOrderRequest'].validateJSON === 'function') {
+          _modelClasses['UpdatePaymentOrderRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -4001,6 +4455,22 @@ export default class PaymentApi {
       if (refund_id === undefined || refund_id === null) {
         throw new Error("Missing the required parameter 'refund_id' when calling updateRefundById");
       }
+      // Validate opts key — must be exactly 'UpdateRefundByIdRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateRefundById(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateRefundByIdRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateRefundByIdRequest'] && typeof _modelClasses['UpdateRefundByIdRequest'].validateJSON === 'function') {
+          _modelClasses['UpdateRefundByIdRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
         'refund_id': refund_id
@@ -4051,6 +4521,22 @@ export default class PaymentApi {
       let postBody = opts['UpdateTopUpAddress'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'UpdateTopUpAddress'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateTopUpAddress(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateTopUpAddress".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateTopUpAddress'] && typeof _modelClasses['UpdateTopUpAddress'].validateJSON === 'function') {
+          _modelClasses['UpdateTopUpAddress'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

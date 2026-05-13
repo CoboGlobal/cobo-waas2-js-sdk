@@ -71,11 +71,11 @@ class PaymentAllocationAmount {
             }
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['allocation_amount'] && !(typeof data['allocation_amount'] === 'string' || data['allocation_amount'] instanceof String)) {
+        if (!(typeof data['allocation_amount'] === 'string' || data['allocation_amount'] instanceof String)) {
             throw new Error("Expected the field `allocation_amount` to be a primitive type in the JSON string but got " + data['allocation_amount']);
         }
 

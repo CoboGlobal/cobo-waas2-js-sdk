@@ -79,9 +79,11 @@ class GraphQLError {
                 GraphQLErrorLocationsInner.validateJSON(item);
             };
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['path'])) {
-            throw new Error("Expected the field `path` to be an array in the JSON data but got " + data['path']);
+        if (data['path']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['path'])) {
+                throw new Error("Expected the field `path` to be an array in the JSON data but got " + data['path']);
+            }
         }
 
         return true;

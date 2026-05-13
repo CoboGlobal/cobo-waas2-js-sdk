@@ -23,6 +23,21 @@ import ListTokenBalancesForFeeStation200Response from '../model/ListTokenBalance
 import ListTransactions200Response from '../model/ListTransactions200Response';
 import TransactionDetail from '../model/TransactionDetail';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'EstimatedFixedFee': EstimatedFixedFee,
+  'FeeStationCheckFeeStationUsage': FeeStationCheckFeeStationUsage,
+  'FeeStationCheckFeeStationUsageResponse': FeeStationCheckFeeStationUsageResponse,
+  'FeeStationFiatTransactionType': FeeStationFiatTransactionType,
+  'FeeStationTransfer': FeeStationTransfer,
+  'ListAddresses200Response': ListAddresses200Response,
+  'ListFeeStationFiatTransactions200Response': ListFeeStationFiatTransactions200Response,
+  'ListTokenBalancesForFeeStation200Response': ListTokenBalancesForFeeStation200Response,
+  'ListTransactions200Response': ListTransactions200Response,
+  'TransactionDetail': TransactionDetail,
+};
+
 /**
 * FeeStation service.
 * @module api/FeeStationApi
@@ -54,6 +69,22 @@ export default class FeeStationApi {
       let postBody = opts['FeeStationCheckFeeStationUsage'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'FeeStationCheckFeeStationUsage'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'checkFeeStationUsage(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "FeeStationCheckFeeStationUsage".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['FeeStationCheckFeeStationUsage'] && typeof _modelClasses['FeeStationCheckFeeStationUsage'].validateJSON === 'function') {
+          _modelClasses['FeeStationCheckFeeStationUsage'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -103,6 +134,22 @@ export default class FeeStationApi {
       let postBody = opts['FeeStationTransfer'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'FeeStationTransfer'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'estimateFeeStationFee(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "FeeStationTransfer".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['FeeStationTransfer'] && typeof _modelClasses['FeeStationTransfer'].validateJSON === 'function') {
+          _modelClasses['FeeStationTransfer'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

@@ -123,11 +123,11 @@ class TokenizationTokenDetailInfo {
             }
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
@@ -139,7 +139,7 @@ class TokenizationTokenDetailInfo {
             throw new Error("Expected the field `token_name` to be a primitive type in the JSON string but got " + data['token_name']);
         }
         // ensure the json data is a string
-        if (data['token_symbol'] && !(typeof data['token_symbol'] === 'string' || data['token_symbol'] instanceof String)) {
+        if (!(typeof data['token_symbol'] === 'string' || data['token_symbol'] instanceof String)) {
             throw new Error("Expected the field `token_symbol` to be a primitive type in the JSON string but got " + data['token_symbol']);
         }
         // ensure the json data is a string

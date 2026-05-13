@@ -77,11 +77,11 @@ class ErrorResponse {
             }
         }
         // ensure the json data is a string
-        if (data['error_message'] && !(typeof data['error_message'] === 'string' || data['error_message'] instanceof String)) {
+        if (!(typeof data['error_message'] === 'string' || data['error_message'] instanceof String)) {
             throw new Error("Expected the field `error_message` to be a primitive type in the JSON string but got " + data['error_message']);
         }
         // ensure the json data is a string
-        if (data['error_id'] && !(typeof data['error_id'] === 'string' || data['error_id'] instanceof String)) {
+        if (!(typeof data['error_id'] === 'string' || data['error_id'] instanceof String)) {
             throw new Error("Expected the field `error_id` to be a primitive type in the JSON string but got " + data['error_id']);
         }
 

@@ -25,6 +25,23 @@ import SubmitKytScreeningsDecisionsBody from '../model/SubmitKytScreeningsDecisi
 import SubmitKytScreeningsReviewBody from '../model/SubmitKytScreeningsReviewBody';
 import UnfreezeDisposition from '../model/UnfreezeDisposition';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'CreateKyaScreeningsBody': CreateKyaScreeningsBody,
+  'DispositionQueryResponse': DispositionQueryResponse,
+  'DispositionResponse': DispositionResponse,
+  'ErrorResponse': ErrorResponse,
+  'IsolateDisposition': IsolateDisposition,
+  'KyaScreeningResult': KyaScreeningResult,
+  'KytScreeningsTransaction': KytScreeningsTransaction,
+  'ListKyaScreenings200Response': ListKyaScreenings200Response,
+  'RefundDisposition': RefundDisposition,
+  'SubmitKytResponse': SubmitKytResponse,
+  'SubmitKytScreeningsDecisionsBody': SubmitKytScreeningsDecisionsBody,
+  'SubmitKytScreeningsReviewBody': SubmitKytScreeningsReviewBody,
+  'UnfreezeDisposition': UnfreezeDisposition,
+};
+
 /**
 * Compliance service.
 * @module api/ComplianceApi
@@ -56,6 +73,22 @@ export default class ComplianceApi {
       let postBody = opts['CreateKyaScreeningsBody'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateKyaScreeningsBody'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createKyaScreenings(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateKyaScreeningsBody".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateKyaScreeningsBody'] && typeof _modelClasses['CreateKyaScreeningsBody'].validateJSON === 'function') {
+          _modelClasses['CreateKyaScreeningsBody'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -259,6 +292,22 @@ export default class ComplianceApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'IsolateDisposition'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'isolateFunds(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "IsolateDisposition".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['IsolateDisposition'] && typeof _modelClasses['IsolateDisposition'].validateJSON === 'function') {
+          _modelClasses['IsolateDisposition'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -367,6 +416,22 @@ export default class ComplianceApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'RefundDisposition'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'refundFunds(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "RefundDisposition".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['RefundDisposition'] && typeof _modelClasses['RefundDisposition'].validateJSON === 'function') {
+          _modelClasses['RefundDisposition'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -415,6 +480,22 @@ export default class ComplianceApi {
       let postBody = opts['SubmitKytScreeningsReviewBody'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'SubmitKytScreeningsReviewBody'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'submitKytManualReview(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "SubmitKytScreeningsReviewBody".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['SubmitKytScreeningsReviewBody'] && typeof _modelClasses['SubmitKytScreeningsReviewBody'].validateJSON === 'function') {
+          _modelClasses['SubmitKytScreeningsReviewBody'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -465,6 +546,22 @@ export default class ComplianceApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'SubmitKytScreeningsDecisionsBody'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'submitKytScreeningDecisions(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "SubmitKytScreeningsDecisionsBody".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['SubmitKytScreeningsDecisionsBody'] && typeof _modelClasses['SubmitKytScreeningsDecisionsBody'].validateJSON === 'function') {
+          _modelClasses['SubmitKytScreeningsDecisionsBody'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -513,6 +610,22 @@ export default class ComplianceApi {
       let postBody = opts['UnfreezeDisposition'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'UnfreezeDisposition'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'unfreezeFunds(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UnfreezeDisposition".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UnfreezeDisposition'] && typeof _modelClasses['UnfreezeDisposition'].validateJSON === 'function') {
+          _modelClasses['UnfreezeDisposition'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

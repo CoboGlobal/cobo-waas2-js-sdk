@@ -106,28 +106,22 @@ class TransferParams {
             }
         }
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        // validate the optional field `source`
-        if (data['source']) { // data not null
-          if (!!TransferSource.validateJSON) {
-            TransferSource.validateJSON(data['source']);
-          }
-        }
+        // validate the required field `source`
+        TransferSource.validateJSON(data['source']);
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // validate the optional field `destination`
-        if (data['destination']) { // data not null
-          if (!!TransferDestination.validateJSON) {
-            TransferDestination.validateJSON(data['destination']);
-          }
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['category_names'])) {
-            throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
+        // validate the required field `destination`
+        TransferDestination.validateJSON(data['destination']);
+        if (data['category_names']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['category_names'])) {
+                throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
+            }
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {

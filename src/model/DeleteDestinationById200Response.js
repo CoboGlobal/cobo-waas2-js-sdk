@@ -66,7 +66,7 @@ class DeleteDestinationById200Response {
             }
         }
         // ensure the json data is a string
-        if (data['deleted_destination_id'] && !(typeof data['deleted_destination_id'] === 'string' || data['deleted_destination_id'] instanceof String)) {
+        if (!(typeof data['deleted_destination_id'] === 'string' || data['deleted_destination_id'] instanceof String)) {
             throw new Error("Expected the field `deleted_destination_id` to be a primitive type in the JSON string but got " + data['deleted_destination_id']);
         }
 

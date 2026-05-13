@@ -74,7 +74,7 @@ class TokenizationEvmContractCallParams {
             }
         }
         // ensure the json data is a string
-        if (data['calldata'] && !(typeof data['calldata'] === 'string' || data['calldata'] instanceof String)) {
+        if (!(typeof data['calldata'] === 'string' || data['calldata'] instanceof String)) {
             throw new Error("Expected the field `calldata` to be a primitive type in the JSON string but got " + data['calldata']);
         }
         // ensure the json data is a string

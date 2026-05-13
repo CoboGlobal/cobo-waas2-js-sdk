@@ -66,7 +66,7 @@ class ExchangePermissionTokenRequest {
             }
         }
         // ensure the json data is a string
-        if (data['permission_type'] && !(typeof data['permission_type'] === 'string' || data['permission_type'] instanceof String)) {
+        if (!(typeof data['permission_type'] === 'string' || data['permission_type'] instanceof String)) {
             throw new Error("Expected the field `permission_type` to be a primitive type in the JSON string but got " + data['permission_type']);
         }
 

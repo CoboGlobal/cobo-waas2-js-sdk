@@ -137,6 +137,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "fee_station.fiat_transaction.created"
+         * @const
+         */
+        "fee_station.fiat_transaction.created" = "fee_station.fiat_transaction.created";
+
+    
+        /**
          * value: "wallet.token.enabled"
          * @const
          */

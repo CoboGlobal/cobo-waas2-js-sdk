@@ -78,11 +78,11 @@ class TravelRuleDepositLegalEntity {
             }
         }
         // ensure the json data is a string
-        if (data['selected_entity_type'] && !(typeof data['selected_entity_type'] === 'string' || data['selected_entity_type'] instanceof String)) {
+        if (!(typeof data['selected_entity_type'] === 'string' || data['selected_entity_type'] instanceof String)) {
             throw new Error("Expected the field `selected_entity_type` to be a primitive type in the JSON string but got " + data['selected_entity_type']);
         }
         // ensure the json data is a string
-        if (data['legal_name'] && !(typeof data['legal_name'] === 'string' || data['legal_name'] instanceof String)) {
+        if (!(typeof data['legal_name'] === 'string' || data['legal_name'] instanceof String)) {
             throw new Error("Expected the field `legal_name` to be a primitive type in the JSON string but got " + data['legal_name']);
         }
         // ensure the json data is a string

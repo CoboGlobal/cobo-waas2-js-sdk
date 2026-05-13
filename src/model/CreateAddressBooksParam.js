@@ -67,16 +67,14 @@ class CreateAddressBooksParam {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['address_books']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['address_books'])) {
-                throw new Error("Expected the field `address_books` to be an array in the JSON data but got " + data['address_books']);
-            }
-            // validate the optional field `address_books` (array)
-            for (const item of data['address_books']) {
-                CreateAddressBookParam.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['address_books'])) {
+            throw new Error("Expected the field `address_books` to be an array in the JSON data but got " + data['address_books']);
         }
+        // validate the required field `address_books` (array)
+        for (const item of data['address_books']) {
+            CreateAddressBookParam.validateJSON(item);
+        };
 
         return true;
     }

@@ -75,7 +75,7 @@ class EthStakeExtra {
             }
         }
         // ensure the json data is a string
-        if (data['provider_name'] && !(typeof data['provider_name'] === 'string' || data['provider_name'] instanceof String)) {
+        if (!(typeof data['provider_name'] === 'string' || data['provider_name'] instanceof String)) {
             throw new Error("Expected the field `provider_name` to be a primitive type in the JSON string but got " + data['provider_name']);
         }
 

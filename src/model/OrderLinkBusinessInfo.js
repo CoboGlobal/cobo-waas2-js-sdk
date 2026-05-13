@@ -23,7 +23,7 @@ class OrderLinkBusinessInfo {
      * @alias module:model/OrderLinkBusinessInfo
      * @param merchant_id {String} The merchant ID.
      * @param psp_order_code {String} A unique reference code assigned by you as a developer to identify this order in your system. This code must be unique across all orders in your system. The code should have a maximum length of 128 characters. 
-     * @param pricing_currency {String} The pricing currency that denominates `pricing_amount` and `fee_amount`. Currently, only `USD`/`USDT`/`USDC` are supported. This field is required. 
+     * @param pricing_currency {String} The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com//payments/en/guides/supported-chains-and-tokens#pricing-currency). 
      * @param pricing_amount {String} The base amount of the order, excluding the developer fee (specified in `fee_amount`). Values must be greater than `0` and contain two decimal places. 
      * @param fee_amount {String} The developer fee for the order. It is added to the base amount (`pricing_amount`) to determine the final charge. For example, if `pricing_amount` is \"100.00\" and `fee_amount` is \"2.00\", the payer will be charged \"102.00\" in total, with \"100.00\" being settled to the merchant account and \"2.00\" settled to the developer account. Values must be greater than 0 and contain two decimal places. 
      * @param payable_currencies {Array.<String>} The IDs of the cryptocurrencies used for payment. Supported values:  - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC`  - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
@@ -120,7 +120,7 @@ class OrderLinkBusinessInfo {
             }
         }
         // ensure the json data is a string
-        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
@@ -128,19 +128,19 @@ class OrderLinkBusinessInfo {
             throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
         }
         // ensure the json data is a string
-        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+        if (!(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
             throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
         }
         // ensure the json data is a string
-        if (data['pricing_currency'] && !(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
+        if (!(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
             throw new Error("Expected the field `pricing_currency` to be a primitive type in the JSON string but got " + data['pricing_currency']);
         }
         // ensure the json data is a string
-        if (data['pricing_amount'] && !(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
+        if (!(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
             throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+        if (!(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
         // ensure the json data is an array
@@ -169,9 +169,11 @@ class OrderLinkBusinessInfo {
         if (data['order_amount'] && !(typeof data['order_amount'] === 'string' || data['order_amount'] instanceof String)) {
             throw new Error("Expected the field `order_amount` to be a primitive type in the JSON string but got " + data['order_amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['token_ids'])) {
-            throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
+        if (data['token_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['token_ids'])) {
+                throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
+            }
         }
         if (data['custom_exchange_rates']) { // data not null
             // ensure the json data is an array
@@ -211,7 +213,7 @@ OrderLinkBusinessInfo.prototype['merchant_order_code'] = undefined;
 OrderLinkBusinessInfo.prototype['psp_order_code'] = undefined;
 
 /**
- * The pricing currency that denominates `pricing_amount` and `fee_amount`. Currently, only `USD`/`USDT`/`USDC` are supported. This field is required. 
+ * The pricing currency that denominates `pricing_amount` and `fee_amount`. If left empty, both values will be denominated in `payable_currency`.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com//payments/en/guides/supported-chains-and-tokens#pricing-currency). 
  * @member {String} pricing_currency
  */
 OrderLinkBusinessInfo.prototype['pricing_currency'] = undefined;

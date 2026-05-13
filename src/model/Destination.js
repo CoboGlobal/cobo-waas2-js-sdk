@@ -101,7 +101,7 @@ class Destination {
             throw new Error("Expected the field `destination_id` to be a primitive type in the JSON string but got " + data['destination_id']);
         }
         // ensure the json data is a string
-        if (data['destination_name'] && !(typeof data['destination_name'] === 'string' || data['destination_name'] instanceof String)) {
+        if (!(typeof data['destination_name'] === 'string' || data['destination_name'] instanceof String)) {
             throw new Error("Expected the field `destination_name` to be a primitive type in the JSON string but got " + data['destination_name']);
         }
         // ensure the json data is a string

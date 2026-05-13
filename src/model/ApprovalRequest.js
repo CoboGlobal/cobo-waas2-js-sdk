@@ -89,23 +89,21 @@ class ApprovalRequest {
             }
         }
         // ensure the json data is a string
-        if (data['approval_id'] && !(typeof data['approval_id'] === 'string' || data['approval_id'] instanceof String)) {
+        if (!(typeof data['approval_id'] === 'string' || data['approval_id'] instanceof String)) {
             throw new Error("Expected the field `approval_id` to be a primitive type in the JSON string but got " + data['approval_id']);
         }
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        if (data['fields']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['fields'])) {
-                throw new Error("Expected the field `fields` to be an array in the JSON data but got " + data['fields']);
-            }
-            // validate the optional field `fields` (array)
-            for (const item of data['fields']) {
-                AppWorkflowField.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['fields'])) {
+            throw new Error("Expected the field `fields` to be an array in the JSON data but got " + data['fields']);
         }
+        // validate the required field `fields` (array)
+        for (const item of data['fields']) {
+            AppWorkflowField.validateJSON(item);
+        };
 
         return true;
     }

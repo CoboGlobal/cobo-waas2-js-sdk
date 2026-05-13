@@ -84,11 +84,11 @@ class BatchAllocationDetail {
             }
         }
         // ensure the json data is a string
-        if (data['batch_allocation_id'] && !(typeof data['batch_allocation_id'] === 'string' || data['batch_allocation_id'] instanceof String)) {
+        if (!(typeof data['batch_allocation_id'] === 'string' || data['batch_allocation_id'] instanceof String)) {
             throw new Error("Expected the field `batch_allocation_id` to be a primitive type in the JSON string but got " + data['batch_allocation_id']);
         }
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         if (data['allocation_items']) { // data not null

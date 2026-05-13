@@ -92,11 +92,11 @@ class ForcedSweep {
             }
         }
         // ensure the json data is a string
-        if (data['forced_sweep_id'] && !(typeof data['forced_sweep_id'] === 'string' || data['forced_sweep_id'] instanceof String)) {
+        if (!(typeof data['forced_sweep_id'] === 'string' || data['forced_sweep_id'] instanceof String)) {
             throw new Error("Expected the field `forced_sweep_id` to be a primitive type in the JSON string but got " + data['forced_sweep_id']);
         }
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string

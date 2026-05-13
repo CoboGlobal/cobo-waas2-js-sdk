@@ -77,7 +77,7 @@ class SolContractCallAccount {
             }
         }
         // ensure the json data is a string
-        if (data['pubkey'] && !(typeof data['pubkey'] === 'string' || data['pubkey'] instanceof String)) {
+        if (!(typeof data['pubkey'] === 'string' || data['pubkey'] instanceof String)) {
             throw new Error("Expected the field `pubkey` to be a primitive type in the JSON string but got " + data['pubkey']);
         }
 

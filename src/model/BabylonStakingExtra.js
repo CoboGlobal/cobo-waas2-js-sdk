@@ -87,7 +87,7 @@ class BabylonStakingExtra {
             }
         }
         // ensure the json data is a string
-        if (data['pos_chain'] && !(typeof data['pos_chain'] === 'string' || data['pos_chain'] instanceof String)) {
+        if (!(typeof data['pos_chain'] === 'string' || data['pos_chain'] instanceof String)) {
             throw new Error("Expected the field `pos_chain` to be a primitive type in the JSON string but got " + data['pos_chain']);
         }
         // ensure the json data is a string

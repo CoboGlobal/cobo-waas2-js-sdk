@@ -66,7 +66,7 @@ class RefreshPermissionTokenRequest {
             }
         }
         // ensure the json data is a string
-        if (data['refresh_token'] && !(typeof data['refresh_token'] === 'string' || data['refresh_token'] instanceof String)) {
+        if (!(typeof data['refresh_token'] === 'string' || data['refresh_token'] instanceof String)) {
             throw new Error("Expected the field `refresh_token` to be a primitive type in the JSON string but got " + data['refresh_token']);
         }
 
