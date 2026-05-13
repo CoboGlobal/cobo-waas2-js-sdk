@@ -83,15 +83,15 @@ class EigenlayerValidator {
             }
         }
         // ensure the json data is a string
-        if (data['icon_url'] && !(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
+        if (!(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
             throw new Error("Expected the field `icon_url` to be a primitive type in the JSON string but got " + data['icon_url']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
 

@@ -72,7 +72,7 @@ class TokenizationBlocklistAddressNote {
             }
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string

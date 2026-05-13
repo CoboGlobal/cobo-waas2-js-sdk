@@ -116,15 +116,15 @@ class SafeWallet {
             }
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
+        if (!(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
         }
         // ensure the json data is a string
@@ -135,9 +135,11 @@ class SafeWallet {
         if (data['safe_address'] && !(typeof data['safe_address'] === 'string' || data['safe_address'] instanceof String)) {
             throw new Error("Expected the field `safe_address` to be a primitive type in the JSON string but got " + data['safe_address']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['signers'])) {
-            throw new Error("Expected the field `signers` to be an array in the JSON data but got " + data['signers']);
+        if (data['signers']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['signers'])) {
+                throw new Error("Expected the field `signers` to be an array in the JSON data but got " + data['signers']);
+            }
         }
         // ensure the json data is a string
         if (data['cobo_safe_address'] && !(typeof data['cobo_safe_address'] === 'string' || data['cobo_safe_address'] instanceof String)) {

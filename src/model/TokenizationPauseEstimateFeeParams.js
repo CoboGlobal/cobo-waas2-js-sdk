@@ -83,14 +83,10 @@ class TokenizationPauseEstimateFeeParams {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the optional field `source`
-        if (data['source']) { // data not null
-          if (!!TokenizationTokenOperationSource.validateJSON) {
-            TokenizationTokenOperationSource.validateJSON(data['source']);
-          }
-        }
+        // validate the required field `source`
+        TokenizationTokenOperationSource.validateJSON(data['source']);
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string

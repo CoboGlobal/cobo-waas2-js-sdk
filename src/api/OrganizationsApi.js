@@ -14,6 +14,12 @@ import ApiClient from "../ApiClient";
 import ErrorResponse from '../model/ErrorResponse';
 import OrgInfo from '../model/OrgInfo';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'OrgInfo': OrgInfo,
+};
+
 /**
 * Organizations service.
 * @module api/OrganizationsApi

@@ -72,7 +72,7 @@ class TransactionSolContractAddressLookupTableAccount {
             }
         }
         // ensure the json data is a string
-        if (data['alt_account_key'] && !(typeof data['alt_account_key'] === 'string' || data['alt_account_key'] instanceof String)) {
+        if (!(typeof data['alt_account_key'] === 'string' || data['alt_account_key'] instanceof String)) {
             throw new Error("Expected the field `alt_account_key` to be a primitive type in the JSON string but got " + data['alt_account_key']);
         }
         // ensure the json data is an array

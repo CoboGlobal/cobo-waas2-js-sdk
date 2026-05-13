@@ -87,23 +87,19 @@ class TravelRuleDepositExchangesOrVASP {
             }
         }
         // ensure the json data is a string
-        if (data['vendor_code'] && !(typeof data['vendor_code'] === 'string' || data['vendor_code'] instanceof String)) {
+        if (!(typeof data['vendor_code'] === 'string' || data['vendor_code'] instanceof String)) {
             throw new Error("Expected the field `vendor_code` to be a primitive type in the JSON string but got " + data['vendor_code']);
         }
         // ensure the json data is a string
-        if (data['vendor_vasp_id'] && !(typeof data['vendor_vasp_id'] === 'string' || data['vendor_vasp_id'] instanceof String)) {
+        if (!(typeof data['vendor_vasp_id'] === 'string' || data['vendor_vasp_id'] instanceof String)) {
             throw new Error("Expected the field `vendor_vasp_id` to be a primitive type in the JSON string but got " + data['vendor_vasp_id']);
         }
         // ensure the json data is a string
         if (data['vendor_vasp_name'] && !(typeof data['vendor_vasp_name'] === 'string' || data['vendor_vasp_name'] instanceof String)) {
             throw new Error("Expected the field `vendor_vasp_name` to be a primitive type in the JSON string but got " + data['vendor_vasp_name']);
         }
-        // validate the optional field `entity_info`
-        if (data['entity_info']) { // data not null
-          if (!!TravelRuleDepositExchangesOrVASPEntityInfo.validateJSON) {
-            TravelRuleDepositExchangesOrVASPEntityInfo.validateJSON(data['entity_info']);
-          }
-        }
+        // validate the required field `entity_info`
+        TravelRuleDepositExchangesOrVASPEntityInfo.validateJSON(data['entity_info']);
 
         return true;
     }

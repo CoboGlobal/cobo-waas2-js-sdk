@@ -83,6 +83,14 @@
 
 * `WalletConnect` (value: `"WalletConnect"`)
 
+* `JustLendReceiverPrecharge` (value: `"JustLendReceiverPrecharge"`)
+
+* `JustLendEnergyRental` (value: `"JustLendEnergyRental"`)
+
+* `JustLendEnergyReturn` (value: `"JustLendEnergyReturn"`)
+
+* `TrxRecharge` (value: `"TrxRecharge"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

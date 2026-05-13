@@ -162,11 +162,11 @@ class PaymentOrderEventData {
             }
         }
         // ensure the json data is a string
-        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+        if (!(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
             throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
         // ensure the json data is a string
-        if (data['order_id'] && !(typeof data['order_id'] === 'string' || data['order_id'] instanceof String)) {
+        if (!(typeof data['order_id'] === 'string' || data['order_id'] instanceof String)) {
             throw new Error("Expected the field `order_id` to be a primitive type in the JSON string but got " + data['order_id']);
         }
         // ensure the json data is a string
@@ -178,7 +178,7 @@ class PaymentOrderEventData {
             throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
         }
         // ensure the json data is a string
-        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+        if (!(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
             throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
         }
         // ensure the json data is a string
@@ -190,7 +190,7 @@ class PaymentOrderEventData {
             throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
         }
         // ensure the json data is a string
-        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+        if (!(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
         // ensure the json data is a string
@@ -198,15 +198,15 @@ class PaymentOrderEventData {
             throw new Error("Expected the field `payable_currency` to be a primitive type in the JSON string but got " + data['payable_currency']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (data['payable_amount'] && !(typeof data['payable_amount'] === 'string' || data['payable_amount'] instanceof String)) {
+        if (!(typeof data['payable_amount'] === 'string' || data['payable_amount'] instanceof String)) {
             throw new Error("Expected the field `payable_amount` to be a primitive type in the JSON string but got " + data['payable_amount']);
         }
         // ensure the json data is a string
-        if (data['exchange_rate'] && !(typeof data['exchange_rate'] === 'string' || data['exchange_rate'] instanceof String)) {
+        if (!(typeof data['exchange_rate'] === 'string' || data['exchange_rate'] instanceof String)) {
             throw new Error("Expected the field `exchange_rate` to be a primitive type in the JSON string but got " + data['exchange_rate']);
         }
         // ensure the json data is a string
@@ -214,11 +214,11 @@ class PaymentOrderEventData {
             throw new Error("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got " + data['amount_tolerance']);
         }
         // ensure the json data is a string
-        if (data['receive_address'] && !(typeof data['receive_address'] === 'string' || data['receive_address'] instanceof String)) {
+        if (!(typeof data['receive_address'] === 'string' || data['receive_address'] instanceof String)) {
             throw new Error("Expected the field `receive_address` to be a primitive type in the JSON string but got " + data['receive_address']);
         }
         // ensure the json data is a string
-        if (data['received_token_amount'] && !(typeof data['received_token_amount'] === 'string' || data['received_token_amount'] instanceof String)) {
+        if (!(typeof data['received_token_amount'] === 'string' || data['received_token_amount'] instanceof String)) {
             throw new Error("Expected the field `received_token_amount` to be a primitive type in the JSON string but got " + data['received_token_amount']);
         }
         if (data['transactions']) { // data not null

@@ -84,7 +84,7 @@ class CreateUnstakeActivity {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['staking_id'] && !(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
+        if (!(typeof data['staking_id'] === 'string' || data['staking_id'] instanceof String)) {
             throw new Error("Expected the field `staking_id` to be a primitive type in the JSON string but got " + data['staking_id']);
         }
         // ensure the json data is a string

@@ -15,6 +15,13 @@ import ErrorResponse from '../model/ErrorResponse';
 import GraphQLRequest from '../model/GraphQLRequest';
 import GraphQLResponse from '../model/GraphQLResponse';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'GraphQLRequest': GraphQLRequest,
+  'GraphQLResponse': GraphQLResponse,
+};
+
 /**
 * GraphQL service.
 * @module api/GraphQLApi
@@ -46,6 +53,22 @@ export default class GraphQLApi {
       let postBody = opts['GraphQLRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'GraphQLRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'executeGraphql(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "GraphQLRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['GraphQLRequest'] && typeof _modelClasses['GraphQLRequest'].validateJSON === 'function') {
+          _modelClasses['GraphQLRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

@@ -107,11 +107,11 @@ class AddressesEventDataAllOfAddresses {
             }
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
@@ -142,12 +142,14 @@ class AddressesEventDataAllOfAddresses {
         if (data['taproot_internal_address'] && !(typeof data['taproot_internal_address'] === 'string' || data['taproot_internal_address'] instanceof String)) {
             throw new Error("Expected the field `taproot_internal_address` to be a primitive type in the JSON string but got " + data['taproot_internal_address']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['stellar_trusted_token_ids'])) {
-            throw new Error("Expected the field `stellar_trusted_token_ids` to be an array in the JSON data but got " + data['stellar_trusted_token_ids']);
+        if (data['stellar_trusted_token_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['stellar_trusted_token_ids'])) {
+                throw new Error("Expected the field `stellar_trusted_token_ids` to be an array in the JSON data but got " + data['stellar_trusted_token_ids']);
+            }
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
 

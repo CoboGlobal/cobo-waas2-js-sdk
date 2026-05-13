@@ -18,6 +18,16 @@ import SubmitDepositTravelRuleInfo201Response from '../model/SubmitDepositTravel
 import TravelRuleDepositRequest from '../model/TravelRuleDepositRequest';
 import TravelRuleWithdrawRequest from '../model/TravelRuleWithdrawRequest';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'GetTransactionLimitation200Response': GetTransactionLimitation200Response,
+  'ListSupportedCountries200ResponseInner': ListSupportedCountries200ResponseInner,
+  'SubmitDepositTravelRuleInfo201Response': SubmitDepositTravelRuleInfo201Response,
+  'TravelRuleDepositRequest': TravelRuleDepositRequest,
+  'TravelRuleWithdrawRequest': TravelRuleWithdrawRequest,
+};
+
 /**
 * TravelRule service.
 * @module api/TravelRuleApi
@@ -152,6 +162,22 @@ export default class TravelRuleApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
+      // Validate opts key — must be exactly 'TravelRuleDepositRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'submitDepositTravelRuleInfo(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TravelRuleDepositRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TravelRuleDepositRequest'] && typeof _modelClasses['TravelRuleDepositRequest'].validateJSON === 'function') {
+          _modelClasses['TravelRuleDepositRequest'].validateJSON(postBody);
+        }
+      }
 
       let pathParams = {
       };
@@ -200,6 +226,22 @@ export default class TravelRuleApi {
       let postBody = opts['TravelRuleWithdrawRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'TravelRuleWithdrawRequest'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'submitWithdrawTravelRuleInfo(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "TravelRuleWithdrawRequest".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['TravelRuleWithdrawRequest'] && typeof _modelClasses['TravelRuleWithdrawRequest'].validateJSON === 'function') {
+          _modelClasses['TravelRuleWithdrawRequest'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

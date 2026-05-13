@@ -349,6 +349,7 @@ import ListMerchantBalances200Response from './model/ListMerchantBalances200Resp
 import ListMerchants200Response from './model/ListMerchants200Response';
 import ListMpcProjects200Response from './model/ListMpcProjects200Response';
 import ListMpcVaults200Response from './model/ListMpcVaults200Response';
+import ListPayerTransactions200Response from './model/ListPayerTransactions200Response';
 import ListPaymentOrders200Response from './model/ListPaymentOrders200Response';
 import ListPaymentWalletBalances200Response from './model/ListPaymentWalletBalances200Response';
 import ListPayouts200Response from './model/ListPayouts200Response';
@@ -410,6 +411,7 @@ import OrderLinkBusinessInfoCustomExchangeRatesInner from './model/OrderLinkBusi
 import OrderLinkBusinessInfoPayableAmountsInner from './model/OrderLinkBusinessInfoPayableAmountsInner';
 import OrderStatus from './model/OrderStatus';
 import OrgInfo from './model/OrgInfo';
+import OriginalMainGroupHandling from './model/OriginalMainGroupHandling';
 import OtcFee from './model/OtcFee';
 import Pagination from './model/Pagination';
 import PayerAccount from './model/PayerAccount';
@@ -790,7 +792,6 @@ import TronContractCallDestination from './model/TronContractCallDestination';
 import UTXO from './model/UTXO';
 import UnfreezeDisposition from './model/UnfreezeDisposition';
 import UpdateAddressBookParam from './model/UpdateAddressBookParam';
-import UpdateBankAccountByIdRequest from './model/UpdateBankAccountByIdRequest';
 import UpdateCounterpartyRequest from './model/UpdateCounterpartyRequest';
 import UpdateCustodialWalletParams from './model/UpdateCustodialWalletParams';
 import UpdateDestinationBankAccount from './model/UpdateDestinationBankAccount';
@@ -880,7 +881,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.34.0
+* @version 1.35.0
 */
 export {
     Env,
@@ -2909,6 +2910,12 @@ export {
     ListMpcVaults200Response,
 
     /**
+     * The ListPayerTransactions200Response model constructor.
+     * @property {module:model/ListPayerTransactions200Response}
+     */
+    ListPayerTransactions200Response,
+
+    /**
      * The ListPaymentOrders200Response model constructor.
      * @property {module:model/ListPaymentOrders200Response}
      */
@@ -3273,6 +3280,12 @@ export {
      * @property {module:model/OrgInfo}
      */
     OrgInfo,
+
+    /**
+     * The OriginalMainGroupHandling model constructor.
+     * @property {module:model/OriginalMainGroupHandling}
+     */
+    OriginalMainGroupHandling,
 
     /**
      * The OtcFee model constructor.
@@ -5553,12 +5566,6 @@ export {
      * @property {module:model/UpdateAddressBookParam}
      */
     UpdateAddressBookParam,
-
-    /**
-     * The UpdateBankAccountByIdRequest model constructor.
-     * @property {module:model/UpdateBankAccountByIdRequest}
-     */
-    UpdateBankAccountByIdRequest,
 
     /**
      * The UpdateCounterpartyRequest model constructor.

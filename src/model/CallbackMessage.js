@@ -109,15 +109,15 @@ class CallbackMessage {
             }
         }
         // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+        if (!(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
         // ensure the json data is a string
@@ -125,17 +125,13 @@ class CallbackMessage {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+        if (!(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
         }
-        // validate the optional field `data`
-        if (data['data']) { // data not null
-          if (!!Transaction.validateJSON) {
-            Transaction.validateJSON(data['data']);
-          }
-        }
+        // validate the required field `data`
+        Transaction.validateJSON(data['data']);
         // ensure the json data is a string
-        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+        if (!(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
         // ensure the json data is a string

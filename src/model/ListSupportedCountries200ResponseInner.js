@@ -76,15 +76,15 @@ class ListSupportedCountries200ResponseInner {
             }
         }
         // ensure the json data is a string
-        if (data['en'] && !(typeof data['en'] === 'string' || data['en'] instanceof String)) {
+        if (!(typeof data['en'] === 'string' || data['en'] instanceof String)) {
             throw new Error("Expected the field `en` to be a primitive type in the JSON string but got " + data['en']);
         }
         // ensure the json data is a string
-        if (data['zh_hans'] && !(typeof data['zh_hans'] === 'string' || data['zh_hans'] instanceof String)) {
+        if (!(typeof data['zh_hans'] === 'string' || data['zh_hans'] instanceof String)) {
             throw new Error("Expected the field `zh_hans` to be a primitive type in the JSON string but got " + data['zh_hans']);
         }
         // ensure the json data is a string
-        if (data['code2'] && !(typeof data['code2'] === 'string' || data['code2'] instanceof String)) {
+        if (!(typeof data['code2'] === 'string' || data['code2'] instanceof String)) {
             throw new Error("Expected the field `code2` to be a primitive type in the JSON string but got " + data['code2']);
         }
 

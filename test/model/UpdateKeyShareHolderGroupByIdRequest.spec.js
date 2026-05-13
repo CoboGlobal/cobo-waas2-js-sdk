@@ -58,6 +58,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property original_main_group_handling (base name: "original_main_group_handling")', function() {
+      // uncomment below and update the code to test the property original_main_group_handling
+      //var instance = new CoboWaas2.UpdateKeyShareHolderGroupByIdRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

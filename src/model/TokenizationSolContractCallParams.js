@@ -71,16 +71,14 @@ class TokenizationSolContractCallParams {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        if (data['instructions']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['instructions'])) {
-                throw new Error("Expected the field `instructions` to be an array in the JSON data but got " + data['instructions']);
-            }
-            // validate the optional field `instructions` (array)
-            for (const item of data['instructions']) {
-                SolContractCallInstruction.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['instructions'])) {
+            throw new Error("Expected the field `instructions` to be an array in the JSON data but got " + data['instructions']);
         }
+        // validate the required field `instructions` (array)
+        for (const item of data['instructions']) {
+            SolContractCallInstruction.validateJSON(item);
+        };
 
         return true;
     }

@@ -84,7 +84,7 @@ class UpdateDestinationRequest {
             }
         }
         // ensure the json data is a string
-        if (data['updated_destination_name'] && !(typeof data['updated_destination_name'] === 'string' || data['updated_destination_name'] instanceof String)) {
+        if (!(typeof data['updated_destination_name'] === 'string' || data['updated_destination_name'] instanceof String)) {
             throw new Error("Expected the field `updated_destination_name` to be a primitive type in the JSON string but got " + data['updated_destination_name']);
         }
         // ensure the json data is a string

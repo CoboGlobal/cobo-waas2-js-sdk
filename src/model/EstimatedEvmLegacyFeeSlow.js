@@ -83,11 +83,11 @@ class EstimatedEvmLegacyFeeSlow {
             }
         }
         // ensure the json data is a string
-        if (data['gas_price'] && !(typeof data['gas_price'] === 'string' || data['gas_price'] instanceof String)) {
+        if (!(typeof data['gas_price'] === 'string' || data['gas_price'] instanceof String)) {
             throw new Error("Expected the field `gas_price` to be a primitive type in the JSON string but got " + data['gas_price']);
         }
         // ensure the json data is a string
-        if (data['gas_limit'] && !(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
+        if (!(typeof data['gas_limit'] === 'string' || data['gas_limit'] instanceof String)) {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
         // ensure the json data is a string

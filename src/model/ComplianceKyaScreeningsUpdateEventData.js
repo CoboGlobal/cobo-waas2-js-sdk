@@ -103,19 +103,19 @@ class ComplianceKyaScreeningsUpdateEventData {
             }
         }
         // ensure the json data is a string
-        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+        if (!(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
             throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
         // ensure the json data is a string
-        if (data['screening_id'] && !(typeof data['screening_id'] === 'string' || data['screening_id'] instanceof String)) {
+        if (!(typeof data['screening_id'] === 'string' || data['screening_id'] instanceof String)) {
             throw new Error("Expected the field `screening_id` to be a primitive type in the JSON string but got " + data['screening_id']);
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
 

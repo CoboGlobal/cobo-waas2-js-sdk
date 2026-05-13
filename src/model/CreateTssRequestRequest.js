@@ -79,7 +79,7 @@ class CreateTssRequestRequest {
             }
         }
         // ensure the json data is a string
-        if (data['target_key_share_holder_group_id'] && !(typeof data['target_key_share_holder_group_id'] === 'string' || data['target_key_share_holder_group_id'] instanceof String)) {
+        if (!(typeof data['target_key_share_holder_group_id'] === 'string' || data['target_key_share_holder_group_id'] instanceof String)) {
             throw new Error("Expected the field `target_key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['target_key_share_holder_group_id']);
         }
         // validate the optional field `source_key_share_holder_group`

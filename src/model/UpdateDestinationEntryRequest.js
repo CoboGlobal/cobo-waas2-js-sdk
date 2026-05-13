@@ -74,7 +74,7 @@ class UpdateDestinationEntryRequest {
             }
         }
         // ensure the json data is a string
-        if (data['destination_id'] && !(typeof data['destination_id'] === 'string' || data['destination_id'] instanceof String)) {
+        if (!(typeof data['destination_id'] === 'string' || data['destination_id'] instanceof String)) {
             throw new Error("Expected the field `destination_id` to be a primitive type in the JSON string but got " + data['destination_id']);
         }
         // validate the optional field `bank_account`

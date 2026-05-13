@@ -57,9 +57,11 @@ class BroadcastSignedTransactionsRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>BroadcastSignedTransactionsRequest</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is an array
-        if (!Array.isArray(data['transaction_ids'])) {
-            throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+        if (data['transaction_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['transaction_ids'])) {
+                throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
+            }
         }
 
         return true;

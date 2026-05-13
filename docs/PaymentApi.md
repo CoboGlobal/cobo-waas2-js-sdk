@@ -47,7 +47,6 @@ Method | HTTP request | Description
 [**getSettlementInfoByIds**](PaymentApi.md#getSettlementInfoByIds) | **GET** /payments/settlement_info | Get withdrawable balances
 [**getTopUpAddress**](PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Create/Get top-up address
 [**listAllocationItems**](PaymentApi.md#listAllocationItems) | **GET** /payments/allocation_items | List all allocation items
-[**listBankAccounts**](PaymentApi.md#listBankAccounts) | **GET** /payments/bank_accounts | List all bank accounts
 [**listBatchAllocations**](PaymentApi.md#listBatchAllocations) | **GET** /payments/batch_allocations | List all batch allocations
 [**listBulkSendItems**](PaymentApi.md#listBulkSendItems) | **GET** /payments/bulk_sends/{bulk_send_id}/items | List bulk send items
 [**listCounterparties**](PaymentApi.md#listCounterparties) | **GET** /payments/counterparty | List all counterparties
@@ -58,6 +57,7 @@ Method | HTTP request | Description
 [**listForcedSweepRequests**](PaymentApi.md#listForcedSweepRequests) | **GET** /payments/force_sweep_requests | List forced sweeps
 [**listMerchantBalances**](PaymentApi.md#listMerchantBalances) | **GET** /payments/balance/merchants | List merchant balances
 [**listMerchants**](PaymentApi.md#listMerchants) | **GET** /payments/merchants | List all merchants
+[**listPayerTransactions**](PaymentApi.md#listPayerTransactions) | **GET** /payments/topup/payers/transactions | List payer transactions
 [**listPaymentOrders**](PaymentApi.md#listPaymentOrders) | **GET** /payments/orders | List all pay-in orders
 [**listPaymentSupportedTokens**](PaymentApi.md#listPaymentSupportedTokens) | **GET** /payments/supported_tokens | List supported tokens
 [**listPaymentWalletBalances**](PaymentApi.md#listPaymentWalletBalances) | **GET** /payments/balance/payment_wallets | List payment wallet balances
@@ -68,7 +68,6 @@ Method | HTTP request | Description
 [**listTopUpPayers**](PaymentApi.md#listTopUpPayers) | **GET** /payments/topup/payers | List payers
 [**paymentEstimateFee**](PaymentApi.md#paymentEstimateFee) | **POST** /payments/estimate_fee | Estimate fees
 [**triggerTestPaymentsWebhookEvent**](PaymentApi.md#triggerTestPaymentsWebhookEvent) | **POST** /payments/webhooks/trigger | Trigger test webhook event
-[**updateBankAccountById**](PaymentApi.md#updateBankAccountById) | **PUT** /payments/bank_accounts/{bank_account_id} | Update bank account
 [**updateCounterparty**](PaymentApi.md#updateCounterparty) | **PUT** /payments/counterparty/{counterparty_id} | Update counterparty
 [**updateDestination**](PaymentApi.md#updateDestination) | **PUT** /payments/destination/{destination_id} | Update destination
 [**updateDestinationEntry**](PaymentApi.md#updateDestinationEntry) | **PUT** /payments/destination_entry/{destination_entry_id} | Update destination entry
@@ -2250,7 +2249,7 @@ apiInstance.getTopUpAddress(token_id, custom_payer_id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token_id** | **String**| The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | 
- **custom_payer_id** | **String**| A unique identifier to track and identify individual payers in your system. | 
+ **custom_payer_id** | **String**| Unique customer identifier on the merchant side, used to allocate a dedicated top-up address  | 
  **merchant_id** | **String**| The merchant ID. | [optional] 
 
 ### Return type
@@ -2320,52 +2319,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAllocationItems200Response**](ListAllocationItems200Response.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## listBankAccounts
-
-> [BankAccount] listBankAccounts()
-
-List all bank accounts
-
-&lt;Note&gt;This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.&lt;/Note&gt; This operation retrieves the information of all bank accounts registered. 
-
-### Example
-
-```javascript
-const CoboWaas2 = require('@cobo/cobo-waas2');
-// Initialize the API client
-const apiClient = CoboWaas2.ApiClient.instance
-// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
-apiClient.setEnv(CoboWaas2.Env.DEV);
-// Replace `<YOUR_PRIVATE_KEY>` with your private key
-apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
-// Call the API
-const apiInstance = new CoboWaas2.PaymentApi();
-apiInstance.listBankAccounts().then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[BankAccount]**](BankAccount.md)
 
 ### Authorization
 
@@ -2979,6 +2932,72 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## listPayerTransactions
+
+> ListPayerTransactions200Response listPayerTransactions(custom_payer_id, opts)
+
+List payer transactions
+
+This operation retrieves on-chain transactions related to a specific top-up payer.  You need to specify &#x60;custom_payer_id&#x60;, which is the merchant-defined customer identifier used when creating top-up addresses.  &lt;Note&gt;This operation is applicable to the top-up scenario only.&lt;/Note&gt;  For more information, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const custom_payer_id = "payer_0001";
+const opts = {
+  'limit': 10,
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1",
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk",
+  'merchant_id': "M1001",
+  'token_id': "ETH_USDT",
+  'transaction_hashes': "239861be9a4afe080c359b7fe4a1d035945ec46256b1a0f44d1267c71de8ec28",
+  'transaction_ids': "f47ac10b-58cc-4372-a567-0e02b2c3d479,557918d2-632a-4fe1-932f-315711f05fe3"
+};
+apiInstance.listPayerTransactions(custom_payer_id, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_payer_id** | **String**| Unique customer identifier on the merchant side, used to allocate a dedicated top-up address  | 
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] 
+ **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] 
+ **merchant_id** | **String**| The merchant ID. | [optional] 
+ **token_id** | **String**| The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | [optional] 
+ **transaction_hashes** | **String**| A list of transaction hashes, separated by comma. | [optional] 
+ **transaction_ids** | **String**| A list of transaction IDs, separated by comma. | [optional] 
+
+### Return type
+
+[**ListPayerTransactions200Response**](ListPayerTransactions200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## listPaymentOrders
 
 > ListPaymentOrders200Response listPaymentOrders(opts)
@@ -3383,7 +3402,7 @@ Name | Type | Description  | Notes
 
 List payers
 
-This operation retrieves the information of all payers under a merchant.   You can filter the result by the payer ID. 
+This operation retrieves the information of all payers. You can filter the result by merchant ID and payer_id.  &lt;Note&gt;The &#x60;transactions&#x60; field in the response returns up to the latest 200 transactions only. This field will be removed in a future version. To paginate through payer transactions, use [List payer transactions](https://www.cobo.com/payments/en/guides/overview).&lt;/Note&gt; 
 
 ### Example
 
@@ -3534,60 +3553,6 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## updateBankAccountById
-
-> BankAccount updateBankAccountById(bank_account_id, opts)
-
-Update bank account
-
-&lt;Note&gt;This operation has been deprecated.&lt;/Note&gt; This operation updates the information of an existing bank account. 
-
-### Example
-
-```javascript
-const CoboWaas2 = require('@cobo/cobo-waas2');
-// Initialize the API client
-const apiClient = CoboWaas2.ApiClient.instance
-// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
-apiClient.setEnv(CoboWaas2.Env.DEV);
-// Replace `<YOUR_PRIVATE_KEY>` with your private key
-apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
-// Call the API
-const apiInstance = new CoboWaas2.PaymentApi();
-const bank_account_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
-const opts = {
-  'UpdateBankAccountByIdRequest': new CoboWaas2.UpdateBankAccountByIdRequest()
-};
-apiInstance.updateBankAccountById(bank_account_id, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bank_account_id** | **String**| The bank account ID. | 
- **UpdateBankAccountByIdRequest** | [**UpdateBankAccountByIdRequest**](UpdateBankAccountByIdRequest.md)| The request body for updating an existing bank account. | [optional] 
-
-### Return type
-
-[**BankAccount**](BankAccount.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
 
 ### HTTP request headers
 

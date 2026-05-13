@@ -100,7 +100,7 @@ class FeeStationFiatTransaction {
             }
         }
         // ensure the json data is a string
-        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
         // ensure the json data is a string
@@ -108,20 +108,22 @@ class FeeStationFiatTransaction {
             throw new Error("Expected the field `main_transaction_id` to be a primitive type in the JSON string but got " + data['main_transaction_id']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is a string
-        if (data['fiat_currency'] && !(typeof data['fiat_currency'] === 'string' || data['fiat_currency'] instanceof String)) {
+        if (!(typeof data['fiat_currency'] === 'string' || data['fiat_currency'] instanceof String)) {
             throw new Error("Expected the field `fiat_currency` to be a primitive type in the JSON string but got " + data['fiat_currency']);
         }
         // ensure the json data is a string
-        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+        if (!(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['cobo_category'])) {
-            throw new Error("Expected the field `cobo_category` to be an array in the JSON data but got " + data['cobo_category']);
+        if (data['cobo_category']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['cobo_category'])) {
+                throw new Error("Expected the field `cobo_category` to be an array in the JSON data but got " + data['cobo_category']);
+            }
         }
 
         return true;

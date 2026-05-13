@@ -81,11 +81,11 @@ class Balance {
             }
         }
         // ensure the json data is a string
-        if (data['total'] && !(typeof data['total'] === 'string' || data['total'] instanceof String)) {
+        if (!(typeof data['total'] === 'string' || data['total'] instanceof String)) {
             throw new Error("Expected the field `total` to be a primitive type in the JSON string but got " + data['total']);
         }
         // ensure the json data is a string
-        if (data['available'] && !(typeof data['available'] === 'string' || data['available'] instanceof String)) {
+        if (!(typeof data['available'] === 'string' || data['available'] instanceof String)) {
             throw new Error("Expected the field `available` to be a primitive type in the JSON string but got " + data['available']);
         }
         // ensure the json data is a string

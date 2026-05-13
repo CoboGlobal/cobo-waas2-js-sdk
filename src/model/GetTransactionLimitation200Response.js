@@ -81,9 +81,11 @@ class GetTransactionLimitation200Response {
         if (data['self_custody_wallet_challenge'] && !(typeof data['self_custody_wallet_challenge'] === 'string' || data['self_custody_wallet_challenge'] instanceof String)) {
             throw new Error("Expected the field `self_custody_wallet_challenge` to be a primitive type in the JSON string but got " + data['self_custody_wallet_challenge']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['connect_wallet_list'])) {
-            throw new Error("Expected the field `connect_wallet_list` to be an array in the JSON data but got " + data['connect_wallet_list']);
+        if (data['connect_wallet_list']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['connect_wallet_list'])) {
+                throw new Error("Expected the field `connect_wallet_list` to be an array in the JSON data but got " + data['connect_wallet_list']);
+            }
         }
 
         return true;

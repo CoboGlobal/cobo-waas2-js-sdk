@@ -87,19 +87,17 @@ class CreateCounterpartyRequest {
             }
         }
         // ensure the json data is a string
-        if (data['counterparty_name'] && !(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
+        if (!(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
             throw new Error("Expected the field `counterparty_name` to be a primitive type in the JSON string but got " + data['counterparty_name']);
         }
-        if (data['wallet_addresses']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['wallet_addresses'])) {
-                throw new Error("Expected the field `wallet_addresses` to be an array in the JSON data but got " + data['wallet_addresses']);
-            }
-            // validate the optional field `wallet_addresses` (array)
-            for (const item of data['wallet_addresses']) {
-                CreateWalletAddress.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['wallet_addresses'])) {
+            throw new Error("Expected the field `wallet_addresses` to be an array in the JSON data but got " + data['wallet_addresses']);
         }
+        // validate the required field `wallet_addresses` (array)
+        for (const item of data['wallet_addresses']) {
+            CreateWalletAddress.validateJSON(item);
+        };
         // ensure the json data is a string
         if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
             throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);

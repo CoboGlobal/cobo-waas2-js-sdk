@@ -99,24 +99,26 @@ class GetApiKeyInfo200Response {
             }
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['curve_type'] && !(typeof data['curve_type'] === 'string' || data['curve_type'] instanceof String)) {
+        if (!(typeof data['curve_type'] === 'string' || data['curve_type'] instanceof String)) {
             throw new Error("Expected the field `curve_type` to be a primitive type in the JSON string but got " + data['curve_type']);
         }
         // ensure the json data is a string
-        if (data['key'] && !(typeof data['key'] === 'string' || data['key'] instanceof String)) {
+        if (!(typeof data['key'] === 'string' || data['key'] instanceof String)) {
             throw new Error("Expected the field `key` to be a primitive type in the JSON string but got " + data['key']);
         }
         // ensure the json data is a string
         if (data['callback_url'] && !(typeof data['callback_url'] === 'string' || data['callback_url'] instanceof String)) {
             throw new Error("Expected the field `callback_url` to be a primitive type in the JSON string but got " + data['callback_url']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['valid_ips'])) {
-            throw new Error("Expected the field `valid_ips` to be an array in the JSON data but got " + data['valid_ips']);
+        if (data['valid_ips']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['valid_ips'])) {
+                throw new Error("Expected the field `valid_ips` to be an array in the JSON data but got " + data['valid_ips']);
+            }
         }
         if (data['role_scopes']) { // data not null
             // ensure the json data is an array

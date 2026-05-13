@@ -66,7 +66,7 @@ class RevokeApprovalRequestRequest {
             }
         }
         // ensure the json data is a string
-        if (data['initiator_email'] && !(typeof data['initiator_email'] === 'string' || data['initiator_email'] instanceof String)) {
+        if (!(typeof data['initiator_email'] === 'string' || data['initiator_email'] instanceof String)) {
             throw new Error("Expected the field `initiator_email` to be a primitive type in the JSON string but got " + data['initiator_email']);
         }
 

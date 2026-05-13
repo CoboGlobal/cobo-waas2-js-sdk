@@ -77,15 +77,15 @@ class Vasp {
             }
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['vendor_code'] && !(typeof data['vendor_code'] === 'string' || data['vendor_code'] instanceof String)) {
+        if (!(typeof data['vendor_code'] === 'string' || data['vendor_code'] instanceof String)) {
             throw new Error("Expected the field `vendor_code` to be a primitive type in the JSON string but got " + data['vendor_code']);
         }
         // ensure the json data is a string
-        if (data['vendor_vasp_id'] && !(typeof data['vendor_vasp_id'] === 'string' || data['vendor_vasp_id'] instanceof String)) {
+        if (!(typeof data['vendor_vasp_id'] === 'string' || data['vendor_vasp_id'] instanceof String)) {
             throw new Error("Expected the field `vendor_vasp_id` to be a primitive type in the JSON string but got " + data['vendor_vasp_id']);
         }
 

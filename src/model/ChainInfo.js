@@ -74,6 +74,9 @@ class ChainInfo {
             if (data.hasOwnProperty('coinbase_maturity')) {
                 obj['coinbase_maturity'] = ApiClient.convertToType(data['coinbase_maturity'], 'Number');
             }
+            if (data.hasOwnProperty('caip2_chain_id')) {
+                obj['caip2_chain_id'] = ApiClient.convertToType(data['caip2_chain_id'], 'String');
+            }
         }
         return obj;
     }
@@ -91,7 +94,7 @@ class ChainInfo {
             }
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
@@ -113,6 +116,10 @@ class ChainInfo {
         // ensure the json data is a string
         if (data['explorer_address_url'] && !(typeof data['explorer_address_url'] === 'string' || data['explorer_address_url'] instanceof String)) {
             throw new Error("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got " + data['explorer_address_url']);
+        }
+        // ensure the json data is a string
+        if (data['caip2_chain_id'] && !(typeof data['caip2_chain_id'] === 'string' || data['caip2_chain_id'] instanceof String)) {
+            throw new Error("Expected the field `caip2_chain_id` to be a primitive type in the JSON string but got " + data['caip2_chain_id']);
         }
 
         return true;
@@ -176,6 +183,12 @@ ChainInfo.prototype['confirming_threshold'] = undefined;
  * @member {Number} coinbase_maturity
  */
 ChainInfo.prototype['coinbase_maturity'] = undefined;
+
+/**
+ * A standardized, unique identifier for blockchain networks (like eip155:1 for Ethereum) that combines a namespace and a reference to ensure cross-chain compatibility.
+ * @member {String} caip2_chain_id
+ */
+ChainInfo.prototype['caip2_chain_id'] = undefined;
 
 
 

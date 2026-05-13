@@ -84,11 +84,11 @@ class TravelRuleWithdrawNaturalEntity {
             }
         }
         // ensure the json data is a string
-        if (data['first_name'] && !(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
+        if (!(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
             throw new Error("Expected the field `first_name` to be a primitive type in the JSON string but got " + data['first_name']);
         }
         // ensure the json data is a string
-        if (data['last_name'] && !(typeof data['last_name'] === 'string' || data['last_name'] instanceof String)) {
+        if (!(typeof data['last_name'] === 'string' || data['last_name'] instanceof String)) {
             throw new Error("Expected the field `last_name` to be a primitive type in the JSON string but got " + data['last_name']);
         }
         // ensure the json data is a string

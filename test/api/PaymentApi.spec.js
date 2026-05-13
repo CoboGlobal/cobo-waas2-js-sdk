@@ -466,16 +466,6 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('listBankAccounts', function() {
-      it('should call listBankAccounts successfully', function() {
-        //uncomment below and update the code to test listBankAccounts
-        //instance.listBankAccounts().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('listBatchAllocations', function() {
       it('should call listBatchAllocations successfully', function() {
         //uncomment below and update the code to test listBatchAllocations
@@ -576,6 +566,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listPayerTransactions', function() {
+      it('should call listPayerTransactions successfully', function() {
+        //uncomment below and update the code to test listPayerTransactions
+        //instance.listPayerTransactions().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listPaymentOrders', function() {
       it('should call listPaymentOrders successfully', function() {
         //uncomment below and update the code to test listPaymentOrders
@@ -670,16 +670,6 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call triggerTestPaymentsWebhookEvent successfully', function() {
         //uncomment below and update the code to test triggerTestPaymentsWebhookEvent
         //instance.triggerTestPaymentsWebhookEvent().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('updateBankAccountById', function() {
-      it('should call updateBankAccountById successfully', function() {
-        //uncomment below and update the code to test updateBankAccountById
-        //instance.updateBankAccountById().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

@@ -298,6 +298,34 @@ export default class TransactionCoboCategory {
 
     
         /**
+         * value: "JustLendReceiverPrecharge"
+         * @const
+         */
+        "JustLendReceiverPrecharge" = "JustLendReceiverPrecharge";
+
+    
+        /**
+         * value: "JustLendEnergyRental"
+         * @const
+         */
+        "JustLendEnergyRental" = "JustLendEnergyRental";
+
+    
+        /**
+         * value: "JustLendEnergyReturn"
+         * @const
+         */
+        "JustLendEnergyReturn" = "JustLendEnergyReturn";
+
+    
+        /**
+         * value: "TrxRecharge"
+         * @const
+         */
+        "TrxRecharge" = "TrxRecharge";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

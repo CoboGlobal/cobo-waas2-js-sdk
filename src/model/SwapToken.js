@@ -85,15 +85,15 @@ class SwapToken {
             }
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
+        if (!(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
             throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
         }
         // ensure the json data is a string

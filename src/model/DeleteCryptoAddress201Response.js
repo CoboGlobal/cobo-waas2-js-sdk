@@ -66,7 +66,7 @@ class DeleteCryptoAddress201Response {
             }
         }
         // ensure the json data is a string
-        if (data['crypto_address_id'] && !(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
+        if (!(typeof data['crypto_address_id'] === 'string' || data['crypto_address_id'] instanceof String)) {
             throw new Error("Expected the field `crypto_address_id` to be a primitive type in the JSON string but got " + data['crypto_address_id']);
         }
 

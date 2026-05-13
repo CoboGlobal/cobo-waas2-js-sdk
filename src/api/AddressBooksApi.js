@@ -19,6 +19,17 @@ import ErrorResponse from '../model/ErrorResponse';
 import ListAddressBooks200Response from '../model/ListAddressBooks200Response';
 import UpdateAddressBookParam from '../model/UpdateAddressBookParam';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'AddressBook': AddressBook,
+  'CreateAddressBooks201Response': CreateAddressBooks201Response,
+  'CreateAddressBooksParam': CreateAddressBooksParam,
+  'DeleteAddressBookById201Response': DeleteAddressBookById201Response,
+  'ErrorResponse': ErrorResponse,
+  'ListAddressBooks200Response': ListAddressBooks200Response,
+  'UpdateAddressBookParam': UpdateAddressBookParam,
+};
+
 /**
 * AddressBooks service.
 * @module api/AddressBooksApi
@@ -50,6 +61,22 @@ export default class AddressBooksApi {
       let postBody = opts['CreateAddressBooksParam'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
+      }
+      // Validate opts key — must be exactly 'CreateAddressBooksParam'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'createAddressBooks(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "CreateAddressBooksParam".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['CreateAddressBooksParam'] && typeof _modelClasses['CreateAddressBooksParam'].validateJSON === 'function') {
+          _modelClasses['CreateAddressBooksParam'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {
@@ -271,6 +298,22 @@ export default class AddressBooksApi {
       // verify the required parameter 'entry_id' is set
       if (entry_id === undefined || entry_id === null) {
         throw new Error("Missing the required parameter 'entry_id' when calling updateAddressBookById");
+      }
+      // Validate opts key — must be exactly 'UpdateAddressBookParam'
+      if (postBody === undefined && opts) {
+        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
+        if (_providedKeys.length > 0) {
+          throw new Error(
+            'updateAddressBookById(): unrecognized opts key [' + _providedKeys.join(', ') +
+            ']. Expected: "UpdateAddressBookParam".'
+          );
+        }
+      }
+      // Validate request body before sending
+      if (postBody !== null && postBody !== undefined) {
+        if (_modelClasses['UpdateAddressBookParam'] && typeof _modelClasses['UpdateAddressBookParam'].validateJSON === 'function') {
+          _modelClasses['UpdateAddressBookParam'].validateJSON(postBody);
+        }
       }
 
       let pathParams = {

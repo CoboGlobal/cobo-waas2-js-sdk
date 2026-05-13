@@ -89,11 +89,11 @@ class ApiLogSummary {
             throw new Error("Expected the field `log_id` to be a primitive type in the JSON string but got " + data['log_id']);
         }
         // ensure the json data is a string
-        if (data['api_method'] && !(typeof data['api_method'] === 'string' || data['api_method'] instanceof String)) {
+        if (!(typeof data['api_method'] === 'string' || data['api_method'] instanceof String)) {
             throw new Error("Expected the field `api_method` to be a primitive type in the JSON string but got " + data['api_method']);
         }
         // ensure the json data is a string
-        if (data['api_endpoint'] && !(typeof data['api_endpoint'] === 'string' || data['api_endpoint'] instanceof String)) {
+        if (!(typeof data['api_endpoint'] === 'string' || data['api_endpoint'] instanceof String)) {
             throw new Error("Expected the field `api_endpoint` to be a primitive type in the JSON string but got " + data['api_endpoint']);
         }
 

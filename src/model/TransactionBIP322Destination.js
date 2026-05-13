@@ -73,7 +73,7 @@ class TransactionBIP322Destination {
             }
         }
         // ensure the json data is a string
-        if (data['message_bip322'] && !(typeof data['message_bip322'] === 'string' || data['message_bip322'] instanceof String)) {
+        if (!(typeof data['message_bip322'] === 'string' || data['message_bip322'] instanceof String)) {
             throw new Error("Expected the field `message_bip322` to be a primitive type in the JSON string but got " + data['message_bip322']);
         }
 

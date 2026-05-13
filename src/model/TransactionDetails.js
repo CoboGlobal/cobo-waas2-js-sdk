@@ -216,7 +216,7 @@ class TransactionDetails {
             }
         }
         // ensure the json data is a string
-        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
         // ensure the json data is a string
@@ -228,7 +228,7 @@ class TransactionDetails {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
@@ -247,18 +247,10 @@ class TransactionDetails {
         if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
             throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
         }
-        // validate the optional field `source`
-        if (data['source']) { // data not null
-          if (!!TransactionSource.validateJSON) {
-            TransactionSource.validateJSON(data['source']);
-          }
-        }
-        // validate the optional field `destination`
-        if (data['destination']) { // data not null
-          if (!!TransactionDestination.validateJSON) {
-            TransactionDestination.validateJSON(data['destination']);
-          }
-        }
+        // validate the required field `source`
+        TransactionSource.validateJSON(data['source']);
+        // validate the required field `destination`
+        TransactionDestination.validateJSON(data['destination']);
         // validate the optional field `result`
         if (data['result']) { // data not null
           if (!!TransactionResult.validateJSON) {
@@ -297,21 +289,27 @@ class TransactionDetails {
             TransactionReplacement.validateJSON(data['replacement']);
           }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['category'])) {
-            throw new Error("Expected the field `category` to be an array in the JSON data but got " + data['category']);
+        if (data['category']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['category'])) {
+                throw new Error("Expected the field `category` to be an array in the JSON data but got " + data['category']);
+            }
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['cobo_category'])) {
-            throw new Error("Expected the field `cobo_category` to be an array in the JSON data but got " + data['cobo_category']);
+        if (data['cobo_category']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['cobo_category'])) {
+                throw new Error("Expected the field `cobo_category` to be an array in the JSON data but got " + data['cobo_category']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['extra'])) {
-            throw new Error("Expected the field `extra` to be an array in the JSON data but got " + data['extra']);
+        if (data['extra']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['extra'])) {
+                throw new Error("Expected the field `extra` to be an array in the JSON data but got " + data['extra']);
+            }
         }
         // validate the optional field `fueling_info`
         if (data['fueling_info']) { // data not null

@@ -37,6 +37,8 @@
 
 * `fee_station.transaction.succeeded` (value: `"fee_station.transaction.succeeded"`)
 
+* `fee_station.fiat_transaction.created` (value: `"fee_station.fiat_transaction.created"`)
+
 * `wallet.token.enabled` (value: `"wallet.token.enabled"`)
 
 * `wallet.chain.enabled` (value: `"wallet.chain.enabled"`)

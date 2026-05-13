@@ -83,20 +83,22 @@ class IsolateDisposition {
             }
         }
         // ensure the json data is a string
-        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
         // ensure the json data is a string
-        if (data['destination_address'] && !(typeof data['destination_address'] === 'string' || data['destination_address'] instanceof String)) {
+        if (!(typeof data['destination_address'] === 'string' || data['destination_address'] instanceof String)) {
             throw new Error("Expected the field `destination_address` to be a primitive type in the JSON string but got " + data['destination_address']);
         }
         // ensure the json data is a string
-        if (data['disposition_amount'] && !(typeof data['disposition_amount'] === 'string' || data['disposition_amount'] instanceof String)) {
+        if (!(typeof data['disposition_amount'] === 'string' || data['disposition_amount'] instanceof String)) {
             throw new Error("Expected the field `disposition_amount` to be a primitive type in the JSON string but got " + data['disposition_amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['category_names'])) {
-            throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
+        if (data['category_names']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['category_names'])) {
+                throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
+            }
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {

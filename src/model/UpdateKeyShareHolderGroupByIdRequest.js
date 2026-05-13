@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import OriginalMainGroupHandling from './OriginalMainGroupHandling';
 import UpdateGroupAction from './UpdateGroupAction';
 
 /**
@@ -50,6 +51,9 @@ class UpdateKeyShareHolderGroupByIdRequest {
             if (data.hasOwnProperty('update_key_share_holder_group_action')) {
                 obj['update_key_share_holder_group_action'] = UpdateGroupAction.constructFromObject(data['update_key_share_holder_group_action']);
             }
+            if (data.hasOwnProperty('original_main_group_handling')) {
+                obj['original_main_group_handling'] = OriginalMainGroupHandling.constructFromObject(data['original_main_group_handling']);
+            }
         }
         return obj;
     }
@@ -79,6 +83,11 @@ UpdateKeyShareHolderGroupByIdRequest.RequiredProperties = ["update_key_share_hol
  * @member {module:model/UpdateGroupAction} update_key_share_holder_group_action
  */
 UpdateKeyShareHolderGroupByIdRequest.prototype['update_key_share_holder_group_action'] = undefined;
+
+/**
+ * @member {module:model/OriginalMainGroupHandling} original_main_group_handling
+ */
+UpdateKeyShareHolderGroupByIdRequest.prototype['original_main_group_handling'] = undefined;
 
 
 

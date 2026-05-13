@@ -101,15 +101,11 @@ class WebhookEvent {
             throw new Error("Expected the field `event_id` to be a primitive type in the JSON string but got " + data['event_id']);
         }
         // ensure the json data is a string
-        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+        if (!(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
         }
-        // validate the optional field `data`
-        if (data['data']) { // data not null
-          if (!!WebhookEventData.validateJSON) {
-            WebhookEventData.validateJSON(data['data']);
-          }
-        }
+        // validate the required field `data`
+        WebhookEventData.validateJSON(data['data']);
 
         return true;
     }

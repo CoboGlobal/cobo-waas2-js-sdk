@@ -70,12 +70,14 @@ class MpcSigningGroup {
             }
         }
         // ensure the json data is a string
-        if (data['used_key_share_holder_group_id'] && !(typeof data['used_key_share_holder_group_id'] === 'string' || data['used_key_share_holder_group_id'] instanceof String)) {
+        if (!(typeof data['used_key_share_holder_group_id'] === 'string' || data['used_key_share_holder_group_id'] instanceof String)) {
             throw new Error("Expected the field `used_key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['used_key_share_holder_group_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['used_tss_node_ids'])) {
-            throw new Error("Expected the field `used_tss_node_ids` to be an array in the JSON data but got " + data['used_tss_node_ids']);
+        if (data['used_tss_node_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['used_tss_node_ids'])) {
+                throw new Error("Expected the field `used_tss_node_ids` to be an array in the JSON data but got " + data['used_tss_node_ids']);
+            }
         }
 
         return true;

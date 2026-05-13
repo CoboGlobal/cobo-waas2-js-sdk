@@ -73,7 +73,7 @@ class TransactionMessageSignEIP191Destination {
             }
         }
         // ensure the json data is a string
-        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+        if (!(typeof data['message'] === 'string' || data['message'] instanceof String)) {
             throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
         }
 

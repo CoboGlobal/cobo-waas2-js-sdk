@@ -16,6 +16,14 @@ import GetApiKeyInfo200Response from '../model/GetApiKeyInfo200Response';
 import ListCallbackMessages200Response from '../model/ListCallbackMessages200Response';
 import RetryCallbackMessage201Response from '../model/RetryCallbackMessage201Response';
 
+// Model class table — access class refs by name to avoid parameter-name shadowing
+const _modelClasses = {
+  'ErrorResponse': ErrorResponse,
+  'GetApiKeyInfo200Response': GetApiKeyInfo200Response,
+  'ListCallbackMessages200Response': ListCallbackMessages200Response,
+  'RetryCallbackMessage201Response': RetryCallbackMessage201Response,
+};
+
 /**
 * Developers service.
 * @module api/DevelopersApi

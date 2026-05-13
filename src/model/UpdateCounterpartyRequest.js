@@ -81,7 +81,7 @@ class UpdateCounterpartyRequest {
             }
         }
         // ensure the json data is a string
-        if (data['updated_counterparty_name'] && !(typeof data['updated_counterparty_name'] === 'string' || data['updated_counterparty_name'] instanceof String)) {
+        if (!(typeof data['updated_counterparty_name'] === 'string' || data['updated_counterparty_name'] instanceof String)) {
             throw new Error("Expected the field `updated_counterparty_name` to be a primitive type in the JSON string but got " + data['updated_counterparty_name']);
         }
         // ensure the json data is a string

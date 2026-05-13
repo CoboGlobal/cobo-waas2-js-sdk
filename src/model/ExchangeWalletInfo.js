@@ -108,19 +108,19 @@ class ExchangeWalletInfo {
             }
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
+        if (!(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
         }
         // ensure the json data is a string
-        if (data['apikey'] && !(typeof data['apikey'] === 'string' || data['apikey'] instanceof String)) {
+        if (!(typeof data['apikey'] === 'string' || data['apikey'] instanceof String)) {
             throw new Error("Expected the field `apikey` to be a primitive type in the JSON string but got " + data['apikey']);
         }
         // ensure the json data is a string

@@ -71,7 +71,7 @@ class TransactionSignatureResult {
             }
         }
         // ensure the json data is a string
-        if (data['signature'] && !(typeof data['signature'] === 'string' || data['signature'] instanceof String)) {
+        if (!(typeof data['signature'] === 'string' || data['signature'] instanceof String)) {
             throw new Error("Expected the field `signature` to be a primitive type in the JSON string but got " + data['signature']);
         }
 

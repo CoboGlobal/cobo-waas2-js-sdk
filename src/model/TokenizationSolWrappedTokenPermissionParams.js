@@ -67,9 +67,11 @@ class TokenizationSolWrappedTokenPermissionParams {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TokenizationSolWrappedTokenPermissionParams</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is an array
-        if (!Array.isArray(data['wrapper'])) {
-            throw new Error("Expected the field `wrapper` to be an array in the JSON data but got " + data['wrapper']);
+        if (data['wrapper']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['wrapper'])) {
+                throw new Error("Expected the field `wrapper` to be an array in the JSON data but got " + data['wrapper']);
+            }
         }
         // ensure the json data is a string
         if (data['pauser'] && !(typeof data['pauser'] === 'string' || data['pauser'] instanceof String)) {

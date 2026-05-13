@@ -76,33 +76,47 @@ class TokenizationERC20WrappedTokenPermissionParams {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TokenizationERC20WrappedTokenPermissionParams</code>.
      */
     static validateJSON(data) {
-        // ensure the json data is an array
-        if (!Array.isArray(data['admin'])) {
-            throw new Error("Expected the field `admin` to be an array in the JSON data but got " + data['admin']);
+        if (data['admin']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['admin'])) {
+                throw new Error("Expected the field `admin` to be an array in the JSON data but got " + data['admin']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['minter'])) {
-            throw new Error("Expected the field `minter` to be an array in the JSON data but got " + data['minter']);
+        if (data['minter']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['minter'])) {
+                throw new Error("Expected the field `minter` to be an array in the JSON data but got " + data['minter']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['wrapper'])) {
-            throw new Error("Expected the field `wrapper` to be an array in the JSON data but got " + data['wrapper']);
+        if (data['wrapper']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['wrapper'])) {
+                throw new Error("Expected the field `wrapper` to be an array in the JSON data but got " + data['wrapper']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['manager'])) {
-            throw new Error("Expected the field `manager` to be an array in the JSON data but got " + data['manager']);
+        if (data['manager']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['manager'])) {
+                throw new Error("Expected the field `manager` to be an array in the JSON data but got " + data['manager']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['pauser'])) {
-            throw new Error("Expected the field `pauser` to be an array in the JSON data but got " + data['pauser']);
+        if (data['pauser']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['pauser'])) {
+                throw new Error("Expected the field `pauser` to be an array in the JSON data but got " + data['pauser']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['salvager'])) {
-            throw new Error("Expected the field `salvager` to be an array in the JSON data but got " + data['salvager']);
+        if (data['salvager']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['salvager'])) {
+                throw new Error("Expected the field `salvager` to be an array in the JSON data but got " + data['salvager']);
+            }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['upgrader'])) {
-            throw new Error("Expected the field `upgrader` to be an array in the JSON data but got " + data['upgrader']);
+        if (data['upgrader']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['upgrader'])) {
+                throw new Error("Expected the field `upgrader` to be an array in the JSON data but got " + data['upgrader']);
+            }
         }
 
         return true;

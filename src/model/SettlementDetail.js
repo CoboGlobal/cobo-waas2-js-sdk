@@ -170,9 +170,11 @@ class SettlementDetail {
         if (data['settlement_request_id'] && !(typeof data['settlement_request_id'] === 'string' || data['settlement_request_id'] instanceof String)) {
             throw new Error("Expected the field `settlement_request_id` to be a primitive type in the JSON string but got " + data['settlement_request_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['order_ids'])) {
-            throw new Error("Expected the field `order_ids` to be an array in the JSON data but got " + data['order_ids']);
+        if (data['order_ids']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['order_ids'])) {
+                throw new Error("Expected the field `order_ids` to be an array in the JSON data but got " + data['order_ids']);
+            }
         }
         // validate the optional field `commission_fee`
         if (data['commission_fee']) { // data not null

@@ -26,7 +26,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new CoboWaas2.UpdateBankAccountByIdRequest();
+    instance = new CoboWaas2.ListPayerTransactions200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -45,16 +45,22 @@
       object[property] = value;
   }
 
-  describe('UpdateBankAccountByIdRequest', function() {
-    it('should create an instance of UpdateBankAccountByIdRequest', function() {
-      // uncomment below and update the code to test UpdateBankAccountByIdRequest
-      //var instance = new CoboWaas2.UpdateBankAccountByIdRequest();
-      //expect(instance).to.be.a(CoboWaas2.UpdateBankAccountByIdRequest);
+  describe('ListPayerTransactions200Response', function() {
+    it('should create an instance of ListPayerTransactions200Response', function() {
+      // uncomment below and update the code to test ListPayerTransactions200Response
+      //var instance = new CoboWaas2.ListPayerTransactions200Response();
+      //expect(instance).to.be.a(CoboWaas2.ListPayerTransactions200Response);
     });
 
-    it('should have the property info (base name: "info")', function() {
-      // uncomment below and update the code to test the property info
-      //var instance = new CoboWaas2.UpdateBankAccountByIdRequest();
+    it('should have the property data (base name: "data")', function() {
+      // uncomment below and update the code to test the property data
+      //var instance = new CoboWaas2.ListPayerTransactions200Response();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property pagination (base name: "pagination")', function() {
+      // uncomment below and update the code to test the property pagination
+      //var instance = new CoboWaas2.ListPayerTransactions200Response();
       //expect(instance).to.be();
     });
 

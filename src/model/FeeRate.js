@@ -32,6 +32,11 @@ class FeeRate {
             this.actualInstance = null;
             return;
         }
+        // Unwrap if already a wrapped oneOf instance of the same class
+        if (instance instanceof FeeRate) {
+            this.actualInstance = instance.getActualInstance();
+            return;
+        }
         var match = 0;
         var errorMessages = [];
         var discriminatorValue = instance["fee_type"];

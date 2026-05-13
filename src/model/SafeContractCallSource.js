@@ -87,19 +87,15 @@ class SafeContractCallSource {
             }
         }
         // ensure the json data is a string
-        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
-        // validate the optional field `delegate`
-        if (data['delegate']) { // data not null
-          if (!!CoboSafeDelegate.validateJSON) {
-            CoboSafeDelegate.validateJSON(data['delegate']);
-          }
-        }
+        // validate the required field `delegate`
+        CoboSafeDelegate.validateJSON(data['delegate']);
 
         return true;
     }

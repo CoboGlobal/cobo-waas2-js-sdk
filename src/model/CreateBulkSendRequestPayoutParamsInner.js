@@ -79,15 +79,15 @@ class CreateBulkSendRequestPayoutParamsInner {
             }
         }
         // ensure the json data is a string
-        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (data['receiving_address'] && !(typeof data['receiving_address'] === 'string' || data['receiving_address'] instanceof String)) {
+        if (!(typeof data['receiving_address'] === 'string' || data['receiving_address'] instanceof String)) {
             throw new Error("Expected the field `receiving_address` to be a primitive type in the JSON string but got " + data['receiving_address']);
         }
         // ensure the json data is a string
-        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is a string
