@@ -100,6 +100,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property expired_time (base name: "expired_time")', function() {
+      // uncomment below and update the code to test the property expired_time
+      //var instance = new CoboWaas2.ApprovalUserDetail();
+      //expect(instance).to.be();
+    });
+
     it('should have the property template_version (base name: "template_version")', function() {
       // uncomment below and update the code to test the property template_version
       //var instance = new CoboWaas2.ApprovalUserDetail();

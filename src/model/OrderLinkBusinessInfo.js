@@ -120,7 +120,7 @@ class OrderLinkBusinessInfo {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
@@ -128,19 +128,19 @@ class OrderLinkBusinessInfo {
             throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
         }
         // ensure the json data is a string
-        if (!(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
             throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
         }
         // ensure the json data is a string
-        if (!(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
+        if (data['pricing_currency'] && !(typeof data['pricing_currency'] === 'string' || data['pricing_currency'] instanceof String)) {
             throw new Error("Expected the field `pricing_currency` to be a primitive type in the JSON string but got " + data['pricing_currency']);
         }
         // ensure the json data is a string
-        if (!(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
+        if (data['pricing_amount'] && !(typeof data['pricing_amount'] === 'string' || data['pricing_amount'] instanceof String)) {
             throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
         // ensure the json data is an array
@@ -169,11 +169,9 @@ class OrderLinkBusinessInfo {
         if (data['order_amount'] && !(typeof data['order_amount'] === 'string' || data['order_amount'] instanceof String)) {
             throw new Error("Expected the field `order_amount` to be a primitive type in the JSON string but got " + data['order_amount']);
         }
-        if (data['token_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['token_ids'])) {
-                throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['token_ids'])) {
+            throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
         }
         if (data['custom_exchange_rates']) { // data not null
             // ensure the json data is an array

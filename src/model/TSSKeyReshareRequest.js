@@ -90,17 +90,13 @@ class TSSKeyReshareRequest {
         if (data['root_pub_key'] && !(typeof data['root_pub_key'] === 'string' || data['root_pub_key'] instanceof String)) {
             throw new Error("Expected the field `root_pub_key` to be a primitive type in the JSON string but got " + data['root_pub_key']);
         }
-        if (data['used_node_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['used_node_ids'])) {
-                throw new Error("Expected the field `used_node_ids` to be an array in the JSON data but got " + data['used_node_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['used_node_ids'])) {
+            throw new Error("Expected the field `used_node_ids` to be an array in the JSON data but got " + data['used_node_ids']);
         }
-        if (data['new_node_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['new_node_ids'])) {
-                throw new Error("Expected the field `new_node_ids` to be an array in the JSON data but got " + data['new_node_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['new_node_ids'])) {
+            throw new Error("Expected the field `new_node_ids` to be an array in the JSON data but got " + data['new_node_ids']);
         }
         // ensure the json data is a string
         if (data['task_id'] && !(typeof data['task_id'] === 'string' || data['task_id'] instanceof String)) {

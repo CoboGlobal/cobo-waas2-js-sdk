@@ -96,19 +96,19 @@ class PaymentBulkSendItem {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['bulk_send_item_id'] === 'string' || data['bulk_send_item_id'] instanceof String)) {
+        if (data['bulk_send_item_id'] && !(typeof data['bulk_send_item_id'] === 'string' || data['bulk_send_item_id'] instanceof String)) {
             throw new Error("Expected the field `bulk_send_item_id` to be a primitive type in the JSON string but got " + data['bulk_send_item_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['receiving_address'] === 'string' || data['receiving_address'] instanceof String)) {
+        if (data['receiving_address'] && !(typeof data['receiving_address'] === 'string' || data['receiving_address'] instanceof String)) {
             throw new Error("Expected the field `receiving_address` to be a primitive type in the JSON string but got " + data['receiving_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is a string

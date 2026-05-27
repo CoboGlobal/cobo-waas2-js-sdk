@@ -57,6 +57,9 @@ class GetTransactionLimitation200Response {
             if (data.hasOwnProperty('connect_wallet_list')) {
                 obj['connect_wallet_list'] = ApiClient.convertToType(data['connect_wallet_list'], ['String']);
             }
+            if (data.hasOwnProperty('satoshi_test_supported')) {
+                obj['satoshi_test_supported'] = ApiClient.convertToType(data['satoshi_test_supported'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -81,11 +84,9 @@ class GetTransactionLimitation200Response {
         if (data['self_custody_wallet_challenge'] && !(typeof data['self_custody_wallet_challenge'] === 'string' || data['self_custody_wallet_challenge'] instanceof String)) {
             throw new Error("Expected the field `self_custody_wallet_challenge` to be a primitive type in the JSON string but got " + data['self_custody_wallet_challenge']);
         }
-        if (data['connect_wallet_list']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['connect_wallet_list'])) {
-                throw new Error("Expected the field `connect_wallet_list` to be an array in the JSON data but got " + data['connect_wallet_list']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['connect_wallet_list'])) {
+            throw new Error("Expected the field `connect_wallet_list` to be an array in the JSON data but got " + data['connect_wallet_list']);
         }
 
         return true;
@@ -109,7 +110,7 @@ GetTransactionLimitation200Response.prototype['vasp_list'] = undefined;
 GetTransactionLimitation200Response.prototype['is_threshold_reached'] = undefined;
 
 /**
- * A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed. 
+ * **Deprecated.** Use [Get self-custody signature challenge](#operation/get_signature_challenge) instead. This field will be removed in a future release.  A human-readable, time-sensitive message to be signed by the wallet owner. The message contains key information including the wallet address, a unique nonce, and a timestamp. Signing this message confirms ownership of the wallet and allows the operation to proceed. 
  * @member {String} self_custody_wallet_challenge
  */
 GetTransactionLimitation200Response.prototype['self_custody_wallet_challenge'] = undefined;
@@ -119,6 +120,12 @@ GetTransactionLimitation200Response.prototype['self_custody_wallet_challenge'] =
  * @member {Array.<String>} connect_wallet_list
  */
 GetTransactionLimitation200Response.prototype['connect_wallet_list'] = undefined;
+
+/**
+ * Indicates whether Satoshi Test (on-chain micro-deposit verification) is supported for the transaction's chain. - `true`: You can initiate a Satoshi Test challenge to verify the counterparty address. - `false`: The chain does not support Satoshi Test; use signature verification instead. 
+ * @member {Boolean} satoshi_test_supported
+ */
+GetTransactionLimitation200Response.prototype['satoshi_test_supported'] = undefined;
 
 
 

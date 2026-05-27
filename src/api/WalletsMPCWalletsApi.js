@@ -33,31 +33,6 @@ import UpdateKeyShareHolderGroupByIdRequest from '../model/UpdateKeyShareHolderG
 import UpdateMpcProjectByIdRequest from '../model/UpdateMpcProjectByIdRequest';
 import UpdateMpcVaultByIdRequest from '../model/UpdateMpcVaultByIdRequest';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'CreateKeyShareHolderGroupRequest': CreateKeyShareHolderGroupRequest,
-  'CreateMpcProjectRequest': CreateMpcProjectRequest,
-  'CreateMpcVaultRequest': CreateMpcVaultRequest,
-  'CreateTssRequestRequest': CreateTssRequestRequest,
-  'DeleteKeyShareHolderGroupById201Response': DeleteKeyShareHolderGroupById201Response,
-  'ErrorResponse': ErrorResponse,
-  'KeyShareHolder': KeyShareHolder,
-  'KeyShareHolderGroup': KeyShareHolderGroup,
-  'KeyShareHolderGroupType': KeyShareHolderGroupType,
-  'ListKeyShareHolderGroups200Response': ListKeyShareHolderGroups200Response,
-  'ListKeyShareHolders200Response': ListKeyShareHolders200Response,
-  'ListMpcProjects200Response': ListMpcProjects200Response,
-  'ListMpcVaults200Response': ListMpcVaults200Response,
-  'ListTssRequests200Response': ListTssRequests200Response,
-  'MPCProject': MPCProject,
-  'MPCVault': MPCVault,
-  'MPCVaultType': MPCVaultType,
-  'TSSRequest': TSSRequest,
-  'UpdateKeyShareHolderGroupByIdRequest': UpdateKeyShareHolderGroupByIdRequest,
-  'UpdateMpcProjectByIdRequest': UpdateMpcProjectByIdRequest,
-  'UpdateMpcVaultByIdRequest': UpdateMpcVaultByIdRequest,
-};
-
 /**
 * WalletsMPCWallets service.
 * @module api/WalletsMPCWalletsApi
@@ -153,22 +128,6 @@ export default class WalletsMPCWalletsApi {
       if (vault_id === undefined || vault_id === null) {
         throw new Error("Missing the required parameter 'vault_id' when calling createKeyShareHolderGroup");
       }
-      // Validate opts key — must be exactly 'CreateKeyShareHolderGroupRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createKeyShareHolderGroup(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateKeyShareHolderGroupRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateKeyShareHolderGroupRequest'] && typeof _modelClasses['CreateKeyShareHolderGroupRequest'].validateJSON === 'function') {
-          _modelClasses['CreateKeyShareHolderGroupRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'vault_id': vault_id
@@ -220,22 +179,6 @@ export default class WalletsMPCWalletsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'CreateMpcProjectRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createMpcProject(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateMpcProjectRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateMpcProjectRequest'] && typeof _modelClasses['CreateMpcProjectRequest'].validateJSON === 'function') {
-          _modelClasses['CreateMpcProjectRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -284,22 +227,6 @@ export default class WalletsMPCWalletsApi {
       let postBody = opts['CreateMpcVaultRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'CreateMpcVaultRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createMpcVault(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateMpcVaultRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateMpcVaultRequest'] && typeof _modelClasses['CreateMpcVaultRequest'].validateJSON === 'function') {
-          _modelClasses['CreateMpcVaultRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -354,22 +281,6 @@ export default class WalletsMPCWalletsApi {
       // verify the required parameter 'vault_id' is set
       if (vault_id === undefined || vault_id === null) {
         throw new Error("Missing the required parameter 'vault_id' when calling createTssRequest");
-      }
-      // Validate opts key — must be exactly 'CreateTssRequestRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createTssRequest(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateTssRequestRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateTssRequestRequest'] && typeof _modelClasses['CreateTssRequestRequest'].validateJSON === 'function') {
-          _modelClasses['CreateTssRequestRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -1134,22 +1045,6 @@ export default class WalletsMPCWalletsApi {
       if (key_share_holder_group_id === undefined || key_share_holder_group_id === null) {
         throw new Error("Missing the required parameter 'key_share_holder_group_id' when calling updateKeyShareHolderGroupById");
       }
-      // Validate opts key — must be exactly 'UpdateKeyShareHolderGroupByIdRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'updateKeyShareHolderGroupById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "UpdateKeyShareHolderGroupByIdRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['UpdateKeyShareHolderGroupByIdRequest'] && typeof _modelClasses['UpdateKeyShareHolderGroupByIdRequest'].validateJSON === 'function') {
-          _modelClasses['UpdateKeyShareHolderGroupByIdRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'vault_id': vault_id,
@@ -1208,22 +1103,6 @@ export default class WalletsMPCWalletsApi {
       if (project_id === undefined || project_id === null) {
         throw new Error("Missing the required parameter 'project_id' when calling updateMpcProjectById");
       }
-      // Validate opts key — must be exactly 'UpdateMpcProjectByIdRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'updateMpcProjectById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "UpdateMpcProjectByIdRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['UpdateMpcProjectByIdRequest'] && typeof _modelClasses['UpdateMpcProjectByIdRequest'].validateJSON === 'function') {
-          _modelClasses['UpdateMpcProjectByIdRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'project_id': project_id
@@ -1279,22 +1158,6 @@ export default class WalletsMPCWalletsApi {
       // verify the required parameter 'vault_id' is set
       if (vault_id === undefined || vault_id === null) {
         throw new Error("Missing the required parameter 'vault_id' when calling updateMpcVaultById");
-      }
-      // Validate opts key — must be exactly 'UpdateMpcVaultByIdRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'updateMpcVaultById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "UpdateMpcVaultByIdRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['UpdateMpcVaultByIdRequest'] && typeof _modelClasses['UpdateMpcVaultByIdRequest'].validateJSON === 'function') {
-          _modelClasses['UpdateMpcVaultByIdRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

@@ -83,25 +83,27 @@ class AppWorkflow {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['workflow_id'] === 'string' || data['workflow_id'] instanceof String)) {
+        if (data['workflow_id'] && !(typeof data['workflow_id'] === 'string' || data['workflow_id'] instanceof String)) {
             throw new Error("Expected the field `workflow_id` to be a primitive type in the JSON string but got " + data['workflow_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['operation_id'] === 'string' || data['operation_id'] instanceof String)) {
+        if (data['operation_id'] && !(typeof data['operation_id'] === 'string' || data['operation_id'] instanceof String)) {
             throw new Error("Expected the field `operation_id` to be a primitive type in the JSON string but got " + data['operation_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['operation_name'] === 'string' || data['operation_name'] instanceof String)) {
+        if (data['operation_name'] && !(typeof data['operation_name'] === 'string' || data['operation_name'] instanceof String)) {
             throw new Error("Expected the field `operation_name` to be a primitive type in the JSON string but got " + data['operation_name']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['current_policies'])) {
-            throw new Error("Expected the field `current_policies` to be an array in the JSON data but got " + data['current_policies']);
+        if (data['current_policies']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['current_policies'])) {
+                throw new Error("Expected the field `current_policies` to be an array in the JSON data but got " + data['current_policies']);
+            }
+            // validate the optional field `current_policies` (array)
+            for (const item of data['current_policies']) {
+                AppWorkflowPolicy.validateJSON(item);
+            };
         }
-        // validate the required field `current_policies` (array)
-        for (const item of data['current_policies']) {
-            AppWorkflowPolicy.validateJSON(item);
-        };
 
         return true;
     }

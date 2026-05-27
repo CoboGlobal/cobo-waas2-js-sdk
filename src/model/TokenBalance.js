@@ -73,11 +73,15 @@ class TokenBalance {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // validate the required field `balance`
-        Balance.validateJSON(data['balance']);
+        // validate the optional field `balance`
+        if (data['balance']) { // data not null
+          if (!!Balance.validateJSON) {
+            Balance.validateJSON(data['balance']);
+          }
+        }
 
         return true;
     }

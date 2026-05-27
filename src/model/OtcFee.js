@@ -69,7 +69,7 @@ class OtcFee {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['fee_rate'] === 'string' || data['fee_rate'] instanceof String)) {
+        if (data['fee_rate'] && !(typeof data['fee_rate'] === 'string' || data['fee_rate'] instanceof String)) {
             throw new Error("Expected the field `fee_rate` to be a primitive type in the JSON string but got " + data['fee_rate']);
         }
         // ensure the json data is a string

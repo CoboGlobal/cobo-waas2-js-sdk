@@ -112,15 +112,15 @@ class TokenListing {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['contract_address'] === 'string' || data['contract_address'] instanceof String)) {
+        if (data['contract_address'] && !(typeof data['contract_address'] === 'string' || data['contract_address'] instanceof String)) {
             throw new Error("Expected the field `contract_address` to be a primitive type in the JSON string but got " + data['contract_address']);
         }
         // validate the optional field `token`

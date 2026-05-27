@@ -85,15 +85,15 @@ class EstimatedSOLFeeSlow {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['compute_unit_price'] === 'string' || data['compute_unit_price'] instanceof String)) {
+        if (data['compute_unit_price'] && !(typeof data['compute_unit_price'] === 'string' || data['compute_unit_price'] instanceof String)) {
             throw new Error("Expected the field `compute_unit_price` to be a primitive type in the JSON string but got " + data['compute_unit_price']);
         }
         // ensure the json data is a string
-        if (!(typeof data['compute_unit_limit'] === 'string' || data['compute_unit_limit'] instanceof String)) {
+        if (data['compute_unit_limit'] && !(typeof data['compute_unit_limit'] === 'string' || data['compute_unit_limit'] instanceof String)) {
             throw new Error("Expected the field `compute_unit_limit` to be a primitive type in the JSON string but got " + data['compute_unit_limit']);
         }
         // ensure the json data is a string
-        if (!(typeof data['base_fee'] === 'string' || data['base_fee'] instanceof String)) {
+        if (data['base_fee'] && !(typeof data['base_fee'] === 'string' || data['base_fee'] instanceof String)) {
             throw new Error("Expected the field `base_fee` to be a primitive type in the JSON string but got " + data['base_fee']);
         }
         // ensure the json data is a string

@@ -103,23 +103,23 @@ class TopUpAddress {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
+        if (data['payer_id'] && !(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
             throw new Error("Expected the field `payer_id` to be a primitive type in the JSON string but got " + data['payer_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
+        if (data['custom_payer_id'] && !(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
             throw new Error("Expected the field `custom_payer_id` to be a primitive type in the JSON string but got " + data['custom_payer_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
@@ -131,7 +131,7 @@ class TopUpAddress {
             throw new Error("Expected the field `developer_fee_rate` to be a primitive type in the JSON string but got " + data['developer_fee_rate']);
         }
         // ensure the json data is a string
-        if (!(typeof data['min_amount'] === 'string' || data['min_amount'] instanceof String)) {
+        if (data['min_amount'] && !(typeof data['min_amount'] === 'string' || data['min_amount'] instanceof String)) {
             throw new Error("Expected the field `min_amount` to be a primitive type in the JSON string but got " + data['min_amount']);
         }
 

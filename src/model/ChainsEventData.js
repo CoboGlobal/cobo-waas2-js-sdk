@@ -83,22 +83,22 @@ class ChainsEventData {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
             throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['chains'])) {
-            throw new Error("Expected the field `chains` to be an array in the JSON data but got " + data['chains']);
-        }
-        // validate the required field `chains` (array)
-        for (const item of data['chains']) {
-            ChainInfo.validateJSON(item);
-        };
-        if (data['wallet_subtypes']) { // data not null
+        if (data['chains']) { // data not null
             // ensure the json data is an array
-            if (!Array.isArray(data['wallet_subtypes'])) {
-                throw new Error("Expected the field `wallet_subtypes` to be an array in the JSON data but got " + data['wallet_subtypes']);
+            if (!Array.isArray(data['chains'])) {
+                throw new Error("Expected the field `chains` to be an array in the JSON data but got " + data['chains']);
             }
+            // validate the optional field `chains` (array)
+            for (const item of data['chains']) {
+                ChainInfo.validateJSON(item);
+            };
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['wallet_subtypes'])) {
+            throw new Error("Expected the field `wallet_subtypes` to be an array in the JSON data but got " + data['wallet_subtypes']);
         }
 
         return true;

@@ -79,7 +79,7 @@ class TravelRuleWithdrawLegalEntity {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['legal_name'] === 'string' || data['legal_name'] instanceof String)) {
+        if (data['legal_name'] && !(typeof data['legal_name'] === 'string' || data['legal_name'] instanceof String)) {
             throw new Error("Expected the field `legal_name` to be a primitive type in the JSON string but got " + data['legal_name']);
         }
         // ensure the json data is a string

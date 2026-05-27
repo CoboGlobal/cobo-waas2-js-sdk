@@ -81,14 +81,12 @@ class CreateAddressRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
-        if (data['taproot_script_tree_hashes']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['taproot_script_tree_hashes'])) {
-                throw new Error("Expected the field `taproot_script_tree_hashes` to be an array in the JSON data but got " + data['taproot_script_tree_hashes']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['taproot_script_tree_hashes'])) {
+            throw new Error("Expected the field `taproot_script_tree_hashes` to be an array in the JSON data but got " + data['taproot_script_tree_hashes']);
         }
         // ensure the json data is a string
         if (data['taproot_internal_address'] && !(typeof data['taproot_internal_address'] === 'string' || data['taproot_internal_address'] instanceof String)) {

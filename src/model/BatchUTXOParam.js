@@ -70,14 +70,12 @@ class BatchUTXOParam {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['tx_hash'] === 'string' || data['tx_hash'] instanceof String)) {
+        if (data['tx_hash'] && !(typeof data['tx_hash'] === 'string' || data['tx_hash'] instanceof String)) {
             throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
         }
-        if (data['vout_ns']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['vout_ns'])) {
-                throw new Error("Expected the field `vout_ns` to be an array in the JSON data but got " + data['vout_ns']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['vout_ns'])) {
+            throw new Error("Expected the field `vout_ns` to be an array in the JSON data but got " + data['vout_ns']);
         }
 
         return true;

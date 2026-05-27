@@ -20,18 +20,6 @@ import RequestApproval from '../model/RequestApproval';
 import RevokeApprovalRequest201Response from '../model/RevokeApprovalRequest201Response';
 import RevokeApprovalRequestRequest from '../model/RevokeApprovalRequestRequest';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'AppWorkflow': AppWorkflow,
-  'ApprovalRequestDetail': ApprovalRequestDetail,
-  'CreateApprovalRequest201Response': CreateApprovalRequest201Response,
-  'ErrorResponse': ErrorResponse,
-  'ListApprovalRequests200Response': ListApprovalRequests200Response,
-  'RequestApproval': RequestApproval,
-  'RevokeApprovalRequest201Response': RevokeApprovalRequest201Response,
-  'RevokeApprovalRequestRequest': RevokeApprovalRequestRequest,
-};
-
 /**
 * AppWorkflows service.
 * @module api/AppWorkflowsApi
@@ -63,22 +51,6 @@ export default class AppWorkflowsApi {
       let postBody = opts['RequestApproval'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'RequestApproval'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createApprovalRequest(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "RequestApproval".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['RequestApproval'] && typeof _modelClasses['RequestApproval'].validateJSON === 'function') {
-          _modelClasses['RequestApproval'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -291,22 +263,6 @@ export default class AppWorkflowsApi {
       // verify the required parameter 'approval_id' is set
       if (approval_id === undefined || approval_id === null) {
         throw new Error("Missing the required parameter 'approval_id' when calling revokeApprovalRequest");
-      }
-      // Validate opts key — must be exactly 'RevokeApprovalRequestRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'revokeApprovalRequest(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "RevokeApprovalRequestRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['RevokeApprovalRequestRequest'] && typeof _modelClasses['RevokeApprovalRequestRequest'].validateJSON === 'function') {
-          _modelClasses['RevokeApprovalRequestRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

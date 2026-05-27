@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property satoshi_test_supported (base name: "satoshi_test_supported")', function() {
+      // uncomment below and update the code to test the property satoshi_test_supported
+      //var instance = new CoboWaas2.GetTransactionLimitation200Response();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

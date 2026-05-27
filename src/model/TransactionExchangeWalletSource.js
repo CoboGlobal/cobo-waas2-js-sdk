@@ -82,7 +82,7 @@ class TransactionExchangeWalletSource {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string

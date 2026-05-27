@@ -92,23 +92,29 @@ class CreatePayoutRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
             throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['payout_params'])) {
-            throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
+        if (data['payout_params']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['payout_params'])) {
+                throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
+            }
+            // validate the optional field `payout_params` (array)
+            for (const item of data['payout_params']) {
+                PaymentPayoutParam.validateJSON(item);
+            };
         }
-        // validate the required field `payout_params` (array)
-        for (const item of data['payout_params']) {
-            PaymentPayoutParam.validateJSON(item);
-        };
-        // validate the required field `recipient_info`
-        PaymentPayoutRecipientInfo.validateJSON(data['recipient_info']);
+        // validate the optional field `recipient_info`
+        if (data['recipient_info']) { // data not null
+          if (!!PaymentPayoutRecipientInfo.validateJSON) {
+            PaymentPayoutRecipientInfo.validateJSON(data['recipient_info']);
+          }
+        }
         // ensure the json data is a string
         if (data['remark'] && !(typeof data['remark'] === 'string' || data['remark'] instanceof String)) {
             throw new Error("Expected the field `remark` to be a primitive type in the JSON string but got " + data['remark']);

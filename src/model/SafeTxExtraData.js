@@ -135,35 +135,35 @@ class SafeTxExtraData {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['to'] === 'string' || data['to'] instanceof String)) {
+        if (data['to'] && !(typeof data['to'] === 'string' || data['to'] instanceof String)) {
             throw new Error("Expected the field `to` to be a primitive type in the JSON string but got " + data['to']);
         }
         // ensure the json data is a string
-        if (!(typeof data['value'] === 'string' || data['value'] instanceof String)) {
+        if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
         }
         // ensure the json data is a string
-        if (!(typeof data['data'] === 'string' || data['data'] instanceof String)) {
+        if (data['data'] && !(typeof data['data'] === 'string' || data['data'] instanceof String)) {
             throw new Error("Expected the field `data` to be a primitive type in the JSON string but got " + data['data']);
         }
         // ensure the json data is a string
-        if (!(typeof data['domain_hash'] === 'string' || data['domain_hash'] instanceof String)) {
+        if (data['domain_hash'] && !(typeof data['domain_hash'] === 'string' || data['domain_hash'] instanceof String)) {
             throw new Error("Expected the field `domain_hash` to be a primitive type in the JSON string but got " + data['domain_hash']);
         }
         // ensure the json data is a string
-        if (!(typeof data['message_hash'] === 'string' || data['message_hash'] instanceof String)) {
+        if (data['message_hash'] && !(typeof data['message_hash'] === 'string' || data['message_hash'] instanceof String)) {
             throw new Error("Expected the field `message_hash` to be a primitive type in the JSON string but got " + data['message_hash']);
         }
         // ensure the json data is a string
-        if (!(typeof data['safe_address'] === 'string' || data['safe_address'] instanceof String)) {
+        if (data['safe_address'] && !(typeof data['safe_address'] === 'string' || data['safe_address'] instanceof String)) {
             throw new Error("Expected the field `safe_address` to be a primitive type in the JSON string but got " + data['safe_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['safe_tx_hash'] === 'string' || data['safe_tx_hash'] instanceof String)) {
+        if (data['safe_tx_hash'] && !(typeof data['safe_tx_hash'] === 'string' || data['safe_tx_hash'] instanceof String)) {
             throw new Error("Expected the field `safe_tx_hash` to be a primitive type in the JSON string but got " + data['safe_tx_hash']);
         }
         // ensure the json data is a string
-        if (!(typeof data['operation'] === 'string' || data['operation'] instanceof String)) {
+        if (data['operation'] && !(typeof data['operation'] === 'string' || data['operation'] instanceof String)) {
             throw new Error("Expected the field `operation` to be a primitive type in the JSON string but got " + data['operation']);
         }
         // ensure the json data is a string

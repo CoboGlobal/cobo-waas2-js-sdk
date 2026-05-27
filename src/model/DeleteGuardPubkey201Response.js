@@ -66,7 +66,7 @@ class DeleteGuardPubkey201Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['statement_id'] === 'string' || data['statement_id'] instanceof String)) {
+        if (data['statement_id'] && !(typeof data['statement_id'] === 'string' || data['statement_id'] instanceof String)) {
             throw new Error("Expected the field `statement_id` to be a primitive type in the JSON string but got " + data['statement_id']);
         }
 

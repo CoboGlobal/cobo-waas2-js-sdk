@@ -59,11 +59,9 @@ class PreCheck {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PreCheck</code>.
      */
     static validateJSON(data) {
-        if (data['skip_checks']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['skip_checks'])) {
-                throw new Error("Expected the field `skip_checks` to be an array in the JSON data but got " + data['skip_checks']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['skip_checks'])) {
+            throw new Error("Expected the field `skip_checks` to be an array in the JSON data but got " + data['skip_checks']);
         }
 
         return true;

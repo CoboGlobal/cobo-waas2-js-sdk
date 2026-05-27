@@ -72,11 +72,11 @@ class KyaRiskDetail {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['category'] === 'string' || data['category'] instanceof String)) {
+        if (data['category'] && !(typeof data['category'] === 'string' || data['category'] instanceof String)) {
             throw new Error("Expected the field `category` to be a primitive type in the JSON string but got " + data['category']);
         }
         // ensure the json data is a string
-        if (!(typeof data['exposure'] === 'string' || data['exposure'] instanceof String)) {
+        if (data['exposure'] && !(typeof data['exposure'] === 'string' || data['exposure'] instanceof String)) {
             throw new Error("Expected the field `exposure` to be a primitive type in the JSON string but got " + data['exposure']);
         }
 

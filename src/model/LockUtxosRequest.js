@@ -66,14 +66,16 @@ class LockUtxosRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['utxos'])) {
-            throw new Error("Expected the field `utxos` to be an array in the JSON data but got " + data['utxos']);
+        if (data['utxos']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['utxos'])) {
+                throw new Error("Expected the field `utxos` to be an array in the JSON data but got " + data['utxos']);
+            }
+            // validate the optional field `utxos` (array)
+            for (const item of data['utxos']) {
+                LockUtxosRequestUtxosInner.validateJSON(item);
+            };
         }
-        // validate the required field `utxos` (array)
-        for (const item of data['utxos']) {
-            LockUtxosRequestUtxosInner.validateJSON(item);
-        };
 
         return true;
     }

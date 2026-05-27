@@ -19,17 +19,6 @@ import ListAutoSweepTask200Response from '../model/ListAutoSweepTask200Response'
 import ListWalletSweepToAddresses200Response from '../model/ListWalletSweepToAddresses200Response';
 import SweepToAddress from '../model/SweepToAddress';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'AutoSweepTask': AutoSweepTask,
-  'CreateAutoSweepTask': CreateAutoSweepTask,
-  'CreateSweepToAddress': CreateSweepToAddress,
-  'ErrorResponse': ErrorResponse,
-  'ListAutoSweepTask200Response': ListAutoSweepTask200Response,
-  'ListWalletSweepToAddresses200Response': ListWalletSweepToAddresses200Response,
-  'SweepToAddress': SweepToAddress,
-};
-
 /**
 * AutoSweep service.
 * @module api/AutoSweepApi
@@ -113,22 +102,6 @@ export default class AutoSweepApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'CreateAutoSweepTask'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createAutoSweepTask(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateAutoSweepTask".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateAutoSweepTask'] && typeof _modelClasses['CreateAutoSweepTask'].validateJSON === 'function') {
-          _modelClasses['CreateAutoSweepTask'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -177,22 +150,6 @@ export default class AutoSweepApi {
       let postBody = opts['CreateSweepToAddress'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'CreateSweepToAddress'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createWalletSweepToAddresses(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateSweepToAddress".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateSweepToAddress'] && typeof _modelClasses['CreateSweepToAddress'].validateJSON === 'function') {
-          _modelClasses['CreateSweepToAddress'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

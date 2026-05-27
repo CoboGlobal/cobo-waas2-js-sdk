@@ -76,15 +76,15 @@ class ExchangeRate {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
+        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
             throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
         }
         // ensure the json data is a string
-        if (!(typeof data['rate'] === 'string' || data['rate'] instanceof String)) {
+        if (data['rate'] && !(typeof data['rate'] === 'string' || data['rate'] instanceof String)) {
             throw new Error("Expected the field `rate` to be a primitive type in the JSON string but got " + data['rate']);
         }
 

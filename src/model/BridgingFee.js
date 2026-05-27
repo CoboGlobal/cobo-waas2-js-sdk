@@ -76,7 +76,7 @@ class BridgingFee {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
         // ensure the json data is a string

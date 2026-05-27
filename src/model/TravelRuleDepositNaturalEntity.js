@@ -83,15 +83,15 @@ class TravelRuleDepositNaturalEntity {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['selected_entity_type'] === 'string' || data['selected_entity_type'] instanceof String)) {
+        if (data['selected_entity_type'] && !(typeof data['selected_entity_type'] === 'string' || data['selected_entity_type'] instanceof String)) {
             throw new Error("Expected the field `selected_entity_type` to be a primitive type in the JSON string but got " + data['selected_entity_type']);
         }
         // ensure the json data is a string
-        if (!(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
+        if (data['first_name'] && !(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
             throw new Error("Expected the field `first_name` to be a primitive type in the JSON string but got " + data['first_name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['last_name'] === 'string' || data['last_name'] instanceof String)) {
+        if (data['last_name'] && !(typeof data['last_name'] === 'string' || data['last_name'] instanceof String)) {
             throw new Error("Expected the field `last_name` to be a primitive type in the JSON string but got " + data['last_name']);
         }
         // ensure the json data is a string

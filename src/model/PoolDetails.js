@@ -134,19 +134,19 @@ class PoolDetails {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['protocol'] === 'string' || data['protocol'] instanceof String)) {
+        if (data['protocol'] && !(typeof data['protocol'] === 'string' || data['protocol'] instanceof String)) {
             throw new Error("Expected the field `protocol` to be a primitive type in the JSON string but got " + data['protocol']);
         }
         // ensure the json data is a string
-        if (!(typeof data['protocol_icon_url'] === 'string' || data['protocol_icon_url'] instanceof String)) {
+        if (data['protocol_icon_url'] && !(typeof data['protocol_icon_url'] === 'string' || data['protocol_icon_url'] instanceof String)) {
             throw new Error("Expected the field `protocol_icon_url` to be a primitive type in the JSON string but got " + data['protocol_icon_url']);
         }
         // ensure the json data is an array
@@ -158,7 +158,7 @@ class PoolDetails {
             throw new Error("Expected the field `supported_wallet_subtypes` to be an array in the JSON data but got " + data['supported_wallet_subtypes']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
@@ -169,14 +169,16 @@ class PoolDetails {
         if (data['max_amount'] && !(typeof data['max_amount'] === 'string' || data['max_amount'] instanceof String)) {
             throw new Error("Expected the field `max_amount` to be a primitive type in the JSON string but got " + data['max_amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['validators_info'])) {
-            throw new Error("Expected the field `validators_info` to be an array in the JSON data but got " + data['validators_info']);
+        if (data['validators_info']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['validators_info'])) {
+                throw new Error("Expected the field `validators_info` to be an array in the JSON data but got " + data['validators_info']);
+            }
+            // validate the optional field `validators_info` (array)
+            for (const item of data['validators_info']) {
+                PoolDetailsAllOfValidatorsInfo.validateJSON(item);
+            };
         }
-        // validate the required field `validators_info` (array)
-        for (const item of data['validators_info']) {
-            PoolDetailsAllOfValidatorsInfo.validateJSON(item);
-        };
 
         return true;
     }

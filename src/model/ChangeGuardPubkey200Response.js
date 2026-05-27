@@ -66,7 +66,7 @@ class ChangeGuardPubkey200Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['binder_id'] === 'string' || data['binder_id'] instanceof String)) {
+        if (data['binder_id'] && !(typeof data['binder_id'] === 'string' || data['binder_id'] instanceof String)) {
             throw new Error("Expected the field `binder_id` to be a primitive type in the JSON string but got " + data['binder_id']);
         }
 

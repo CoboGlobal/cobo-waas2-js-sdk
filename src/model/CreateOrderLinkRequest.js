@@ -70,8 +70,12 @@ class CreateOrderLinkRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `business_info`
-        OrderLinkBusinessInfo.validateJSON(data['business_info']);
+        // validate the optional field `business_info`
+        if (data['business_info']) { // data not null
+          if (!!OrderLinkBusinessInfo.validateJSON) {
+            OrderLinkBusinessInfo.validateJSON(data['business_info']);
+          }
+        }
         // validate the optional field `display_info`
         if (data['display_info']) { // data not null
           if (!!LinkDisplayInfo.validateJSON) {

@@ -79,11 +79,11 @@ class UpdateTopUpAddress {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
+        if (data['custom_payer_id'] && !(typeof data['custom_payer_id'] === 'string' || data['custom_payer_id'] instanceof String)) {
             throw new Error("Expected the field `custom_payer_id` to be a primitive type in the JSON string but got " + data['custom_payer_id']);
         }
 

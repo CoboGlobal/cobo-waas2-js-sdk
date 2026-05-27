@@ -94,18 +94,16 @@ class BabylonValidator {
             throw new Error("Expected the field `icon_url` to be a primitive type in the JSON string but got " + data['icon_url']);
         }
         // ensure the json data is a string
-        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
         if (data['public_key'] && !(typeof data['public_key'] === 'string' || data['public_key'] instanceof String)) {
             throw new Error("Expected the field `public_key` to be a primitive type in the JSON string but got " + data['public_key']);
         }
-        if (data['supported_pos_chains']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['supported_pos_chains'])) {
-                throw new Error("Expected the field `supported_pos_chains` to be an array in the JSON data but got " + data['supported_pos_chains']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['supported_pos_chains'])) {
+            throw new Error("Expected the field `supported_pos_chains` to be an array in the JSON data but got " + data['supported_pos_chains']);
         }
 
         return true;

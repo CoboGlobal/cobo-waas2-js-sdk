@@ -15,13 +15,6 @@ import CoboSafeDelegate from '../model/CoboSafeDelegate';
 import ErrorResponse from '../model/ErrorResponse';
 import SafeWalletDelegates from '../model/SafeWalletDelegates';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'CoboSafeDelegate': CoboSafeDelegate,
-  'ErrorResponse': ErrorResponse,
-  'SafeWalletDelegates': SafeWalletDelegates,
-};
-
 /**
 * WalletsSmartContractWallets service.
 * @module api/WalletsSmartContractWalletsApi
@@ -58,22 +51,6 @@ export default class WalletsSmartContractWalletsApi {
       // verify the required parameter 'wallet_id' is set
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling listSafeWalletDelegates");
-      }
-      // Validate opts key — must be exactly 'SafeWalletDelegates'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'listSafeWalletDelegates(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "SafeWalletDelegates".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['SafeWalletDelegates'] && typeof _modelClasses['SafeWalletDelegates'].validateJSON === 'function') {
-          _modelClasses['SafeWalletDelegates'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

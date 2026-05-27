@@ -61,6 +61,9 @@ class PaymentBulkSend {
             if (data.hasOwnProperty('bulk_send_id')) {
                 obj['bulk_send_id'] = ApiClient.convertToType(data['bulk_send_id'], 'String');
             }
+            if (data.hasOwnProperty('request_id')) {
+                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
+            }
             if (data.hasOwnProperty('source_account')) {
                 obj['source_account'] = ApiClient.convertToType(data['source_account'], 'String');
             }
@@ -96,11 +99,15 @@ class PaymentBulkSend {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['bulk_send_id'] === 'string' || data['bulk_send_id'] instanceof String)) {
+        if (data['bulk_send_id'] && !(typeof data['bulk_send_id'] === 'string' || data['bulk_send_id'] instanceof String)) {
             throw new Error("Expected the field `bulk_send_id` to be a primitive type in the JSON string but got " + data['bulk_send_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
+        }
+        // ensure the json data is a string
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
             throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
         }
         // ensure the json data is a string
@@ -121,6 +128,12 @@ PaymentBulkSend.RequiredProperties = ["bulk_send_id", "source_account", "executi
  * @member {String} bulk_send_id
  */
 PaymentBulkSend.prototype['bulk_send_id'] = undefined;
+
+/**
+ * The request ID.
+ * @member {String} request_id
+ */
+PaymentBulkSend.prototype['request_id'] = undefined;
 
 /**
  * The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 

@@ -89,11 +89,11 @@ class TokenizationERC20WrappedTokenParams {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
+        if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
             throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
         }
         // validate the optional field `permissions`
@@ -103,7 +103,7 @@ class TokenizationERC20WrappedTokenParams {
           }
         }
         // ensure the json data is a string
-        if (!(typeof data['underlying_token'] === 'string' || data['underlying_token'] instanceof String)) {
+        if (data['underlying_token'] && !(typeof data['underlying_token'] === 'string' || data['underlying_token'] instanceof String)) {
             throw new Error("Expected the field `underlying_token` to be a primitive type in the JSON string but got " + data['underlying_token']);
         }
 

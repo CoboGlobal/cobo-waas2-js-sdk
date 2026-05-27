@@ -82,14 +82,16 @@ class CreateKeyShareHolderGroupRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['key_share_holders'])) {
-            throw new Error("Expected the field `key_share_holders` to be an array in the JSON data but got " + data['key_share_holders']);
+        if (data['key_share_holders']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['key_share_holders'])) {
+                throw new Error("Expected the field `key_share_holders` to be an array in the JSON data but got " + data['key_share_holders']);
+            }
+            // validate the optional field `key_share_holders` (array)
+            for (const item of data['key_share_holders']) {
+                CreateKeyShareHolder.validateJSON(item);
+            };
         }
-        // validate the required field `key_share_holders` (array)
-        for (const item of data['key_share_holders']) {
-            CreateKeyShareHolder.validateJSON(item);
-        };
 
         return true;
     }

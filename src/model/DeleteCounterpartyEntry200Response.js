@@ -66,7 +66,7 @@ class DeleteCounterpartyEntry200Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['deleted_counterparty_entry_id'] === 'string' || data['deleted_counterparty_entry_id'] instanceof String)) {
+        if (data['deleted_counterparty_entry_id'] && !(typeof data['deleted_counterparty_entry_id'] === 'string' || data['deleted_counterparty_entry_id'] instanceof String)) {
             throw new Error("Expected the field `deleted_counterparty_entry_id` to be a primitive type in the JSON string but got " + data['deleted_counterparty_entry_id']);
         }
 

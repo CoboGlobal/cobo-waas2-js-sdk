@@ -85,11 +85,6 @@ class WebhookEventData {
             this.actualInstance = null;
             return;
         }
-        // Unwrap if already a wrapped oneOf instance of the same class
-        if (instance instanceof WebhookEventData) {
-            this.actualInstance = instance.getActualInstance();
-            return;
-        }
         var match = 0;
         var errorMessages = [];
         var discriminatorValue = instance["data_type"];
@@ -760,7 +755,7 @@ WebhookEventData.prototype['transaction_id'] = undefined;
 WebhookEventData.prototype['cobo_id'] = undefined;
 
 /**
- * The request ID provided by you when creating the payout.
+ * The request ID.
  * @member {String} request_id
  */
 WebhookEventData.prototype['request_id'] = undefined;

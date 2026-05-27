@@ -22,20 +22,6 @@ import SwapEstimateFee from '../model/SwapEstimateFee';
 import SwapQuote from '../model/SwapQuote';
 import SwapType from '../model/SwapType';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'CreateSwapActivityRequest': CreateSwapActivityRequest,
-  'ErrorResponse': ErrorResponse,
-  'EstimatedFee': EstimatedFee,
-  'ListSwapActivities200Response': ListSwapActivities200Response,
-  'ListSwapEnabledTokens200Response': ListSwapEnabledTokens200Response,
-  'SwapActivityDetail': SwapActivityDetail,
-  'SwapActivityStatus': SwapActivityStatus,
-  'SwapEstimateFee': SwapEstimateFee,
-  'SwapQuote': SwapQuote,
-  'SwapType': SwapType,
-};
-
 /**
 * Swaps service.
 * @module api/SwapsApi
@@ -69,12 +55,6 @@ export default class SwapsApi {
       // verify the required parameter 'CreateSwapActivityRequest' is set
       if (CreateSwapActivityRequest === undefined || CreateSwapActivityRequest === null) {
         throw new Error("Missing the required parameter 'CreateSwapActivityRequest' when calling createSwapActivity");
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateSwapActivityRequest'] && typeof _modelClasses['CreateSwapActivityRequest'].validateJSON === 'function') {
-          _modelClasses['CreateSwapActivityRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -125,12 +105,6 @@ export default class SwapsApi {
       // verify the required parameter 'SwapEstimateFee' is set
       if (SwapEstimateFee === undefined || SwapEstimateFee === null) {
         throw new Error("Missing the required parameter 'SwapEstimateFee' when calling estimateSwapFee");
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['SwapEstimateFee'] && typeof _modelClasses['SwapEstimateFee'].validateJSON === 'function') {
-          _modelClasses['SwapEstimateFee'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

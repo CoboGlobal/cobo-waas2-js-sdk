@@ -73,7 +73,7 @@ class BTCBIP137MessageSignDestination {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['message_bip137'] === 'string' || data['message_bip137'] instanceof String)) {
+        if (data['message_bip137'] && !(typeof data['message_bip137'] === 'string' || data['message_bip137'] instanceof String)) {
             throw new Error("Expected the field `message_bip137` to be a primitive type in the JSON string but got " + data['message_bip137']);
         }
 

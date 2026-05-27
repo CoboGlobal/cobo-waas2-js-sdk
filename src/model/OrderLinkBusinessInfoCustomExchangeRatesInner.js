@@ -71,11 +71,11 @@ class OrderLinkBusinessInfoCustomExchangeRatesInner {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['exchange_rate'] === 'string' || data['exchange_rate'] instanceof String)) {
+        if (data['exchange_rate'] && !(typeof data['exchange_rate'] === 'string' || data['exchange_rate'] instanceof String)) {
             throw new Error("Expected the field `exchange_rate` to be a primitive type in the JSON string but got " + data['exchange_rate']);
         }
 

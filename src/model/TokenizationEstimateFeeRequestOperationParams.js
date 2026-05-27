@@ -44,11 +44,6 @@ class TokenizationEstimateFeeRequestOperationParams {
             this.actualInstance = null;
             return;
         }
-        // Unwrap if already a wrapped oneOf instance of the same class
-        if (instance instanceof TokenizationEstimateFeeRequestOperationParams) {
-            this.actualInstance = instance.getActualInstance();
-            return;
-        }
         var match = 0;
         var errorMessages = [];
         var discriminatorValue = instance["operation_type"];

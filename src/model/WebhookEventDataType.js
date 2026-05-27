@@ -67,7 +67,7 @@ class WebhookEventDataType {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
             throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
 

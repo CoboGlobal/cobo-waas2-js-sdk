@@ -75,7 +75,7 @@ class TokenizationAddressPermission {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['execution_address'] === 'string' || data['execution_address'] instanceof String)) {
+        if (data['execution_address'] && !(typeof data['execution_address'] === 'string' || data['execution_address'] instanceof String)) {
             throw new Error("Expected the field `execution_address` to be a primitive type in the JSON string but got " + data['execution_address']);
         }
         // ensure the json data is an array

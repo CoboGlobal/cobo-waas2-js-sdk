@@ -93,17 +93,19 @@ class CreateSettlementRequestRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['settlements'])) {
-            throw new Error("Expected the field `settlements` to be an array in the JSON data but got " + data['settlements']);
+        if (data['settlements']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['settlements'])) {
+                throw new Error("Expected the field `settlements` to be an array in the JSON data but got " + data['settlements']);
+            }
+            // validate the optional field `settlements` (array)
+            for (const item of data['settlements']) {
+                CreateSettlement.validateJSON(item);
+            };
         }
-        // validate the required field `settlements` (array)
-        for (const item of data['settlements']) {
-            CreateSettlement.validateJSON(item);
-        };
         // ensure the json data is a string
         if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
             throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);

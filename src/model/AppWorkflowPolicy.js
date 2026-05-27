@@ -71,8 +71,12 @@ class AppWorkflowPolicy {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `action`
-        PolicyAction.validateJSON(data['action']);
+        // validate the optional field `action`
+        if (data['action']) { // data not null
+          if (!!PolicyAction.validateJSON) {
+            PolicyAction.validateJSON(data['action']);
+          }
+        }
         if (data['conditions']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['conditions'])) {

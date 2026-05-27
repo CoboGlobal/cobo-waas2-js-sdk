@@ -27,25 +27,6 @@ import WebhookEvent from '../model/WebhookEvent';
 import WebhookEventStatus from '../model/WebhookEventStatus';
 import WebhookEventType from '../model/WebhookEventType';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'CreateWebhookEndpointRequest': CreateWebhookEndpointRequest,
-  'ErrorResponse': ErrorResponse,
-  'ListWebhookEndpoints200Response': ListWebhookEndpoints200Response,
-  'ListWebhookEventDefinitions200ResponseInner': ListWebhookEventDefinitions200ResponseInner,
-  'ListWebhookEventLogs200Response': ListWebhookEventLogs200Response,
-  'ListWebhookEvents200Response': ListWebhookEvents200Response,
-  'RetryWebhookEventById201Response': RetryWebhookEventById201Response,
-  'TriggerTestWebhookEvent201Response': TriggerTestWebhookEvent201Response,
-  'TriggerTestWebhookEventRequest': TriggerTestWebhookEventRequest,
-  'UpdateWebhookEndpointByIdRequest': UpdateWebhookEndpointByIdRequest,
-  'WebhookEndpoint': WebhookEndpoint,
-  'WebhookEndpointStatus': WebhookEndpointStatus,
-  'WebhookEvent': WebhookEvent,
-  'WebhookEventStatus': WebhookEventStatus,
-  'WebhookEventType': WebhookEventType,
-};
-
 /**
 * DevelopersWebhooks service.
 * @module api/DevelopersWebhooksApi
@@ -77,22 +58,6 @@ export default class DevelopersWebhooksApi {
       let postBody = opts['CreateWebhookEndpointRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'CreateWebhookEndpointRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createWebhookEndpoint(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateWebhookEndpointRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateWebhookEndpointRequest'] && typeof _modelClasses['CreateWebhookEndpointRequest'].validateJSON === 'function') {
-          _modelClasses['CreateWebhookEndpointRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -555,22 +520,6 @@ export default class DevelopersWebhooksApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'TriggerTestWebhookEventRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'triggerTestWebhookEvent(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TriggerTestWebhookEventRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TriggerTestWebhookEventRequest'] && typeof _modelClasses['TriggerTestWebhookEventRequest'].validateJSON === 'function') {
-          _modelClasses['TriggerTestWebhookEventRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -624,22 +573,6 @@ export default class DevelopersWebhooksApi {
       // verify the required parameter 'endpoint_id' is set
       if (endpoint_id === undefined || endpoint_id === null) {
         throw new Error("Missing the required parameter 'endpoint_id' when calling updateWebhookEndpointById");
-      }
-      // Validate opts key — must be exactly 'UpdateWebhookEndpointByIdRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'updateWebhookEndpointById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "UpdateWebhookEndpointByIdRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['UpdateWebhookEndpointByIdRequest'] && typeof _modelClasses['UpdateWebhookEndpointByIdRequest'].validateJSON === 'function') {
-          _modelClasses['UpdateWebhookEndpointByIdRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

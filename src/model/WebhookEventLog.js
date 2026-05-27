@@ -100,11 +100,15 @@ class WebhookEventLog {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
-        // validate the required field `request_body`
-        WebhookEvent.validateJSON(data['request_body']);
+        // validate the optional field `request_body`
+        if (data['request_body']) { // data not null
+          if (!!WebhookEvent.validateJSON) {
+            WebhookEvent.validateJSON(data['request_body']);
+          }
+        }
         // ensure the json data is a string
         if (data['response_body'] && !(typeof data['response_body'] === 'string' || data['response_body'] instanceof String)) {
             throw new Error("Expected the field `response_body` to be a primitive type in the JSON string but got " + data['response_body']);

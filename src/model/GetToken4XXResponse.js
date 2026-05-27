@@ -72,11 +72,11 @@ class GetToken4XXResponse {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['error'] === 'string' || data['error'] instanceof String)) {
+        if (data['error'] && !(typeof data['error'] === 'string' || data['error'] instanceof String)) {
             throw new Error("Expected the field `error` to be a primitive type in the JSON string but got " + data['error']);
         }
         // ensure the json data is a string
-        if (!(typeof data['error_description'] === 'string' || data['error_description'] instanceof String)) {
+        if (data['error_description'] && !(typeof data['error_description'] === 'string' || data['error_description'] instanceof String)) {
             throw new Error("Expected the field `error_description` to be a primitive type in the JSON string but got " + data['error_description']);
         }
 

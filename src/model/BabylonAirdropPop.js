@@ -92,27 +92,27 @@ class BabylonAirdropPop {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['baby_address'] === 'string' || data['baby_address'] instanceof String)) {
+        if (data['baby_address'] && !(typeof data['baby_address'] === 'string' || data['baby_address'] instanceof String)) {
             throw new Error("Expected the field `baby_address` to be a primitive type in the JSON string but got " + data['baby_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['btc_address'] === 'string' || data['btc_address'] instanceof String)) {
+        if (data['btc_address'] && !(typeof data['btc_address'] === 'string' || data['btc_address'] instanceof String)) {
             throw new Error("Expected the field `btc_address` to be a primitive type in the JSON string but got " + data['btc_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['btc_public_key'] === 'string' || data['btc_public_key'] instanceof String)) {
+        if (data['btc_public_key'] && !(typeof data['btc_public_key'] === 'string' || data['btc_public_key'] instanceof String)) {
             throw new Error("Expected the field `btc_public_key` to be a primitive type in the JSON string but got " + data['btc_public_key']);
         }
         // ensure the json data is a string
-        if (!(typeof data['btc_sign_baby'] === 'string' || data['btc_sign_baby'] instanceof String)) {
+        if (data['btc_sign_baby'] && !(typeof data['btc_sign_baby'] === 'string' || data['btc_sign_baby'] instanceof String)) {
             throw new Error("Expected the field `btc_sign_baby` to be a primitive type in the JSON string but got " + data['btc_sign_baby']);
         }
         // ensure the json data is a string
-        if (!(typeof data['baby_sign_btc'] === 'string' || data['baby_sign_btc'] instanceof String)) {
+        if (data['baby_sign_btc'] && !(typeof data['baby_sign_btc'] === 'string' || data['baby_sign_btc'] instanceof String)) {
             throw new Error("Expected the field `baby_sign_btc` to be a primitive type in the JSON string but got " + data['baby_sign_btc']);
         }
         // ensure the json data is a string
-        if (!(typeof data['baby_public_key'] === 'string' || data['baby_public_key'] instanceof String)) {
+        if (data['baby_public_key'] && !(typeof data['baby_public_key'] === 'string' || data['baby_public_key'] instanceof String)) {
             throw new Error("Expected the field `baby_public_key` to be a primitive type in the JSON string but got " + data['baby_public_key']);
         }
 

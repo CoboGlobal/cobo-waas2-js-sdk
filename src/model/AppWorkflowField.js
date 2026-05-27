@@ -78,11 +78,11 @@ class AppWorkflowField {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['field'] === 'string' || data['field'] instanceof String)) {
+        if (data['field'] && !(typeof data['field'] === 'string' || data['field'] instanceof String)) {
             throw new Error("Expected the field `field` to be a primitive type in the JSON string but got " + data['field']);
         }
         // ensure the json data is a string
-        if (!(typeof data['value'] === 'string' || data['value'] instanceof String)) {
+        if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
         }
 

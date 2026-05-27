@@ -72,11 +72,15 @@ class RoleScopes {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['role_name'] === 'string' || data['role_name'] instanceof String)) {
+        if (data['role_name'] && !(typeof data['role_name'] === 'string' || data['role_name'] instanceof String)) {
             throw new Error("Expected the field `role_name` to be a primitive type in the JSON string but got " + data['role_name']);
         }
-        // validate the required field `scopes`
-        Scopes.validateJSON(data['scopes']);
+        // validate the optional field `scopes`
+        if (data['scopes']) { // data not null
+          if (!!Scopes.validateJSON) {
+            Scopes.validateJSON(data['scopes']);
+          }
+        }
 
         return true;
     }

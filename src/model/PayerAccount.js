@@ -86,15 +86,15 @@ class PayerAccount {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
+        if (data['payer_id'] && !(typeof data['payer_id'] === 'string' || data['payer_id'] instanceof String)) {
             throw new Error("Expected the field `payer_id` to be a primitive type in the JSON string but got " + data['payer_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
+        if (data['developer_fee_rate'] && !(typeof data['developer_fee_rate'] === 'string' || data['developer_fee_rate'] instanceof String)) {
             throw new Error("Expected the field `developer_fee_rate` to be a primitive type in the JSON string but got " + data['developer_fee_rate']);
         }
         if (data['accounts']) { // data not null

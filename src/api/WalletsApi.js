@@ -47,45 +47,6 @@ import WalletInfo from '../model/WalletInfo';
 import WalletSubtype from '../model/WalletSubtype';
 import WalletType from '../model/WalletType';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'AddressInfo': AddressInfo,
-  'BatchCheckUtxo201Response': BatchCheckUtxo201Response,
-  'BatchCheckUtxoRequest': BatchCheckUtxoRequest,
-  'ChainInfo': ChainInfo,
-  'CheckAddressChainsValidity200ResponseInner': CheckAddressChainsValidity200ResponseInner,
-  'CheckAddressValidity200Response': CheckAddressValidity200Response,
-  'CheckAddressesValidity200ResponseInner': CheckAddressesValidity200ResponseInner,
-  'CreateAddressRequest': CreateAddressRequest,
-  'CreateTokenListingRequest201Response': CreateTokenListingRequest201Response,
-  'CreateTokenListingRequestRequest': CreateTokenListingRequestRequest,
-  'CreateWalletParams': CreateWalletParams,
-  'CreatedWalletInfo': CreatedWalletInfo,
-  'DeleteWalletById201Response': DeleteWalletById201Response,
-  'ErrorResponse': ErrorResponse,
-  'ExtendedTokenInfo': ExtendedTokenInfo,
-  'GetMaxTransferableValueWithFeeModelRequest': GetMaxTransferableValueWithFeeModelRequest,
-  'ListAddressBalancesByToken200Response': ListAddressBalancesByToken200Response,
-  'ListAddresses200Response': ListAddresses200Response,
-  'ListSupportedChains200Response': ListSupportedChains200Response,
-  'ListSupportedTokens200Response': ListSupportedTokens200Response,
-  'ListTokenBalancesForAddress200Response': ListTokenBalancesForAddress200Response,
-  'ListTokenListingRequests200Response': ListTokenListingRequests200Response,
-  'ListUtxos200Response': ListUtxos200Response,
-  'ListWallets200Response': ListWallets200Response,
-  'LockUtxos201Response': LockUtxos201Response,
-  'LockUtxosRequest': LockUtxosRequest,
-  'MaxTransferableValue': MaxTransferableValue,
-  'RefreshAddressBalancesByToken200Response': RefreshAddressBalancesByToken200Response,
-  'RefreshAddressBalancesByTokenRequest': RefreshAddressBalancesByTokenRequest,
-  'TokenListing': TokenListing,
-  'TokenListingRequestStatus': TokenListingRequestStatus,
-  'UpdateWalletParams': UpdateWalletParams,
-  'WalletInfo': WalletInfo,
-  'WalletSubtype': WalletSubtype,
-  'WalletType': WalletType,
-};
-
 /**
 * Wallets service.
 * @module api/WalletsApi
@@ -122,22 +83,6 @@ export default class WalletsApi {
       // verify the required parameter 'wallet_id' is set
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling batchCheckUtxo");
-      }
-      // Validate opts key — must be exactly 'BatchCheckUtxoRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'batchCheckUtxo(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "BatchCheckUtxoRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['BatchCheckUtxoRequest'] && typeof _modelClasses['BatchCheckUtxoRequest'].validateJSON === 'function') {
-          _modelClasses['BatchCheckUtxoRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -369,22 +314,6 @@ export default class WalletsApi {
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling createAddress");
       }
-      // Validate opts key — must be exactly 'CreateAddressRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createAddress(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateAddressRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateAddressRequest'] && typeof _modelClasses['CreateAddressRequest'].validateJSON === 'function') {
-          _modelClasses['CreateAddressRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'wallet_id': wallet_id
@@ -438,12 +367,6 @@ export default class WalletsApi {
       if (CreateTokenListingRequestRequest === undefined || CreateTokenListingRequestRequest === null) {
         throw new Error("Missing the required parameter 'CreateTokenListingRequestRequest' when calling createTokenListingRequest");
       }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateTokenListingRequestRequest'] && typeof _modelClasses['CreateTokenListingRequestRequest'].validateJSON === 'function') {
-          _modelClasses['CreateTokenListingRequestRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -491,22 +414,6 @@ export default class WalletsApi {
       let postBody = opts['CreateWalletParams'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'CreateWalletParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createWallet(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "CreateWalletParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['CreateWalletParams'] && typeof _modelClasses['CreateWalletParams'].validateJSON === 'function') {
-          _modelClasses['CreateWalletParams'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -741,22 +648,6 @@ export default class WalletsApi {
       // verify the required parameter 'wallet_id' is set
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling getMaxTransferableValueWithFeeModel");
-      }
-      // Validate opts key — must be exactly 'GetMaxTransferableValueWithFeeModelRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'getMaxTransferableValueWithFeeModel(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "GetMaxTransferableValueWithFeeModelRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['GetMaxTransferableValueWithFeeModelRequest'] && typeof _modelClasses['GetMaxTransferableValueWithFeeModelRequest'].validateJSON === 'function') {
-          _modelClasses['GetMaxTransferableValueWithFeeModelRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -1803,22 +1694,6 @@ export default class WalletsApi {
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling lockUtxos");
       }
-      // Validate opts key — must be exactly 'LockUtxosRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'lockUtxos(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "LockUtxosRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['LockUtxosRequest'] && typeof _modelClasses['LockUtxosRequest'].validateJSON === 'function') {
-          _modelClasses['LockUtxosRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'wallet_id': wallet_id
@@ -1880,22 +1755,6 @@ export default class WalletsApi {
       if (token_id === undefined || token_id === null) {
         throw new Error("Missing the required parameter 'token_id' when calling refreshAddressBalancesByToken");
       }
-      // Validate opts key — must be exactly 'RefreshAddressBalancesByTokenRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'refreshAddressBalancesByToken(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "RefreshAddressBalancesByTokenRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['RefreshAddressBalancesByTokenRequest'] && typeof _modelClasses['RefreshAddressBalancesByTokenRequest'].validateJSON === 'function') {
-          _modelClasses['RefreshAddressBalancesByTokenRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'wallet_id': wallet_id,
@@ -1954,22 +1813,6 @@ export default class WalletsApi {
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling unlockUtxos");
       }
-      // Validate opts key — must be exactly 'LockUtxosRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'unlockUtxos(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "LockUtxosRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['LockUtxosRequest'] && typeof _modelClasses['LockUtxosRequest'].validateJSON === 'function') {
-          _modelClasses['LockUtxosRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'wallet_id': wallet_id
@@ -2025,22 +1868,6 @@ export default class WalletsApi {
       // verify the required parameter 'wallet_id' is set
       if (wallet_id === undefined || wallet_id === null) {
         throw new Error("Missing the required parameter 'wallet_id' when calling updateWalletById");
-      }
-      // Validate opts key — must be exactly 'UpdateWalletParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'updateWalletById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "UpdateWalletParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['UpdateWalletParams'] && typeof _modelClasses['UpdateWalletParams'].validateJSON === 'function') {
-          _modelClasses['UpdateWalletParams'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

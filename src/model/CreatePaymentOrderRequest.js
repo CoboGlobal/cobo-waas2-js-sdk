@@ -114,7 +114,7 @@ class CreatePaymentOrderRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
@@ -122,7 +122,7 @@ class CreatePaymentOrderRequest {
             throw new Error("Expected the field `merchant_order_code` to be a primitive type in the JSON string but got " + data['merchant_order_code']);
         }
         // ensure the json data is a string
-        if (!(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
+        if (data['psp_order_code'] && !(typeof data['psp_order_code'] === 'string' || data['psp_order_code'] instanceof String)) {
             throw new Error("Expected the field `psp_order_code` to be a primitive type in the JSON string but got " + data['psp_order_code']);
         }
         // ensure the json data is a string
@@ -134,11 +134,11 @@ class CreatePaymentOrderRequest {
             throw new Error("Expected the field `pricing_amount` to be a primitive type in the JSON string but got " + data['pricing_amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
+        if (data['fee_amount'] && !(typeof data['fee_amount'] === 'string' || data['fee_amount'] instanceof String)) {
             throw new Error("Expected the field `fee_amount` to be a primitive type in the JSON string but got " + data['fee_amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['payable_currency'] === 'string' || data['payable_currency'] instanceof String)) {
+        if (data['payable_currency'] && !(typeof data['payable_currency'] === 'string' || data['payable_currency'] instanceof String)) {
             throw new Error("Expected the field `payable_currency` to be a primitive type in the JSON string but got " + data['payable_currency']);
         }
         // ensure the json data is a string

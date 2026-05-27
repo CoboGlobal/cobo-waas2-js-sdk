@@ -32,30 +32,6 @@ import TransferParams from '../model/TransferParams';
 import WalletSubtype from '../model/WalletSubtype';
 import WalletType from '../model/WalletType';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'ApprovalDetail': ApprovalDetail,
-  'ApprovalTemplate': ApprovalTemplate,
-  'BroadcastSignedTransactions201ResponseInner': BroadcastSignedTransactions201ResponseInner,
-  'BroadcastSignedTransactionsRequest': BroadcastSignedTransactionsRequest,
-  'CheckLoopTransfers200ResponseInner': CheckLoopTransfers200ResponseInner,
-  'ContractCallParams': ContractCallParams,
-  'CreateTransferTransaction201Response': CreateTransferTransaction201Response,
-  'ErrorResponse': ErrorResponse,
-  'EstimateFeeParams': EstimateFeeParams,
-  'EstimatedFee': EstimatedFee,
-  'ListTransactionApprovalDetails200Response': ListTransactionApprovalDetails200Response,
-  'ListTransactions200Response': ListTransactions200Response,
-  'MessageSignParams': MessageSignParams,
-  'TransactionApprovalDetail': TransactionApprovalDetail,
-  'TransactionDetail': TransactionDetail,
-  'TransactionRbf': TransactionRbf,
-  'TransactionResend': TransactionResend,
-  'TransferParams': TransferParams,
-  'WalletSubtype': WalletSubtype,
-  'WalletType': WalletType,
-};
-
 /**
 * Transactions service.
 * @module api/TransactionsApi
@@ -87,22 +63,6 @@ export default class TransactionsApi {
       let postBody = opts['BroadcastSignedTransactionsRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'BroadcastSignedTransactionsRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'broadcastSignedTransactions(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "BroadcastSignedTransactionsRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['BroadcastSignedTransactionsRequest'] && typeof _modelClasses['BroadcastSignedTransactionsRequest'].validateJSON === 'function') {
-          _modelClasses['BroadcastSignedTransactionsRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -269,22 +229,6 @@ export default class TransactionsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'ContractCallParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createContractCallTransaction(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "ContractCallParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['ContractCallParams'] && typeof _modelClasses['ContractCallParams'].validateJSON === 'function') {
-          _modelClasses['ContractCallParams'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -334,22 +278,6 @@ export default class TransactionsApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'MessageSignParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createMessageSignTransaction(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "MessageSignParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['MessageSignParams'] && typeof _modelClasses['MessageSignParams'].validateJSON === 'function') {
-          _modelClasses['MessageSignParams'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -398,22 +326,6 @@ export default class TransactionsApi {
       let postBody = opts['TransferParams'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'TransferParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'createTransferTransaction(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TransferParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TransferParams'] && typeof _modelClasses['TransferParams'].validateJSON === 'function') {
-          _modelClasses['TransferParams'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -469,22 +381,6 @@ export default class TransactionsApi {
       if (transaction_id === undefined || transaction_id === null) {
         throw new Error("Missing the required parameter 'transaction_id' when calling dropTransactionById");
       }
-      // Validate opts key — must be exactly 'TransactionRbf'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'dropTransactionById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TransactionRbf".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TransactionRbf'] && typeof _modelClasses['TransactionRbf'].validateJSON === 'function') {
-          _modelClasses['TransactionRbf'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'transaction_id': transaction_id
@@ -535,22 +431,6 @@ export default class TransactionsApi {
       let postBody = opts['EstimateFeeParams'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'EstimateFeeParams'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'estimateFee(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "EstimateFeeParams".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['EstimateFeeParams'] && typeof _modelClasses['EstimateFeeParams'].validateJSON === 'function') {
-          _modelClasses['EstimateFeeParams'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -981,22 +861,6 @@ export default class TransactionsApi {
       if (transaction_id === undefined || transaction_id === null) {
         throw new Error("Missing the required parameter 'transaction_id' when calling resendTransactionById");
       }
-      // Validate opts key — must be exactly 'TransactionResend'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'resendTransactionById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TransactionResend".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TransactionResend'] && typeof _modelClasses['TransactionResend'].validateJSON === 'function') {
-          _modelClasses['TransactionResend'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
         'transaction_id': transaction_id
@@ -1103,22 +967,6 @@ export default class TransactionsApi {
       // verify the required parameter 'transaction_id' is set
       if (transaction_id === undefined || transaction_id === null) {
         throw new Error("Missing the required parameter 'transaction_id' when calling speedupTransactionById");
-      }
-      // Validate opts key — must be exactly 'TransactionRbf'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'speedupTransactionById(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TransactionRbf".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TransactionRbf'] && typeof _modelClasses['TransactionRbf'].validateJSON === 'function') {
-          _modelClasses['TransactionRbf'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

@@ -77,20 +77,22 @@ class SolContractCallInstruction {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['accounts'])) {
-            throw new Error("Expected the field `accounts` to be an array in the JSON data but got " + data['accounts']);
+        if (data['accounts']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['accounts'])) {
+                throw new Error("Expected the field `accounts` to be an array in the JSON data but got " + data['accounts']);
+            }
+            // validate the optional field `accounts` (array)
+            for (const item of data['accounts']) {
+                SolContractCallAccount.validateJSON(item);
+            };
         }
-        // validate the required field `accounts` (array)
-        for (const item of data['accounts']) {
-            SolContractCallAccount.validateJSON(item);
-        };
         // ensure the json data is a string
-        if (!(typeof data['data'] === 'string' || data['data'] instanceof String)) {
+        if (data['data'] && !(typeof data['data'] === 'string' || data['data'] instanceof String)) {
             throw new Error("Expected the field `data` to be a primitive type in the JSON string but got " + data['data']);
         }
         // ensure the json data is a string
-        if (!(typeof data['program_id'] === 'string' || data['program_id'] instanceof String)) {
+        if (data['program_id'] && !(typeof data['program_id'] === 'string' || data['program_id'] instanceof String)) {
             throw new Error("Expected the field `program_id` to be a primitive type in the JSON string but got " + data['program_id']);
         }
 

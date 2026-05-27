@@ -108,15 +108,15 @@ class MPCWalletInfo {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
+        if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
         }
         // ensure the json data is a string
@@ -128,7 +128,7 @@ class MPCWalletInfo {
             throw new Error("Expected the field `project_name` to be a primitive type in the JSON string but got " + data['project_name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['vault_id'] === 'string' || data['vault_id'] instanceof String)) {
+        if (data['vault_id'] && !(typeof data['vault_id'] === 'string' || data['vault_id'] instanceof String)) {
             throw new Error("Expected the field `vault_id` to be a primitive type in the JSON string but got " + data['vault_id']);
         }
         // ensure the json data is a string

@@ -20,18 +20,6 @@ import RefreshPermissionTokenRequest from '../model/RefreshPermissionTokenReques
 import RefreshToken2XXResponse from '../model/RefreshToken2XXResponse';
 import RefreshTokenRequest from '../model/RefreshTokenRequest';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'ErrorResponse': ErrorResponse,
-  'ExchangePermissionToken201Response': ExchangePermissionToken201Response,
-  'ExchangePermissionTokenRequest': ExchangePermissionTokenRequest,
-  'GetToken2XXResponse': GetToken2XXResponse,
-  'GetToken4XXResponse': GetToken4XXResponse,
-  'RefreshPermissionTokenRequest': RefreshPermissionTokenRequest,
-  'RefreshToken2XXResponse': RefreshToken2XXResponse,
-  'RefreshTokenRequest': RefreshTokenRequest,
-};
-
 /**
 * OAuth service.
 * @module api/OAuthApi
@@ -65,12 +53,6 @@ export default class OAuthApi {
       // verify the required parameter 'ExchangePermissionTokenRequest' is set
       if (ExchangePermissionTokenRequest === undefined || ExchangePermissionTokenRequest === null) {
         throw new Error("Missing the required parameter 'ExchangePermissionTokenRequest' when calling exchangePermissionToken");
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['ExchangePermissionTokenRequest'] && typeof _modelClasses['ExchangePermissionTokenRequest'].validateJSON === 'function') {
-          _modelClasses['ExchangePermissionTokenRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {
@@ -187,12 +169,6 @@ export default class OAuthApi {
       if (RefreshPermissionTokenRequest === undefined || RefreshPermissionTokenRequest === null) {
         throw new Error("Missing the required parameter 'RefreshPermissionTokenRequest' when calling refreshPermissionToken");
       }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['RefreshPermissionTokenRequest'] && typeof _modelClasses['RefreshPermissionTokenRequest'].validateJSON === 'function') {
-          _modelClasses['RefreshPermissionTokenRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -242,12 +218,6 @@ export default class OAuthApi {
       // verify the required parameter 'RefreshTokenRequest' is set
       if (RefreshTokenRequest === undefined || RefreshTokenRequest === null) {
         throw new Error("Missing the required parameter 'RefreshTokenRequest' when calling refreshToken");
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['RefreshTokenRequest'] && typeof _modelClasses['RefreshTokenRequest'].validateJSON === 'function') {
-          _modelClasses['RefreshTokenRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

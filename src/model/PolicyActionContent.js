@@ -76,20 +76,16 @@ class PolicyActionContent {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
-        if (data['roles']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['roles'])) {
-                throw new Error("Expected the field `roles` to be an array in the JSON data but got " + data['roles']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['roles'])) {
+            throw new Error("Expected the field `roles` to be an array in the JSON data but got " + data['roles']);
         }
-        if (data['user_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['user_ids'])) {
-                throw new Error("Expected the field `user_ids` to be an array in the JSON data but got " + data['user_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['user_ids'])) {
+            throw new Error("Expected the field `user_ids` to be an array in the JSON data but got " + data['user_ids']);
         }
 
         return true;
