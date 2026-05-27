@@ -81,7 +81,7 @@ class ApprovalUser {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['email'] === 'string' || data['email'] instanceof String)) {
+        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
             throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
         }
         // ensure the json data is a string

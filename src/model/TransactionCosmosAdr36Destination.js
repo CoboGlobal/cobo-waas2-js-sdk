@@ -73,7 +73,7 @@ class TransactionCosmosAdr36Destination {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['message_cosmos_adr36'] === 'string' || data['message_cosmos_adr36'] instanceof String)) {
+        if (data['message_cosmos_adr36'] && !(typeof data['message_cosmos_adr36'] === 'string' || data['message_cosmos_adr36'] instanceof String)) {
             throw new Error("Expected the field `message_cosmos_adr36` to be a primitive type in the JSON string but got " + data['message_cosmos_adr36']);
         }
 

@@ -85,7 +85,7 @@ class EstimatedUtxoFee {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // validate the optional field `slow`
@@ -94,8 +94,12 @@ class EstimatedUtxoFee {
             EstimatedUtxoFeeSlow.validateJSON(data['slow']);
           }
         }
-        // validate the required field `recommended`
-        EstimatedUtxoFeeSlow.validateJSON(data['recommended']);
+        // validate the optional field `recommended`
+        if (data['recommended']) { // data not null
+          if (!!EstimatedUtxoFeeSlow.validateJSON) {
+            EstimatedUtxoFeeSlow.validateJSON(data['recommended']);
+          }
+        }
         // validate the optional field `fast`
         if (data['fast']) { // data not null
           if (!!EstimatedUtxoFeeSlow.validateJSON) {

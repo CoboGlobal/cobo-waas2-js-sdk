@@ -72,17 +72,19 @@ class CreateBatchAllocationRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['allocation_params'])) {
-            throw new Error("Expected the field `allocation_params` to be an array in the JSON data but got " + data['allocation_params']);
+        if (data['allocation_params']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['allocation_params'])) {
+                throw new Error("Expected the field `allocation_params` to be an array in the JSON data but got " + data['allocation_params']);
+            }
+            // validate the optional field `allocation_params` (array)
+            for (const item of data['allocation_params']) {
+                AllocationParam.validateJSON(item);
+            };
         }
-        // validate the required field `allocation_params` (array)
-        for (const item of data['allocation_params']) {
-            AllocationParam.validateJSON(item);
-        };
 
         return true;
     }

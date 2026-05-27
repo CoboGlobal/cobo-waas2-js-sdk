@@ -72,17 +72,19 @@ class CreateCounterpartyEntry201Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
+        if (data['counterparty_id'] && !(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
             throw new Error("Expected the field `counterparty_id` to be a primitive type in the JSON string but got " + data['counterparty_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['wallet_addresses'])) {
-            throw new Error("Expected the field `wallet_addresses` to be an array in the JSON data but got " + data['wallet_addresses']);
+        if (data['wallet_addresses']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['wallet_addresses'])) {
+                throw new Error("Expected the field `wallet_addresses` to be an array in the JSON data but got " + data['wallet_addresses']);
+            }
+            // validate the optional field `wallet_addresses` (array)
+            for (const item of data['wallet_addresses']) {
+                WalletAddress.validateJSON(item);
+            };
         }
-        // validate the required field `wallet_addresses` (array)
-        for (const item of data['wallet_addresses']) {
-            WalletAddress.validateJSON(item);
-        };
 
         return true;
     }

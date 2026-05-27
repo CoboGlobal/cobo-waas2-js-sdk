@@ -73,8 +73,12 @@ class StellarContractCallDestination {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `contract_param`
-        StellarContractCallContractParam.validateJSON(data['contract_param']);
+        // validate the optional field `contract_param`
+        if (data['contract_param']) { // data not null
+          if (!!StellarContractCallContractParam.validateJSON) {
+            StellarContractCallContractParam.validateJSON(data['contract_param']);
+          }
+        }
 
         return true;
     }

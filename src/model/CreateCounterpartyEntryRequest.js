@@ -70,7 +70,7 @@ class CreateCounterpartyEntryRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
+        if (data['counterparty_id'] && !(typeof data['counterparty_id'] === 'string' || data['counterparty_id'] instanceof String)) {
             throw new Error("Expected the field `counterparty_id` to be a primitive type in the JSON string but got " + data['counterparty_id']);
         }
         if (data['wallet_addresses']) { // data not null

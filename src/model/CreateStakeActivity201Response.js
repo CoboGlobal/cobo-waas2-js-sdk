@@ -69,7 +69,7 @@ class CreateStakeActivity201Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['activity_id'] === 'string' || data['activity_id'] instanceof String)) {
+        if (data['activity_id'] && !(typeof data['activity_id'] === 'string' || data['activity_id'] instanceof String)) {
             throw new Error("Expected the field `activity_id` to be a primitive type in the JSON string but got " + data['activity_id']);
         }
         // ensure the json data is a string

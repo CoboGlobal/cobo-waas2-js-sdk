@@ -72,16 +72,22 @@ class TokenizationMintTokenParams {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `source`
-        TokenizationTokenOperationSource.validateJSON(data['source']);
-        // ensure the json data is an array
-        if (!Array.isArray(data['mints'])) {
-            throw new Error("Expected the field `mints` to be an array in the JSON data but got " + data['mints']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          if (!!TokenizationTokenOperationSource.validateJSON) {
+            TokenizationTokenOperationSource.validateJSON(data['source']);
+          }
         }
-        // validate the required field `mints` (array)
-        for (const item of data['mints']) {
-            TokenizationMintTokenParamsMintsInner.validateJSON(item);
-        };
+        if (data['mints']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['mints'])) {
+                throw new Error("Expected the field `mints` to be an array in the JSON data but got " + data['mints']);
+            }
+            // validate the optional field `mints` (array)
+            for (const item of data['mints']) {
+                TokenizationMintTokenParamsMintsInner.validateJSON(item);
+            };
+        }
 
         return true;
     }

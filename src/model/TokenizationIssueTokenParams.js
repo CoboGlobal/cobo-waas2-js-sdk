@@ -78,13 +78,21 @@ class TokenizationIssueTokenParams {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
-        // validate the required field `source`
-        TokenizationTokenOperationSource.validateJSON(data['source']);
-        // validate the required field `token_params`
-        TokenizationIssueTokenParamsTokenParams.validateJSON(data['token_params']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          if (!!TokenizationTokenOperationSource.validateJSON) {
+            TokenizationTokenOperationSource.validateJSON(data['source']);
+          }
+        }
+        // validate the optional field `token_params`
+        if (data['token_params']) { // data not null
+          if (!!TokenizationIssueTokenParamsTokenParams.validateJSON) {
+            TokenizationIssueTokenParamsTokenParams.validateJSON(data['token_params']);
+          }
+        }
 
         return true;
     }

@@ -11,22 +11,20 @@
 
 
 import ApiClient from "../ApiClient";
+import AddressVerificationDetail from '../model/AddressVerificationDetail';
+import AddressVerificationStatus from '../model/AddressVerificationStatus';
+import CancelSatoshiTestChallengeRequest from '../model/CancelSatoshiTestChallengeRequest';
+import CreateSatoshiTestChallengeRequest from '../model/CreateSatoshiTestChallengeRequest';
 import ErrorResponse from '../model/ErrorResponse';
 import GetTransactionLimitation200Response from '../model/GetTransactionLimitation200Response';
+import ListAddressVerifications200Response from '../model/ListAddressVerifications200Response';
 import ListSupportedCountries200ResponseInner from '../model/ListSupportedCountries200ResponseInner';
+import SatoshiTestCancelResult from '../model/SatoshiTestCancelResult';
+import SatoshiTestChallenge from '../model/SatoshiTestChallenge';
+import SignatureChallenge from '../model/SignatureChallenge';
 import SubmitDepositTravelRuleInfo201Response from '../model/SubmitDepositTravelRuleInfo201Response';
 import TravelRuleDepositRequest from '../model/TravelRuleDepositRequest';
 import TravelRuleWithdrawRequest from '../model/TravelRuleWithdrawRequest';
-
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'ErrorResponse': ErrorResponse,
-  'GetTransactionLimitation200Response': GetTransactionLimitation200Response,
-  'ListSupportedCountries200ResponseInner': ListSupportedCountries200ResponseInner,
-  'SubmitDepositTravelRuleInfo201Response': SubmitDepositTravelRuleInfo201Response,
-  'TravelRuleDepositRequest': TravelRuleDepositRequest,
-  'TravelRuleWithdrawRequest': TravelRuleWithdrawRequest,
-};
 
 /**
 * TravelRule service.
@@ -48,8 +46,266 @@ export default class TravelRuleApi {
 
 
     /**
+     * Cancel Satoshi Test challenge
+     * This operation cancels a Satoshi Test challenge that is currently in `PREPARE` or `PENDING` status. Typical use case: the counterparty decides to switch verification methods before transferring.  Once cancelled, the challenge status becomes `DELETED` and the on-chain match will no longer be observed. Challenges already in `MATCHED`, `VERIFIED`, `EXPIRED`, or `DELETED` state cannot be cancelled. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CancelSatoshiTestChallengeRequest} [CancelSatoshiTestChallengeRequest] 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SatoshiTestCancelResult} and HTTP response
+     */
+    cancelSatoshiTestChallengeWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CancelSatoshiTestChallengeRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = SatoshiTestCancelResult;
+      return this.apiClient.callApi(
+        '/travel_rule/satoshi_test/challenge/cancel', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Cancel Satoshi Test challenge
+     * This operation cancels a Satoshi Test challenge that is currently in `PREPARE` or `PENDING` status. Typical use case: the counterparty decides to switch verification methods before transferring.  Once cancelled, the challenge status becomes `DELETED` and the on-chain match will no longer be observed. Challenges already in `MATCHED`, `VERIFIED`, `EXPIRED`, or `DELETED` state cannot be cancelled. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CancelSatoshiTestChallengeRequest} opts.CancelSatoshiTestChallengeRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SatoshiTestCancelResult}
+     */
+    cancelSatoshiTestChallenge(opts) {
+      return this.cancelSatoshiTestChallengeWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create Satoshi Test challenge
+     * This operation creates a Satoshi Test challenge for self-custody address verification. Satoshi Test verifies address ownership by having the counterparty transfer a small, uniquely-generated amount from their wallet to a Cobo-controlled verification address.  A single endpoint covers both flows via the `action` parameter: - **Two-step flow** (`action=PREPARE` then `action=SUBMIT`): Preview the verification details first, then activate. The 180-minute countdown only starts on `SUBMIT`. The server uses `(chain_id, from_address)` as the idempotency key, so the second call automatically targets the prepared challenge. For extra safety, pass the `challenge_id` returned by `PREPARE` in the subsequent `SUBMIT` call — it pins the activation to that specific challenge. - **One-shot flow** (`action=SUBMIT` directly, without `challenge_id`): Prepare and submit in a single call. The challenge is created directly in `PENDING` state with the countdown started.  If the counterparty address has already been verified, the operation returns HTTP 400 `ADDRESS_ALREADY_VERIFIED`. Call [List address verifications](#operation/list_address_verifications) with `chain_id`, `address`, and `status=VERIFIED` first to pre-check.  Supported chains: `BTC`, `ETH`, `BASE_ETH`, `BSC_BNB`, `TRON`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateSatoshiTestChallengeRequest} [CreateSatoshiTestChallengeRequest] 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SatoshiTestChallenge} and HTTP response
+     */
+    createSatoshiTestChallengeWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CreateSatoshiTestChallengeRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = SatoshiTestChallenge;
+      return this.apiClient.callApi(
+        '/travel_rule/satoshi_test/challenge', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create Satoshi Test challenge
+     * This operation creates a Satoshi Test challenge for self-custody address verification. Satoshi Test verifies address ownership by having the counterparty transfer a small, uniquely-generated amount from their wallet to a Cobo-controlled verification address.  A single endpoint covers both flows via the `action` parameter: - **Two-step flow** (`action=PREPARE` then `action=SUBMIT`): Preview the verification details first, then activate. The 180-minute countdown only starts on `SUBMIT`. The server uses `(chain_id, from_address)` as the idempotency key, so the second call automatically targets the prepared challenge. For extra safety, pass the `challenge_id` returned by `PREPARE` in the subsequent `SUBMIT` call — it pins the activation to that specific challenge. - **One-shot flow** (`action=SUBMIT` directly, without `challenge_id`): Prepare and submit in a single call. The challenge is created directly in `PENDING` state with the countdown started.  If the counterparty address has already been verified, the operation returns HTTP 400 `ADDRESS_ALREADY_VERIFIED`. Call [List address verifications](#operation/list_address_verifications) with `chain_id`, `address`, and `status=VERIFIED` first to pre-check.  Supported chains: `BTC`, `ETH`, `BASE_ETH`, `BSC_BNB`, `TRON`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateSatoshiTestChallengeRequest} opts.CreateSatoshiTestChallengeRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SatoshiTestChallenge}
+     */
+    createSatoshiTestChallenge(opts) {
+      return this.createSatoshiTestChallengeWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get address verification
+     * Retrieve a single self-custody address verification record by its `verification_id`, including method-specific provenance:  - `verification_method=SIGNATURE` → `signature_detail` is populated. - `verification_method=SATOSHI_TEST` → `satoshi_test_detail` carries the latest challenge state (`status`, `remaining_seconds`, `matched_txid`).  Use [List address verifications](#operation/list_address_verifications) to discover `verification_id` values. 
+     * @param {String} verification_id The unique identifier of the address verification record.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AddressVerificationDetail} and HTTP response
+     */
+    getAddressVerificationWithHttpInfo(verification_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'verification_id' is set
+      if (verification_id === undefined || verification_id === null) {
+        throw new Error("Missing the required parameter 'verification_id' when calling getAddressVerification");
+      }
+
+      let pathParams = {
+        'verification_id': verification_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AddressVerificationDetail;
+      return this.apiClient.callApi(
+        '/travel_rule/address_verifications/{verification_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get address verification
+     * Retrieve a single self-custody address verification record by its `verification_id`, including method-specific provenance:  - `verification_method=SIGNATURE` → `signature_detail` is populated. - `verification_method=SATOSHI_TEST` → `satoshi_test_detail` carries the latest challenge state (`status`, `remaining_seconds`, `matched_txid`).  Use [List address verifications](#operation/list_address_verifications) to discover `verification_id` values. 
+     * @param {String} verification_id The unique identifier of the address verification record.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AddressVerificationDetail}
+     */
+    getAddressVerification(verification_id) {
+      return this.getAddressVerificationWithHttpInfo(verification_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get Satoshi Test challenge
+     * This operation returns the current state of a Satoshi Test challenge — useful for polling after submission. The response contains the challenge `status` and `remaining_seconds`.  Recommended polling interval: 10–30 seconds. The challenge will transition through `PENDING` → `MATCHED` → `VERIFIED` once the counterparty's transfer is observed and confirmed on chain. If the challenge is not matched within 180 minutes, the status becomes `EXPIRED`. 
+     * @param {String} challenge_id The Satoshi Test challenge ID returned by the `prepare` or `submit` operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SatoshiTestChallenge} and HTTP response
+     */
+    getSatoshiTestChallengeWithHttpInfo(challenge_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'challenge_id' is set
+      if (challenge_id === undefined || challenge_id === null) {
+        throw new Error("Missing the required parameter 'challenge_id' when calling getSatoshiTestChallenge");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'challenge_id': challenge_id
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = SatoshiTestChallenge;
+      return this.apiClient.callApi(
+        '/travel_rule/satoshi_test/challenge/status', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get Satoshi Test challenge
+     * This operation returns the current state of a Satoshi Test challenge — useful for polling after submission. The response contains the challenge `status` and `remaining_seconds`.  Recommended polling interval: 10–30 seconds. The challenge will transition through `PENDING` → `MATCHED` → `VERIFIED` once the counterparty's transfer is observed and confirmed on chain. If the challenge is not matched within 180 minutes, the status becomes `EXPIRED`. 
+     * @param {String} challenge_id The Satoshi Test challenge ID returned by the `prepare` or `submit` operation.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SatoshiTestChallenge}
+     */
+    getSatoshiTestChallenge(challenge_id) {
+      return this.getSatoshiTestChallengeWithHttpInfo(challenge_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get self-custody signature challenge
+     * This operation issues a one-time, time-bounded message for a self-custody wallet address to sign, in order to prove wallet ownership. The signature is then submitted via [Submit Travel Rule information for deposits](#operation/submit_deposit_travel_rule_info) or [withdrawals](#operation/submit_withdraw_travel_rule_info).  Use this endpoint when you want to verify the counterparty's self-custody address via off-chain signature. For address verification via on-chain micro-deposit, use the Satoshi Test endpoints (`/travel_rule/satoshi_test/...`) instead.  The challenge is valid for a short window (returned as `expires_in`, currently 30 seconds). Calling this endpoint again for the same transaction rotates the challenge — only the latest issued value will verify. 
+     * @param {module:model/String} transaction_type The transaction type. Possible values include:    - `DEPOSIT`: A deposit transaction.   - `WITHDRAW`: A withdrawal transaction. 
+     * @param {String} transaction_id The transaction ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SignatureChallenge} and HTTP response
+     */
+    getSignatureChallengeWithHttpInfo(transaction_type, transaction_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'transaction_type' is set
+      if (transaction_type === undefined || transaction_type === null) {
+        throw new Error("Missing the required parameter 'transaction_type' when calling getSignatureChallenge");
+      }
+      // verify the required parameter 'transaction_id' is set
+      if (transaction_id === undefined || transaction_id === null) {
+        throw new Error("Missing the required parameter 'transaction_id' when calling getSignatureChallenge");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'transaction_type': transaction_type,
+        'transaction_id': transaction_id
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = SignatureChallenge;
+      return this.apiClient.callApi(
+        '/travel_rule/signature_challenge', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get self-custody signature challenge
+     * This operation issues a one-time, time-bounded message for a self-custody wallet address to sign, in order to prove wallet ownership. The signature is then submitted via [Submit Travel Rule information for deposits](#operation/submit_deposit_travel_rule_info) or [withdrawals](#operation/submit_withdraw_travel_rule_info).  Use this endpoint when you want to verify the counterparty's self-custody address via off-chain signature. For address verification via on-chain micro-deposit, use the Satoshi Test endpoints (`/travel_rule/satoshi_test/...`) instead.  The challenge is valid for a short window (returned as `expires_in`, currently 30 seconds). Calling this endpoint again for the same transaction rotates the challenge — only the latest issued value will verify. 
+     * @param {module:model/String} transaction_type The transaction type. Possible values include:    - `DEPOSIT`: A deposit transaction.   - `WITHDRAW`: A withdrawal transaction. 
+     * @param {String} transaction_id The transaction ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SignatureChallenge}
+     */
+    getSignatureChallenge(transaction_type, transaction_id) {
+      return this.getSignatureChallengeWithHttpInfo(transaction_type, transaction_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve transaction limitations
-     * This operation retrieves Travel Rule requirements and available options for a transaction based on its transaction type and ID.  Use this endpoint before submitting Travel Rule information to understand the requirements and available options for your transaction. 
+     * <Note>The `self_custody_wallet_challenge` field in the response is deprecated. To obtain a signature challenge, call [Get self-custody signature challenge](#operation/get_signature_challenge) instead. This operation itself is not deprecated and continues to return the VASP list, threshold info, connect wallet list, and Satoshi Test support.</Note>  This operation retrieves Travel Rule requirements and available options for a transaction based on its transaction type and ID.  Use this endpoint before submitting Travel Rule information to understand the requirements and available options for your transaction. 
      * @param {module:model/String} transaction_type The transaction type. Possible values include:    - `DEPOSIT`: A deposit transaction.   - `WITHDRAW`: A withdrawal transaction. 
      * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetTransactionLimitation200Response} and HTTP response
@@ -92,13 +348,78 @@ export default class TravelRuleApi {
 
     /**
      * Retrieve transaction limitations
-     * This operation retrieves Travel Rule requirements and available options for a transaction based on its transaction type and ID.  Use this endpoint before submitting Travel Rule information to understand the requirements and available options for your transaction. 
+     * <Note>The `self_custody_wallet_challenge` field in the response is deprecated. To obtain a signature challenge, call [Get self-custody signature challenge](#operation/get_signature_challenge) instead. This operation itself is not deprecated and continues to return the VASP list, threshold info, connect wallet list, and Satoshi Test support.</Note>  This operation retrieves Travel Rule requirements and available options for a transaction based on its transaction type and ID.  Use this endpoint before submitting Travel Rule information to understand the requirements and available options for your transaction. 
      * @param {module:model/String} transaction_type The transaction type. Possible values include:    - `DEPOSIT`: A deposit transaction.   - `WITHDRAW`: A withdrawal transaction. 
      * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetTransactionLimitation200Response}
      */
     getTransactionLimitation(transaction_type, transaction_id) {
       return this.getTransactionLimitationWithHttpInfo(transaction_type, transaction_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List address verifications
+     * List self-custody address verification records under the current organization with optional filters and cursor-based pagination.  Records are sorted by creation time descending (most recent first). Use `limit` plus `before` / `after` cursors from the previous page's `pagination` block to traverse pages.  Each record's `status` is one of `PENDING`, `VERIFIED`, or `FAILED`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AddressVerificationStatus} [status] Filter by verification status. Allowed values: - `PENDING`: A Satoshi Test challenge is in progress (countdown active or awaiting confirmation). - `VERIFIED`: The address ownership has been confirmed (by signature or by a matched Satoshi Test transfer). - `FAILED`: The verification attempt did not succeed (Satoshi Test expired without match, or signature verification rejected).  Omit this parameter to return records of all three statuses. 
+     * @param {String} [chain_id] Filter by chain ID (e.g. `BTC`, `ETH`, `BASE_ETH`, `BSC_BNB`, `TRON`).
+     * @param {String} [address] Filter by counterparty (self-custody) wallet address.
+     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
+     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListAddressVerifications200Response} and HTTP response
+     */
+    listAddressVerificationsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'status': opts['status'],
+        'chain_id': opts['chain_id'],
+        'address': opts['address'],
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListAddressVerifications200Response;
+      return this.apiClient.callApi(
+        '/travel_rule/address_verifications', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List address verifications
+     * List self-custody address verification records under the current organization with optional filters and cursor-based pagination.  Records are sorted by creation time descending (most recent first). Use `limit` plus `before` / `after` cursors from the previous page's `pagination` block to traverse pages.  Each record's `status` is one of `PENDING`, `VERIFIED`, or `FAILED`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AddressVerificationStatus} opts.status Filter by verification status. Allowed values: - `PENDING`: A Satoshi Test challenge is in progress (countdown active or awaiting confirmation). - `VERIFIED`: The address ownership has been confirmed (by signature or by a matched Satoshi Test transfer). - `FAILED`: The verification attempt did not succeed (Satoshi Test expired without match, or signature verification rejected).  Omit this parameter to return records of all three statuses. 
+     * @param {String} opts.chain_id Filter by chain ID (e.g. `BTC`, `ETH`, `BASE_ETH`, `BSC_BNB`, `TRON`).
+     * @param {String} opts.address Filter by counterparty (self-custody) wallet address.
+     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
+     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListAddressVerifications200Response}
+     */
+    listAddressVerifications(opts) {
+      return this.listAddressVerificationsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -162,22 +483,6 @@ export default class TravelRuleApi {
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // Validate opts key — must be exactly 'TravelRuleDepositRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'submitDepositTravelRuleInfo(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TravelRuleDepositRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TravelRuleDepositRequest'] && typeof _modelClasses['TravelRuleDepositRequest'].validateJSON === 'function') {
-          _modelClasses['TravelRuleDepositRequest'].validateJSON(postBody);
-        }
-      }
 
       let pathParams = {
       };
@@ -226,22 +531,6 @@ export default class TravelRuleApi {
       let postBody = opts['TravelRuleWithdrawRequest'];
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
-      }
-      // Validate opts key — must be exactly 'TravelRuleWithdrawRequest'
-      if (postBody === undefined && opts) {
-        var _providedKeys = Object.keys(opts).filter(function(k) { return k !== '_base_path_index'; });
-        if (_providedKeys.length > 0) {
-          throw new Error(
-            'submitWithdrawTravelRuleInfo(): unrecognized opts key [' + _providedKeys.join(', ') +
-            ']. Expected: "TravelRuleWithdrawRequest".'
-          );
-        }
-      }
-      // Validate request body before sending
-      if (postBody !== null && postBody !== undefined) {
-        if (_modelClasses['TravelRuleWithdrawRequest'] && typeof _modelClasses['TravelRuleWithdrawRequest'].validateJSON === 'function') {
-          _modelClasses['TravelRuleWithdrawRequest'].validateJSON(postBody);
-        }
       }
 
       let pathParams = {

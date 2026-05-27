@@ -81,7 +81,7 @@ class TransactionTronContractDestination {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
@@ -89,7 +89,7 @@ class TransactionTronContractDestination {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
         }
         // ensure the json data is a string
-        if (!(typeof data['calldata'] === 'string' || data['calldata'] instanceof String)) {
+        if (data['calldata'] && !(typeof data['calldata'] === 'string' || data['calldata'] instanceof String)) {
             throw new Error("Expected the field `calldata` to be a primitive type in the JSON string but got " + data['calldata']);
         }
 

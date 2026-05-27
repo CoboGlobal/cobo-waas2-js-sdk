@@ -486,6 +486,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listBulkSends', function() {
+      it('should call listBulkSends successfully', function() {
+        //uncomment below and update the code to test listBulkSends
+        //instance.listBulkSends().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listCounterparties', function() {
       it('should call listCounterparties successfully', function() {
         //uncomment below and update the code to test listCounterparties

@@ -92,11 +92,11 @@ class CoreStakeExtra {
             throw new Error("Expected the field `change_address` to be a primitive type in the JSON string but got " + data['change_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['validator_address'] === 'string' || data['validator_address'] instanceof String)) {
+        if (data['validator_address'] && !(typeof data['validator_address'] === 'string' || data['validator_address'] instanceof String)) {
             throw new Error("Expected the field `validator_address` to be a primitive type in the JSON string but got " + data['validator_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['reward_address'] === 'string' || data['reward_address'] instanceof String)) {
+        if (data['reward_address'] && !(typeof data['reward_address'] === 'string' || data['reward_address'] instanceof String)) {
             throw new Error("Expected the field `reward_address` to be a primitive type in the JSON string but got " + data['reward_address']);
         }
 

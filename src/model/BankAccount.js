@@ -77,7 +77,7 @@ class BankAccount {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
+        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
             throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
         }
 

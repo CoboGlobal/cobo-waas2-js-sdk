@@ -114,21 +114,23 @@ class Settlement {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['settlement_request_id'] === 'string' || data['settlement_request_id'] instanceof String)) {
+        if (data['settlement_request_id'] && !(typeof data['settlement_request_id'] === 'string' || data['settlement_request_id'] instanceof String)) {
             throw new Error("Expected the field `settlement_request_id` to be a primitive type in the JSON string but got " + data['settlement_request_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['settlements'])) {
-            throw new Error("Expected the field `settlements` to be an array in the JSON data but got " + data['settlements']);
+        if (data['settlements']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['settlements'])) {
+                throw new Error("Expected the field `settlements` to be an array in the JSON data but got " + data['settlements']);
+            }
+            // validate the optional field `settlements` (array)
+            for (const item of data['settlements']) {
+                SettlementDetail.validateJSON(item);
+            };
         }
-        // validate the required field `settlements` (array)
-        for (const item of data['settlements']) {
-            SettlementDetail.validateJSON(item);
-        };
         // ensure the json data is a string
         if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
             throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);

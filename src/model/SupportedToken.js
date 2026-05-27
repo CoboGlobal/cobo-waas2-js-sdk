@@ -105,27 +105,27 @@ class SupportedToken {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
+        if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
             throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_address'] === 'string' || data['token_address'] instanceof String)) {
+        if (data['token_address'] && !(typeof data['token_address'] === 'string' || data['token_address'] instanceof String)) {
             throw new Error("Expected the field `token_address` to be a primitive type in the JSON string but got " + data['token_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_symbol'] === 'string' || data['chain_symbol'] instanceof String)) {
+        if (data['chain_symbol'] && !(typeof data['chain_symbol'] === 'string' || data['chain_symbol'] instanceof String)) {
             throw new Error("Expected the field `chain_symbol` to be a primitive type in the JSON string but got " + data['chain_symbol']);
         }
         // ensure the json data is a string

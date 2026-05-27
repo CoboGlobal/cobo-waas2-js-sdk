@@ -70,7 +70,7 @@ class RevokeApprovalRequest201Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['approval_id'] === 'string' || data['approval_id'] instanceof String)) {
+        if (data['approval_id'] && !(typeof data['approval_id'] === 'string' || data['approval_id'] instanceof String)) {
             throw new Error("Expected the field `approval_id` to be a primitive type in the JSON string but got " + data['approval_id']);
         }
 

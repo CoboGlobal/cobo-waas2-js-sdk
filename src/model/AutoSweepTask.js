@@ -97,28 +97,24 @@ class AutoSweepTask {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['task_id'] === 'string' || data['task_id'] instanceof String)) {
+        if (data['task_id'] && !(typeof data['task_id'] === 'string' || data['task_id'] instanceof String)) {
             throw new Error("Expected the field `task_id` to be a primitive type in the JSON string but got " + data['task_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        if (data['transaction_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['transaction_ids'])) {
-                throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['transaction_ids'])) {
+            throw new Error("Expected the field `transaction_ids` to be an array in the JSON data but got " + data['transaction_ids']);
         }
-        if (data['failed_reasons']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['failed_reasons'])) {
-                throw new Error("Expected the field `failed_reasons` to be an array in the JSON data but got " + data['failed_reasons']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['failed_reasons'])) {
+            throw new Error("Expected the field `failed_reasons` to be an array in the JSON data but got " + data['failed_reasons']);
         }
 
         return true;

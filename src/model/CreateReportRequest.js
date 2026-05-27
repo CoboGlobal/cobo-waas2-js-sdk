@@ -89,11 +89,9 @@ class CreateReportRequest {
         if (!Array.isArray(data['report_types'])) {
             throw new Error("Expected the field `report_types` to be an array in the JSON data but got " + data['report_types']);
         }
-        if (data['token_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['token_ids'])) {
-                throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['token_ids'])) {
+            throw new Error("Expected the field `token_ids` to be an array in the JSON data but got " + data['token_ids']);
         }
 
         return true;

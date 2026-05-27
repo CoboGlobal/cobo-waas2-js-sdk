@@ -72,11 +72,15 @@ class TravelRuleDepositRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
-        // validate the required field `travel_rule_info`
-        TravelRuleDepositRequestTravelRuleInfo.validateJSON(data['travel_rule_info']);
+        // validate the optional field `travel_rule_info`
+        if (data['travel_rule_info']) { // data not null
+          if (!!TravelRuleDepositRequestTravelRuleInfo.validateJSON) {
+            TravelRuleDepositRequestTravelRuleInfo.validateJSON(data['travel_rule_info']);
+          }
+        }
 
         return true;
     }

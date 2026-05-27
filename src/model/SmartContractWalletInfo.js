@@ -31,11 +31,6 @@ class SmartContractWalletInfo {
             this.actualInstance = null;
             return;
         }
-        // Unwrap if already a wrapped oneOf instance of the same class
-        if (instance instanceof SmartContractWalletInfo) {
-            this.actualInstance = instance.getActualInstance();
-            return;
-        }
         var match = 0;
         var errorMessages = [];
         var discriminatorValue = instance["smart_contract_wallet_type"];

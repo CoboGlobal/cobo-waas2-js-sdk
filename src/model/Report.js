@@ -107,7 +107,7 @@ class Report {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['report_id'] === 'string' || data['report_id'] instanceof String)) {
+        if (data['report_id'] && !(typeof data['report_id'] === 'string' || data['report_id'] instanceof String)) {
             throw new Error("Expected the field `report_id` to be a primitive type in the JSON string but got " + data['report_id']);
         }
         // ensure the json data is an array
@@ -119,7 +119,7 @@ class Report {
             throw new Error("Expected the field `report_url` to be a primitive type in the JSON string but got " + data['report_url']);
         }
         // ensure the json data is a string
-        if (!(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
+        if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
             throw new Error("Expected the field `initiator` to be a primitive type in the JSON string but got " + data['initiator']);
         }
 

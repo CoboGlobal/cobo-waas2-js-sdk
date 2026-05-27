@@ -71,8 +71,12 @@ class TokenizationAllowlistActivationParams {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `source`
-        TokenizationTokenOperationSource.validateJSON(data['source']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          if (!!TokenizationTokenOperationSource.validateJSON) {
+            TokenizationTokenOperationSource.validateJSON(data['source']);
+          }
+        }
 
         return true;
     }

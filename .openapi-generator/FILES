@@ -22,6 +22,12 @@ docs/AddressRiskLevel.md
 docs/AddressTransferDestination.md
 docs/AddressTransferDestinationAccountOutput.md
 docs/AddressTransferDestinationUtxoOutputsInner.md
+docs/AddressVerification.md
+docs/AddressVerificationDetail.md
+docs/AddressVerificationDetailSatoshiTestDetail.md
+docs/AddressVerificationDetailSignatureDetail.md
+docs/AddressVerificationMethod.md
+docs/AddressVerificationStatus.md
 docs/AddressesEventData.md
 docs/AddressesEventDataAllOfAddresses.md
 docs/AllocationItem.md
@@ -83,6 +89,7 @@ docs/BridgingFee.md
 docs/BroadcastSignedTransactions201ResponseInner.md
 docs/BroadcastSignedTransactionsRequest.md
 docs/CallbackMessage.md
+docs/CancelSatoshiTestChallengeRequest.md
 docs/ChainInfo.md
 docs/ChainsEventData.md
 docs/ChangeGuardPubkey200Response.md
@@ -153,6 +160,7 @@ docs/CreateRefundLinkRequest.md
 docs/CreateRefundRequest.md
 docs/CreateReportRequest.md
 docs/CreateSafeWalletParams.md
+docs/CreateSatoshiTestChallengeRequest.md
 docs/CreateSettlement.md
 docs/CreateSettlementRequestRequest.md
 docs/CreateSmartContractWalletParams.md
@@ -321,6 +329,7 @@ docs/Link.md
 docs/LinkDisplayInfo.md
 docs/ListAddressBalancesByToken200Response.md
 docs/ListAddressBooks200Response.md
+docs/ListAddressVerifications200Response.md
 docs/ListAddresses200Response.md
 docs/ListAllocationItems200Response.md
 docs/ListApprovalRequests200Response.md
@@ -333,6 +342,7 @@ docs/ListBabylonEligibleStakings200ResponseDataInner.md
 docs/ListBabylonStakingRegistrations200Response.md
 docs/ListBatchAllocations200Response.md
 docs/ListBulkSendItems200Response.md
+docs/ListBulkSends200Response.md
 docs/ListCallbackMessages200Response.md
 docs/ListCounterparties200Response.md
 docs/ListCounterpartyEntries200Response.md
@@ -498,6 +508,10 @@ docs/SafeWallet.md
 docs/SafeWalletDelegates.md
 docs/SafeWalletDelegatesContractCall.md
 docs/SafeWalletDelegatesTransfer.md
+docs/SatoshiTestCancelResult.md
+docs/SatoshiTestChallenge.md
+docs/SatoshiTestChallengeAction.md
+docs/SatoshiTestChallengeStatus.md
 docs/Scopes.md
 docs/SelectedEntityType.md
 docs/SelfCustodyWallet.md
@@ -507,6 +521,8 @@ docs/Settlement.md
 docs/SettlementDetail.md
 docs/SettlementInfo.md
 docs/SettlementType.md
+docs/SignatureChallenge.md
+docs/SignatureDetail.md
 docs/SkipCheckType.md
 docs/SmartContractInitiator.md
 docs/SmartContractWalletInfo.md
@@ -786,6 +802,7 @@ docs/TravelRuleDepositLegalEntity.md
 docs/TravelRuleDepositNaturalEntity.md
 docs/TravelRuleDepositRequest.md
 docs/TravelRuleDepositRequestTravelRuleInfo.md
+docs/TravelRuleTransactionType.md
 docs/TravelRuleWithdrawExchangesOrVASP.md
 docs/TravelRuleWithdrawExchangesOrVASPEntityInfo.md
 docs/TravelRuleWithdrawLegalEntity.md
@@ -889,6 +906,12 @@ src/model/AddressRiskLevel.js
 src/model/AddressTransferDestination.js
 src/model/AddressTransferDestinationAccountOutput.js
 src/model/AddressTransferDestinationUtxoOutputsInner.js
+src/model/AddressVerification.js
+src/model/AddressVerificationDetail.js
+src/model/AddressVerificationDetailSatoshiTestDetail.js
+src/model/AddressVerificationDetailSignatureDetail.js
+src/model/AddressVerificationMethod.js
+src/model/AddressVerificationStatus.js
 src/model/AddressesEventData.js
 src/model/AddressesEventDataAllOfAddresses.js
 src/model/AllocationItem.js
@@ -948,6 +971,7 @@ src/model/BridgingFee.js
 src/model/BroadcastSignedTransactions201ResponseInner.js
 src/model/BroadcastSignedTransactionsRequest.js
 src/model/CallbackMessage.js
+src/model/CancelSatoshiTestChallengeRequest.js
 src/model/ChainInfo.js
 src/model/ChainsEventData.js
 src/model/ChangeGuardPubkey200Response.js
@@ -1017,6 +1041,7 @@ src/model/CreateRefundLinkRequest.js
 src/model/CreateRefundRequest.js
 src/model/CreateReportRequest.js
 src/model/CreateSafeWalletParams.js
+src/model/CreateSatoshiTestChallengeRequest.js
 src/model/CreateSettlement.js
 src/model/CreateSettlementRequestRequest.js
 src/model/CreateSmartContractWalletParams.js
@@ -1181,6 +1206,7 @@ src/model/Link.js
 src/model/LinkDisplayInfo.js
 src/model/ListAddressBalancesByToken200Response.js
 src/model/ListAddressBooks200Response.js
+src/model/ListAddressVerifications200Response.js
 src/model/ListAddresses200Response.js
 src/model/ListAllocationItems200Response.js
 src/model/ListApprovalRequests200Response.js
@@ -1193,6 +1219,7 @@ src/model/ListBabylonEligibleStakings200ResponseDataInner.js
 src/model/ListBabylonStakingRegistrations200Response.js
 src/model/ListBatchAllocations200Response.js
 src/model/ListBulkSendItems200Response.js
+src/model/ListBulkSends200Response.js
 src/model/ListCallbackMessages200Response.js
 src/model/ListCounterparties200Response.js
 src/model/ListCounterpartyEntries200Response.js
@@ -1354,6 +1381,10 @@ src/model/SafeWallet.js
 src/model/SafeWalletDelegates.js
 src/model/SafeWalletDelegatesContractCall.js
 src/model/SafeWalletDelegatesTransfer.js
+src/model/SatoshiTestCancelResult.js
+src/model/SatoshiTestChallenge.js
+src/model/SatoshiTestChallengeAction.js
+src/model/SatoshiTestChallengeStatus.js
 src/model/Scopes.js
 src/model/SelectedEntityType.js
 src/model/SelfCustodyWallet.js
@@ -1363,6 +1394,8 @@ src/model/Settlement.js
 src/model/SettlementDetail.js
 src/model/SettlementInfo.js
 src/model/SettlementType.js
+src/model/SignatureChallenge.js
+src/model/SignatureDetail.js
 src/model/SkipCheckType.js
 src/model/SmartContractInitiator.js
 src/model/SmartContractWalletInfo.js
@@ -1637,6 +1670,7 @@ src/model/TravelRuleDepositLegalEntity.js
 src/model/TravelRuleDepositNaturalEntity.js
 src/model/TravelRuleDepositRequest.js
 src/model/TravelRuleDepositRequestTravelRuleInfo.js
+src/model/TravelRuleTransactionType.js
 src/model/TravelRuleWithdrawExchangesOrVASP.js
 src/model/TravelRuleWithdrawExchangesOrVASPEntityInfo.js
 src/model/TravelRuleWithdrawLegalEntity.js
@@ -1725,6 +1759,12 @@ test/model/AddressRiskLevel.spec.js
 test/model/AddressTransferDestination.spec.js
 test/model/AddressTransferDestinationAccountOutput.spec.js
 test/model/AddressTransferDestinationUtxoOutputsInner.spec.js
+test/model/AddressVerification.spec.js
+test/model/AddressVerificationDetail.spec.js
+test/model/AddressVerificationDetailSatoshiTestDetail.spec.js
+test/model/AddressVerificationDetailSignatureDetail.spec.js
+test/model/AddressVerificationMethod.spec.js
+test/model/AddressVerificationStatus.spec.js
 test/model/AddressesEventData.spec.js
 test/model/AddressesEventDataAllOfAddresses.spec.js
 test/model/AllocationItem.spec.js
@@ -1784,6 +1824,7 @@ test/model/BridgingFee.spec.js
 test/model/BroadcastSignedTransactions201ResponseInner.spec.js
 test/model/BroadcastSignedTransactionsRequest.spec.js
 test/model/CallbackMessage.spec.js
+test/model/CancelSatoshiTestChallengeRequest.spec.js
 test/model/ChainInfo.spec.js
 test/model/ChainsEventData.spec.js
 test/model/ChangeGuardPubkey200Response.spec.js
@@ -1853,6 +1894,7 @@ test/model/CreateRefundLinkRequest.spec.js
 test/model/CreateRefundRequest.spec.js
 test/model/CreateReportRequest.spec.js
 test/model/CreateSafeWalletParams.spec.js
+test/model/CreateSatoshiTestChallengeRequest.spec.js
 test/model/CreateSettlement.spec.js
 test/model/CreateSettlementRequestRequest.spec.js
 test/model/CreateSmartContractWalletParams.spec.js
@@ -2017,6 +2059,7 @@ test/model/Link.spec.js
 test/model/LinkDisplayInfo.spec.js
 test/model/ListAddressBalancesByToken200Response.spec.js
 test/model/ListAddressBooks200Response.spec.js
+test/model/ListAddressVerifications200Response.spec.js
 test/model/ListAddresses200Response.spec.js
 test/model/ListAllocationItems200Response.spec.js
 test/model/ListApprovalRequests200Response.spec.js
@@ -2029,6 +2072,7 @@ test/model/ListBabylonEligibleStakings200ResponseDataInner.spec.js
 test/model/ListBabylonStakingRegistrations200Response.spec.js
 test/model/ListBatchAllocations200Response.spec.js
 test/model/ListBulkSendItems200Response.spec.js
+test/model/ListBulkSends200Response.spec.js
 test/model/ListCallbackMessages200Response.spec.js
 test/model/ListCounterparties200Response.spec.js
 test/model/ListCounterpartyEntries200Response.spec.js
@@ -2190,6 +2234,10 @@ test/model/SafeWallet.spec.js
 test/model/SafeWalletDelegates.spec.js
 test/model/SafeWalletDelegatesContractCall.spec.js
 test/model/SafeWalletDelegatesTransfer.spec.js
+test/model/SatoshiTestCancelResult.spec.js
+test/model/SatoshiTestChallenge.spec.js
+test/model/SatoshiTestChallengeAction.spec.js
+test/model/SatoshiTestChallengeStatus.spec.js
 test/model/Scopes.spec.js
 test/model/SelectedEntityType.spec.js
 test/model/SelfCustodyWallet.spec.js
@@ -2199,6 +2247,8 @@ test/model/Settlement.spec.js
 test/model/SettlementDetail.spec.js
 test/model/SettlementInfo.spec.js
 test/model/SettlementType.spec.js
+test/model/SignatureChallenge.spec.js
+test/model/SignatureDetail.spec.js
 test/model/SkipCheckType.spec.js
 test/model/SmartContractInitiator.spec.js
 test/model/SmartContractWalletInfo.spec.js
@@ -2473,6 +2523,7 @@ test/model/TravelRuleDepositLegalEntity.spec.js
 test/model/TravelRuleDepositNaturalEntity.spec.js
 test/model/TravelRuleDepositRequest.spec.js
 test/model/TravelRuleDepositRequestTravelRuleInfo.spec.js
+test/model/TravelRuleTransactionType.spec.js
 test/model/TravelRuleWithdrawExchangesOrVASP.spec.js
 test/model/TravelRuleWithdrawExchangesOrVASPEntityInfo.spec.js
 test/model/TravelRuleWithdrawLegalEntity.spec.js

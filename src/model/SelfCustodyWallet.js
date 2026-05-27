@@ -83,15 +83,15 @@ class SelfCustodyWallet {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['self_custody_wallet_challenge'] === 'string' || data['self_custody_wallet_challenge'] instanceof String)) {
+        if (data['self_custody_wallet_challenge'] && !(typeof data['self_custody_wallet_challenge'] === 'string' || data['self_custody_wallet_challenge'] instanceof String)) {
             throw new Error("Expected the field `self_custody_wallet_challenge` to be a primitive type in the JSON string but got " + data['self_custody_wallet_challenge']);
         }
         // ensure the json data is a string
-        if (!(typeof data['self_custody_wallet_address'] === 'string' || data['self_custody_wallet_address'] instanceof String)) {
+        if (data['self_custody_wallet_address'] && !(typeof data['self_custody_wallet_address'] === 'string' || data['self_custody_wallet_address'] instanceof String)) {
             throw new Error("Expected the field `self_custody_wallet_address` to be a primitive type in the JSON string but got " + data['self_custody_wallet_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['self_custody_wallet_sign'] === 'string' || data['self_custody_wallet_sign'] instanceof String)) {
+        if (data['self_custody_wallet_sign'] && !(typeof data['self_custody_wallet_sign'] === 'string' || data['self_custody_wallet_sign'] instanceof String)) {
             throw new Error("Expected the field `self_custody_wallet_sign` to be a primitive type in the JSON string but got " + data['self_custody_wallet_sign']);
         }
 

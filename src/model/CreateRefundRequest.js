@@ -100,7 +100,7 @@ class CreateRefundRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
@@ -108,7 +108,7 @@ class CreateRefundRequest {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['payable_amount'] === 'string' || data['payable_amount'] instanceof String)) {
+        if (data['payable_amount'] && !(typeof data['payable_amount'] === 'string' || data['payable_amount'] instanceof String)) {
             throw new Error("Expected the field `payable_amount` to be a primitive type in the JSON string but got " + data['payable_amount']);
         }
         // ensure the json data is a string
@@ -116,7 +116,7 @@ class CreateRefundRequest {
             throw new Error("Expected the field `to_address` to be a primitive type in the JSON string but got " + data['to_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string

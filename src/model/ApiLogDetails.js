@@ -112,35 +112,35 @@ class ApiLogDetails {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['log_id'] === 'string' || data['log_id'] instanceof String)) {
+        if (data['log_id'] && !(typeof data['log_id'] === 'string' || data['log_id'] instanceof String)) {
             throw new Error("Expected the field `log_id` to be a primitive type in the JSON string but got " + data['log_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['api_method'] === 'string' || data['api_method'] instanceof String)) {
+        if (data['api_method'] && !(typeof data['api_method'] === 'string' || data['api_method'] instanceof String)) {
             throw new Error("Expected the field `api_method` to be a primitive type in the JSON string but got " + data['api_method']);
         }
         // ensure the json data is a string
-        if (!(typeof data['api_endpoint'] === 'string' || data['api_endpoint'] instanceof String)) {
+        if (data['api_endpoint'] && !(typeof data['api_endpoint'] === 'string' || data['api_endpoint'] instanceof String)) {
             throw new Error("Expected the field `api_endpoint` to be a primitive type in the JSON string but got " + data['api_endpoint']);
         }
         // ensure the json data is a string
-        if (!(typeof data['ip_address'] === 'string' || data['ip_address'] instanceof String)) {
+        if (data['ip_address'] && !(typeof data['ip_address'] === 'string' || data['ip_address'] instanceof String)) {
             throw new Error("Expected the field `ip_address` to be a primitive type in the JSON string but got " + data['ip_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['api_key'] === 'string' || data['api_key'] instanceof String)) {
+        if (data['api_key'] && !(typeof data['api_key'] === 'string' || data['api_key'] instanceof String)) {
             throw new Error("Expected the field `api_key` to be a primitive type in the JSON string but got " + data['api_key']);
         }
         // ensure the json data is a string
-        if (!(typeof data['response_body'] === 'string' || data['response_body'] instanceof String)) {
+        if (data['response_body'] && !(typeof data['response_body'] === 'string' || data['response_body'] instanceof String)) {
             throw new Error("Expected the field `response_body` to be a primitive type in the JSON string but got " + data['response_body']);
         }
         // ensure the json data is a string
-        if (!(typeof data['query_params'] === 'string' || data['query_params'] instanceof String)) {
+        if (data['query_params'] && !(typeof data['query_params'] === 'string' || data['query_params'] instanceof String)) {
             throw new Error("Expected the field `query_params` to be a primitive type in the JSON string but got " + data['query_params']);
         }
         // ensure the json data is a string
-        if (!(typeof data['request_body'] === 'string' || data['request_body'] instanceof String)) {
+        if (data['request_body'] && !(typeof data['request_body'] === 'string' || data['request_body'] instanceof String)) {
             throw new Error("Expected the field `request_body` to be a primitive type in the JSON string but got " + data['request_body']);
         }
 

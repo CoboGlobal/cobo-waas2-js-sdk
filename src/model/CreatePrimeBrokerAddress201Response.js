@@ -70,7 +70,7 @@ class CreatePrimeBrokerAddress201Response {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['pubkey'] === 'string' || data['pubkey'] instanceof String)) {
+        if (data['pubkey'] && !(typeof data['pubkey'] === 'string' || data['pubkey'] instanceof String)) {
             throw new Error("Expected the field `pubkey` to be a primitive type in the JSON string but got " + data['pubkey']);
         }
         if (data['addresses']) { // data not null

@@ -30,6 +30,12 @@ import AddressRiskLevel from './model/AddressRiskLevel';
 import AddressTransferDestination from './model/AddressTransferDestination';
 import AddressTransferDestinationAccountOutput from './model/AddressTransferDestinationAccountOutput';
 import AddressTransferDestinationUtxoOutputsInner from './model/AddressTransferDestinationUtxoOutputsInner';
+import AddressVerification from './model/AddressVerification';
+import AddressVerificationDetail from './model/AddressVerificationDetail';
+import AddressVerificationDetailSatoshiTestDetail from './model/AddressVerificationDetailSatoshiTestDetail';
+import AddressVerificationDetailSignatureDetail from './model/AddressVerificationDetailSignatureDetail';
+import AddressVerificationMethod from './model/AddressVerificationMethod';
+import AddressVerificationStatus from './model/AddressVerificationStatus';
 import AddressesEventData from './model/AddressesEventData';
 import AddressesEventDataAllOfAddresses from './model/AddressesEventDataAllOfAddresses';
 import AllocationItem from './model/AllocationItem';
@@ -89,6 +95,7 @@ import BridgingFee from './model/BridgingFee';
 import BroadcastSignedTransactions201ResponseInner from './model/BroadcastSignedTransactions201ResponseInner';
 import BroadcastSignedTransactionsRequest from './model/BroadcastSignedTransactionsRequest';
 import CallbackMessage from './model/CallbackMessage';
+import CancelSatoshiTestChallengeRequest from './model/CancelSatoshiTestChallengeRequest';
 import ChainInfo from './model/ChainInfo';
 import ChainsEventData from './model/ChainsEventData';
 import ChangeGuardPubkey200Response from './model/ChangeGuardPubkey200Response';
@@ -158,6 +165,7 @@ import CreateRefundLinkRequest from './model/CreateRefundLinkRequest';
 import CreateRefundRequest from './model/CreateRefundRequest';
 import CreateReportRequest from './model/CreateReportRequest';
 import CreateSafeWalletParams from './model/CreateSafeWalletParams';
+import CreateSatoshiTestChallengeRequest from './model/CreateSatoshiTestChallengeRequest';
 import CreateSettlement from './model/CreateSettlement';
 import CreateSettlementRequestRequest from './model/CreateSettlementRequestRequest';
 import CreateSmartContractWalletParams from './model/CreateSmartContractWalletParams';
@@ -322,6 +330,7 @@ import Link from './model/Link';
 import LinkDisplayInfo from './model/LinkDisplayInfo';
 import ListAddressBalancesByToken200Response from './model/ListAddressBalancesByToken200Response';
 import ListAddressBooks200Response from './model/ListAddressBooks200Response';
+import ListAddressVerifications200Response from './model/ListAddressVerifications200Response';
 import ListAddresses200Response from './model/ListAddresses200Response';
 import ListAllocationItems200Response from './model/ListAllocationItems200Response';
 import ListApprovalRequests200Response from './model/ListApprovalRequests200Response';
@@ -334,6 +343,7 @@ import ListBabylonEligibleStakings200ResponseDataInner from './model/ListBabylon
 import ListBabylonStakingRegistrations200Response from './model/ListBabylonStakingRegistrations200Response';
 import ListBatchAllocations200Response from './model/ListBatchAllocations200Response';
 import ListBulkSendItems200Response from './model/ListBulkSendItems200Response';
+import ListBulkSends200Response from './model/ListBulkSends200Response';
 import ListCallbackMessages200Response from './model/ListCallbackMessages200Response';
 import ListCounterparties200Response from './model/ListCounterparties200Response';
 import ListCounterpartyEntries200Response from './model/ListCounterpartyEntries200Response';
@@ -495,6 +505,10 @@ import SafeWallet from './model/SafeWallet';
 import SafeWalletDelegates from './model/SafeWalletDelegates';
 import SafeWalletDelegatesContractCall from './model/SafeWalletDelegatesContractCall';
 import SafeWalletDelegatesTransfer from './model/SafeWalletDelegatesTransfer';
+import SatoshiTestCancelResult from './model/SatoshiTestCancelResult';
+import SatoshiTestChallenge from './model/SatoshiTestChallenge';
+import SatoshiTestChallengeAction from './model/SatoshiTestChallengeAction';
+import SatoshiTestChallengeStatus from './model/SatoshiTestChallengeStatus';
 import Scopes from './model/Scopes';
 import SelectedEntityType from './model/SelectedEntityType';
 import SelfCustodyWallet from './model/SelfCustodyWallet';
@@ -504,6 +518,8 @@ import Settlement from './model/Settlement';
 import SettlementDetail from './model/SettlementDetail';
 import SettlementInfo from './model/SettlementInfo';
 import SettlementType from './model/SettlementType';
+import SignatureChallenge from './model/SignatureChallenge';
+import SignatureDetail from './model/SignatureDetail';
 import SkipCheckType from './model/SkipCheckType';
 import SmartContractInitiator from './model/SmartContractInitiator';
 import SmartContractWalletInfo from './model/SmartContractWalletInfo';
@@ -778,6 +794,7 @@ import TravelRuleDepositLegalEntity from './model/TravelRuleDepositLegalEntity';
 import TravelRuleDepositNaturalEntity from './model/TravelRuleDepositNaturalEntity';
 import TravelRuleDepositRequest from './model/TravelRuleDepositRequest';
 import TravelRuleDepositRequestTravelRuleInfo from './model/TravelRuleDepositRequestTravelRuleInfo';
+import TravelRuleTransactionType from './model/TravelRuleTransactionType';
 import TravelRuleWithdrawExchangesOrVASP from './model/TravelRuleWithdrawExchangesOrVASP';
 import TravelRuleWithdrawExchangesOrVASPEntityInfo from './model/TravelRuleWithdrawExchangesOrVASPEntityInfo';
 import TravelRuleWithdrawLegalEntity from './model/TravelRuleWithdrawLegalEntity';
@@ -881,7 +898,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.35.0
+* @version 1.36.0
 */
 export {
     Env,
@@ -994,6 +1011,42 @@ export {
      * @property {module:model/AddressTransferDestinationUtxoOutputsInner}
      */
     AddressTransferDestinationUtxoOutputsInner,
+
+    /**
+     * The AddressVerification model constructor.
+     * @property {module:model/AddressVerification}
+     */
+    AddressVerification,
+
+    /**
+     * The AddressVerificationDetail model constructor.
+     * @property {module:model/AddressVerificationDetail}
+     */
+    AddressVerificationDetail,
+
+    /**
+     * The AddressVerificationDetailSatoshiTestDetail model constructor.
+     * @property {module:model/AddressVerificationDetailSatoshiTestDetail}
+     */
+    AddressVerificationDetailSatoshiTestDetail,
+
+    /**
+     * The AddressVerificationDetailSignatureDetail model constructor.
+     * @property {module:model/AddressVerificationDetailSignatureDetail}
+     */
+    AddressVerificationDetailSignatureDetail,
+
+    /**
+     * The AddressVerificationMethod model constructor.
+     * @property {module:model/AddressVerificationMethod}
+     */
+    AddressVerificationMethod,
+
+    /**
+     * The AddressVerificationStatus model constructor.
+     * @property {module:model/AddressVerificationStatus}
+     */
+    AddressVerificationStatus,
 
     /**
      * The AddressesEventData model constructor.
@@ -1348,6 +1401,12 @@ export {
      * @property {module:model/CallbackMessage}
      */
     CallbackMessage,
+
+    /**
+     * The CancelSatoshiTestChallengeRequest model constructor.
+     * @property {module:model/CancelSatoshiTestChallengeRequest}
+     */
+    CancelSatoshiTestChallengeRequest,
 
     /**
      * The ChainInfo model constructor.
@@ -1762,6 +1821,12 @@ export {
      * @property {module:model/CreateSafeWalletParams}
      */
     CreateSafeWalletParams,
+
+    /**
+     * The CreateSatoshiTestChallengeRequest model constructor.
+     * @property {module:model/CreateSatoshiTestChallengeRequest}
+     */
+    CreateSatoshiTestChallengeRequest,
 
     /**
      * The CreateSettlement model constructor.
@@ -2748,6 +2813,12 @@ export {
     ListAddressBooks200Response,
 
     /**
+     * The ListAddressVerifications200Response model constructor.
+     * @property {module:model/ListAddressVerifications200Response}
+     */
+    ListAddressVerifications200Response,
+
+    /**
      * The ListAddresses200Response model constructor.
      * @property {module:model/ListAddresses200Response}
      */
@@ -2818,6 +2889,12 @@ export {
      * @property {module:model/ListBulkSendItems200Response}
      */
     ListBulkSendItems200Response,
+
+    /**
+     * The ListBulkSends200Response model constructor.
+     * @property {module:model/ListBulkSends200Response}
+     */
+    ListBulkSends200Response,
 
     /**
      * The ListCallbackMessages200Response model constructor.
@@ -3786,6 +3863,30 @@ export {
     SafeWalletDelegatesTransfer,
 
     /**
+     * The SatoshiTestCancelResult model constructor.
+     * @property {module:model/SatoshiTestCancelResult}
+     */
+    SatoshiTestCancelResult,
+
+    /**
+     * The SatoshiTestChallenge model constructor.
+     * @property {module:model/SatoshiTestChallenge}
+     */
+    SatoshiTestChallenge,
+
+    /**
+     * The SatoshiTestChallengeAction model constructor.
+     * @property {module:model/SatoshiTestChallengeAction}
+     */
+    SatoshiTestChallengeAction,
+
+    /**
+     * The SatoshiTestChallengeStatus model constructor.
+     * @property {module:model/SatoshiTestChallengeStatus}
+     */
+    SatoshiTestChallengeStatus,
+
+    /**
      * The Scopes model constructor.
      * @property {module:model/Scopes}
      */
@@ -3838,6 +3939,18 @@ export {
      * @property {module:model/SettlementType}
      */
     SettlementType,
+
+    /**
+     * The SignatureChallenge model constructor.
+     * @property {module:model/SignatureChallenge}
+     */
+    SignatureChallenge,
+
+    /**
+     * The SignatureDetail model constructor.
+     * @property {module:model/SignatureDetail}
+     */
+    SignatureDetail,
 
     /**
      * The SkipCheckType model constructor.
@@ -5482,6 +5595,12 @@ export {
      * @property {module:model/TravelRuleDepositRequestTravelRuleInfo}
      */
     TravelRuleDepositRequestTravelRuleInfo,
+
+    /**
+     * The TravelRuleTransactionType model constructor.
+     * @property {module:model/TravelRuleTransactionType}
+     */
+    TravelRuleTransactionType,
 
     /**
      * The TravelRuleWithdrawExchangesOrVASP model constructor.

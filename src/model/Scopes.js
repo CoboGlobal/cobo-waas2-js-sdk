@@ -72,35 +72,25 @@ class Scopes {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Scopes</code>.
      */
     static validateJSON(data) {
-        if (data['wallet_types']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['wallet_types'])) {
-                throw new Error("Expected the field `wallet_types` to be an array in the JSON data but got " + data['wallet_types']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['wallet_types'])) {
+            throw new Error("Expected the field `wallet_types` to be an array in the JSON data but got " + data['wallet_types']);
         }
-        if (data['wallet_subtypes']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['wallet_subtypes'])) {
-                throw new Error("Expected the field `wallet_subtypes` to be an array in the JSON data but got " + data['wallet_subtypes']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['wallet_subtypes'])) {
+            throw new Error("Expected the field `wallet_subtypes` to be an array in the JSON data but got " + data['wallet_subtypes']);
         }
-        if (data['wallet_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['wallet_ids'])) {
-                throw new Error("Expected the field `wallet_ids` to be an array in the JSON data but got " + data['wallet_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['wallet_ids'])) {
+            throw new Error("Expected the field `wallet_ids` to be an array in the JSON data but got " + data['wallet_ids']);
         }
-        if (data['vault_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['vault_ids'])) {
-                throw new Error("Expected the field `vault_ids` to be an array in the JSON data but got " + data['vault_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['vault_ids'])) {
+            throw new Error("Expected the field `vault_ids` to be an array in the JSON data but got " + data['vault_ids']);
         }
-        if (data['project_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['project_ids'])) {
-                throw new Error("Expected the field `project_ids` to be an array in the JSON data but got " + data['project_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['project_ids'])) {
+            throw new Error("Expected the field `project_ids` to be an array in the JSON data but got " + data['project_ids']);
         }
 
         return true;

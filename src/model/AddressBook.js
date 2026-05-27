@@ -106,15 +106,15 @@ class AddressBook {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
+        if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['entry_id'] === 'string' || data['entry_id'] instanceof String)) {
+        if (data['entry_id'] && !(typeof data['entry_id'] === 'string' || data['entry_id'] instanceof String)) {
             throw new Error("Expected the field `entry_id` to be a primitive type in the JSON string but got " + data['entry_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
@@ -126,14 +126,12 @@ class AddressBook {
             throw new Error("Expected the field `wallet_name` to be a primitive type in the JSON string but got " + data['wallet_name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['label'] === 'string' || data['label'] instanceof String)) {
+        if (data['label'] && !(typeof data['label'] === 'string' || data['label'] instanceof String)) {
             throw new Error("Expected the field `label` to be a primitive type in the JSON string but got " + data['label']);
         }
-        if (data['chain_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['chain_ids'])) {
-                throw new Error("Expected the field `chain_ids` to be an array in the JSON data but got " + data['chain_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['chain_ids'])) {
+            throw new Error("Expected the field `chain_ids` to be an array in the JSON data but got " + data['chain_ids']);
         }
         // ensure the json data is a string
         if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {

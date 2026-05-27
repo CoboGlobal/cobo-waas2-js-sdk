@@ -70,6 +70,9 @@ class ApprovalUserDetail {
             if (data.hasOwnProperty('created_time')) {
                 obj['created_time'] = ApiClient.convertToType(data['created_time'], 'Number');
             }
+            if (data.hasOwnProperty('expired_time')) {
+                obj['expired_time'] = ApiClient.convertToType(data['expired_time'], 'Number');
+            }
             if (data.hasOwnProperty('template_version')) {
                 obj['template_version'] = ApiClient.convertToType(data['template_version'], 'String');
             }
@@ -207,6 +210,12 @@ ApprovalUserDetail.prototype['approval_result_code'] = undefined;
  * @member {Number} created_time
  */
 ApprovalUserDetail.prototype['created_time'] = undefined;
+
+/**
+ * The timestamp when the approval was expired.
+ * @member {Number} expired_time
+ */
+ApprovalUserDetail.prototype['expired_time'] = undefined;
 
 /**
  * Version of the template used for the transaction approval.

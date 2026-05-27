@@ -105,19 +105,19 @@ class KyaScreeningResult {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['screening_id'] === 'string' || data['screening_id'] instanceof String)) {
+        if (data['screening_id'] && !(typeof data['screening_id'] === 'string' || data['screening_id'] instanceof String)) {
             throw new Error("Expected the field `screening_id` to be a primitive type in the JSON string but got " + data['screening_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
         // ensure the json data is a string
@@ -125,7 +125,7 @@ class KyaScreeningResult {
             throw new Error("Expected the field `note` to be a primitive type in the JSON string but got " + data['note']);
         }
         // ensure the json data is a string
-        if (!(typeof data['requested_by'] === 'string' || data['requested_by'] instanceof String)) {
+        if (data['requested_by'] && !(typeof data['requested_by'] === 'string' || data['requested_by'] instanceof String)) {
             throw new Error("Expected the field `requested_by` to be a primitive type in the JSON string but got " + data['requested_by']);
         }
         // validate the optional field `risk_assessment`

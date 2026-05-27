@@ -80,13 +80,17 @@ class GetMaxTransferableValueWithFeeModelRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
-        // validate the required field `fee`
-        TransactionRequestFee.validateJSON(data['fee']);
+        // validate the optional field `fee`
+        if (data['fee']) { // data not null
+          if (!!TransactionRequestFee.validateJSON) {
+            TransactionRequestFee.validateJSON(data['fee']);
+          }
+        }
         // ensure the json data is a string
-        if (!(typeof data['to_address'] === 'string' || data['to_address'] instanceof String)) {
+        if (data['to_address'] && !(typeof data['to_address'] === 'string' || data['to_address'] instanceof String)) {
             throw new Error("Expected the field `to_address` to be a primitive type in the JSON string but got " + data['to_address']);
         }
         // ensure the json data is a string

@@ -98,7 +98,7 @@ class Counterparty {
             throw new Error("Expected the field `counterparty_id` to be a primitive type in the JSON string but got " + data['counterparty_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
+        if (data['counterparty_name'] && !(typeof data['counterparty_name'] === 'string' || data['counterparty_name'] instanceof String)) {
             throw new Error("Expected the field `counterparty_name` to be a primitive type in the JSON string but got " + data['counterparty_name']);
         }
         // ensure the json data is a string

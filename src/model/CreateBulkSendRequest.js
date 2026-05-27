@@ -52,6 +52,9 @@ class CreateBulkSendRequest {
         if (data) {
             obj = obj || new CreateBulkSendRequest();
 
+            if (data.hasOwnProperty('request_id')) {
+                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
+            }
             if (data.hasOwnProperty('source_account')) {
                 obj['source_account'] = ApiClient.convertToType(data['source_account'], 'String');
             }
@@ -81,21 +84,27 @@ class CreateBulkSendRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
+        }
+        // ensure the json data is a string
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
             throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['payout_params'])) {
-            throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
+        if (data['payout_params']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['payout_params'])) {
+                throw new Error("Expected the field `payout_params` to be an array in the JSON data but got " + data['payout_params']);
+            }
+            // validate the optional field `payout_params` (array)
+            for (const item of data['payout_params']) {
+                CreateBulkSendRequestPayoutParamsInner.validateJSON(item);
+            };
         }
-        // validate the required field `payout_params` (array)
-        for (const item of data['payout_params']) {
-            CreateBulkSendRequestPayoutParamsInner.validateJSON(item);
-        };
 
         return true;
     }
@@ -104,6 +113,12 @@ class CreateBulkSendRequest {
 }
 
 CreateBulkSendRequest.RequiredProperties = ["source_account", "execution_mode", "payout_params"];
+
+/**
+ * The request ID that is used to track a bulk send request. The request ID is provided by you and must be unique within your system.
+ * @member {String} request_id
+ */
+CreateBulkSendRequest.prototype['request_id'] = undefined;
 
 /**
  * The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 

@@ -75,11 +75,11 @@ class SwapActivityTimeline {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['action'] === 'string' || data['action'] instanceof String)) {
+        if (data['action'] && !(typeof data['action'] === 'string' || data['action'] instanceof String)) {
             throw new Error("Expected the field `action` to be a primitive type in the JSON string but got " + data['action']);
         }
         // ensure the json data is a string
-        if (!(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
 

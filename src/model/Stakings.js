@@ -118,27 +118,29 @@ class Stakings {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['amounts'])) {
-            throw new Error("Expected the field `amounts` to be an array in the JSON data but got " + data['amounts']);
+        if (data['amounts']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['amounts'])) {
+                throw new Error("Expected the field `amounts` to be an array in the JSON data but got " + data['amounts']);
+            }
+            // validate the optional field `amounts` (array)
+            for (const item of data['amounts']) {
+                AmountDetailsInner.validateJSON(item);
+            };
         }
-        // validate the required field `amounts` (array)
-        for (const item of data['amounts']) {
-            AmountDetailsInner.validateJSON(item);
-        };
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // validate the optional field `validator_info`

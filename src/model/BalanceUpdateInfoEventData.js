@@ -98,23 +98,27 @@ class BalanceUpdateInfoEventData {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
+        if (data['data_type'] && !(typeof data['data_type'] === 'string' || data['data_type'] instanceof String)) {
             throw new Error("Expected the field `data_type` to be a primitive type in the JSON string but got " + data['data_type']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_uuid'] === 'string' || data['wallet_uuid'] instanceof String)) {
+        if (data['wallet_uuid'] && !(typeof data['wallet_uuid'] === 'string' || data['wallet_uuid'] instanceof String)) {
             throw new Error("Expected the field `wallet_uuid` to be a primitive type in the JSON string but got " + data['wallet_uuid']);
         }
-        // validate the required field `balance`
-        Balance.validateJSON(data['balance']);
+        // validate the optional field `balance`
+        if (data['balance']) { // data not null
+          if (!!Balance.validateJSON) {
+            Balance.validateJSON(data['balance']);
+          }
+        }
 
         return true;
     }

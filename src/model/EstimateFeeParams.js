@@ -32,11 +32,6 @@ class EstimateFeeParams {
             this.actualInstance = null;
             return;
         }
-        // Unwrap if already a wrapped oneOf instance of the same class
-        if (instance instanceof EstimateFeeParams) {
-            this.actualInstance = instance.getActualInstance();
-            return;
-        }
         var match = 0;
         var errorMessages = [];
         var discriminatorValue = instance["request_type"];

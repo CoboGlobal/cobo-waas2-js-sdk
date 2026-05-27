@@ -108,7 +108,7 @@ class SettlementInfo {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['available_amount'] === 'string' || data['available_amount'] instanceof String)) {
+        if (data['available_amount'] && !(typeof data['available_amount'] === 'string' || data['available_amount'] instanceof String)) {
             throw new Error("Expected the field `available_amount` to be a primitive type in the JSON string but got " + data['available_amount']);
         }
         // ensure the json data is a string

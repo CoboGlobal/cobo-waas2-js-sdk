@@ -75,8 +75,12 @@ class TokenizationListEnabledChainsResponse {
         if (!Array.isArray(data['data'])) {
             throw new Error("Expected the field `data` to be an array in the JSON data but got " + data['data']);
         }
-        // validate the required field `pagination`
-        Pagination.validateJSON(data['pagination']);
+        // validate the optional field `pagination`
+        if (data['pagination']) { // data not null
+          if (!!Pagination.validateJSON) {
+            Pagination.validateJSON(data['pagination']);
+          }
+        }
 
         return true;
     }

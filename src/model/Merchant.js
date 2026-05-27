@@ -89,15 +89,15 @@ class Merchant {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
+        if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
             throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
         }
         // ensure the json data is a string

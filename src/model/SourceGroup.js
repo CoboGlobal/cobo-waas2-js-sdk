@@ -70,14 +70,12 @@ class SourceGroup {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['key_share_holder_group_id'] === 'string' || data['key_share_holder_group_id'] instanceof String)) {
+        if (data['key_share_holder_group_id'] && !(typeof data['key_share_holder_group_id'] === 'string' || data['key_share_holder_group_id'] instanceof String)) {
             throw new Error("Expected the field `key_share_holder_group_id` to be a primitive type in the JSON string but got " + data['key_share_holder_group_id']);
         }
-        if (data['tss_node_ids']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['tss_node_ids'])) {
-                throw new Error("Expected the field `tss_node_ids` to be an array in the JSON data but got " + data['tss_node_ids']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['tss_node_ids'])) {
+            throw new Error("Expected the field `tss_node_ids` to be an array in the JSON data but got " + data['tss_node_ids']);
         }
 
         return true;

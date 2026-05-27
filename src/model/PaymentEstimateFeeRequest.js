@@ -76,14 +76,16 @@ class PaymentEstimateFeeRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['estimate_fees'])) {
-            throw new Error("Expected the field `estimate_fees` to be an array in the JSON data but got " + data['estimate_fees']);
+        if (data['estimate_fees']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['estimate_fees'])) {
+                throw new Error("Expected the field `estimate_fees` to be an array in the JSON data but got " + data['estimate_fees']);
+            }
+            // validate the optional field `estimate_fees` (array)
+            for (const item of data['estimate_fees']) {
+                PaymentEstimateFee.validateJSON(item);
+            };
         }
-        // validate the required field `estimate_fees` (array)
-        for (const item of data['estimate_fees']) {
-            PaymentEstimateFee.validateJSON(item);
-        };
         // ensure the json data is a string
         if (data['recipient_token_id'] && !(typeof data['recipient_token_id'] === 'string' || data['recipient_token_id'] instanceof String)) {
             throw new Error("Expected the field `recipient_token_id` to be a primitive type in the JSON string but got " + data['recipient_token_id']);

@@ -66,8 +66,12 @@ class TokenizationEstimateFeeRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `operation_params`
-        TokenizationEstimateFeeRequestOperationParams.validateJSON(data['operation_params']);
+        // validate the optional field `operation_params`
+        if (data['operation_params']) { // data not null
+          if (!!TokenizationEstimateFeeRequestOperationParams.validateJSON) {
+            TokenizationEstimateFeeRequestOperationParams.validateJSON(data['operation_params']);
+          }
+        }
 
         return true;
     }

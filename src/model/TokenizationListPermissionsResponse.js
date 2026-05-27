@@ -72,16 +72,22 @@ class TokenizationListPermissionsResponse {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['data'])) {
-            throw new Error("Expected the field `data` to be an array in the JSON data but got " + data['data']);
+        if (data['data']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['data'])) {
+                throw new Error("Expected the field `data` to be an array in the JSON data but got " + data['data']);
+            }
+            // validate the optional field `data` (array)
+            for (const item of data['data']) {
+                TokenizationListPermissionsResponseDataInner.validateJSON(item);
+            };
         }
-        // validate the required field `data` (array)
-        for (const item of data['data']) {
-            TokenizationListPermissionsResponseDataInner.validateJSON(item);
-        };
-        // validate the required field `pagination`
-        Pagination.validateJSON(data['pagination']);
+        // validate the optional field `pagination`
+        if (data['pagination']) { // data not null
+          if (!!Pagination.validateJSON) {
+            Pagination.validateJSON(data['pagination']);
+          }
+        }
 
         return true;
     }

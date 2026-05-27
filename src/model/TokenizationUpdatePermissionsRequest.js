@@ -90,22 +90,32 @@ class TokenizationUpdatePermissionsRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
-        // validate the required field `source`
-        TokenizationTokenOperationSource.validateJSON(data['source']);
-        // ensure the json data is an array
-        if (!Array.isArray(data['addresses'])) {
-            throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          if (!!TokenizationTokenOperationSource.validateJSON) {
+            TokenizationTokenOperationSource.validateJSON(data['source']);
+          }
         }
-        // validate the required field `addresses` (array)
-        for (const item of data['addresses']) {
-            TokenizationUpdateAddressPermissions.validateJSON(item);
-        };
+        if (data['addresses']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['addresses'])) {
+                throw new Error("Expected the field `addresses` to be an array in the JSON data but got " + data['addresses']);
+            }
+            // validate the optional field `addresses` (array)
+            for (const item of data['addresses']) {
+                TokenizationUpdateAddressPermissions.validateJSON(item);
+            };
+        }
         // ensure the json data is a string
         if (data['app_initiator'] && !(typeof data['app_initiator'] === 'string' || data['app_initiator'] instanceof String)) {
             throw new Error("Expected the field `app_initiator` to be a primitive type in the JSON string but got " + data['app_initiator']);
         }
-        // validate the required field `fee`
-        TransactionRequestFee.validateJSON(data['fee']);
+        // validate the optional field `fee`
+        if (data['fee']) { // data not null
+          if (!!TransactionRequestFee.validateJSON) {
+            TransactionRequestFee.validateJSON(data['fee']);
+          }
+        }
         // ensure the json data is a string
         if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);

@@ -52,6 +52,12 @@
       //expect(instance).to.be.a(CoboWaas2.CreateBulkSendRequest);
     });
 
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
+      //var instance = new CoboWaas2.CreateBulkSendRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property source_account (base name: "source_account")', function() {
       // uncomment below and update the code to test the property source_account
       //var instance = new CoboWaas2.CreateBulkSendRequest();

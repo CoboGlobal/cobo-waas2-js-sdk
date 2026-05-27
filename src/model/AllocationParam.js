@@ -86,23 +86,23 @@ class AllocationParam {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
+        if (data['source_account'] && !(typeof data['source_account'] === 'string' || data['source_account'] instanceof String)) {
             throw new Error("Expected the field `source_account` to be a primitive type in the JSON string but got " + data['source_account']);
         }
         // ensure the json data is a string
-        if (!(typeof data['destination_account'] === 'string' || data['destination_account'] instanceof String)) {
+        if (data['destination_account'] && !(typeof data['destination_account'] === 'string' || data['destination_account'] instanceof String)) {
             throw new Error("Expected the field `destination_account` to be a primitive type in the JSON string but got " + data['destination_account']);
         }
         // ensure the json data is a string
-        if (!(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
 

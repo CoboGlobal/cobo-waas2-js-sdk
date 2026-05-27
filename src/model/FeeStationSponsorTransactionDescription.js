@@ -71,11 +71,11 @@ class FeeStationSponsorTransactionDescription {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['total_fee_amount'] === 'string' || data['total_fee_amount'] instanceof String)) {
+        if (data['total_fee_amount'] && !(typeof data['total_fee_amount'] === 'string' || data['total_fee_amount'] instanceof String)) {
             throw new Error("Expected the field `total_fee_amount` to be a primitive type in the JSON string but got " + data['total_fee_amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['commission_fee'] === 'string' || data['commission_fee'] instanceof String)) {
+        if (data['commission_fee'] && !(typeof data['commission_fee'] === 'string' || data['commission_fee'] instanceof String)) {
             throw new Error("Expected the field `commission_fee` to be a primitive type in the JSON string but got " + data['commission_fee']);
         }
 

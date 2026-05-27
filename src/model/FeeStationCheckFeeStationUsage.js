@@ -95,7 +95,7 @@ class FeeStationCheckFeeStationUsage {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
@@ -111,15 +111,15 @@ class FeeStationCheckFeeStationUsage {
             throw new Error("Expected the field `fee_token_id` to be a primitive type in the JSON string but got " + data['fee_token_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['estimated_fee_amount'] === 'string' || data['estimated_fee_amount'] instanceof String)) {
+        if (data['estimated_fee_amount'] && !(typeof data['estimated_fee_amount'] === 'string' || data['estimated_fee_amount'] instanceof String)) {
             throw new Error("Expected the field `estimated_fee_amount` to be a primitive type in the JSON string but got " + data['estimated_fee_amount']);
         }
         // ensure the json data is a string
-        if (!(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
+        if (data['from_address'] && !(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
             throw new Error("Expected the field `from_address` to be a primitive type in the JSON string but got " + data['from_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['from_wallet_id'] === 'string' || data['from_wallet_id'] instanceof String)) {
+        if (data['from_wallet_id'] && !(typeof data['from_wallet_id'] === 'string' || data['from_wallet_id'] instanceof String)) {
             throw new Error("Expected the field `from_wallet_id` to be a primitive type in the JSON string but got " + data['from_wallet_id']);
         }
 

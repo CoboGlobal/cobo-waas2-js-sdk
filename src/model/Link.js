@@ -71,11 +71,11 @@ class Link {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token'] === 'string' || data['token'] instanceof String)) {
+        if (data['token'] && !(typeof data['token'] === 'string' || data['token'] instanceof String)) {
             throw new Error("Expected the field `token` to be a primitive type in the JSON string but got " + data['token']);
         }
 

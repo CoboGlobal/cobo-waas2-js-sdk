@@ -89,11 +89,11 @@ class TransactionRequestFILFee {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['gas_premium'] === 'string' || data['gas_premium'] instanceof String)) {
+        if (data['gas_premium'] && !(typeof data['gas_premium'] === 'string' || data['gas_premium'] instanceof String)) {
             throw new Error("Expected the field `gas_premium` to be a primitive type in the JSON string but got " + data['gas_premium']);
         }
         // ensure the json data is a string
-        if (!(typeof data['gas_fee_cap'] === 'string' || data['gas_fee_cap'] instanceof String)) {
+        if (data['gas_fee_cap'] && !(typeof data['gas_fee_cap'] === 'string' || data['gas_fee_cap'] instanceof String)) {
             throw new Error("Expected the field `gas_fee_cap` to be a primitive type in the JSON string but got " + data['gas_fee_cap']);
         }
         // ensure the json data is a string
@@ -101,7 +101,7 @@ class TransactionRequestFILFee {
             throw new Error("Expected the field `gas_limit` to be a primitive type in the JSON string but got " + data['gas_limit']);
         }
         // ensure the json data is a string
-        if (!(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
         }
 

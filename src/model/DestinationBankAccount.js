@@ -134,39 +134,39 @@ class DestinationBankAccount {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
+        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
             throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['account_alias'] === 'string' || data['account_alias'] instanceof String)) {
+        if (data['account_alias'] && !(typeof data['account_alias'] === 'string' || data['account_alias'] instanceof String)) {
             throw new Error("Expected the field `account_alias` to be a primitive type in the JSON string but got " + data['account_alias']);
         }
         // ensure the json data is a string
-        if (!(typeof data['account_number'] === 'string' || data['account_number'] instanceof String)) {
+        if (data['account_number'] && !(typeof data['account_number'] === 'string' || data['account_number'] instanceof String)) {
             throw new Error("Expected the field `account_number` to be a primitive type in the JSON string but got " + data['account_number']);
         }
         // ensure the json data is a string
-        if (!(typeof data['swift_code'] === 'string' || data['swift_code'] instanceof String)) {
+        if (data['swift_code'] && !(typeof data['swift_code'] === 'string' || data['swift_code'] instanceof String)) {
             throw new Error("Expected the field `swift_code` to be a primitive type in the JSON string but got " + data['swift_code']);
         }
         // ensure the json data is a string
-        if (!(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
+        if (data['currency'] && !(typeof data['currency'] === 'string' || data['currency'] instanceof String)) {
             throw new Error("Expected the field `currency` to be a primitive type in the JSON string but got " + data['currency']);
         }
         // ensure the json data is a string
-        if (!(typeof data['beneficiary_name'] === 'string' || data['beneficiary_name'] instanceof String)) {
+        if (data['beneficiary_name'] && !(typeof data['beneficiary_name'] === 'string' || data['beneficiary_name'] instanceof String)) {
             throw new Error("Expected the field `beneficiary_name` to be a primitive type in the JSON string but got " + data['beneficiary_name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['beneficiary_address'] === 'string' || data['beneficiary_address'] instanceof String)) {
+        if (data['beneficiary_address'] && !(typeof data['beneficiary_address'] === 'string' || data['beneficiary_address'] instanceof String)) {
             throw new Error("Expected the field `beneficiary_address` to be a primitive type in the JSON string but got " + data['beneficiary_address']);
         }
         // ensure the json data is a string
-        if (!(typeof data['bank_name'] === 'string' || data['bank_name'] instanceof String)) {
+        if (data['bank_name'] && !(typeof data['bank_name'] === 'string' || data['bank_name'] instanceof String)) {
             throw new Error("Expected the field `bank_name` to be a primitive type in the JSON string but got " + data['bank_name']);
         }
         // ensure the json data is a string
-        if (!(typeof data['bank_address'] === 'string' || data['bank_address'] instanceof String)) {
+        if (data['bank_address'] && !(typeof data['bank_address'] === 'string' || data['bank_address'] instanceof String)) {
             throw new Error("Expected the field `bank_address` to be a primitive type in the JSON string but got " + data['bank_address']);
         }
         // ensure the json data is a string

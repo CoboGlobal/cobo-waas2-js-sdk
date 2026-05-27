@@ -80,11 +80,15 @@ class SubWalletAssetBalance {
             throw new Error("Expected the field `trading_account_type` to be a primitive type in the JSON string but got " + data['trading_account_type']);
         }
         // ensure the json data is a string
-        if (!(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
+        if (data['asset_id'] && !(typeof data['asset_id'] === 'string' || data['asset_id'] instanceof String)) {
             throw new Error("Expected the field `asset_id` to be a primitive type in the JSON string but got " + data['asset_id']);
         }
-        // validate the required field `balance`
-        Balance.validateJSON(data['balance']);
+        // validate the optional field `balance`
+        if (data['balance']) { // data not null
+          if (!!Balance.validateJSON) {
+            Balance.validateJSON(data['balance']);
+          }
+        }
 
         return true;
     }

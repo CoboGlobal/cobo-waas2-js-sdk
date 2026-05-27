@@ -73,7 +73,7 @@ class GraphQLRequest {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['query'] === 'string' || data['query'] instanceof String)) {
+        if (data['query'] && !(typeof data['query'] === 'string' || data['query'] instanceof String)) {
             throw new Error("Expected the field `query` to be a primitive type in the JSON string but got " + data['query']);
         }
         // ensure the json data is a string

@@ -73,11 +73,15 @@ class AddressBalance {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
-        // validate the required field `balance`
-        Balance.validateJSON(data['balance']);
+        // validate the optional field `balance`
+        if (data['balance']) { // data not null
+          if (!!Balance.validateJSON) {
+            Balance.validateJSON(data['balance']);
+          }
+        }
 
         return true;
     }

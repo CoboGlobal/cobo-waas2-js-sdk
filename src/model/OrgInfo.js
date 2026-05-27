@@ -76,7 +76,7 @@ class OrgInfo {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
+        if (data['org_id'] && !(typeof data['org_id'] === 'string' || data['org_id'] instanceof String)) {
             throw new Error("Expected the field `org_id` to be a primitive type in the JSON string but got " + data['org_id']);
         }
         // ensure the json data is a string

@@ -77,11 +77,11 @@ class Pagination {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['before'] === 'string' || data['before'] instanceof String)) {
+        if (data['before'] && !(typeof data['before'] === 'string' || data['before'] instanceof String)) {
             throw new Error("Expected the field `before` to be a primitive type in the JSON string but got " + data['before']);
         }
         // ensure the json data is a string
-        if (!(typeof data['after'] === 'string' || data['after'] instanceof String)) {
+        if (data['after'] && !(typeof data['after'] === 'string' || data['after'] instanceof String)) {
             throw new Error("Expected the field `after` to be a primitive type in the JSON string but got " + data['after']);
         }
 

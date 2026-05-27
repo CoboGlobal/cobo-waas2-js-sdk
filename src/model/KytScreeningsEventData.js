@@ -90,7 +90,7 @@ class KytScreeningsEventData {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
+        if (data['transaction_id'] && !(typeof data['transaction_id'] === 'string' || data['transaction_id'] instanceof String)) {
             throw new Error("Expected the field `transaction_id` to be a primitive type in the JSON string but got " + data['transaction_id']);
         }
 

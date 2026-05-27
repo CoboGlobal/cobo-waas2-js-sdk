@@ -18,16 +18,6 @@ import ListAssetBalancesForExchangeWallet200Response from '../model/ListAssetBal
 import ListExchanges200ResponseInner from '../model/ListExchanges200ResponseInner';
 import ListSupportedAssetsForExchange200Response from '../model/ListSupportedAssetsForExchange200Response';
 
-// Model class table — access class refs by name to avoid parameter-name shadowing
-const _modelClasses = {
-  'ChainInfo': ChainInfo,
-  'ErrorResponse': ErrorResponse,
-  'ExchangeId': ExchangeId,
-  'ListAssetBalancesForExchangeWallet200Response': ListAssetBalancesForExchangeWallet200Response,
-  'ListExchanges200ResponseInner': ListExchanges200ResponseInner,
-  'ListSupportedAssetsForExchange200Response': ListSupportedAssetsForExchange200Response,
-};
-
 /**
 * WalletsExchangeWallet service.
 * @module api/WalletsExchangeWalletApi

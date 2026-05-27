@@ -72,11 +72,11 @@ class CosmosContractCallMessage {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['type_url'] === 'string' || data['type_url'] instanceof String)) {
+        if (data['type_url'] && !(typeof data['type_url'] === 'string' || data['type_url'] instanceof String)) {
             throw new Error("Expected the field `type_url` to be a primitive type in the JSON string but got " + data['type_url']);
         }
         // ensure the json data is a string
-        if (!(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
             throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
         }
 

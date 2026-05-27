@@ -97,11 +97,15 @@ class EstimateContractCallFeeParams {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
         // ensure the json data is a string
-        if (!(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
-        // validate the required field `source`
-        ContractCallSource.validateJSON(data['source']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          if (!!ContractCallSource.validateJSON) {
+            ContractCallSource.validateJSON(data['source']);
+          }
+        }
         // validate the optional field `destination`
         if (data['destination']) { // data not null
           if (!!ContractCallDestination.validateJSON) {

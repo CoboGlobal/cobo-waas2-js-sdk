@@ -74,11 +74,9 @@ class EthStakeEstimatedFee {
             EstimatedFee.validateJSON(data['fee']);
           }
         }
-        if (data['validator_pubkeys']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['validator_pubkeys'])) {
-                throw new Error("Expected the field `validator_pubkeys` to be an array in the JSON data but got " + data['validator_pubkeys']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['validator_pubkeys'])) {
+            throw new Error("Expected the field `validator_pubkeys` to be an array in the JSON data but got " + data['validator_pubkeys']);
         }
         // ensure the json data is a string
         if (data['core_btc_staking_address'] && !(typeof data['core_btc_staking_address'] === 'string' || data['core_btc_staking_address'] instanceof String)) {

@@ -64,11 +64,9 @@ class UpdateWebhookEndpointByIdRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateWebhookEndpointByIdRequest</code>.
      */
     static validateJSON(data) {
-        if (data['subscribed_events']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['subscribed_events'])) {
-                throw new Error("Expected the field `subscribed_events` to be an array in the JSON data but got " + data['subscribed_events']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['subscribed_events'])) {
+            throw new Error("Expected the field `subscribed_events` to be an array in the JSON data but got " + data['subscribed_events']);
         }
         // ensure the json data is a string
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {

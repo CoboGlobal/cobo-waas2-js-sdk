@@ -36,10 +36,70 @@ import {ApiClient, Env} from "../../src/index.js";
   });
 
   describe('TravelRuleApi', function() {
+    describe('cancelSatoshiTestChallenge', function() {
+      it('should call cancelSatoshiTestChallenge successfully', function() {
+        //uncomment below and update the code to test cancelSatoshiTestChallenge
+        //instance.cancelSatoshiTestChallenge().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('createSatoshiTestChallenge', function() {
+      it('should call createSatoshiTestChallenge successfully', function() {
+        //uncomment below and update the code to test createSatoshiTestChallenge
+        //instance.createSatoshiTestChallenge().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getAddressVerification', function() {
+      it('should call getAddressVerification successfully', function() {
+        //uncomment below and update the code to test getAddressVerification
+        //instance.getAddressVerification().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getSatoshiTestChallenge', function() {
+      it('should call getSatoshiTestChallenge successfully', function() {
+        //uncomment below and update the code to test getSatoshiTestChallenge
+        //instance.getSatoshiTestChallenge().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getSignatureChallenge', function() {
+      it('should call getSignatureChallenge successfully', function() {
+        //uncomment below and update the code to test getSignatureChallenge
+        //instance.getSignatureChallenge().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getTransactionLimitation', function() {
       it('should call getTransactionLimitation successfully', function() {
         //uncomment below and update the code to test getTransactionLimitation
         //instance.getTransactionLimitation().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listAddressVerifications', function() {
+      it('should call listAddressVerifications successfully', function() {
+        //uncomment below and update the code to test listAddressVerifications
+        //instance.listAddressVerifications().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

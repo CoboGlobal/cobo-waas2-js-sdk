@@ -87,22 +87,24 @@ class TransactionRbf {
             }
         }
         // ensure the json data is a string
-        if (!(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
             throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
         }
-        // validate the required field `fee`
-        TransactionRequestFee.validateJSON(data['fee']);
+        // validate the optional field `fee`
+        if (data['fee']) { // data not null
+          if (!!TransactionRequestFee.validateJSON) {
+            TransactionRequestFee.validateJSON(data['fee']);
+          }
+        }
         // validate the optional field `source`
         if (data['source']) { // data not null
           if (!!TransactionRbfSource.validateJSON) {
             TransactionRbfSource.validateJSON(data['source']);
           }
         }
-        if (data['category_names']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['category_names'])) {
-                throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
-            }
+        // ensure the json data is an array
+        if (!Array.isArray(data['category_names'])) {
+            throw new Error("Expected the field `category_names` to be an array in the JSON data but got " + data['category_names']);
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
