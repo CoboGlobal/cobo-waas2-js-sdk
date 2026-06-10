@@ -88,6 +88,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "wallets.updated"
+         * @const
+         */
+        "wallets.updated" = "wallets.updated";
+
+    
+        /**
          * value: "wallets.token_listing.failed"
          * @const
          */
@@ -106,6 +113,27 @@ export default class WebhookEventType {
          * @const
          */
         "mpc_vaults.created" = "mpc_vaults.created";
+
+    
+        /**
+         * value: "mpc_vaults.updated"
+         * @const
+         */
+        "mpc_vaults.updated" = "mpc_vaults.updated";
+
+    
+        /**
+         * value: "mpc_vaults.deleted"
+         * @const
+         */
+        "mpc_vaults.deleted" = "mpc_vaults.deleted";
+
+    
+        /**
+         * value: "organizations.updated"
+         * @const
+         */
+        "organizations.updated" = "organizations.updated";
 
     
         /**

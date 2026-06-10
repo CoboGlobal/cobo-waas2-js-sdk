@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionFee from './CommissionFee';
 import PaymentBulkSend from './PaymentBulkSend';
 import PaymentBulkSendExecutionMode from './PaymentBulkSendExecutionMode';
 import PaymentBulkSendStatus from './PaymentBulkSendStatus';
@@ -25,7 +26,7 @@ class PaymentBulkSendEvent {
      * @alias module:model/PaymentBulkSendEvent
      * @implements module:model/WebhookEventDataType
      * @implements module:model/PaymentBulkSend
-     * @param data_type {module:model/PaymentBulkSendEvent.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data.
+     * @param data_type {module:model/PaymentBulkSendEvent.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
      * @param bulk_send_id {String} The bulk send ID.
      * @param source_account {String} The source account from which the bulk send will be made. - If the source account is a merchant account, provide the merchant's ID (e.g., \"M1001\"). - If the source account is the developer account, use the string `\"developer\"`. 
      * @param execution_mode {module:model/PaymentBulkSendExecutionMode} 
@@ -93,6 +94,9 @@ class PaymentBulkSendEvent {
             if (data.hasOwnProperty('updated_timestamp')) {
                 obj['updated_timestamp'] = ApiClient.convertToType(data['updated_timestamp'], 'Number');
             }
+            if (data.hasOwnProperty('commission_fee')) {
+                obj['commission_fee'] = ApiClient.convertToType(data['commission_fee'], CommissionFee);
+            }
         }
         return obj;
     }
@@ -129,6 +133,12 @@ class PaymentBulkSendEvent {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // validate the optional field `commission_fee`
+        if (data['commission_fee']) { // data not null
+          if (!!CommissionFee.validateJSON) {
+            CommissionFee.validateJSON(data['commission_fee']);
+          }
+        }
 
         return true;
     }
@@ -139,7 +149,7 @@ class PaymentBulkSendEvent {
 PaymentBulkSendEvent.RequiredProperties = ["data_type", "bulk_send_id", "source_account", "execution_mode", "status", "created_timestamp", "updated_timestamp"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/PaymentBulkSendEvent.DataTypeEnum} data_type
  */
 PaymentBulkSendEvent.prototype['data_type'] = undefined;
@@ -190,10 +200,16 @@ PaymentBulkSendEvent.prototype['created_timestamp'] = undefined;
  */
 PaymentBulkSendEvent.prototype['updated_timestamp'] = undefined;
 
+/**
+ * The commission fee. Not returned when no fee has been incurred, the actual charged amount once incurred, or `0` if refunded.
+ * @member {module:model/CommissionFee} commission_fee
+ */
+PaymentBulkSendEvent.prototype['commission_fee'] = undefined;
+
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBulkSend`: The payment bulk send event data. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -236,6 +252,11 @@ PaymentBulkSend.prototype['created_timestamp'] = undefined;
  * @member {Number} updated_timestamp
  */
 PaymentBulkSend.prototype['updated_timestamp'] = undefined;
+/**
+ * The commission fee. Not returned when no fee has been incurred, the actual charged amount once incurred, or `0` if refunded.
+ * @member {module:model/CommissionFee} commission_fee
+ */
+PaymentBulkSend.prototype['commission_fee'] = undefined;
 
 
 
@@ -365,6 +386,18 @@ PaymentBulkSendEvent['DataTypeEnum'] = {
      * @const
      */
     "ComplianceKyaScreenings": "ComplianceKyaScreenings",
+
+    /**
+     * value: "Organization"
+     * @const
+     */
+    "Organization": "Organization",
+
+    /**
+     * value: "FiatTransaction"
+     * @const
+     */
+    "FiatTransaction": "FiatTransaction",
 
     /**
      * value: "unknown_default_open_api"

@@ -222,7 +222,7 @@ PaymentPayout.prototype['initiator'] = undefined;
 PaymentPayout.prototype['actual_payout_amount'] = undefined;
 
 /**
- * The commission fees of the payout.
+ * The commission fees. Not returned when no fee has been incurred, the actual charged amounts once incurred, or `0` if refunded.
  * @member {Array.<module:model/CommissionFee>} commission_fees
  */
 PaymentPayout.prototype['commission_fees'] = undefined;

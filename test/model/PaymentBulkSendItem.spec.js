@@ -82,6 +82,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tx_hash (base name: "tx_hash")', function() {
+      // uncomment below and update the code to test the property tx_hash
+      //var instance = new CoboWaas2.PaymentBulkSendItem();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
       //var instance = new CoboWaas2.PaymentBulkSendItem();

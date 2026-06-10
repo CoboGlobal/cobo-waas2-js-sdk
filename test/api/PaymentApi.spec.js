@@ -466,6 +466,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listBalanceChanges', function() {
+      it('should call listBalanceChanges successfully', function() {
+        //uncomment below and update the code to test listBalanceChanges
+        //instance.listBalanceChanges().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listBatchAllocations', function() {
       it('should call listBatchAllocations successfully', function() {
         //uncomment below and update the code to test listBatchAllocations
