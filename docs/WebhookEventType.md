@@ -23,11 +23,19 @@
 
 * `wallets.created` (value: `"wallets.created"`)
 
+* `wallets.updated` (value: `"wallets.updated"`)
+
 * `wallets.token_listing.failed` (value: `"wallets.token_listing.failed"`)
 
 * `wallets.token_listing.succeeded` (value: `"wallets.token_listing.succeeded"`)
 
 * `mpc_vaults.created` (value: `"mpc_vaults.created"`)
+
+* `mpc_vaults.updated` (value: `"mpc_vaults.updated"`)
+
+* `mpc_vaults.deleted` (value: `"mpc_vaults.deleted"`)
+
+* `organizations.updated` (value: `"organizations.updated"`)
 
 * `fee_station.transaction.created` (value: `"fee_station.transaction.created"`)
 

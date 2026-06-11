@@ -73,6 +73,9 @@ class PaymentBulkSendItem {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
+            if (data.hasOwnProperty('tx_hash')) {
+                obj['tx_hash'] = ApiClient.convertToType(data['tx_hash'], 'String');
+            }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = PaymentBulkSendItemStatus.constructFromObject(data['status']);
             }
@@ -115,6 +118,10 @@ class PaymentBulkSendItem {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // ensure the json data is a string
+        if (data['tx_hash'] && !(typeof data['tx_hash'] === 'string' || data['tx_hash'] instanceof String)) {
+            throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
+        }
 
         return true;
     }
@@ -153,6 +160,12 @@ PaymentBulkSendItem.prototype['amount'] = undefined;
  * @member {String} description
  */
 PaymentBulkSendItem.prototype['description'] = undefined;
+
+/**
+ * The transaction hash of the bulk send item.
+ * @member {String} tx_hash
+ */
+PaymentBulkSendItem.prototype['tx_hash'] = undefined;
 
 /**
  * @member {module:model/PaymentBulkSendItemStatus} status

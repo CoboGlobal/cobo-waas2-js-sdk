@@ -281,6 +281,7 @@ import FeeStationSponsorTransactionDescription from './model/FeeStationSponsorTr
 import FeeStationTransactionType from './model/FeeStationTransactionType';
 import FeeStationTransfer from './model/FeeStationTransfer';
 import FeeType from './model/FeeType';
+import FiatTransactionEventData from './model/FiatTransactionEventData';
 import FixedFeeRate from './model/FixedFeeRate';
 import ForcedSweep from './model/ForcedSweep';
 import ForcedSweepRequest from './model/ForcedSweepRequest';
@@ -421,12 +422,17 @@ import OrderLinkBusinessInfoCustomExchangeRatesInner from './model/OrderLinkBusi
 import OrderLinkBusinessInfoPayableAmountsInner from './model/OrderLinkBusinessInfoPayableAmountsInner';
 import OrderStatus from './model/OrderStatus';
 import OrgInfo from './model/OrgInfo';
+import OrganizationEventData from './model/OrganizationEventData';
 import OriginalMainGroupHandling from './model/OriginalMainGroupHandling';
 import OtcFee from './model/OtcFee';
 import Pagination from './model/Pagination';
 import PayerAccount from './model/PayerAccount';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
 import PaymentAllocationAmount from './model/PaymentAllocationAmount';
+import PaymentBalanceChange from './model/PaymentBalanceChange';
+import PaymentBalanceChangeResponse from './model/PaymentBalanceChangeResponse';
+import PaymentBalanceChangeSourceType from './model/PaymentBalanceChangeSourceType';
+import PaymentBalanceFlowDirection from './model/PaymentBalanceFlowDirection';
 import PaymentBridgeStatus from './model/PaymentBridgeStatus';
 import PaymentBulkSend from './model/PaymentBulkSend';
 import PaymentBulkSendEvent from './model/PaymentBulkSendEvent';
@@ -898,7 +904,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.36.0
+* @version 1.37.0
 */
 export {
     Env,
@@ -2519,6 +2525,12 @@ export {
     FeeType,
 
     /**
+     * The FiatTransactionEventData model constructor.
+     * @property {module:model/FiatTransactionEventData}
+     */
+    FiatTransactionEventData,
+
+    /**
      * The FixedFeeRate model constructor.
      * @property {module:model/FixedFeeRate}
      */
@@ -3359,6 +3371,12 @@ export {
     OrgInfo,
 
     /**
+     * The OrganizationEventData model constructor.
+     * @property {module:model/OrganizationEventData}
+     */
+    OrganizationEventData,
+
+    /**
      * The OriginalMainGroupHandling model constructor.
      * @property {module:model/OriginalMainGroupHandling}
      */
@@ -3393,6 +3411,30 @@ export {
      * @property {module:model/PaymentAllocationAmount}
      */
     PaymentAllocationAmount,
+
+    /**
+     * The PaymentBalanceChange model constructor.
+     * @property {module:model/PaymentBalanceChange}
+     */
+    PaymentBalanceChange,
+
+    /**
+     * The PaymentBalanceChangeResponse model constructor.
+     * @property {module:model/PaymentBalanceChangeResponse}
+     */
+    PaymentBalanceChangeResponse,
+
+    /**
+     * The PaymentBalanceChangeSourceType model constructor.
+     * @property {module:model/PaymentBalanceChangeSourceType}
+     */
+    PaymentBalanceChangeSourceType,
+
+    /**
+     * The PaymentBalanceFlowDirection model constructor.
+     * @property {module:model/PaymentBalanceFlowDirection}
+     */
+    PaymentBalanceFlowDirection,
 
     /**
      * The PaymentBridgeStatus model constructor.

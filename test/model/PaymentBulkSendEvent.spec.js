@@ -106,6 +106,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property commission_fee (base name: "commission_fee")', function() {
+      // uncomment below and update the code to test the property commission_fee
+      //var instance = new CoboWaas2.PaymentBulkSendEvent();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

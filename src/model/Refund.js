@@ -112,7 +112,7 @@ class Refund {
                 obj['merchant_fee_token_id'] = ApiClient.convertToType(data['merchant_fee_token_id'], 'String');
             }
             if (data.hasOwnProperty('commission_fee')) {
-                obj['commission_fee'] = CommissionFee.constructFromObject(data['commission_fee']);
+                obj['commission_fee'] = ApiClient.convertToType(data['commission_fee'], CommissionFee);
             }
         }
         return obj;
@@ -300,6 +300,7 @@ Refund.prototype['merchant_fee_amount'] = undefined;
 Refund.prototype['merchant_fee_token_id'] = undefined;
 
 /**
+ * The commission fee. Not returned when no fee has been incurred, the actual charged amount once incurred, or `0` if refunded.
  * @member {module:model/CommissionFee} commission_fee
  */
 Refund.prototype['commission_fee'] = undefined;

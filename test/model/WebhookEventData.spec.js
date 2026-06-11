@@ -706,6 +706,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property org_id (base name: "org_id")', function() {
+      // uncomment below and update the code to test the property org_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property main_transaction_id (base name: "main_transaction_id")', function() {
+      // uncomment below and update the code to test the property main_transaction_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fiat_currency (base name: "fiat_currency")', function() {
+      // uncomment below and update the code to test the property fiat_currency
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property modified_timestamp (base name: "modified_timestamp")', function() {
+      // uncomment below and update the code to test the property modified_timestamp
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

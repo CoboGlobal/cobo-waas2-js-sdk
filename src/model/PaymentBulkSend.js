@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionFee from './CommissionFee';
 import PaymentBulkSendExecutionMode from './PaymentBulkSendExecutionMode';
 import PaymentBulkSendStatus from './PaymentBulkSendStatus';
 
@@ -82,6 +83,9 @@ class PaymentBulkSend {
             if (data.hasOwnProperty('updated_timestamp')) {
                 obj['updated_timestamp'] = ApiClient.convertToType(data['updated_timestamp'], 'Number');
             }
+            if (data.hasOwnProperty('commission_fee')) {
+                obj['commission_fee'] = ApiClient.convertToType(data['commission_fee'], CommissionFee);
+            }
         }
         return obj;
     }
@@ -113,6 +117,12 @@ class PaymentBulkSend {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // validate the optional field `commission_fee`
+        if (data['commission_fee']) { // data not null
+          if (!!CommissionFee.validateJSON) {
+            CommissionFee.validateJSON(data['commission_fee']);
+          }
         }
 
         return true;
@@ -168,6 +178,12 @@ PaymentBulkSend.prototype['created_timestamp'] = undefined;
  * @member {Number} updated_timestamp
  */
 PaymentBulkSend.prototype['updated_timestamp'] = undefined;
+
+/**
+ * The commission fee. Not returned when no fee has been incurred, the actual charged amount once incurred, or `0` if refunded.
+ * @member {module:model/CommissionFee} commission_fee
+ */
+PaymentBulkSend.prototype['commission_fee'] = undefined;
 
 
 
