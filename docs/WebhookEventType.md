@@ -73,6 +73,8 @@
 
 * `payment.transaction.failed` (value: `"payment.transaction.failed"`)
 
+* `payment.account.balance.updated` (value: `"payment.account.balance.updated"`)
+
 * `payment.status.updated` (value: `"payment.status.updated"`)
 
 * `payment.order.status.updated` (value: `"payment.order.status.updated"`)

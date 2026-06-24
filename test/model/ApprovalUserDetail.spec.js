@@ -154,6 +154,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property result_token (base name: "result_token")', function() {
+      // uncomment below and update the code to test the property result_token
+      //var instance = new CoboWaas2.ApprovalUserDetail();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

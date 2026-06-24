@@ -138,7 +138,7 @@ TransactionSOLFee.RequiredProperties = ["fee_type"];
 TransactionSOLFee.prototype['base_fee'] = undefined;
 
 /**
- * The rent fee charged by the network to store non–rent-exempt accounts on-chain. It is deducted periodically until the account maintains the minimum balance required for rent exemption.
+ * The one-time rent required to create and initialize a Solana token Associated Token Account (ATA) — a token sub-address that must be activated before the token can be received or used. This rent is paid by the main (source) address. It is populated only when an ATA must be activated for the transaction; otherwise it is null. 
  * @member {String} rent_amount
  */
 TransactionSOLFee.prototype['rent_amount'] = undefined;
@@ -167,7 +167,7 @@ TransactionSOLFee.prototype['fee_type'] = undefined;
 TransactionSOLFee.prototype['token_id'] = undefined;
 
 /**
- * The actually charged transaction fee.
+ * The actual on-chain network transaction fee charged for this Solana transaction. For Solana, this value covers the network fee only and does NOT include `rent_amount`. The total cost deducted from the transaction's source (withdrawal) address is `fee_used` + `rent_amount`, both paid by the same source address. 
  * @member {String} fee_used
  */
 TransactionSOLFee.prototype['fee_used'] = undefined;
@@ -186,7 +186,7 @@ TransactionSOLFee.prototype['estimated_fee_used'] = undefined;
  */
 SOLBase.prototype['base_fee'] = undefined;
 /**
- * The rent fee charged by the network to store non–rent-exempt accounts on-chain. It is deducted periodically until the account maintains the minimum balance required for rent exemption.
+ * The one-time rent required to create and initialize a Solana token Associated Token Account (ATA) — a token sub-address that must be activated before the token can be received or used. This rent is paid by the main (source) address. It is populated only when an ATA must be activated for the transaction; otherwise it is null. 
  * @member {String} rent_amount
  */
 SOLBase.prototype['rent_amount'] = undefined;

@@ -132,7 +132,7 @@ CreateBulkSendRequest.prototype['source_account'] = undefined;
 CreateBulkSendRequest.prototype['execution_mode'] = undefined;
 
 /**
- * The description for the entire bulk send batch.
+ * The description for the entire bulk send batch. Maximum length: 255 characters.
  * @member {String} description
  */
 CreateBulkSendRequest.prototype['description'] = undefined;

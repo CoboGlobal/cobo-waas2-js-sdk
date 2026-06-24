@@ -274,6 +274,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property merchant_id (base name: "merchant_id")', function() {
+      // uncomment below and update the code to test the property merchant_id
+      //var instance = new CoboWaas2.PaymentTransactionEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subscription_id (base name: "subscription_id")', function() {
+      // uncomment below and update the code to test the property subscription_id
+      //var instance = new CoboWaas2.PaymentTransactionEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property action_id (base name: "action_id")', function() {
+      // uncomment below and update the code to test the property action_id
+      //var instance = new CoboWaas2.PaymentTransactionEventData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
