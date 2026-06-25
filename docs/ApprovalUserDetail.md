@@ -21,5 +21,6 @@ Name | Type | Description | Notes
 **message_version** | **String** | Version of the message format used for the transaction approval. | [optional] 
 **message** | **String** | Message associated with the transaction approval. | [optional] 
 **extra_message** | **String** | Any additional message or information related to the transaction approval. | [optional] 
+**result_token** | **String** | The result token appended to the signing content when verifying signatures. The full signing content is constructed as &#x60;{message}||{result_token}&#x60;.  | [optional] 
 
 

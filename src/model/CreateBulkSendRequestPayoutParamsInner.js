@@ -122,7 +122,7 @@ CreateBulkSendRequestPayoutParamsInner.prototype['receiving_address'] = undefine
 CreateBulkSendRequestPayoutParamsInner.prototype['amount'] = undefined;
 
 /**
- * A note or comment about the bulk send item.
+ * A note or comment about the bulk send item. Maximum length: 255 characters.
  * @member {String} description
  */
 CreateBulkSendRequestPayoutParamsInner.prototype['description'] = undefined;

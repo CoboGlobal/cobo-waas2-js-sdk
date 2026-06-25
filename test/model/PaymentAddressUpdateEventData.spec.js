@@ -70,6 +70,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property merchant_id (base name: "merchant_id")', function() {
+      // uncomment below and update the code to test the property merchant_id
+      //var instance = new CoboWaas2.PaymentAddressUpdateEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property chain (base name: "chain")', function() {
       // uncomment below and update the code to test the property chain
       //var instance = new CoboWaas2.PaymentAddressUpdateEventData();

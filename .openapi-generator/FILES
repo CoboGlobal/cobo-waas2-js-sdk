@@ -428,6 +428,7 @@ docs/OriginalMainGroupHandling.md
 docs/OtcFee.md
 docs/Pagination.md
 docs/PayerAccount.md
+docs/PaymentAccountBalanceUpdateEventData.md
 docs/PaymentAddressUpdateEventData.md
 docs/PaymentAllocationAmount.md
 docs/PaymentApi.md
@@ -1309,6 +1310,7 @@ src/model/OriginalMainGroupHandling.js
 src/model/OtcFee.js
 src/model/Pagination.js
 src/model/PayerAccount.js
+src/model/PaymentAccountBalanceUpdateEventData.js
 src/model/PaymentAddressUpdateEventData.js
 src/model/PaymentAllocationAmount.js
 src/model/PaymentBalanceChange.js
@@ -2168,6 +2170,7 @@ test/model/OriginalMainGroupHandling.spec.js
 test/model/OtcFee.spec.js
 test/model/Pagination.spec.js
 test/model/PayerAccount.spec.js
+test/model/PaymentAccountBalanceUpdateEventData.spec.js
 test/model/PaymentAddressUpdateEventData.spec.js
 test/model/PaymentAllocationAmount.spec.js
 test/model/PaymentBalanceChange.spec.js

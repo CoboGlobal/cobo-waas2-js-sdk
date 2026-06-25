@@ -427,6 +427,7 @@ import OriginalMainGroupHandling from './model/OriginalMainGroupHandling';
 import OtcFee from './model/OtcFee';
 import Pagination from './model/Pagination';
 import PayerAccount from './model/PayerAccount';
+import PaymentAccountBalanceUpdateEventData from './model/PaymentAccountBalanceUpdateEventData';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
 import PaymentAllocationAmount from './model/PaymentAllocationAmount';
 import PaymentBalanceChange from './model/PaymentBalanceChange';
@@ -904,7 +905,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.37.0
+* @version 1.38.0
 */
 export {
     Env,
@@ -3399,6 +3400,12 @@ export {
      * @property {module:model/PayerAccount}
      */
     PayerAccount,
+
+    /**
+     * The PaymentAccountBalanceUpdateEventData model constructor.
+     * @property {module:model/PaymentAccountBalanceUpdateEventData}
+     */
+    PaymentAccountBalanceUpdateEventData,
 
     /**
      * The PaymentAddressUpdateEventData model constructor.

@@ -97,6 +97,9 @@ class ApprovalUserDetail {
             if (data.hasOwnProperty('extra_message')) {
                 obj['extra_message'] = ApiClient.convertToType(data['extra_message'], 'String');
             }
+            if (data.hasOwnProperty('result_token')) {
+                obj['result_token'] = ApiClient.convertToType(data['result_token'], 'String');
+            }
         }
         return obj;
     }
@@ -154,6 +157,10 @@ class ApprovalUserDetail {
         // ensure the json data is a string
         if (data['extra_message'] && !(typeof data['extra_message'] === 'string' || data['extra_message'] instanceof String)) {
             throw new Error("Expected the field `extra_message` to be a primitive type in the JSON string but got " + data['extra_message']);
+        }
+        // ensure the json data is a string
+        if (data['result_token'] && !(typeof data['result_token'] === 'string' || data['result_token'] instanceof String)) {
+            throw new Error("Expected the field `result_token` to be a primitive type in the JSON string but got " + data['result_token']);
         }
 
         return true;
@@ -264,6 +271,12 @@ ApprovalUserDetail.prototype['message'] = undefined;
  * @member {String} extra_message
  */
 ApprovalUserDetail.prototype['extra_message'] = undefined;
+
+/**
+ * The result token appended to the signing content when verifying signatures. The full signing content is constructed as `{message}||{result_token}`. 
+ * @member {String} result_token
+ */
+ApprovalUserDetail.prototype['result_token'] = undefined;
 
 
 
