@@ -11,45 +11,45 @@
 
 import ApiClient from '../ApiClient';
 /**
-* Enum class TransactionExtraType.
+* Enum class BatchAllocationStatus.
 * @enum {}
 * @readonly
 */
-export default class TransactionExtraType {
+export default class BatchAllocationStatus {
     
         /**
-         * value: "BabylonBusinessInfo"
+         * value: "Pending"
          * @const
          */
-        "BabylonBusinessInfo" = "BabylonBusinessInfo";
+        "Pending" = "Pending";
 
     
         /**
-         * value: "BabylonTxParameters"
+         * value: "Processing"
          * @const
          */
-        "BabylonTxParameters" = "BabylonTxParameters";
+        "Processing" = "Processing";
 
     
         /**
-         * value: "CoreStakeInfo"
+         * value: "Completed"
          * @const
          */
-        "CoreStakeInfo" = "CoreStakeInfo";
+        "Completed" = "Completed";
 
     
         /**
-         * value: "WalletConnectInfo"
+         * value: "PartiallyCompleted"
          * @const
          */
-        "WalletConnectInfo" = "WalletConnectInfo";
+        "PartiallyCompleted" = "PartiallyCompleted";
 
     
         /**
-         * value: "FeePayer"
+         * value: "Failed"
          * @const
          */
-        "FeePayer" = "FeePayer";
+        "Failed" = "Failed";
 
     
         /**
@@ -61,9 +61,9 @@ export default class TransactionExtraType {
     
 
     /**
-    * Returns a <code>TransactionExtraType</code> enum value from a Javascript object name.
+    * Returns a <code>BatchAllocationStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/TransactionExtraType} The enum <code>TransactionExtraType</code> value.
+    * @return {module:model/BatchAllocationStatus} The enum <code>BatchAllocationStatus</code> value.
     */
     static constructFromObject(object) {
         return object;

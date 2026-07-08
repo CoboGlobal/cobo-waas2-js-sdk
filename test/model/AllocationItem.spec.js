@@ -94,6 +94,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new CoboWaas2.AllocationItem();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

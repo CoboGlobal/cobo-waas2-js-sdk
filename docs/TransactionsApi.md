@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 Estimate transaction fee
 
-This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees).  &lt;Note&gt;Fee estimates are point-in-time and short-lived. Because on-chain gas prices change continuously, re-estimate the fee immediately before submitting a withdrawal. Submitting a transaction based on a stale estimate may cause the transaction to be rejected because the fee is insufficient.&lt;/Note&gt; 
 
 ### Example
 
@@ -674,7 +674,8 @@ apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
 const apiInstance = new CoboWaas2.TransactionsApi();
 const template_key = "withdrawal";
 const opts = {
-  'template_version': "1.0.0"
+  'template_version': "1.0.0",
+  'action': new CoboWaas2.ApprovalAction()
 };
 apiInstance.listTransactionTemplates(template_key, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -691,6 +692,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **template_key** | **String**| Key of the transaction template used to create an approval message.  | 
  **template_version** | **String**| Version of the template. | [optional] 
+ **action** | [**ApprovalAction**](.md)| The approval action type. If omitted, &#x60;Transfer&#x60; is used by default. Possible values include:   - &#x60;Transfer&#x60;: To approve a transaction transfer.   - &#x60;Drop&#x60;: To approve dropping a transaction.   - &#x60;SpeedUp&#x60;: To approve speeding up a transaction.  | [optional] 
 
 ### Return type
 

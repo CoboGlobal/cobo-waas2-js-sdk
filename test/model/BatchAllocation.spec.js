@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new CoboWaas2.BatchAllocation();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.BatchAllocation();

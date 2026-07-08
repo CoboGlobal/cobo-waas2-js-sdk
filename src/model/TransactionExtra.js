@@ -16,6 +16,7 @@ import TransactionBabylonBusinessInfo from './TransactionBabylonBusinessInfo';
 import TransactionBabylonTxParameters from './TransactionBabylonTxParameters';
 import TransactionCoreStakeInfo from './TransactionCoreStakeInfo';
 import TransactionExtraType from './TransactionExtraType';
+import TransactionFeePayer from './TransactionFeePayer';
 import TransactionWalletConnectInfo from './TransactionWalletConnectInfo';
 
 /**
@@ -26,7 +27,7 @@ class TransactionExtra {
     /**
      * Constructs a new <code>TransactionExtra</code>.
      * @alias module:model/TransactionExtra
-     * @param {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionWalletConnectInfo)} instance The actual instance to initialize TransactionExtra.
+     * @param {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionFeePayer|module:model/TransactionWalletConnectInfo)} instance The actual instance to initialize TransactionExtra.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -49,6 +50,10 @@ class TransactionExtra {
                     break;
                 case "CoreStakeInfo":
                     this.actualInstance = TransactionCoreStakeInfo.constructFromObject(instance);
+                    match++;
+                    break;
+                case "FeePayer":
+                    this.actualInstance = TransactionFeePayer.constructFromObject(instance);
                     match++;
                     break;
                 case "WalletConnectInfo":
@@ -162,12 +167,37 @@ class TransactionExtra {
             errorMessages.push("Failed to construct TransactionWalletConnectInfo: " + err)
         }
 
+        try {
+            if (instance instanceof TransactionFeePayer) {
+                this.actualInstance = instance;
+            } else if(!!TransactionFeePayer.validateJSON && TransactionFeePayer.validateJSON(instance)){
+                // plain JS object
+                // create TransactionFeePayer from JS object
+                this.actualInstance = TransactionFeePayer.constructFromObject(instance);
+            } else {
+                if(TransactionFeePayer.constructFromObject(instance)) {
+                    if (!!TransactionFeePayer.constructFromObject(instance).toJSON) {
+                        if (TransactionFeePayer.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = TransactionFeePayer.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = TransactionFeePayer.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into TransactionFeePayer
+            errorMessages.push("Failed to construct TransactionFeePayer: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `TransactionExtra` with oneOf schemas TransactionBabylonBusinessInfo, TransactionBabylonTxParameters, TransactionCoreStakeInfo, TransactionWalletConnectInfo. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `TransactionExtra` with oneOf schemas TransactionBabylonBusinessInfo, TransactionBabylonTxParameters, TransactionCoreStakeInfo, TransactionFeePayer, TransactionWalletConnectInfo. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `TransactionExtra` with oneOf schemas TransactionBabylonBusinessInfo, TransactionBabylonTxParameters, TransactionCoreStakeInfo, TransactionWalletConnectInfo. Details: " +
+        //    throw new Error("No match found constructing `TransactionExtra` with oneOf schemas TransactionBabylonBusinessInfo, TransactionBabylonTxParameters, TransactionCoreStakeInfo, TransactionFeePayer, TransactionWalletConnectInfo. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -187,16 +217,16 @@ class TransactionExtra {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TransactionBabylonBusinessInfo</code>, <code>TransactionBabylonTxParameters</code>, <code>TransactionCoreStakeInfo</code>, <code>TransactionWalletConnectInfo</code>.
-     * @return {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionWalletConnectInfo)} The actual instance.
+     * Gets the actual instance, which can be <code>TransactionBabylonBusinessInfo</code>, <code>TransactionBabylonTxParameters</code>, <code>TransactionCoreStakeInfo</code>, <code>TransactionFeePayer</code>, <code>TransactionWalletConnectInfo</code>.
+     * @return {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionFeePayer|module:model/TransactionWalletConnectInfo)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TransactionBabylonBusinessInfo</code>, <code>TransactionBabylonTxParameters</code>, <code>TransactionCoreStakeInfo</code>, <code>TransactionWalletConnectInfo</code>.
-     * @param {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionWalletConnectInfo)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TransactionBabylonBusinessInfo</code>, <code>TransactionBabylonTxParameters</code>, <code>TransactionCoreStakeInfo</code>, <code>TransactionFeePayer</code>, <code>TransactionWalletConnectInfo</code>.
+     * @param {(module:model/TransactionBabylonBusinessInfo|module:model/TransactionBabylonTxParameters|module:model/TransactionCoreStakeInfo|module:model/TransactionFeePayer|module:model/TransactionWalletConnectInfo)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TransactionExtra.constructFromObject(obj).getActualInstance();
@@ -311,8 +341,14 @@ TransactionExtra.prototype['dapp_domain'] = undefined;
  */
 TransactionExtra.prototype['session_id'] = undefined;
 
+/**
+ * The address of the designated Solana fee payer account that covers the transaction fees, separating the fee payment from the main signer or source account.
+ * @member {String} fee_payer
+ */
+TransactionExtra.prototype['fee_payer'] = undefined;
 
-TransactionExtra.OneOf = ["TransactionBabylonBusinessInfo", "TransactionBabylonTxParameters", "TransactionCoreStakeInfo", "TransactionWalletConnectInfo"];
+
+TransactionExtra.OneOf = ["TransactionBabylonBusinessInfo", "TransactionBabylonTxParameters", "TransactionCoreStakeInfo", "TransactionFeePayer", "TransactionWalletConnectInfo"];
 
 export default TransactionExtra;
 

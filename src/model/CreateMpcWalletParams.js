@@ -23,7 +23,7 @@ class CreateMpcWalletParams {
      * Constructs a new <code>CreateMpcWalletParams</code>.
      * @alias module:model/CreateMpcWalletParams
      * @implements module:model/CreateCustodialWalletParams
-     * @param name {String} The wallet name.
+     * @param name {String} The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
      * @param wallet_type {module:model/WalletType} 
      * @param wallet_subtype {module:model/WalletSubtype} 
      * @param vault_id {String} The ID of the owning vault. You can call [List all vaults](https://www.cobo.com/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
@@ -106,7 +106,7 @@ class CreateMpcWalletParams {
 CreateMpcWalletParams.RequiredProperties = ["name", "wallet_type", "wallet_subtype", "vault_id"];
 
 /**
- * The wallet name.
+ * The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
  * @member {String} name
  */
 CreateMpcWalletParams.prototype['name'] = undefined;
@@ -136,7 +136,7 @@ CreateMpcWalletParams.prototype['vault_id'] = undefined;
 
 // Implement CreateCustodialWalletParams interface:
 /**
- * The wallet name.
+ * The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
  * @member {String} name
  */
 CreateCustodialWalletParams.prototype['name'] = undefined;

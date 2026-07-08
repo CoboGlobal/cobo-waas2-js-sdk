@@ -11,6 +11,7 @@
 
 
 import ApiClient from "../ApiClient";
+import ApprovalAction from '../model/ApprovalAction';
 import ApprovalDetail from '../model/ApprovalDetail';
 import ApprovalTemplate from '../model/ApprovalTemplate';
 import BroadcastSignedTransactions201ResponseInner from '../model/BroadcastSignedTransactions201ResponseInner';
@@ -421,7 +422,7 @@ export default class TransactionsApi {
 
     /**
      * Estimate transaction fee
-     * This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+     * This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees).  <Note>Fee estimates are point-in-time and short-lived. Because on-chain gas prices change continuously, re-estimate the fee immediately before submitting a withdrawal. Submitting a transaction based on a stale estimate may cause the transaction to be rejected because the fee is insufficient.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/EstimateFeeParams} [EstimateFeeParams] The request body to estimate the transaction fee of a token transfer or a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EstimatedFee} and HTTP response
@@ -455,7 +456,7 @@ export default class TransactionsApi {
 
     /**
      * Estimate transaction fee
-     * This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+     * This operation estimates the transaction fee of a token transfer or a contract call based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including the request ID, request type, source address, destination address, token ID (only applicable to token transfers), and chain ID (only applicable to contract calls).  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees).  <Note>Fee estimates are point-in-time and short-lived. Because on-chain gas prices change continuously, re-estimate the fee immediately before submitting a withdrawal. Submitting a transaction based on a stale estimate may cause the transaction to be rejected because the fee is insufficient.</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/EstimateFeeParams} opts.EstimateFeeParams The request body to estimate the transaction fee of a token transfer or a contract call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EstimatedFee}
@@ -685,6 +686,7 @@ export default class TransactionsApi {
      * @param {String} template_key Key of the transaction template used to create an approval message. 
      * @param {Object} opts Optional parameters
      * @param {String} [template_version] Version of the template.
+     * @param {module:model/ApprovalAction} [action] The approval action type. If omitted, `Transfer` is used by default. Possible values include:   - `Transfer`: To approve a transaction transfer.   - `Drop`: To approve dropping a transaction.   - `SpeedUp`: To approve speeding up a transaction. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ApprovalTemplate>} and HTTP response
      */
     listTransactionTemplatesWithHttpInfo(template_key, opts) {
@@ -702,7 +704,8 @@ export default class TransactionsApi {
       };
       let queryParams = {
         'template_key': template_key,
-        'template_version': opts['template_version']
+        'template_version': opts['template_version'],
+        'action': opts['action']
       };
       let headerParams = {
       };
@@ -726,6 +729,7 @@ export default class TransactionsApi {
      * @param {String} template_key Key of the transaction template used to create an approval message. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.template_version Version of the template.
+     * @param {module:model/ApprovalAction} opts.action The approval action type. If omitted, `Transfer` is used by default. Possible values include:   - `Transfer`: To approve a transaction transfer.   - `Drop`: To approve dropping a transaction.   - `SpeedUp`: To approve speeding up a transaction. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ApprovalTemplate>}
      */
     listTransactionTemplates(template_key, opts) {

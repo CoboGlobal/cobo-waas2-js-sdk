@@ -39,6 +39,13 @@ export default class PaymentBulkSendItemValidationStatus {
 
     
         /**
+         * value: "NotExecuted"
+         * @const
+         */
+        "NotExecuted" = "NotExecuted";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

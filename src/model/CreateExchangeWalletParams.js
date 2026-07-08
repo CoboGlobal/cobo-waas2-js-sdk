@@ -24,7 +24,7 @@ class CreateExchangeWalletParams {
      * Constructs a new <code>CreateExchangeWalletParams</code>.
      * @alias module:model/CreateExchangeWalletParams
      * @implements module:model/CreateCustodialWalletParams
-     * @param name {String} The wallet name.
+     * @param name {String} The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
      * @param wallet_type {module:model/WalletType} 
      * @param wallet_subtype {module:model/WalletSubtype} 
      * @param exchange_id {module:model/ExchangeId} 
@@ -156,7 +156,7 @@ class CreateExchangeWalletParams {
 CreateExchangeWalletParams.RequiredProperties = ["name", "wallet_type", "wallet_subtype", "exchange_id", "apikey", "secret"];
 
 /**
- * The wallet name.
+ * The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
  * @member {String} name
  */
 CreateExchangeWalletParams.prototype['name'] = undefined;
@@ -227,7 +227,7 @@ CreateExchangeWalletParams.prototype['main_wallet_id'] = undefined;
 
 // Implement CreateCustodialWalletParams interface:
 /**
- * The wallet name.
+ * The wallet name. This field is required and cannot be empty. Letters, numbers, and spaces are supported (for example, `My WaaS 2.0 Wallet`).  <Note>Some special characters are not accepted. For example, the at sign (`@`) is rejected. If the name is empty or contains unsupported characters, the request fails with a `400 Bad Request` error.</Note> 
  * @member {String} name
  */
 CreateCustodialWalletParams.prototype['name'] = undefined;

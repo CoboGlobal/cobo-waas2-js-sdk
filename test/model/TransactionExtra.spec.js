@@ -148,6 +148,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fee_payer (base name: "fee_payer")', function() {
+      // uncomment below and update the code to test the property fee_payer
+      //var instance = new CoboWaas2.TransactionExtra();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

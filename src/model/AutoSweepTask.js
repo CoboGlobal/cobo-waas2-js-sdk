@@ -149,7 +149,7 @@ AutoSweepTask.prototype['token_id'] = undefined;
 AutoSweepTask.prototype['status'] = undefined;
 
 /**
- * IDs of the transactions triggered by the task.
+ * IDs of the transactions triggered by the task. This array is empty while the task `status` is `Submitted`, and is populated only after the status becomes `TransactionCreated`. Poll [Get auto-sweep task details](https://www.cobo.com/developers/v2/api-references/autosweep/get-auto-sweep-task-details) until the transaction IDs are available. 
  * @member {Array.<String>} transaction_ids
  */
 AutoSweepTask.prototype['transaction_ids'] = undefined;
