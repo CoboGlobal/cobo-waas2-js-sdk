@@ -356,7 +356,7 @@ TransactionFee.prototype['fee_rate'] = undefined;
 TransactionFee.prototype['base_fee'] = undefined;
 
 /**
- * The one-time rent required to create and initialize a Solana token Associated Token Account (ATA) — a token sub-address that must be activated before the token can be received or used. This rent is paid by the main (source) address. It is populated only when an ATA must be activated for the transaction; otherwise it is null. 
+ * The one-time rent required to activate a Solana token Associated Token Account (ATA) before the token can be received or used. **This field is reserved for future use and is currently not populated.**
  * @member {String} rent_amount
  */
 TransactionFee.prototype['rent_amount'] = undefined;

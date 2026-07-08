@@ -39,6 +39,7 @@ import AddressVerificationStatus from './model/AddressVerificationStatus';
 import AddressesEventData from './model/AddressesEventData';
 import AddressesEventDataAllOfAddresses from './model/AddressesEventDataAllOfAddresses';
 import AllocationItem from './model/AllocationItem';
+import AllocationItemStatus from './model/AllocationItemStatus';
 import AllocationParam from './model/AllocationParam';
 import AmountDetailsInner from './model/AmountDetailsInner';
 import AmountStatus from './model/AmountStatus';
@@ -47,6 +48,7 @@ import ApiLogSummary from './model/ApiLogSummary';
 import AppWorkflow from './model/AppWorkflow';
 import AppWorkflowField from './model/AppWorkflowField';
 import AppWorkflowPolicy from './model/AppWorkflowPolicy';
+import ApprovalAction from './model/ApprovalAction';
 import ApprovalDetail from './model/ApprovalDetail';
 import ApprovalEntry from './model/ApprovalEntry';
 import ApprovalRequest from './model/ApprovalRequest';
@@ -88,6 +90,7 @@ import BaseStakeExtra from './model/BaseStakeExtra';
 import BaseStakeSource from './model/BaseStakeSource';
 import BatchAllocation from './model/BatchAllocation';
 import BatchAllocationDetail from './model/BatchAllocationDetail';
+import BatchAllocationStatus from './model/BatchAllocationStatus';
 import BatchCheckUtxo201Response from './model/BatchCheckUtxo201Response';
 import BatchCheckUtxoRequest from './model/BatchCheckUtxoRequest';
 import BatchUTXOParam from './model/BatchUTXOParam';
@@ -476,6 +479,7 @@ import PspBalance from './model/PspBalance';
 import QueryApprovalStatement200Response from './model/QueryApprovalStatement200Response';
 import QueryGuardPubkey200Response from './model/QueryGuardPubkey200Response';
 import QueryGuardPubkey200ResponseAddressesInner from './model/QueryGuardPubkey200ResponseAddressesInner';
+import RawMessageSignDestination from './model/RawMessageSignDestination';
 import RefreshAddressBalancesByToken200Response from './model/RefreshAddressBalancesByToken200Response';
 import RefreshAddressBalancesByTokenRequest from './model/RefreshAddressBalancesByTokenRequest';
 import RefreshPermissionTokenRequest from './model/RefreshPermissionTokenRequest';
@@ -734,6 +738,7 @@ import TransactionExtra from './model/TransactionExtra';
 import TransactionExtraType from './model/TransactionExtraType';
 import TransactionFILFee from './model/TransactionFILFee';
 import TransactionFee from './model/TransactionFee';
+import TransactionFeePayer from './model/TransactionFeePayer';
 import TransactionFeeStationWalletSource from './model/TransactionFeeStationWalletSource';
 import TransactionFixedFee from './model/TransactionFixedFee';
 import TransactionFuelingInfo from './model/TransactionFuelingInfo';
@@ -905,7 +910,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.38.0
+* @version 1.39.0
 */
 export {
     Env,
@@ -1074,6 +1079,12 @@ export {
     AllocationItem,
 
     /**
+     * The AllocationItemStatus model constructor.
+     * @property {module:model/AllocationItemStatus}
+     */
+    AllocationItemStatus,
+
+    /**
      * The AllocationParam model constructor.
      * @property {module:model/AllocationParam}
      */
@@ -1120,6 +1131,12 @@ export {
      * @property {module:model/AppWorkflowPolicy}
      */
     AppWorkflowPolicy,
+
+    /**
+     * The ApprovalAction model constructor.
+     * @property {module:model/ApprovalAction}
+     */
+    ApprovalAction,
 
     /**
      * The ApprovalDetail model constructor.
@@ -1366,6 +1383,12 @@ export {
      * @property {module:model/BatchAllocationDetail}
      */
     BatchAllocationDetail,
+
+    /**
+     * The BatchAllocationStatus model constructor.
+     * @property {module:model/BatchAllocationStatus}
+     */
+    BatchAllocationStatus,
 
     /**
      * The BatchCheckUtxo201Response model constructor.
@@ -3696,6 +3719,12 @@ export {
     QueryGuardPubkey200ResponseAddressesInner,
 
     /**
+     * The RawMessageSignDestination model constructor.
+     * @property {module:model/RawMessageSignDestination}
+     */
+    RawMessageSignDestination,
+
+    /**
      * The RefreshAddressBalancesByToken200Response model constructor.
      * @property {module:model/RefreshAddressBalancesByToken200Response}
      */
@@ -5242,6 +5271,12 @@ export {
      * @property {module:model/TransactionFee}
      */
     TransactionFee,
+
+    /**
+     * The TransactionFeePayer model constructor.
+     * @property {module:model/TransactionFeePayer}
+     */
+    TransactionFeePayer,
 
     /**
      * The TransactionFeeStationWalletSource model constructor.

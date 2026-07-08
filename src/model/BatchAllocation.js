@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import AllocationParam from './AllocationParam';
+import BatchAllocationStatus from './BatchAllocationStatus';
 
 /**
  * The BatchAllocation model module.
@@ -64,6 +65,9 @@ class BatchAllocation {
             }
             if (data.hasOwnProperty('initiator')) {
                 obj['initiator'] = ApiClient.convertToType(data['initiator'], 'String');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = BatchAllocationStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
@@ -140,6 +144,11 @@ BatchAllocation.prototype['allocation_params'] = undefined;
  * @member {String} initiator
  */
 BatchAllocation.prototype['initiator'] = undefined;
+
+/**
+ * @member {module:model/BatchAllocationStatus} status
+ */
+BatchAllocation.prototype['status'] = undefined;
 
 /**
  * The created time of the batch allocation, represented as a UNIX timestamp in seconds.

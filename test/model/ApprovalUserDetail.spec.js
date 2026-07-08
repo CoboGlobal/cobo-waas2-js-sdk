@@ -160,6 +160,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property action (base name: "action")', function() {
+      // uncomment below and update the code to test the property action
+      //var instance = new CoboWaas2.ApprovalUserDetail();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

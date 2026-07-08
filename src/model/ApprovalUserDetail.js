@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ApprovalAction from './ApprovalAction';
 import ApprovalResult from './ApprovalResult';
 
 /**
@@ -99,6 +100,9 @@ class ApprovalUserDetail {
             }
             if (data.hasOwnProperty('result_token')) {
                 obj['result_token'] = ApiClient.convertToType(data['result_token'], 'String');
+            }
+            if (data.hasOwnProperty('action')) {
+                obj['action'] = ApprovalAction.constructFromObject(data['action']);
             }
         }
         return obj;
@@ -277,6 +281,11 @@ ApprovalUserDetail.prototype['extra_message'] = undefined;
  * @member {String} result_token
  */
 ApprovalUserDetail.prototype['result_token'] = undefined;
+
+/**
+ * @member {module:model/ApprovalAction} action
+ */
+ApprovalUserDetail.prototype['action'] = undefined;
 
 
 

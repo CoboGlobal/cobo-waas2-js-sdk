@@ -422,7 +422,7 @@ TransactionWebhookEventData.prototype['confirmed_num'] = undefined;
 TransactionWebhookEventData.prototype['confirming_threshold'] = undefined;
 
 /**
- * The transaction hash.
+ * The transaction hash (on-chain transaction identifier, also referred to as `txid`).  This property is populated only after the transaction is broadcast on-chain, so it may be `null` or absent before broadcast. In contrast, `transaction_id` (the Cobo internal transaction ID) is assigned at creation and is always present. 
  * @member {String} transaction_hash
  */
 TransactionWebhookEventData.prototype['transaction_hash'] = undefined;
@@ -585,7 +585,7 @@ Transaction.prototype['confirmed_num'] = undefined;
  */
 Transaction.prototype['confirming_threshold'] = undefined;
 /**
- * The transaction hash.
+ * The transaction hash (on-chain transaction identifier, also referred to as `txid`).  This property is populated only after the transaction is broadcast on-chain, so it may be `null` or absent before broadcast. In contrast, `transaction_id` (the Cobo internal transaction ID) is assigned at creation and is always present. 
  * @member {String} transaction_hash
  */
 Transaction.prototype['transaction_hash'] = undefined;

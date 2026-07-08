@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import AllocationItemStatus from './AllocationItemStatus';
 
 /**
  * The AllocationItem model module.
@@ -74,6 +75,9 @@ class AllocationItem {
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = AllocationItemStatus.constructFromObject(data['status']);
             }
         }
         return obj;
@@ -169,6 +173,11 @@ AllocationItem.prototype['destination_account'] = undefined;
  * @member {String} description
  */
 AllocationItem.prototype['description'] = undefined;
+
+/**
+ * @member {module:model/AllocationItemStatus} status
+ */
+AllocationItem.prototype['status'] = undefined;
 
 
 

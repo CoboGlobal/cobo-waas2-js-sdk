@@ -31,6 +31,7 @@ docs/AddressVerificationStatus.md
 docs/AddressesEventData.md
 docs/AddressesEventDataAllOfAddresses.md
 docs/AllocationItem.md
+docs/AllocationItemStatus.md
 docs/AllocationParam.md
 docs/AmountDetailsInner.md
 docs/AmountStatus.md
@@ -40,6 +41,7 @@ docs/AppWorkflow.md
 docs/AppWorkflowField.md
 docs/AppWorkflowPolicy.md
 docs/AppWorkflowsApi.md
+docs/ApprovalAction.md
 docs/ApprovalDetail.md
 docs/ApprovalEntry.md
 docs/ApprovalRequest.md
@@ -82,6 +84,7 @@ docs/BaseStakeExtra.md
 docs/BaseStakeSource.md
 docs/BatchAllocation.md
 docs/BatchAllocationDetail.md
+docs/BatchAllocationStatus.md
 docs/BatchCheckUtxo201Response.md
 docs/BatchCheckUtxoRequest.md
 docs/BatchUTXOParam.md
@@ -479,6 +482,7 @@ docs/PspBalance.md
 docs/QueryApprovalStatement200Response.md
 docs/QueryGuardPubkey200Response.md
 docs/QueryGuardPubkey200ResponseAddressesInner.md
+docs/RawMessageSignDestination.md
 docs/RefreshAddressBalancesByToken200Response.md
 docs/RefreshAddressBalancesByTokenRequest.md
 docs/RefreshPermissionTokenRequest.md
@@ -740,6 +744,7 @@ docs/TransactionExtra.md
 docs/TransactionExtraType.md
 docs/TransactionFILFee.md
 docs/TransactionFee.md
+docs/TransactionFeePayer.md
 docs/TransactionFeeStationWalletSource.md
 docs/TransactionFixedFee.md
 docs/TransactionFuelingInfo.md
@@ -922,6 +927,7 @@ src/model/AddressVerificationStatus.js
 src/model/AddressesEventData.js
 src/model/AddressesEventDataAllOfAddresses.js
 src/model/AllocationItem.js
+src/model/AllocationItemStatus.js
 src/model/AllocationParam.js
 src/model/AmountDetailsInner.js
 src/model/AmountStatus.js
@@ -930,6 +936,7 @@ src/model/ApiLogSummary.js
 src/model/AppWorkflow.js
 src/model/AppWorkflowField.js
 src/model/AppWorkflowPolicy.js
+src/model/ApprovalAction.js
 src/model/ApprovalDetail.js
 src/model/ApprovalEntry.js
 src/model/ApprovalRequest.js
@@ -971,6 +978,7 @@ src/model/BaseStakeExtra.js
 src/model/BaseStakeSource.js
 src/model/BatchAllocation.js
 src/model/BatchAllocationDetail.js
+src/model/BatchAllocationStatus.js
 src/model/BatchCheckUtxo201Response.js
 src/model/BatchCheckUtxoRequest.js
 src/model/BatchUTXOParam.js
@@ -1359,6 +1367,7 @@ src/model/PspBalance.js
 src/model/QueryApprovalStatement200Response.js
 src/model/QueryGuardPubkey200Response.js
 src/model/QueryGuardPubkey200ResponseAddressesInner.js
+src/model/RawMessageSignDestination.js
 src/model/RefreshAddressBalancesByToken200Response.js
 src/model/RefreshAddressBalancesByTokenRequest.js
 src/model/RefreshPermissionTokenRequest.js
@@ -1617,6 +1626,7 @@ src/model/TransactionExtra.js
 src/model/TransactionExtraType.js
 src/model/TransactionFILFee.js
 src/model/TransactionFee.js
+src/model/TransactionFeePayer.js
 src/model/TransactionFeeStationWalletSource.js
 src/model/TransactionFixedFee.js
 src/model/TransactionFuelingInfo.js
@@ -1782,6 +1792,7 @@ test/model/AddressVerificationStatus.spec.js
 test/model/AddressesEventData.spec.js
 test/model/AddressesEventDataAllOfAddresses.spec.js
 test/model/AllocationItem.spec.js
+test/model/AllocationItemStatus.spec.js
 test/model/AllocationParam.spec.js
 test/model/AmountDetailsInner.spec.js
 test/model/AmountStatus.spec.js
@@ -1790,6 +1801,7 @@ test/model/ApiLogSummary.spec.js
 test/model/AppWorkflow.spec.js
 test/model/AppWorkflowField.spec.js
 test/model/AppWorkflowPolicy.spec.js
+test/model/ApprovalAction.spec.js
 test/model/ApprovalDetail.spec.js
 test/model/ApprovalEntry.spec.js
 test/model/ApprovalRequest.spec.js
@@ -1831,6 +1843,7 @@ test/model/BaseStakeExtra.spec.js
 test/model/BaseStakeSource.spec.js
 test/model/BatchAllocation.spec.js
 test/model/BatchAllocationDetail.spec.js
+test/model/BatchAllocationStatus.spec.js
 test/model/BatchCheckUtxo201Response.spec.js
 test/model/BatchCheckUtxoRequest.spec.js
 test/model/BatchUTXOParam.spec.js
@@ -2219,6 +2232,7 @@ test/model/PspBalance.spec.js
 test/model/QueryApprovalStatement200Response.spec.js
 test/model/QueryGuardPubkey200Response.spec.js
 test/model/QueryGuardPubkey200ResponseAddressesInner.spec.js
+test/model/RawMessageSignDestination.spec.js
 test/model/RefreshAddressBalancesByToken200Response.spec.js
 test/model/RefreshAddressBalancesByTokenRequest.spec.js
 test/model/RefreshPermissionTokenRequest.spec.js
@@ -2477,6 +2491,7 @@ test/model/TransactionExtra.spec.js
 test/model/TransactionExtraType.spec.js
 test/model/TransactionFILFee.spec.js
 test/model/TransactionFee.spec.js
+test/model/TransactionFeePayer.spec.js
 test/model/TransactionFeeStationWalletSource.spec.js
 test/model/TransactionFixedFee.spec.js
 test/model/TransactionFuelingInfo.spec.js

@@ -11,45 +11,38 @@
 
 import ApiClient from '../ApiClient';
 /**
-* Enum class TransactionExtraType.
+* Enum class ApprovalAction.
 * @enum {}
 * @readonly
 */
-export default class TransactionExtraType {
+export default class ApprovalAction {
     
         /**
-         * value: "BabylonBusinessInfo"
+         * value: "Transfer"
          * @const
          */
-        "BabylonBusinessInfo" = "BabylonBusinessInfo";
+        "Transfer" = "Transfer";
 
     
         /**
-         * value: "BabylonTxParameters"
+         * value: "Drop"
          * @const
          */
-        "BabylonTxParameters" = "BabylonTxParameters";
+        "Drop" = "Drop";
 
     
         /**
-         * value: "CoreStakeInfo"
+         * value: "SpeedUp"
          * @const
          */
-        "CoreStakeInfo" = "CoreStakeInfo";
+        "SpeedUp" = "SpeedUp";
 
     
         /**
-         * value: "WalletConnectInfo"
+         * value: "null"
          * @const
          */
-        "WalletConnectInfo" = "WalletConnectInfo";
-
-    
-        /**
-         * value: "FeePayer"
-         * @const
-         */
-        "FeePayer" = "FeePayer";
+        "null" = "null";
 
     
         /**
@@ -61,9 +54,9 @@ export default class TransactionExtraType {
     
 
     /**
-    * Returns a <code>TransactionExtraType</code> enum value from a Javascript object name.
+    * Returns a <code>ApprovalAction</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:model/TransactionExtraType} The enum <code>TransactionExtraType</code> value.
+    * @return {module:model/ApprovalAction} The enum <code>ApprovalAction</code> value.
     */
     static constructFromObject(object) {
         return object;
