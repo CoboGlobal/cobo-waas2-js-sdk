@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **amount** | **String** | The amount in cryptocurrency to be returned for this refund order. | 
 **to_address** | **String** | The recipient&#39;s wallet address where the refund will be sent. | 
 **status** | [**RefundStatus**](RefundStatus.md) |  | 
+**failed_reason** | **String** | The reason why the refund failed. | [optional] 
 **refund_type** | [**RefundType**](RefundType.md) |  | [optional] 
 **created_timestamp** | **Number** | The creation time of the refund order, represented as a UNIX timestamp in seconds. | [optional] 
 **updated_timestamp** | **Number** | The last update time of the refund order, represented as a UNIX timestamp in seconds. | [optional] 

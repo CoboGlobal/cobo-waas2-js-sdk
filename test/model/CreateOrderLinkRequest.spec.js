@@ -52,6 +52,12 @@
       //expect(instance).to.be.a(CoboWaas2.CreateOrderLinkRequest);
     });
 
+    it('should have the property request_id (base name: "request_id")', function() {
+      // uncomment below and update the code to test the property request_id
+      //var instance = new CoboWaas2.CreateOrderLinkRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property business_info (base name: "business_info")', function() {
       // uncomment below and update the code to test the property business_info
       //var instance = new CoboWaas2.CreateOrderLinkRequest();

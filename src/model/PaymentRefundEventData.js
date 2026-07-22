@@ -98,6 +98,9 @@ class PaymentRefundEventData {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = RefundStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
             if (data.hasOwnProperty('refund_type')) {
                 obj['refund_type'] = RefundType.constructFromObject(data['refund_type']);
             }
@@ -176,6 +179,10 @@ class PaymentRefundEventData {
         // ensure the json data is a string
         if (data['to_address'] && !(typeof data['to_address'] === 'string' || data['to_address'] instanceof String)) {
             throw new Error("Expected the field `to_address` to be a primitive type in the JSON string but got " + data['to_address']);
+        }
+        // ensure the json data is a string
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
         // ensure the json data is a string
         if (data['initiator'] && !(typeof data['initiator'] === 'string' || data['initiator'] instanceof String)) {
@@ -272,6 +279,12 @@ PaymentRefundEventData.prototype['to_address'] = undefined;
  * @member {module:model/RefundStatus} status
  */
 PaymentRefundEventData.prototype['status'] = undefined;
+
+/**
+ * The reason why the refund failed.
+ * @member {String} failed_reason
+ */
+PaymentRefundEventData.prototype['failed_reason'] = undefined;
 
 /**
  * @member {module:model/RefundType} refund_type
@@ -378,6 +391,11 @@ Refund.prototype['to_address'] = undefined;
  * @member {module:model/RefundStatus} status
  */
 Refund.prototype['status'] = undefined;
+/**
+ * The reason why the refund failed.
+ * @member {String} failed_reason
+ */
+Refund.prototype['failed_reason'] = undefined;
 /**
  * @member {module:model/RefundType} refund_type
  */

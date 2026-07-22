@@ -184,6 +184,60 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property payment_method (base name: "payment_method")', function() {
+      // uncomment below and update the code to test the property payment_method
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property holder_type (base name: "holder_type")', function() {
+      // uncomment below and update the code to test the property holder_type
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property beneficiary_province (base name: "beneficiary_province")', function() {
+      // uncomment below and update the code to test the property beneficiary_province
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property beneficiary_post_code (base name: "beneficiary_post_code")', function() {
+      // uncomment below and update the code to test the property beneficiary_post_code
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_account_name (base name: "bank_account_name")', function() {
+      // uncomment below and update the code to test the property bank_account_name
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_branch_code (base name: "bank_branch_code")', function() {
+      // uncomment below and update the code to test the property bank_branch_code
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_country (base name: "bank_country")', function() {
+      // uncomment below and update the code to test the property bank_country
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_province (base name: "bank_province")', function() {
+      // uncomment below and update the code to test the property bank_province
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property contract_file_id (base name: "contract_file_id")', function() {
+      // uncomment below and update the code to test the property contract_file_id
+      //var instance = new CoboWaas2.DestinationBankAccountDetail();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.DestinationBankAccountDetail();

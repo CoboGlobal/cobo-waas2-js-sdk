@@ -874,7 +874,7 @@ WebhookEventData.prototype['status'] = undefined;
 WebhookEventData.prototype['sub_status'] = undefined;
 
 /**
- * (This property is applicable to approval failures and signature failures only) The reason why the transaction failed.
+ * The reason why the bulk send failed.
  * @member {String} failed_reason
  */
 WebhookEventData.prototype['failed_reason'] = undefined;

@@ -19,8 +19,8 @@ class PaymentEstimateFee {
     /**
      * Constructs a new <code>PaymentEstimateFee</code>.
      * @alias module:model/PaymentEstimateFee
-     * @param token_id {String} The token ID for which fees will be calculated.
-     * @param amount {String} The transaction amount for which fees will be calculated.
+     * @param token_id {String} The ID of the cryptocurrency you want to refund.
+     * @param amount {String} The OffRamp settlement amount. 
      */
     constructor(token_id, amount) { 
         
@@ -88,13 +88,13 @@ class PaymentEstimateFee {
 PaymentEstimateFee.RequiredProperties = ["token_id", "amount"];
 
 /**
- * The token ID for which fees will be calculated.
+ * The ID of the cryptocurrency you want to refund.
  * @member {String} token_id
  */
 PaymentEstimateFee.prototype['token_id'] = undefined;
 
 /**
- * The transaction amount for which fees will be calculated.
+ * The OffRamp settlement amount. 
  * @member {String} amount
  */
 PaymentEstimateFee.prototype['amount'] = undefined;

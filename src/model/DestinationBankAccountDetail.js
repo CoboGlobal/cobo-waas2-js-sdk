@@ -10,6 +10,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import BankAccountHolderType from './BankAccountHolderType';
+import BankAccountPaymentMethod from './BankAccountPaymentMethod';
 import BankAccountStatus from './BankAccountStatus';
 import DestinationType from './DestinationType';
 import IntermediaryBankInfo from './IntermediaryBankInfo';
@@ -139,6 +141,33 @@ class DestinationBankAccountDetail {
             if (data.hasOwnProperty('city')) {
                 obj['city'] = ApiClient.convertToType(data['city'], 'String');
             }
+            if (data.hasOwnProperty('payment_method')) {
+                obj['payment_method'] = BankAccountPaymentMethod.constructFromObject(data['payment_method']);
+            }
+            if (data.hasOwnProperty('holder_type')) {
+                obj['holder_type'] = BankAccountHolderType.constructFromObject(data['holder_type']);
+            }
+            if (data.hasOwnProperty('beneficiary_province')) {
+                obj['beneficiary_province'] = ApiClient.convertToType(data['beneficiary_province'], 'String');
+            }
+            if (data.hasOwnProperty('beneficiary_post_code')) {
+                obj['beneficiary_post_code'] = ApiClient.convertToType(data['beneficiary_post_code'], 'String');
+            }
+            if (data.hasOwnProperty('bank_account_name')) {
+                obj['bank_account_name'] = ApiClient.convertToType(data['bank_account_name'], 'String');
+            }
+            if (data.hasOwnProperty('bank_branch_code')) {
+                obj['bank_branch_code'] = ApiClient.convertToType(data['bank_branch_code'], 'String');
+            }
+            if (data.hasOwnProperty('bank_country')) {
+                obj['bank_country'] = ApiClient.convertToType(data['bank_country'], 'String');
+            }
+            if (data.hasOwnProperty('bank_province')) {
+                obj['bank_province'] = ApiClient.convertToType(data['bank_province'], 'String');
+            }
+            if (data.hasOwnProperty('contract_file_id')) {
+                obj['contract_file_id'] = ApiClient.convertToType(data['contract_file_id'], 'String');
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -242,6 +271,34 @@ class DestinationBankAccountDetail {
         // ensure the json data is a string
         if (data['city'] && !(typeof data['city'] === 'string' || data['city'] instanceof String)) {
             throw new Error("Expected the field `city` to be a primitive type in the JSON string but got " + data['city']);
+        }
+        // ensure the json data is a string
+        if (data['beneficiary_province'] && !(typeof data['beneficiary_province'] === 'string' || data['beneficiary_province'] instanceof String)) {
+            throw new Error("Expected the field `beneficiary_province` to be a primitive type in the JSON string but got " + data['beneficiary_province']);
+        }
+        // ensure the json data is a string
+        if (data['beneficiary_post_code'] && !(typeof data['beneficiary_post_code'] === 'string' || data['beneficiary_post_code'] instanceof String)) {
+            throw new Error("Expected the field `beneficiary_post_code` to be a primitive type in the JSON string but got " + data['beneficiary_post_code']);
+        }
+        // ensure the json data is a string
+        if (data['bank_account_name'] && !(typeof data['bank_account_name'] === 'string' || data['bank_account_name'] instanceof String)) {
+            throw new Error("Expected the field `bank_account_name` to be a primitive type in the JSON string but got " + data['bank_account_name']);
+        }
+        // ensure the json data is a string
+        if (data['bank_branch_code'] && !(typeof data['bank_branch_code'] === 'string' || data['bank_branch_code'] instanceof String)) {
+            throw new Error("Expected the field `bank_branch_code` to be a primitive type in the JSON string but got " + data['bank_branch_code']);
+        }
+        // ensure the json data is a string
+        if (data['bank_country'] && !(typeof data['bank_country'] === 'string' || data['bank_country'] instanceof String)) {
+            throw new Error("Expected the field `bank_country` to be a primitive type in the JSON string but got " + data['bank_country']);
+        }
+        // ensure the json data is a string
+        if (data['bank_province'] && !(typeof data['bank_province'] === 'string' || data['bank_province'] instanceof String)) {
+            throw new Error("Expected the field `bank_province` to be a primitive type in the JSON string but got " + data['bank_province']);
+        }
+        // ensure the json data is a string
+        if (data['contract_file_id'] && !(typeof data['contract_file_id'] === 'string' || data['contract_file_id'] instanceof String)) {
+            throw new Error("Expected the field `contract_file_id` to be a primitive type in the JSON string but got " + data['contract_file_id']);
         }
 
         return true;
@@ -380,6 +437,58 @@ DestinationBankAccountDetail.prototype['country'] = undefined;
  * @member {String} city
  */
 DestinationBankAccountDetail.prototype['city'] = undefined;
+
+/**
+ * @member {module:model/BankAccountPaymentMethod} payment_method
+ */
+DestinationBankAccountDetail.prototype['payment_method'] = undefined;
+
+/**
+ * @member {module:model/BankAccountHolderType} holder_type
+ */
+DestinationBankAccountDetail.prototype['holder_type'] = undefined;
+
+/**
+ * The province or state of the beneficiary. Required when `payment_method` is `Swift`. Cannot be a pure number or contain Chinese characters. 
+ * @member {String} beneficiary_province
+ */
+DestinationBankAccountDetail.prototype['beneficiary_province'] = undefined;
+
+/**
+ * The postal code of the beneficiary. Required when `payment_method` is `Swift`. 
+ * @member {String} beneficiary_post_code
+ */
+DestinationBankAccountDetail.prototype['beneficiary_post_code'] = undefined;
+
+/**
+ * The bank account name. Cannot contain Chinese characters. 
+ * @member {String} bank_account_name
+ */
+DestinationBankAccountDetail.prototype['bank_account_name'] = undefined;
+
+/**
+ * The branch code. Required when `payment_method` is `Local` (HK only). 
+ * @member {String} bank_branch_code
+ */
+DestinationBankAccountDetail.prototype['bank_branch_code'] = undefined;
+
+/**
+ * The country, in ISO 3166-1 alpha-3 format.
+ * @member {String} bank_country
+ */
+DestinationBankAccountDetail.prototype['bank_country'] = undefined;
+
+/**
+ * The province or state of the bank. Cannot be a pure number or contain Chinese characters. 
+ * @member {String} bank_province
+ */
+DestinationBankAccountDetail.prototype['bank_province'] = undefined;
+
+/**
+ * The file ID of the contract document (e.g., cooperation agreement) that proves the business relationship between you and the beneficiary, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
+ * @member {String} contract_file_id
+ */
+DestinationBankAccountDetail.prototype['contract_file_id'] = undefined;
 
 /**
  * The created time of the bank account, represented as a UNIX timestamp in seconds.

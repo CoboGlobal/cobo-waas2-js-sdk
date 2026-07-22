@@ -82,6 +82,9 @@ class PaymentBulkSendItem {
             if (data.hasOwnProperty('validation_status')) {
                 obj['validation_status'] = PaymentBulkSendItemValidationStatus.constructFromObject(data['validation_status']);
             }
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
         }
         return obj;
     }
@@ -121,6 +124,10 @@ class PaymentBulkSendItem {
         // ensure the json data is a string
         if (data['tx_hash'] && !(typeof data['tx_hash'] === 'string' || data['tx_hash'] instanceof String)) {
             throw new Error("Expected the field `tx_hash` to be a primitive type in the JSON string but got " + data['tx_hash']);
+        }
+        // ensure the json data is a string
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
 
         return true;
@@ -176,6 +183,12 @@ PaymentBulkSendItem.prototype['status'] = undefined;
  * @member {module:model/PaymentBulkSendItemValidationStatus} validation_status
  */
 PaymentBulkSendItem.prototype['validation_status'] = undefined;
+
+/**
+ * The reason why the bulk send item failed.
+ * @member {String} failed_reason
+ */
+PaymentBulkSendItem.prototype['failed_reason'] = undefined;
 
 
 

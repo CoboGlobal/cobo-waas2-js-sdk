@@ -60,6 +60,9 @@ class PaymentEstimateFeeRequest {
             if (data.hasOwnProperty('transfer_via_va')) {
                 obj['transfer_via_va'] = ApiClient.convertToType(data['transfer_via_va'], 'Boolean');
             }
+            if (data.hasOwnProperty('bank_account_id')) {
+                obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
+            }
         }
         return obj;
     }
@@ -89,6 +92,10 @@ class PaymentEstimateFeeRequest {
         // ensure the json data is a string
         if (data['recipient_token_id'] && !(typeof data['recipient_token_id'] === 'string' || data['recipient_token_id'] instanceof String)) {
             throw new Error("Expected the field `recipient_token_id` to be a primitive type in the JSON string but got " + data['recipient_token_id']);
+        }
+        // ensure the json data is a string
+        if (data['bank_account_id'] && !(typeof data['bank_account_id'] === 'string' || data['bank_account_id'] instanceof String)) {
+            throw new Error("Expected the field `bank_account_id` to be a primitive type in the JSON string but got " + data['bank_account_id']);
         }
 
         return true;
@@ -121,6 +128,12 @@ PaymentEstimateFeeRequest.prototype['recipient_token_id'] = undefined;
  * @member {Boolean} transfer_via_va
  */
 PaymentEstimateFeeRequest.prototype['transfer_via_va'] = undefined;
+
+/**
+ * The bank account ID, which you can retrieve by calling [List counterparty entries](https://www.cobo.com/developers/v2/api-references/payment/list-counterparty-entries). 
+ * @member {String} bank_account_id
+ */
+PaymentEstimateFeeRequest.prototype['bank_account_id'] = undefined;
 
 
 
