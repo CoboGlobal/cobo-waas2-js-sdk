@@ -13,7 +13,6 @@ import Env from "./Env";
 import Ed25519Signer from "./crypto/Ed25519Signer";
 import Secp256k1Signer from "./crypto/Secp256k1Signer";
 import ApiClient from './ApiClient';
-import Account from './model/Account';
 import AcquiringType from './model/AcquiringType';
 import Activity from './model/Activity';
 import ActivityAction from './model/ActivityAction';
@@ -83,6 +82,8 @@ import Balance from './model/Balance';
 import BalanceUpdateInfo from './model/BalanceUpdateInfo';
 import BalanceUpdateInfoEventData from './model/BalanceUpdateInfoEventData';
 import BankAccount from './model/BankAccount';
+import BankAccountHolderType from './model/BankAccountHolderType';
+import BankAccountPaymentMethod from './model/BankAccountPaymentMethod';
 import BankAccountStatus from './model/BankAccountStatus';
 import BaseContractCallSource from './model/BaseContractCallSource';
 import BaseEstimateStakingFee from './model/BaseEstimateStakingFee';
@@ -383,7 +384,6 @@ import ListTokenBalancesForFeeStation200Response from './model/ListTokenBalances
 import ListTokenBalancesForFeeStation200ResponseDataInner from './model/ListTokenBalancesForFeeStation200ResponseDataInner';
 import ListTokenListingRequests200Response from './model/ListTokenListingRequests200Response';
 import ListTokenizationBlocklistAddresses200Response from './model/ListTokenizationBlocklistAddresses200Response';
-import ListTopUpPayerAccounts200Response from './model/ListTopUpPayerAccounts200Response';
 import ListTopUpPayers200Response from './model/ListTopUpPayers200Response';
 import ListTopUpPayers200ResponseDataInner from './model/ListTopUpPayers200ResponseDataInner';
 import ListTransactionApprovalDetails200Response from './model/ListTransactionApprovalDetails200Response';
@@ -409,6 +409,18 @@ import MaxFeeAmount from './model/MaxFeeAmount';
 import MaxTransferableValue from './model/MaxTransferableValue';
 import Merchant from './model/Merchant';
 import MerchantBalance from './model/MerchantBalance';
+import MerchantKycAddress from './model/MerchantKycAddress';
+import MerchantKycCompanyAttachment from './model/MerchantKycCompanyAttachment';
+import MerchantKycCompanyAttachmentFileType from './model/MerchantKycCompanyAttachmentFileType';
+import MerchantKycCompanyInfo from './model/MerchantKycCompanyInfo';
+import MerchantKycCompanyType from './model/MerchantKycCompanyType';
+import MerchantKycInfo from './model/MerchantKycInfo';
+import MerchantKycMerchantType from './model/MerchantKycMerchantType';
+import MerchantKycPersonAttachment from './model/MerchantKycPersonAttachment';
+import MerchantKycPersonAttachmentFileType from './model/MerchantKycPersonAttachmentFileType';
+import MerchantKycPersonInfo from './model/MerchantKycPersonInfo';
+import MerchantKycStatus from './model/MerchantKycStatus';
+import MerchantKycSubmission from './model/MerchantKycSubmission';
 import MessageSignDestination from './model/MessageSignDestination';
 import MessageSignDestinationType from './model/MessageSignDestinationType';
 import MessageSignParams from './model/MessageSignParams';
@@ -429,7 +441,6 @@ import OrganizationEventData from './model/OrganizationEventData';
 import OriginalMainGroupHandling from './model/OriginalMainGroupHandling';
 import OtcFee from './model/OtcFee';
 import Pagination from './model/Pagination';
-import PayerAccount from './model/PayerAccount';
 import PaymentAccountBalanceUpdateEventData from './model/PaymentAccountBalanceUpdateEventData';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
 import PaymentAllocationAmount from './model/PaymentAllocationAmount';
@@ -463,6 +474,7 @@ import PaymentSettlementEvent from './model/PaymentSettlementEvent';
 import PaymentSourceType from './model/PaymentSourceType';
 import PaymentTransaction from './model/PaymentTransaction';
 import PaymentTransactionEventData from './model/PaymentTransactionEventData';
+import PaymentUploadedFile from './model/PaymentUploadedFile';
 import PaymentWalletBalance from './model/PaymentWalletBalance';
 import PayoutChannel from './model/PayoutChannel';
 import PolicyAction from './model/PolicyAction';
@@ -557,6 +569,7 @@ import SubmitDepositTravelRuleInfo201Response from './model/SubmitDepositTravelR
 import SubmitKytResponse from './model/SubmitKytResponse';
 import SubmitKytScreeningsDecisionsBody from './model/SubmitKytScreeningsDecisionsBody';
 import SubmitKytScreeningsReviewBody from './model/SubmitKytScreeningsReviewBody';
+import SubmitMerchantKyc from './model/SubmitMerchantKyc';
 import SupportedToken from './model/SupportedToken';
 import SuspendedTokenEventData from './model/SuspendedTokenEventData';
 import SuspendedTokenOperationType from './model/SuspendedTokenOperationType';
@@ -910,7 +923,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.39.0
+* @version 1.40.0
 */
 export {
     Env,
@@ -921,12 +934,6 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
-
-    /**
-     * The Account model constructor.
-     * @property {module:model/Account}
-     */
-    Account,
 
     /**
      * The AcquiringType model constructor.
@@ -1341,6 +1348,18 @@ export {
      * @property {module:model/BankAccount}
      */
     BankAccount,
+
+    /**
+     * The BankAccountHolderType model constructor.
+     * @property {module:model/BankAccountHolderType}
+     */
+    BankAccountHolderType,
+
+    /**
+     * The BankAccountPaymentMethod model constructor.
+     * @property {module:model/BankAccountPaymentMethod}
+     */
+    BankAccountPaymentMethod,
 
     /**
      * The BankAccountStatus model constructor.
@@ -3143,12 +3162,6 @@ export {
     ListTokenizationBlocklistAddresses200Response,
 
     /**
-     * The ListTopUpPayerAccounts200Response model constructor.
-     * @property {module:model/ListTopUpPayerAccounts200Response}
-     */
-    ListTopUpPayerAccounts200Response,
-
-    /**
      * The ListTopUpPayers200Response model constructor.
      * @property {module:model/ListTopUpPayers200Response}
      */
@@ -3299,6 +3312,78 @@ export {
     MerchantBalance,
 
     /**
+     * The MerchantKycAddress model constructor.
+     * @property {module:model/MerchantKycAddress}
+     */
+    MerchantKycAddress,
+
+    /**
+     * The MerchantKycCompanyAttachment model constructor.
+     * @property {module:model/MerchantKycCompanyAttachment}
+     */
+    MerchantKycCompanyAttachment,
+
+    /**
+     * The MerchantKycCompanyAttachmentFileType model constructor.
+     * @property {module:model/MerchantKycCompanyAttachmentFileType}
+     */
+    MerchantKycCompanyAttachmentFileType,
+
+    /**
+     * The MerchantKycCompanyInfo model constructor.
+     * @property {module:model/MerchantKycCompanyInfo}
+     */
+    MerchantKycCompanyInfo,
+
+    /**
+     * The MerchantKycCompanyType model constructor.
+     * @property {module:model/MerchantKycCompanyType}
+     */
+    MerchantKycCompanyType,
+
+    /**
+     * The MerchantKycInfo model constructor.
+     * @property {module:model/MerchantKycInfo}
+     */
+    MerchantKycInfo,
+
+    /**
+     * The MerchantKycMerchantType model constructor.
+     * @property {module:model/MerchantKycMerchantType}
+     */
+    MerchantKycMerchantType,
+
+    /**
+     * The MerchantKycPersonAttachment model constructor.
+     * @property {module:model/MerchantKycPersonAttachment}
+     */
+    MerchantKycPersonAttachment,
+
+    /**
+     * The MerchantKycPersonAttachmentFileType model constructor.
+     * @property {module:model/MerchantKycPersonAttachmentFileType}
+     */
+    MerchantKycPersonAttachmentFileType,
+
+    /**
+     * The MerchantKycPersonInfo model constructor.
+     * @property {module:model/MerchantKycPersonInfo}
+     */
+    MerchantKycPersonInfo,
+
+    /**
+     * The MerchantKycStatus model constructor.
+     * @property {module:model/MerchantKycStatus}
+     */
+    MerchantKycStatus,
+
+    /**
+     * The MerchantKycSubmission model constructor.
+     * @property {module:model/MerchantKycSubmission}
+     */
+    MerchantKycSubmission,
+
+    /**
      * The MessageSignDestination model constructor.
      * @property {module:model/MessageSignDestination}
      */
@@ -3417,12 +3502,6 @@ export {
      * @property {module:model/Pagination}
      */
     Pagination,
-
-    /**
-     * The PayerAccount model constructor.
-     * @property {module:model/PayerAccount}
-     */
-    PayerAccount,
 
     /**
      * The PaymentAccountBalanceUpdateEventData model constructor.
@@ -3621,6 +3700,12 @@ export {
      * @property {module:model/PaymentTransactionEventData}
      */
     PaymentTransactionEventData,
+
+    /**
+     * The PaymentUploadedFile model constructor.
+     * @property {module:model/PaymentUploadedFile}
+     */
+    PaymentUploadedFile,
 
     /**
      * The PaymentWalletBalance model constructor.
@@ -4185,6 +4270,12 @@ export {
      * @property {module:model/SubmitKytScreeningsReviewBody}
      */
     SubmitKytScreeningsReviewBody,
+
+    /**
+     * The SubmitMerchantKyc model constructor.
+     * @property {module:model/SubmitMerchantKyc}
+     */
+    SubmitMerchantKyc,
 
     /**
      * The SupportedToken model constructor.

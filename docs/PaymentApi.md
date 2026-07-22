@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**getDestination**](PaymentApi.md#getDestination) | **GET** /payments/destination/{destination_id} | Get destination information
 [**getDestinationEntry**](PaymentApi.md#getDestinationEntry) | **GET** /payments/destination_entry/{destination_entry_id} | Get destination entry information
 [**getExchangeRate**](PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate
+[**getMerchantKyc**](PaymentApi.md#getMerchantKyc) | **GET** /payments/merchants/{merchant_id}/kyc | Get merchant KYC
 [**getPaymentOrderDetailById**](PaymentApi.md#getPaymentOrderDetailById) | **GET** /payments/orders/{order_id} | Get pay-in order information
 [**getPayoutById**](PaymentApi.md#getPayoutById) | **GET** /payments/payouts/{payout_id} | Get payout information
 [**getPspBalance**](PaymentApi.md#getPspBalance) | **GET** /payments/balance/psp | Get developer balance
@@ -66,9 +67,9 @@ Method | HTTP request | Description
 [**listPayouts**](PaymentApi.md#listPayouts) | **GET** /payments/payouts | List all payouts
 [**listSettlementDetails**](PaymentApi.md#listSettlementDetails) | **GET** /payments/settlement_details | List all settlement details
 [**listSettlementRequests**](PaymentApi.md#listSettlementRequests) | **GET** /payments/settlement_requests | List all settlement requests
-[**listTopUpPayerAccounts**](PaymentApi.md#listTopUpPayerAccounts) | **GET** /payments/topup/payer_accounts | List top-up payer accounts
 [**listTopUpPayers**](PaymentApi.md#listTopUpPayers) | **GET** /payments/topup/payers | List payers
 [**paymentEstimateFee**](PaymentApi.md#paymentEstimateFee) | **POST** /payments/estimate_fee | Estimate fees
+[**submitMerchantKyc**](PaymentApi.md#submitMerchantKyc) | **POST** /payments/merchants/{merchant_id}/kyc | Submit merchant KYC
 [**triggerTestPaymentsWebhookEvent**](PaymentApi.md#triggerTestPaymentsWebhookEvent) | **POST** /payments/webhooks/trigger | Trigger test webhook event
 [**updateCounterparty**](PaymentApi.md#updateCounterparty) | **PUT** /payments/counterparty/{counterparty_id} | Update counterparty
 [**updateDestination**](PaymentApi.md#updateDestination) | **PUT** /payments/destination/{destination_id} | Update destination
@@ -77,6 +78,7 @@ Method | HTTP request | Description
 [**updatePaymentOrder**](PaymentApi.md#updatePaymentOrder) | **PUT** /payments/orders/{order_id} | Update pay-in order
 [**updateRefundById**](PaymentApi.md#updateRefundById) | **PUT** /payments/refunds/{refund_id} | Update refund order
 [**updateTopUpAddress**](PaymentApi.md#updateTopUpAddress) | **PUT** /payments/topup/address | Update top-up address
+[**uploadPaymentFile**](PaymentApi.md#uploadPaymentFile) | **POST** /payments/files | Upload file
 
 
 
@@ -1784,6 +1786,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getMerchantKyc
+
+> MerchantKycSubmission getMerchantKyc(merchant_id)
+
+Get merchant KYC
+
+This operation retrieves the KYC submission for a specified merchant.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const merchant_id = "M1001";
+apiInstance.getMerchantKyc(merchant_id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_id** | **String**| The merchant ID. | 
+
+### Return type
+
+[**MerchantKycSubmission**](MerchantKycSubmission.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getPaymentOrderDetailById
 
 > Order getPaymentOrderDetailById(order_id)
@@ -3466,66 +3518,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listTopUpPayerAccounts
-
-> ListTopUpPayerAccounts200Response listTopUpPayerAccounts(opts)
-
-List top-up payer accounts
-
-This operation retrieves the accounts of all payers. You can filter the result by merchant ID and payer_id. 
-
-### Example
-
-```javascript
-const CoboWaas2 = require('@cobo/cobo-waas2');
-// Initialize the API client
-const apiClient = CoboWaas2.ApiClient.instance
-// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
-apiClient.setEnv(CoboWaas2.Env.DEV);
-// Replace `<YOUR_PRIVATE_KEY>` with your private key
-apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
-// Call the API
-const apiInstance = new CoboWaas2.PaymentApi();
-const opts = {
-  'limit': 10,
-  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1",
-  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk",
-  'merchant_id': "M1001",
-  'payer_id': "P20250619T0310056d7aa"
-};
-apiInstance.listTopUpPayerAccounts(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
- **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] 
- **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] 
- **merchant_id** | **String**| The merchant ID. | [optional] 
- **payer_id** | **String**| A unique identifier assigned by Cobo to track and identify individual payers. | [optional] 
-
-### Return type
-
-[**ListTopUpPayerAccounts200Response**](ListTopUpPayerAccounts200Response.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## listTopUpPayers
 
 > ListTopUpPayers200Response listTopUpPayers(opts)
@@ -3627,6 +3619,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaymentEstimateFee201Response**](PaymentEstimateFee201Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## submitMerchantKyc
+
+> MerchantKycInfo submitMerchantKyc(merchant_id, opts)
+
+Submit merchant KYC
+
+This operation submits KYC information for a specified merchant.  You need to provide the merchant contact information, merchant type, country, industry, and company information.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const merchant_id = "M1001";
+const opts = {
+  'SubmitMerchantKyc': new CoboWaas2.SubmitMerchantKyc()
+};
+apiInstance.submitMerchantKyc(merchant_id, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_id** | **String**| The merchant ID. | 
+ **SubmitMerchantKyc** | [**SubmitMerchantKyc**](SubmitMerchantKyc.md)| The request body to submit merchant KYC information. | [optional] 
+
+### Return type
+
+[**MerchantKycInfo**](MerchantKycInfo.md)
 
 ### Authorization
 
@@ -4063,5 +4109,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## uploadPaymentFile
+
+> PaymentUploadedFile uploadPaymentFile(file)
+
+Upload file
+
+This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in &#x60;file_id&#x60; when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by &#x60;expired_timestamp&#x60;. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const file = "/path/to/file";
+apiInstance.uploadPaymentFile(file).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **File**| The file to upload. | 
+
+### Return type
+
+[**PaymentUploadedFile**](PaymentUploadedFile.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 

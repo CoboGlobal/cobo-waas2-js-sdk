@@ -4,7 +4,6 @@
 .openapi-generator-ignore
 .travis.yml
 README.md
-docs/Account.md
 docs/AcquiringType.md
 docs/Activity.md
 docs/ActivityAction.md
@@ -77,6 +76,8 @@ docs/Balance.md
 docs/BalanceUpdateInfo.md
 docs/BalanceUpdateInfoEventData.md
 docs/BankAccount.md
+docs/BankAccountHolderType.md
+docs/BankAccountPaymentMethod.md
 docs/BankAccountStatus.md
 docs/BaseContractCallSource.md
 docs/BaseEstimateStakingFee.md
@@ -382,7 +383,6 @@ docs/ListTokenBalancesForFeeStation200Response.md
 docs/ListTokenBalancesForFeeStation200ResponseDataInner.md
 docs/ListTokenListingRequests200Response.md
 docs/ListTokenizationBlocklistAddresses200Response.md
-docs/ListTopUpPayerAccounts200Response.md
 docs/ListTopUpPayers200Response.md
 docs/ListTopUpPayers200ResponseDataInner.md
 docs/ListTransactionApprovalDetails200Response.md
@@ -408,6 +408,18 @@ docs/MaxFeeAmount.md
 docs/MaxTransferableValue.md
 docs/Merchant.md
 docs/MerchantBalance.md
+docs/MerchantKycAddress.md
+docs/MerchantKycCompanyAttachment.md
+docs/MerchantKycCompanyAttachmentFileType.md
+docs/MerchantKycCompanyInfo.md
+docs/MerchantKycCompanyType.md
+docs/MerchantKycInfo.md
+docs/MerchantKycMerchantType.md
+docs/MerchantKycPersonAttachment.md
+docs/MerchantKycPersonAttachmentFileType.md
+docs/MerchantKycPersonInfo.md
+docs/MerchantKycStatus.md
+docs/MerchantKycSubmission.md
 docs/MessageSignDestination.md
 docs/MessageSignDestinationType.md
 docs/MessageSignParams.md
@@ -430,7 +442,6 @@ docs/OrganizationsApi.md
 docs/OriginalMainGroupHandling.md
 docs/OtcFee.md
 docs/Pagination.md
-docs/PayerAccount.md
 docs/PaymentAccountBalanceUpdateEventData.md
 docs/PaymentAddressUpdateEventData.md
 docs/PaymentAllocationAmount.md
@@ -465,6 +476,7 @@ docs/PaymentSettlementEvent.md
 docs/PaymentSourceType.md
 docs/PaymentTransaction.md
 docs/PaymentTransactionEventData.md
+docs/PaymentUploadedFile.md
 docs/PaymentWalletBalance.md
 docs/PayoutChannel.md
 docs/PolicyAction.md
@@ -561,6 +573,7 @@ docs/SubmitDepositTravelRuleInfo201Response.md
 docs/SubmitKytResponse.md
 docs/SubmitKytScreeningsDecisionsBody.md
 docs/SubmitKytScreeningsReviewBody.md
+docs/SubmitMerchantKyc.md
 docs/SupportedToken.md
 docs/SuspendedTokenEventData.md
 docs/SuspendedTokenOperationType.md
@@ -901,7 +914,6 @@ src/crypto/ApiSigner.js
 src/crypto/Ed25519Signer.js
 src/crypto/Secp256k1Signer.js
 src/index.js
-src/model/Account.js
 src/model/AcquiringType.js
 src/model/Activity.js
 src/model/ActivityAction.js
@@ -971,6 +983,8 @@ src/model/Balance.js
 src/model/BalanceUpdateInfo.js
 src/model/BalanceUpdateInfoEventData.js
 src/model/BankAccount.js
+src/model/BankAccountHolderType.js
+src/model/BankAccountPaymentMethod.js
 src/model/BankAccountStatus.js
 src/model/BaseContractCallSource.js
 src/model/BaseEstimateStakingFee.js
@@ -1271,7 +1285,6 @@ src/model/ListTokenBalancesForFeeStation200Response.js
 src/model/ListTokenBalancesForFeeStation200ResponseDataInner.js
 src/model/ListTokenListingRequests200Response.js
 src/model/ListTokenizationBlocklistAddresses200Response.js
-src/model/ListTopUpPayerAccounts200Response.js
 src/model/ListTopUpPayers200Response.js
 src/model/ListTopUpPayers200ResponseDataInner.js
 src/model/ListTransactionApprovalDetails200Response.js
@@ -1297,6 +1310,18 @@ src/model/MaxFeeAmount.js
 src/model/MaxTransferableValue.js
 src/model/Merchant.js
 src/model/MerchantBalance.js
+src/model/MerchantKycAddress.js
+src/model/MerchantKycCompanyAttachment.js
+src/model/MerchantKycCompanyAttachmentFileType.js
+src/model/MerchantKycCompanyInfo.js
+src/model/MerchantKycCompanyType.js
+src/model/MerchantKycInfo.js
+src/model/MerchantKycMerchantType.js
+src/model/MerchantKycPersonAttachment.js
+src/model/MerchantKycPersonAttachmentFileType.js
+src/model/MerchantKycPersonInfo.js
+src/model/MerchantKycStatus.js
+src/model/MerchantKycSubmission.js
 src/model/MessageSignDestination.js
 src/model/MessageSignDestinationType.js
 src/model/MessageSignParams.js
@@ -1317,7 +1342,6 @@ src/model/OrganizationEventData.js
 src/model/OriginalMainGroupHandling.js
 src/model/OtcFee.js
 src/model/Pagination.js
-src/model/PayerAccount.js
 src/model/PaymentAccountBalanceUpdateEventData.js
 src/model/PaymentAddressUpdateEventData.js
 src/model/PaymentAllocationAmount.js
@@ -1351,6 +1375,7 @@ src/model/PaymentSettlementEvent.js
 src/model/PaymentSourceType.js
 src/model/PaymentTransaction.js
 src/model/PaymentTransactionEventData.js
+src/model/PaymentUploadedFile.js
 src/model/PaymentWalletBalance.js
 src/model/PayoutChannel.js
 src/model/PolicyAction.js
@@ -1445,6 +1470,7 @@ src/model/SubmitDepositTravelRuleInfo201Response.js
 src/model/SubmitKytResponse.js
 src/model/SubmitKytScreeningsDecisionsBody.js
 src/model/SubmitKytScreeningsReviewBody.js
+src/model/SubmitMerchantKyc.js
 src/model/SupportedToken.js
 src/model/SuspendedTokenEventData.js
 src/model/SuspendedTokenOperationType.js
@@ -1766,7 +1792,6 @@ test/api/WalletsApi.spec.js
 test/api/WalletsExchangeWalletApi.spec.js
 test/api/WalletsMPCWalletsApi.spec.js
 test/api/WalletsSmartContractWalletsApi.spec.js
-test/model/Account.spec.js
 test/model/AcquiringType.spec.js
 test/model/Activity.spec.js
 test/model/ActivityAction.spec.js
@@ -1836,6 +1861,8 @@ test/model/Balance.spec.js
 test/model/BalanceUpdateInfo.spec.js
 test/model/BalanceUpdateInfoEventData.spec.js
 test/model/BankAccount.spec.js
+test/model/BankAccountHolderType.spec.js
+test/model/BankAccountPaymentMethod.spec.js
 test/model/BankAccountStatus.spec.js
 test/model/BaseContractCallSource.spec.js
 test/model/BaseEstimateStakingFee.spec.js
@@ -2136,7 +2163,6 @@ test/model/ListTokenBalancesForFeeStation200Response.spec.js
 test/model/ListTokenBalancesForFeeStation200ResponseDataInner.spec.js
 test/model/ListTokenListingRequests200Response.spec.js
 test/model/ListTokenizationBlocklistAddresses200Response.spec.js
-test/model/ListTopUpPayerAccounts200Response.spec.js
 test/model/ListTopUpPayers200Response.spec.js
 test/model/ListTopUpPayers200ResponseDataInner.spec.js
 test/model/ListTransactionApprovalDetails200Response.spec.js
@@ -2162,6 +2188,18 @@ test/model/MaxFeeAmount.spec.js
 test/model/MaxTransferableValue.spec.js
 test/model/Merchant.spec.js
 test/model/MerchantBalance.spec.js
+test/model/MerchantKycAddress.spec.js
+test/model/MerchantKycCompanyAttachment.spec.js
+test/model/MerchantKycCompanyAttachmentFileType.spec.js
+test/model/MerchantKycCompanyInfo.spec.js
+test/model/MerchantKycCompanyType.spec.js
+test/model/MerchantKycInfo.spec.js
+test/model/MerchantKycMerchantType.spec.js
+test/model/MerchantKycPersonAttachment.spec.js
+test/model/MerchantKycPersonAttachmentFileType.spec.js
+test/model/MerchantKycPersonInfo.spec.js
+test/model/MerchantKycStatus.spec.js
+test/model/MerchantKycSubmission.spec.js
 test/model/MessageSignDestination.spec.js
 test/model/MessageSignDestinationType.spec.js
 test/model/MessageSignParams.spec.js
@@ -2182,7 +2220,6 @@ test/model/OrganizationEventData.spec.js
 test/model/OriginalMainGroupHandling.spec.js
 test/model/OtcFee.spec.js
 test/model/Pagination.spec.js
-test/model/PayerAccount.spec.js
 test/model/PaymentAccountBalanceUpdateEventData.spec.js
 test/model/PaymentAddressUpdateEventData.spec.js
 test/model/PaymentAllocationAmount.spec.js
@@ -2216,6 +2253,7 @@ test/model/PaymentSettlementEvent.spec.js
 test/model/PaymentSourceType.spec.js
 test/model/PaymentTransaction.spec.js
 test/model/PaymentTransactionEventData.spec.js
+test/model/PaymentUploadedFile.spec.js
 test/model/PaymentWalletBalance.spec.js
 test/model/PayoutChannel.spec.js
 test/model/PolicyAction.spec.js
@@ -2310,6 +2348,7 @@ test/model/SubmitDepositTravelRuleInfo201Response.spec.js
 test/model/SubmitKytResponse.spec.js
 test/model/SubmitKytScreeningsDecisionsBody.spec.js
 test/model/SubmitKytScreeningsReviewBody.spec.js
+test/model/SubmitMerchantKyc.spec.js
 test/model/SupportedToken.spec.js
 test/model/SuspendedTokenEventData.spec.js
 test/model/SuspendedTokenOperationType.spec.js

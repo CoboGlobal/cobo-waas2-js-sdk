@@ -88,6 +88,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property failed_reason (base name: "failed_reason")', function() {
+      // uncomment below and update the code to test the property failed_reason
+      //var instance = new CoboWaas2.PaymentBulkSend();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.PaymentBulkSend();

@@ -13,6 +13,7 @@ import ApiClient from '../ApiClient';
 import Counterparty from './Counterparty';
 import Destination from './Destination';
 import TransactionStatus from './TransactionStatus';
+import TransactionSubStatus from './TransactionSubStatus';
 
 /**
  * The PaymentTransaction model module.
@@ -82,6 +83,12 @@ class PaymentTransaction {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = TransactionStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('sub_status')) {
+                obj['sub_status'] = TransactionSubStatus.constructFromObject(data['sub_status']);
+            }
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
             if (data.hasOwnProperty('counterparty')) {
                 obj['counterparty'] = Counterparty.constructFromObject(data['counterparty']);
             }
@@ -133,6 +140,10 @@ class PaymentTransaction {
         // ensure the json data is a string
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        }
+        // ensure the json data is a string
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
         // validate the optional field `counterparty`
         if (data['counterparty']) { // data not null
@@ -195,6 +206,17 @@ PaymentTransaction.prototype['amount'] = undefined;
  * @member {module:model/TransactionStatus} status
  */
 PaymentTransaction.prototype['status'] = undefined;
+
+/**
+ * @member {module:model/TransactionSubStatus} sub_status
+ */
+PaymentTransaction.prototype['sub_status'] = undefined;
+
+/**
+ * (This property is applicable to approval failures and signature failures only) The reason why the transaction failed.
+ * @member {String} failed_reason
+ */
+PaymentTransaction.prototype['failed_reason'] = undefined;
 
 /**
  * @member {module:model/Counterparty} counterparty

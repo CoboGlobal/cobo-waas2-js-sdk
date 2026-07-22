@@ -106,6 +106,9 @@ class PaymentPayoutEvent {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = PaymentPayoutStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -184,6 +187,10 @@ class PaymentPayoutEvent {
         // ensure the json data is a string
         if (data['remark'] && !(typeof data['remark'] === 'string' || data['remark'] instanceof String)) {
             throw new Error("Expected the field `remark` to be a primitive type in the JSON string but got " + data['remark']);
+        }
+        // ensure the json data is a string
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
         if (data['transactions']) { // data not null
             // ensure the json data is an array
@@ -274,6 +281,12 @@ PaymentPayoutEvent.prototype['remark'] = undefined;
 PaymentPayoutEvent.prototype['status'] = undefined;
 
 /**
+ * The reason why the payout failed.
+ * @member {String} failed_reason
+ */
+PaymentPayoutEvent.prototype['failed_reason'] = undefined;
+
+/**
  * The created time of the payout, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp
  */
@@ -351,6 +364,11 @@ PaymentPayoutDetail.prototype['remark'] = undefined;
  * @member {module:model/PaymentPayoutStatus} status
  */
 PaymentPayoutDetail.prototype['status'] = undefined;
+/**
+ * The reason why the payout failed.
+ * @member {String} failed_reason
+ */
+PaymentPayoutDetail.prototype['failed_reason'] = undefined;
 /**
  * The created time of the payout, represented as a UNIX timestamp in seconds.
  * @member {Number} created_timestamp

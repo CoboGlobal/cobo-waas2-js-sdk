@@ -77,6 +77,9 @@ class PaymentBulkSend {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = PaymentBulkSendStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('failed_reason')) {
+                obj['failed_reason'] = ApiClient.convertToType(data['failed_reason'], 'String');
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -117,6 +120,10 @@ class PaymentBulkSend {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['failed_reason'] && !(typeof data['failed_reason'] === 'string' || data['failed_reason'] instanceof String)) {
+            throw new Error("Expected the field `failed_reason` to be a primitive type in the JSON string but got " + data['failed_reason']);
         }
         // validate the optional field `commission_fee`
         if (data['commission_fee']) { // data not null
@@ -166,6 +173,12 @@ PaymentBulkSend.prototype['execution_mode'] = undefined;
  * @member {module:model/PaymentBulkSendStatus} status
  */
 PaymentBulkSend.prototype['status'] = undefined;
+
+/**
+ * The reason why the bulk send failed.
+ * @member {String} failed_reason
+ */
+PaymentBulkSend.prototype['failed_reason'] = undefined;
 
 /**
  * The created time of the bulk send, represented as a UNIX timestamp in seconds.

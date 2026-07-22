@@ -94,6 +94,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property sub_status (base name: "sub_status")', function() {
+      // uncomment below and update the code to test the property sub_status
+      //var instance = new CoboWaas2.PaymentTransaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failed_reason (base name: "failed_reason")', function() {
+      // uncomment below and update the code to test the property failed_reason
+      //var instance = new CoboWaas2.PaymentTransaction();
+      //expect(instance).to.be();
+    });
+
     it('should have the property counterparty (base name: "counterparty")', function() {
       // uncomment below and update the code to test the property counterparty
       //var instance = new CoboWaas2.PaymentTransaction();

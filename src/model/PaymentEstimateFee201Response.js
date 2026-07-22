@@ -48,6 +48,9 @@ class PaymentEstimateFee201Response {
             if (data.hasOwnProperty('data')) {
                 obj['data'] = ApiClient.convertToType(data['data'], [PaymentEstimatedFee]);
             }
+            if (data.hasOwnProperty('otc_fixed_fee')) {
+                obj['otc_fixed_fee'] = ApiClient.convertToType(data['otc_fixed_fee'], 'String');
+            }
         }
         return obj;
     }
@@ -68,6 +71,10 @@ class PaymentEstimateFee201Response {
                 PaymentEstimatedFee.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['otc_fixed_fee'] && !(typeof data['otc_fixed_fee'] === 'string' || data['otc_fixed_fee'] instanceof String)) {
+            throw new Error("Expected the field `otc_fixed_fee` to be a primitive type in the JSON string but got " + data['otc_fixed_fee']);
+        }
 
         return true;
     }
@@ -82,6 +89,12 @@ class PaymentEstimateFee201Response {
  * @member {Array.<module:model/PaymentEstimatedFee>} data
  */
 PaymentEstimateFee201Response.prototype['data'] = undefined;
+
+/**
+ * The fixed OTC fee amount for the payout.  This fee is charged in addition to the percentage-based OTC fee calculated using `otc_fee.fee_rate`. 
+ * @member {String} otc_fixed_fee
+ */
+PaymentEstimateFee201Response.prototype['otc_fixed_fee'] = undefined;
 
 
 

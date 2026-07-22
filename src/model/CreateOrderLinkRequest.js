@@ -48,6 +48,9 @@ class CreateOrderLinkRequest {
         if (data) {
             obj = obj || new CreateOrderLinkRequest();
 
+            if (data.hasOwnProperty('request_id')) {
+                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
+            }
             if (data.hasOwnProperty('business_info')) {
                 obj['business_info'] = OrderLinkBusinessInfo.constructFromObject(data['business_info']);
             }
@@ -70,6 +73,10 @@ class CreateOrderLinkRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
+        }
         // validate the optional field `business_info`
         if (data['business_info']) { // data not null
           if (!!OrderLinkBusinessInfo.validateJSON) {
@@ -90,6 +97,12 @@ class CreateOrderLinkRequest {
 }
 
 CreateOrderLinkRequest.RequiredProperties = ["business_info"];
+
+/**
+ * The request ID that is used to track an order link request. The request ID is provided by you and must be unique.
+ * @member {String} request_id
+ */
+CreateOrderLinkRequest.prototype['request_id'] = undefined;
 
 /**
  * @member {module:model/OrderLinkBusinessInfo} business_info

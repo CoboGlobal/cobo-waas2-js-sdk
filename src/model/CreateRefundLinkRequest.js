@@ -48,6 +48,9 @@ class CreateRefundLinkRequest {
         if (data) {
             obj = obj || new CreateRefundLinkRequest();
 
+            if (data.hasOwnProperty('request_id')) {
+                obj['request_id'] = ApiClient.convertToType(data['request_id'], 'String');
+            }
             if (data.hasOwnProperty('business_info')) {
                 obj['business_info'] = RefundLinkBusinessInfo.constructFromObject(data['business_info']);
             }
@@ -70,6 +73,10 @@ class CreateRefundLinkRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['request_id'] && !(typeof data['request_id'] === 'string' || data['request_id'] instanceof String)) {
+            throw new Error("Expected the field `request_id` to be a primitive type in the JSON string but got " + data['request_id']);
+        }
         // validate the optional field `business_info`
         if (data['business_info']) { // data not null
           if (!!RefundLinkBusinessInfo.validateJSON) {
@@ -90,6 +97,12 @@ class CreateRefundLinkRequest {
 }
 
 CreateRefundLinkRequest.RequiredProperties = ["business_info"];
+
+/**
+ * The request ID that is used to track a refund link request. The request ID is provided by you and must be unique.
+ * @member {String} request_id
+ */
+CreateRefundLinkRequest.prototype['request_id'] = undefined;
 
 /**
  * @member {module:model/RefundLinkBusinessInfo} business_info

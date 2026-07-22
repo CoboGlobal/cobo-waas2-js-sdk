@@ -58,6 +58,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property otc_fixed_fee (base name: "otc_fixed_fee")', function() {
+      // uncomment below and update the code to test the property otc_fixed_fee
+      //var instance = new CoboWaas2.PaymentEstimateFee201Response();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

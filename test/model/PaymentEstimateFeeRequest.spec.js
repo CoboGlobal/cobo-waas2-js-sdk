@@ -76,6 +76,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property bank_account_id (base name: "bank_account_id")', function() {
+      // uncomment below and update the code to test the property bank_account_id
+      //var instance = new CoboWaas2.PaymentEstimateFeeRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

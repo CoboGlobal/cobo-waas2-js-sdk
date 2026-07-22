@@ -106,6 +106,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property failed_reason (base name: "failed_reason")', function() {
+      // uncomment below and update the code to test the property failed_reason
+      //var instance = new CoboWaas2.Refund();
+      //expect(instance).to.be();
+    });
+
     it('should have the property refund_type (base name: "refund_type")', function() {
       // uncomment below and update the code to test the property refund_type
       //var instance = new CoboWaas2.Refund();
