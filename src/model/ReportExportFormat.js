@@ -39,6 +39,13 @@ export default class ReportExportFormat {
 
     
         /**
+         * value: "PDF"
+         * @const
+         */
+        "PDF" = "PDF";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

@@ -453,6 +453,7 @@ import PaymentBulkSend from './model/PaymentBulkSend';
 import PaymentBulkSendEvent from './model/PaymentBulkSendEvent';
 import PaymentBulkSendExecutionMode from './model/PaymentBulkSendExecutionMode';
 import PaymentBulkSendItem from './model/PaymentBulkSendItem';
+import PaymentBulkSendItemEvent from './model/PaymentBulkSendItemEvent';
 import PaymentBulkSendItemStatus from './model/PaymentBulkSendItemStatus';
 import PaymentBulkSendItemValidationStatus from './model/PaymentBulkSendItemValidationStatus';
 import PaymentBulkSendStatus from './model/PaymentBulkSendStatus';
@@ -923,7 +924,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.40.0
+* @version 1.41.0
 */
 export {
     Env,
@@ -3574,6 +3575,12 @@ export {
      * @property {module:model/PaymentBulkSendItem}
      */
     PaymentBulkSendItem,
+
+    /**
+     * The PaymentBulkSendItemEvent model constructor.
+     * @property {module:model/PaymentBulkSendItemEvent}
+     */
+    PaymentBulkSendItemEvent,
 
     /**
      * The PaymentBulkSendItemStatus model constructor.
