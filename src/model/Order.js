@@ -22,9 +22,9 @@ class Order {
     /**
      * Constructs a new <code>Order</code>.
      * @alias module:model/Order
-     * @param order_id {String} The order ID.
-     * @param psp_order_code {String} A unique reference code assigned by the developer to identify this order in their system.
-     * @param fee_amount {String} The developer fee for the order. It is added to the base amount to determine the final charge.
+     * @param order_id {String} The unique identifier of the payment order. Cobo assigns this ID when the payment order is created — when that happens depends on which pay-in method you use.  For the direct method, `Create pay-in order` creates the order synchronously and returns `order_id` in the response immediately.  For the payment link method, `Create order link` returns only the hosted link details and does not create an order, so `order_id` does not exist yet at that point. `order_id` becomes available only after the payer opens the hosted payment page, selects the payment token and blockchain network, and submits the order — Cobo creates the order and assigns `order_id` at that moment, not when the link itself was generated. 
+     * @param psp_order_code {String} The order identifier for your own internal business order, exactly as you supplied it in `psp_order_code` when creating the order. This value is unique within your Cobo organization.
+     * @param fee_amount {String} The order-level developer charge credited to your developer balance when the order settles. A value of `0` means that no developer fee was charged and the merchant was credited with the full collected amount.  When the collected payment exactly matches the payable amount, the merchant balance is credited with the payable amount minus `fee_amount`, and your developer balance is credited with `fee_amount`. For example, for a payable amount of `104.08` and a `fee_amount` of `2`, the merchant receives `102.08` and you receive `2`.  For related fee settings and settlement details, see [Merchant management](https://www.cobo.com/payments/en/guides/merchants) and [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
      * @param chain_id {String} The ID of the blockchain network where the payment transaction should be made.
      * @param payable_amount {String} The cryptocurrency amount to be paid for this order.
      * @param exchange_rate {String} The exchange rate between `payable_currency` and `pricing_currency`, calculated as (`pricing_amount` + `fee_amount`) / `payable_amount`.    <Note>This field is only returned when `payable_amount` was not provided in the order creation request. </Note> 
@@ -238,7 +238,7 @@ class Order {
 Order.RequiredProperties = ["order_id", "psp_order_code", "fee_amount", "chain_id", "payable_amount", "exchange_rate", "receive_address", "status", "received_token_amount"];
 
 /**
- * The order ID.
+ * The unique identifier of the payment order. Cobo assigns this ID when the payment order is created — when that happens depends on which pay-in method you use.  For the direct method, `Create pay-in order` creates the order synchronously and returns `order_id` in the response immediately.  For the payment link method, `Create order link` returns only the hosted link details and does not create an order, so `order_id` does not exist yet at that point. `order_id` becomes available only after the payer opens the hosted payment page, selects the payment token and blockchain network, and submits the order — Cobo creates the order and assigns `order_id` at that moment, not when the link itself was generated. 
  * @member {String} order_id
  */
 Order.prototype['order_id'] = undefined;
@@ -250,13 +250,13 @@ Order.prototype['order_id'] = undefined;
 Order.prototype['merchant_id'] = undefined;
 
 /**
- * A unique reference code assigned by the merchant to identify this order in their system.
+ * The downstream merchant's order reference, exactly as you supplied it in `merchant_order_code` when creating the order, if you provided one. Present only when a `merchant_order_code` was included at order creation.
  * @member {String} merchant_order_code
  */
 Order.prototype['merchant_order_code'] = undefined;
 
 /**
- * A unique reference code assigned by the developer to identify this order in their system.
+ * The order identifier for your own internal business order, exactly as you supplied it in `psp_order_code` when creating the order. This value is unique within your Cobo organization.
  * @member {String} psp_order_code
  */
 Order.prototype['psp_order_code'] = undefined;
@@ -274,7 +274,7 @@ Order.prototype['pricing_currency'] = undefined;
 Order.prototype['pricing_amount'] = undefined;
 
 /**
- * The developer fee for the order. It is added to the base amount to determine the final charge.
+ * The order-level developer charge credited to your developer balance when the order settles. A value of `0` means that no developer fee was charged and the merchant was credited with the full collected amount.  When the collected payment exactly matches the payable amount, the merchant balance is credited with the payable amount minus `fee_amount`, and your developer balance is credited with `fee_amount`. For example, for a payable amount of `104.08` and a `fee_amount` of `2`, the merchant receives `102.08` and you receive `2`.  For related fee settings and settlement details, see [Merchant management](https://www.cobo.com/payments/en/guides/merchants) and [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
  * @member {String} fee_amount
  */
 Order.prototype['fee_amount'] = undefined;

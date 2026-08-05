@@ -20,7 +20,7 @@ class PaymentPayoutParam {
      * Constructs a new <code>PaymentPayoutParam</code>.
      * @alias module:model/PaymentPayoutParam
      * @param token_id {String} The ID of the cryptocurrency you want to pay out. Specify this field when `payout_channel` is set to `Crypto`. Supported values: - USDC: `ETH_USDC`, `ARBITRUM_USDC`, `SOL_USDC`, `BASE_USDC`, `MATIC_USDC`, `BSC_USDC` - USDT: `TRON_USDT`, `ETH_USDT`, `ARBITRUM_USDT`, `SOL_USDT`, `BASE_USDT`, `MATIC_USDT`, `BSC_USDT` 
-     * @param amount {String} The payout cryptocurrency amount. 
+     * @param amount {String} The payout amount, provided as a decimal string. You can include up to two nonzero digits after the decimal point; trailing zeros beyond that (for example, `100.500`) are accepted, but a value with more than two nonzero fractional digits (for example, `100.567`) is rejected with an invalid amount format error instead of being rounded. 
      */
     constructor(token_id, amount) { 
         
@@ -94,7 +94,7 @@ PaymentPayoutParam.RequiredProperties = ["token_id", "amount"];
 PaymentPayoutParam.prototype['token_id'] = undefined;
 
 /**
- * The payout cryptocurrency amount. 
+ * The payout amount, provided as a decimal string. You can include up to two nonzero digits after the decimal point; trailing zeros beyond that (for example, `100.500`) are accepted, but a value with more than two nonzero fractional digits (for example, `100.567`) is rejected with an invalid amount format error instead of being rounded. 
  * @member {String} amount
  */
 PaymentPayoutParam.prototype['amount'] = undefined;

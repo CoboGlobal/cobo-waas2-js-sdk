@@ -95,19 +95,19 @@ class PaymentPayoutRecipientInfo {
 
 
 /**
- * The recipient's wallet address where the payout will be sent.
+ * The recipient's cryptocurrency address. Use an address that you have registered as a destination and that has been approved for payouts. Call [List destination entries](https://www.cobo.com/payments/en/api-references/payment/list-destination-entries) with `entry_type` set to `Address` to retrieve your registered wallet addresses and each address's `chain_id`. A destination entry returns the `address` and its `chain_id`, not a `token_id` -- confirm that the network indicated by `chain_id` matches the network encoded in the `token_id` you use, since an address on the wrong network for that token cannot complete the transfer.
  * @member {String} address
  */
 PaymentPayoutRecipientInfo.prototype['address'] = undefined;
 
 /**
- * The token ID for the cryptocurrency to be sent to the recipient.  If `recipient_info.token_id` is on a different chain than `payout_param.token_id`, the token will be automatically bridged to the chain specified in `recipient_info.token_id`. 
+ * The cryptocurrency ID of the token to send (for example, `ETH_USDT`, `TRON_USDT`). When this token ID and the `token_id` in `payout_params` represent the same token on different chains, Cobo automatically executes a cross-chain transfer. You can retrieve the full list of supported token IDs by calling [List supported tokens](https://www.cobo.com/payments/en/api-references/payment/list-supported-tokens).
  * @member {String} token_id
  */
 PaymentPayoutRecipientInfo.prototype['token_id'] = undefined;
 
 /**
- * The fiat currency of the bank account to which the payout will be sent.
+ * The fiat currency of the bank account selected in `bank_account_id` -- the two must match. This endpoint currently accepts only `USD`.
  * @member {String} currency
  */
 PaymentPayoutRecipientInfo.prototype['currency'] = undefined;

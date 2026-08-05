@@ -455,6 +455,7 @@ docs/PaymentBulkSend.md
 docs/PaymentBulkSendEvent.md
 docs/PaymentBulkSendExecutionMode.md
 docs/PaymentBulkSendItem.md
+docs/PaymentBulkSendItemEvent.md
 docs/PaymentBulkSendItemStatus.md
 docs/PaymentBulkSendItemValidationStatus.md
 docs/PaymentBulkSendStatus.md
@@ -1354,6 +1355,7 @@ src/model/PaymentBulkSend.js
 src/model/PaymentBulkSendEvent.js
 src/model/PaymentBulkSendExecutionMode.js
 src/model/PaymentBulkSendItem.js
+src/model/PaymentBulkSendItemEvent.js
 src/model/PaymentBulkSendItemStatus.js
 src/model/PaymentBulkSendItemValidationStatus.js
 src/model/PaymentBulkSendStatus.js
@@ -2232,6 +2234,7 @@ test/model/PaymentBulkSend.spec.js
 test/model/PaymentBulkSendEvent.spec.js
 test/model/PaymentBulkSendExecutionMode.spec.js
 test/model/PaymentBulkSendItem.spec.js
+test/model/PaymentBulkSendItemEvent.spec.js
 test/model/PaymentBulkSendItemStatus.spec.js
 test/model/PaymentBulkSendItemValidationStatus.spec.js
 test/model/PaymentBulkSendStatus.spec.js

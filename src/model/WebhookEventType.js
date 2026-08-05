@@ -333,6 +333,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.bulk_send.item.status.updated"
+         * @const
+         */
+        "payment.bulk_send.item.status.updated" = "payment.bulk_send.item.status.updated";
+
+    
+        /**
          * value: "payment.transaction.external.created"
          * @const
          */

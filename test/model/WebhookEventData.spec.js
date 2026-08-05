@@ -670,6 +670,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property bulk_send_item_id (base name: "bulk_send_item_id")', function() {
+      // uncomment below and update the code to test the property bulk_send_item_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property receiving_address (base name: "receiving_address")', function() {
+      // uncomment below and update the code to test the property receiving_address
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tx_hash (base name: "tx_hash")', function() {
+      // uncomment below and update the code to test the property tx_hash
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property validation_status (base name: "validation_status")', function() {
+      // uncomment below and update the code to test the property validation_status
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property source_id (base name: "source_id")', function() {
       // uncomment below and update the code to test the property source_id
       //var instance = new CoboWaas2.WebhookEventData();
