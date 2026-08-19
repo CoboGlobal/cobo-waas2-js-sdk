@@ -10,11 +10,12 @@
  */
 
 import ApiClient from '../ApiClient';
+import TokenizationERC20FundTokenParams from './TokenizationERC20FundTokenParams';
+import TokenizationERC20FundTokenPermissionParams from './TokenizationERC20FundTokenPermissionParams';
 import TokenizationERC20TokenParams from './TokenizationERC20TokenParams';
 import TokenizationERC20WrappedTokenParams from './TokenizationERC20WrappedTokenParams';
 import TokenizationSOLTokenParams from './TokenizationSOLTokenParams';
 import TokenizationSOLWrappedTokenParams from './TokenizationSOLWrappedTokenParams';
-import TokenizationSolWrappedTokenPermissionParams from './TokenizationSolWrappedTokenPermissionParams';
 import TokenizationTokenStandard from './TokenizationTokenStandard';
 
 /**
@@ -25,7 +26,7 @@ class TokenizationIssueTokenParamsTokenParams {
     /**
      * Constructs a new <code>TokenizationIssueTokenParamsTokenParams</code>.
      * @alias module:model/TokenizationIssueTokenParamsTokenParams
-     * @param {(module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} instance The actual instance to initialize TokenizationIssueTokenParamsTokenParams.
+     * @param {(module:model/TokenizationERC20FundTokenParams|module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} instance The actual instance to initialize TokenizationIssueTokenParamsTokenParams.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -40,6 +41,10 @@ class TokenizationIssueTokenParamsTokenParams {
             switch(discriminatorValue) {
                 case "ERC20":
                     this.actualInstance = TokenizationERC20TokenParams.constructFromObject(instance);
+                    match++;
+                    break;
+                case "ERC20Fund":
+                    this.actualInstance = TokenizationERC20FundTokenParams.constructFromObject(instance);
                     match++;
                     break;
                 case "ERC20Wrapper":
@@ -161,12 +166,37 @@ class TokenizationIssueTokenParamsTokenParams {
             errorMessages.push("Failed to construct TokenizationSOLWrappedTokenParams: " + err)
         }
 
+        try {
+            if (instance instanceof TokenizationERC20FundTokenParams) {
+                this.actualInstance = instance;
+            } else if(!!TokenizationERC20FundTokenParams.validateJSON && TokenizationERC20FundTokenParams.validateJSON(instance)){
+                // plain JS object
+                // create TokenizationERC20FundTokenParams from JS object
+                this.actualInstance = TokenizationERC20FundTokenParams.constructFromObject(instance);
+            } else {
+                if(TokenizationERC20FundTokenParams.constructFromObject(instance)) {
+                    if (!!TokenizationERC20FundTokenParams.constructFromObject(instance).toJSON) {
+                        if (TokenizationERC20FundTokenParams.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = TokenizationERC20FundTokenParams.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = TokenizationERC20FundTokenParams.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into TokenizationERC20FundTokenParams
+            errorMessages.push("Failed to construct TokenizationERC20FundTokenParams: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `TokenizationIssueTokenParamsTokenParams` with oneOf schemas TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `TokenizationIssueTokenParamsTokenParams` with oneOf schemas TokenizationERC20FundTokenParams, TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `TokenizationIssueTokenParamsTokenParams` with oneOf schemas TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams. Details: " +
+        //    throw new Error("No match found constructing `TokenizationIssueTokenParamsTokenParams` with oneOf schemas TokenizationERC20FundTokenParams, TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -186,16 +216,16 @@ class TokenizationIssueTokenParamsTokenParams {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TokenizationERC20TokenParams</code>, <code>TokenizationERC20WrappedTokenParams</code>, <code>TokenizationSOLTokenParams</code>, <code>TokenizationSOLWrappedTokenParams</code>.
-     * @return {(module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} The actual instance.
+     * Gets the actual instance, which can be <code>TokenizationERC20FundTokenParams</code>, <code>TokenizationERC20TokenParams</code>, <code>TokenizationERC20WrappedTokenParams</code>, <code>TokenizationSOLTokenParams</code>, <code>TokenizationSOLWrappedTokenParams</code>.
+     * @return {(module:model/TokenizationERC20FundTokenParams|module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TokenizationERC20TokenParams</code>, <code>TokenizationERC20WrappedTokenParams</code>, <code>TokenizationSOLTokenParams</code>, <code>TokenizationSOLWrappedTokenParams</code>.
-     * @param {(module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TokenizationERC20FundTokenParams</code>, <code>TokenizationERC20TokenParams</code>, <code>TokenizationERC20WrappedTokenParams</code>, <code>TokenizationSOLTokenParams</code>, <code>TokenizationSOLWrappedTokenParams</code>.
+     * @param {(module:model/TokenizationERC20FundTokenParams|module:model/TokenizationERC20TokenParams|module:model/TokenizationERC20WrappedTokenParams|module:model/TokenizationSOLTokenParams|module:model/TokenizationSOLWrappedTokenParams)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = TokenizationIssueTokenParamsTokenParams.constructFromObject(obj).getActualInstance();
@@ -225,13 +255,13 @@ class TokenizationIssueTokenParamsTokenParams {
 TokenizationIssueTokenParamsTokenParams.prototype['standard'] = undefined;
 
 /**
- * The name of the token.
+ * The name of the fund token.
  * @member {String} name
  */
 TokenizationIssueTokenParamsTokenParams.prototype['name'] = undefined;
 
 /**
- * The symbol of the token.
+ * The symbol of the fund token.
  * @member {String} symbol
  */
 TokenizationIssueTokenParamsTokenParams.prototype['symbol'] = undefined;
@@ -250,7 +280,7 @@ TokenizationIssueTokenParamsTokenParams.prototype['decimals'] = undefined;
 TokenizationIssueTokenParamsTokenParams.prototype['token_access_activated'] = false;
 
 /**
- * @member {module:model/TokenizationSolWrappedTokenPermissionParams} permissions
+ * @member {module:model/TokenizationERC20FundTokenPermissionParams} permissions
  */
 TokenizationIssueTokenParamsTokenParams.prototype['permissions'] = undefined;
 
@@ -260,8 +290,63 @@ TokenizationIssueTokenParamsTokenParams.prototype['permissions'] = undefined;
  */
 TokenizationIssueTokenParamsTokenParams.prototype['underlying_token'] = undefined;
 
+/**
+ * The address of the underlying asset token (e.g., XAUT, USDC). The fund will hold this token as collateral.
+ * @member {String} asset_token
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['asset_token'] = undefined;
 
-TokenizationIssueTokenParamsTokenParams.OneOf = ["TokenizationERC20TokenParams", "TokenizationERC20WrappedTokenParams", "TokenizationSOLTokenParams", "TokenizationSOLWrappedTokenParams"];
+/**
+ * Initial net asset value (NAV) per share (optional). Default: '1.0' (standard for new funds).
+ * @member {String} initial_nav
+ * @default '1.0'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['initial_nav'] = '1.0';
+
+/**
+ * Initial annual rate (optional). Can be updated later via NAV updater. Default: '0'.
+ * @member {String} initial_annual_rate
+ * @default '0'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['initial_annual_rate'] = '0';
+
+/**
+ * Minimum deposit amount (optional). Default: '0' (no minimum, accepts any amount > 0). Admin can update this later.
+ * @member {String} min_deposit
+ * @default '0'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['min_deposit'] = '0';
+
+/**
+ * Minimum redemption amount (optional). Default: '0' (no minimum, accepts any amount > 0). Admin can update this later.
+ * @member {String} min_redemption
+ * @default '0'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['min_redemption'] = '0';
+
+/**
+ * Maximum allowed annual rate (optional). Default: type(uint256).max (no limit). Set lower for conservative funds (e.g., '0.2' for 20%).
+ * @member {String} max_annual_rate
+ * @default '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['max_annual_rate'] = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
+
+/**
+ * Maximum rate change per NAV update (optional). Default: type(uint256).max (no limit). Set lower to prevent volatility (e.g., '0.05' for 5%).
+ * @member {String} max_rate_change
+ * @default '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['max_rate_change'] = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
+
+/**
+ * Minimum interval between NAV updates in seconds (optional). Default: 0 (no minimum). Set higher to prevent frequent updates (e.g., 86400 for 1 day).
+ * @member {Number} min_update_interval_seconds
+ * @default 0
+ */
+TokenizationIssueTokenParamsTokenParams.prototype['min_update_interval_seconds'] = 0;
+
+
+TokenizationIssueTokenParamsTokenParams.OneOf = ["TokenizationERC20FundTokenParams", "TokenizationERC20TokenParams", "TokenizationERC20WrappedTokenParams", "TokenizationSOLTokenParams", "TokenizationSOLWrappedTokenParams"];
 
 export default TokenizationIssueTokenParamsTokenParams;
 

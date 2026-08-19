@@ -220,6 +220,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property transaction_process_type (base name: "transaction_process_type")', function() {
+      // uncomment below and update the code to test the property transaction_process_type
+      //var instance = new CoboWaas2.TransactionDetail();
+      //expect(instance).to.be();
+    });
+
     it('should have the property fueling_info (base name: "fueling_info")', function() {
       // uncomment below and update the code to test the property fueling_info
       //var instance = new CoboWaas2.TransactionDetail();

@@ -79,6 +79,7 @@ import BabylonStakingExtra from './model/BabylonStakingExtra';
 import BabylonStakingRegistration from './model/BabylonStakingRegistration';
 import BabylonValidator from './model/BabylonValidator';
 import Balance from './model/Balance';
+import BalanceAtBlock from './model/BalanceAtBlock';
 import BalanceUpdateInfo from './model/BalanceUpdateInfo';
 import BalanceUpdateInfoEventData from './model/BalanceUpdateInfoEventData';
 import BankAccount from './model/BankAccount';
@@ -107,8 +108,6 @@ import CheckAddressChainsValidity200ResponseInner from './model/CheckAddressChai
 import CheckAddressValidity200Response from './model/CheckAddressValidity200Response';
 import CheckAddressesValidity200ResponseInner from './model/CheckAddressesValidity200ResponseInner';
 import CheckLoopTransfers200ResponseInner from './model/CheckLoopTransfers200ResponseInner';
-import CoboSafeDelegate from './model/CoboSafeDelegate';
-import CoboSafeDelegateType from './model/CoboSafeDelegateType';
 import CommissionFee from './model/CommissionFee';
 import ComplianceDispositionUpdateEventData from './model/ComplianceDispositionUpdateEventData';
 import ComplianceKyaScreeningsUpdateEventData from './model/ComplianceKyaScreeningsUpdateEventData';
@@ -138,6 +137,7 @@ import CreateBabylonAirdropRegistration201Response from './model/CreateBabylonAi
 import CreateBabylonAirdropRegistrationRequest from './model/CreateBabylonAirdropRegistrationRequest';
 import CreateBabylonStakingRegistration201Response from './model/CreateBabylonStakingRegistration201Response';
 import CreateBabylonStakingRegistrationRequest from './model/CreateBabylonStakingRegistrationRequest';
+import CreateBankWithdrawalRequest from './model/CreateBankWithdrawalRequest';
 import CreateBatchAllocationRequest from './model/CreateBatchAllocationRequest';
 import CreateBulkSendRequest from './model/CreateBulkSendRequest';
 import CreateBulkSendRequestPayoutParamsInner from './model/CreateBulkSendRequestPayoutParamsInner';
@@ -168,11 +168,9 @@ import CreatePrimeBrokerAddressRequest from './model/CreatePrimeBrokerAddressReq
 import CreateRefundLinkRequest from './model/CreateRefundLinkRequest';
 import CreateRefundRequest from './model/CreateRefundRequest';
 import CreateReportRequest from './model/CreateReportRequest';
-import CreateSafeWalletParams from './model/CreateSafeWalletParams';
 import CreateSatoshiTestChallengeRequest from './model/CreateSatoshiTestChallengeRequest';
 import CreateSettlement from './model/CreateSettlement';
 import CreateSettlementRequestRequest from './model/CreateSettlementRequestRequest';
-import CreateSmartContractWalletParams from './model/CreateSmartContractWalletParams';
 import CreateStakeActivity from './model/CreateStakeActivity';
 import CreateStakeActivity201Response from './model/CreateStakeActivity201Response';
 import CreateStakeActivityExtra from './model/CreateStakeActivityExtra';
@@ -214,7 +212,9 @@ import DeleteWalletById201Response from './model/DeleteWalletById201Response';
 import Destination from './model/Destination';
 import DestinationBankAccount from './model/DestinationBankAccount';
 import DestinationBankAccountDetail from './model/DestinationBankAccountDetail';
+import DestinationBankAccountTag from './model/DestinationBankAccountTag';
 import DestinationDetail from './model/DestinationDetail';
+import DestinationSource from './model/DestinationSource';
 import DestinationType from './model/DestinationType';
 import DestinationWalletAddressDetail from './model/DestinationWalletAddressDetail';
 import DestinationWalletType from './model/DestinationWalletType';
@@ -273,6 +273,7 @@ import FILBase from './model/FILBase';
 import FILPrice from './model/FILPrice';
 import FeeAmount from './model/FeeAmount';
 import FeeGasLimit from './model/FeeGasLimit';
+import FeeLevel from './model/FeeLevel';
 import FeeRate from './model/FeeRate';
 import FeeReserved from './model/FeeReserved';
 import FeeStationCheckFeeStationUsage from './model/FeeStationCheckFeeStationUsage';
@@ -296,6 +297,7 @@ import GetCounterpartyEntry200Response from './model/GetCounterpartyEntry200Resp
 import GetDestinationEntry200Response from './model/GetDestinationEntry200Response';
 import GetExchangeRate200Response from './model/GetExchangeRate200Response';
 import GetMaxTransferableValueWithFeeModelRequest from './model/GetMaxTransferableValueWithFeeModelRequest';
+import GetReconciliationLedger200Response from './model/GetReconciliationLedger200Response';
 import GetRefunds200Response from './model/GetRefunds200Response';
 import GetReports200Response from './model/GetReports200Response';
 import GetSettlementInfoByIds200Response from './model/GetSettlementInfoByIds200Response';
@@ -333,6 +335,7 @@ import KytScreeningsTransaction from './model/KytScreeningsTransaction';
 import KytScreeningsTransactionType from './model/KytScreeningsTransactionType';
 import Link from './model/Link';
 import LinkDisplayInfo from './model/LinkDisplayInfo';
+import ListAccountBalances200Response from './model/ListAccountBalances200Response';
 import ListAddressBalancesByToken200Response from './model/ListAddressBalancesByToken200Response';
 import ListAddressBooks200Response from './model/ListAddressBooks200Response';
 import ListAddressVerifications200Response from './model/ListAddressVerifications200Response';
@@ -346,6 +349,7 @@ import ListBabylonEligibleAirdrops200Response from './model/ListBabylonEligibleA
 import ListBabylonEligibleStakings200Response from './model/ListBabylonEligibleStakings200Response';
 import ListBabylonEligibleStakings200ResponseDataInner from './model/ListBabylonEligibleStakings200ResponseDataInner';
 import ListBabylonStakingRegistrations200Response from './model/ListBabylonStakingRegistrations200Response';
+import ListBankWithdrawals200Response from './model/ListBankWithdrawals200Response';
 import ListBatchAllocations200Response from './model/ListBatchAllocations200Response';
 import ListBulkSendItems200Response from './model/ListBulkSendItems200Response';
 import ListBulkSends200Response from './model/ListBulkSends200Response';
@@ -368,6 +372,7 @@ import ListPayerTransactions200Response from './model/ListPayerTransactions200Re
 import ListPaymentOrders200Response from './model/ListPaymentOrders200Response';
 import ListPaymentWalletBalances200Response from './model/ListPaymentWalletBalances200Response';
 import ListPayouts200Response from './model/ListPayouts200Response';
+import ListReconciliationStatements200Response from './model/ListReconciliationStatements200Response';
 import ListSettlementDetails200Response from './model/ListSettlementDetails200Response';
 import ListSettlementRequests200Response from './model/ListSettlementRequests200Response';
 import ListStakingActivities200Response from './model/ListStakingActivities200Response';
@@ -399,7 +404,6 @@ import ListWebhookEvents200Response from './model/ListWebhookEvents200Response';
 import LockUtxos201Response from './model/LockUtxos201Response';
 import LockUtxosRequest from './model/LockUtxosRequest';
 import LockUtxosRequestUtxosInner from './model/LockUtxosRequestUtxosInner';
-import MPCDelegate from './model/MPCDelegate';
 import MPCProject from './model/MPCProject';
 import MPCVault from './model/MPCVault';
 import MPCVaultEventData from './model/MPCVaultEventData';
@@ -448,6 +452,12 @@ import PaymentBalanceChange from './model/PaymentBalanceChange';
 import PaymentBalanceChangeResponse from './model/PaymentBalanceChangeResponse';
 import PaymentBalanceChangeSourceType from './model/PaymentBalanceChangeSourceType';
 import PaymentBalanceFlowDirection from './model/PaymentBalanceFlowDirection';
+import PaymentBankAccountBalance from './model/PaymentBankAccountBalance';
+import PaymentBankWithdrawal from './model/PaymentBankWithdrawal';
+import PaymentBankWithdrawalDetail from './model/PaymentBankWithdrawalDetail';
+import PaymentBankWithdrawalEvent from './model/PaymentBankWithdrawalEvent';
+import PaymentBankWithdrawalStatus from './model/PaymentBankWithdrawalStatus';
+import PaymentBankWithdrawalTimelineItem from './model/PaymentBankWithdrawalTimelineItem';
 import PaymentBridgeStatus from './model/PaymentBridgeStatus';
 import PaymentBulkSend from './model/PaymentBulkSend';
 import PaymentBulkSendEvent from './model/PaymentBulkSendEvent';
@@ -493,6 +503,9 @@ import QueryApprovalStatement200Response from './model/QueryApprovalStatement200
 import QueryGuardPubkey200Response from './model/QueryGuardPubkey200Response';
 import QueryGuardPubkey200ResponseAddressesInner from './model/QueryGuardPubkey200ResponseAddressesInner';
 import RawMessageSignDestination from './model/RawMessageSignDestination';
+import ReconDailyStatement from './model/ReconDailyStatement';
+import ReconLedgerEntry from './model/ReconLedgerEntry';
+import ReconStatementStatus from './model/ReconStatementStatus';
 import RefreshAddressBalancesByToken200Response from './model/RefreshAddressBalancesByToken200Response';
 import RefreshAddressBalancesByTokenRequest from './model/RefreshAddressBalancesByTokenRequest';
 import RefreshPermissionTokenRequest from './model/RefreshPermissionTokenRequest';
@@ -519,16 +532,6 @@ import RoleScopes from './model/RoleScopes';
 import RootPubkey from './model/RootPubkey';
 import SOLBase from './model/SOLBase';
 import SOLComputeUnit from './model/SOLComputeUnit';
-import SafeContractCallSource from './model/SafeContractCallSource';
-import SafeTransferSource from './model/SafeTransferSource';
-import SafeTxDecodedData from './model/SafeTxDecodedData';
-import SafeTxDecodedDataParameters from './model/SafeTxDecodedDataParameters';
-import SafeTxExtraData from './model/SafeTxExtraData';
-import SafeTxSubTransaction from './model/SafeTxSubTransaction';
-import SafeWallet from './model/SafeWallet';
-import SafeWalletDelegates from './model/SafeWalletDelegates';
-import SafeWalletDelegatesContractCall from './model/SafeWalletDelegatesContractCall';
-import SafeWalletDelegatesTransfer from './model/SafeWalletDelegatesTransfer';
 import SatoshiTestCancelResult from './model/SatoshiTestCancelResult';
 import SatoshiTestChallenge from './model/SatoshiTestChallenge';
 import SatoshiTestChallengeAction from './model/SatoshiTestChallengeAction';
@@ -545,10 +548,6 @@ import SettlementType from './model/SettlementType';
 import SignatureChallenge from './model/SignatureChallenge';
 import SignatureDetail from './model/SignatureDetail';
 import SkipCheckType from './model/SkipCheckType';
-import SmartContractInitiator from './model/SmartContractInitiator';
-import SmartContractWalletInfo from './model/SmartContractWalletInfo';
-import SmartContractWalletOperationType from './model/SmartContractWalletOperationType';
-import SmartContractWalletType from './model/SmartContractWalletType';
 import SolContractCallAccount from './model/SolContractCallAccount';
 import SolContractCallAddressLookupTableAccount from './model/SolContractCallAddressLookupTableAccount';
 import SolContractCallDestination from './model/SolContractCallDestination';
@@ -654,6 +653,8 @@ import TokenizationContractCallParams from './model/TokenizationContractCallPara
 import TokenizationContractCallParamsData from './model/TokenizationContractCallParamsData';
 import TokenizationContractCallRequest from './model/TokenizationContractCallRequest';
 import TokenizationContractCallType from './model/TokenizationContractCallType';
+import TokenizationERC20FundTokenParams from './model/TokenizationERC20FundTokenParams';
+import TokenizationERC20FundTokenPermissionParams from './model/TokenizationERC20FundTokenPermissionParams';
 import TokenizationERC20TokenParams from './model/TokenizationERC20TokenParams';
 import TokenizationERC20TokenPermissionParams from './model/TokenizationERC20TokenPermissionParams';
 import TokenizationERC20WrappedTokenParams from './model/TokenizationERC20WrappedTokenParams';
@@ -765,6 +766,8 @@ import TransactionRawMessageSignDestination from './model/TransactionRawMessageS
 import TransactionRawTxInfo from './model/TransactionRawTxInfo';
 import TransactionRbf from './model/TransactionRbf';
 import TransactionRbfSource from './model/TransactionRbfSource';
+import TransactionReceipt from './model/TransactionReceipt';
+import TransactionReceiptLog from './model/TransactionReceiptLog';
 import TransactionReplacement from './model/TransactionReplacement';
 import TransactionRequestEvmEip1559Fee from './model/TransactionRequestEvmEip1559Fee';
 import TransactionRequestEvmLegacyFee from './model/TransactionRequestEvmLegacyFee';
@@ -781,7 +784,6 @@ import TransactionSOLFee from './model/TransactionSOLFee';
 import TransactionSelectedUtxo from './model/TransactionSelectedUtxo';
 import TransactionSignatureResult from './model/TransactionSignatureResult';
 import TransactionSigner from './model/TransactionSigner';
-import TransactionSmartContractSafeWalletSource from './model/TransactionSmartContractSafeWalletSource';
 import TransactionSolContractAccount from './model/TransactionSolContractAccount';
 import TransactionSolContractAddressLookupTableAccount from './model/TransactionSolContractAddressLookupTableAccount';
 import TransactionSolContractDestination from './model/TransactionSolContractDestination';
@@ -850,7 +852,6 @@ import UpdateMpcVaultByIdRequest from './model/UpdateMpcVaultByIdRequest';
 import UpdateMpcWalletParams from './model/UpdateMpcWalletParams';
 import UpdatePaymentOrderRequest from './model/UpdatePaymentOrderRequest';
 import UpdateRefundByIdRequest from './model/UpdateRefundByIdRequest';
-import UpdateSmartContractWalletParams from './model/UpdateSmartContractWalletParams';
 import UpdateTopUpAddress from './model/UpdateTopUpAddress';
 import UpdateWalletParams from './model/UpdateWalletParams';
 import UpdateWebhookEndpointByIdRequest from './model/UpdateWebhookEndpointByIdRequest';
@@ -883,6 +884,7 @@ import OAuthApi from './api/OAuthApi';
 import OrganizationsApi from './api/OrganizationsApi';
 import PaymentApi from './api/PaymentApi';
 import PrimeBrokerApi from './api/PrimeBrokerApi';
+import ReconciliationApi from './api/ReconciliationApi';
 import StakingsApi from './api/StakingsApi';
 import SwapsApi from './api/SwapsApi';
 import TokenizationApi from './api/TokenizationApi';
@@ -891,12 +893,11 @@ import TravelRuleApi from './api/TravelRuleApi';
 import WalletsApi from './api/WalletsApi';
 import WalletsExchangeWalletApi from './api/WalletsExchangeWalletApi';
 import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
-import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi';
 
 
 /**
 
-* The Cobo Wallet-as-a-Service (WaaS) 2.0 API is the latest version of Cobo&#39;s WaaS API offering. It enables you to access Cobo&#39;s full suite of crypto wallet technologies with powerful and flexible access controls. By encapsulating complex security protocols and streamlining blockchain interactions, this API allows you to concentrate on your core business activities without worrying about the safety of your assets. The WaaS 2.0 API presents the following key features:  - A unified API for Cobo&#39;s [all four wallet types](https://manuals.cobo.com/en/portal/introduction#an-all-in-one-wallet-platform) - Support for 80+ chains and 3000+ tokens - A comprehensive selection of webhook events - Flexible usage models for MPC Wallets, including [Organization-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/introduction) and [User-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/ucw/introduction) - Programmatic control of smart contract wallets such as Safe{Wallet} with fine-grained access controls - Seamlessly transfer funds across multiple exchanges, including Binance, OKX, Bybit, Deribit, and more  For more information about the WaaS 2.0 API, see [Introduction to WaaS 2.0](https://www.cobo.com/developers/v2/guides/overview/introduction). .<br>
+* The Cobo Wallet-as-a-Service (WaaS) 2.0 API is the latest version of Cobo&#39;s WaaS API offering. It enables you to access Cobo&#39;s full suite of crypto wallet technologies with powerful and flexible access controls. By encapsulating complex security protocols and streamlining blockchain interactions, this API allows you to concentrate on your core business activities without worrying about the safety of your assets. The WaaS 2.0 API presents the following key features:  - A unified API for Cobo&#39;s [all wallet types](https://manuals.cobo.com/en/portal/introduction#an-all-in-one-wallet-platform) - Support for 80+ chains and 3000+ tokens - A comprehensive selection of webhook events - Flexible usage models for MPC Wallets, including [Organization-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/ocw/introduction) and [User-Controlled Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/ucw/introduction) - Seamlessly transfer funds across multiple exchanges, including Binance, OKX, Bybit, Deribit, and more  For more information about the WaaS 2.0 API, see [Introduction to WaaS 2.0](https://www.cobo.com/developers/v2/guides/overview/introduction). .<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -924,7 +925,7 @@ import WalletsSmartContractWalletsApi from './api/WalletsSmartContractWalletsApi
 * </pre>
 * </p>
 * @module index
-* @version 1.41.0
+* @version 1.42.0
 */
 export {
     Env,
@@ -1333,6 +1334,12 @@ export {
     Balance,
 
     /**
+     * The BalanceAtBlock model constructor.
+     * @property {module:model/BalanceAtBlock}
+     */
+    BalanceAtBlock,
+
+    /**
      * The BalanceUpdateInfo model constructor.
      * @property {module:model/BalanceUpdateInfo}
      */
@@ -1499,18 +1506,6 @@ export {
      * @property {module:model/CheckLoopTransfers200ResponseInner}
      */
     CheckLoopTransfers200ResponseInner,
-
-    /**
-     * The CoboSafeDelegate model constructor.
-     * @property {module:model/CoboSafeDelegate}
-     */
-    CoboSafeDelegate,
-
-    /**
-     * The CoboSafeDelegateType model constructor.
-     * @property {module:model/CoboSafeDelegateType}
-     */
-    CoboSafeDelegateType,
 
     /**
      * The CommissionFee model constructor.
@@ -1685,6 +1680,12 @@ export {
      * @property {module:model/CreateBabylonStakingRegistrationRequest}
      */
     CreateBabylonStakingRegistrationRequest,
+
+    /**
+     * The CreateBankWithdrawalRequest model constructor.
+     * @property {module:model/CreateBankWithdrawalRequest}
+     */
+    CreateBankWithdrawalRequest,
 
     /**
      * The CreateBatchAllocationRequest model constructor.
@@ -1867,12 +1868,6 @@ export {
     CreateReportRequest,
 
     /**
-     * The CreateSafeWalletParams model constructor.
-     * @property {module:model/CreateSafeWalletParams}
-     */
-    CreateSafeWalletParams,
-
-    /**
      * The CreateSatoshiTestChallengeRequest model constructor.
      * @property {module:model/CreateSatoshiTestChallengeRequest}
      */
@@ -1889,12 +1884,6 @@ export {
      * @property {module:model/CreateSettlementRequestRequest}
      */
     CreateSettlementRequestRequest,
-
-    /**
-     * The CreateSmartContractWalletParams model constructor.
-     * @property {module:model/CreateSmartContractWalletParams}
-     */
-    CreateSmartContractWalletParams,
 
     /**
      * The CreateStakeActivity model constructor.
@@ -2143,10 +2132,22 @@ export {
     DestinationBankAccountDetail,
 
     /**
+     * The DestinationBankAccountTag model constructor.
+     * @property {module:model/DestinationBankAccountTag}
+     */
+    DestinationBankAccountTag,
+
+    /**
      * The DestinationDetail model constructor.
      * @property {module:model/DestinationDetail}
      */
     DestinationDetail,
+
+    /**
+     * The DestinationSource model constructor.
+     * @property {module:model/DestinationSource}
+     */
+    DestinationSource,
 
     /**
      * The DestinationType model constructor.
@@ -2497,6 +2498,12 @@ export {
     FeeGasLimit,
 
     /**
+     * The FeeLevel model constructor.
+     * @property {module:model/FeeLevel}
+     */
+    FeeLevel,
+
+    /**
      * The FeeRate model constructor.
      * @property {module:model/FeeRate}
      */
@@ -2633,6 +2640,12 @@ export {
      * @property {module:model/GetMaxTransferableValueWithFeeModelRequest}
      */
     GetMaxTransferableValueWithFeeModelRequest,
+
+    /**
+     * The GetReconciliationLedger200Response model constructor.
+     * @property {module:model/GetReconciliationLedger200Response}
+     */
+    GetReconciliationLedger200Response,
 
     /**
      * The GetRefunds200Response model constructor.
@@ -2857,6 +2870,12 @@ export {
     LinkDisplayInfo,
 
     /**
+     * The ListAccountBalances200Response model constructor.
+     * @property {module:model/ListAccountBalances200Response}
+     */
+    ListAccountBalances200Response,
+
+    /**
      * The ListAddressBalancesByToken200Response model constructor.
      * @property {module:model/ListAddressBalancesByToken200Response}
      */
@@ -2933,6 +2952,12 @@ export {
      * @property {module:model/ListBabylonStakingRegistrations200Response}
      */
     ListBabylonStakingRegistrations200Response,
+
+    /**
+     * The ListBankWithdrawals200Response model constructor.
+     * @property {module:model/ListBankWithdrawals200Response}
+     */
+    ListBankWithdrawals200Response,
 
     /**
      * The ListBatchAllocations200Response model constructor.
@@ -3065,6 +3090,12 @@ export {
      * @property {module:model/ListPayouts200Response}
      */
     ListPayouts200Response,
+
+    /**
+     * The ListReconciliationStatements200Response model constructor.
+     * @property {module:model/ListReconciliationStatements200Response}
+     */
+    ListReconciliationStatements200Response,
 
     /**
      * The ListSettlementDetails200Response model constructor.
@@ -3251,12 +3282,6 @@ export {
      * @property {module:model/LockUtxosRequestUtxosInner}
      */
     LockUtxosRequestUtxosInner,
-
-    /**
-     * The MPCDelegate model constructor.
-     * @property {module:model/MPCDelegate}
-     */
-    MPCDelegate,
 
     /**
      * The MPCProject model constructor.
@@ -3547,6 +3572,42 @@ export {
     PaymentBalanceFlowDirection,
 
     /**
+     * The PaymentBankAccountBalance model constructor.
+     * @property {module:model/PaymentBankAccountBalance}
+     */
+    PaymentBankAccountBalance,
+
+    /**
+     * The PaymentBankWithdrawal model constructor.
+     * @property {module:model/PaymentBankWithdrawal}
+     */
+    PaymentBankWithdrawal,
+
+    /**
+     * The PaymentBankWithdrawalDetail model constructor.
+     * @property {module:model/PaymentBankWithdrawalDetail}
+     */
+    PaymentBankWithdrawalDetail,
+
+    /**
+     * The PaymentBankWithdrawalEvent model constructor.
+     * @property {module:model/PaymentBankWithdrawalEvent}
+     */
+    PaymentBankWithdrawalEvent,
+
+    /**
+     * The PaymentBankWithdrawalStatus model constructor.
+     * @property {module:model/PaymentBankWithdrawalStatus}
+     */
+    PaymentBankWithdrawalStatus,
+
+    /**
+     * The PaymentBankWithdrawalTimelineItem model constructor.
+     * @property {module:model/PaymentBankWithdrawalTimelineItem}
+     */
+    PaymentBankWithdrawalTimelineItem,
+
+    /**
      * The PaymentBridgeStatus model constructor.
      * @property {module:model/PaymentBridgeStatus}
      */
@@ -3817,6 +3878,24 @@ export {
     RawMessageSignDestination,
 
     /**
+     * The ReconDailyStatement model constructor.
+     * @property {module:model/ReconDailyStatement}
+     */
+    ReconDailyStatement,
+
+    /**
+     * The ReconLedgerEntry model constructor.
+     * @property {module:model/ReconLedgerEntry}
+     */
+    ReconLedgerEntry,
+
+    /**
+     * The ReconStatementStatus model constructor.
+     * @property {module:model/ReconStatementStatus}
+     */
+    ReconStatementStatus,
+
+    /**
      * The RefreshAddressBalancesByToken200Response model constructor.
      * @property {module:model/RefreshAddressBalancesByToken200Response}
      */
@@ -3973,66 +4052,6 @@ export {
     SOLComputeUnit,
 
     /**
-     * The SafeContractCallSource model constructor.
-     * @property {module:model/SafeContractCallSource}
-     */
-    SafeContractCallSource,
-
-    /**
-     * The SafeTransferSource model constructor.
-     * @property {module:model/SafeTransferSource}
-     */
-    SafeTransferSource,
-
-    /**
-     * The SafeTxDecodedData model constructor.
-     * @property {module:model/SafeTxDecodedData}
-     */
-    SafeTxDecodedData,
-
-    /**
-     * The SafeTxDecodedDataParameters model constructor.
-     * @property {module:model/SafeTxDecodedDataParameters}
-     */
-    SafeTxDecodedDataParameters,
-
-    /**
-     * The SafeTxExtraData model constructor.
-     * @property {module:model/SafeTxExtraData}
-     */
-    SafeTxExtraData,
-
-    /**
-     * The SafeTxSubTransaction model constructor.
-     * @property {module:model/SafeTxSubTransaction}
-     */
-    SafeTxSubTransaction,
-
-    /**
-     * The SafeWallet model constructor.
-     * @property {module:model/SafeWallet}
-     */
-    SafeWallet,
-
-    /**
-     * The SafeWalletDelegates model constructor.
-     * @property {module:model/SafeWalletDelegates}
-     */
-    SafeWalletDelegates,
-
-    /**
-     * The SafeWalletDelegatesContractCall model constructor.
-     * @property {module:model/SafeWalletDelegatesContractCall}
-     */
-    SafeWalletDelegatesContractCall,
-
-    /**
-     * The SafeWalletDelegatesTransfer model constructor.
-     * @property {module:model/SafeWalletDelegatesTransfer}
-     */
-    SafeWalletDelegatesTransfer,
-
-    /**
      * The SatoshiTestCancelResult model constructor.
      * @property {module:model/SatoshiTestCancelResult}
      */
@@ -4127,30 +4146,6 @@ export {
      * @property {module:model/SkipCheckType}
      */
     SkipCheckType,
-
-    /**
-     * The SmartContractInitiator model constructor.
-     * @property {module:model/SmartContractInitiator}
-     */
-    SmartContractInitiator,
-
-    /**
-     * The SmartContractWalletInfo model constructor.
-     * @property {module:model/SmartContractWalletInfo}
-     */
-    SmartContractWalletInfo,
-
-    /**
-     * The SmartContractWalletOperationType model constructor.
-     * @property {module:model/SmartContractWalletOperationType}
-     */
-    SmartContractWalletOperationType,
-
-    /**
-     * The SmartContractWalletType model constructor.
-     * @property {module:model/SmartContractWalletType}
-     */
-    SmartContractWalletType,
 
     /**
      * The SolContractCallAccount model constructor.
@@ -4781,6 +4776,18 @@ export {
      * @property {module:model/TokenizationContractCallType}
      */
     TokenizationContractCallType,
+
+    /**
+     * The TokenizationERC20FundTokenParams model constructor.
+     * @property {module:model/TokenizationERC20FundTokenParams}
+     */
+    TokenizationERC20FundTokenParams,
+
+    /**
+     * The TokenizationERC20FundTokenPermissionParams model constructor.
+     * @property {module:model/TokenizationERC20FundTokenPermissionParams}
+     */
+    TokenizationERC20FundTokenPermissionParams,
 
     /**
      * The TokenizationERC20TokenParams model constructor.
@@ -5449,6 +5456,18 @@ export {
     TransactionRbfSource,
 
     /**
+     * The TransactionReceipt model constructor.
+     * @property {module:model/TransactionReceipt}
+     */
+    TransactionReceipt,
+
+    /**
+     * The TransactionReceiptLog model constructor.
+     * @property {module:model/TransactionReceiptLog}
+     */
+    TransactionReceiptLog,
+
+    /**
      * The TransactionReplacement model constructor.
      * @property {module:model/TransactionReplacement}
      */
@@ -5543,12 +5562,6 @@ export {
      * @property {module:model/TransactionSigner}
      */
     TransactionSigner,
-
-    /**
-     * The TransactionSmartContractSafeWalletSource model constructor.
-     * @property {module:model/TransactionSmartContractSafeWalletSource}
-     */
-    TransactionSmartContractSafeWalletSource,
 
     /**
      * The TransactionSolContractAccount model constructor.
@@ -5959,12 +5972,6 @@ export {
     UpdateRefundByIdRequest,
 
     /**
-     * The UpdateSmartContractWalletParams model constructor.
-     * @property {module:model/UpdateSmartContractWalletParams}
-     */
-    UpdateSmartContractWalletParams,
-
-    /**
      * The UpdateTopUpAddress model constructor.
      * @property {module:model/UpdateTopUpAddress}
      */
@@ -6157,6 +6164,12 @@ export {
     PrimeBrokerApi,
 
     /**
+    * The ReconciliationApi service constructor.
+    * @property {module:api/ReconciliationApi}
+    */
+    ReconciliationApi,
+
+    /**
     * The StakingsApi service constructor.
     * @property {module:api/StakingsApi}
     */
@@ -6202,11 +6215,5 @@ export {
     * The WalletsMPCWalletsApi service constructor.
     * @property {module:api/WalletsMPCWalletsApi}
     */
-    WalletsMPCWalletsApi,
-
-    /**
-    * The WalletsSmartContractWalletsApi service constructor.
-    * @property {module:api/WalletsSmartContractWalletsApi}
-    */
-    WalletsSmartContractWalletsApi
+    WalletsMPCWalletsApi
 };

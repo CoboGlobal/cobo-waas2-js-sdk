@@ -10,7 +10,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import SafeTxExtraData from './SafeTxExtraData';
 import TransactionDestinationType from './TransactionDestinationType';
 
 /**
@@ -60,9 +59,6 @@ class TransactionMessageSignEIP712Destination {
             if (data.hasOwnProperty('structured_data')) {
                 obj['structured_data'] = ApiClient.convertToType(data['structured_data'], {'String': Object});
             }
-            if (data.hasOwnProperty('safe_tx_extra_data')) {
-                obj['safe_tx_extra_data'] = SafeTxExtraData.constructFromObject(data['safe_tx_extra_data']);
-            }
         }
         return obj;
     }
@@ -82,12 +78,6 @@ class TransactionMessageSignEIP712Destination {
         // ensure the json data is a string
         if (data['raw_structured_data'] && !(typeof data['raw_structured_data'] === 'string' || data['raw_structured_data'] instanceof String)) {
             throw new Error("Expected the field `raw_structured_data` to be a primitive type in the JSON string but got " + data['raw_structured_data']);
-        }
-        // validate the optional field `safe_tx_extra_data`
-        if (data['safe_tx_extra_data']) { // data not null
-          if (!!SafeTxExtraData.validateJSON) {
-            SafeTxExtraData.validateJSON(data['safe_tx_extra_data']);
-          }
         }
 
         return true;
@@ -114,11 +104,6 @@ TransactionMessageSignEIP712Destination.prototype['raw_structured_data'] = undef
  * @member {Object.<String, Object>} structured_data
  */
 TransactionMessageSignEIP712Destination.prototype['structured_data'] = undefined;
-
-/**
- * @member {module:model/SafeTxExtraData} safe_tx_extra_data
- */
-TransactionMessageSignEIP712Destination.prototype['safe_tx_extra_data'] = undefined;
 
 
 

@@ -32,6 +32,13 @@ export default class TransactionProcessType {
 
     
         /**
+         * value: "SignOnly"
+         * @const
+         */
+        "SignOnly" = "SignOnly";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

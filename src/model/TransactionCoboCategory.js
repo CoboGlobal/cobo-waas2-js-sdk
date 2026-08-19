@@ -67,13 +67,6 @@ export default class TransactionCoboCategory {
 
     
         /**
-         * value: "SafeTxMessage"
-         * @const
-         */
-        "SafeTxMessage" = "SafeTxMessage";
-
-    
-        /**
          * value: "StakingBabylonBtcDelegation"
          * @const
          */

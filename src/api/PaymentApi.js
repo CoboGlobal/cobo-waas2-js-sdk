@@ -18,6 +18,7 @@ import BatchAllocationDetail from '../model/BatchAllocationDetail';
 import Counterparty from '../model/Counterparty';
 import CounterpartyDetail from '../model/CounterpartyDetail';
 import CounterpartyType from '../model/CounterpartyType';
+import CreateBankWithdrawalRequest from '../model/CreateBankWithdrawalRequest';
 import CreateBatchAllocationRequest from '../model/CreateBatchAllocationRequest';
 import CreateBulkSendRequest from '../model/CreateBulkSendRequest';
 import CreateCounterpartyEntry201Response from '../model/CreateCounterpartyEntry201Response';
@@ -44,6 +45,7 @@ import DeleteCryptoAddress201Response from '../model/DeleteCryptoAddress201Respo
 import DeleteDestinationById200Response from '../model/DeleteDestinationById200Response';
 import DeleteDestinationEntry200Response from '../model/DeleteDestinationEntry200Response';
 import Destination from '../model/Destination';
+import DestinationBankAccountTag from '../model/DestinationBankAccountTag';
 import DestinationDetail from '../model/DestinationDetail';
 import DestinationType from '../model/DestinationType';
 import EntryType from '../model/EntryType';
@@ -59,6 +61,7 @@ import GetReports200Response from '../model/GetReports200Response';
 import GetSettlementInfoByIds200Response from '../model/GetSettlementInfoByIds200Response';
 import Link from '../model/Link';
 import ListAllocationItems200Response from '../model/ListAllocationItems200Response';
+import ListBankWithdrawals200Response from '../model/ListBankWithdrawals200Response';
 import ListBatchAllocations200Response from '../model/ListBatchAllocations200Response';
 import ListBulkSendItems200Response from '../model/ListBulkSendItems200Response';
 import ListBulkSends200Response from '../model/ListBulkSends200Response';
@@ -84,6 +87,10 @@ import PaymentAllocationAmount from '../model/PaymentAllocationAmount';
 import PaymentBalanceChangeResponse from '../model/PaymentBalanceChangeResponse';
 import PaymentBalanceChangeSourceType from '../model/PaymentBalanceChangeSourceType';
 import PaymentBalanceFlowDirection from '../model/PaymentBalanceFlowDirection';
+import PaymentBankAccountBalance from '../model/PaymentBankAccountBalance';
+import PaymentBankWithdrawal from '../model/PaymentBankWithdrawal';
+import PaymentBankWithdrawalDetail from '../model/PaymentBankWithdrawalDetail';
+import PaymentBankWithdrawalStatus from '../model/PaymentBankWithdrawalStatus';
 import PaymentBulkSend from '../model/PaymentBulkSend';
 import PaymentEstimateFee201Response from '../model/PaymentEstimateFee201Response';
 import PaymentEstimateFeeRequest from '../model/PaymentEstimateFeeRequest';
@@ -233,6 +240,55 @@ export default class PaymentApi {
      */
     cancelRefundById(refund_id) {
       return this.cancelRefundByIdWithHttpInfo(refund_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create bank withdrawal
+     * This operation creates a bank withdrawal from a virtual account to a target bank account. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateBankWithdrawalRequest} [CreateBankWithdrawalRequest] The request body to create a bank withdrawal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentBankWithdrawal} and HTTP response
+     */
+    createBankWithdrawalWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['CreateBankWithdrawalRequest'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PaymentBankWithdrawal;
+      return this.apiClient.callApi(
+        '/payments/bank_withdrawals', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create bank withdrawal
+     * This operation creates a bank withdrawal from a virtual account to a target bank account. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateBankWithdrawalRequest} opts.CreateBankWithdrawalRequest The request body to create a bank withdrawal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentBankWithdrawal}
+     */
+    createBankWithdrawal(opts) {
+      return this.createBankWithdrawalWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1464,6 +1520,57 @@ export default class PaymentApi {
 
 
     /**
+     * Get bank withdrawal information
+     * This operation retrieves the information of a specific bank withdrawal. 
+     * @param {String} bank_withdrawal_id The bank withdrawal ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentBankWithdrawalDetail} and HTTP response
+     */
+    getBankWithdrawalByIdWithHttpInfo(bank_withdrawal_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'bank_withdrawal_id' is set
+      if (bank_withdrawal_id === undefined || bank_withdrawal_id === null) {
+        throw new Error("Missing the required parameter 'bank_withdrawal_id' when calling getBankWithdrawalById");
+      }
+
+      let pathParams = {
+        'bank_withdrawal_id': bank_withdrawal_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = PaymentBankWithdrawalDetail;
+      return this.apiClient.callApi(
+        '/payments/bank_withdrawals/{bank_withdrawal_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get bank withdrawal information
+     * This operation retrieves the information of a specific bank withdrawal. 
+     * @param {String} bank_withdrawal_id The bank withdrawal ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentBankWithdrawalDetail}
+     */
+    getBankWithdrawalById(bank_withdrawal_id) {
+      return this.getBankWithdrawalByIdWithHttpInfo(bank_withdrawal_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get batch allocation information
      * This operation retrieves the information of a batch allocation. 
      * @param {String} batch_allocation_id The batch allocation ID.
@@ -1885,6 +1992,57 @@ export default class PaymentApi {
      */
     getMerchantKyc(merchant_id) {
       return this.getMerchantKycWithHttpInfo(merchant_id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get bank account balance
+     * This operation retrieves the balance of a destination bank account, only available for bank accounts with tag `VA`. 
+     * @param {String} bank_account_id The destination bank account ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentBankAccountBalance} and HTTP response
+     */
+    getPaymentBankAccountBalanceWithHttpInfo(bank_account_id) {
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'bank_account_id' is set
+      if (bank_account_id === undefined || bank_account_id === null) {
+        throw new Error("Missing the required parameter 'bank_account_id' when calling getPaymentBankAccountBalance");
+      }
+
+      let pathParams = {
+        'bank_account_id': bank_account_id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = PaymentBankAccountBalance;
+      return this.apiClient.callApi(
+        '/payments/balance/bank_accounts/{bank_account_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get bank account balance
+     * This operation retrieves the balance of a destination bank account, only available for bank accounts with tag `VA`. 
+     * @param {String} bank_account_id The destination bank account ID.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentBankAccountBalance}
+     */
+    getPaymentBankAccountBalance(bank_account_id) {
+      return this.getPaymentBankAccountBalanceWithHttpInfo(bank_account_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -2543,6 +2701,68 @@ export default class PaymentApi {
 
 
     /**
+     * List bank withdrawals
+     * This operation retrieves the list of bank withdrawals. 
+     * @param {Object} opts Optional parameters
+     * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
+     * @param {String} [before] A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} [after] A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} [request_id] The request ID.
+     * @param {module:model/PaymentBankWithdrawalStatus} [status] Filter by bank withdrawal status.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListBankWithdrawals200Response} and HTTP response
+     */
+    listBankWithdrawalsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'limit': opts['limit'],
+        'before': opts['before'],
+        'after': opts['after'],
+        'request_id': opts['request_id'],
+        'status': opts['status']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListBankWithdrawals200Response;
+      return this.apiClient.callApi(
+        '/payments/bank_withdrawals', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List bank withdrawals
+     * This operation retrieves the list of bank withdrawals. 
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)
+     * @param {String} opts.before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response. 
+     * @param {String} opts.after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response. 
+     * @param {String} opts.request_id The request ID.
+     * @param {module:model/PaymentBankWithdrawalStatus} opts.status Filter by bank withdrawal status.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListBankWithdrawals200Response}
+     */
+    listBankWithdrawals(opts) {
+      return this.listBankWithdrawalsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List all batch allocations
      * This operation retrieves the information of all batch allocations. 
      * @param {Object} opts Optional parameters
@@ -2919,6 +3139,7 @@ export default class PaymentApi {
      * @param {String} [wallet_address] The wallet address.
      * @param {String} [keyword] A search term for performing fuzzy matches in the search query.
      * @param {module:model/BankAccountStatus} [bank_account_status] BankAccountStatus defines the status of the bank account: - `Pending`: The bank account is pending verification by Cobo. - `Approved`: The bank account has been approved by Cobo. - `Rejected`: The bank account has been rejected by Cobo. 
+     * @param {module:model/DestinationBankAccountTag} [bank_account_tag] Filter destination bank accounts by tag. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListDestinationEntries200Response} and HTTP response
      */
     listDestinationEntriesWithHttpInfo(entry_type, opts) {
@@ -2943,7 +3164,8 @@ export default class PaymentApi {
         'chain_ids': opts['chain_ids'],
         'wallet_address': opts['wallet_address'],
         'keyword': opts['keyword'],
-        'bank_account_status': opts['bank_account_status']
+        'bank_account_status': opts['bank_account_status'],
+        'bank_account_tag': opts['bank_account_tag']
       };
       let headerParams = {
       };
@@ -2974,6 +3196,7 @@ export default class PaymentApi {
      * @param {String} opts.wallet_address The wallet address.
      * @param {String} opts.keyword A search term for performing fuzzy matches in the search query.
      * @param {module:model/BankAccountStatus} opts.bank_account_status BankAccountStatus defines the status of the bank account: - `Pending`: The bank account is pending verification by Cobo. - `Approved`: The bank account has been approved by Cobo. - `Rejected`: The bank account has been rejected by Cobo. 
+     * @param {module:model/DestinationBankAccountTag} opts.bank_account_tag Filter destination bank accounts by tag. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListDestinationEntries200Response}
      */
     listDestinationEntries(entry_type, opts) {

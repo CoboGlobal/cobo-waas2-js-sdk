@@ -13,7 +13,6 @@ import ApiClient from '../ApiClient';
 import UpdateCustodialWalletParams from './UpdateCustodialWalletParams';
 import UpdateExchangeWalletParams from './UpdateExchangeWalletParams';
 import UpdateMpcWalletParams from './UpdateMpcWalletParams';
-import UpdateSmartContractWalletParams from './UpdateSmartContractWalletParams';
 import WalletType from './WalletType';
 
 /**
@@ -24,7 +23,7 @@ class UpdateWalletParams {
     /**
      * Constructs a new <code>UpdateWalletParams</code>.
      * @alias module:model/UpdateWalletParams
-     * @param {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams|module:model/UpdateSmartContractWalletParams)} instance The actual instance to initialize UpdateWalletParams.
+     * @param {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams)} instance The actual instance to initialize UpdateWalletParams.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -47,10 +46,6 @@ class UpdateWalletParams {
                     break;
                 case "MPC":
                     this.actualInstance = UpdateMpcWalletParams.constructFromObject(instance);
-                    match++;
-                    break;
-                case "SmartContract":
-                    this.actualInstance = UpdateSmartContractWalletParams.constructFromObject(instance);
                     match++;
                     break;
                 default:
@@ -111,31 +106,6 @@ class UpdateWalletParams {
         }
 
         try {
-            if (instance instanceof UpdateSmartContractWalletParams) {
-                this.actualInstance = instance;
-            } else if(!!UpdateSmartContractWalletParams.validateJSON && UpdateSmartContractWalletParams.validateJSON(instance)){
-                // plain JS object
-                // create UpdateSmartContractWalletParams from JS object
-                this.actualInstance = UpdateSmartContractWalletParams.constructFromObject(instance);
-            } else {
-                if(UpdateSmartContractWalletParams.constructFromObject(instance)) {
-                    if (!!UpdateSmartContractWalletParams.constructFromObject(instance).toJSON) {
-                        if (UpdateSmartContractWalletParams.constructFromObject(instance).toJSON()) {
-                            this.actualInstance = UpdateSmartContractWalletParams.constructFromObject(instance);
-                        }
-                    } else {
-                        this.actualInstance = UpdateSmartContractWalletParams.constructFromObject(instance);
-                    }
-                }
-
-            }
-            match++;
-        } catch(err) {
-            // json data failed to deserialize into UpdateSmartContractWalletParams
-            errorMessages.push("Failed to construct UpdateSmartContractWalletParams: " + err)
-        }
-
-        try {
             if (instance instanceof UpdateExchangeWalletParams) {
                 this.actualInstance = instance;
             } else if(!!UpdateExchangeWalletParams.validateJSON && UpdateExchangeWalletParams.validateJSON(instance)){
@@ -161,11 +131,11 @@ class UpdateWalletParams {
         }
 
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `UpdateWalletParams` with oneOf schemas UpdateCustodialWalletParams, UpdateExchangeWalletParams, UpdateMpcWalletParams, UpdateSmartContractWalletParams. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `UpdateWalletParams` with oneOf schemas UpdateCustodialWalletParams, UpdateExchangeWalletParams, UpdateMpcWalletParams. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `UpdateWalletParams` with oneOf schemas UpdateCustodialWalletParams, UpdateExchangeWalletParams, UpdateMpcWalletParams, UpdateSmartContractWalletParams. Details: " +
+        //    throw new Error("No match found constructing `UpdateWalletParams` with oneOf schemas UpdateCustodialWalletParams, UpdateExchangeWalletParams, UpdateMpcWalletParams. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -185,16 +155,16 @@ class UpdateWalletParams {
     }
 
     /**
-     * Gets the actual instance, which can be <code>UpdateCustodialWalletParams</code>, <code>UpdateExchangeWalletParams</code>, <code>UpdateMpcWalletParams</code>, <code>UpdateSmartContractWalletParams</code>.
-     * @return {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams|module:model/UpdateSmartContractWalletParams)} The actual instance.
+     * Gets the actual instance, which can be <code>UpdateCustodialWalletParams</code>, <code>UpdateExchangeWalletParams</code>, <code>UpdateMpcWalletParams</code>.
+     * @return {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>UpdateCustodialWalletParams</code>, <code>UpdateExchangeWalletParams</code>, <code>UpdateMpcWalletParams</code>, <code>UpdateSmartContractWalletParams</code>.
-     * @param {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams|module:model/UpdateSmartContractWalletParams)} obj The actual instance.
+     * Sets the actual instance, which can be <code>UpdateCustodialWalletParams</code>, <code>UpdateExchangeWalletParams</code>, <code>UpdateMpcWalletParams</code>.
+     * @param {(module:model/UpdateCustodialWalletParams|module:model/UpdateExchangeWalletParams|module:model/UpdateMpcWalletParams)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = UpdateWalletParams.constructFromObject(obj).getActualInstance();
@@ -236,7 +206,7 @@ UpdateWalletParams.prototype['name'] = undefined;
 UpdateWalletParams.prototype['enable_auto_sweep'] = undefined;
 
 
-UpdateWalletParams.OneOf = ["UpdateCustodialWalletParams", "UpdateExchangeWalletParams", "UpdateMpcWalletParams", "UpdateSmartContractWalletParams"];
+UpdateWalletParams.OneOf = ["UpdateCustodialWalletParams", "UpdateExchangeWalletParams", "UpdateMpcWalletParams"];
 
 export default UpdateWalletParams;
 

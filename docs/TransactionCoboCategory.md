@@ -17,8 +17,6 @@
 
 * `CommissionFeeRefund` (value: `"CommissionFeeRefund"`)
 
-* `SafeTxMessage` (value: `"SafeTxMessage"`)
-
 * `StakingBabylonBtcDelegation` (value: `"StakingBabylonBtcDelegation"`)
 
 * `StakingBabylonBtcSignBabylon` (value: `"StakingBabylonBtcSignBabylon"`)

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bank_account_id** | **String** | The destination bank account ID. | 
+**tag** | [**DestinationBankAccountTag**](DestinationBankAccountTag.md) |  | [optional] 
 **account_alias** | **String** | The alias of the bank account. | 
 **account_number** | **String** | The bank account number. | 
 **swift_code** | **String** | The SWIFT or BIC code of the bank. | 

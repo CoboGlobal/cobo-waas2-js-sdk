@@ -10,6 +10,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import DestinationSource from './DestinationSource';
 import DestinationType from './DestinationType';
 
 /**
@@ -61,6 +62,9 @@ class Destination {
             }
             if (data.hasOwnProperty('destination_name')) {
                 obj['destination_name'] = ApiClient.convertToType(data['destination_name'], 'String');
+            }
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = DestinationSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('country')) {
                 obj['country'] = ApiClient.convertToType(data['country'], 'String');
@@ -145,6 +149,11 @@ Destination.prototype['destination_type'] = undefined;
  * @member {String} destination_name
  */
 Destination.prototype['destination_name'] = undefined;
+
+/**
+ * @member {module:model/DestinationSource} source
+ */
+Destination.prototype['source'] = undefined;
 
 /**
  * The country of the destination, in ISO 3166-1 alpha-3 format.

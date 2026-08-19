@@ -85,6 +85,8 @@
 
 * `payment.payout.status.updated` (value: `"payment.payout.status.updated"`)
 
+* `payment.bank_withdrawal.status.updated` (value: `"payment.bank_withdrawal.status.updated"`)
+
 * `payment.address.updated` (value: `"payment.address.updated"`)
 
 * `payment.subscription.status.updated` (value: `"payment.subscription.status.updated"`)

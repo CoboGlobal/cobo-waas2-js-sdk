@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import DestinationBankAccount from './DestinationBankAccount';
+import DestinationSource from './DestinationSource';
 import DestinationType from './DestinationType';
 import WalletAddress from './WalletAddress';
 
@@ -65,6 +66,9 @@ class DestinationDetail {
             }
             if (data.hasOwnProperty('destination_name')) {
                 obj['destination_name'] = ApiClient.convertToType(data['destination_name'], 'String');
+            }
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = DestinationSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('country')) {
                 obj['country'] = ApiClient.convertToType(data['country'], 'String');
@@ -175,6 +179,11 @@ DestinationDetail.prototype['destination_type'] = undefined;
  * @member {String} destination_name
  */
 DestinationDetail.prototype['destination_name'] = undefined;
+
+/**
+ * @member {module:model/DestinationSource} source
+ */
+DestinationDetail.prototype['source'] = undefined;
 
 /**
  * The country of the destination, in ISO 3166-1 alpha-3 format.

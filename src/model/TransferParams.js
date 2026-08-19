@@ -11,6 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import AutoFuelType from './AutoFuelType';
+import FeeLevel from './FeeLevel';
 import PreCheck from './PreCheck';
 import TransactionProcessType from './TransactionProcessType';
 import TransactionRequestFee from './TransactionRequestFee';
@@ -79,6 +80,9 @@ class TransferParams {
             }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = TransactionRequestFee.constructFromObject(data['fee']);
+            }
+            if (data.hasOwnProperty('fee_level')) {
+                obj['fee_level'] = FeeLevel.constructFromObject(data['fee_level']);
             }
             if (data.hasOwnProperty('transaction_process_type')) {
                 obj['transaction_process_type'] = TransactionProcessType.constructFromObject(data['transaction_process_type']);
@@ -192,6 +196,11 @@ TransferParams.prototype['description'] = undefined;
  * @member {module:model/TransactionRequestFee} fee
  */
 TransferParams.prototype['fee'] = undefined;
+
+/**
+ * @member {module:model/FeeLevel} fee_level
+ */
+TransferParams.prototype['fee_level'] = undefined;
 
 /**
  * @member {module:model/TransactionProcessType} transaction_process_type
