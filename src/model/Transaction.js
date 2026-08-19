@@ -15,6 +15,7 @@ import TransactionDestination from './TransactionDestination';
 import TransactionFee from './TransactionFee';
 import TransactionFuelingInfo from './TransactionFuelingInfo';
 import TransactionInitiatorType from './TransactionInitiatorType';
+import TransactionProcessType from './TransactionProcessType';
 import TransactionRawTxInfo from './TransactionRawTxInfo';
 import TransactionReplacement from './TransactionReplacement';
 import TransactionResult from './TransactionResult';
@@ -156,6 +157,9 @@ class Transaction {
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], ['String']);
+            }
+            if (data.hasOwnProperty('transaction_process_type')) {
+                obj['transaction_process_type'] = TransactionProcessType.constructFromObject(data['transaction_process_type']);
             }
             if (data.hasOwnProperty('fueling_info')) {
                 obj['fueling_info'] = TransactionFuelingInfo.constructFromObject(data['fueling_info']);
@@ -441,16 +445,21 @@ Transaction.prototype['description'] = undefined;
 Transaction.prototype['is_loop'] = undefined;
 
 /**
- * The transaction category defined by Cobo. For more details, refer to [Cobo-defined categories](/v2/guides/transactions/manage-transactions#cobo-defined-categories). 
+ * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Fee Station pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Fee Station. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Fee Station. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
  * @member {Array.<String>} cobo_category
  */
 Transaction.prototype['cobo_category'] = undefined;
 
 /**
- * A list of JSON-encoded strings containing structured, business-specific extra information for the transaction. Each item corresponds to a specific data type, indicated by the `extra_type` field in the JSON object (for example, \"BabylonBusinessInfo\", \"BtcAddressInfo\"). 
+ * The transaction extra information.
  * @member {Array.<String>} extra
  */
 Transaction.prototype['extra'] = undefined;
+
+/**
+ * @member {module:model/TransactionProcessType} transaction_process_type
+ */
+Transaction.prototype['transaction_process_type'] = undefined;
 
 /**
  * @member {module:model/TransactionFuelingInfo} fueling_info

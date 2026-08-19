@@ -46,13 +46,6 @@ export default class TransactionSourceType {
 
     
         /**
-         * value: "Safe{Wallet}"
-         * @const
-         */
-        "Safe{Wallet}" = "Safe{Wallet}";
-
-    
-        /**
          * value: "Main"
          * @const
          */

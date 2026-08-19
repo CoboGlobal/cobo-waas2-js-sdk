@@ -10,12 +10,10 @@
  */
 
 import ApiClient from '../ApiClient';
-import CoboSafeDelegate from './CoboSafeDelegate';
 import ContractCallSourceType from './ContractCallSourceType';
 import CustodialWeb3ContractCallSource from './CustodialWeb3ContractCallSource';
 import MpcContractCallSource from './MpcContractCallSource';
 import MpcSigningGroup from './MpcSigningGroup';
-import SafeContractCallSource from './SafeContractCallSource';
 
 /**
  * The ContractCallSource model module.
@@ -25,7 +23,7 @@ class ContractCallSource {
     /**
      * Constructs a new <code>ContractCallSource</code>.
      * @alias module:model/ContractCallSource
-     * @param {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource|module:model/SafeContractCallSource)} instance The actual instance to initialize ContractCallSource.
+     * @param {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource)} instance The actual instance to initialize ContractCallSource.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -40,10 +38,6 @@ class ContractCallSource {
             switch(discriminatorValue) {
                 case "Org-Controlled":
                     this.actualInstance = MpcContractCallSource.constructFromObject(instance);
-                    match++;
-                    break;
-                case "Safe{Wallet}":
-                    this.actualInstance = SafeContractCallSource.constructFromObject(instance);
                     match++;
                     break;
                 case "User-Controlled":
@@ -87,31 +81,6 @@ class ContractCallSource {
         }
 
         try {
-            if (instance instanceof SafeContractCallSource) {
-                this.actualInstance = instance;
-            } else if(!!SafeContractCallSource.validateJSON && SafeContractCallSource.validateJSON(instance)){
-                // plain JS object
-                // create SafeContractCallSource from JS object
-                this.actualInstance = SafeContractCallSource.constructFromObject(instance);
-            } else {
-                if(SafeContractCallSource.constructFromObject(instance)) {
-                    if (!!SafeContractCallSource.constructFromObject(instance).toJSON) {
-                        if (SafeContractCallSource.constructFromObject(instance).toJSON()) {
-                            this.actualInstance = SafeContractCallSource.constructFromObject(instance);
-                        }
-                    } else {
-                        this.actualInstance = SafeContractCallSource.constructFromObject(instance);
-                    }
-                }
-
-            }
-            match++;
-        } catch(err) {
-            // json data failed to deserialize into SafeContractCallSource
-            errorMessages.push("Failed to construct SafeContractCallSource: " + err)
-        }
-
-        try {
             if (instance instanceof CustodialWeb3ContractCallSource) {
                 this.actualInstance = instance;
             } else if(!!CustodialWeb3ContractCallSource.validateJSON && CustodialWeb3ContractCallSource.validateJSON(instance)){
@@ -137,11 +106,11 @@ class ContractCallSource {
         }
 
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `ContractCallSource` with oneOf schemas CustodialWeb3ContractCallSource, MpcContractCallSource, SafeContractCallSource. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `ContractCallSource` with oneOf schemas CustodialWeb3ContractCallSource, MpcContractCallSource. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `ContractCallSource` with oneOf schemas CustodialWeb3ContractCallSource, MpcContractCallSource, SafeContractCallSource. Details: " +
+        //    throw new Error("No match found constructing `ContractCallSource` with oneOf schemas CustodialWeb3ContractCallSource, MpcContractCallSource. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -161,16 +130,16 @@ class ContractCallSource {
     }
 
     /**
-     * Gets the actual instance, which can be <code>CustodialWeb3ContractCallSource</code>, <code>MpcContractCallSource</code>, <code>SafeContractCallSource</code>.
-     * @return {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource|module:model/SafeContractCallSource)} The actual instance.
+     * Gets the actual instance, which can be <code>CustodialWeb3ContractCallSource</code>, <code>MpcContractCallSource</code>.
+     * @return {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>CustodialWeb3ContractCallSource</code>, <code>MpcContractCallSource</code>, <code>SafeContractCallSource</code>.
-     * @param {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource|module:model/SafeContractCallSource)} obj The actual instance.
+     * Sets the actual instance, which can be <code>CustodialWeb3ContractCallSource</code>, <code>MpcContractCallSource</code>.
+     * @param {(module:model/CustodialWeb3ContractCallSource|module:model/MpcContractCallSource)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = ContractCallSource.constructFromObject(obj).getActualInstance();
@@ -216,13 +185,8 @@ ContractCallSource.prototype['address'] = undefined;
  */
 ContractCallSource.prototype['mpc_used_key_share_holder_group'] = undefined;
 
-/**
- * @member {module:model/CoboSafeDelegate} delegate
- */
-ContractCallSource.prototype['delegate'] = undefined;
 
-
-ContractCallSource.OneOf = ["CustodialWeb3ContractCallSource", "MpcContractCallSource", "SafeContractCallSource"];
+ContractCallSource.OneOf = ["CustodialWeb3ContractCallSource", "MpcContractCallSource"];
 
 export default ContractCallSource;
 

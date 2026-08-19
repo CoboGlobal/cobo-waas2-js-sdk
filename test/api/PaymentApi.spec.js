@@ -56,6 +56,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createBankWithdrawal', function() {
+      it('should call createBankWithdrawal successfully', function() {
+        //uncomment below and update the code to test createBankWithdrawal
+        //instance.createBankWithdrawal().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createBatchAllocation', function() {
       it('should call createBatchAllocation successfully', function() {
         //uncomment below and update the code to test createBatchAllocation
@@ -296,6 +306,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('getBankWithdrawalById', function() {
+      it('should call getBankWithdrawalById successfully', function() {
+        //uncomment below and update the code to test getBankWithdrawalById
+        //instance.getBankWithdrawalById().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getBatchAllocationById', function() {
       it('should call getBatchAllocationById successfully', function() {
         //uncomment below and update the code to test getBatchAllocationById
@@ -370,6 +390,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call getMerchantKyc successfully', function() {
         //uncomment below and update the code to test getMerchantKyc
         //instance.getMerchantKyc().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('getPaymentBankAccountBalance', function() {
+      it('should call getPaymentBankAccountBalance successfully', function() {
+        //uncomment below and update the code to test getPaymentBankAccountBalance
+        //instance.getPaymentBankAccountBalance().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -480,6 +510,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call listBalanceChanges successfully', function() {
         //uncomment below and update the code to test listBalanceChanges
         //instance.listBalanceChanges().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('listBankWithdrawals', function() {
+      it('should call listBankWithdrawals successfully', function() {
+        //uncomment below and update the code to test listBankWithdrawals
+        //instance.listBankWithdrawals().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

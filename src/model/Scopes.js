@@ -102,13 +102,13 @@ class Scopes {
 
 
 /**
- * The list of wallet types that this API key can access. Possible values include:   - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)   - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)   - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)   - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
+ * The list of wallet types that this API key can access. Possible values include:   - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)   - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)   - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
  * @member {Array.<module:model/WalletType>} wallet_types
  */
 Scopes.prototype['wallet_types'] = undefined;
 
 /**
- * The list of wallet sub-types that this API key can access. Possible values include:   - `Asset`: Custodial Wallets (Asset Wallets).   - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets).   - `User-Controlled`: MPC Wallets (User-Controlled Wallets).   - `Safe{Wallet}`: Smart Contract Wallets (Safe).   - `Main`: Exchange Wallets (Main Account).   - `Sub`: Exchange Wallets (Sub Account). 
+ * The list of wallet sub-types that this API key can access. Possible values include:   - `Asset`: Custodial Wallets (Asset Wallets).   - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets).   - `User-Controlled`: MPC Wallets (User-Controlled Wallets).   - `Main`: Exchange Wallets (Main Account).   - `Sub`: Exchange Wallets (Sub Account). 
  * @member {Array.<module:model/WalletSubtype>} wallet_subtypes
  */
 Scopes.prototype['wallet_subtypes'] = undefined;

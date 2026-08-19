@@ -226,6 +226,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property transaction_process_type (base name: "transaction_process_type")', function() {
+      // uncomment below and update the code to test the property transaction_process_type
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property fueling_info (base name: "fueling_info")', function() {
       // uncomment below and update the code to test the property fueling_info
       //var instance = new CoboWaas2.WebhookEventData();
@@ -654,6 +660,48 @@
 
     it('should have the property remark (base name: "remark")', function() {
       // uncomment below and update the code to test the property remark
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_withdrawal_id (base name: "bank_withdrawal_id")', function() {
+      // uncomment below and update the code to test the property bank_withdrawal_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property source_bank_account_id (base name: "source_bank_account_id")', function() {
+      // uncomment below and update the code to test the property source_bank_account_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property target_bank_account_id (base name: "target_bank_account_id")', function() {
+      // uncomment below and update the code to test the property target_bank_account_id
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property source_bank_account (base name: "source_bank_account")', function() {
+      // uncomment below and update the code to test the property source_bank_account
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property target_bank_account (base name: "target_bank_account")', function() {
+      // uncomment below and update the code to test the property target_bank_account
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bank_tx_fee (base name: "bank_tx_fee")', function() {
+      // uncomment below and update the code to test the property bank_tx_fee
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeline (base name: "timeline")', function() {
+      // uncomment below and update the code to test the property timeline
       //var instance = new CoboWaas2.WebhookEventData();
       //expect(instance).to.be();
     });

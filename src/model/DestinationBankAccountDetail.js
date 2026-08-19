@@ -13,6 +13,7 @@ import ApiClient from '../ApiClient';
 import BankAccountHolderType from './BankAccountHolderType';
 import BankAccountPaymentMethod from './BankAccountPaymentMethod';
 import BankAccountStatus from './BankAccountStatus';
+import DestinationBankAccountTag from './DestinationBankAccountTag';
 import DestinationType from './DestinationType';
 import IntermediaryBankInfo from './IntermediaryBankInfo';
 
@@ -98,6 +99,9 @@ class DestinationBankAccountDetail {
             }
             if (data.hasOwnProperty('bank_account_id')) {
                 obj['bank_account_id'] = ApiClient.convertToType(data['bank_account_id'], 'String');
+            }
+            if (data.hasOwnProperty('tag')) {
+                obj['tag'] = DestinationBankAccountTag.constructFromObject(data['tag']);
             }
             if (data.hasOwnProperty('account_alias')) {
                 obj['account_alias'] = ApiClient.convertToType(data['account_alias'], 'String');
@@ -355,6 +359,11 @@ DestinationBankAccountDetail.prototype['destination_merchant_id'] = undefined;
  * @member {String} bank_account_id
  */
 DestinationBankAccountDetail.prototype['bank_account_id'] = undefined;
+
+/**
+ * @member {module:model/DestinationBankAccountTag} tag
+ */
+DestinationBankAccountDetail.prototype['tag'] = undefined;
 
 /**
  * The alias of the bank account.

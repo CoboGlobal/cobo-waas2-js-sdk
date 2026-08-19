@@ -70,12 +70,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property safe_tx_extra_data (base name: "safe_tx_extra_data")', function() {
-      // uncomment below and update the code to test the property safe_tx_extra_data
-      //var instance = new CoboWaas2.TransactionMessageSignEIP712Destination();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

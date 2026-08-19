@@ -11,7 +11,6 @@
 
 import ApiClient from '../ApiClient';
 import ExchangeId from './ExchangeId';
-import SafeTxExtraData from './SafeTxExtraData';
 import TransactionBIP137Destination from './TransactionBIP137Destination';
 import TransactionBIP322Destination from './TransactionBIP322Destination';
 import TransactionCosmosAdr36Destination from './TransactionCosmosAdr36Destination';
@@ -675,11 +674,6 @@ TransactionDestination.prototype['raw_structured_data'] = undefined;
  * @member {Object.<String, Object>} structured_data
  */
 TransactionDestination.prototype['structured_data'] = undefined;
-
-/**
- * @member {module:model/SafeTxExtraData} safe_tx_extra_data
- */
-TransactionDestination.prototype['safe_tx_extra_data'] = undefined;
 
 /**
  * Message hash to be signed, in hexadecimal format.

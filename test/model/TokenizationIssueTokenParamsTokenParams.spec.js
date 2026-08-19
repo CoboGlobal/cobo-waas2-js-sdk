@@ -94,6 +94,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property asset_token (base name: "asset_token")', function() {
+      // uncomment below and update the code to test the property asset_token
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property initial_nav (base name: "initial_nav")', function() {
+      // uncomment below and update the code to test the property initial_nav
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property initial_annual_rate (base name: "initial_annual_rate")', function() {
+      // uncomment below and update the code to test the property initial_annual_rate
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property min_deposit (base name: "min_deposit")', function() {
+      // uncomment below and update the code to test the property min_deposit
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property min_redemption (base name: "min_redemption")', function() {
+      // uncomment below and update the code to test the property min_redemption
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property max_annual_rate (base name: "max_annual_rate")', function() {
+      // uncomment below and update the code to test the property max_annual_rate
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property max_rate_change (base name: "max_rate_change")', function() {
+      // uncomment below and update the code to test the property max_rate_change
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property min_update_interval_seconds (base name: "min_update_interval_seconds")', function() {
+      // uncomment below and update the code to test the property min_update_interval_seconds
+      //var instance = new CoboWaas2.TokenizationIssueTokenParamsTokenParams();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

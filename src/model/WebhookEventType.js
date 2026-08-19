@@ -305,6 +305,13 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.bank_withdrawal.status.updated"
+         * @const
+         */
+        "payment.bank_withdrawal.status.updated" = "payment.bank_withdrawal.status.updated";
+
+    
+        /**
          * value: "payment.address.updated"
          * @const
          */

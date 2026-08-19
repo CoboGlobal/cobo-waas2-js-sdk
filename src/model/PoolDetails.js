@@ -29,8 +29,8 @@ class PoolDetails {
      * @param chain_id {String} The chain ID.
      * @param protocol {String} The name of the protocol.
      * @param protocol_icon_url {String} The URL of the protocol's icon.
-     * @param supported_wallet_types {Array.<module:model/WalletType>} The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
-     * @param supported_wallet_subtypes {Array.<module:model/WalletSubtype>} The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
+     * @param supported_wallet_types {Array.<module:model/WalletType>} The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
+     * @param supported_wallet_subtypes {Array.<module:model/WalletSubtype>} The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
      * @param token_id {String} The token ID.
      * @param est_apr {Number} The estimated annual percentage rate (APR).
      * @param validators_info {Array.<module:model/PoolDetailsAllOfValidatorsInfo>} A list of available validators.
@@ -213,13 +213,13 @@ PoolDetails.prototype['protocol'] = undefined;
 PoolDetails.prototype['protocol_icon_url'] = undefined;
 
 /**
- * The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
+ * The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
  * @member {Array.<module:model/WalletType>} supported_wallet_types
  */
 PoolDetails.prototype['supported_wallet_types'] = undefined;
 
 /**
- * The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
+ * The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
  * @member {Array.<module:model/WalletSubtype>} supported_wallet_subtypes
  */
 PoolDetails.prototype['supported_wallet_subtypes'] = undefined;
@@ -306,12 +306,12 @@ PoolSummary.prototype['protocol'] = undefined;
  */
 PoolSummary.prototype['protocol_icon_url'] = undefined;
 /**
- * The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `SmartContract`: [Smart Contract Wallets](https://manuals.cobo.com/en/portal/smart-contract-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
+ * The wallet type. Possible values include:  - `Custodial`: [Custodial Wallets](https://manuals.cobo.com/en/portal/custodial-wallets/introduction)  - `MPC`: [MPC Wallets](https://manuals.cobo.com/en/portal/mpc-wallets/introduction)  - `Exchange`: [Exchange Wallets](https://manuals.cobo.com/en/portal/exchange-wallets/introduction) 
  * @member {Array.<module:model/WalletType>} supported_wallet_types
  */
 PoolSummary.prototype['supported_wallet_types'] = undefined;
 /**
- * The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Safe{Wallet}`: Smart Contract Wallets (Safe{Wallet}). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
+ * The wallet subtype. Possible values include: - `Asset`: Custodial Wallets (Asset Wallets). - `Web3`: Custodial Wallets (Web3  Wallets). - `Org-Controlled`: MPC Wallets (Organization-Controlled Wallets). - `User-Controlled`: MPC Wallets (User-Controlled Wallets). - `Main`: Exchange Wallets (Main Account). - `Sub`: Exchange Wallets (Sub Account). 
  * @member {Array.<module:model/WalletSubtype>} supported_wallet_subtypes
  */
 PoolSummary.prototype['supported_wallet_subtypes'] = undefined;

@@ -14,9 +14,6 @@ import CustodialWalletInfo from './CustodialWalletInfo';
 import ExchangeId from './ExchangeId';
 import ExchangeWalletInfo from './ExchangeWalletInfo';
 import MPCWalletInfo from './MPCWalletInfo';
-import SmartContractInitiator from './SmartContractInitiator';
-import SmartContractWalletInfo from './SmartContractWalletInfo';
-import SmartContractWalletType from './SmartContractWalletType';
 import WalletSubtype from './WalletSubtype';
 import WalletType from './WalletType';
 
@@ -28,7 +25,7 @@ class WalletInfo {
     /**
      * Constructs a new <code>WalletInfo</code>.
      * @alias module:model/WalletInfo
-     * @param {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo|module:model/SmartContractWalletInfo)} instance The actual instance to initialize WalletInfo.
+     * @param {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo)} instance The actual instance to initialize WalletInfo.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -51,10 +48,6 @@ class WalletInfo {
                     break;
                 case "MPC":
                     this.actualInstance = MPCWalletInfo.constructFromObject(instance);
-                    match++;
-                    break;
-                case "SmartContract":
-                    this.actualInstance = SmartContractWalletInfo.constructFromObject(instance);
                     match++;
                     break;
                 default:
@@ -115,31 +108,6 @@ class WalletInfo {
         }
 
         try {
-            if (instance instanceof SmartContractWalletInfo) {
-                this.actualInstance = instance;
-            } else if(!!SmartContractWalletInfo.validateJSON && SmartContractWalletInfo.validateJSON(instance)){
-                // plain JS object
-                // create SmartContractWalletInfo from JS object
-                this.actualInstance = SmartContractWalletInfo.constructFromObject(instance);
-            } else {
-                if(SmartContractWalletInfo.constructFromObject(instance)) {
-                    if (!!SmartContractWalletInfo.constructFromObject(instance).toJSON) {
-                        if (SmartContractWalletInfo.constructFromObject(instance).toJSON()) {
-                            this.actualInstance = SmartContractWalletInfo.constructFromObject(instance);
-                        }
-                    } else {
-                        this.actualInstance = SmartContractWalletInfo.constructFromObject(instance);
-                    }
-                }
-
-            }
-            match++;
-        } catch(err) {
-            // json data failed to deserialize into SmartContractWalletInfo
-            errorMessages.push("Failed to construct SmartContractWalletInfo: " + err)
-        }
-
-        try {
             if (instance instanceof ExchangeWalletInfo) {
                 this.actualInstance = instance;
             } else if(!!ExchangeWalletInfo.validateJSON && ExchangeWalletInfo.validateJSON(instance)){
@@ -165,11 +133,11 @@ class WalletInfo {
         }
 
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo, SmartContractWalletInfo. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo, SmartContractWalletInfo. Details: " +
+        //    throw new Error("No match found constructing `WalletInfo` with oneOf schemas CustodialWalletInfo, ExchangeWalletInfo, MPCWalletInfo. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -189,16 +157,16 @@ class WalletInfo {
     }
 
     /**
-     * Gets the actual instance, which can be <code>CustodialWalletInfo</code>, <code>ExchangeWalletInfo</code>, <code>MPCWalletInfo</code>, <code>SmartContractWalletInfo</code>.
-     * @return {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo|module:model/SmartContractWalletInfo)} The actual instance.
+     * Gets the actual instance, which can be <code>CustodialWalletInfo</code>, <code>ExchangeWalletInfo</code>, <code>MPCWalletInfo</code>.
+     * @return {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>CustodialWalletInfo</code>, <code>ExchangeWalletInfo</code>, <code>MPCWalletInfo</code>, <code>SmartContractWalletInfo</code>.
-     * @param {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo|module:model/SmartContractWalletInfo)} obj The actual instance.
+     * Sets the actual instance, which can be <code>CustodialWalletInfo</code>, <code>ExchangeWalletInfo</code>, <code>MPCWalletInfo</code>.
+     * @param {(module:model/CustodialWalletInfo|module:model/ExchangeWalletInfo|module:model/MPCWalletInfo)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = WalletInfo.constructFromObject(obj).getActualInstance();
@@ -298,7 +266,7 @@ WalletInfo.prototype['exchange_id'] = undefined;
 WalletInfo.prototype['main_wallet_id'] = undefined;
 
 
-WalletInfo.OneOf = ["CustodialWalletInfo", "ExchangeWalletInfo", "MPCWalletInfo", "SmartContractWalletInfo"];
+WalletInfo.OneOf = ["CustodialWalletInfo", "ExchangeWalletInfo", "MPCWalletInfo"];
 
 export default WalletInfo;
 

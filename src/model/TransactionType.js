@@ -46,13 +46,6 @@ export default class TransactionType {
 
     
         /**
-         * value: "ExternalSafeTx"
-         * @const
-         */
-        "ExternalSafeTx" = "ExternalSafeTx";
-
-    
-        /**
          * value: "Stake"
          * @const
          */

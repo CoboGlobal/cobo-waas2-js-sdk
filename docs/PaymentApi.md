@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**batchGetExchangeRates**](PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates
 [**cancelRefundById**](PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order
+[**createBankWithdrawal**](PaymentApi.md#createBankWithdrawal) | **POST** /payments/bank_withdrawals | Create bank withdrawal
 [**createBatchAllocation**](PaymentApi.md#createBatchAllocation) | **POST** /payments/batch_allocations | Create batch allocation
 [**createBulkSend**](PaymentApi.md#createBulkSend) | **POST** /payments/bulk_sends | Create bulk send
 [**createCounterparty**](PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty
@@ -30,6 +31,7 @@ Method | HTTP request | Description
 [**deleteDestinationById**](PaymentApi.md#deleteDestinationById) | **DELETE** /payments/destination/{destination_id} | Delete destination
 [**deleteDestinationEntry**](PaymentApi.md#deleteDestinationEntry) | **DELETE** /payments/destination_entry/{destination_entry_id} | Delete destination entry
 [**getAvailableAllocationAmount**](PaymentApi.md#getAvailableAllocationAmount) | **GET** /payments/allocation_amount | Get available allocation amount
+[**getBankWithdrawalById**](PaymentApi.md#getBankWithdrawalById) | **GET** /payments/bank_withdrawals/{bank_withdrawal_id} | Get bank withdrawal information
 [**getBatchAllocationById**](PaymentApi.md#getBatchAllocationById) | **GET** /payments/batch_allocations/{batch_allocation_id} | Get batch allocation information
 [**getBulkSendById**](PaymentApi.md#getBulkSendById) | **GET** /payments/bulk_sends/{bulk_send_id} | Get bulk send information
 [**getCounterparty**](PaymentApi.md#getCounterparty) | **GET** /payments/counterparty/{counterparty_id} | Get counterparty information
@@ -38,6 +40,7 @@ Method | HTTP request | Description
 [**getDestinationEntry**](PaymentApi.md#getDestinationEntry) | **GET** /payments/destination_entry/{destination_entry_id} | Get destination entry information
 [**getExchangeRate**](PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate
 [**getMerchantKyc**](PaymentApi.md#getMerchantKyc) | **GET** /payments/merchants/{merchant_id}/kyc | Get merchant KYC
+[**getPaymentBankAccountBalance**](PaymentApi.md#getPaymentBankAccountBalance) | **GET** /payments/balance/bank_accounts/{bank_account_id} | Get bank account balance
 [**getPaymentOrderDetailById**](PaymentApi.md#getPaymentOrderDetailById) | **GET** /payments/orders/{order_id} | Get pay-in order information
 [**getPayoutById**](PaymentApi.md#getPayoutById) | **GET** /payments/payouts/{payout_id} | Get payout information
 [**getPspBalance**](PaymentApi.md#getPspBalance) | **GET** /payments/balance/psp | Get developer balance
@@ -49,6 +52,7 @@ Method | HTTP request | Description
 [**getTopUpAddress**](PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Create/Get top-up address
 [**listAllocationItems**](PaymentApi.md#listAllocationItems) | **GET** /payments/allocation_items | List all allocation items
 [**listBalanceChanges**](PaymentApi.md#listBalanceChanges) | **GET** /payments/balance_changes | List balance changes
+[**listBankWithdrawals**](PaymentApi.md#listBankWithdrawals) | **GET** /payments/bank_withdrawals | List bank withdrawals
 [**listBatchAllocations**](PaymentApi.md#listBatchAllocations) | **GET** /payments/batch_allocations | List all batch allocations
 [**listBulkSendItems**](PaymentApi.md#listBulkSendItems) | **GET** /payments/bulk_sends/{bulk_send_id}/items | List bulk send items
 [**listBulkSends**](PaymentApi.md#listBulkSends) | **GET** /payments/bulk_sends | List bulk sends
@@ -181,6 +185,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## createBankWithdrawal
+
+> PaymentBankWithdrawal createBankWithdrawal(opts)
+
+Create bank withdrawal
+
+This operation creates a bank withdrawal from a virtual account to a target bank account. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const opts = {
+  'CreateBankWithdrawalRequest': new CoboWaas2.CreateBankWithdrawalRequest()
+};
+apiInstance.createBankWithdrawal(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **CreateBankWithdrawalRequest** | [**CreateBankWithdrawalRequest**](CreateBankWithdrawalRequest.md)| The request body to create a bank withdrawal. | [optional] 
+
+### Return type
+
+[**PaymentBankWithdrawal**](PaymentBankWithdrawal.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -1428,6 +1484,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getBankWithdrawalById
+
+> PaymentBankWithdrawalDetail getBankWithdrawalById(bank_withdrawal_id)
+
+Get bank withdrawal information
+
+This operation retrieves the information of a specific bank withdrawal. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const bank_withdrawal_id = "123e4567-e89b-12d3-a456-426614174000";
+apiInstance.getBankWithdrawalById(bank_withdrawal_id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bank_withdrawal_id** | **String**| The bank withdrawal ID. | 
+
+### Return type
+
+[**PaymentBankWithdrawalDetail**](PaymentBankWithdrawalDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getBatchAllocationById
 
 > BatchAllocationDetail getBatchAllocationById(batch_allocation_id)
@@ -1825,6 +1931,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MerchantKycSubmission**](MerchantKycSubmission.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getPaymentBankAccountBalance
+
+> PaymentBankAccountBalance getPaymentBankAccountBalance(bank_account_id)
+
+Get bank account balance
+
+This operation retrieves the balance of a destination bank account, only available for bank accounts with tag &#x60;VA&#x60;. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const bank_account_id = "123e4567-e89b-12d3-a456-426614174003";
+apiInstance.getPaymentBankAccountBalance(bank_account_id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bank_account_id** | **String**| The destination bank account ID. | 
+
+### Return type
+
+[**PaymentBankAccountBalance**](PaymentBankAccountBalance.md)
 
 ### Authorization
 
@@ -2454,6 +2610,66 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## listBankWithdrawals
+
+> ListBankWithdrawals200Response listBankWithdrawals(opts)
+
+List bank withdrawals
+
+This operation retrieves the list of bank withdrawals. 
+
+### Example
+
+```javascript
+const CoboWaas2 = require('@cobo/cobo-waas2');
+// Initialize the API client
+const apiClient = CoboWaas2.ApiClient.instance
+// Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD`
+apiClient.setEnv(CoboWaas2.Env.DEV);
+// Replace `<YOUR_PRIVATE_KEY>` with your private key
+apiClient.setPrivateKey("<YOUR_PRIVATE_KEY>");
+// Call the API
+const apiInstance = new CoboWaas2.PaymentApi();
+const opts = {
+  'limit': 10,
+  'before': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1",
+  'after': "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk",
+  'request_id': "random_request_id",
+  'status': new CoboWaas2.PaymentBankWithdrawalStatus()
+};
+apiInstance.listBankWithdrawals(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Number**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10]
+ **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] 
+ **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] 
+ **request_id** | **String**| The request ID. | [optional] 
+ **status** | [**PaymentBankWithdrawalStatus**](.md)| Filter by bank withdrawal status. | [optional] 
+
+### Return type
+
+[**ListBankWithdrawals200Response**](ListBankWithdrawals200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## listBatchAllocations
 
 > ListBatchAllocations200Response listBatchAllocations(opts)
@@ -2835,7 +3051,8 @@ const opts = {
   'chain_ids': "ETH",
   'wallet_address': "0x1234567890abcdef...",
   'keyword': "keyword",
-  'bank_account_status': new CoboWaas2.BankAccountStatus()
+  'bank_account_status': new CoboWaas2.BankAccountStatus(),
+  'bank_account_tag': new CoboWaas2.DestinationBankAccountTag()
 };
 apiInstance.listDestinationEntries(entry_type, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -2859,6 +3076,7 @@ Name | Type | Description  | Notes
  **wallet_address** | **String**| The wallet address. | [optional] 
  **keyword** | **String**| A search term for performing fuzzy matches in the search query. | [optional] 
  **bank_account_status** | [**BankAccountStatus**](.md)| BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  | [optional] 
+ **bank_account_tag** | [**DestinationBankAccountTag**](.md)| Filter destination bank accounts by tag.  | [optional] 
 
 ### Return type
 

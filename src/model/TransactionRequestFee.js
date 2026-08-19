@@ -338,13 +338,13 @@ TransactionRequestFee.prototype['compute_unit_price'] = undefined;
 TransactionRequestFee.prototype['compute_unit_limit'] = undefined;
 
 /**
- * An optional tip you can include to prioritize your transaction. The gas premium incentivizes miners to include your transaction sooner than those offering only the base fee.
+ * An optional additional fee that users can include to prioritize their transactions over others. It acts like a tip to incentivize miners to select and include your transaction over transactions with only the base fee.
  * @member {String} gas_premium
  */
 TransactionRequestFee.prototype['gas_premium'] = undefined;
 
 /**
- * The maximum gas price you are willing to pay per unit of gas.
+ * The gas_fee_cap is a user-defined limit on how much they are willing to pay per unit of gas.
  * @member {String} gas_fee_cap
  */
 TransactionRequestFee.prototype['gas_fee_cap'] = undefined;

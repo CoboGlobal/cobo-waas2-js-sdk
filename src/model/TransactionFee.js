@@ -284,7 +284,7 @@ class TransactionFee {
 TransactionFee.prototype['fee_type'] = undefined;
 
 /**
- * The token used to pay the transaction fee.
+ * The token ID of the transaction fee.
  * @member {String} token_id
  */
 TransactionFee.prototype['token_id'] = undefined;
@@ -374,19 +374,19 @@ TransactionFee.prototype['compute_unit_price'] = undefined;
 TransactionFee.prototype['compute_unit_limit'] = undefined;
 
 /**
- * The minimum fee required for a transaction to be included in a block. The base fee is dynamically adjusted based on network congestion to maintain target block utilization. It is burned rather than paid to miners, reducing the total Filecoin supply over time.
+ * This is the minimum fee required to include a transaction in a block. It is determined by the network's congestion level, which adjusts to maintain a target block utilization rate. The base fee is burned, reducing the total supply of Filecoin over time.
  * @member {String} gas_base
  */
 TransactionFee.prototype['gas_base'] = undefined;
 
 /**
- * An optional tip you can include to prioritize your transaction. The gas premium incentivizes miners to include your transaction sooner than those offering only the base fee.
+ * An optional additional fee that users can include to prioritize their transactions over others. It acts like a tip to incentivize miners to select and include your transaction over transactions with only the base fee.
  * @member {String} gas_premium
  */
 TransactionFee.prototype['gas_premium'] = undefined;
 
 /**
- * The maximum gas price you are willing to pay per unit of gas.
+ * The gas_fee_cap is a user-defined limit on how much they are willing to pay per unit of gas.
  * @member {String} gas_fee_cap
  */
 TransactionFee.prototype['gas_fee_cap'] = undefined;

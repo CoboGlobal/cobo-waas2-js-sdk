@@ -172,12 +172,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property safe_tx_extra_data (base name: "safe_tx_extra_data")', function() {
-      // uncomment below and update the code to test the property safe_tx_extra_data
-      //var instance = new CoboWaas2.TransactionDestination();
-      //expect(instance).to.be();
-    });
-
     it('should have the property msg_hash (base name: "msg_hash")', function() {
       // uncomment below and update the code to test the property msg_hash
       //var instance = new CoboWaas2.TransactionDestination();

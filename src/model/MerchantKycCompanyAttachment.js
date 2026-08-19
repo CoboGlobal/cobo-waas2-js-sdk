@@ -20,7 +20,7 @@ class MerchantKycCompanyAttachment {
     /**
      * Constructs a new <code>MerchantKycCompanyAttachment</code>.
      * @alias module:model/MerchantKycCompanyAttachment
-     * @param file_id {String} The AWS file link of the uploaded file, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
+     * @param file_id {String} The file ID of the uploaded file, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
      * @param file_type {module:model/MerchantKycCompanyAttachmentFileType} 
      */
     constructor(file_id, file_type) { 
@@ -85,7 +85,7 @@ class MerchantKycCompanyAttachment {
 MerchantKycCompanyAttachment.RequiredProperties = ["file_id", "file_type"];
 
 /**
- * The AWS file link of the uploaded file, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
+ * The file ID of the uploaded file, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
  * @member {String} file_id
  */
 MerchantKycCompanyAttachment.prototype['file_id'] = undefined;

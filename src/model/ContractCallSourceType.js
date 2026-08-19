@@ -39,13 +39,6 @@ export default class ContractCallSourceType {
 
     
         /**
-         * value: "Safe{Wallet}"
-         * @const
-         */
-        "Safe{Wallet}" = "Safe{Wallet}";
-
-    
-        /**
          * value: "unknown_default_open_api"
          * @const
          */

@@ -46,6 +46,13 @@ export default class TokenizationTokenStandard {
 
     
         /**
+         * value: "ERC20Fund"
+         * @const
+         */
+        "ERC20Fund" = "ERC20Fund";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

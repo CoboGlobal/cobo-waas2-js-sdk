@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **destination_id** | **String** | The destination ID. | 
 **destination_type** | [**DestinationType**](DestinationType.md) |  | 
 **destination_name** | **String** | The destination name. | 
+**source** | [**DestinationSource**](DestinationSource.md) |  | [optional] 
 **country** | **String** | The country of the destination, in ISO 3166-1 alpha-3 format. | [optional] 
 **email** | **String** | The email of the destination. | [optional] 
 **contact_address** | **String** | The contact address of the destination. | [optional] 

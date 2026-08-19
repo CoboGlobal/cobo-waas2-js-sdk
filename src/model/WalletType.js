@@ -32,13 +32,6 @@ export default class WalletType {
 
     
         /**
-         * value: "SmartContract"
-         * @const
-         */
-        "SmartContract" = "SmartContract";
-
-    
-        /**
          * value: "Exchange"
          * @const
          */
