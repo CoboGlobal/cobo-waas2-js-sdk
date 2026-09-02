@@ -223,6 +223,7 @@ import DispositionQueryResponse from './model/DispositionQueryResponse';
 import DispositionResponse from './model/DispositionResponse';
 import DispositionStatus from './model/DispositionStatus';
 import DispositionType from './model/DispositionType';
+import DownloadReportRequest from './model/DownloadReportRequest';
 import EigenLayerLstStakeExtra from './model/EigenLayerLstStakeExtra';
 import EigenLayerNativeStakeExtra from './model/EigenLayerNativeStakeExtra';
 import EigenlayerValidator from './model/EigenlayerValidator';
@@ -485,6 +486,7 @@ import PaymentSettlementEvent from './model/PaymentSettlementEvent';
 import PaymentSourceType from './model/PaymentSourceType';
 import PaymentTransaction from './model/PaymentTransaction';
 import PaymentTransactionEventData from './model/PaymentTransactionEventData';
+import PaymentUploadFileV2 from './model/PaymentUploadFileV2';
 import PaymentUploadedFile from './model/PaymentUploadedFile';
 import PaymentWalletBalance from './model/PaymentWalletBalance';
 import PayoutChannel from './model/PayoutChannel';
@@ -518,6 +520,7 @@ import RefundStatus from './model/RefundStatus';
 import RefundType from './model/RefundType';
 import ReplaceType from './model/ReplaceType';
 import Report from './model/Report';
+import ReportDownloadResponse from './model/ReportDownloadResponse';
 import ReportExportFormat from './model/ReportExportFormat';
 import ReportStatus from './model/ReportStatus';
 import ReportType from './model/ReportType';
@@ -925,7 +928,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.42.0
+* @version 1.43.0
 */
 export {
     Env,
@@ -2196,6 +2199,12 @@ export {
      * @property {module:model/DispositionType}
      */
     DispositionType,
+
+    /**
+     * The DownloadReportRequest model constructor.
+     * @property {module:model/DownloadReportRequest}
+     */
+    DownloadReportRequest,
 
     /**
      * The EigenLayerLstStakeExtra model constructor.
@@ -3770,6 +3779,12 @@ export {
     PaymentTransactionEventData,
 
     /**
+     * The PaymentUploadFileV2 model constructor.
+     * @property {module:model/PaymentUploadFileV2}
+     */
+    PaymentUploadFileV2,
+
+    /**
      * The PaymentUploadedFile model constructor.
      * @property {module:model/PaymentUploadedFile}
      */
@@ -3966,6 +3981,12 @@ export {
      * @property {module:model/Report}
      */
     Report,
+
+    /**
+     * The ReportDownloadResponse model constructor.
+     * @property {module:model/ReportDownloadResponse}
+     */
+    ReportDownloadResponse,
 
     /**
      * The ReportExportFormat model constructor.

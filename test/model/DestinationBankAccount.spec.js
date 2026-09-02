@@ -208,6 +208,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property bank_city (base name: "bank_city")', function() {
+      // uncomment below and update the code to test the property bank_city
+      //var instance = new CoboWaas2.DestinationBankAccount();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property routing_value (base name: "routing_value")', function() {
+      // uncomment below and update the code to test the property routing_value
+      //var instance = new CoboWaas2.DestinationBankAccount();
+      //expect(instance).to.be();
+    });
+
     it('should have the property contract_file_id (base name: "contract_file_id")', function() {
       // uncomment below and update the code to test the property contract_file_id
       //var instance = new CoboWaas2.DestinationBankAccount();

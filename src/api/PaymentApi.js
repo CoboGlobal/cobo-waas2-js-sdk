@@ -48,6 +48,7 @@ import Destination from '../model/Destination';
 import DestinationBankAccountTag from '../model/DestinationBankAccountTag';
 import DestinationDetail from '../model/DestinationDetail';
 import DestinationType from '../model/DestinationType';
+import DownloadReportRequest from '../model/DownloadReportRequest';
 import EntryType from '../model/EntryType';
 import ErrorResponse from '../model/ErrorResponse';
 import ExchangeRate from '../model/ExchangeRate';
@@ -96,10 +97,12 @@ import PaymentEstimateFee201Response from '../model/PaymentEstimateFee201Respons
 import PaymentEstimateFeeRequest from '../model/PaymentEstimateFeeRequest';
 import PaymentPayout from '../model/PaymentPayout';
 import PaymentPayoutDetail from '../model/PaymentPayoutDetail';
+import PaymentUploadFileV2 from '../model/PaymentUploadFileV2';
 import PaymentUploadedFile from '../model/PaymentUploadedFile';
 import PspBalance from '../model/PspBalance';
 import Refund from '../model/Refund';
 import Report from '../model/Report';
+import ReportDownloadResponse from '../model/ReportDownloadResponse';
 import ReportStatus from '../model/ReportStatus';
 import ReportType from '../model/ReportType';
 import Settlement from '../model/Settlement';
@@ -983,7 +986,7 @@ export default class PaymentApi {
 
     /**
      * Generate reports
-     * This operation generates reports for a variety of payment activities, including pay-ins, payouts, and commission fees. <Note>For `report_types`, report scope, exported field differences, and report-specific usage notes, see [Reports](/payments/en/guides/reports).</Note> 
+     * This operation generates reports for a variety of payment activities, including pay-ins, payouts, and commission fees. The response does not guarantee a download URL. To retrieve a temporary download URL for a completed report, call download report operation. <Note>For `report_types`, report scope, exported field differences, and report-specific usage notes, see [Reports](/payments/en/guides/reports).</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateReportRequest} [CreateReportRequest] The request body to create payment reports.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Report} and HTTP response
@@ -1017,7 +1020,7 @@ export default class PaymentApi {
 
     /**
      * Generate reports
-     * This operation generates reports for a variety of payment activities, including pay-ins, payouts, and commission fees. <Note>For `report_types`, report scope, exported field differences, and report-specific usage notes, see [Reports](/payments/en/guides/reports).</Note> 
+     * This operation generates reports for a variety of payment activities, including pay-ins, payouts, and commission fees. The response does not guarantee a download URL. To retrieve a temporary download URL for a completed report, call download report operation. <Note>For `report_types`, report scope, exported field differences, and report-specific usage notes, see [Reports](/payments/en/guides/reports).</Note> 
      * @param {Object} opts Optional parameters
      * @param {module:model/CreateReportRequest} opts.CreateReportRequest The request body to create payment reports.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Report}
@@ -1448,6 +1451,56 @@ export default class PaymentApi {
      */
     deleteDestinationEntry(destination_entry_id, destination_id, entry_type) {
       return this.deleteDestinationEntryWithHttpInfo(destination_entry_id, destination_id, entry_type)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Download report
+     * This operation retrieves a temporary download URL for a completed payment report. Endpoint: `POST https://api.dev.cobo.com/v2/payments/reports/download`. 
+     * @param {module:model/DownloadReportRequest} DownloadReportRequest The request body to download a payment report.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ReportDownloadResponse} and HTTP response
+     */
+    downloadReportWithHttpInfo(DownloadReportRequest) {
+      let postBody = DownloadReportRequest;
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+      // verify the required parameter 'DownloadReportRequest' is set
+      if (DownloadReportRequest === undefined || DownloadReportRequest === null) {
+        throw new Error("Missing the required parameter 'DownloadReportRequest' when calling downloadReport");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = ReportDownloadResponse;
+      return this.apiClient.callApi(
+        '/payments/reports/download', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Download report
+     * This operation retrieves a temporary download URL for a completed payment report. Endpoint: `POST https://api.dev.cobo.com/v2/payments/reports/download`. 
+     * @param {module:model/DownloadReportRequest} DownloadReportRequest The request body to download a payment report.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ReportDownloadResponse}
+     */
+    downloadReport(DownloadReportRequest) {
+      return this.downloadReportWithHttpInfo(DownloadReportRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -3597,7 +3650,7 @@ export default class PaymentApi {
 
     /**
      * List supported tokens
-     * This operation retrieves all tokens supported by Cobo Payments.  Use this operation to get token details such as token ID, symbol, decimal precision,  contract address, and chain information before creating payment orders.  For more information about Cobo Payments, see [Cobo Payments Overview](https://www.cobo.com/payments/en/guides/overview). 
+     * This operation retrieves all tokens supported by Cobo Payments.  Use this operation to get token details such as token ID, symbol, decimal precision, contract address, chain information, confirmation threshold, and deposit threshold before creating payment orders.  For more information about Cobo Payments, see [Cobo Payments Overview](https://www.cobo.com/payments/en/guides/overview). 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/SupportedToken>} and HTTP response
      */
     listPaymentSupportedTokensWithHttpInfo() {
@@ -3628,7 +3681,7 @@ export default class PaymentApi {
 
     /**
      * List supported tokens
-     * This operation retrieves all tokens supported by Cobo Payments.  Use this operation to get token details such as token ID, symbol, decimal precision,  contract address, and chain information before creating payment orders.  For more information about Cobo Payments, see [Cobo Payments Overview](https://www.cobo.com/payments/en/guides/overview). 
+     * This operation retrieves all tokens supported by Cobo Payments.  Use this operation to get token details such as token ID, symbol, decimal precision, contract address, chain information, confirmation threshold, and deposit threshold before creating payment orders.  For more information about Cobo Payments, see [Cobo Payments Overview](https://www.cobo.com/payments/en/guides/overview). 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/SupportedToken>}
      */
     listPaymentSupportedTokens() {
@@ -3989,10 +4042,10 @@ export default class PaymentApi {
 
     /**
      * Submit merchant KYC
-     * This operation submits KYC information for a specified merchant.  You need to provide the merchant contact information, merchant type, country, industry, and company information.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
+     * This operation submits KYC information for a specified merchant.  You need to provide the merchant type, country, and industry. Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants).  <Note>If the merchant KYC status is `Disabled`, this operation cannot be used to resubmit KYC information.</Note> 
      * @param {String} merchant_id The merchant ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/SubmitMerchantKyc} [SubmitMerchantKyc] The request body to submit merchant KYC information.
+     * @param {module:model/SubmitMerchantKyc} [SubmitMerchantKyc] The request body to submit merchant KYC information.  Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantKycInfo} and HTTP response
      */
     submitMerchantKycWithHttpInfo(merchant_id, opts) {
@@ -4029,10 +4082,10 @@ export default class PaymentApi {
 
     /**
      * Submit merchant KYC
-     * This operation submits KYC information for a specified merchant.  You need to provide the merchant contact information, merchant type, country, industry, and company information.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
+     * This operation submits KYC information for a specified merchant.  You need to provide the merchant type, country, and industry. Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants).  <Note>If the merchant KYC status is `Disabled`, this operation cannot be used to resubmit KYC information.</Note> 
      * @param {String} merchant_id The merchant ID.
      * @param {Object} opts Optional parameters
-     * @param {module:model/SubmitMerchantKyc} opts.SubmitMerchantKyc The request body to submit merchant KYC information.
+     * @param {module:model/SubmitMerchantKyc} opts.SubmitMerchantKyc The request body to submit merchant KYC information.  Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantKycInfo}
      */
     submitMerchantKyc(merchant_id, opts) {
@@ -4479,7 +4532,7 @@ export default class PaymentApi {
 
     /**
      * Upload file
-     * This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * <Note>This operation has been deprecated. Please use [Upload file v2](https://www.cobo.com/developers/v2/api-references/payment/upload-file-v2) instead.</Note>  This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
      * @param {File} file The file to upload.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentUploadedFile} and HTTP response
      */
@@ -4516,12 +4569,61 @@ export default class PaymentApi {
 
     /**
      * Upload file
-     * This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * <Note>This operation has been deprecated. Please use [Upload file v2](https://www.cobo.com/developers/v2/api-references/payment/upload-file-v2) instead.</Note>  This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
      * @param {File} file The file to upload.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentUploadedFile}
      */
     uploadPaymentFile(file) {
       return this.uploadPaymentFileWithHttpInfo(file)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Upload file v2
+     * This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/PaymentUploadFileV2} [PaymentUploadFileV2] The request body to upload a file.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentUploadedFile} and HTTP response
+     */
+    uploadPaymentFileV2WithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['PaymentUploadFileV2'];
+      if (postBody && postBody.toJSON) {
+          postBody = postBody.toJSON()
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['OAuth2', 'CoboAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PaymentUploadedFile;
+      return this.apiClient.callApi(
+        '/payments/files_v2', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Upload file v2
+     * This operation uploads a file for payment-related use cases, such as merchant KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Submit merchant KYC](https://www.cobo.com/developers/v2/api-references/payment/submit-merchant-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/PaymentUploadFileV2} opts.PaymentUploadFileV2 The request body to upload a file.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentUploadedFile}
+     */
+    uploadPaymentFileV2(opts) {
+      return this.uploadPaymentFileV2WithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

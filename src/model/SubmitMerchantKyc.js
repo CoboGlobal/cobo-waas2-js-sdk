@@ -12,6 +12,7 @@
 import ApiClient from '../ApiClient';
 import MerchantKycCompanyInfo from './MerchantKycCompanyInfo';
 import MerchantKycMerchantType from './MerchantKycMerchantType';
+import MerchantKycPersonInfo from './MerchantKycPersonInfo';
 
 /**
  * The SubmitMerchantKyc model module.
@@ -21,16 +22,13 @@ class SubmitMerchantKyc {
     /**
      * Constructs a new <code>SubmitMerchantKyc</code>.
      * @alias module:model/SubmitMerchantKyc
-     * @param email {String} The merchant email address.
-     * @param phone {String} The merchant phone number.
      * @param merchant_type {module:model/MerchantKycMerchantType} 
      * @param country {String} The country/region of the merchant, in ISO 3166-1 alpha-3 format.
      * @param industry {Array.<String>} The industry categories of the merchant.
-     * @param company_info {module:model/MerchantKycCompanyInfo} 
      */
-    constructor(email, phone, merchant_type, country, industry, company_info) { 
+    constructor(merchant_type, country, industry) { 
         
-        SubmitMerchantKyc.initialize(this, email, phone, merchant_type, country, industry, company_info);
+        SubmitMerchantKyc.initialize(this, merchant_type, country, industry);
     }
 
     /**
@@ -38,13 +36,10 @@ class SubmitMerchantKyc {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, email, phone, merchant_type, country, industry, company_info) { 
-        obj['email'] = email;
-        obj['phone'] = phone;
+    static initialize(obj, merchant_type, country, industry) { 
         obj['merchant_type'] = merchant_type;
         obj['country'] = country;
         obj['industry'] = industry;
-        obj['company_info'] = company_info;
     }
 
     /**
@@ -58,12 +53,6 @@ class SubmitMerchantKyc {
         if (data) {
             obj = obj || new SubmitMerchantKyc();
 
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('phone')) {
-                obj['phone'] = ApiClient.convertToType(data['phone'], 'String');
-            }
             if (data.hasOwnProperty('merchant_type')) {
                 obj['merchant_type'] = MerchantKycMerchantType.constructFromObject(data['merchant_type']);
             }
@@ -75,6 +64,9 @@ class SubmitMerchantKyc {
             }
             if (data.hasOwnProperty('company_info')) {
                 obj['company_info'] = MerchantKycCompanyInfo.constructFromObject(data['company_info']);
+            }
+            if (data.hasOwnProperty('individual_info')) {
+                obj['individual_info'] = MerchantKycPersonInfo.constructFromObject(data['individual_info']);
             }
         }
         return obj;
@@ -93,14 +85,6 @@ class SubmitMerchantKyc {
             }
         }
         // ensure the json data is a string
-        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
-            throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
-        }
-        // ensure the json data is a string
-        if (data['phone'] && !(typeof data['phone'] === 'string' || data['phone'] instanceof String)) {
-            throw new Error("Expected the field `phone` to be a primitive type in the JSON string but got " + data['phone']);
-        }
-        // ensure the json data is a string
         if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
             throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
         }
@@ -114,6 +98,12 @@ class SubmitMerchantKyc {
             MerchantKycCompanyInfo.validateJSON(data['company_info']);
           }
         }
+        // validate the optional field `individual_info`
+        if (data['individual_info']) { // data not null
+          if (!!MerchantKycPersonInfo.validateJSON) {
+            MerchantKycPersonInfo.validateJSON(data['individual_info']);
+          }
+        }
 
         return true;
     }
@@ -121,19 +111,7 @@ class SubmitMerchantKyc {
 
 }
 
-SubmitMerchantKyc.RequiredProperties = ["email", "phone", "merchant_type", "country", "industry", "company_info"];
-
-/**
- * The merchant email address.
- * @member {String} email
- */
-SubmitMerchantKyc.prototype['email'] = undefined;
-
-/**
- * The merchant phone number.
- * @member {String} phone
- */
-SubmitMerchantKyc.prototype['phone'] = undefined;
+SubmitMerchantKyc.RequiredProperties = ["merchant_type", "country", "industry"];
 
 /**
  * @member {module:model/MerchantKycMerchantType} merchant_type
@@ -156,6 +134,11 @@ SubmitMerchantKyc.prototype['industry'] = undefined;
  * @member {module:model/MerchantKycCompanyInfo} company_info
  */
 SubmitMerchantKyc.prototype['company_info'] = undefined;
+
+/**
+ * @member {module:model/MerchantKycPersonInfo} individual_info
+ */
+SubmitMerchantKyc.prototype['individual_info'] = undefined;
 
 
 

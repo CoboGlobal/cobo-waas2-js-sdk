@@ -127,6 +127,12 @@ class UpdateDestinationBankAccount {
             if (data.hasOwnProperty('bank_province')) {
                 obj['bank_province'] = ApiClient.convertToType(data['bank_province'], 'String');
             }
+            if (data.hasOwnProperty('bank_city')) {
+                obj['bank_city'] = ApiClient.convertToType(data['bank_city'], 'String');
+            }
+            if (data.hasOwnProperty('routing_value')) {
+                obj['routing_value'] = ApiClient.convertToType(data['routing_value'], 'String');
+            }
             if (data.hasOwnProperty('contract_file_id')) {
                 obj['contract_file_id'] = ApiClient.convertToType(data['contract_file_id'], 'String');
             }
@@ -223,6 +229,14 @@ class UpdateDestinationBankAccount {
         // ensure the json data is a string
         if (data['bank_province'] && !(typeof data['bank_province'] === 'string' || data['bank_province'] instanceof String)) {
             throw new Error("Expected the field `bank_province` to be a primitive type in the JSON string but got " + data['bank_province']);
+        }
+        // ensure the json data is a string
+        if (data['bank_city'] && !(typeof data['bank_city'] === 'string' || data['bank_city'] instanceof String)) {
+            throw new Error("Expected the field `bank_city` to be a primitive type in the JSON string but got " + data['bank_city']);
+        }
+        // ensure the json data is a string
+        if (data['routing_value'] && !(typeof data['routing_value'] === 'string' || data['routing_value'] instanceof String)) {
+            throw new Error("Expected the field `routing_value` to be a primitive type in the JSON string but got " + data['routing_value']);
         }
         // ensure the json data is a string
         if (data['contract_file_id'] && !(typeof data['contract_file_id'] === 'string' || data['contract_file_id'] instanceof String)) {
@@ -359,6 +373,18 @@ UpdateDestinationBankAccount.prototype['bank_country'] = undefined;
  * @member {String} bank_province
  */
 UpdateDestinationBankAccount.prototype['bank_province'] = undefined;
+
+/**
+ * The city of the bank.
+ * @member {String} bank_city
+ */
+UpdateDestinationBankAccount.prototype['bank_city'] = undefined;
+
+/**
+ * The routing value of the bank account.
+ * @member {String} routing_value
+ */
+UpdateDestinationBankAccount.prototype['routing_value'] = undefined;
 
 /**
  * The file ID of the contract document (e.g., cooperation agreement) that proves the business relationship between you and the beneficiary, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 

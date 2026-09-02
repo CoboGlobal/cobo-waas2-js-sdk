@@ -220,6 +220,7 @@ docs/DispositionQueryResponse.md
 docs/DispositionResponse.md
 docs/DispositionStatus.md
 docs/DispositionType.md
+docs/DownloadReportRequest.md
 docs/EigenLayerLstStakeExtra.md
 docs/EigenLayerNativeStakeExtra.md
 docs/EigenlayerValidator.md
@@ -487,6 +488,7 @@ docs/PaymentSettlementEvent.md
 docs/PaymentSourceType.md
 docs/PaymentTransaction.md
 docs/PaymentTransactionEventData.md
+docs/PaymentUploadFileV2.md
 docs/PaymentUploadedFile.md
 docs/PaymentWalletBalance.md
 docs/PayoutChannel.md
@@ -522,6 +524,7 @@ docs/RefundStatus.md
 docs/RefundType.md
 docs/ReplaceType.md
 docs/Report.md
+docs/ReportDownloadResponse.md
 docs/ReportExportFormat.md
 docs/ReportStatus.md
 docs/ReportType.md
@@ -1126,6 +1129,7 @@ src/model/DispositionQueryResponse.js
 src/model/DispositionResponse.js
 src/model/DispositionStatus.js
 src/model/DispositionType.js
+src/model/DownloadReportRequest.js
 src/model/EigenLayerLstStakeExtra.js
 src/model/EigenLayerNativeStakeExtra.js
 src/model/EigenlayerValidator.js
@@ -1388,6 +1392,7 @@ src/model/PaymentSettlementEvent.js
 src/model/PaymentSourceType.js
 src/model/PaymentTransaction.js
 src/model/PaymentTransactionEventData.js
+src/model/PaymentUploadFileV2.js
 src/model/PaymentUploadedFile.js
 src/model/PaymentWalletBalance.js
 src/model/PayoutChannel.js
@@ -1421,6 +1426,7 @@ src/model/RefundStatus.js
 src/model/RefundType.js
 src/model/ReplaceType.js
 src/model/Report.js
+src/model/ReportDownloadResponse.js
 src/model/ReportExportFormat.js
 src/model/ReportStatus.js
 src/model/ReportType.js
@@ -2006,6 +2012,7 @@ test/model/DispositionQueryResponse.spec.js
 test/model/DispositionResponse.spec.js
 test/model/DispositionStatus.spec.js
 test/model/DispositionType.spec.js
+test/model/DownloadReportRequest.spec.js
 test/model/EigenLayerLstStakeExtra.spec.js
 test/model/EigenLayerNativeStakeExtra.spec.js
 test/model/EigenlayerValidator.spec.js
@@ -2268,6 +2275,7 @@ test/model/PaymentSettlementEvent.spec.js
 test/model/PaymentSourceType.spec.js
 test/model/PaymentTransaction.spec.js
 test/model/PaymentTransactionEventData.spec.js
+test/model/PaymentUploadFileV2.spec.js
 test/model/PaymentUploadedFile.spec.js
 test/model/PaymentWalletBalance.spec.js
 test/model/PayoutChannel.spec.js
@@ -2301,6 +2309,7 @@ test/model/RefundStatus.spec.js
 test/model/RefundType.spec.js
 test/model/ReplaceType.spec.js
 test/model/Report.spec.js
+test/model/ReportDownloadResponse.spec.js
 test/model/ReportExportFormat.spec.js
 test/model/ReportStatus.spec.js
 test/model/ReportType.spec.js

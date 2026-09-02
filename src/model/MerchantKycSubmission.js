@@ -12,6 +12,7 @@
 import ApiClient from '../ApiClient';
 import MerchantKycCompanyInfo from './MerchantKycCompanyInfo';
 import MerchantKycMerchantType from './MerchantKycMerchantType';
+import MerchantKycPersonInfo from './MerchantKycPersonInfo';
 import MerchantKycStatus from './MerchantKycStatus';
 
 /**
@@ -25,17 +26,14 @@ class MerchantKycSubmission {
      * @param kyc_submission_id {String} The KYC submission ID.
      * @param merchant_id {String} The merchant ID.
      * @param status {module:model/MerchantKycStatus} 
-     * @param email {String} The merchant email address.
-     * @param phone {String} The merchant phone number.
      * @param merchant_type {module:model/MerchantKycMerchantType} 
      * @param country {String} The country/region of the merchant, in ISO 3166-1 alpha-3 format.
      * @param industry {Array.<String>} The industry categories of the merchant.
-     * @param company_info {module:model/MerchantKycCompanyInfo} 
      * @param created_timestamp {Number} The creation timestamp in Unix seconds.
      */
-    constructor(kyc_submission_id, merchant_id, status, email, phone, merchant_type, country, industry, company_info, created_timestamp) { 
+    constructor(kyc_submission_id, merchant_id, status, merchant_type, country, industry, created_timestamp) { 
         
-        MerchantKycSubmission.initialize(this, kyc_submission_id, merchant_id, status, email, phone, merchant_type, country, industry, company_info, created_timestamp);
+        MerchantKycSubmission.initialize(this, kyc_submission_id, merchant_id, status, merchant_type, country, industry, created_timestamp);
     }
 
     /**
@@ -43,16 +41,13 @@ class MerchantKycSubmission {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, kyc_submission_id, merchant_id, status, email, phone, merchant_type, country, industry, company_info, created_timestamp) { 
+    static initialize(obj, kyc_submission_id, merchant_id, status, merchant_type, country, industry, created_timestamp) { 
         obj['kyc_submission_id'] = kyc_submission_id;
         obj['merchant_id'] = merchant_id;
         obj['status'] = status;
-        obj['email'] = email;
-        obj['phone'] = phone;
         obj['merchant_type'] = merchant_type;
         obj['country'] = country;
         obj['industry'] = industry;
-        obj['company_info'] = company_info;
         obj['created_timestamp'] = created_timestamp;
     }
 
@@ -76,12 +71,6 @@ class MerchantKycSubmission {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = MerchantKycStatus.constructFromObject(data['status']);
             }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('phone')) {
-                obj['phone'] = ApiClient.convertToType(data['phone'], 'String');
-            }
             if (data.hasOwnProperty('merchant_type')) {
                 obj['merchant_type'] = MerchantKycMerchantType.constructFromObject(data['merchant_type']);
             }
@@ -93,6 +82,9 @@ class MerchantKycSubmission {
             }
             if (data.hasOwnProperty('company_info')) {
                 obj['company_info'] = MerchantKycCompanyInfo.constructFromObject(data['company_info']);
+            }
+            if (data.hasOwnProperty('individual_info')) {
+                obj['individual_info'] = MerchantKycPersonInfo.constructFromObject(data['individual_info']);
             }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
@@ -125,14 +117,6 @@ class MerchantKycSubmission {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
-        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
-            throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
-        }
-        // ensure the json data is a string
-        if (data['phone'] && !(typeof data['phone'] === 'string' || data['phone'] instanceof String)) {
-            throw new Error("Expected the field `phone` to be a primitive type in the JSON string but got " + data['phone']);
-        }
-        // ensure the json data is a string
         if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
             throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
         }
@@ -146,6 +130,12 @@ class MerchantKycSubmission {
             MerchantKycCompanyInfo.validateJSON(data['company_info']);
           }
         }
+        // validate the optional field `individual_info`
+        if (data['individual_info']) { // data not null
+          if (!!MerchantKycPersonInfo.validateJSON) {
+            MerchantKycPersonInfo.validateJSON(data['individual_info']);
+          }
+        }
 
         return true;
     }
@@ -153,7 +143,7 @@ class MerchantKycSubmission {
 
 }
 
-MerchantKycSubmission.RequiredProperties = ["kyc_submission_id", "merchant_id", "status", "email", "phone", "merchant_type", "country", "industry", "company_info", "created_timestamp"];
+MerchantKycSubmission.RequiredProperties = ["kyc_submission_id", "merchant_id", "status", "merchant_type", "country", "industry", "created_timestamp"];
 
 /**
  * The KYC submission ID.
@@ -171,18 +161,6 @@ MerchantKycSubmission.prototype['merchant_id'] = undefined;
  * @member {module:model/MerchantKycStatus} status
  */
 MerchantKycSubmission.prototype['status'] = undefined;
-
-/**
- * The merchant email address.
- * @member {String} email
- */
-MerchantKycSubmission.prototype['email'] = undefined;
-
-/**
- * The merchant phone number.
- * @member {String} phone
- */
-MerchantKycSubmission.prototype['phone'] = undefined;
 
 /**
  * @member {module:model/MerchantKycMerchantType} merchant_type
@@ -205,6 +183,11 @@ MerchantKycSubmission.prototype['industry'] = undefined;
  * @member {module:model/MerchantKycCompanyInfo} company_info
  */
 MerchantKycSubmission.prototype['company_info'] = undefined;
+
+/**
+ * @member {module:model/MerchantKycPersonInfo} individual_info
+ */
+MerchantKycSubmission.prototype['individual_info'] = undefined;
 
 /**
  * The creation timestamp in Unix seconds.

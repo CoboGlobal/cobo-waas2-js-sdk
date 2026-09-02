@@ -39,6 +39,13 @@ export default class MerchantKycStatus {
 
     
         /**
+         * value: "Disabled"
+         * @const
+         */
+        "Disabled" = "Disabled";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */
