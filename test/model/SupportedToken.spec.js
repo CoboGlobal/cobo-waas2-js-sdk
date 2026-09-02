@@ -112,6 +112,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property confirming_threshold (base name: "confirming_threshold")', function() {
+      // uncomment below and update the code to test the property confirming_threshold
+      //var instance = new CoboWaas2.SupportedToken();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deposit_threshold (base name: "deposit_threshold")', function() {
+      // uncomment below and update the code to test the property deposit_threshold
+      //var instance = new CoboWaas2.SupportedToken();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -52,18 +52,6 @@
       //expect(instance).to.be.a(CoboWaas2.SubmitMerchantKyc);
     });
 
-    it('should have the property email (base name: "email")', function() {
-      // uncomment below and update the code to test the property email
-      //var instance = new CoboWaas2.SubmitMerchantKyc();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property phone (base name: "phone")', function() {
-      // uncomment below and update the code to test the property phone
-      //var instance = new CoboWaas2.SubmitMerchantKyc();
-      //expect(instance).to.be();
-    });
-
     it('should have the property merchant_type (base name: "merchant_type")', function() {
       // uncomment below and update the code to test the property merchant_type
       //var instance = new CoboWaas2.SubmitMerchantKyc();
@@ -84,6 +72,12 @@
 
     it('should have the property company_info (base name: "company_info")', function() {
       // uncomment below and update the code to test the property company_info
+      //var instance = new CoboWaas2.SubmitMerchantKyc();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property individual_info (base name: "individual_info")', function() {
+      // uncomment below and update the code to test the property individual_info
       //var instance = new CoboWaas2.SubmitMerchantKyc();
       //expect(instance).to.be();
     });

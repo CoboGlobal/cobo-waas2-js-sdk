@@ -18,6 +18,13 @@ import ApiClient from '../ApiClient';
 export default class ReportStatus {
     
         /**
+         * value: "Processing"
+         * @const
+         */
+        "Processing" = "Processing";
+
+    
+        /**
          * value: "Completed"
          * @const
          */

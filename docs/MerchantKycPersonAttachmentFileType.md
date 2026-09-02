@@ -27,6 +27,10 @@
 
 * `BACK` (value: `"BACK"`)
 
+* `ID_Hand` (value: `"ID_Hand"`)
+
+* `POA` (value: `"POA"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

@@ -102,6 +102,20 @@ export default class MerchantKycPersonAttachmentFileType {
 
     
         /**
+         * value: "ID_Hand"
+         * @const
+         */
+        "ID_Hand" = "ID_Hand";
+
+    
+        /**
+         * value: "POA"
+         * @const
+         */
+        "POA" = "POA";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

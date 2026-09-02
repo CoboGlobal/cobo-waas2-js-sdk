@@ -88,6 +88,12 @@ class SupportedToken {
             if (data.hasOwnProperty('can_off_ramp')) {
                 obj['can_off_ramp'] = ApiClient.convertToType(data['can_off_ramp'], 'Boolean');
             }
+            if (data.hasOwnProperty('confirming_threshold')) {
+                obj['confirming_threshold'] = ApiClient.convertToType(data['confirming_threshold'], 'Number');
+            }
+            if (data.hasOwnProperty('deposit_threshold')) {
+                obj['deposit_threshold'] = ApiClient.convertToType(data['deposit_threshold'], 'String');
+            }
         }
         return obj;
     }
@@ -135,6 +141,10 @@ class SupportedToken {
         // ensure the json data is a string
         if (data['token_icon_url'] && !(typeof data['token_icon_url'] === 'string' || data['token_icon_url'] instanceof String)) {
             throw new Error("Expected the field `token_icon_url` to be a primitive type in the JSON string but got " + data['token_icon_url']);
+        }
+        // ensure the json data is a string
+        if (data['deposit_threshold'] && !(typeof data['deposit_threshold'] === 'string' || data['deposit_threshold'] instanceof String)) {
+            throw new Error("Expected the field `deposit_threshold` to be a primitive type in the JSON string but got " + data['deposit_threshold']);
         }
 
         return true;
@@ -204,6 +214,18 @@ SupportedToken.prototype['token_icon_url'] = undefined;
  * @member {Boolean} can_off_ramp
  */
 SupportedToken.prototype['can_off_ramp'] = undefined;
+
+/**
+ * The number of blockchain confirmations required for an on-chain transaction on the token's chain, such as 64 for Ethereum. 
+ * @member {Number} confirming_threshold
+ */
+SupportedToken.prototype['confirming_threshold'] = undefined;
+
+/**
+ * The dust amount threshold for the token, deposits with an amount less than or equal to this threshold are treated as dust and excluded from the payment system. 
+ * @member {String} deposit_threshold
+ */
+SupportedToken.prototype['deposit_threshold'] = undefined;
 
 
 

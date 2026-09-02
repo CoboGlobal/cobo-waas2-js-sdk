@@ -296,6 +296,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('downloadReport', function() {
+      it('should call downloadReport successfully', function() {
+        //uncomment below and update the code to test downloadReport
+        //instance.downloadReport().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getAvailableAllocationAmount', function() {
       it('should call getAvailableAllocationAmount successfully', function() {
         //uncomment below and update the code to test getAvailableAllocationAmount
@@ -820,6 +830,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call uploadPaymentFile successfully', function() {
         //uncomment below and update the code to test uploadPaymentFile
         //instance.uploadPaymentFile().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('uploadPaymentFileV2', function() {
+      it('should call uploadPaymentFileV2 successfully', function() {
+        //uncomment below and update the code to test uploadPaymentFileV2
+        //instance.uploadPaymentFileV2().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

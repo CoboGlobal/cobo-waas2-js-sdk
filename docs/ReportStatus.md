@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `Processing` (value: `"Processing"`)
+
 * `Completed` (value: `"Completed"`)
 
 * `Failed` (value: `"Failed"`)

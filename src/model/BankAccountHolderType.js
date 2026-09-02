@@ -25,6 +25,13 @@ export default class BankAccountHolderType {
 
     
         /**
+         * value: "Personal"
+         * @const
+         */
+        "Personal" = "Personal";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */
