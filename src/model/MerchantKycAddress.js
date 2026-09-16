@@ -19,7 +19,7 @@ class MerchantKycAddress {
     /**
      * Constructs a new <code>MerchantKycAddress</code>.
      * @alias module:model/MerchantKycAddress
-     * @param country {String} The country.
+     * @param country {String} The country, in ISO 3166-1 alpha-3 format.
      * @param state {String} The state or province.
      * @param city {String} The city.
      * @param postcode {String} The postal code.
@@ -115,7 +115,7 @@ class MerchantKycAddress {
 MerchantKycAddress.RequiredProperties = ["country", "state", "city", "postcode", "line1"];
 
 /**
- * The country.
+ * The country, in ISO 3166-1 alpha-3 format.
  * @member {String} country
  */
 MerchantKycAddress.prototype['country'] = undefined;

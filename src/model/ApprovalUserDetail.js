@@ -11,7 +11,7 @@
 
 import ApiClient from '../ApiClient';
 import ApprovalAction from './ApprovalAction';
-import ApprovalResult from './ApprovalResult';
+import ApprovalTransactionResult from './ApprovalTransactionResult';
 
 /**
  * The ApprovalUserDetail model module.
@@ -63,7 +63,7 @@ class ApprovalUserDetail {
                 obj['statement_uuid'] = ApiClient.convertToType(data['statement_uuid'], 'String');
             }
             if (data.hasOwnProperty('result')) {
-                obj['result'] = ApprovalResult.constructFromObject(data['result']);
+                obj['result'] = ApprovalTransactionResult.constructFromObject(data['result']);
             }
             if (data.hasOwnProperty('approval_result_code')) {
                 obj['approval_result_code'] = ApiClient.convertToType(data['approval_result_code'], 'Number');
@@ -206,7 +206,7 @@ ApprovalUserDetail.prototype['signature'] = undefined;
 ApprovalUserDetail.prototype['statement_uuid'] = undefined;
 
 /**
- * @member {module:model/ApprovalResult} result
+ * @member {module:model/ApprovalTransactionResult} result
  */
 ApprovalUserDetail.prototype['result'] = undefined;
 
