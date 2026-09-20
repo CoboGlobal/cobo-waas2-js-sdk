@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **pubkey** | **String** | Public key of the user. | [optional] 
 **signature** | **String** | Signature produced by the user for this approval. | [optional] 
 **statement_uuid** | **String** | UUID of the statement associated with this approval. | [optional] 
-**result** | [**ApprovalResult**](ApprovalResult.md) |  | [optional] 
+**result** | [**ApprovalTransactionResult**](ApprovalTransactionResult.md) |  | [optional] 
 **approval_result_code** | **Number** | Integer value representing the result of the approval. | [optional] 
 **created_time** | **Number** | Timestamp when the approval was created. | [optional] 
 **expired_time** | **Number** | The timestamp when the approval was expired. | [optional] 
