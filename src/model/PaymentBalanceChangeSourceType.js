@@ -95,6 +95,13 @@ export default class PaymentBalanceChangeSourceType {
 
     
         /**
+         * value: "OnrampIn"
+         * @const
+         */
+        "OnrampIn" = "OnrampIn";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

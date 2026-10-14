@@ -17,8 +17,9 @@ import EvmContractCallDestination from './EvmContractCallDestination';
 import SolContractCallAddressLookupTableAccount from './SolContractCallAddressLookupTableAccount';
 import SolContractCallDestination from './SolContractCallDestination';
 import SolContractCallInstruction from './SolContractCallInstruction';
-import StellarContractCallContractParam from './StellarContractCallContractParam';
 import StellarContractCallDestination from './StellarContractCallDestination';
+import SuiContractCallContractParam from './SuiContractCallContractParam';
+import SuiContractCallDestination from './SuiContractCallDestination';
 import TronContractCallDestination from './TronContractCallDestination';
 
 /**
@@ -29,7 +30,7 @@ class ContractCallDestination {
     /**
      * Constructs a new <code>ContractCallDestination</code>.
      * @alias module:model/ContractCallDestination
-     * @param {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/TronContractCallDestination)} instance The actual instance to initialize ContractCallDestination.
+     * @param {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/SuiContractCallDestination|module:model/TronContractCallDestination)} instance The actual instance to initialize ContractCallDestination.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -56,6 +57,10 @@ class ContractCallDestination {
                     break;
                 case "STELLAR_Contract":
                     this.actualInstance = StellarContractCallDestination.constructFromObject(instance);
+                    match++;
+                    break;
+                case "SUI_Contract":
+                    this.actualInstance = SuiContractCallDestination.constructFromObject(instance);
                     match++;
                     break;
                 case "TRON_Contract":
@@ -194,12 +199,37 @@ class ContractCallDestination {
             errorMessages.push("Failed to construct CosmosContractCallDestination: " + err)
         }
 
+        try {
+            if (instance instanceof SuiContractCallDestination) {
+                this.actualInstance = instance;
+            } else if(!!SuiContractCallDestination.validateJSON && SuiContractCallDestination.validateJSON(instance)){
+                // plain JS object
+                // create SuiContractCallDestination from JS object
+                this.actualInstance = SuiContractCallDestination.constructFromObject(instance);
+            } else {
+                if(SuiContractCallDestination.constructFromObject(instance)) {
+                    if (!!SuiContractCallDestination.constructFromObject(instance).toJSON) {
+                        if (SuiContractCallDestination.constructFromObject(instance).toJSON()) {
+                            this.actualInstance = SuiContractCallDestination.constructFromObject(instance);
+                        }
+                    } else {
+                        this.actualInstance = SuiContractCallDestination.constructFromObject(instance);
+                    }
+                }
+
+            }
+            match++;
+        } catch(err) {
+            // json data failed to deserialize into SuiContractCallDestination
+            errorMessages.push("Failed to construct SuiContractCallDestination: " + err)
+        }
+
         // if (match > 1) {
-        //    throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination. Input: " + JSON.stringify(instance));
+        //    throw new Error("Multiple matches found constructing `ContractCallDestination` with oneOf schemas CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, SuiContractCallDestination, TronContractCallDestination. Input: " + JSON.stringify(instance));
         // } else
         if (match === 0) {
         //    this.actualInstance = null; // clear the actual instance in case there are multiple matches
-        //    throw new Error("No match found constructing `ContractCallDestination` with oneOf schemas CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination. Details: " +
+        //    throw new Error("No match found constructing `ContractCallDestination` with oneOf schemas CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, SuiContractCallDestination, TronContractCallDestination. Details: " +
         //                    errorMessages.join(", "));
         return;
         } else { // only 1 match
@@ -219,16 +249,16 @@ class ContractCallDestination {
     }
 
     /**
-     * Gets the actual instance, which can be <code>CosmosContractCallDestination</code>, <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>, <code>TronContractCallDestination</code>.
-     * @return {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/TronContractCallDestination)} The actual instance.
+     * Gets the actual instance, which can be <code>CosmosContractCallDestination</code>, <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>, <code>SuiContractCallDestination</code>, <code>TronContractCallDestination</code>.
+     * @return {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/SuiContractCallDestination|module:model/TronContractCallDestination)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>CosmosContractCallDestination</code>, <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>, <code>TronContractCallDestination</code>.
-     * @param {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/TronContractCallDestination)} obj The actual instance.
+     * Sets the actual instance, which can be <code>CosmosContractCallDestination</code>, <code>EvmContractCallDestination</code>, <code>SolContractCallDestination</code>, <code>StellarContractCallDestination</code>, <code>SuiContractCallDestination</code>, <code>TronContractCallDestination</code>.
+     * @param {(module:model/CosmosContractCallDestination|module:model/EvmContractCallDestination|module:model/SolContractCallDestination|module:model/StellarContractCallDestination|module:model/SuiContractCallDestination|module:model/TronContractCallDestination)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = ContractCallDestination.constructFromObject(obj).getActualInstance();
@@ -286,7 +316,7 @@ ContractCallDestination.prototype['instructions'] = undefined;
 ContractCallDestination.prototype['address_lookup_table_accounts'] = undefined;
 
 /**
- * @member {module:model/StellarContractCallContractParam} contract_param
+ * @member {module:model/SuiContractCallContractParam} contract_param
  */
 ContractCallDestination.prototype['contract_param'] = undefined;
 
@@ -296,7 +326,7 @@ ContractCallDestination.prototype['contract_param'] = undefined;
 ContractCallDestination.prototype['cosmos_messages'] = undefined;
 
 
-ContractCallDestination.OneOf = ["CosmosContractCallDestination", "EvmContractCallDestination", "SolContractCallDestination", "StellarContractCallDestination", "TronContractCallDestination"];
+ContractCallDestination.OneOf = ["CosmosContractCallDestination", "EvmContractCallDestination", "SolContractCallDestination", "StellarContractCallDestination", "SuiContractCallDestination", "TronContractCallDestination"];
 
 export default ContractCallDestination;
 

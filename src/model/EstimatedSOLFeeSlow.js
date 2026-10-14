@@ -25,7 +25,7 @@ class EstimatedSOLFeeSlow {
      * @implements module:model/SOLBase
      * @param compute_unit_price {String} The price paid per compute unit. This value determines the priority fee for the transaction, allowing you to increase inclusion probability in congested conditions.
      * @param compute_unit_limit {String} The maximum number of compute units your transaction is allowed to consume. It sets an upper bound on computational resource usage to prevent overload.
-     * @param base_fee {String} A fixed fee charged per signature. The default is 5,000 lamports per signature.
+     * @param base_fee {String} A fixed fee, in lamports, charged per signature. The default is 5,000 per signature.
      */
     constructor(compute_unit_price, compute_unit_limit, base_fee) { 
         SOLComputeUnit.initialize(this);SOLBase.initialize(this);
@@ -122,13 +122,13 @@ EstimatedSOLFeeSlow.prototype['compute_unit_price'] = undefined;
 EstimatedSOLFeeSlow.prototype['compute_unit_limit'] = undefined;
 
 /**
- * A fixed fee charged per signature. The default is 5,000 lamports per signature.
+ * A fixed fee, in lamports, charged per signature. The default is 5,000 per signature.
  * @member {String} base_fee
  */
 EstimatedSOLFeeSlow.prototype['base_fee'] = undefined;
 
 /**
- * The one-time rent required to activate a Solana token Associated Token Account (ATA) before the token can be received or used. **This field is reserved for future use and is currently not populated.**
+ * The one-time rent, in lamports, required to create the destination's Associated Token Account (ATA) for this token when it does not exist yet.  In fee estimate responses, this field returns the current on-chain rent if the destination address has no ATA for the token, and is empty otherwise. You can call [Estimate transaction fee](https://www.cobo.com/developers/v2/api-references/transactions/estimate-transaction-fee) before submitting a transaction to check whether it will incur ATA rent. The result reflects the destination at estimation time; if the ATA is closed before the transaction is built, the transaction still creates it and incurs the rent.  In transaction records, this field keeps the value estimated when the transaction was created and is not updated from on-chain data. `estimated_fee_used` includes this rent, while `fee_used` does not. 
  * @member {String} rent_amount
  */
 EstimatedSOLFeeSlow.prototype['rent_amount'] = undefined;
@@ -147,12 +147,12 @@ SOLComputeUnit.prototype['compute_unit_price'] = undefined;
 SOLComputeUnit.prototype['compute_unit_limit'] = undefined;
 // Implement SOLBase interface:
 /**
- * A fixed fee charged per signature. The default is 5,000 lamports per signature.
+ * A fixed fee, in lamports, charged per signature. The default is 5,000 per signature.
  * @member {String} base_fee
  */
 SOLBase.prototype['base_fee'] = undefined;
 /**
- * The one-time rent required to activate a Solana token Associated Token Account (ATA) before the token can be received or used. **This field is reserved for future use and is currently not populated.**
+ * The one-time rent, in lamports, required to create the destination's Associated Token Account (ATA) for this token when it does not exist yet.  In fee estimate responses, this field returns the current on-chain rent if the destination address has no ATA for the token, and is empty otherwise. You can call [Estimate transaction fee](https://www.cobo.com/developers/v2/api-references/transactions/estimate-transaction-fee) before submitting a transaction to check whether it will incur ATA rent. The result reflects the destination at estimation time; if the ATA is closed before the transaction is built, the transaction still creates it and incurs the rent.  In transaction records, this field keeps the value estimated when the transaction was created and is not updated from on-chain data. `estimated_fee_used` includes this rent, while `fee_used` does not. 
  * @member {String} rent_amount
  */
 SOLBase.prototype['rent_amount'] = undefined;

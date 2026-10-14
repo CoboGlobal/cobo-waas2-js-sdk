@@ -22,12 +22,12 @@ class FeeStationCheckFeeStationUsageResponse {
      * The fee station evaluation result for the transfer request.
      * @alias module:model/FeeStationCheckFeeStationUsageResponse
      * @param token_id {String} The token used to pay the gas fee for this specific transaction. You can retrieve the IDs of all supported tokens by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
-     * @param balance {String} The current token balance available in Fee Station.
+     * @param balance {String} The current token balance available in Billing Center.
      * @param gas_station_type {module:model/FeeStationGasStationType} 
-     * @param is_fee_station_applicable {Boolean} Indicates whether Fee Station is applied for this transfer request.
-     * @param is_balance_sufficient {Boolean} If Fee Station is used, indicates whether its balance is sufficient to cover the required gas fee.
+     * @param is_fee_station_applicable {Boolean} Indicates whether Billing Center is applied for this transfer request.
+     * @param is_balance_sufficient {Boolean} If Billing Center is used, indicates whether its balance is sufficient to cover the required gas fee.
      * @param total_fee_amount {String} The total gas amount required for this transfer request.
-     * @param is_sponsor_applicable {Boolean} Indicates whether USD stablecoin sponsorship is applied when the Fee Station balance is insufficient.
+     * @param is_sponsor_applicable {Boolean} Indicates whether USD stablecoin sponsorship is applied when the Billing Center balance is insufficient.
      * @param sponsored_fee_amount {String} The amount of gas fee sponsored by USD stablecoin when applicable.
      */
     constructor(token_id, balance, gas_station_type, is_fee_station_applicable, is_balance_sufficient, total_fee_amount, is_sponsor_applicable, sponsored_fee_amount) { 
@@ -141,7 +141,7 @@ FeeStationCheckFeeStationUsageResponse.RequiredProperties = ["token_id", "balanc
 FeeStationCheckFeeStationUsageResponse.prototype['token_id'] = undefined;
 
 /**
- * The current token balance available in Fee Station.
+ * The current token balance available in Billing Center.
  * @member {String} balance
  */
 FeeStationCheckFeeStationUsageResponse.prototype['balance'] = undefined;
@@ -152,13 +152,13 @@ FeeStationCheckFeeStationUsageResponse.prototype['balance'] = undefined;
 FeeStationCheckFeeStationUsageResponse.prototype['gas_station_type'] = undefined;
 
 /**
- * Indicates whether Fee Station is applied for this transfer request.
+ * Indicates whether Billing Center is applied for this transfer request.
  * @member {Boolean} is_fee_station_applicable
  */
 FeeStationCheckFeeStationUsageResponse.prototype['is_fee_station_applicable'] = undefined;
 
 /**
- * If Fee Station is used, indicates whether its balance is sufficient to cover the required gas fee.
+ * If Billing Center is used, indicates whether its balance is sufficient to cover the required gas fee.
  * @member {Boolean} is_balance_sufficient
  */
 FeeStationCheckFeeStationUsageResponse.prototype['is_balance_sufficient'] = undefined;
@@ -170,7 +170,7 @@ FeeStationCheckFeeStationUsageResponse.prototype['is_balance_sufficient'] = unde
 FeeStationCheckFeeStationUsageResponse.prototype['total_fee_amount'] = undefined;
 
 /**
- * Indicates whether USD stablecoin sponsorship is applied when the Fee Station balance is insufficient.
+ * Indicates whether USD stablecoin sponsorship is applied when the Billing Center balance is insufficient.
  * @member {Boolean} is_sponsor_applicable
  */
 FeeStationCheckFeeStationUsageResponse.prototype['is_sponsor_applicable'] = undefined;

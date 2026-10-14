@@ -98,7 +98,7 @@ TransactionFuelingInfo.prototype['request_id'] = undefined;
 TransactionFuelingInfo.prototype['transaction_id'] = undefined;
 
 /**
- * The UUID of the parent (main) transaction that this record is associated with. Set only when the current record is a gas/fee transaction initiated by Fee Station; omit for main transactions.
+ * The UUID of the parent (main) transaction that this record is associated with. Set only when the current record is a gas/fee transaction initiated by Billing Center; omit for main transactions.
  * @member {String} main_transaction_id
  */
 TransactionFuelingInfo.prototype['main_transaction_id'] = undefined;

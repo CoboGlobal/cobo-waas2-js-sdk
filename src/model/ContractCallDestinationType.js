@@ -53,6 +53,13 @@ export default class ContractCallDestinationType {
 
     
         /**
+         * value: "SUI_Contract"
+         * @const
+         */
+        "SUI_Contract" = "SUI_Contract";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

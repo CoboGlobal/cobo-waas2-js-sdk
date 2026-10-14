@@ -347,6 +347,48 @@ export default class WebhookEventType {
 
     
         /**
+         * value: "payment.topup.updated"
+         * @const
+         */
+        "payment.topup.updated" = "payment.topup.updated";
+
+    
+        /**
+         * value: "payment.order.updated"
+         * @const
+         */
+        "payment.order.updated" = "payment.order.updated";
+
+    
+        /**
+         * value: "payment.refund.updated"
+         * @const
+         */
+        "payment.refund.updated" = "payment.refund.updated";
+
+    
+        /**
+         * value: "payment.payout.updated"
+         * @const
+         */
+        "payment.payout.updated" = "payment.payout.updated";
+
+    
+        /**
+         * value: "payment.bulk_send.updated"
+         * @const
+         */
+        "payment.bulk_send.updated" = "payment.bulk_send.updated";
+
+    
+        /**
+         * value: "payment.bulk_send.item.updated"
+         * @const
+         */
+        "payment.bulk_send.item.updated" = "payment.bulk_send.item.updated";
+
+    
+        /**
          * value: "payment.transaction.external.created"
          * @const
          */

@@ -27,7 +27,7 @@ class PaymentRefundEventData {
      * @alias module:model/PaymentRefundEventData
      * @implements module:model/WebhookEventDataType
      * @implements module:model/Refund
-     * @param data_type {module:model/PaymentRefundEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+     * @param data_type {module:model/PaymentRefundEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
      * @param refund_id {String} The refund order ID.
      * @param token_id {String} The ID of the cryptocurrency used for refund.
      * @param chain_id {String} The ID of the blockchain network on which the refund transaction occurs.
@@ -222,7 +222,7 @@ class PaymentRefundEventData {
 PaymentRefundEventData.RequiredProperties = ["data_type", "refund_id", "token_id", "chain_id", "amount", "to_address", "status"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/PaymentRefundEventData.DataTypeEnum} data_type
  */
 PaymentRefundEventData.prototype['data_type'] = undefined;
@@ -342,7 +342,7 @@ PaymentRefundEventData.prototype['commission_fee'] = undefined;
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -551,6 +551,42 @@ PaymentRefundEventData['DataTypeEnum'] = {
      * @const
      */
     "PaymentBulkSendItem": "PaymentBulkSendItem",
+
+    /**
+     * value: "PaymentTopUpUpdate"
+     * @const
+     */
+    "PaymentTopUpUpdate": "PaymentTopUpUpdate",
+
+    /**
+     * value: "PaymentOrderUpdate"
+     * @const
+     */
+    "PaymentOrderUpdate": "PaymentOrderUpdate",
+
+    /**
+     * value: "PaymentRefundUpdate"
+     * @const
+     */
+    "PaymentRefundUpdate": "PaymentRefundUpdate",
+
+    /**
+     * value: "PaymentPayoutUpdate"
+     * @const
+     */
+    "PaymentPayoutUpdate": "PaymentPayoutUpdate",
+
+    /**
+     * value: "PaymentBulkSendUpdate"
+     * @const
+     */
+    "PaymentBulkSendUpdate": "PaymentBulkSendUpdate",
+
+    /**
+     * value: "PaymentBulkSendItemUpdate"
+     * @const
+     */
+    "PaymentBulkSendItemUpdate": "PaymentBulkSendItemUpdate",
 
     /**
      * value: "PaymentAccountBalanceUpdate"

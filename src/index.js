@@ -449,6 +449,8 @@ import Pagination from './model/Pagination';
 import PaymentAccountBalanceUpdateEventData from './model/PaymentAccountBalanceUpdateEventData';
 import PaymentAddressUpdateEventData from './model/PaymentAddressUpdateEventData';
 import PaymentAllocationAmount from './model/PaymentAllocationAmount';
+import PaymentAssetAmount from './model/PaymentAssetAmount';
+import PaymentAssetOrFiatAmount from './model/PaymentAssetOrFiatAmount';
 import PaymentBalanceChange from './model/PaymentBalanceChange';
 import PaymentBalanceChangeResponse from './model/PaymentBalanceChangeResponse';
 import PaymentBalanceChangeSourceType from './model/PaymentBalanceChangeSourceType';
@@ -466,24 +468,41 @@ import PaymentBulkSendExecutionMode from './model/PaymentBulkSendExecutionMode';
 import PaymentBulkSendItem from './model/PaymentBulkSendItem';
 import PaymentBulkSendItemEvent from './model/PaymentBulkSendItemEvent';
 import PaymentBulkSendItemStatus from './model/PaymentBulkSendItemStatus';
+import PaymentBulkSendItemUpdateEventData from './model/PaymentBulkSendItemUpdateEventData';
 import PaymentBulkSendItemValidationStatus from './model/PaymentBulkSendItemValidationStatus';
 import PaymentBulkSendStatus from './model/PaymentBulkSendStatus';
+import PaymentBulkSendUpdateEventData from './model/PaymentBulkSendUpdateEventData';
+import PaymentCommissionFeeTotal from './model/PaymentCommissionFeeTotal';
 import PaymentEstimateFee from './model/PaymentEstimateFee';
 import PaymentEstimateFee201Response from './model/PaymentEstimateFee201Response';
 import PaymentEstimateFeeRequest from './model/PaymentEstimateFeeRequest';
 import PaymentEstimatedFee from './model/PaymentEstimatedFee';
+import PaymentFailedReason from './model/PaymentFailedReason';
 import PaymentFeeType from './model/PaymentFeeType';
+import PaymentOrderDeposit from './model/PaymentOrderDeposit';
 import PaymentOrderEventData from './model/PaymentOrderEventData';
+import PaymentOrderNoticeType from './model/PaymentOrderNoticeType';
+import PaymentOrderUpdateEventData from './model/PaymentOrderUpdateEventData';
+import PaymentPayInStatus from './model/PaymentPayInStatus';
 import PaymentPayout from './model/PaymentPayout';
+import PaymentPayoutAddressTarget from './model/PaymentPayoutAddressTarget';
+import PaymentPayoutBankAccountTarget from './model/PaymentPayoutBankAccountTarget';
 import PaymentPayoutDetail from './model/PaymentPayoutDetail';
 import PaymentPayoutEvent from './model/PaymentPayoutEvent';
 import PaymentPayoutItem from './model/PaymentPayoutItem';
 import PaymentPayoutParam from './model/PaymentPayoutParam';
 import PaymentPayoutRecipientInfo from './model/PaymentPayoutRecipientInfo';
+import PaymentPayoutRequestedTarget from './model/PaymentPayoutRequestedTarget';
 import PaymentPayoutStatus from './model/PaymentPayoutStatus';
+import PaymentPayoutTransaction from './model/PaymentPayoutTransaction';
+import PaymentPayoutTransactionResult from './model/PaymentPayoutTransactionResult';
+import PaymentPayoutUpdateEventData from './model/PaymentPayoutUpdateEventData';
 import PaymentRefundEventData from './model/PaymentRefundEventData';
+import PaymentRefundUpdateEventData from './model/PaymentRefundUpdateEventData';
+import PaymentScreeningMode from './model/PaymentScreeningMode';
 import PaymentSettlementEvent from './model/PaymentSettlementEvent';
 import PaymentSourceType from './model/PaymentSourceType';
+import PaymentTopUpUpdateEventData from './model/PaymentTopUpUpdateEventData';
 import PaymentTransaction from './model/PaymentTransaction';
 import PaymentTransactionEventData from './model/PaymentTransactionEventData';
 import PaymentUploadFileV2 from './model/PaymentUploadFileV2';
@@ -573,6 +592,11 @@ import SubmitKytResponse from './model/SubmitKytResponse';
 import SubmitKytScreeningsDecisionsBody from './model/SubmitKytScreeningsDecisionsBody';
 import SubmitKytScreeningsReviewBody from './model/SubmitKytScreeningsReviewBody';
 import SubmitMerchantKyc from './model/SubmitMerchantKyc';
+import SuiContractCallAddressBalanceOperationType from './model/SuiContractCallAddressBalanceOperationType';
+import SuiContractCallAddressBalanceParam from './model/SuiContractCallAddressBalanceParam';
+import SuiContractCallContractParam from './model/SuiContractCallContractParam';
+import SuiContractCallContractType from './model/SuiContractCallContractType';
+import SuiContractCallDestination from './model/SuiContractCallDestination';
 import SupportedToken from './model/SupportedToken';
 import SuspendedTokenEventData from './model/SuspendedTokenEventData';
 import SuspendedTokenOperationType from './model/SuspendedTokenOperationType';
@@ -800,6 +824,7 @@ import TransactionStellarDestination from './model/TransactionStellarDestination
 import TransactionStellarTrustLineOperationType from './model/TransactionStellarTrustLineOperationType';
 import TransactionStellarTrustLineParam from './model/TransactionStellarTrustLineParam';
 import TransactionSubStatus from './model/TransactionSubStatus';
+import TransactionSuiDestination from './model/TransactionSuiDestination';
 import TransactionTimeline from './model/TransactionTimeline';
 import TransactionTokeApproval from './model/TransactionTokeApproval';
 import TransactionTokenAmount from './model/TransactionTokenAmount';
@@ -928,7 +953,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.44.0
+* @version 1.45.0
 */
 export {
     Env,
@@ -3557,6 +3582,18 @@ export {
     PaymentAllocationAmount,
 
     /**
+     * The PaymentAssetAmount model constructor.
+     * @property {module:model/PaymentAssetAmount}
+     */
+    PaymentAssetAmount,
+
+    /**
+     * The PaymentAssetOrFiatAmount model constructor.
+     * @property {module:model/PaymentAssetOrFiatAmount}
+     */
+    PaymentAssetOrFiatAmount,
+
+    /**
      * The PaymentBalanceChange model constructor.
      * @property {module:model/PaymentBalanceChange}
      */
@@ -3659,6 +3696,12 @@ export {
     PaymentBulkSendItemStatus,
 
     /**
+     * The PaymentBulkSendItemUpdateEventData model constructor.
+     * @property {module:model/PaymentBulkSendItemUpdateEventData}
+     */
+    PaymentBulkSendItemUpdateEventData,
+
+    /**
      * The PaymentBulkSendItemValidationStatus model constructor.
      * @property {module:model/PaymentBulkSendItemValidationStatus}
      */
@@ -3669,6 +3712,18 @@ export {
      * @property {module:model/PaymentBulkSendStatus}
      */
     PaymentBulkSendStatus,
+
+    /**
+     * The PaymentBulkSendUpdateEventData model constructor.
+     * @property {module:model/PaymentBulkSendUpdateEventData}
+     */
+    PaymentBulkSendUpdateEventData,
+
+    /**
+     * The PaymentCommissionFeeTotal model constructor.
+     * @property {module:model/PaymentCommissionFeeTotal}
+     */
+    PaymentCommissionFeeTotal,
 
     /**
      * The PaymentEstimateFee model constructor.
@@ -3695,10 +3750,22 @@ export {
     PaymentEstimatedFee,
 
     /**
+     * The PaymentFailedReason model constructor.
+     * @property {module:model/PaymentFailedReason}
+     */
+    PaymentFailedReason,
+
+    /**
      * The PaymentFeeType model constructor.
      * @property {module:model/PaymentFeeType}
      */
     PaymentFeeType,
+
+    /**
+     * The PaymentOrderDeposit model constructor.
+     * @property {module:model/PaymentOrderDeposit}
+     */
+    PaymentOrderDeposit,
 
     /**
      * The PaymentOrderEventData model constructor.
@@ -3707,10 +3774,40 @@ export {
     PaymentOrderEventData,
 
     /**
+     * The PaymentOrderNoticeType model constructor.
+     * @property {module:model/PaymentOrderNoticeType}
+     */
+    PaymentOrderNoticeType,
+
+    /**
+     * The PaymentOrderUpdateEventData model constructor.
+     * @property {module:model/PaymentOrderUpdateEventData}
+     */
+    PaymentOrderUpdateEventData,
+
+    /**
+     * The PaymentPayInStatus model constructor.
+     * @property {module:model/PaymentPayInStatus}
+     */
+    PaymentPayInStatus,
+
+    /**
      * The PaymentPayout model constructor.
      * @property {module:model/PaymentPayout}
      */
     PaymentPayout,
+
+    /**
+     * The PaymentPayoutAddressTarget model constructor.
+     * @property {module:model/PaymentPayoutAddressTarget}
+     */
+    PaymentPayoutAddressTarget,
+
+    /**
+     * The PaymentPayoutBankAccountTarget model constructor.
+     * @property {module:model/PaymentPayoutBankAccountTarget}
+     */
+    PaymentPayoutBankAccountTarget,
 
     /**
      * The PaymentPayoutDetail model constructor.
@@ -3743,16 +3840,52 @@ export {
     PaymentPayoutRecipientInfo,
 
     /**
+     * The PaymentPayoutRequestedTarget model constructor.
+     * @property {module:model/PaymentPayoutRequestedTarget}
+     */
+    PaymentPayoutRequestedTarget,
+
+    /**
      * The PaymentPayoutStatus model constructor.
      * @property {module:model/PaymentPayoutStatus}
      */
     PaymentPayoutStatus,
 
     /**
+     * The PaymentPayoutTransaction model constructor.
+     * @property {module:model/PaymentPayoutTransaction}
+     */
+    PaymentPayoutTransaction,
+
+    /**
+     * The PaymentPayoutTransactionResult model constructor.
+     * @property {module:model/PaymentPayoutTransactionResult}
+     */
+    PaymentPayoutTransactionResult,
+
+    /**
+     * The PaymentPayoutUpdateEventData model constructor.
+     * @property {module:model/PaymentPayoutUpdateEventData}
+     */
+    PaymentPayoutUpdateEventData,
+
+    /**
      * The PaymentRefundEventData model constructor.
      * @property {module:model/PaymentRefundEventData}
      */
     PaymentRefundEventData,
+
+    /**
+     * The PaymentRefundUpdateEventData model constructor.
+     * @property {module:model/PaymentRefundUpdateEventData}
+     */
+    PaymentRefundUpdateEventData,
+
+    /**
+     * The PaymentScreeningMode model constructor.
+     * @property {module:model/PaymentScreeningMode}
+     */
+    PaymentScreeningMode,
 
     /**
      * The PaymentSettlementEvent model constructor.
@@ -3765,6 +3898,12 @@ export {
      * @property {module:model/PaymentSourceType}
      */
     PaymentSourceType,
+
+    /**
+     * The PaymentTopUpUpdateEventData model constructor.
+     * @property {module:model/PaymentTopUpUpdateEventData}
+     */
+    PaymentTopUpUpdateEventData,
 
     /**
      * The PaymentTransaction model constructor.
@@ -4299,6 +4438,36 @@ export {
      * @property {module:model/SubmitMerchantKyc}
      */
     SubmitMerchantKyc,
+
+    /**
+     * The SuiContractCallAddressBalanceOperationType model constructor.
+     * @property {module:model/SuiContractCallAddressBalanceOperationType}
+     */
+    SuiContractCallAddressBalanceOperationType,
+
+    /**
+     * The SuiContractCallAddressBalanceParam model constructor.
+     * @property {module:model/SuiContractCallAddressBalanceParam}
+     */
+    SuiContractCallAddressBalanceParam,
+
+    /**
+     * The SuiContractCallContractParam model constructor.
+     * @property {module:model/SuiContractCallContractParam}
+     */
+    SuiContractCallContractParam,
+
+    /**
+     * The SuiContractCallContractType model constructor.
+     * @property {module:model/SuiContractCallContractType}
+     */
+    SuiContractCallContractType,
+
+    /**
+     * The SuiContractCallDestination model constructor.
+     * @property {module:model/SuiContractCallDestination}
+     */
+    SuiContractCallDestination,
 
     /**
      * The SupportedToken model constructor.
@@ -5661,6 +5830,12 @@ export {
      * @property {module:model/TransactionSubStatus}
      */
     TransactionSubStatus,
+
+    /**
+     * The TransactionSuiDestination model constructor.
+     * @property {module:model/TransactionSuiDestination}
+     */
+    TransactionSuiDestination,
 
     /**
      * The TransactionTimeline model constructor.

@@ -13,6 +13,8 @@
 
 * `COSMOS_Contract` (value: `"COSMOS_Contract"`)
 
+* `SUI_Contract` (value: `"SUI_Contract"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

@@ -361,6 +361,13 @@ export default class TransactionSubStatus {
 
     
         /**
+         * value: "AdditionalInformationRequired"
+         * @const
+         */
+        "AdditionalInformationRequired" = "AdditionalInformationRequired";
+
+    
+        /**
          * value: "unknown_default_open_api"
          * @const
          */

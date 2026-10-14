@@ -15,6 +15,8 @@
 
 * `STELLAR_Contract` (value: `"STELLAR_Contract"`)
 
+* `SUI_Contract` (value: `"SUI_Contract"`)
+
 * `COSMOS_Contract` (value: `"COSMOS_Contract"`)
 
 * `TRON_Contract` (value: `"TRON_Contract"`)
