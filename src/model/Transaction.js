@@ -445,7 +445,7 @@ Transaction.prototype['description'] = undefined;
 Transaction.prototype['is_loop'] = undefined;
 
 /**
- * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Fee Station pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Fee Station. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Fee Station. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
+ * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Billing Center pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Billing Center. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Billing Center. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
  * @member {Array.<String>} cobo_category
  */
 Transaction.prototype['cobo_category'] = undefined;

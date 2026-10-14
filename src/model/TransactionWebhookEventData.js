@@ -36,7 +36,7 @@ class TransactionWebhookEventData {
      * @alias module:model/TransactionWebhookEventData
      * @implements module:model/WebhookEventDataType
      * @implements module:model/Transaction
-     * @param data_type {module:model/TransactionWebhookEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+     * @param data_type {module:model/TransactionWebhookEventData.DataTypeEnum}  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
      * @param transaction_id {String} The transaction ID.
      * @param wallet_id {String} For deposit transactions, this property represents the wallet ID of the transaction destination. For transactions of other types, this property represents the wallet ID of the transaction source.
      * @param status {module:model/TransactionStatus} 
@@ -314,7 +314,7 @@ class TransactionWebhookEventData {
 TransactionWebhookEventData.RequiredProperties = ["data_type", "transaction_id", "wallet_id", "status", "source", "destination", "initiator_type", "created_timestamp", "updated_timestamp"];
 
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/TransactionWebhookEventData.DataTypeEnum} data_type
  */
 TransactionWebhookEventData.prototype['data_type'] = undefined;
@@ -465,7 +465,7 @@ TransactionWebhookEventData.prototype['description'] = undefined;
 TransactionWebhookEventData.prototype['is_loop'] = undefined;
 
 /**
- * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Fee Station pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Fee Station. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Fee Station. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
+ * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Billing Center pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Billing Center. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Billing Center. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
  * @member {Array.<String>} cobo_category
  */
 TransactionWebhookEventData.prototype['cobo_category'] = undefined;
@@ -501,7 +501,7 @@ TransactionWebhookEventData.prototype['updated_timestamp'] = undefined;
 
 // Implement WebhookEventDataType interface:
 /**
- *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
+ *  The data type of the event. - `Transaction`: The transaction event data. - `TSSRequest`: The TSS request event data. - `Addresses`: The addresses event data. - `WalletInfo`: The wallet information event data. - `MPCVault`: The MPC vault event data. - `Chains`: The enabled chain event data. - `Tokens`: The enabled token event data. - `TokenListing`: The token listing event data.        - `PaymentOrder`: The payment order event data. - `PaymentRefund`: The payment refund event data. - `PaymentSettlement`: The payment settlement event data. - `PaymentTransaction`: The payment transaction event data. - `PaymentAddressUpdate`: The top-up address update event data. - `PaymentPayout`: The payment payout event data. - `PaymentBankWithdrawal`: The payment bank withdrawal event data. - `PaymentBulkSend`: The payment bulk send event data. - `PaymentBulkSendItem`: The payment bulk send item event data. - `PaymentTopUpUpdate`: The payment top-up update event data. - `PaymentOrderUpdate`: The payment order update event data. - `PaymentRefundUpdate`: The payment refund update event data. - `PaymentPayoutUpdate`: The payment payout update event data. - `PaymentBulkSendUpdate`: The payment bulk send update event data. - `PaymentBulkSendItemUpdate`: The payment bulk send item update event data. - `PaymentAccountBalanceUpdate`: The Payments account balance updated event data, including account information and balance change details. - `BalanceUpdateInfo`: The balance update event data. - `SuspendedToken`: The token suspension event data. - `ComplianceDisposition`: The compliance disposition event data. - `ComplianceKytScreenings`: The compliance KYT screenings event data. - `ComplianceKyaScreenings`: The compliance KYA screenings event data. - `Organization`: The organization event data. - `FiatTransaction`: The fiat transaction event data.
  * @member {module:model/WebhookEventDataType.DataTypeEnum} data_type
  */
 WebhookEventDataType.prototype['data_type'] = undefined;
@@ -626,7 +626,7 @@ Transaction.prototype['description'] = undefined;
  */
 Transaction.prototype['is_loop'] = undefined;
 /**
- * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Fee Station pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Fee Station. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Fee Station. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
+ * The transaction category defined by Cobo. Possible values include:  - `AutoSweep`: An auto-sweep transaction. - `AutoFueling`: A transaction where Billing Center pays transaction fees to an address within your wallet. - `AutoFuelingRefund`: A refund for an auto-fueling transaction. - `BillPayment`: A transaction to pay Cobo bills through Billing Center. - `BillRefund`: A refund for a previously made bill payment. - `CommissionFeeCharge`: A transaction to charge commission fees via Billing Center. - `CommissionFeeRefund`: A refund of previously charged commission fees. 
  * @member {Array.<String>} cobo_category
  */
 Transaction.prototype['cobo_category'] = undefined;
@@ -764,6 +764,42 @@ TransactionWebhookEventData['DataTypeEnum'] = {
      * @const
      */
     "PaymentBulkSendItem": "PaymentBulkSendItem",
+
+    /**
+     * value: "PaymentTopUpUpdate"
+     * @const
+     */
+    "PaymentTopUpUpdate": "PaymentTopUpUpdate",
+
+    /**
+     * value: "PaymentOrderUpdate"
+     * @const
+     */
+    "PaymentOrderUpdate": "PaymentOrderUpdate",
+
+    /**
+     * value: "PaymentRefundUpdate"
+     * @const
+     */
+    "PaymentRefundUpdate": "PaymentRefundUpdate",
+
+    /**
+     * value: "PaymentPayoutUpdate"
+     * @const
+     */
+    "PaymentPayoutUpdate": "PaymentPayoutUpdate",
+
+    /**
+     * value: "PaymentBulkSendUpdate"
+     * @const
+     */
+    "PaymentBulkSendUpdate": "PaymentBulkSendUpdate",
+
+    /**
+     * value: "PaymentBulkSendItemUpdate"
+     * @const
+     */
+    "PaymentBulkSendItemUpdate": "PaymentBulkSendItemUpdate",
 
     /**
      * value: "PaymentAccountBalanceUpdate"

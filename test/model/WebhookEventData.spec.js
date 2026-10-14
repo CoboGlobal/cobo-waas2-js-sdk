@@ -742,6 +742,102 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property screening_mode (base name: "screening_mode")', function() {
+      // uncomment below and update the code to test the property screening_mode
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property topup_address (base name: "topup_address")', function() {
+      // uncomment below and update the code to test the property topup_address
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property source_address (base name: "source_address")', function() {
+      // uncomment below and update the code to test the property source_address
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property message (base name: "message")', function() {
+      // uncomment below and update the code to test the property message
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property notice_type (base name: "notice_type")', function() {
+      // uncomment below and update the code to test the property notice_type
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property requested_amount (base name: "requested_amount")', function() {
+      // uncomment below and update the code to test the property requested_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credited_amount (base name: "credited_amount")', function() {
+      // uncomment below and update the code to test the property credited_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property outstanding_amount (base name: "outstanding_amount")', function() {
+      // uncomment below and update the code to test the property outstanding_amount
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property requested_amounts (base name: "requested_amounts")', function() {
+      // uncomment below and update the code to test the property requested_amounts
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failed_amounts (base name: "failed_amounts")', function() {
+      // uncomment below and update the code to test the property failed_amounts
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property requested_target (base name: "requested_target")', function() {
+      // uncomment below and update the code to test the property requested_target
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property actual_payout_amounts (base name: "actual_payout_amounts")', function() {
+      // uncomment below and update the code to test the property actual_payout_amounts
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property item_count (base name: "item_count")', function() {
+      // uncomment below and update the code to test the property item_count
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failed_item_count (base name: "failed_item_count")', function() {
+      // uncomment below and update the code to test the property failed_item_count
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property not_executed_item_count (base name: "not_executed_item_count")', function() {
+      // uncomment below and update the code to test the property not_executed_item_count
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property completed_amounts (base name: "completed_amounts")', function() {
+      // uncomment below and update the code to test the property completed_amounts
+      //var instance = new CoboWaas2.WebhookEventData();
+      //expect(instance).to.be();
+    });
+
     it('should have the property source_id (base name: "source_id")', function() {
       // uncomment below and update the code to test the property source_id
       //var instance = new CoboWaas2.WebhookEventData();

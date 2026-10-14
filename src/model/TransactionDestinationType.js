@@ -60,6 +60,13 @@ export default class TransactionDestinationType {
 
     
         /**
+         * value: "SUI_Contract"
+         * @const
+         */
+        "SUI_Contract" = "SUI_Contract";
+
+    
+        /**
          * value: "COSMOS_Contract"
          * @const
          */

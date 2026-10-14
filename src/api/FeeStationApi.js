@@ -43,10 +43,10 @@ export default class FeeStationApi {
 
 
     /**
-     * Check Fee Station usage
-     * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
+     * Check Billing Center usage
+     * This operation evaluates Billing Center usage for the current transaction.   It determines whether Billing Center can be used, checks if the Billing Center balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/FeeStationCheckFeeStationUsage} [FeeStationCheckFeeStationUsage] The request body for evaluating Fee Station usage.
+     * @param {module:model/FeeStationCheckFeeStationUsage} [FeeStationCheckFeeStationUsage] The request body for evaluating Billing Center usage.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FeeStationCheckFeeStationUsageResponse} and HTTP response
      */
     checkFeeStationUsageWithHttpInfo(opts) {
@@ -77,10 +77,10 @@ export default class FeeStationApi {
     }
 
     /**
-     * Check Fee Station usage
-     * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
+     * Check Billing Center usage
+     * This operation evaluates Billing Center usage for the current transaction.   It determines whether Billing Center can be used, checks if the Billing Center balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
      * @param {Object} opts Optional parameters
-     * @param {module:model/FeeStationCheckFeeStationUsage} opts.FeeStationCheckFeeStationUsage The request body for evaluating Fee Station usage.
+     * @param {module:model/FeeStationCheckFeeStationUsage} opts.FeeStationCheckFeeStationUsage The request body for evaluating Billing Center usage.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FeeStationCheckFeeStationUsageResponse}
      */
     checkFeeStationUsage(opts) {
@@ -93,9 +93,9 @@ export default class FeeStationApi {
 
     /**
      * Estimate transaction fee
-     * <Note>This operation is **deprecated** and retained only for backward compatibility. Use [Check Fee Station usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) for all new integrations.</Note>  This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+     * <Note>This operation is **deprecated** and retained only for backward compatibility. Use [Check Billing Center usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) for all new integrations.</Note>  This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
      * @param {Object} opts Optional parameters
-     * @param {module:model/FeeStationTransfer} [FeeStationTransfer] The information about a Fee Station top-up transaction.
+     * @param {module:model/FeeStationTransfer} [FeeStationTransfer] The information about a Billing Center top-up transaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EstimatedFixedFee} and HTTP response
      */
     estimateFeeStationFeeWithHttpInfo(opts) {
@@ -127,9 +127,9 @@ export default class FeeStationApi {
 
     /**
      * Estimate transaction fee
-     * <Note>This operation is **deprecated** and retained only for backward compatibility. Use [Check Fee Station usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) for all new integrations.</Note>  This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+     * <Note>This operation is **deprecated** and retained only for backward compatibility. Use [Check Billing Center usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) for all new integrations.</Note>  This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
      * @param {Object} opts Optional parameters
-     * @param {module:model/FeeStationTransfer} opts.FeeStationTransfer The information about a Fee Station top-up transaction.
+     * @param {module:model/FeeStationTransfer} opts.FeeStationTransfer The information about a Billing Center top-up transaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EstimatedFixedFee}
      */
     estimateFeeStationFee(opts) {
@@ -141,8 +141,8 @@ export default class FeeStationApi {
 
 
     /**
-     * Get Fee Station transaction information
-     * This operation retrieves detailed information about a specified Fee Station transaction record, such as the transaction status, source address, destination address, and timestamp. 
+     * Get Billing Center transaction information
+     * This operation retrieves detailed information about a specified Billing Center transaction record, such as the transaction status, source address, destination address, and timestamp. 
      * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TransactionDetail} and HTTP response
      */
@@ -178,8 +178,8 @@ export default class FeeStationApi {
     }
 
     /**
-     * Get Fee Station transaction information
-     * This operation retrieves detailed information about a specified Fee Station transaction record, such as the transaction status, source address, destination address, and timestamp. 
+     * Get Billing Center transaction information
+     * This operation retrieves detailed information about a specified Billing Center transaction record, such as the transaction status, source address, destination address, and timestamp. 
      * @param {String} transaction_id The transaction ID.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TransactionDetail}
      */
@@ -192,8 +192,8 @@ export default class FeeStationApi {
 
 
     /**
-     * List Fee Station addresses
-     * This operation retrieves a list of deposit addresses of your Fee Station, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
+     * List Billing Center addresses
+     * This operation retrieves a list of deposit addresses of your Billing Center, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
      * @param {Object} opts Optional parameters
      * @param {String} [chain_ids] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} [addresses] A list of wallet addresses, separated by comma. For addresses requiring a memo, append the memo after the address using the '|' separator (e.g., \"address|memo\").
@@ -235,8 +235,8 @@ export default class FeeStationApi {
     }
 
     /**
-     * List Fee Station addresses
-     * This operation retrieves a list of deposit addresses of your Fee Station, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
+     * List Billing Center addresses
+     * This operation retrieves a list of deposit addresses of your Billing Center, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.chain_ids A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} opts.addresses A list of wallet addresses, separated by comma. For addresses requiring a memo, append the memo after the address using the '|' separator (e.g., \"address|memo\").
@@ -254,8 +254,8 @@ export default class FeeStationApi {
 
 
     /**
-     * List Fee Station fiat transactions
-     * This operation retrieves all Fee Station fiat transactions under your organization.  You can filter the results by request IDs, transaction IDs, transaction type, and created timestamp. You can also paginate your query results. 
+     * List Billing Center fiat transactions
+     * This operation retrieves all Billing Center fiat transactions under your organization.  You can filter the results by request IDs, transaction IDs, transaction type, and created timestamp. You can also paginate your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} [transaction_ids] A list of transaction IDs, separated by comma.
      * @param {module:model/FeeStationFiatTransactionType} [transaction_type] The type of the fiat transaction. Possible values include:   - `deposit`: A deposit transaction.   - `transfer`: A transfer transaction. 
@@ -301,8 +301,8 @@ export default class FeeStationApi {
     }
 
     /**
-     * List Fee Station fiat transactions
-     * This operation retrieves all Fee Station fiat transactions under your organization.  You can filter the results by request IDs, transaction IDs, transaction type, and created timestamp. You can also paginate your query results. 
+     * List Billing Center fiat transactions
+     * This operation retrieves all Billing Center fiat transactions under your organization.  You can filter the results by request IDs, transaction IDs, transaction type, and created timestamp. You can also paginate your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.transaction_ids A list of transaction IDs, separated by comma.
      * @param {module:model/FeeStationFiatTransactionType} opts.transaction_type The type of the fiat transaction. Possible values include:   - `deposit`: A deposit transaction.   - `transfer`: A transfer transaction. 
@@ -322,14 +322,14 @@ export default class FeeStationApi {
 
 
     /**
-     * List all Fee Station transactions
-     * This operation retrieves all Fee Station transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamp. You can also paginate and sort your query results. 
+     * List all Billing Center transactions
+     * This operation retrieves all Billing Center transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamp. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} [request_id] The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
      * @param {String} [cobo_ids] A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
      * @param {String} [transaction_ids] A list of transaction IDs, separated by comma.
      * @param {String} [transaction_hashes] A list of transaction hashes, separated by comma.
-     * @param {String} [types] A list of transaction types for Fee Station, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction. 
+     * @param {String} [types] A list of transaction types for Billing Center, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction. 
      * @param {String} [statuses] A list of transaction statuses, separated by comma. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is waiting to be included in the next block of the blockchain. 
      * @param {String} [chain_ids] A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} [token_ids] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
@@ -385,14 +385,14 @@ export default class FeeStationApi {
     }
 
     /**
-     * List all Fee Station transactions
-     * This operation retrieves all Fee Station transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamp. You can also paginate and sort your query results. 
+     * List all Billing Center transactions
+     * This operation retrieves all Billing Center transactions under your organization.  You can filter the results by request ID, Cobo ID, transaction ID, transaction hash, type, status, and timestamp. You can also paginate and sort your query results. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.request_id The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
      * @param {String} opts.cobo_ids A list of Cobo IDs, separated by comma. A Cobo ID can be used to track a transaction.
      * @param {String} opts.transaction_ids A list of transaction IDs, separated by comma.
      * @param {String} opts.transaction_hashes A list of transaction hashes, separated by comma.
-     * @param {String} opts.types A list of transaction types for Fee Station, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction. 
+     * @param {String} opts.types A list of transaction types for Billing Center, separated by comma. Possible values include:    - `Deposit`: A deposit transaction.   - `Withdrawal`: A withdrawal transaction. 
      * @param {String} opts.statuses A list of transaction statuses, separated by comma. Possible values include:    - `Submitted`: The transaction is submitted.   - `PendingScreening`: The transaction is pending screening by Risk Control.    - `PendingAuthorization`: The transaction is pending approvals.   - `PendingSignature`: The transaction is pending signature.    - `Broadcasting`: The transaction is being broadcast.   - `Confirming`: The transaction is waiting for the required number of confirmations.   - `Completed`: The transaction is completed.   - `Failed`: The transaction failed.   - `Rejected`: The transaction is rejected.   - `Pending`: The transaction is waiting to be included in the next block of the blockchain. 
      * @param {String} opts.chain_ids A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
      * @param {String} opts.token_ids A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
@@ -414,8 +414,8 @@ export default class FeeStationApi {
 
 
     /**
-     * List Fee Station token balances
-     * The operation retrieves a list of token balances within your Fee Station. 
+     * List Billing Center token balances
+     * The operation retrieves a list of token balances within your Billing Center. 
      * @param {Object} opts Optional parameters
      * @param {String} [token_ids] A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param {Number} [limit = 10)] The maximum number of objects to return. For most operations, the value range is [1, 50].
@@ -455,8 +455,8 @@ export default class FeeStationApi {
     }
 
     /**
-     * List Fee Station token balances
-     * The operation retrieves a list of token balances within your Fee Station. 
+     * List Billing Center token balances
+     * The operation retrieves a list of token balances within your Billing Center. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.token_ids A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
      * @param {Number} opts.limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (default to 10)

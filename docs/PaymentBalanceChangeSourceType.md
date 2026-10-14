@@ -25,6 +25,8 @@
 
 * `BulkSend` (value: `"BulkSend"`)
 
+* `OnrampIn` (value: `"OnrampIn"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

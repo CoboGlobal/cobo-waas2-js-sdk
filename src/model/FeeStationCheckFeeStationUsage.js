@@ -19,10 +19,10 @@ import AutoFuelType from './AutoFuelType';
 class FeeStationCheckFeeStationUsage {
     /**
      * Constructs a new <code>FeeStationCheckFeeStationUsage</code>.
-     * The information for evaluating Fee Station usage.
+     * The information for evaluating Billing Center usage.
      * @alias module:model/FeeStationCheckFeeStationUsage
      * @param request_id {String} The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
-     * @param estimated_fee_amount {String} The estimated transaction fee required for this transfer, before applying any Fee Station rules.
+     * @param estimated_fee_amount {String} The estimated transaction fee required for this transfer, before applying any Billing Center rules.
      * @param from_address {String} The blockchain address that initiates the transfer.
      * @param from_wallet_id {String} The wallet ID.
      */
@@ -156,7 +156,7 @@ FeeStationCheckFeeStationUsage.prototype['token_id'] = undefined;
 FeeStationCheckFeeStationUsage.prototype['fee_token_id'] = undefined;
 
 /**
- * The estimated transaction fee required for this transfer, before applying any Fee Station rules.
+ * The estimated transaction fee required for this transfer, before applying any Billing Center rules.
  * @member {String} estimated_fee_amount
  */
 FeeStationCheckFeeStationUsage.prototype['estimated_fee_amount'] = undefined;

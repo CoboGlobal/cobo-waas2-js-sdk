@@ -97,6 +97,18 @@
 
 * `payment.bulk_send.item.status.updated` (value: `"payment.bulk_send.item.status.updated"`)
 
+* `payment.topup.updated` (value: `"payment.topup.updated"`)
+
+* `payment.order.updated` (value: `"payment.order.updated"`)
+
+* `payment.refund.updated` (value: `"payment.refund.updated"`)
+
+* `payment.payout.updated` (value: `"payment.payout.updated"`)
+
+* `payment.bulk_send.updated` (value: `"payment.bulk_send.updated"`)
+
+* `payment.bulk_send.item.updated` (value: `"payment.bulk_send.item.updated"`)
+
 * `payment.transaction.external.created` (value: `"payment.transaction.external.created"`)
 
 * `payment.transaction.external.completed` (value: `"payment.transaction.external.completed"`)
