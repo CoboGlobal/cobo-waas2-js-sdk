@@ -387,7 +387,7 @@ UpdateDestinationBankAccount.prototype['bank_city'] = undefined;
 UpdateDestinationBankAccount.prototype['routing_value'] = undefined;
 
 /**
- * The file ID of the contract document (e.g., cooperation agreement) that proves the business relationship between you and the beneficiary, which you can retrieve by calling [Upload file](https://www.cobo.com/developers/v2/api-references/payment/upload-file). 
+ * The file ID of the contract document (e.g., cooperation agreement) that proves the business relationship between you and the beneficiary, which you can retrieve by calling [Upload file v2](https://www.cobo.com/developers/v2/api-references/payment/upload-file-v2). 
  * @member {String} contract_file_id
  */
 UpdateDestinationBankAccount.prototype['contract_file_id'] = undefined;

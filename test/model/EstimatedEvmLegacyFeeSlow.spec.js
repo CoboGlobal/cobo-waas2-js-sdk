@@ -70,6 +70,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fallback (base name: "fallback")', function() {
+      // uncomment below and update the code to test the property fallback
+      //var instance = new CoboWaas2.EstimatedEvmLegacyFeeSlow();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fallback_reason (base name: "fallback_reason")', function() {
+      // uncomment below and update the code to test the property fallback_reason
+      //var instance = new CoboWaas2.EstimatedEvmLegacyFeeSlow();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
