@@ -153,6 +153,7 @@ import CreateDestinationEntry201Response from './model/CreateDestinationEntry201
 import CreateDestinationEntryRequest from './model/CreateDestinationEntryRequest';
 import CreateDestinationRequest from './model/CreateDestinationRequest';
 import CreateExchangeWalletParams from './model/CreateExchangeWalletParams';
+import CreateFiatEntryKyc from './model/CreateFiatEntryKyc';
 import CreateKeyShareHolder from './model/CreateKeyShareHolder';
 import CreateKeyShareHolderGroupRequest from './model/CreateKeyShareHolderGroupRequest';
 import CreateKyaScreeningsBody from './model/CreateKyaScreeningsBody';
@@ -273,6 +274,7 @@ import ExtendedTokenInfo from './model/ExtendedTokenInfo';
 import FILBase from './model/FILBase';
 import FILPrice from './model/FILPrice';
 import FeeAmount from './model/FeeAmount';
+import FeeFallback from './model/FeeFallback';
 import FeeGasLimit from './model/FeeGasLimit';
 import FeeLevel from './model/FeeLevel';
 import FeeRate from './model/FeeRate';
@@ -287,6 +289,18 @@ import FeeStationSponsorTransactionDescription from './model/FeeStationSponsorTr
 import FeeStationTransactionType from './model/FeeStationTransactionType';
 import FeeStationTransfer from './model/FeeStationTransfer';
 import FeeType from './model/FeeType';
+import FiatEntryKyc from './model/FiatEntryKyc';
+import FiatEntryKycAddress from './model/FiatEntryKycAddress';
+import FiatEntryKycCompanyAttachment from './model/FiatEntryKycCompanyAttachment';
+import FiatEntryKycCompanyAttachmentFileType from './model/FiatEntryKycCompanyAttachmentFileType';
+import FiatEntryKycCompanyInfo from './model/FiatEntryKycCompanyInfo';
+import FiatEntryKycCompanyType from './model/FiatEntryKycCompanyType';
+import FiatEntryKycDetail from './model/FiatEntryKycDetail';
+import FiatEntryKycMerchantType from './model/FiatEntryKycMerchantType';
+import FiatEntryKycPersonAttachment from './model/FiatEntryKycPersonAttachment';
+import FiatEntryKycPersonAttachmentFileType from './model/FiatEntryKycPersonAttachmentFileType';
+import FiatEntryKycPersonInfo from './model/FiatEntryKycPersonInfo';
+import FiatEntryKycStatus from './model/FiatEntryKycStatus';
 import FiatTransactionEventData from './model/FiatTransactionEventData';
 import FixedFeeRate from './model/FixedFeeRate';
 import ForcedSweep from './model/ForcedSweep';
@@ -361,6 +375,7 @@ import ListDestinationEntries200Response from './model/ListDestinationEntries200
 import ListDestinations200Response from './model/ListDestinations200Response';
 import ListExchanges200ResponseInner from './model/ListExchanges200ResponseInner';
 import ListFeeStationFiatTransactions200Response from './model/ListFeeStationFiatTransactions200Response';
+import ListFiatEntryKyc200Response from './model/ListFiatEntryKyc200Response';
 import ListForcedSweepRequests200Response from './model/ListForcedSweepRequests200Response';
 import ListKeyShareHolderGroups200Response from './model/ListKeyShareHolderGroups200Response';
 import ListKeyShareHolders200Response from './model/ListKeyShareHolders200Response';
@@ -872,6 +887,7 @@ import UpdateDestinationEntry200Response from './model/UpdateDestinationEntry200
 import UpdateDestinationEntryRequest from './model/UpdateDestinationEntryRequest';
 import UpdateDestinationRequest from './model/UpdateDestinationRequest';
 import UpdateExchangeWalletParams from './model/UpdateExchangeWalletParams';
+import UpdateFiatEntryKyc from './model/UpdateFiatEntryKyc';
 import UpdateGroupAction from './model/UpdateGroupAction';
 import UpdateKeyShareHolderGroupByIdRequest from './model/UpdateKeyShareHolderGroupByIdRequest';
 import UpdateMerchantByIdRequest from './model/UpdateMerchantByIdRequest';
@@ -953,7 +969,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.45.0
+* @version 1.46.0
 */
 export {
     Env,
@@ -1806,6 +1822,12 @@ export {
     CreateExchangeWalletParams,
 
     /**
+     * The CreateFiatEntryKyc model constructor.
+     * @property {module:model/CreateFiatEntryKyc}
+     */
+    CreateFiatEntryKyc,
+
+    /**
      * The CreateKeyShareHolder model constructor.
      * @property {module:model/CreateKeyShareHolder}
      */
@@ -2526,6 +2548,12 @@ export {
     FeeAmount,
 
     /**
+     * The FeeFallback model constructor.
+     * @property {module:model/FeeFallback}
+     */
+    FeeFallback,
+
+    /**
      * The FeeGasLimit model constructor.
      * @property {module:model/FeeGasLimit}
      */
@@ -2608,6 +2636,78 @@ export {
      * @property {module:model/FeeType}
      */
     FeeType,
+
+    /**
+     * The FiatEntryKyc model constructor.
+     * @property {module:model/FiatEntryKyc}
+     */
+    FiatEntryKyc,
+
+    /**
+     * The FiatEntryKycAddress model constructor.
+     * @property {module:model/FiatEntryKycAddress}
+     */
+    FiatEntryKycAddress,
+
+    /**
+     * The FiatEntryKycCompanyAttachment model constructor.
+     * @property {module:model/FiatEntryKycCompanyAttachment}
+     */
+    FiatEntryKycCompanyAttachment,
+
+    /**
+     * The FiatEntryKycCompanyAttachmentFileType model constructor.
+     * @property {module:model/FiatEntryKycCompanyAttachmentFileType}
+     */
+    FiatEntryKycCompanyAttachmentFileType,
+
+    /**
+     * The FiatEntryKycCompanyInfo model constructor.
+     * @property {module:model/FiatEntryKycCompanyInfo}
+     */
+    FiatEntryKycCompanyInfo,
+
+    /**
+     * The FiatEntryKycCompanyType model constructor.
+     * @property {module:model/FiatEntryKycCompanyType}
+     */
+    FiatEntryKycCompanyType,
+
+    /**
+     * The FiatEntryKycDetail model constructor.
+     * @property {module:model/FiatEntryKycDetail}
+     */
+    FiatEntryKycDetail,
+
+    /**
+     * The FiatEntryKycMerchantType model constructor.
+     * @property {module:model/FiatEntryKycMerchantType}
+     */
+    FiatEntryKycMerchantType,
+
+    /**
+     * The FiatEntryKycPersonAttachment model constructor.
+     * @property {module:model/FiatEntryKycPersonAttachment}
+     */
+    FiatEntryKycPersonAttachment,
+
+    /**
+     * The FiatEntryKycPersonAttachmentFileType model constructor.
+     * @property {module:model/FiatEntryKycPersonAttachmentFileType}
+     */
+    FiatEntryKycPersonAttachmentFileType,
+
+    /**
+     * The FiatEntryKycPersonInfo model constructor.
+     * @property {module:model/FiatEntryKycPersonInfo}
+     */
+    FiatEntryKycPersonInfo,
+
+    /**
+     * The FiatEntryKycStatus model constructor.
+     * @property {module:model/FiatEntryKycStatus}
+     */
+    FiatEntryKycStatus,
 
     /**
      * The FiatTransactionEventData model constructor.
@@ -3052,6 +3152,12 @@ export {
      * @property {module:model/ListFeeStationFiatTransactions200Response}
      */
     ListFeeStationFiatTransactions200Response,
+
+    /**
+     * The ListFiatEntryKyc200Response model constructor.
+     * @property {module:model/ListFiatEntryKyc200Response}
+     */
+    ListFiatEntryKyc200Response,
 
     /**
      * The ListForcedSweepRequests200Response model constructor.
@@ -6118,6 +6224,12 @@ export {
      * @property {module:model/UpdateExchangeWalletParams}
      */
     UpdateExchangeWalletParams,
+
+    /**
+     * The UpdateFiatEntryKyc model constructor.
+     * @property {module:model/UpdateFiatEntryKyc}
+     */
+    UpdateFiatEntryKyc,
 
     /**
      * The UpdateGroupAction model constructor.

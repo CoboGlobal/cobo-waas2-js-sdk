@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **email** | **String** | The email of the destination. | [optional] 
 **contact_address** | **String** | The contact address of the destination. | [optional] 
 **merchant_id** | **String** | The ID of the merchant linked to the destination. | [optional] 
+**fiat_entry_kyc_id** | **String** | The fiat entry KYC ID linked to the destination. | [optional] 
 **created_timestamp** | **Number** | The created time of the destination, represented as a UNIX timestamp in seconds. | 
 **updated_timestamp** | **Number** | The updated time of the destination, represented as a UNIX timestamp in seconds. | 
 

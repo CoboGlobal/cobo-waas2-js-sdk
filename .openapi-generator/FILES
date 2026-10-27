@@ -148,6 +148,7 @@ docs/CreateDestinationEntry201Response.md
 docs/CreateDestinationEntryRequest.md
 docs/CreateDestinationRequest.md
 docs/CreateExchangeWalletParams.md
+docs/CreateFiatEntryKyc.md
 docs/CreateKeyShareHolder.md
 docs/CreateKeyShareHolderGroupRequest.md
 docs/CreateKyaScreeningsBody.md
@@ -270,6 +271,7 @@ docs/ExtendedTokenInfo.md
 docs/FILBase.md
 docs/FILPrice.md
 docs/FeeAmount.md
+docs/FeeFallback.md
 docs/FeeGasLimit.md
 docs/FeeLevel.md
 docs/FeeRate.md
@@ -285,6 +287,18 @@ docs/FeeStationSponsorTransactionDescription.md
 docs/FeeStationTransactionType.md
 docs/FeeStationTransfer.md
 docs/FeeType.md
+docs/FiatEntryKyc.md
+docs/FiatEntryKycAddress.md
+docs/FiatEntryKycCompanyAttachment.md
+docs/FiatEntryKycCompanyAttachmentFileType.md
+docs/FiatEntryKycCompanyInfo.md
+docs/FiatEntryKycCompanyType.md
+docs/FiatEntryKycDetail.md
+docs/FiatEntryKycMerchantType.md
+docs/FiatEntryKycPersonAttachment.md
+docs/FiatEntryKycPersonAttachmentFileType.md
+docs/FiatEntryKycPersonInfo.md
+docs/FiatEntryKycStatus.md
 docs/FiatTransactionEventData.md
 docs/FixedFeeRate.md
 docs/ForcedSweep.md
@@ -360,6 +374,7 @@ docs/ListDestinationEntries200Response.md
 docs/ListDestinations200Response.md
 docs/ListExchanges200ResponseInner.md
 docs/ListFeeStationFiatTransactions200Response.md
+docs/ListFiatEntryKyc200Response.md
 docs/ListForcedSweepRequests200Response.md
 docs/ListKeyShareHolderGroups200Response.md
 docs/ListKeyShareHolders200Response.md
@@ -881,6 +896,7 @@ docs/UpdateDestinationEntry200Response.md
 docs/UpdateDestinationEntryRequest.md
 docs/UpdateDestinationRequest.md
 docs/UpdateExchangeWalletParams.md
+docs/UpdateFiatEntryKyc.md
 docs/UpdateGroupAction.md
 docs/UpdateKeyShareHolderGroupByIdRequest.md
 docs/UpdateMerchantByIdRequest.md
@@ -1084,6 +1100,7 @@ src/model/CreateDestinationEntry201Response.js
 src/model/CreateDestinationEntryRequest.js
 src/model/CreateDestinationRequest.js
 src/model/CreateExchangeWalletParams.js
+src/model/CreateFiatEntryKyc.js
 src/model/CreateKeyShareHolder.js
 src/model/CreateKeyShareHolderGroupRequest.js
 src/model/CreateKyaScreeningsBody.js
@@ -1204,6 +1221,7 @@ src/model/ExtendedTokenInfo.js
 src/model/FILBase.js
 src/model/FILPrice.js
 src/model/FeeAmount.js
+src/model/FeeFallback.js
 src/model/FeeGasLimit.js
 src/model/FeeLevel.js
 src/model/FeeRate.js
@@ -1218,6 +1236,18 @@ src/model/FeeStationSponsorTransactionDescription.js
 src/model/FeeStationTransactionType.js
 src/model/FeeStationTransfer.js
 src/model/FeeType.js
+src/model/FiatEntryKyc.js
+src/model/FiatEntryKycAddress.js
+src/model/FiatEntryKycCompanyAttachment.js
+src/model/FiatEntryKycCompanyAttachmentFileType.js
+src/model/FiatEntryKycCompanyInfo.js
+src/model/FiatEntryKycCompanyType.js
+src/model/FiatEntryKycDetail.js
+src/model/FiatEntryKycMerchantType.js
+src/model/FiatEntryKycPersonAttachment.js
+src/model/FiatEntryKycPersonAttachmentFileType.js
+src/model/FiatEntryKycPersonInfo.js
+src/model/FiatEntryKycStatus.js
 src/model/FiatTransactionEventData.js
 src/model/FixedFeeRate.js
 src/model/ForcedSweep.js
@@ -1292,6 +1322,7 @@ src/model/ListDestinationEntries200Response.js
 src/model/ListDestinations200Response.js
 src/model/ListExchanges200ResponseInner.js
 src/model/ListFeeStationFiatTransactions200Response.js
+src/model/ListFiatEntryKyc200Response.js
 src/model/ListForcedSweepRequests200Response.js
 src/model/ListKeyShareHolderGroups200Response.js
 src/model/ListKeyShareHolders200Response.js
@@ -1803,6 +1834,7 @@ src/model/UpdateDestinationEntry200Response.js
 src/model/UpdateDestinationEntryRequest.js
 src/model/UpdateDestinationRequest.js
 src/model/UpdateExchangeWalletParams.js
+src/model/UpdateFiatEntryKyc.js
 src/model/UpdateGroupAction.js
 src/model/UpdateKeyShareHolderGroupByIdRequest.js
 src/model/UpdateMerchantByIdRequest.js
@@ -1992,6 +2024,7 @@ test/model/CreateDestinationEntry201Response.spec.js
 test/model/CreateDestinationEntryRequest.spec.js
 test/model/CreateDestinationRequest.spec.js
 test/model/CreateExchangeWalletParams.spec.js
+test/model/CreateFiatEntryKyc.spec.js
 test/model/CreateKeyShareHolder.spec.js
 test/model/CreateKeyShareHolderGroupRequest.spec.js
 test/model/CreateKyaScreeningsBody.spec.js
@@ -2112,6 +2145,7 @@ test/model/ExtendedTokenInfo.spec.js
 test/model/FILBase.spec.js
 test/model/FILPrice.spec.js
 test/model/FeeAmount.spec.js
+test/model/FeeFallback.spec.js
 test/model/FeeGasLimit.spec.js
 test/model/FeeLevel.spec.js
 test/model/FeeRate.spec.js
@@ -2126,6 +2160,18 @@ test/model/FeeStationSponsorTransactionDescription.spec.js
 test/model/FeeStationTransactionType.spec.js
 test/model/FeeStationTransfer.spec.js
 test/model/FeeType.spec.js
+test/model/FiatEntryKyc.spec.js
+test/model/FiatEntryKycAddress.spec.js
+test/model/FiatEntryKycCompanyAttachment.spec.js
+test/model/FiatEntryKycCompanyAttachmentFileType.spec.js
+test/model/FiatEntryKycCompanyInfo.spec.js
+test/model/FiatEntryKycCompanyType.spec.js
+test/model/FiatEntryKycDetail.spec.js
+test/model/FiatEntryKycMerchantType.spec.js
+test/model/FiatEntryKycPersonAttachment.spec.js
+test/model/FiatEntryKycPersonAttachmentFileType.spec.js
+test/model/FiatEntryKycPersonInfo.spec.js
+test/model/FiatEntryKycStatus.spec.js
 test/model/FiatTransactionEventData.spec.js
 test/model/FixedFeeRate.spec.js
 test/model/ForcedSweep.spec.js
@@ -2200,6 +2246,7 @@ test/model/ListDestinationEntries200Response.spec.js
 test/model/ListDestinations200Response.spec.js
 test/model/ListExchanges200ResponseInner.spec.js
 test/model/ListFeeStationFiatTransactions200Response.spec.js
+test/model/ListFiatEntryKyc200Response.spec.js
 test/model/ListForcedSweepRequests200Response.spec.js
 test/model/ListKeyShareHolderGroups200Response.spec.js
 test/model/ListKeyShareHolders200Response.spec.js
@@ -2711,6 +2758,7 @@ test/model/UpdateDestinationEntry200Response.spec.js
 test/model/UpdateDestinationEntryRequest.spec.js
 test/model/UpdateDestinationRequest.spec.js
 test/model/UpdateExchangeWalletParams.spec.js
+test/model/UpdateFiatEntryKyc.spec.js
 test/model/UpdateGroupAction.spec.js
 test/model/UpdateKeyShareHolderGroupByIdRequest.spec.js
 test/model/UpdateMerchantByIdRequest.spec.js

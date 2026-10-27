@@ -66,6 +66,9 @@ class CreateDestinationRequest {
             if (data.hasOwnProperty('merchant_id')) {
                 obj['merchant_id'] = ApiClient.convertToType(data['merchant_id'], 'String');
             }
+            if (data.hasOwnProperty('fiat_entry_kyc_id')) {
+                obj['fiat_entry_kyc_id'] = ApiClient.convertToType(data['fiat_entry_kyc_id'], 'String');
+            }
             if (data.hasOwnProperty('country')) {
                 obj['country'] = ApiClient.convertToType(data['country'], 'String');
             }
@@ -120,6 +123,10 @@ class CreateDestinationRequest {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
         }
         // ensure the json data is a string
+        if (data['fiat_entry_kyc_id'] && !(typeof data['fiat_entry_kyc_id'] === 'string' || data['fiat_entry_kyc_id'] instanceof String)) {
+            throw new Error("Expected the field `fiat_entry_kyc_id` to be a primitive type in the JSON string but got " + data['fiat_entry_kyc_id']);
+        }
+        // ensure the json data is a string
         if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
             throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
         }
@@ -168,6 +175,12 @@ CreateDestinationRequest.prototype['bank_accounts'] = undefined;
  * @member {String} merchant_id
  */
 CreateDestinationRequest.prototype['merchant_id'] = undefined;
+
+/**
+ * The fiat entry KYC ID linked to the destination, which you can retrieve by calling [List all fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/list-all-fiat-entry-kyc). 
+ * @member {String} fiat_entry_kyc_id
+ */
+CreateDestinationRequest.prototype['fiat_entry_kyc_id'] = undefined;
 
 /**
  * The country of the destination, in ISO 3166-1 alpha-3 format.

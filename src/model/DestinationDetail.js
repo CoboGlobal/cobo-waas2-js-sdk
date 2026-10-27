@@ -88,6 +88,9 @@ class DestinationDetail {
             if (data.hasOwnProperty('merchant_id')) {
                 obj['merchant_id'] = ApiClient.convertToType(data['merchant_id'], 'String');
             }
+            if (data.hasOwnProperty('fiat_entry_kyc_id')) {
+                obj['fiat_entry_kyc_id'] = ApiClient.convertToType(data['fiat_entry_kyc_id'], 'String');
+            }
             if (data.hasOwnProperty('created_timestamp')) {
                 obj['created_timestamp'] = ApiClient.convertToType(data['created_timestamp'], 'Number');
             }
@@ -153,6 +156,10 @@ class DestinationDetail {
         // ensure the json data is a string
         if (data['merchant_id'] && !(typeof data['merchant_id'] === 'string' || data['merchant_id'] instanceof String)) {
             throw new Error("Expected the field `merchant_id` to be a primitive type in the JSON string but got " + data['merchant_id']);
+        }
+        // ensure the json data is a string
+        if (data['fiat_entry_kyc_id'] && !(typeof data['fiat_entry_kyc_id'] === 'string' || data['fiat_entry_kyc_id'] instanceof String)) {
+            throw new Error("Expected the field `fiat_entry_kyc_id` to be a primitive type in the JSON string but got " + data['fiat_entry_kyc_id']);
         }
 
         return true;
@@ -220,6 +227,12 @@ DestinationDetail.prototype['bank_accounts'] = undefined;
  * @member {String} merchant_id
  */
 DestinationDetail.prototype['merchant_id'] = undefined;
+
+/**
+ * The fiat entry KYC ID linked to the destination.
+ * @member {String} fiat_entry_kyc_id
+ */
+DestinationDetail.prototype['fiat_entry_kyc_id'] = undefined;
 
 /**
  * The created time of the destination, represented as a UNIX timestamp in seconds.

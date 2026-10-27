@@ -100,6 +100,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fiat_entry_kyc_id (base name: "fiat_entry_kyc_id")', function() {
+      // uncomment below and update the code to test the property fiat_entry_kyc_id
+      //var instance = new CoboWaas2.Destination();
+      //expect(instance).to.be();
+    });
+
     it('should have the property created_timestamp (base name: "created_timestamp")', function() {
       // uncomment below and update the code to test the property created_timestamp
       //var instance = new CoboWaas2.Destination();

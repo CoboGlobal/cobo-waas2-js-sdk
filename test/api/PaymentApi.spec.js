@@ -136,6 +136,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('createFiatEntryKyc', function() {
+      it('should call createFiatEntryKyc successfully', function() {
+        //uncomment below and update the code to test createFiatEntryKyc
+        //instance.createFiatEntryKyc().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('createForcedSweepRequest', function() {
       it('should call createForcedSweepRequest successfully', function() {
         //uncomment below and update the code to test createForcedSweepRequest
@@ -396,6 +406,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('getFiatEntryKyc', function() {
+      it('should call getFiatEntryKyc successfully', function() {
+        //uncomment below and update the code to test getFiatEntryKyc
+        //instance.getFiatEntryKyc().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('getMerchantKyc', function() {
       it('should call getMerchantKyc successfully', function() {
         //uncomment below and update the code to test getMerchantKyc
@@ -616,6 +636,16 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
+    describe('listFiatEntryKyc', function() {
+      it('should call listFiatEntryKyc successfully', function() {
+        //uncomment below and update the code to test listFiatEntryKyc
+        //instance.listFiatEntryKyc().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
     describe('listForcedSweepRequests', function() {
       it('should call listForcedSweepRequests successfully', function() {
         //uncomment below and update the code to test listForcedSweepRequests
@@ -780,6 +810,16 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call updateDestinationEntry successfully', function() {
         //uncomment below and update the code to test updateDestinationEntry
         //instance.updateDestinationEntry().then(function(data) {
+        //    console.log(data);
+        //}, function(error) {
+        //    console.error(error);
+        //});
+      });
+    });
+    describe('updateFiatEntryKyc', function() {
+      it('should call updateFiatEntryKyc successfully', function() {
+        //uncomment below and update the code to test updateFiatEntryKyc
+        //instance.updateFiatEntryKyc().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

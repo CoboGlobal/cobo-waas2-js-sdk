@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **wallet_addresses** | [**[WalletAddress]**](WalletAddress.md) | The wallet addresses of the destination. | [optional] 
 **bank_accounts** | [**[DestinationBankAccount]**](DestinationBankAccount.md) | The bank accounts of the destination. | [optional] 
 **merchant_id** | **String** | The ID of the merchant linked to the destination. | [optional] 
+**fiat_entry_kyc_id** | **String** | The fiat entry KYC ID linked to the destination. | [optional] 
 **created_timestamp** | **Number** | The created time of the destination, represented as a UNIX timestamp in seconds. | 
 **updated_timestamp** | **Number** | The updated time of the destination, represented as a UNIX timestamp in seconds. | 
 
