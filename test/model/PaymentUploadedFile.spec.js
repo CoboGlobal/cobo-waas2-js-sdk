@@ -58,12 +58,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property expired_timestamp (base name: "expired_timestamp")', function() {
-      // uncomment below and update the code to test the property expired_timestamp
-      //var instance = new CoboWaas2.PaymentUploadedFile();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

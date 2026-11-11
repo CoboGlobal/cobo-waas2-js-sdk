@@ -75,12 +75,6 @@ class FiatEntryKycDetail {
             if (data.hasOwnProperty('industry')) {
                 obj['industry'] = ApiClient.convertToType(data['industry'], ['String']);
             }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('phone')) {
-                obj['phone'] = ApiClient.convertToType(data['phone'], 'String');
-            }
             if (data.hasOwnProperty('company_info')) {
                 obj['company_info'] = FiatEntryKycCompanyInfo.constructFromObject(data['company_info']);
             }
@@ -120,14 +114,6 @@ class FiatEntryKycDetail {
         // ensure the json data is an array
         if (!Array.isArray(data['industry'])) {
             throw new Error("Expected the field `industry` to be an array in the JSON data but got " + data['industry']);
-        }
-        // ensure the json data is a string
-        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
-            throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
-        }
-        // ensure the json data is a string
-        if (data['phone'] && !(typeof data['phone'] === 'string' || data['phone'] instanceof String)) {
-            throw new Error("Expected the field `phone` to be a primitive type in the JSON string but got " + data['phone']);
         }
         // validate the optional field `company_info`
         if (data['company_info']) { // data not null
@@ -177,18 +163,6 @@ FiatEntryKycDetail.prototype['country'] = undefined;
  * @member {Array.<String>} industry
  */
 FiatEntryKycDetail.prototype['industry'] = undefined;
-
-/**
- * The email address.
- * @member {String} email
- */
-FiatEntryKycDetail.prototype['email'] = undefined;
-
-/**
- * The phone number.
- * @member {String} phone
- */
-FiatEntryKycDetail.prototype['phone'] = undefined;
 
 /**
  * @member {module:model/FiatEntryKycCompanyInfo} company_info
