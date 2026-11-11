@@ -429,18 +429,6 @@ import MaxFeeAmount from './model/MaxFeeAmount';
 import MaxTransferableValue from './model/MaxTransferableValue';
 import Merchant from './model/Merchant';
 import MerchantBalance from './model/MerchantBalance';
-import MerchantKycAddress from './model/MerchantKycAddress';
-import MerchantKycCompanyAttachment from './model/MerchantKycCompanyAttachment';
-import MerchantKycCompanyAttachmentFileType from './model/MerchantKycCompanyAttachmentFileType';
-import MerchantKycCompanyInfo from './model/MerchantKycCompanyInfo';
-import MerchantKycCompanyType from './model/MerchantKycCompanyType';
-import MerchantKycInfo from './model/MerchantKycInfo';
-import MerchantKycMerchantType from './model/MerchantKycMerchantType';
-import MerchantKycPersonAttachment from './model/MerchantKycPersonAttachment';
-import MerchantKycPersonAttachmentFileType from './model/MerchantKycPersonAttachmentFileType';
-import MerchantKycPersonInfo from './model/MerchantKycPersonInfo';
-import MerchantKycStatus from './model/MerchantKycStatus';
-import MerchantKycSubmission from './model/MerchantKycSubmission';
 import MessageSignDestination from './model/MessageSignDestination';
 import MessageSignDestinationType from './model/MessageSignDestinationType';
 import MessageSignParams from './model/MessageSignParams';
@@ -487,6 +475,7 @@ import PaymentBulkSendItemUpdateEventData from './model/PaymentBulkSendItemUpdat
 import PaymentBulkSendItemValidationStatus from './model/PaymentBulkSendItemValidationStatus';
 import PaymentBulkSendStatus from './model/PaymentBulkSendStatus';
 import PaymentBulkSendUpdateEventData from './model/PaymentBulkSendUpdateEventData';
+import PaymentCallbackBusinessType from './model/PaymentCallbackBusinessType';
 import PaymentCommissionFeeTotal from './model/PaymentCommissionFeeTotal';
 import PaymentEstimateFee from './model/PaymentEstimateFee';
 import PaymentEstimateFee201Response from './model/PaymentEstimateFee201Response';
@@ -560,6 +549,8 @@ import ReportStatus from './model/ReportStatus';
 import ReportType from './model/ReportType';
 import RequestApproval from './model/RequestApproval';
 import RetryCallbackMessage201Response from './model/RetryCallbackMessage201Response';
+import RetryPaymentCallbacks201Response from './model/RetryPaymentCallbacks201Response';
+import RetryPaymentCallbacksRequest from './model/RetryPaymentCallbacksRequest';
 import RetryWebhookEventById201Response from './model/RetryWebhookEventById201Response';
 import ReviewStatusType from './model/ReviewStatusType';
 import RevokeApprovalRequest201Response from './model/RevokeApprovalRequest201Response';
@@ -606,7 +597,6 @@ import SubmitDepositTravelRuleInfo201Response from './model/SubmitDepositTravelR
 import SubmitKytResponse from './model/SubmitKytResponse';
 import SubmitKytScreeningsDecisionsBody from './model/SubmitKytScreeningsDecisionsBody';
 import SubmitKytScreeningsReviewBody from './model/SubmitKytScreeningsReviewBody';
-import SubmitMerchantKyc from './model/SubmitMerchantKyc';
 import SuiContractCallAddressBalanceOperationType from './model/SuiContractCallAddressBalanceOperationType';
 import SuiContractCallAddressBalanceParam from './model/SuiContractCallAddressBalanceParam';
 import SuiContractCallContractParam from './model/SuiContractCallContractParam';
@@ -969,7 +959,7 @@ import WalletsMPCWalletsApi from './api/WalletsMPCWalletsApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.46.0
+* @version 1.47.0
 */
 export {
     Env,
@@ -3478,78 +3468,6 @@ export {
     MerchantBalance,
 
     /**
-     * The MerchantKycAddress model constructor.
-     * @property {module:model/MerchantKycAddress}
-     */
-    MerchantKycAddress,
-
-    /**
-     * The MerchantKycCompanyAttachment model constructor.
-     * @property {module:model/MerchantKycCompanyAttachment}
-     */
-    MerchantKycCompanyAttachment,
-
-    /**
-     * The MerchantKycCompanyAttachmentFileType model constructor.
-     * @property {module:model/MerchantKycCompanyAttachmentFileType}
-     */
-    MerchantKycCompanyAttachmentFileType,
-
-    /**
-     * The MerchantKycCompanyInfo model constructor.
-     * @property {module:model/MerchantKycCompanyInfo}
-     */
-    MerchantKycCompanyInfo,
-
-    /**
-     * The MerchantKycCompanyType model constructor.
-     * @property {module:model/MerchantKycCompanyType}
-     */
-    MerchantKycCompanyType,
-
-    /**
-     * The MerchantKycInfo model constructor.
-     * @property {module:model/MerchantKycInfo}
-     */
-    MerchantKycInfo,
-
-    /**
-     * The MerchantKycMerchantType model constructor.
-     * @property {module:model/MerchantKycMerchantType}
-     */
-    MerchantKycMerchantType,
-
-    /**
-     * The MerchantKycPersonAttachment model constructor.
-     * @property {module:model/MerchantKycPersonAttachment}
-     */
-    MerchantKycPersonAttachment,
-
-    /**
-     * The MerchantKycPersonAttachmentFileType model constructor.
-     * @property {module:model/MerchantKycPersonAttachmentFileType}
-     */
-    MerchantKycPersonAttachmentFileType,
-
-    /**
-     * The MerchantKycPersonInfo model constructor.
-     * @property {module:model/MerchantKycPersonInfo}
-     */
-    MerchantKycPersonInfo,
-
-    /**
-     * The MerchantKycStatus model constructor.
-     * @property {module:model/MerchantKycStatus}
-     */
-    MerchantKycStatus,
-
-    /**
-     * The MerchantKycSubmission model constructor.
-     * @property {module:model/MerchantKycSubmission}
-     */
-    MerchantKycSubmission,
-
-    /**
      * The MessageSignDestination model constructor.
      * @property {module:model/MessageSignDestination}
      */
@@ -3824,6 +3742,12 @@ export {
      * @property {module:model/PaymentBulkSendUpdateEventData}
      */
     PaymentBulkSendUpdateEventData,
+
+    /**
+     * The PaymentCallbackBusinessType model constructor.
+     * @property {module:model/PaymentCallbackBusinessType}
+     */
+    PaymentCallbackBusinessType,
 
     /**
      * The PaymentCommissionFeeTotal model constructor.
@@ -4264,6 +4188,18 @@ export {
     RetryCallbackMessage201Response,
 
     /**
+     * The RetryPaymentCallbacks201Response model constructor.
+     * @property {module:model/RetryPaymentCallbacks201Response}
+     */
+    RetryPaymentCallbacks201Response,
+
+    /**
+     * The RetryPaymentCallbacksRequest model constructor.
+     * @property {module:model/RetryPaymentCallbacksRequest}
+     */
+    RetryPaymentCallbacksRequest,
+
+    /**
      * The RetryWebhookEventById201Response model constructor.
      * @property {module:model/RetryWebhookEventById201Response}
      */
@@ -4538,12 +4474,6 @@ export {
      * @property {module:model/SubmitKytScreeningsReviewBody}
      */
     SubmitKytScreeningsReviewBody,
-
-    /**
-     * The SubmitMerchantKyc model constructor.
-     * @property {module:model/SubmitMerchantKyc}
-     */
-    SubmitMerchantKyc,
 
     /**
      * The SuiContractCallAddressBalanceOperationType model constructor.

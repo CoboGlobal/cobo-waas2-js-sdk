@@ -416,16 +416,6 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('getMerchantKyc', function() {
-      it('should call getMerchantKyc successfully', function() {
-        //uncomment below and update the code to test getMerchantKyc
-        //instance.getMerchantKyc().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
     describe('getPaymentBankAccountBalance', function() {
       it('should call getPaymentBankAccountBalance successfully', function() {
         //uncomment below and update the code to test getPaymentBankAccountBalance
@@ -766,10 +756,10 @@ import {ApiClient, Env} from "../../src/index.js";
         //});
       });
     });
-    describe('submitMerchantKyc', function() {
-      it('should call submitMerchantKyc successfully', function() {
-        //uncomment below and update the code to test submitMerchantKyc
-        //instance.submitMerchantKyc().then(function(data) {
+    describe('retryPaymentCallbacks', function() {
+      it('should call retryPaymentCallbacks successfully', function() {
+        //uncomment below and update the code to test retryPaymentCallbacks
+        //instance.retryPaymentCallbacks().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);
@@ -860,16 +850,6 @@ import {ApiClient, Env} from "../../src/index.js";
       it('should call updateTopUpAddress successfully', function() {
         //uncomment below and update the code to test updateTopUpAddress
         //instance.updateTopUpAddress().then(function(data) {
-        //    console.log(data);
-        //}, function(error) {
-        //    console.error(error);
-        //});
-      });
-    });
-    describe('uploadPaymentFile', function() {
-      it('should call uploadPaymentFile successfully', function() {
-        //uncomment below and update the code to test uploadPaymentFile
-        //instance.uploadPaymentFile().then(function(data) {
         //    console.log(data);
         //}, function(error) {
         //    console.error(error);

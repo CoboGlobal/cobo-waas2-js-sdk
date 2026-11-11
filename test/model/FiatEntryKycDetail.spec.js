@@ -82,18 +82,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property email (base name: "email")', function() {
-      // uncomment below and update the code to test the property email
-      //var instance = new CoboWaas2.FiatEntryKycDetail();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property phone (base name: "phone")', function() {
-      // uncomment below and update the code to test the property phone
-      //var instance = new CoboWaas2.FiatEntryKycDetail();
-      //expect(instance).to.be();
-    });
-
     it('should have the property company_info (base name: "company_info")', function() {
       // uncomment below and update the code to test the property company_info
       //var instance = new CoboWaas2.FiatEntryKycDetail();

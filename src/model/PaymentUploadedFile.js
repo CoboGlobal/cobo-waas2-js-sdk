@@ -20,11 +20,10 @@ class PaymentUploadedFile {
      * Constructs a new <code>PaymentUploadedFile</code>.
      * @alias module:model/PaymentUploadedFile
      * @param file_id {String} The AWS file link of the uploaded file.
-     * @param expired_timestamp {Number} The time when the uploaded file link expires, in Unix timestamp format, measured in milliseconds.
      */
-    constructor(file_id, expired_timestamp) { 
+    constructor(file_id) { 
         
-        PaymentUploadedFile.initialize(this, file_id, expired_timestamp);
+        PaymentUploadedFile.initialize(this, file_id);
     }
 
     /**
@@ -32,9 +31,8 @@ class PaymentUploadedFile {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, file_id, expired_timestamp) { 
+    static initialize(obj, file_id) { 
         obj['file_id'] = file_id;
-        obj['expired_timestamp'] = expired_timestamp;
     }
 
     /**
@@ -50,9 +48,6 @@ class PaymentUploadedFile {
 
             if (data.hasOwnProperty('file_id')) {
                 obj['file_id'] = ApiClient.convertToType(data['file_id'], 'String');
-            }
-            if (data.hasOwnProperty('expired_timestamp')) {
-                obj['expired_timestamp'] = ApiClient.convertToType(data['expired_timestamp'], 'Number');
             }
         }
         return obj;
@@ -81,19 +76,13 @@ class PaymentUploadedFile {
 
 }
 
-PaymentUploadedFile.RequiredProperties = ["file_id", "expired_timestamp"];
+PaymentUploadedFile.RequiredProperties = ["file_id"];
 
 /**
  * The AWS file link of the uploaded file.
  * @member {String} file_id
  */
 PaymentUploadedFile.prototype['file_id'] = undefined;
-
-/**
- * The time when the uploaded file link expires, in Unix timestamp format, measured in milliseconds.
- * @member {Number} expired_timestamp
- */
-PaymentUploadedFile.prototype['expired_timestamp'] = undefined;
 
 
 

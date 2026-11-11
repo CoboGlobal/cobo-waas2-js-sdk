@@ -85,8 +85,6 @@ import ListSettlementDetails200Response from '../model/ListSettlementDetails200R
 import ListSettlementRequests200Response from '../model/ListSettlementRequests200Response';
 import ListTopUpPayers200Response from '../model/ListTopUpPayers200Response';
 import Merchant from '../model/Merchant';
-import MerchantKycInfo from '../model/MerchantKycInfo';
-import MerchantKycSubmission from '../model/MerchantKycSubmission';
 import Order from '../model/Order';
 import PaymentAllocationAmount from '../model/PaymentAllocationAmount';
 import PaymentBalanceChangeResponse from '../model/PaymentBalanceChangeResponse';
@@ -109,8 +107,9 @@ import Report from '../model/Report';
 import ReportDownloadResponse from '../model/ReportDownloadResponse';
 import ReportStatus from '../model/ReportStatus';
 import ReportType from '../model/ReportType';
+import RetryPaymentCallbacks201Response from '../model/RetryPaymentCallbacks201Response';
+import RetryPaymentCallbacksRequest from '../model/RetryPaymentCallbacksRequest';
 import Settlement from '../model/Settlement';
-import SubmitMerchantKyc from '../model/SubmitMerchantKyc';
 import SupportedToken from '../model/SupportedToken';
 import TopUpAddress from '../model/TopUpAddress';
 import TriggerTestPaymentWebhookEventResponse from '../model/TriggerTestPaymentWebhookEventResponse';
@@ -2099,57 +2098,6 @@ export default class PaymentApi {
      */
     getFiatEntryKyc(fiat_entry_kyc_id) {
       return this.getFiatEntryKycWithHttpInfo(fiat_entry_kyc_id)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get merchant KYC
-     * <Note>This operation has been deprecated. Please use [Get fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/get-fiat-entry-kyc) instead.</Note>  This operation retrieves the KYC submission for a specified merchant.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
-     * @param {String} merchant_id The merchant ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantKycSubmission} and HTTP response
-     */
-    getMerchantKycWithHttpInfo(merchant_id) {
-      let postBody = null;
-      if (postBody && postBody.toJSON) {
-          postBody = postBody.toJSON()
-      }
-      // verify the required parameter 'merchant_id' is set
-      if (merchant_id === undefined || merchant_id === null) {
-        throw new Error("Missing the required parameter 'merchant_id' when calling getMerchantKyc");
-      }
-
-      let pathParams = {
-        'merchant_id': merchant_id
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['OAuth2', 'CoboAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = MerchantKycSubmission;
-      return this.apiClient.callApi(
-        '/payments/merchants/{merchant_id}/kyc', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Get merchant KYC
-     * <Note>This operation has been deprecated. Please use [Get fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/get-fiat-entry-kyc) instead.</Note>  This operation retrieves the KYC submission for a specified merchant.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants). 
-     * @param {String} merchant_id The merchant ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantKycSubmission}
-     */
-    getMerchantKyc(merchant_id) {
-      return this.getMerchantKycWithHttpInfo(merchant_id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -4208,26 +4156,22 @@ export default class PaymentApi {
 
 
     /**
-     * Submit merchant KYC
-     * <Note>This operation has been deprecated. Please use [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) to create KYC information and [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc) to update KYC information instead.</Note>  This operation submits KYC information for a specified merchant.  You need to provide the merchant type, country, and industry. Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants).  <Note>If the merchant KYC status is `Disabled`, this operation cannot be used to resubmit KYC information.</Note> 
-     * @param {String} merchant_id The merchant ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/SubmitMerchantKyc} [SubmitMerchantKyc] The request body to submit merchant KYC information.  Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantKycInfo} and HTTP response
+     * Retry payment callbacks
+     * This operation retries eligible callback messages associated with a refund order, payout, or bulk send.  Specify the business record using `business_type` and `business_id`. The record must belong to your organization and be in `PendingDoubleCheck` status. This operation requires the `callback.resend` permission.  For a business record with multiple callback endpoints, this operation attempts to resend each message that is still awaiting a valid response and has remaining attempts. Messages that have received `ok` or `deny`, or have exhausted their attempts, are skipped. All endpoints must return `ok` before the business record can continue processing; any `deny` terminates the business request.  Each message allows up to 30 delivery attempts in total, including the initial attempt and both automatic and manual retries. This operation does not reset the attempt count or resend exhausted messages.  A successful response means the retry request was processed. It does not guarantee that any message was resent or approved, or that the business record has continued processing. 
+     * @param {module:model/RetryPaymentCallbacksRequest} RetryPaymentCallbacksRequest The request body to retry callback messages for a payment business record.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/RetryPaymentCallbacks201Response} and HTTP response
      */
-    submitMerchantKycWithHttpInfo(merchant_id, opts) {
-      opts = opts || {};
-      let postBody = opts['SubmitMerchantKyc'];
+    retryPaymentCallbacksWithHttpInfo(RetryPaymentCallbacksRequest) {
+      let postBody = RetryPaymentCallbacksRequest;
       if (postBody && postBody.toJSON) {
           postBody = postBody.toJSON()
       }
-      // verify the required parameter 'merchant_id' is set
-      if (merchant_id === undefined || merchant_id === null) {
-        throw new Error("Missing the required parameter 'merchant_id' when calling submitMerchantKyc");
+      // verify the required parameter 'RetryPaymentCallbacksRequest' is set
+      if (RetryPaymentCallbacksRequest === undefined || RetryPaymentCallbacksRequest === null) {
+        throw new Error("Missing the required parameter 'RetryPaymentCallbacksRequest' when calling retryPaymentCallbacks");
       }
 
       let pathParams = {
-        'merchant_id': merchant_id
       };
       let queryParams = {
       };
@@ -4239,24 +4183,22 @@ export default class PaymentApi {
       let authNames = ['OAuth2', 'CoboAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = MerchantKycInfo;
+      let returnType = RetryPaymentCallbacks201Response;
       return this.apiClient.callApi(
-        '/payments/merchants/{merchant_id}/kyc', 'POST',
+        '/payments/callbacks/retry', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Submit merchant KYC
-     * <Note>This operation has been deprecated. Please use [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) to create KYC information and [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc) to update KYC information instead.</Note>  This operation submits KYC information for a specified merchant.  You need to provide the merchant type, country, and industry. Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants.  The merchant ID can be retrieved by calling [List all merchants](https://www.cobo.com/developers/v2/api-references/payment/list-all-merchants).  <Note>If the merchant KYC status is `Disabled`, this operation cannot be used to resubmit KYC information.</Note> 
-     * @param {String} merchant_id The merchant ID.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/SubmitMerchantKyc} opts.SubmitMerchantKyc The request body to submit merchant KYC information.  Provide either `company_info` or `individual_info`: - `company_info`: Required for company merchants. - `individual_info`: Required for individual merchants. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantKycInfo}
+     * Retry payment callbacks
+     * This operation retries eligible callback messages associated with a refund order, payout, or bulk send.  Specify the business record using `business_type` and `business_id`. The record must belong to your organization and be in `PendingDoubleCheck` status. This operation requires the `callback.resend` permission.  For a business record with multiple callback endpoints, this operation attempts to resend each message that is still awaiting a valid response and has remaining attempts. Messages that have received `ok` or `deny`, or have exhausted their attempts, are skipped. All endpoints must return `ok` before the business record can continue processing; any `deny` terminates the business request.  Each message allows up to 30 delivery attempts in total, including the initial attempt and both automatic and manual retries. This operation does not reset the attempt count or resend exhausted messages.  A successful response means the retry request was processed. It does not guarantee that any message was resent or approved, or that the business record has continued processing. 
+     * @param {module:model/RetryPaymentCallbacksRequest} RetryPaymentCallbacksRequest The request body to retry callback messages for a payment business record.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RetryPaymentCallbacks201Response}
      */
-    submitMerchantKyc(merchant_id, opts) {
-      return this.submitMerchantKycWithHttpInfo(merchant_id, opts)
+    retryPaymentCallbacks(RetryPaymentCallbacksRequest) {
+      return this.retryPaymentCallbacksWithHttpInfo(RetryPaymentCallbacksRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -4754,59 +4696,8 @@ export default class PaymentApi {
 
 
     /**
-     * Upload file
-     * <Note>This operation has been deprecated. Please use [Upload file v2](https://www.cobo.com/developers/v2/api-references/payment/upload-file-v2) instead.</Note>  This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
-     * @param {File} file The file to upload.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentUploadedFile} and HTTP response
-     */
-    uploadPaymentFileWithHttpInfo(file) {
-      let postBody = null;
-      if (postBody && postBody.toJSON) {
-          postBody = postBody.toJSON()
-      }
-      // verify the required parameter 'file' is set
-      if (file === undefined || file === null) {
-        throw new Error("Missing the required parameter 'file' when calling uploadPaymentFile");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-        'file': file
-      };
-
-      let authNames = ['OAuth2', 'CoboAuth'];
-      let contentTypes = ['multipart/form-data'];
-      let accepts = ['application/json'];
-      let returnType = PaymentUploadedFile;
-      return this.apiClient.callApi(
-        '/payments/files', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Upload file
-     * <Note>This operation has been deprecated. Please use [Upload file v2](https://www.cobo.com/developers/v2/api-references/payment/upload-file-v2) instead.</Note>  This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to specify the file to upload. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
-     * @param {File} file The file to upload.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentUploadedFile}
-     */
-    uploadPaymentFile(file) {
-      return this.uploadPaymentFileWithHttpInfo(file)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Upload file v2
-     * This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). 
      * @param {Object} opts Optional parameters
      * @param {module:model/PaymentUploadFileV2} [PaymentUploadFileV2] The request body to upload a file.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PaymentUploadedFile} and HTTP response
@@ -4840,7 +4731,7 @@ export default class PaymentApi {
 
     /**
      * Upload file v2
-     * This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). The returned file link expires at the time specified by `expired_timestamp`. 
+     * This operation uploads a file for payment-related use cases, such as fiat entry KYC attachments.  You need to encode the file content in Base64 and include it in the JSON request body together with the original file name. After a successful upload, use the returned AWS file link in `file_id` when calling [Create fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/create-fiat-entry-kyc) or [Update fiat entry KYC](https://www.cobo.com/developers/v2/api-references/payment/update-fiat-entry-kyc). 
      * @param {Object} opts Optional parameters
      * @param {module:model/PaymentUploadFileV2} opts.PaymentUploadFileV2 The request body to upload a file.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PaymentUploadedFile}
